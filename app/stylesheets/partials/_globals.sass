@@ -1,0 +1,140 @@
+$width-main: 100%
+$page-width: 980px
+
+// Functions
+
+=flash( $color ) 
+	:border 2px solid $color
+	:cursor pointer
+	:padding 9px 10px 10px 15px
+
+=clearfix
+	:content "."
+	:display block
+	:height 0
+	:clear both
+	:visibility hidden
+
+=rounded($radius: 4px)
+	-moz-border-radius: $radius
+	-khtml-border-radius: $radius
+	-webkit-border-radius: $radius
+	border-radius: $radius
+
+=rounded-sides($side, $radius: 4px)
+	-moz-border-radius-#{$side}left: $radius
+	-webkit-border-#{$side}-left-radius: $radius
+	border-#{$side}-left-radius: $radius
+	-moz-border-radius-#{$side}right: $radius
+	-webkit-border-#{$side}-right-radius: $radius
+	border-#{$side}-right-radius: $radius
+
+=rounded-right($side, $radius: 4px)
+	-moz-border-radius-#{$side}right: $radius
+	-webkit-border-#{$side}-right-radius: $radius
+	border-#{$side}-right-radius: $radius
+
+=rounded-left($side, $radius: 4px)
+	-moz-border-radius-#{$side}left: $radius
+	-webkit-border-#{$side}-left-radius: $radius
+	border-#{$side}-right-radius: $radius
+
+=shadow($x: 1px, $y: 2px, $offset: 8px)
+	box-shadow: $x $y $offset #888888
+	-moz-box-shadow: $x $y $offset #888888
+	-webkit-box-shadow: $x $y $offset #888888
+	
+=top_menu($side: right)
+	:padding 7px 0
+	:margin-left 20px
+	li
+		:float left
+		:margin-#{$side} 20px
+		a
+			:vertical-align baseline
+			:font-size 11px
+			:font-weight bold
+			:padding 3px 14px 3px 2px
+			:background transparent url("../images/arrow_rt.jpg") no-repeat 100% 44%
+
+=footer_menu($side: right)
+	:padding 7px 0
+	:margin-left 20px
+	:color #fff
+	li
+		:float left
+		:margin-#{$side} 8px
+		a
+			:vertical-align baseline
+			:font-size 11px
+			:font-weight bold
+			:padding 3px 14px 3px 2px
+			:color #2c7cac
+			
+.clear
+	:clear both
+	
+.pad
+	:margin 10px
+			
+// Links
+a
+	:color $link
+	:text-decoration none
+	&:hover
+		:text-decoration underline
+		
+// Headers
+h1
+	:font-size 200%
+h2
+	:font-size 175%
+h3
+	:font-size 135%
+h1, h2, h3
+	:color $link
+	:margin 0 0 4px 1px
+		
+// Flashes
+#flash
+	:width 96%
+	:margin 20px auto
+	.error
+		:background #ffd1d6 url(../images/close_error.png) 99.5% 19% no-repeat
+		+flash( #ff3333 )
+	.success
+		:background #e6efc2 url(../images/close_success.png) 99.5% 19% no-repeat
+		+flash( #c6d880 )
+	.notice
+		:background #fff6bf url(../images/close_notice.png) 99.5% 19% no-repeat
+		+flash( #ffd324 )
+			
+// Forms
+.form_group
+	+rounded
+	:border 1px solid #999
+	:background-color #eee
+	:width 90%
+	:margin 0 auto
+	:padding 20px
+
+textarea
+	+rounded
+	:width 500px
+	:height 150px
+	:display block
+	
+input[type="text"],input[type="password"], textarea
+	:font-size 16px
+	:padding 4px
+	:background #f9f9f9
+	:border 1px solid $border-color
+	+rounded
+
+label
+	:padding 4px 3px
+	:display block
+	
+	
+	
+	

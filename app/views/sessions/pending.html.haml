@@ -1,0 +1,19 @@
+- content_for :left_column do
+	%h2 Pending activation
+
+	- if !@user.has_email?
+		You need to supply a valid email to use this feature
+		= form_for @user do |f|
+			= f.label "Email"
+			= f.text_field :email
+			%br
+			= f.submit "Enter"
+	
+	- elsif !@user.validated?
+		Your email address has not been validated yet:
+		%br
+		= @user.email
+		| 
+		= link_to "resend activation code", resend_user_path( @user )
+- content_for :right_column do
+	%h2 Help

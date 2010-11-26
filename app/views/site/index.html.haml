@@ -1,0 +1,23 @@
+- content_for :left_column do
+	%h1
+		Welcome to my Site
+		
+	= submit_tag "I am a Button!", :class => 'button'
+	
+	%p
+		= text_field_tag :date, "a date", :class => 'datepicker'
+	%br
+	%br
+	%br
+	.demo
+		#tabs
+			%ul
+				%li= link_to 'Tab1', "#panel"
+				%li= link_to 'Tab2', "#jake"
+				%li= link_to 'Tab3', "#frog"
+			#panel
+				%p I am Tab1 I am
+			#jake
+				%p Jake Jake Jake
+			#frog
+				%p Ribbit Ribbbbbiiiiit

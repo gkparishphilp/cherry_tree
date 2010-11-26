@@ -1,0 +1,54 @@
+%h1 
+	Users Admin
+	
+%h1
+	There are
+	= pluralize @users.size - 2, "User"
+
+%table
+	%th
+	%th
+		User Name
+	%th
+		Email
+	%th
+		Joined
+	%th
+		Old School?
+	%th
+		Linked Twitter?
+	%th
+		Linked FB?
+	%th
+		Status
+	%th
+		Last Seen
+
+
+	- @users.each do |user|
+		- next if [ 1,2 ].include? user.id
+		%tr{:class => cycle(:odd, :even)}
+			%td
+				= image_tag( user.photo_url, :width=>20 )
+			%td
+				= link_to user.name, edit_user_path(user)
+			%td
+				= user.email
+			%td
+				=format_date_only user.created_at
+				%br
+				From:
+				= user.orig_ip
+			%td
+				= user.old_school_user? ? "Yes" : "No"
+			%td
+				= user.twitter_user? ? user.twitter_name : "No"
+			%td
+				= user.facebook_user? ? user.fb_name : "No"
+			%td
+				= user.status || "Uhhh"
+			%td
+				=format_date_only user.updated_at
+				%br
+				From:
+				= user.last_ip

@@ -1,0 +1,88 @@
+
+/* =Structure */
+
+#container
+	:width $width-main
+	:min-height 600px
+
+#bd, #ft
+	:margin auto
+	:width $page-width
+	
+#hd
+	:height 35px
+
+#hd .wrapper
+	:margin auto
+	:width $page-width
+
+.wrapper:after,#bd:after,#ft:after
+	+clearfix
+
+#hd .logo
+	:float left
+	:margin-top 8px
+
+ul.top_main_menu
+	:float left
+	+top_menu(right)
+
+ul.top_user_menu
+	:float right
+	+top_menu(left)
+	li.user
+		:margin-top -6px
+		:position relative
+		:vertical-align middle
+	li a.avatar
+		:background none
+		:margin-right 5px
+		:vertical-align middle
+	li .avatar img
+		:position absolute
+		:vertical-align middle
+		:top 3px
+		:left -4px
+		:float left
+	li a.username
+		:vertical-align middle
+		:float right
+		:margin-top 8px
+
+#bd
+	:background-color #fff
+	:border 1px solid #b0d3e1
+	:border-bottom none
+	:min-height 600px
+	+rounded-sides(top, 5px)
+
+.column1, .column2
+	:float left
+
+.column1
+	:width 65.5%
+
+.column2
+	:width 34.4%
+	
+	
+/* =Footer */
+#ft
+	:background-color #b0d3e1
+	+rounded-sides(bottom)
+	:border 1px solid #b0d3e1
+	:border-top none
+	:color #2c7cac
+
+ul.footer_menu
+	:float left
+	+footer_menu(right)
+	img
+		:margin-top -2px
+		:margin-bottom -4px
+
+ul.author_copy
+	:float right
+	:margin-right 30px
+	+footer_menu(left)
+	

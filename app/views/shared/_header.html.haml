@@ -1,0 +1,12 @@
+#hd
+	.wrapper
+		= link_to "Seeeedz", root_path, :class => 'logo'
+		%ul.top_user_menu
+			- if @current_user.anonymous?
+				%li= link_to "Login", login_path
+				%li= link_to "Register", register_path
+			- else
+				%li.user
+					= link_to avatar_tag( @current_user, :tiny ), user_path( @current_user ), :class=>'avatar'
+					= link_to @current_user.name, user_path( @current_user ), :class=>'username'
+				%li= link_to "Logout", logout_path + '?dest=' + request.fullpath

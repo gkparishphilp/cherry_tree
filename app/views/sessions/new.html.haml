@@ -1,0 +1,49 @@
+- if @current_user.anonymous?
+	- content_for :left_column do
+		.form_group
+			%h1
+				Login to your account:
+			= form_tag :controller=>'sessions' do
+				= hidden_field_tag :dest, @dest
+				= hidden_field_tag :a, @a
+				%label
+					Email:
+				= text_field_tag :email, params[:email], :class => :login_email
+				%label
+					Password:
+				= password_field_tag	:password, params[:password], :class => :login_email
+				%br
+				%br
+				= submit_tag	"Login", :class => :button
+				|
+				= link_to 'Cancel', root_path, :class => :cancel_button
+				|
+				= link_to 'Register', register_path +  (params['dest'] ? '?dest=' + params['dest'] : '')
+				|
+				= link_to "Forgot Password?", forgot_path
+					
+
+	- content_for :right_column do
+		%h2 Need Help?
+		kfj dslkfsjd lfkjs ldfjsdl kfjs lkdfjsdlkfj sldkfj lsdkjf lsdkfj sldfjk sdljf
+		%br
+		%br
+		%h2 Tip:
+		IF you have associated a Facebook or Twitter account to your BackMyBook account (learn more), you can use one of them to login!
+		%br
+		%br
+		#facebook
+			= form_tag go_facebook_sessions_path do
+				= image_submit_tag 'facebook_connect.png'
+		%br
+		#twitter
+			= form_tag go_twitter_sessions_path do
+				= image_submit_tag 'twitter_button.png'
+- else
+	- content_for :left_column do
+		%h2 
+			You are already logged in as:
+			= @current_user.name
+		If this is not you, please 
+		= link_to "Logout", logout_path
+		and log back in with your account.

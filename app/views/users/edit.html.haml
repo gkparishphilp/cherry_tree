@@ -1,0 +1,43 @@
+= user_photo @user
+%font{:size=>'+2'}
+	= possessize @user.name
+	Settings
+%br
+%br
+- if @current_user.admin?
+	Roles:
+	-form_for  @user do |f|
+		- @roles.each do |role|
+			-# hack because browsers don't pass unchecked checkboxes
+			=hidden_field_tag "user[role_ids][]", "", :id=>nil
+			=check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role)
+			=role.name
+		%br
+		= f.submit 'Update', :class => :button
+
+- unless @current_user.facebook_user?
+	%br
+	Link your Facebook Account:
+	= fb_login_button('window.location = "/users/link_fb";')
+
+
+= form_for @user, :html => { :multipart => true } do |f|
+	= f.error_messages
+	=f.label :website_name
+	=f.text_field :website_name
+	
+	=f.label :website_url
+	=f.text_field :website_url
+	
+	=f.label :name
+	=f.text_field :name
+
+	%br
+	=f.submit "Update", :class => :button
+	| 
+	=link_to 'Cancel', user_path(@user)
+	
+	
+- unless @current_user.author?
+	=link_to "I'm an Author", authorize_user_path( @current_user ), :method=>:put
+

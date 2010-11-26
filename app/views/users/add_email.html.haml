@@ -1,0 +1,14 @@
+- content_for :left_column do
+	%h1
+		Please add an email address for this account
+	= form_tag :controller=>'users', :action=>'add_email' do
+		%p
+		.fields
+		%label{ :for => "email" }
+			Email Address:
+		= text_field_tag :email, params[:email], :size=>30
+		&nbsp;&nbsp;
+		= submit_tag	"Submit", :class=>"button"
+
+- content_for :right_column do
+	%h2 Help
