@@ -7,7 +7,7 @@ gem 'haml'
 gem 'compass'
 gem 'will_paginate'
 gem 'jquery-rails'
-
+gem 'mini_magick'
 gem 'twitter'
 gem 'mini_fb'
 gem 'friendly_id'

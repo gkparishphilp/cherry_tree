@@ -55,7 +55,7 @@ $page-width: 980px
 			:font-size 11px
 			:font-weight bold
 			:padding 3px 14px 3px 2px
-			:background transparent url("../images/arrow_rt.jpg") no-repeat 100% 44%
+			:background transparent url() no-repeat 100% 44%
 
 =footer_menu($side: right)
 	:padding 7px 0
@@ -100,14 +100,17 @@ h1, h2, h3
 	:width 96%
 	:margin 20px auto
 	.error
-		:background #ffd1d6 url(../images/close_error.png) 99.5% 19% no-repeat
+		:background #ffd1d6 url(../images/close_error.png) 99% 15% no-repeat
 		+flash( #ff3333 )
+		+rounded(12px)
 	.success
-		:background #e6efc2 url(../images/close_success.png) 99.5% 19% no-repeat
+		:background #e6efc2 url(../images/close_success.png) 99% 15% no-repeat
 		+flash( #c6d880 )
+		+rounded(12px)
 	.notice
-		:background #fff6bf url(../images/close_notice.png) 99.5% 19% no-repeat
+		:background #fff6bf url(../images/close_notice.png) 99% 15% no-repeat
 		+flash( #ffd324 )
+		+rounded(12px)
 			
 // Forms
 .form_group
@@ -135,6 +138,17 @@ label
 	:padding 4px 3px
 	:display block
 	
+.button
+	img
+		:vertical-align middle
+	:margin-top 1em
 	
-	
+.divider
+	:width 66%
+	:margin 0 auto
+	:border-bottom 1px solid #ddd
+	:display block
+	:clear both
+	:height 20px
+	:margin-bottom 20px
 	

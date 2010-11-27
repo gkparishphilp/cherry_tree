@@ -8,8 +8,9 @@ class Users < ActiveRecord::Migration
 		
 		# e.g. for families -- join table between children and parents
 		create_table :teams, :force => true do |t|
-			t.references	:member, :polymorphic => true
-			t.string		:role
+			t.references	:child
+			t.references	:user
+			t.string		:role # parent, expert, relative, etc.
 			t.string		:status
 			t.timestamps
 		end
@@ -70,7 +71,8 @@ class Users < ActiveRecord::Migration
 		add_index :users, :name
 		add_index :children, :name
 		add_index :children, :pin
-		add_index :teams, :member_id
+		add_index :teams, :child_id
+		add_index :teams, :user_id
 		add_index :users, :email, :unique => true
 		add_index :users, :activation_code
 		add_index :users, :remember_token

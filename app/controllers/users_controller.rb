@@ -56,50 +56,38 @@ class UsersController < ApplicationController
 			@user.attributes = params[:user]
 		end
 		
-	
 		@user.orig_ip = request.ip
 		dest = params[:dest]
-		@a = params[:a]
+		
 		@user.status = 'pending'
-		@user.site = @current_site
 	
 		if @user.save
 			
 			@user.create_activation_code
 			@user.reload
 			
-			email = UserMailer.welcome( @user, @current_site ).deliver
+			#email = UserMailer.welcome( @user, @current_site ).deliver
+			@user.did_join Site.first
 			
-			pop_flash "User was successfully created."
-			
-			@user.did_join @current_site
+			pop_flash "User successfully registered."
 			
 			login( @user )
-			
-			if @a == 1
-				redirect_to new_author_path
-			else
-				redirect_to @user
-			end
+
+			redirect_to @user
 
 		else
-			pop_flash 'Ooops, User not saved.... ', 'error', @user
+			pop_flash 'Ooops, User not saved.... ', :error, @user
 			@dest = dest
 			redirect_to register_path
 		end
 
 	end
-	
-	def update_avatar
-		@user = User.find params[:id] 
-		@user.avatar.update_from_resource( params[:attached_avatar_file] )
-		redirect_to request.env['HTTP_REFERER']
-	end
 
 	def update
 		@user = User.find params[:id] 
-		
+	
 		if @user.update_attributes( params[:user] )
+			process_attachments_for( @user )
 			pop_flash 'User was successfully updated.'	
 		else
 			pop_flash 'Oooops, User not updated...', 'error', @user
@@ -131,59 +119,38 @@ class UsersController < ApplicationController
 	end
   
 	def reset_password
-		if !session[:user_id].nil?
+		if session[:user_id].present?
 			# a user is logged in, 
 			@user = User.find session[:user_id]
 		elsif params[:token]
 			valid_token_user = User.find_by_remember_token params[:token]  #can add date expiry later
-			if !valid_token_user
+			unless valid_token_user
 				pop_flash "Invalid password reset token", :error
-				redirect_to :controller => "session", :action => "new"
+				redirect_to login_path
 				return false
 			end
 			@user = valid_token_user
 		else
 			pop_flash "No access without credential", :error
-			redirect_to :controller => "session", :action => "new"
+			redirect_to login_path
 			return false
 		end
-      
-		if request.post?
-			if (params[:password] == params[:password_confirmation] && !params[:password].empty? )
-				@user.password = params[:password]
-				@user.remember_token = nil
-				@user.save!
-				flash[:notice] = "Password updated"
-  
+		
+		if ( params[:password] == params[:password_confirmation] && params[:password].present? )
+			@user.password = params[:password]
+			@user.remember_token = nil
+			if @user.save
+				pop_flash "Password updated"
 				#just in case we're coming from forgot pw / email flow
 				login( @user )
-				redirect_to root_path
 			else
-				pop_flash "Passwords must match", :error
+				pop_flash "Invalid Password", :error, @user
 			end
-		end
-	end
-
-	def update_password
-		current_password = params[:current_password]
-		new_password = params[:new_password]
-		new_password_confirmation = params[:new_password_confirmation]
-		
-		if @current_user != User.authenticate( @current_user.email, current_password )
-			pop_flash "Current Password Incorrect", :error
-			redirect_to settings_path
-			return false
-		elsif new_password != new_password_confirmation
-			pop_flash "Password Confirmation Incorrect", :error
-			redirect_to settings_path
-			return false
 		else
-			@current_user.password = new_password
-			@current_user.save
-			pop_flash "Password Updated"
-			redirect_to settings_path
+			pop_flash "Passwords must match", :error
 		end
-		
+		redirect_to :back
+
 	end
 
 	def activate

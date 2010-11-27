@@ -1,0 +1,22 @@
+%div[activity]
+	- if activity.actor.respond_to? 'avatar'
+		= image_tag activity.actor.avatar.location, :width => activity.actor.avatar.tiny_width unless activity.actor.avatar.nil?
+	- if activity.actor == @current_user
+		You
+	- else
+		= link_to activity.actor.name, polymorphic_path( activity.actor )
+	= activity.verb
+	- if activity.target.respond_to? 'title'
+		- if activity.target.is_a? Topic
+			= link_to activity.target.title, polymorphic_path( [ activity.target.forum, activity.target ] )
+		- elsif activity.target.is_a? Post
+			= link_to activity.target.topic.title, polymorphic_path( [ activity.target.forum, activity.target.topic ] )
+		- else
+			= link_to activity.target.title, polymorphic_path( activity.target )
+	- else
+		= activity.target.name
+	= time_ago_in_words( activity.created_at )
+	ago.
+	%br.clear
+
+	

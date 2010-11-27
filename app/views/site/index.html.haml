@@ -1,23 +1,12 @@
 - content_for :left_column do
 	%h1
-		Welcome to my Site
+		Welcome to our Site
 		
-	= submit_tag "I am a Button!", :class => 'button'
+	This is a prototype for the world's first Lifestyle Management game for Kids!
 	
-	%p
-		= text_field_tag :date, "a date", :class => 'datepicker'
-	%br
-	%br
-	%br
-	.demo
-		#tabs
-			%ul
-				%li= link_to 'Tab1', "#panel"
-				%li= link_to 'Tab2', "#jake"
-				%li= link_to 'Tab3', "#frog"
-			#panel
-				%p I am Tab1 I am
-			#jake
-				%p Jake Jake Jake
-			#frog
-				%p Ribbit Ribbbbbiiiiit
+- content_for :right_column do
+	%h3 
+		Site Activity
+	- for activity in @activities
+		= render activity
+	

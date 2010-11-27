@@ -1,6 +1,7 @@
 Seedz::Application.routes.draw do
 	root :to => "site#index"
 	
+	resources :children
 	
 	resources :sessions do
 		collection do
@@ -18,12 +19,6 @@ Seedz::Application.routes.draw do
 	end
 	
 	resources  :users do
-		collection do
-			post 'update_password'
-		end
-		member do
-			post 'update_avatar'
-		end
 		get 'resend', :on => :member
 	end
 	
@@ -36,6 +31,9 @@ Seedz::Application.routes.draw do
 	match '/login' => 'sessions#new', :as => 'login'
 	match '/register' => 'sessions#register', :as => 'register'
 	match '/reset' => 'users#reset_password', :as => 'reset'
+	match '/activate/:token' => 'users#activate', :as => 'activate'
+	match '/resend' => 'users#resend', :as => 'resend'
+	
 	
 	
 	
