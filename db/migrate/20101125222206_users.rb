@@ -4,6 +4,11 @@ class Users < ActiveRecord::Migration
 		create_table :children, :force => true do |t|
 			t.string	:name
 			t.string	:pin
+			t.datetime	:birthday
+			t.string	:gender
+			t.integer	:cumulative_points
+			t.integer	:points_balance
+			t.integer	:level
 		end
 		
 		# e.g. for families -- join table between children and parents
