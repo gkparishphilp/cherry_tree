@@ -1,0 +1,4 @@
+- content_for :left_column do
+	.pad
+		%h1= @static_page.title
+		.text= @static_page.content.html_safe

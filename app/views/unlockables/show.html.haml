@@ -1,0 +1,8 @@
+- content_for :left_column do
+	.pad
+		%h1= @unlockable.name
+		= @unlockable.description
+		
+		%br
+		Cost:
+		= @unlockable.points_req
