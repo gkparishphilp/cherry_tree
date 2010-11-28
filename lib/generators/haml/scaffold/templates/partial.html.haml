@@ -1,0 +1,6 @@
+%div[<%= singular_name %>]
+<% for attribute in attributes -%>
+	#<%= attribute.name %>
+		%strong <%= attribute.human_name %>:
+		= <%= singular_name %>.<%= attribute.name %>
+<% end -%>

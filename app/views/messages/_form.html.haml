@@ -1,0 +1,12 @@
+Dear:&nbsp;&nbsp;&nbsp;&nbsp;
+= f.collection_select :recipient_id, @current_user.children, :id, :name
+%br
+Subject:
+= f.text_field :subject
+%br
+= f.text_area :content
+%br
+Kudos:
+= f.text_field :points
+%br
+= f.submit "Send", :class => 'button'

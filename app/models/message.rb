@@ -9,7 +9,7 @@
 #  recipient_id   :integer(4)
 #  recipient_type :string(255)
 #  subject        :string(255)
-#  message        :text
+#  content        :text
 #  points         :integer(4)      default(0)
 #  created_at     :datetime
 #  updated_at     :datetime

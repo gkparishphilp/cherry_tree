@@ -6,7 +6,7 @@
 #  id          :integer(4)      not null, primary key
 #  name        :string(255)
 #  description :text
-#  per         :integer(4)
+#  times       :integer(4)
 #  period      :string(255)
 #  points      :integer(4)      default(1)
 #  level       :integer(4)
@@ -18,4 +18,6 @@ class Objective < ActiveRecord::Base
 	has_many	:assignments
 	has_many	:children, :through => :assignments
 	has_many	:earnings, :as => :earned_for
+	
+	attr_accessor	:child_id
 end

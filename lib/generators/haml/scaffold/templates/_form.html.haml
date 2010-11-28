@@ -1,0 +1,7 @@
+<% for attribute in attributes -%>
+= f.label '<%= attribute.name.capitalize %>:'
+= f.<%= attribute.field_type %> :<%= attribute.name %>
+<% end -%>
+
+.actions
+	= f.submit m, :class => 'button'

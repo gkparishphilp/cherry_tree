@@ -6,45 +6,29 @@
 	#tabs
 		%ul
 			%li= link_to "Welcome", "#welcome"
-			%li= link_to "Settings", "#settings"
 			%li= link_to "Children", "#children"
-			%li= link_to "New Child", new_child_path
+			%li= link_to "Objectives", "#objectives"
+			%li= link_to "Send Kudos", '#kudos'
+			%li= link_to "Settings", "#settings"
 		#welcome
-			Welcome to our prototype.  This is still very much a work in progress, but should give a feel for what we're trying to do.  Have fun!
+			%p
+				Welcome to our prototype.  This is still very much a work in progress, but should give a feel for what we're trying to do.  Have fun!
+			%p
+				First, add a child or two with the child tab
+			%p
+				Then, you can send them kudos and messages
+			%p
+				More to come later...
 		#children
-			.column2
+			- unless @current_user.children.empty?
 				%h3 Your Children
 				- for child in @current_user.children
 					= child.name
 					%br
-			.column1
-				%h3 Add a Child
-				= form_for Child.new do |f|
-					This child is a
-					= f.radio_button :gender, 'male'
-					boy
-					= f.radio_button :gender, 'female'
-					girl
-					%br
-					%span.gender
-					birthday is
-					= f.text_field :birthday, :class => 'birthday_field'
-					%br
-					%span.gender
-						&nbsp;
-					name is
-					= f.text_field :name
-					%br
-					I am
-					%span.name 
-						&nbsp
-					= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
-					%br
-					PIN:
-					= f.text_field :pin
-					%br
-					= f.submit "Add", :class => 'button'
-			.clear
+			%h3 Add a Child
+			= form_for Child.new do |f|
+				= render :partial => 'children/form', :locals => { :f => f }
+			
 		#settings
 			.column2
 				%h3 Change Your Picture
@@ -73,7 +57,14 @@
 					= hidden_field_tag :token, @user.remember_token
 					= submit_tag "Change Password", :class => 'button'
 			.clear
-			
+		#kudos
+			%h3 Send Kudos
+			= form_for Message.new do |f|
+				= render :partial => 'messages/form', :locals => { :f => f }
+		#objectives
+			%h3 Create an Objective
+			= form_for Objective.new do |f|
+				= render :partial => 'objectives/form', :locals => { :f => f }
 
 
 	

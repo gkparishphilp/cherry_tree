@@ -32,6 +32,6 @@ class Child < ActiveRecord::Base
 	
 	does_activities
 	
-	attr_accessor :role
+	attr_accessor :role, :welcome_message
 	
 end

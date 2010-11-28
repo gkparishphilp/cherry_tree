@@ -1,0 +1,13 @@
+= f.label 'Name:'
+= f.text_field :name
+= f.label 'Avatar'
+= avatar_tag @unlockable
+= file_field_tag :attached_avatar_file
+= f.label 'Description:'
+= f.text_area :description
+= f.label 'Points:'
+= f.text_field :points_req
+= f.label 'Level Required:'
+= f.text_field :level_req
+%br
+= f.submit "Enter", :class => 'button'

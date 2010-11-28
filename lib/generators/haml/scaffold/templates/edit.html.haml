@@ -1,0 +1,8 @@
+%h1 Editing <%= singular_name.capitalize %>
+
+= form_for @<%= singular_name %> , :html => { :mutipart => true } do |f|
+	= render :partial => 'form', :locals => { :f => f, :m => 'Update' }
+
+= link_to 'Show', @<%= singular_name %>
+|
+= link_to 'Back', <%= plural_name %>_path

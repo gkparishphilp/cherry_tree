@@ -14,6 +14,11 @@ class ChildrenController < ApplicationController
 		@child = Child.new params[:child]
 		if @child.save
 			team = @current_user.teams.new :role => params[:child][:role], :child => @child
+			if params[:child][:welcome_message].present?
+				msg = Message.create :sender => @current_user, :recipient => @child, 
+						:subject => "Welcome, #{@child.name}!",
+						:content => params[:child][:welcome_message], :points => 10
+			end
 			if team.save
 				pop_flash "Child Added"
 			else

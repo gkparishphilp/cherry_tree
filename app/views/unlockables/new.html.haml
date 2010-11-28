@@ -1,0 +1,4 @@
+- content_for :left_column do
+	%h3 New Unlockable
+	= form_for @unlockable, :html => { :multipart => true } do |f|
+		= render :partial => 'form', :locals => { :f => f }

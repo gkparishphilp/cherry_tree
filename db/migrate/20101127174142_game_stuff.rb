@@ -3,7 +3,7 @@ class GameStuff < ActiveRecord::Migration
 		create_table :objectives, :force => true do |t|
 			t.string	:name
 			t.text		:description
-			t.integer	:per
+			t.integer	:times
 			t.string	:period
 			t.integer	:points, :default => 1
 			t.integer	:level
@@ -52,7 +52,7 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:sender, :polymorphic => true
 			t.references	:recipient, :polymorphic => true
 			t.string		:subject
-			t.text			:message
+			t.text			:content
 			t.integer		:points, :default => 0
 			t.timestamps
 		end

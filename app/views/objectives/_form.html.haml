@@ -1,0 +1,19 @@
+For:&nbsp;&nbsp;&nbsp;&nbsp;
+= f.collection_select :child_id, @current_user.children, :id, :name
+%br
+= f.label 'Name:'
+= f.text_field :name
+
+= f.label 'Description:'
+= f.text_area :description
+
+= f.label 'Frequency:'
+= f.text_field :times
+Times
+Per
+= f.select :period, [ ['Day', 'day'], ['Week', 'week'], ['Month', 'month'] ]
+
+= f.label "Points:"
+= f.text_field :points
+%br
+= f.submit "Send", :class => 'button'

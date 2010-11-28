@@ -41,5 +41,14 @@ module Seedz
 
 	# Rails 3 doesn’t autoload modules/code in lib by default now. 
 	config.autoload_paths += %W(#{config.root}/lib)
+	
+	config.generators do |g|
+		g.helper false
+		g.stylesheets false
+		g.template_engine :haml
+		g.test_framework false
+	 end
+	
+	
   end
 end

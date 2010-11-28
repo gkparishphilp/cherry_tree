@@ -1,7 +1,10 @@
 Seedz::Application.routes.draw do
+
 	root :to => "site#index"
 	
 	resources :children
+	resources :messages
+	resources :objectives
 	
 	resources :sessions do
 		collection do
@@ -18,7 +21,20 @@ Seedz::Application.routes.draw do
 		end
 	end
 	
-	resources :unlockables
+	resources :quizzes do
+		get 'admin', :on => :collection
+		resources :questions do
+			get 'admin', :on => :collection
+			resources :answers do
+				get 'admin', :on => :collection
+			end
+		end
+	end
+	
+	
+	resources :unlockables do
+		get 'admin', :on => :collection
+	end
 	
 	resources  :users do
 		get 'resend', :on => :member

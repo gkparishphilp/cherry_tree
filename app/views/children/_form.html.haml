@@ -20,5 +20,9 @@ I am
 %br
 PIN:
 = f.text_field :pin
+
+= f.label "Welcome Message:"
+= f.text_area :welcome_message
+
 %br
 = f.submit "Add", :class => 'button'
