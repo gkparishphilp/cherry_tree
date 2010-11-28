@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101127002241
+# Schema version: 20101127174142
 #
 # Table name: users
 #
@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
 	has_many	:teams
 	has_many	:supported_children, :through => :teams
 	has_many	:children, :through => :teams, :conditions => "role IN ( 'mother', 'father', 'guardian' )"
+	has_many	:recieved_messages, :as => :recipient
+	has_many	:sent_messages, :as => :sender
 
 	
 	# Plugins	--------------------------------------

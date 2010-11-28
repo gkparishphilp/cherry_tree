@@ -21,9 +21,9 @@ module ApplicationHelper
 	
 	def get_title
 		if @title
-			title = "BackMyBook | " + @title
+			title = "Seedz | " + @title
 		else
-			title = "BackMyBook | " + controller.controller_name.capitalize
+			title = "Seedz | " + controller.controller_name.capitalize
 		end
 		return title
 	end
