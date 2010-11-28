@@ -18,6 +18,8 @@ Seedz::Application.routes.draw do
 		end
 	end
 	
+	resources :unlockables
+	
 	resources  :users do
 		get 'resend', :on => :member
 	end

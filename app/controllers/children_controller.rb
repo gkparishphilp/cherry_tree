@@ -1,5 +1,15 @@
 class ChildrenController < ApplicationController
 	
+	def new
+		@child = Child.new
+		render :layout => false
+	end
+	
+	def edit
+		@child = Child.find params[:id]
+		render :layout => false
+	end
+	
 	def create
 		@child = Child.new params[:child]
 		if @child.save

@@ -57,6 +57,36 @@ class GameStuff < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :quizzes, :force => true do |t|
+			t.string		:name
+			t.text			:description
+			t.integer		:point_value, :default => 0
+			t.timestamps
+		end
+		
+		create_table :questions, :force => true do |t|
+			t.references	:quiz
+			t.text			:content
+			t.string		:extra_content # e.g. DYK
+			t.integer		:point_value, :default => 0
+			t.timestamps
+		end
+		
+		create_table :answers, :force => true do |t|
+			t.references	:question
+			t.text			:content
+			t.boolean		:correct
+			t.timestamps
+		end
+		
+		create_table :quizzings, :force => true do |t|
+			t.references	:quiz
+			t.references	:taker, :polymorphic => true
+			t.references	:question # Last question for reume?
+			t.integer		:score # ?
+			t.timestamps
+		end
+		
 	end
 	
 	

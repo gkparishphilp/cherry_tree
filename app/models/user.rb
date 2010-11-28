@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
 	has_many	:teams
 	has_many	:supported_children, :through => :teams
 	has_many	:children, :through => :teams, :conditions => "role IN ( 'mother', 'father', 'guardian' )"
-	has_many	:recieved_messages, :as => :recipient
-	has_many	:sent_messages, :as => :sender
+	has_many	:recieved_messages, :as => :recipient, :class_name => 'Message'
+	has_many	:sent_messages, :as => :sender, :class_name => 'Message'
 
 	
 	# Plugins	--------------------------------------

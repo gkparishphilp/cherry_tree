@@ -22,11 +22,13 @@ class Child < ActiveRecord::Base
 	has_many	:ownings
 	has_many	:unlockables, :through => :ownings
 	has_many	:assignments
-	has_many	:objectives, :though => :assignments
+	has_many	:objectives, :through => :assignments
 	has_many	:earnings
 	has_many	:checkins
-	has_many	:recieved_messages, :as => :recipient
-	has_many	:sent_messages, :as => :sender
+	has_many	:recieved_messages, :as => :recipient, :class_name => 'Message'
+	has_many	:sent_messages, :as => :sender, :class_name => 'Message'
+	
+	has_many	:quizzings, :as => :taker
 	
 	does_activities
 	
