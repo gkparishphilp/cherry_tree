@@ -71,6 +71,7 @@ class GameStuff < ActiveRecord::Migration
 			t.text			:content
 			t.string		:extra_content # e.g. DYK
 			t.integer		:point_value, :default => 0
+			t.integer		:seq  # for ordering questions ?
 			t.timestamps
 		end
 		
@@ -86,6 +87,14 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:taker, :polymorphic => true
 			t.references	:question # Last question for resume?
 			t.integer		:score # ?
+			t.timestamps
+		end
+		
+		# keep a log of all answers to questions?  why not?
+		create_table :quiz_logs, :force => true do |t|
+			t.references	:quizzing # we can get to quiz and taker from here
+			t.references	:question
+			t.references	:answer # the one the user actually picked
 			t.timestamps
 		end
 		
