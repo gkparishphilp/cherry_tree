@@ -27,7 +27,7 @@
 					%br
 			%h3 Add a Child
 			= form_for Child.new do |f|
-				= render :partial => 'children/form', :locals => { :f => f }
+				= render 'children/form', :f => f
 			
 		#settings
 			.column2
@@ -60,14 +60,12 @@
 		#kudos
 			%h3 Send Kudos
 			= form_for Message.new do |f|
-				= render :partial => 'messages/form', :locals => { :f => f }
+				= render 'messages/form', :f => f
 		#objectives
 			%h3 Create an Objective
 			= form_for Objective.new do |f|
-				= render :partial => 'objectives/form', :locals => { :f => f }
+				= render 'objectives/form', :f => f
 
-
-	
 
 - content_for :right_column do
 	%h3

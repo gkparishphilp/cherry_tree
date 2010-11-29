@@ -1,4 +1,4 @@
 - content_for :left_column do
 	%h3 New Message
 	= form_for @message do |f|
-		= render :partial => 'form', :locals => { :f => f }
+		= render 'form', :f => f

@@ -1,0 +1,12 @@
+
+= f.label 'Name:'
+= f.text_field :name
+= f.label 'Description:'
+= f.text_area :description
+
+= link_to_add_fields( "Add Question", f, :questions )
+
+= f.fields_for :questions do |builder|
+	= render 'questions/form', :f => builder
+	
+

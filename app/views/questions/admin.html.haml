@@ -1,0 +1,34 @@
+- content_for :left_column do
+	.new.button
+		= link_to image_tag( 'add.png', :width => 20 ), new_quiz_question_path( @quiz )
+		= link_to 'New Question', new_quiz_question_path( @quiz )
+	
+	%h1 
+		Questions for 
+		= @quiz.name
+	%table.admin_table
+		%thead
+			%th Content
+			%th Extra content
+			%th Point value
+			%th{ :colspan => 2 }
+		%tbody
+			- for question in @questions
+				%tr{ :class => cycle(:odd, :even) }
+					%td= question.content
+					%td= question.extra_content
+					%td= question.point_value
+					%td
+						= link_to image_tag( 'view.png', :width => 20 ), quiz_question_path( @quiz, question )
+						= link_to 'view', quiz_question_path( @quiz, question )
+					%td
+						= link_to image_tag( 'edit.png', :width => 20 ), edit_quiz_question_path( @quiz, question )
+						= link_to 'edit', edit_quiz_question_path( @quiz, question )
+					%td
+						= link_to image_tag( 'admin.png', :width => 20 ), ""
+						= link_to 'admin', ""
+					%td
+						= link_to image_tag( 'trash.png', :width => 20 ), quiz_question_path( @quiz, question ), :confirm => 'Are you sure?', :method => :delete
+						= link_to 'delete', quiz_question_path( @quiz, question ), :confirm => 'Are you sure?', :method => :delete
+
+

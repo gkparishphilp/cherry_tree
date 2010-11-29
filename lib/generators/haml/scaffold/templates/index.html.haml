@@ -1,7 +1,8 @@
-%h1 
-	= pluralize @<%= plural_name %>.size, "<%= singular_name.capitalize %>"
+- content_for :left_column do
+	%h1 
+		= pluralize @<%= plural_name %>.size, "<%= singular_name.capitalize %>"
 
-= render @<%= plural_name %>
+	= render @<%= plural_name %>
 
-%br
-= link_to 'New <%= singular_name.capitalize %>', new_<%= singular_name %>_path
+	%br
+	= link_to 'New <%= singular_name.capitalize %>', new_<%= singular_name %>_path

@@ -61,6 +61,8 @@ class GameStuff < ActiveRecord::Migration
 			t.string		:name
 			t.text			:description
 			t.integer		:point_value, :default => 0
+			t.integer		:level
+			t.string		:quiz_type # e.g. for surveys with no right or wrong answers
 			t.timestamps
 		end
 		
@@ -82,7 +84,7 @@ class GameStuff < ActiveRecord::Migration
 		create_table :quizzings, :force => true do |t|
 			t.references	:quiz
 			t.references	:taker, :polymorphic => true
-			t.references	:question # Last question for reume?
+			t.references	:question # Last question for resume?
 			t.integer		:score # ?
 			t.timestamps
 		end

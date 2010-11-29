@@ -13,7 +13,7 @@
 		- for unlockable in @unlockables
 			%tr
 				%td
-					= link_to avatar_tag( unlockable ), unlockable_path( unlockable )
+					= link_to avatar_tag( unlockable, :thumb ), unlockable_path( unlockable )
 				%td
 					= link_to unlockable.name, unlockable_path( unlockable )
 				%td

@@ -1,0 +1,8 @@
+- content_for :left_column do
+	%h1 
+		= pluralize @questions.size, "Question"
+
+	= render @questions
+
+	%br
+	= link_to 'New Question', new_question_path

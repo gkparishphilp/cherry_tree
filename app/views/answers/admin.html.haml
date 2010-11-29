@@ -1,0 +1,29 @@
+- content_for :left_column do
+	.new.button
+		= link_to image_tag( 'add.png', :width => 20 ), new_answer_path
+		= link_to 'New Answer', new_answer_path
+	
+	%h1 Answers Admin 
+	%table.admin_table
+		%thead
+			%th Question
+			%th Content
+			%th Correct
+			%th{ :colspan => 2 }
+		%tbody
+			- for answer in @answers
+				%tr{ :class => cycle(:odd, :even) }
+					%td= answer.question_id
+					%td= answer.content
+					%td= answer.correct
+					%td
+						= link_to image_tag( 'view.png', :width => 20 ), answer
+						= link_to 'view', answer
+					%td
+						= link_to image_tag( 'edit.png', :width => 20 ), edit_answer_path( answer )
+						= link_to 'edit', edit_answer_path( answer )
+					%td
+						= link_to image_tag( 'trash.png', :width => 20 ), answer, :confirm => 'Are you sure?', :method => :delete
+						= link_to 'delete', answer, :confirm => 'Are you sure?', :method => :delete
+
+

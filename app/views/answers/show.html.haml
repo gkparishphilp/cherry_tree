@@ -1,0 +1,8 @@
+- content_for :left_column do
+	%h1 Answer
+
+	= render @answer
+
+	= link_to 'Edit', edit_answer_path(@answer)
+	| 
+	= link_to 'Back', answers_path

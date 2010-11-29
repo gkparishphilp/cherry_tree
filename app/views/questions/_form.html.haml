@@ -1,0 +1,10 @@
+.form_group
+	= f.label 'Question:'
+	= link_to_remove_fields( "Remove Question", f )
+	= f.text_area :content
+	
+
+	= f.fields_for :answers do |builder|
+		= render 'answers/form', :f => builder
+	
+	= link_to_add_fields( "Add Answer", f, :answers )

@@ -1,0 +1,23 @@
+%div[quiz]
+	#name
+		%strong Name:
+		= quiz.name
+	#description
+		%strong Description:
+		= quiz.description
+	#point_value
+		%strong Point value:
+		= quiz.point_value
+	#level
+		%strong Level:
+		= quiz.level
+	#questions
+		%h3= pluralize @quiz.questions.size, "Question"
+		- for question in @quiz.questions
+			%h4= question.content
+			#answers
+				%h5= pluralize question.answers.size, "Answer"
+				- for answer in question.answers
+					%li
+						= answer.content
+						= answer.correct? ? image_tag( 'check.png', :width => 16) : ""

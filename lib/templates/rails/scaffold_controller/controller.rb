@@ -34,7 +34,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 	def update
 		@<%= singular_table_name %> = <%= orm_class.find(class_name, " params[:id] " ) %>
 
-		if @<%= orm_instance.update_attributes("params[:#{singular_table_name}]") %>
+		if @<%= orm_instance.update_attributes(" params[:#{singular_table_name}] ") %>
 			pop_flash "<%= human_name %> was successfully updated."
 		else
 			pop_flash "<%= human_name %> could not be updated.", :error, @<%= singular_table_name %>

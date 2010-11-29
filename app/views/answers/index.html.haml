@@ -1,0 +1,8 @@
+- content_for :left_column do
+	%h1 
+		= pluralize @answers.size, "Answer"
+
+	= render @answers
+
+	%br
+	= link_to 'New Answer', new_answer_path

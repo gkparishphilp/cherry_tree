@@ -1,0 +1,6 @@
+%p.fields
+	= f.label 'Content:'
+	= f.text_field :content
+	= link_to_remove_fields( "Remove Answer", f )
+	= f.label 'Correct:'
+	= f.check_box :correct

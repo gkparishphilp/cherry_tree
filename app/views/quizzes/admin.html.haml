@@ -1,31 +1,33 @@
 - content_for :left_column do
 	.new.button
 		= link_to image_tag( 'add.png', :width => 20 ), new_quiz_path
-		= link_to 'New', new_quiz_path
+		= link_to 'New Quiz', new_quiz_path
 	
-	%h1 Quizzes Admin
-	
+	%h1 Quizzes Admin 
 	%table.admin_table
-		%th
-		%th Name
-		%th Points
-		%th Level
-		- for quiz in @quizzes
-			%tr
-				%td
-					= link_to quiz.name, quiz_path( quiz )
-				%td
-					= quiz.point_value
-				%td
-					= quiz.level
-				%td
-					= link_to image_tag( 'edit.png', :width => 20 ), edit_quiz_path( quiz )
-					= link_to 'edit', edit_quiz_path( quiz )
-				%td
-					= link_to image_tag( 'trash.png', :width => 20 ), quiz_path( quiz )
-					= link_to 'delete', quiz_path( quiz )
+		%thead
+			%th Name
+			%th Point value
+			%th Level
+			%th{ :colspan => 2 }
+		%tbody
+			- for quiz in @quizzes
+				%tr{ :class => cycle(:odd, :even) }
+					%td= quiz.name
+					%td= quiz.point_value
+					%td= quiz.level
+					%td
+						= link_to image_tag( 'view.png', :width => 20 ), quiz
+						= link_to 'view', quiz
 					
-					
-- content_for :right_column do
-	%br
-	Add, edit, delete quizzes here....
+					%td
+						= link_to image_tag( 'edit.png', :width => 20 ), edit_quiz_path( quiz )
+						= link_to 'edit', edit_quiz_path( quiz )
+					%td
+						= link_to image_tag( 'admin.png', :width => 20 ), admin_quiz_questions_path( quiz )
+						= link_to 'admin', admin_quiz_questions_path( quiz )
+					%td
+						= link_to image_tag( 'trash.png', :width => 20 ), quiz, :confirm => 'Are you sure?', :method => :delete
+						= link_to 'delete', quiz, :confirm => 'Are you sure?', :method => :delete
+
+
