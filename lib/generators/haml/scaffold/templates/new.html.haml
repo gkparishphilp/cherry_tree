@@ -2,4 +2,8 @@
 	%h1 New <%= singular_name.capitalize %>
 
 	= form_for @<%= singular_name %> , :html => { :mutipart => true } do |f|
-		= render :partial => 'form', :locals => { :f => f, :m => 'Create' }
+		= render 'form', :f => f
+		.actions
+			= f.submit 'Create', :class => 'button'
+			|
+			= link_to 'Cancel', :back

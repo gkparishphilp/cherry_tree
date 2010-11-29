@@ -1,8 +1,12 @@
 - content_for :left_column do
-	%h1 Quiz
+	%h1 
+		= @quiz.name
+	Description:
+	%p
+		= @quiz.description
+	Worth:
+	= pluralize @quiz.point_value, "Point"
 
-	= render @quiz
+	.actions
+		= link_to "Take the Quiz", quiz_question_path( @quiz, @quiz.first_question )
 
-	= link_to 'Edit', edit_quiz_path(@quiz)
-	| 
-	= link_to 'Back', quizzes_path

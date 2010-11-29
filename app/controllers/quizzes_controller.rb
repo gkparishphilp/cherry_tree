@@ -12,16 +12,16 @@ class QuizzesController < ApplicationController
 		@quiz = Quiz.find( params[:id] )
 	end
 	
+	def inspect
+		@quiz = Quiz.find( params[:id] )
+	end
+	
 	def new
 		@quiz = Quiz.new
 	end
 	
 	def edit
 		@quiz = Quiz.find( params[:id] )
-		3.times do
-			question = @quiz.questions.build
-			4.times { question.answers.build }
-		end
 	end
 	
 	def create

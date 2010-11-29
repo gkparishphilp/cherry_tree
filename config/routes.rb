@@ -23,6 +23,7 @@ Seedz::Application.routes.draw do
 	
 	resources :quizzes do
 		get 'admin', :on => :collection
+		get 'inspect', :on => :member
 		resources :questions do
 			get 'admin', :on => :collection
 			resources :answers do

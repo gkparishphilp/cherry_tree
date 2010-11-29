@@ -17,8 +17,8 @@
 					%td= quiz.point_value
 					%td= quiz.level
 					%td
-						= link_to image_tag( 'view.png', :width => 20 ), quiz
-						= link_to 'view', quiz
+						= link_to image_tag( 'view.png', :width => 20 ), inspect_quiz_path( quiz )
+						= link_to 'view', inspect_quiz_path( quiz )
 					
 					%td
 						= link_to image_tag( 'edit.png', :width => 20 ), edit_quiz_path( quiz )

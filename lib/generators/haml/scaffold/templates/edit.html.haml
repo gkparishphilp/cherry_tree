@@ -3,7 +3,11 @@
 	= link_to 'Show', @<%= singular_name %>
 
 	= form_for @<%= singular_name %> , :html => { :mutipart => true } do |f|
-		= render :partial => 'form', :locals => { :f => f, :m => 'Update' }
+		= render 'form', :f => f
+		.actions
+			= f.submit 'Update', :class => 'button'
+			|
+			= link_to 'Cancel', :back
 
 
 
