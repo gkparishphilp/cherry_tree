@@ -13,7 +13,15 @@ class QuestionsController < ApplicationController
 		else
 			pop_flash "Bummer, wrong answer", :error
 		end
-		redirect_to :back
+		if @question == @quiz.last_question
+			redirect_to recap_quiz_path( @quiz )
+		else
+			redirect_to quiz_question_path( @quiz, @question.next_question )
+		end
+	end
+	
+	def recap
+		
 	end
 	
 	def index
