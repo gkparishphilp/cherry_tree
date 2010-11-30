@@ -5,9 +5,10 @@
 		Question Number
 		=@question.seq
 	= @question.content
-	- for answer in @question.answers
-		.answer
-			= radio_button_tag :answer, answer.id
-			= answer.content
-	= submit_tag "Enter"
+	= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
+		- for answer in @question.answers
+			.answer
+				= radio_button_tag :answer_id, answer.id
+				= answer.content
+		= submit_tag "Enter", :class => 'button'
 

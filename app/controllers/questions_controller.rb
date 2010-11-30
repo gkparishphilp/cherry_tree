@@ -5,6 +5,17 @@ class QuestionsController < ApplicationController
 		@questions = Question.all
 	end
 	
+	def answer
+		@question = Question.find( params[:id] )
+		@answer = Answer.find( params[:answer_id] )
+		if @answer.correct?
+			pop_flash "Yay, You're right!"
+		else
+			pop_flash "Bummer, wrong answer", :error
+		end
+		redirect_to :back
+	end
+	
 	def index
 		@questions = Question.all
 	end

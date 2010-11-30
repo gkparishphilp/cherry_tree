@@ -26,6 +26,7 @@ Seedz::Application.routes.draw do
 		get 'inspect', :on => :member
 		resources :questions do
 			get 'admin', :on => :collection
+			post 'answer', :on => :member
 			resources :answers do
 				get 'admin', :on => :collection
 			end
