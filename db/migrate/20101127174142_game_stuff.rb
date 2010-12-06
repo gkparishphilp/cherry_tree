@@ -86,7 +86,15 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:quiz
 			t.references	:taker, :polymorphic => true
 			t.references	:question # Last question for resume?
-			t.integer		:score # ?
+			t.integer		:score # can derive this from answerings?
+			t.timestamps
+		end
+		
+		create_table :answerings, :force => true do |t|
+			t.references	:quizzing
+			t.references	:question
+			t.references	:answer
+			t.text			:response # for free-response
 			t.timestamps
 		end
 		

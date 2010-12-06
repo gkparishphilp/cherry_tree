@@ -6,8 +6,14 @@ class QuestionsController < ApplicationController
 	end
 	
 	def answer
+		# get stuff
 		@question = Question.find( params[:id] )
-		@answer = Answer.find( params[:answer_id] )
+		@answer = Answer.find( params[:answer_id] ) || params[:response]
+		@quizzing = Quizzing.find_or_create_by_quiz_id_and_user_id( @quiz.id, @current_user.id )
+		
+		# process stuff
+		@quizzing.answer( @question, @answer )
+		
 		if @answer.correct?
 			pop_flash "Yay, You're right!"
 		else
@@ -30,6 +36,7 @@ class QuestionsController < ApplicationController
 
 	def show
 		@question = Question.find( params[:id] )
+		#todo need to scope on quizzing   if @current_user.already_answered?( @question )
 	end
 	
 	def new

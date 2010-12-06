@@ -16,6 +16,12 @@
 class Quizzing < ActiveRecord::Base
 	belongs_to	:quiz
 	belongs_to	:taker, :polymorphic => true
+	has_many	:answerings
+	
+	def answer( question, answer )
+		# record the answer
+		self.answerings.create :question => question, :answer => answer
+	end
 
 end
 	

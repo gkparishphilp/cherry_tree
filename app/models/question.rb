@@ -16,6 +16,8 @@
 class Question < ActiveRecord::Base
 	belongs_to	:quiz
 	has_many	:answers, :dependent => :destroy
+	has_many	:answerings
+	
 	accepts_nested_attributes_for	:answers, :reject_if => lambda { |attrs| attrs[:content].blank? }, :allow_destroy => true
 	has_one		:correct_answer, :class_name => 'Answer', :conditions => "correct = true"
 	

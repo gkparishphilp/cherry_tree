@@ -15,6 +15,7 @@
 
 class Quiz < ActiveRecord::Base
 	has_many	:questions, :dependent => :destroy
+	
 	accepts_nested_attributes_for	:questions, :reject_if => lambda { |attrs| attrs[:content].blank? }, :allow_destroy => true
 	
 	has_many	:quizzings

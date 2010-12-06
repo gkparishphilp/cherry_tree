@@ -3,7 +3,8 @@
 		= @quiz.name
 	%h2
 		Question Number
-		=@question.seq
+		= @question.seq
+		
 	= @question.content
 	= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
 		- for answer in @question.answers
