@@ -4,7 +4,7 @@
 # Table name: assignments
 #
 #  id             :integer(4)      not null, primary key
-#  child_id       :integer(4)
+#  user_id        :integer(4)
 #  objective_id   :integer(4)
 #  assigned_by_id :integer(4)
 #  created_at     :datetime
@@ -12,6 +12,6 @@
 #
 
 class Assignment < ActiveRecord::Base
-	belongs_to	:child
+	belongs_to	:user
 	belongs_to	:objective
 end

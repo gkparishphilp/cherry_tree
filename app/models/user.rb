@@ -4,9 +4,16 @@
 # Table name: users
 #
 #  id                        :integer(4)      not null, primary key
+#  type                      :string(255)
+#  registered_by_id          :integer(4)
 #  email                     :string(255)
 #  name                      :string(255)
 #  score                     :integer(4)      default(0)
+#  birthday                  :datetime
+#  gender                    :string(255)
+#  level                     :integer(4)      default(0)
+#  cumulative_points         :integer(4)      default(0)
+#  points_balance            :integer(4)      default(0)
 #  website_name              :string(255)
 #  website_url               :string(255)
 #  bio                       :text
@@ -48,12 +55,20 @@ class User < ActiveRecord::Base
 	has_many	:comments
 	has_many	:twitter_accounts, 	:as => :owner
 	has_many	:facebook_accounts,	:as => :owner
-	has_many	:teams
-	has_many	:supported_children, :through => :teams
-	has_many	:children, :through => :teams, :conditions => "role IN ( 'mother', 'father', 'guardian' )"
-	has_many	:recieved_messages, :as => :recipient, :class_name => 'Message'
+	
+	has_many	:relations
+	has_many	:supported_children, :through => :relations
+	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian' )"
+	
+	
+	has_many	:received_messages, :as => :recipient, :class_name => 'Message'
 	has_many	:sent_messages, :as => :sender, :class_name => 'Message'
 
+
+	has_many	:assignments
+	has_many	:objectives, :through => :assignments
+	
+	has_many	:quizzings
 	
 	# Plugins	--------------------------------------
 	
@@ -75,8 +90,8 @@ class User < ActiveRecord::Base
 
 	# Class methods 	------------------------------------
 
-	def self.authenticate( email, password )
-		user = User.find_by_email( email )
+	def self.authenticate( credential, password )
+		user = User.find_by_email( credential ) || User.find_by_name( credential )
 		if user
 			expected_password = encrypted_password( password, user.salt )
 			if user.hashed_password != expected_password
@@ -91,6 +106,11 @@ class User < ActiveRecord::Base
 	end
 
 	# Instance Methods	------------------------------------
+	
+	def relation_to( child )
+		self.relations.find_by_child_id( child.id ).role
+	end
+	
 	#'password' is a virtual attribute i.e. not in the db
 	def password
 		@password
@@ -195,7 +215,11 @@ class User < ActiveRecord::Base
 	end
 	
 	def set_name
-		self.name = self.email.gsub(/\W/, "-") unless self.name.present?
+		if self.name.present?
+			self.name.gsub( /\W/, "_" )
+		else
+			self.name = self.email.gsub(/\W/, "_")
+		end
 	end
 	
 	
@@ -210,7 +234,7 @@ private
 		self.salt = self.object_id.to_s + rand.to_s
 	end
 
-	def self.encrypted_password(pw, salt)
+	def self.encrypted_password( pw, salt )
 		string_to_hash = pw + "439fgfg334gergersd9fhq34ufq" + salt
 		Digest::SHA1.hexdigest(string_to_hash)
 	end

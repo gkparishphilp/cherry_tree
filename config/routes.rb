@@ -2,7 +2,10 @@ Seedz::Application.routes.draw do
 
 	root :to => "site#index"
 	
-	resources :children
+	resources :children do
+		get 'login', :on => :collection
+	end
+	
 	resources :messages
 	resources :objectives
 	

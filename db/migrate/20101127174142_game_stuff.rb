@@ -1,17 +1,18 @@
 class GameStuff < ActiveRecord::Migration
 	def self.up
 		create_table :objectives, :force => true do |t|
-			t.string	:name
-			t.text		:description
-			t.integer	:times
-			t.string	:period
-			t.integer	:points, :default => 1
-			t.integer	:level
+			t.string		:name
+			t.references	:creator
+			t.text			:description
+			t.integer		:times
+			t.string		:period
+			t.integer		:points, :default => 1
+			t.integer		:level
 			t.timestamps
 		end
 		
 		create_table :assignments, :force => true do |t|
-			t.references	:child
+			t.references	:user
 			t.references	:objective
 			t.references	:assigned_by
 			t.timestamps
@@ -59,6 +60,7 @@ class GameStuff < ActiveRecord::Migration
 		
 		create_table :quizzes, :force => true do |t|
 			t.string		:name
+			t.references	:created_by
 			t.text			:description
 			t.integer		:point_value, :default => 0
 			t.integer		:level
@@ -84,7 +86,7 @@ class GameStuff < ActiveRecord::Migration
 		
 		create_table :quizzings, :force => true do |t|
 			t.references	:quiz
-			t.references	:taker, :polymorphic => true
+			t.references	:user
 			t.references	:question # Last question for resume?
 			t.integer		:score # can derive this from answerings?
 			t.timestamps

@@ -45,6 +45,15 @@ class QuizzesController < ApplicationController
 		end
 		redirect_to :back
 	end
+	
+	def recap
+		@quiz = Quiz.find( params[:id] )
+		@quizzing = @quiz.quizzings.find_by_user_id_and_quiz_id( @current_user, @quiz )
+		@num_right = 0
+		for answering in @quizzing.answerings do
+			@num_right += 1 if answering.answer == answering.question.correct_answer
+		end
+	end
 
 	def destroy
 		@quiz = Quiz.find( params[:id] )

@@ -1,0 +1,62 @@
+- content_for :left_column do
+	%h1
+		= @child.name
+		Home
+
+	#tabs
+		%ul
+			%li= link_to "Welcome", "#welcome"
+			%li= link_to "Objectives", "#objectives"
+			%li= link_to "Games and Quizzes", "#games"
+			%li= link_to "Buy Stuff", '#buy'
+		#welcome
+			%p
+				Welcome to our prototype.  This is still very much a work in progress, but should give a feel for what we're trying to do.  Have fun!
+			%h3 Recent Messages
+			- for msg in @messages
+				%b
+					From:
+					= msg.sender.name
+					(
+					Your
+					= msg.sender.relation_to( @child )
+					)
+				%p
+					= msg.content
+				%br
+				%b
+					= msg.points
+					Kudos
+				%hr
+		#objectives
+			%h3 Your Objectives
+			- for obj in @child.objectives
+				%b= obj.name
+				%br
+				= obj.times
+				times per
+				= obj.period
+			
+		#games
+			%h3 Quizzes
+			- for quiz in Quiz.all # todo scope on quizzes not taken by user
+				= quiz.name
+				= link_to "Take it", quiz_question_path( quiz, quiz.first_question )
+			
+			
+		#buy
+			%h3 Stuff to Buy
+			- for unlockable in Unlockable.all
+				= link_to avatar_tag( unlockable, :thumb ), unlockable_path( unlockable )
+				%br
+				= link_to unlockable.name, unlockable_path( unlockable )
+				= unlockable.points_req
+				Points
+				%br
+
+
+- content_for :right_column do
+	%h3
+		Activity
+	= render @activities
+	

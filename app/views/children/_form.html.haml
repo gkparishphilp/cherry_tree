@@ -4,14 +4,19 @@ boy
 = f.radio_button :gender, 'female'
 girl
 %br
-%span.gender
-birthday is
-= f.text_field :birthday, :class => 'birthday_field'
-%br
+
 %span.gender
 	&nbsp;
 name is
 = f.text_field :name
+
+%br
+%span.name
+	&nbsp;
+birthday is
+= f.text_field :birthday, :class => 'birthday_field'
+%br
+
 %br
 I am
 %span.name 
@@ -19,7 +24,7 @@ I am
 = f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
 %br
 PIN:
-= f.text_field :pin
+= f.text_field :password
 
 = f.label "Welcome Message:"
 = f.text_area :welcome_message

@@ -23,7 +23,7 @@ class ObjectivesController < ApplicationController
 	def create
 		@objective = Objective.new params[:objective]
 		if @objective.save
-			@objective.assignments.create :child_id => params[:objective][:child_id], :assigned_by_id => @current_user
+			@objective.assignments.create :user_id => params[:objective][:user_id], :assigned_by_id => @current_user
 			pop_flash "Objective Added"
 		else
 			pop_flash "Ooops, Objective not added", :error, @objective

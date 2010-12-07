@@ -4,14 +4,18 @@
 			%h1
 				Login to your account:
 			= form_tag :controller=>'sessions' do
-				= hidden_field_tag :dest, @dest
-				= hidden_field_tag :a, @a
 				%label
-					Email:
-				= text_field_tag :email, params[:email], :class => :login_email
+					- if current_page?( login_children_path )
+						Name:
+					- else
+						Email:
+				= text_field_tag :credential, params[:credential], :class => :login_email
 				%label
-					Password:
-				= password_field_tag	:password, params[:password], :class => :login_email
+					- if current_page?( login_children_path )
+						PIN:
+					- else
+						Password:
+				= password_field_tag :password, params[:password], :class => :login_email
 				%br
 				%br
 				= submit_tag	"Login", :class => :button
@@ -25,20 +29,7 @@
 
 	- content_for :right_column do
 		%h2 Need Help?
-		kfj dslkfsjd lfkjs ldfjsdl kfjs lkdfjsdlkfj sldkfj lsdkjf lsdkfj sldfjk sdljf
-		%br
-		%br
-		%h2 Tip:
-		IF you have associated a Facebook or Twitter account to your BackMyBook account (learn more), you can use one of them to login!
-		%br
-		%br
-		#facebook
-			= form_tag go_facebook_sessions_path do
-				= image_submit_tag 'facebook_connect.png'
-		%br
-		#twitter
-			= form_tag go_twitter_sessions_path do
-				= image_submit_tag 'twitter_button.png'
+			
 - else
 	- content_for :left_column do
 		%h2 

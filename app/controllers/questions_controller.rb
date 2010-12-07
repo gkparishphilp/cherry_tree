@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
 		# get stuff
 		@question = Question.find( params[:id] )
 		@answer = Answer.find( params[:answer_id] ) || params[:response]
-		@quizzing = Quizzing.find_or_create_by_quiz_id_and_user_id( @quiz.id, @current_user.id )
 		
 		# process stuff
 		@quizzing.answer( @question, @answer )
@@ -20,6 +19,7 @@ class QuestionsController < ApplicationController
 			pop_flash "Bummer, wrong answer", :error
 		end
 		if @question == @quiz.last_question
+			pop_flash "Yay, You're Done!", :notice
 			redirect_to recap_quiz_path( @quiz )
 		else
 			redirect_to quiz_question_path( @quiz, @question.next_question )
@@ -80,6 +80,8 @@ class QuestionsController < ApplicationController
 	
 	def get_quiz
 		@quiz = Quiz.find params[:quiz_id]
+		@quizzing = Quizzing.find_or_create_by_quiz_id_and_user_id( @quiz, @current_user )
+		
 	end
 
 end

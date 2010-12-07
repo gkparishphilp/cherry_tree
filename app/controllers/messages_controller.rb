@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new params[:message]
 		@message.sender = @current_user
-		@message.recipient_type = 'Child'
+		@message.recipient = User.find_by_id( params[:message][:recipient_id] )
 		if @message.save
 			pop_flash "Message Added"
 		else

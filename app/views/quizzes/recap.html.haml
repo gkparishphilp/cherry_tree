@@ -1,6 +1,15 @@
 = content_for :left_column do
 	%h1
+		= @quiz.name
 		Summary
 	
-	%h3 Yay, you're done!
+	%h3
+		You got
+		= @num_right
+		Right
+		out of
+		= @quiz.questions.count
+		
+	%h4
+		= link_to "Back", polymorphic_path( @current_user )
 

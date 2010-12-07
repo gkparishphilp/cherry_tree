@@ -1,18 +1,18 @@
 class Users < ActiveRecord::Migration
 	def self.up
 		
-		create_table :children, :force => true do |t|
-			t.string	:name
-			t.string	:pin
-			t.datetime	:birthday
-			t.string	:gender
-			t.integer	:cumulative_points
-			t.integer	:points_balance
-			t.integer	:level
-		end
+		#create_table :children, :force => true do |t|
+		#	t.string	:name
+		#	t.string	:pin
+		#	t.datetime	:birthday
+		#	t.string	:gender
+		#	t.integer	:cumulative_points
+		#	t.integer	:points_balance
+		#	t.integer	:level
+		#end
 		
 		# e.g. for families -- join table between children and parents
-		create_table :teams, :force => true do |t|
+		create_table :relations, :force => true do |t|
 			t.references	:child
 			t.references	:user
 			t.string		:role # parent, expert, relative, etc.
@@ -49,9 +49,16 @@ class Users < ActiveRecord::Migration
 		end
 	 
 		create_table :users, :force => true do |t|
+			t.string		:type
+			t.references	:registered_by # the user_id who entered the child
 			t.string		:email
 			t.string		:name
 			t.integer		:score, :default => 0
+			t.datetime		:birthday
+			t.string		:gender
+			t.integer		:level, :default => 0
+			t.integer		:cumulative_points, :default => 0
+			t.integer		:points_balance, :default => 0
 			t.string		:website_name
 			t.string		:website_url
 			t.text			:bio
@@ -74,10 +81,10 @@ class Users < ActiveRecord::Migration
 	 
 		# Need a boatload more indexes	****************
 		add_index :users, :name
-		add_index :children, :name
-		add_index :children, :pin
-		add_index :teams, :child_id
-		add_index :teams, :user_id
+	#	add_index :children, :name
+	#	add_index :children, :pin
+		add_index :relations, :child_id
+		add_index :relations, :user_id
 		add_index :users, :email, :unique => true
 		add_index :users, :activation_code
 		add_index :users, :remember_token

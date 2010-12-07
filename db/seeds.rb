@@ -35,3 +35,35 @@ u.attachments.create :attachment_type => 'avatar', :name => 'sunflower', :format
 u = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your garden", :points_req => 10
 u.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', 
 	:path => '/images/unlockables/spiked.gif', :remote => true
+	
+puts "Create a Quiz"
+
+q= Quiz.create :name => "A quick Quiz"
+
+qu = q.questions.create :content => "Why is the sky Blue?"
+qu.answers.create :content => "It is?"
+qu.answers.create :content => "Just Because"
+qu.answers.create :content => "Because of the vibrations of tint particles that filter and disperse light", :correct => true
+qu.answers.create :content => "Because it was painted that way"
+
+qu = q.questions.create :content => "Who Invented Gravity?"
+qu.answers.create :content => "God", :correct => true
+qu.answers.create :content => "Newton"
+qu.answers.create :content => "Franklin"
+qu.answers.create :content => "Einstein"
+
+qu = q.questions.create :content => "What is the best color?"
+qu.answers.create :content => "Blue"
+qu.answers.create :content => "Green", :correct => true
+qu.answers.create :content => "Red"
+qu.answers.create :content => "Pink"
+qu.answers.create :content => "Orange"
+qu.answers.create :content => "Purple"
+qu.answers.create :content => "Yellow"
+
+qu = q.questions.create :content => "What is your favorite flavor Ice Cream?"
+qu.answers.create :content => "Vanilla"
+qu.answers.create :content => "Chocolate"
+qu.answers.create :content => "Strawberry"
+qu.answers.create :content => "None - Ice Cream is bad for you", :correct => true
+

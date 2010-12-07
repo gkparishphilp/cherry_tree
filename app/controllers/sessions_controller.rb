@@ -1,25 +1,19 @@
 class SessionsController < ApplicationController
 	def new
-		@dest = params[:dest]
+
 	end
   
 	def create
-		user = User.authenticate( params[:email], params[:password] )
-		dest = params[:dest]
+		user = User.authenticate( params[:credential], params[:password] )
 		if user
 			login( user )
 			pop_flash  "#{user.email} successfully logged in"
 			
-			if dest.empty? || dest == "/"
-				redirect_to user_path( user )
-			else
-				redirect_to dest
-			end
+			redirect_to polymorphic_path( user )
 
 		else
 			params[:password] = nil
 			@user = User.new
-			@dest = dest
 			pop_flash "Invalid user/password combination", :error
 			redirect_to new_session_path
 		end
@@ -27,12 +21,10 @@ class SessionsController < ApplicationController
 	
 	def register
 		@user = User.new
-		@dest = params[:dest]
 	end
 
 	def destroy
 		if @current_user
-			dest = params[:dest]
 			user = User.find_by_id @current_user.id
 			logout( user )
 			pop_flash "#{user.name} logged out"
