@@ -13,6 +13,8 @@
 			= link_to activity.target.topic.title, polymorphic_path( [ activity.target.forum, activity.target.topic ] )
 		- else
 			= link_to activity.target.title, polymorphic_path( activity.target )
+	- elsif activity.target.respond_to? 'subject'
+		= activity.target.subject
 	- else
 		= activity.target.name
 	= time_ago_in_words( activity.created_at )

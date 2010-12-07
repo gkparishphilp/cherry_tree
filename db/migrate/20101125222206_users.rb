@@ -56,9 +56,9 @@ class Users < ActiveRecord::Migration
 			t.integer		:score, :default => 0
 			t.datetime		:birthday
 			t.string		:gender
-			t.integer		:level, :default => 0
-			t.integer		:cumulative_points, :default => 0
+			t.integer		:points_earned, :default => 0 # Lifetime
 			t.integer		:points_balance, :default => 0
+			t.integer		:level, :default => 0
 			t.string		:website_name
 			t.string		:website_url
 			t.text			:bio

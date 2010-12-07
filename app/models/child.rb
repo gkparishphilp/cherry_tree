@@ -11,9 +11,9 @@
 #  score                     :integer(4)      default(0)
 #  birthday                  :datetime
 #  gender                    :string(255)
-#  level                     :integer(4)      default(0)
-#  cumulative_points         :integer(4)      default(0)
+#  points_earned             :integer(4)      default(0)
 #  points_balance            :integer(4)      default(0)
+#  level                     :integer(4)      default(0)
 #  website_name              :string(255)
 #  website_url               :string(255)
 #  bio                       :text
@@ -37,12 +37,6 @@ class Child < User
 	has_many	:supporters, :through => :relations, :class_name => 'User', :foreign_key => :user_id, :source => :user
 	has_many	:parents, :through => :relations, :class_name => 'User', :foreign_key => :user_id, :source => :user,
 				:conditions => "role IN ( 'mother', 'father' )"
-	
-	has_many	:ownings
-	has_many	:unlockables, :through => :ownings
-	
-	has_many	:checkins
-	
 	
 	
 	does_activities

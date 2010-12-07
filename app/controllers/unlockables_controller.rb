@@ -20,6 +20,17 @@ class UnlockablesController < ApplicationController
 	def edit
 		@unlockable = Unlockable.find params[:id]
 	end
+	
+	def unlock
+		@unlockable = Unlockable.find params[:id]
+		success, msg = @current_user.unlock( @unlockable )
+		if success
+			pop_flash msg
+		else
+			pop_flash msg, :error
+		end
+		redirect_to :back
+	end
 
 	def create
 		@unlockable = Unlockable.new params[:unlockable]

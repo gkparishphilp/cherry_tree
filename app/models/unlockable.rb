@@ -6,8 +6,8 @@
 #  id          :integer(4)      not null, primary key
 #  name        :string(255)
 #  description :text
-#  points_req  :integer(4)
-#  level_req   :integer(4)      default(0)
+#  points      :integer(4)
+#  level       :integer(4)      default(0)
 #  created_at  :datetime
 #  updated_at  :datetime
 #

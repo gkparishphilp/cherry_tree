@@ -7,7 +7,7 @@
 #  quiz_id       :integer(4)
 #  content       :text
 #  extra_content :string(255)
-#  point_value   :integer(4)      default(0)
+#  points        :integer(4)      default(0)
 #  seq           :integer(4)
 #  created_at    :datetime
 #  updated_at    :datetime

@@ -9,6 +9,10 @@
 		Right
 		out of
 		= @quiz.questions.count
+		%br
+		You Earned
+		= @points_earned.to_i
+		Points!
 		
 	%h4
 		= link_to "Back", polymorphic_path( @current_user )

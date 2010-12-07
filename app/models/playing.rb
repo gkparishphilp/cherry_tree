@@ -1,22 +1,17 @@
 # == Schema Information
 # Schema version: 20101127174142
 #
-# Table name: teams
+# Table name: playings
 #
 #  id         :integer(4)      not null, primary key
-#  child_id   :integer(4)
+#  game_id    :integer(4)
 #  user_id    :integer(4)
-#  role       :string(255)
-#  status     :string(255)
+#  score      :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #
 
-class Team < ActiveRecord::Base
-	
-	belongs_to	:child
+class Playing < ActiveRecord::Base
+	belongs_to	:game
 	belongs_to	:user
-	
-	gets_activities
-	
 end

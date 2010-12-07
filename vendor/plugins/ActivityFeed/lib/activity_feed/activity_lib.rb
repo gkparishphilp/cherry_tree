@@ -6,7 +6,8 @@ module ActivityFeed
 			'read' => 'read',
 			'publish' => 'published',
 			'win' => 'won',
-			'sell' => 'sold'
+			'sell' => 'sold',
+			'take' => 'took'
 		}
     
 		def past_tense( verb )

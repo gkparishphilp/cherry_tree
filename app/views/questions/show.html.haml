@@ -5,7 +5,7 @@
 		Question Number
 		= @question.seq
 		
-	= @question.content
+	%b= @question.content
 	= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
 		- for answer in @question.answers
 			.answer

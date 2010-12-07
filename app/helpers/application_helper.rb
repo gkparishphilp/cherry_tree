@@ -1,7 +1,7 @@
 module ApplicationHelper
 	
 	def avatar_tag( obj, style=nil, opts={} )
-		tag = "No Avatar"
+		tag = image_tag( "/images/default_avatar.png", :width => opts[:width] )
 		if style
 			style = style.to_s
 			tag = image_tag( obj.avatar.location( style ), :width => opts[:width] ) if obj.attachments.by_type( 'avatar' ).count > 0 

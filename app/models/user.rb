@@ -11,9 +11,9 @@
 #  score                     :integer(4)      default(0)
 #  birthday                  :datetime
 #  gender                    :string(255)
-#  level                     :integer(4)      default(0)
-#  cumulative_points         :integer(4)      default(0)
+#  points_earned             :integer(4)      default(0)
 #  points_balance            :integer(4)      default(0)
+#  level                     :integer(4)      default(0)
 #  website_name              :string(255)
 #  website_url               :string(255)
 #  bio                       :text
@@ -69,6 +69,14 @@ class User < ActiveRecord::Base
 	
 	has_many	:earnings
 	
+	has_many	:ownings
+	has_many	:unlockables, :through => :ownings
+	
+	has_many	:playings
+	has_many	:games, :through => :playings
+	
+	has_many	:checkins
+	
 	has_many	:quizzings
 	
 	# Plugins	--------------------------------------
@@ -112,9 +120,33 @@ class User < ActiveRecord::Base
 		self.relations.find_by_child_id( child.id ).role
 	end
 	
-	def earn_points_for( obj )
-		self.earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => obj.points
-		self.update_attributes :cumulative_points => ( self.cumulative_points + obj.points ), :points_balance => ( self.points_balance + obj.points )
+	def earn_points_for( obj, points=nil )
+		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaciton 
+		# and add points to the user's point_balance and point_total
+		points = obj.points if points.nil?
+		self.earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => points
+		self.update_attributes :points_earned => ( self.points_earned + points ), :points_balance => ( self.points_balance + points )
+	end
+	
+	def can_unlock?( unlockable )
+		return self.level >= unlockable.level && self.points_balance >= unlockable.points
+	end
+	
+	def unlock( unlockable )
+		return false, "You can't unlock this yet" unless self.can_unlock?( unlockable )
+		self.unlockables << unlockable
+		self.update_attributes :points_balance => self.points_balance - unlockable.points
+		return true, "Unlocked!"
+	end
+	
+	def play( game )
+		self.games << game
+		self.earn_points_for( game )
+		self.do_activity( "Earned #{game.points} points for playing", game )
+	end
+	
+	def owns?( unlockable )
+		self.unlockables.include?( unlockable )
 	end
 	
 	#'password' is a virtual attribute i.e. not in the db

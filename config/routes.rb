@@ -2,11 +2,18 @@ Seedz::Application.routes.draw do
 
 	root :to => "site#index"
 	
+	resources :checkins do
+		get 'approve', :on => :member
+	end
+	
 	resources :children do
 		get 'login', :on => :collection
 	end
 	
+	resources :games
+	
 	resources :messages
+	
 	resources :objectives
 	
 	resources :sessions do
@@ -40,6 +47,7 @@ Seedz::Application.routes.draw do
 	
 	resources :unlockables do
 		get 'admin', :on => :collection
+		get 'unlock', :on => :member
 	end
 	
 	resources  :users do

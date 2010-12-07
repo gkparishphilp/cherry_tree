@@ -22,13 +22,13 @@ class GameStuff < ActiveRecord::Migration
 		create_table :unlockables, :force => true do |t|
 			t.string	:name
 			t.text		:description
-			t.integer	:points_req
-			t.integer	:level_req, :default => 0
+			t.integer	:points
+			t.integer	:level, :default => 0
 			t.timestamps
 		end
 		
 		create_table :ownings, :force => true do |t|
-			t.references	:child
+			t.references	:user
 			t.references	:unlockable
 			t.timestamps
 		end
@@ -37,15 +37,16 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:user
 			t.references	:earned_for, :polymorphic => true
 			t.integer		:points, :default => 1
-			t.datetime		:approved_at
-			t.integer		:approved_by # this is a user_id
 			t.timestamps
 		end
 		
 		create_table :checkins, :force => true do |t|
-			t.references	:child
+			t.references	:user
 			t.string		:content
 			t.references	:objective # not necessary
+			t.string		:status, :default => 'didit'
+			t.integer		:approved_by # this is a user_id
+			t.datetime		:approved_at
 			t.timestamps
 		end
 		
@@ -58,11 +59,30 @@ class GameStuff < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :games, :force => true do |t|
+			t.string		:name
+			t.references	:created_by
+			t.text			:description
+			t.text			:content
+			t.integer		:points, :default => 0
+			t.integer		:level
+			t.string		:game_type # e.g. for surveys with no right or wrong answers
+			t.timestamps
+		end
+		
+		create_table :playings, :force => true do |t|
+			t.references	:game
+			t.references	:user
+			t.integer		:score # can derive this from answerings?
+			t.timestamps
+		end
+		
+		
 		create_table :quizzes, :force => true do |t|
 			t.string		:name
 			t.references	:created_by
 			t.text			:description
-			t.integer		:point_value, :default => 0
+			t.integer		:points, :default => 0
 			t.integer		:level
 			t.string		:quiz_type # e.g. for surveys with no right or wrong answers
 			t.timestamps
@@ -72,7 +92,7 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:quiz
 			t.text			:content
 			t.string		:extra_content # e.g. DYK
-			t.integer		:point_value, :default => 0
+			t.integer		:points, :default => 0
 			t.integer		:seq  # for ordering questions ?
 			t.timestamps
 		end
@@ -97,14 +117,6 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:question
 			t.references	:answer
 			t.text			:response # for free-response
-			t.timestamps
-		end
-		
-		# keep a log of all answers to questions?  why not?
-		create_table :quiz_logs, :force => true do |t|
-			t.references	:quizzing # we can get to quiz and taker from here
-			t.references	:question
-			t.references	:answer # the one the user actually picked
 			t.timestamps
 		end
 		

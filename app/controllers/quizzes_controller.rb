@@ -49,11 +49,13 @@ class QuizzesController < ApplicationController
 	def recap
 		@quiz = Quiz.find( params[:id] )
 		@quizzing = @quiz.quizzings.find_by_user_id_and_quiz_id( @current_user, @quiz )
-		@num_right = 0
-		for answering in @quizzing.answerings do
-			@num_right += 1 if answering.answer == answering.question.correct_answer
-		end
+		
+		@num_right = @quizzing.answerings.collect{ |a| a.answer == a.question.correct_answer }.count { |a| a == true }
+
 		@quizzing.update_attributes :score => @num_right
+		@points_earned = ( @num_right.to_f / @quiz.questions.count.to_f ) * @quiz.points.to_f
+		@current_user.earn_points_for( @quiz, @points_earned.to_i )
+		@current_user.do_activity( "Earned #{@points_earned.to_i} points taking ", @quiz )
 	end
 
 	def destroy
