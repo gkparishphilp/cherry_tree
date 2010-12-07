@@ -28,5 +28,14 @@ class Quiz < ActiveRecord::Base
 	def first_question
 		self.questions.find_by_seq( 1 ) || self.questions.first
 	end
-
+	
+	def taken_by?( user )
+		return self.quizzings.find_by_user_id( user )
+	end
+	
+	def user_score( user )
+		return self.quizzings.find_by_user_id( user ).score
+	end
+	
+	
 end

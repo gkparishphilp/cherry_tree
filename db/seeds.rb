@@ -3,6 +3,14 @@ puts "Setup Default Anonymous User"
 anon = User.new :name => 'Anonymous'
 anon.save( false )
 
+u1 = User.new :name => 'Gk'
+u1.password = '1234'
+u1.save( false )
+
+c = u1.children.create :name => 'Avery'
+c.password = '1234'
+c.save
+
 puts "Setup default Site"
 site = Site.create :name => "Seedz", :domain => 'localhost'
 

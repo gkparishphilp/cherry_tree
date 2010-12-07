@@ -22,6 +22,7 @@ class ChildrenController < ApplicationController
 				msg = Message.create :sender => @current_user, :recipient => @child, 
 						:subject => "Welcome, #{@child.name}!",
 						:content => params[:child][:welcome_message], :points => 10
+				@child.earn_points_for( msg )
 			end
 			if relation.save
 				pop_flash "Child Added"

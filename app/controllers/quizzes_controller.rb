@@ -53,6 +53,7 @@ class QuizzesController < ApplicationController
 		for answering in @quizzing.answerings do
 			@num_right += 1 if answering.answer == answering.question.correct_answer
 		end
+		@quizzing.update_attributes :score => @num_right
 	end
 
 	def destroy

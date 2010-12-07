@@ -1,8 +1,12 @@
 - content_for :left_column do
-	%h1
-		= @child.name
-		Home
-
+	.banner_name
+		%h1
+			= possessize @child.name
+			Home
+	.banner_points
+		= @child.points_balance
+		%span.pts Pts
+	.clear
 	#tabs
 		%ul
 			%li= link_to "Welcome", "#welcome"
@@ -41,18 +45,30 @@
 			%h3 Quizzes
 			- for quiz in Quiz.all # todo scope on quizzes not taken by user
 				= quiz.name
-				= link_to "Take it", quiz_question_path( quiz, quiz.first_question )
+				- if quiz.taken_by?( @current_user )
+					= number_to_percentage( ( quiz.user_score( @current_user ).to_f / quiz.questions.count.to_f ) * 100, :precision => 0 )
+				- else
+					= link_to "Take it", quiz_question_path( quiz, quiz.first_question )
 			
 			
 		#buy
 			%h3 Stuff to Buy
-			- for unlockable in Unlockable.all
-				= link_to avatar_tag( unlockable, :thumb ), unlockable_path( unlockable )
-				%br
-				= link_to unlockable.name, unlockable_path( unlockable )
-				= unlockable.points_req
-				Points
-				%br
+			- cols = 3
+			- curcol = 0
+			%table.admin_table
+				%tr
+				- for unlockable in Unlockable.all
+					- curcol += 1
+					%td( style = 'width:150px;' )
+						= link_to avatar_tag( unlockable, :thumb, :width =>64 ), unlockable_path( unlockable )
+						%br
+						= link_to unlockable.name, unlockable_path( unlockable )
+						%br
+						= unlockable.points_req
+						Points
+					- if curcol >= cols
+						%tr
+						- curcol = 0
 
 
 - content_for :right_column do

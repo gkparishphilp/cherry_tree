@@ -26,10 +26,6 @@ class QuestionsController < ApplicationController
 		end
 	end
 	
-	def recap
-		
-	end
-	
 	def index
 		@questions = Question.all
 	end
@@ -79,8 +75,8 @@ class QuestionsController < ApplicationController
 	private
 	
 	def get_quiz
-		@quiz = Quiz.find params[:quiz_id]
-		@quizzing = Quizzing.find_or_create_by_quiz_id_and_user_id( @quiz, @current_user )
+		@quiz = Quiz.find( params[:quiz_id] )
+		@quizzing = Quizzing.find_by_quiz_id_and_user_id( @quiz.id, @current_user.id ) || Quizzing.create( :quiz_id => @quiz.id, :user_id => @current_user.id, :question_id => 1 )
 		
 	end
 

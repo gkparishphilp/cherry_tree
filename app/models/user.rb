@@ -64,9 +64,10 @@ class User < ActiveRecord::Base
 	has_many	:received_messages, :as => :recipient, :class_name => 'Message'
 	has_many	:sent_messages, :as => :sender, :class_name => 'Message'
 
-
 	has_many	:assignments
 	has_many	:objectives, :through => :assignments
+	
+	has_many	:earnings
 	
 	has_many	:quizzings
 	
@@ -109,6 +110,11 @@ class User < ActiveRecord::Base
 	
 	def relation_to( child )
 		self.relations.find_by_child_id( child.id ).role
+	end
+	
+	def earn_points_for( obj )
+		self.earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => obj.points
+		self.update_attributes :cumulative_points => ( self.cumulative_points + obj.points ), :points_balance => ( self.points_balance + obj.points )
 	end
 	
 	#'password' is a virtual attribute i.e. not in the db

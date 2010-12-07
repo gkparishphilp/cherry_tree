@@ -34,7 +34,7 @@ class GameStuff < ActiveRecord::Migration
 		end
 		
 		create_table :earnings, :force => true do |t|
-			t.references	:child
+			t.references	:user
 			t.references	:earned_for, :polymorphic => true
 			t.integer		:points, :default => 1
 			t.datetime		:approved_at

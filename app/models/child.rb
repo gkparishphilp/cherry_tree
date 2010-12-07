@@ -41,7 +41,6 @@ class Child < User
 	has_many	:ownings
 	has_many	:unlockables, :through => :ownings
 	
-	has_many	:earnings
 	has_many	:checkins
 	
 	

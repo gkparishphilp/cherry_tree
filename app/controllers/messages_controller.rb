@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
 		@message.sender = @current_user
 		@message.recipient = User.find_by_id( params[:message][:recipient_id] )
 		if @message.save
+			@message.recipient.earn_points_for( @message )
 			pop_flash "Message Added"
 		else
 			pop_flash "Ooops, Message not added", :error, @message
