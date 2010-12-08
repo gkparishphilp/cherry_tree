@@ -1,0 +1,9 @@
+%h2 New static_page
+
+-form_for @static_page do |f|
+	=render :partial => 'form', :locals => {:f => f, :m => 'Create'}
+
+%h2 Invalid PermaLinks
+- for name in StaticPage.invalid_permalinks
+	= name
+	%br

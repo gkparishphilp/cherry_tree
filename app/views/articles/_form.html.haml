@@ -1,0 +1,26 @@
+= f.label "Title:"
+= f.text_field :title, :class => 'title'
+%br
+= f.text_area :content, :class => 'long_desc_area'
+%br
+
+= f.label "Publish On:"
+= f.text_field :publish_at, :class => 'datepicker'
+%br
+= f.label 'Topics:'
+= f.text_field :topic_list
+%br
+= f.label 'Keywords:'
+= f.text_field :keyword_list
+
+= f.label "Snip Preview at Character:"
+= f.text_field :snip_at, :style => 'width:50px;'
+
+%br
+= f.check_box :comments_allowed, {}, 'true', 'false'
+Allow Comments
+= f.label "Status:"
+= f.select :status, [ ['Publish',  'publish'], ['Draft', 'draft'] ]
+
+%br
+= f.submit "Enter", :class => 'button'

@@ -8,6 +8,7 @@ class CheckinsController < ApplicationController
 		@checkin = Checkin.new( params[:checkin] )
 
 		if @checkin.save
+			# todo pop activity feed
 			pop_flash "Checkin was successfully created."
 		else
         	pop_flash "Checkin could not be created.", :error, @checkin

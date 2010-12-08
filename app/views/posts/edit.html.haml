@@ -1,0 +1,4 @@
+Edit Reply
+
+= form_for ([ @forum, @topic, @post ]) do |f|
+    = render :partial => "form", :locals => { :f => f, :m => "Update" }

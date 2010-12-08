@@ -1,0 +1,31 @@
+- content_for :left_column do
+	- if @topic
+		%h4
+			= pluralize @articles.count, 'Article'
+			in
+			= @topic.capitalize
+	- elsif @tag
+		%h4
+			= pluralize @articles.count, 'Article' 
+			tagged
+			= @topic
+	- elsif @month
+		%h4
+			= pluralize @articles.count, 'Article'
+			for
+			= Date::MONTHNAMES[@month.to_i]
+			= @year
+	- elsif @year
+		%h4
+			= pluralize @articles.count, 'Article'
+			for
+			= @year
+	#article_list
+		- for article in @articles
+			= render article
+	%br
+	%br
+	= will_paginate @articles
+
+- content_for :right_column do
+	= render :partial => 'sidebar'

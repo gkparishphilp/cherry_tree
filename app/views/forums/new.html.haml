@@ -1,0 +1,14 @@
+- content_for :left_column do
+	= render :partial => 'admin/nav'
+- content_for :middle_column do
+	.form_group
+		%h1 
+			New Forum
+		= form_for [ @current_author, @forum ] do |f|
+			= render 'form', :f => f
+			.actions
+				= f. submit 'Create', :class => 'button'
+		
+- content_for :right_column do
+	= render 'shared/help'
+

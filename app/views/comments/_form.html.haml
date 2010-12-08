@@ -1,0 +1,24 @@
+
+= f.text_area :content
+
+- if @current_user.anonymous?
+
+	= f.label "Name: (required)"
+	= text_field_tag :name
+
+	= f.label "Email: (required, but won't be published)"
+	= text_field_tag :email
+
+	= f.label "Website or Blog Name: (optional)"
+	= text_field_tag :website_name
+
+	= f.label "Website or Blog URL: (optional)"
+	= text_field_tag :website_url
+
+	- unless @current_user.human?
+		- recap = recaptcha_tags :display => { :theme=>"clean" }
+		= recap.html_safe
+-#= check_box_tag :subscribe_comments, 1, true
+-#Notify me of followup comments via e-mail
+%br
+= f.submit 'Post Comment', :class=>'buttons'

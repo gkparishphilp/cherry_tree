@@ -1,0 +1,26 @@
+%div[post]
+	.post_user
+		.post_username
+			=link_to post.user.name, post.user
+		.post_avatar
+			=link_to image_tag( post.user.avatar.location, :width => 60 ), post.user
+		.post_user_joined
+			Member Since: 
+			%br
+			= format_date_only post.user.created_at
+		.post_count
+			= pluralize post.user.posts.count, 'post'
+	.post_body
+		.post_header
+			%span.post_subject
+				= "Re: #{post.topic.title}"
+			%span.post_meta
+				Posted:
+				= format_date post.created_at
+			-if post.user == @current_user
+				%span.edit_post
+					= link_to image_tag( 'edit.png', :width => 20 ), edit_forum_topic_post_url( @forum, post.topic, post)
+					= link_to "Edit", edit_forum_topic_post_url( @forum, post.topic, post)
+		.post_content
+			= post.content
+%br.clear

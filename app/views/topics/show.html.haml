@@ -1,0 +1,35 @@
+- content_for :left_column do
+	= render :partial => 'forum_nav'
+
+	- if @posts.total_pages > 1
+		.digg_pagination
+			.page_info
+				= page_entries_info @posts
+			= will_paginate @posts
+
+	#topic
+		= render @topic
+
+	#posts
+		- @posts.each do |post|
+			= render post
+
+	%br
+
+	- if @posts.total_pages > 1
+		.digg_pagination
+			.page_info
+				= page_entries_info @posts
+			= will_paginate @posts
+
+	- unless @current_user.anonymous?
+		#quick_post
+			%h3
+				Quick Reply:
+			= form_for ([ @forum, @topic, @post]) do |f|
+
+				=f.text_area :content
+				%br
+				= f.submit "Add"
+- content_for :right_column do
+	&nbsp;

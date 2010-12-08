@@ -1,0 +1,10 @@
+.reviews
+	%h3
+		Add a Comment
+	- if @commentable_parent
+		= form_for( [ @commentable_parent, @commentable, @comment] ) do |f| 
+			= render 'comments/form', :f => f
+	- else
+		= form_for [ @commentable, @comment]  do |f|
+			= render 'comments/form', :f => f
+

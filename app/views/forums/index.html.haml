@@ -1,0 +1,38 @@
+- content_for :left_column do
+	%h1 Forums
+	%table.forum_list
+		%thead
+			%tr
+				%th
+					Name
+				%th
+					Topics
+				%th
+					Posts
+				%th
+					Last Post
+		%tbody
+			- @forums.each do |forum|
+				%tr
+					%td
+						%b= link_to forum.title, forum_topics_link( forum )
+						%br
+						= forum.description
+					%td
+						= forum.topics.count
+					%td
+						= forum.posts.count
+					%td
+						- if !forum.posts.last.nil?
+							= link_to format_date(forum.posts.last.created_at), custom_post_url( forum, forum.posts.last.topic, forum.posts.last )
+							%br
+							by
+							= link_to forum.posts.last.user.name, forum.posts.last.user
+						- else
+							&#45;&#45;&#45;
+
+	= will_paginate @forums
+
+- content_for :right_column do
+	&nbsp;
+

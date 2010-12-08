@@ -1,0 +1,45 @@
+- unless @recent_posts.empty?
+	.sidebar_sections
+		%h3 Recent Posts
+		.recent_posts
+			- for article in @recent_posts
+				.recent_title
+					= link_to article.title, blog_link( article )
+				.recent_preview.text
+					= snip article.content.html_safe, 140
+- unless @topics.empty?
+	.sidebar_sections
+		%h3 Topics
+		.recent_posts
+			- for topic in @topics
+				.recent_title
+					= link_to topic.name.capitalize, blog_index_link( :topic => topic.name )
+					(
+					= topic.count
+					)
+- unless @archives.empty?
+	.sidebar_sections
+		%h3 Archives
+		.recent_posts
+			- for archive in @archives
+				.recent_title
+					= link_to "#{Date::MONTHNAMES[archive.month.to_i]} #{archive.year} ", blog_index_link + "/archive/#{archive.year}/#{archive.month}"
+
+- unless @links.nil? || @links.empty?
+	.sidebar_sections
+		%h3 Links
+		.recent_posts
+			- for link in @links
+				.recent_title
+					= link_to link.title, link.url
+
+- unless @tweets.nil? || @tweets.first.nil?
+	.sidebar_sections
+		%h3 Todo on Twitter
+		.recent_posts
+			- for tweet in @tweets
+				.recent_title
+					= link_to image_tag( tweet.user.profile_image_url, :width => 24, :valign => :middle ), "http://twitter.com/#{tweet.user.screen_name}"
+					= link_to "@#{tweet.user.screen_name}", "http://twitter.com/#{tweet.user.screen_name}"
+				.recent_preview.text
+					= linkify tweet.text, "true"
