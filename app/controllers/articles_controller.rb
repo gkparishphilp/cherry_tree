@@ -1,9 +1,5 @@
 class ArticlesController < ApplicationController
 	
-	# only things we should do here are create, update, and delete the resource.  Used for form paths from object name
-	
-	before_filter :get_owner
-	
 	def new
 		@article = Article.new
 		render :layout => '3col'
@@ -52,17 +48,6 @@ class ArticlesController < ApplicationController
 		@article.destroy
 		pop_flash 'Article was successfully deleted.'
 		redirect_to :back
-	end
-	
-	private
-	
-	def get_owner
-		if @current_author
-			@owner = @current_author
-		else
-			require_admin
-			@owner = @current_site
-		end
 	end
 
 end

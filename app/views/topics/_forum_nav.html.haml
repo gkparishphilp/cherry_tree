@@ -1,9 +1,6 @@
 .forum_nav
 	.breadcrumb
-		- if @forum.owner.is_a? Site
-			= link_to @current_site.name, root_url
-		- else
-			= link_to @current_author.pen_name, @current_author
+		= link_to "Home", root_url
 		>
 		= link_to "Forums", forums_link
 		>

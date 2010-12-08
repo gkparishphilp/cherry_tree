@@ -1,5 +1,5 @@
 class ForumsController < ApplicationController
-	before_filter	:get_owner, :get_sidebar_data
+	before_filter	:get_sidebar_data
 	layout			:set_layout
 	
 	def admin
@@ -7,7 +7,7 @@ class ForumsController < ApplicationController
 	end
 	
 	def index
-		@forums = @owner.forums.paginate :page => params[:page], :order => 'id ASC', :per_page => 10
+		@forums = Forum.all.paginate :page => params[:page], :order => 'id ASC', :per_page => 10
 	end
 
 	def show
@@ -64,10 +64,6 @@ class ForumsController < ApplicationController
 	end
 	
 private
-
-	def get_owner
-		@owner = @author ? @author : @current_site
-	end
 
 	def get_sidebar_data
 		# TODO

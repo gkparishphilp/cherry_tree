@@ -29,6 +29,7 @@ GEM
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
     activesupport (3.0.1)
+    acts-as-taggable-on (2.0.6)
     ambethia-recaptcha (0.2.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
@@ -100,6 +101,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   ambethia-recaptcha
   compass
   friendly_id

@@ -2,12 +2,24 @@ Seedz::Application.routes.draw do
 
 	root :to => "site#index"
 	
+	resources :articles do
+		resources :comments
+	end
+	
+	resources :blog
+	
 	resources :checkins do
 		get 'approve', :on => :member
 	end
 	
 	resources :children do
 		get 'login', :on => :collection
+	end
+	
+	resources :forums do
+		resources :topics do
+			resources :posts
+		end
 	end
 	
 	resources :games
@@ -65,9 +77,6 @@ Seedz::Application.routes.draw do
 	match '/reset' => 'users#reset_password', :as => 'reset'
 	match '/activate/:token' => 'users#activate', :as => 'activate'
 	match '/resend' => 'users#resend', :as => 'resend'
-	
-	
-	
 	
 	match "/:permalink", :to => 'static_pages#show'
 	

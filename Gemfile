@@ -11,6 +11,7 @@ gem 'mini_magick'
 gem 'twitter'
 gem 'mini_fb'
 gem 'friendly_id'
+gem 'acts-as-taggable-on'
 
 
 source "http://gems.github.com"
