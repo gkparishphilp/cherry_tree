@@ -19,4 +19,8 @@ class Checkin < ActiveRecord::Base
 	belongs_to	:objective
 	
 	scope :update, where( "objective_id is null" )
+	
+	def expanded_status
+		return self.status.gsub( /_/, " " )
+	end
 end

@@ -15,8 +15,11 @@
 			= link_to activity.target.title, polymorphic_path( activity.target )
 	- elsif activity.target.respond_to? 'subject'
 		= activity.target.subject
-	- else
+	- elsif activity.target.respond_to? 'name'
 		= activity.target.name
+	- else
+		-# just do nothing
+		
 	= time_ago_in_words( activity.created_at )
 	ago.
 	%br.clear

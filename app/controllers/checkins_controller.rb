@@ -9,6 +9,11 @@ class CheckinsController < ApplicationController
 
 		if @checkin.save
 			# todo pop activity feed
+			if @checkin.content.present?
+				@checkin.user.do_activity( "check in: '#{@checkin.content}' ", @checkin )
+			else
+				@checkin.user.do_activity( "#{@checkin.expanded_status} ", @checkin.objective )
+			end
 			pop_flash "Checkin was successfully created."
 		else
         	pop_flash "Checkin could not be created.", :error, @checkin
