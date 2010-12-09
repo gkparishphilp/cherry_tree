@@ -6,13 +6,13 @@
 
 			%span.article_meta
 				- if @article.comments_allowed?
-					= link_to pluralize( @article.comments.count, "Comment" ), author_blog_url( @author, @article ) + "#comment"
+					= link_to pluralize( @article.comments.count, "Comment" ), blog_path( @article ) + "#comment"
 				%br
 				- unless @article.topics.empty?
 					#article_topics
 						Filed under:
 						- for topic in @article.topics
-							= link_to separated_list( @article.topics, topic.name, "," ), blog_index_url( :topic => topic.name )
+							= link_to separated_list( @article.topics, topic.name, "," ), blog_index_path( :topic => topic.name )
 
 		.article_content.text
 			= @article.content.html_safe
@@ -21,7 +21,7 @@
 			#related
 				%h3 Related Posts
 				- for article in @article.related_articles
-					= link_to article.title, blog_url( article )
+					= link_to article.title, blog_path( article )
 		%br
 		%br
 		- if @article.comments_allowed?

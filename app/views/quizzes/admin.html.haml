@@ -14,7 +14,7 @@
 			- for quiz in @quizzes
 				%tr{ :class => cycle(:odd, :even) }
 					%td= quiz.name
-					%td= quiz.point_value
+					%td= quiz.points
 					%td= quiz.level
 					%td
 						= link_to image_tag( 'view.png', :width => 20 ), inspect_quiz_path( quiz )

@@ -47,7 +47,7 @@ class ChildrenController < ApplicationController
 		# first things first, public or private?
 		if @child == @current_user
 			@activities = Activity.feed @child
-			@messages = @child.received_messages
+			@messages = @child.received_messages.reverse
 			render :private
 		else 
 			# Let's just show the public profile

@@ -3,7 +3,7 @@
 		.post_username
 			=link_to topic.user.name, topic.user
 		.post_avatar
-			=link_to image_tag( topic.user.avatar.location, :width => 60 ), topic.user
+			=link_to avatar_tag( topic.user, :thumb, :width => 60 ), topic.user
 		.post_user_joined
 			Member Since: 
 			%br

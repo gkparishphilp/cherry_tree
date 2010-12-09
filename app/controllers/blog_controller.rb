@@ -35,9 +35,9 @@ private
 
 	def get_sidebar_data
 		@topics=[]
-		#@topics = Article.topic_counts.sort do |a, b|
-		#	a.name <=> b.name
-		#end
+		@topics = Article.topic_counts.sort do |a, b|
+			a.name <=> b.name
+		end
 		@recent_posts = Article.recent.published[0..9]
 		@archives = Article.find_by_sql( "select month(publish_at) as month, year(publish_at) as year from articles  group by month(publish_at) " )
 	end

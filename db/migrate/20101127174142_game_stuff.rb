@@ -6,6 +6,7 @@ class GameStuff < ActiveRecord::Migration
 			t.text			:description
 			t.integer		:times
 			t.string		:period
+			t.boolean		:req_approval, :default => false
 			t.integer		:points, :default => 1
 			t.integer		:level
 			t.timestamps
@@ -44,7 +45,7 @@ class GameStuff < ActiveRecord::Migration
 			t.references	:user
 			t.string		:content
 			t.references	:objective # not necessary
-			t.string		:status, :default => 'didit'
+			t.string		:status, :default => 'did_not'
 			t.integer		:approved_by # this is a user_id
 			t.datetime		:approved_at
 			t.timestamps

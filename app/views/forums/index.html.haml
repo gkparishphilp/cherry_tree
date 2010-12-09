@@ -24,7 +24,7 @@
 						= forum.posts.count
 					%td
 						- if !forum.posts.last.nil?
-							= link_to format_date(forum.posts.last.created_at), custom_post_url( forum, forum.posts.last.topic, forum.posts.last )
+							= link_to format_date(forum.posts.last.created_at), custom_post_path( forum, forum.posts.last.topic, forum.posts.last )
 							%br
 							by
 							= link_to forum.posts.last.user.name, forum.posts.last.user

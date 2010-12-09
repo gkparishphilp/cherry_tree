@@ -32,7 +32,7 @@
 						= topic.posts.count
 					%td
 						- if topic.posts.last
-							= link_to format_date(topic.posts.last.created_at), custom_post_url( @forum, topic, topic.posts.last )
+							= link_to format_date(topic.posts.last.created_at), custom_post_path( @forum, topic, topic.posts.last )
 							%br
 							by
 							= link_to topic.posts.last.user.name, topic.posts.last.user
@@ -46,4 +46,5 @@
 					
 - content_for :right_column do
 	&nbsp;
+	
 

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101208063306
+# Schema version: 20101209043322
 #
 # Table name: answerings
 #

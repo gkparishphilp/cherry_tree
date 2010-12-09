@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101208063306
+# Schema version: 20101209043322
 #
 # Table name: articles
 #
@@ -28,8 +28,8 @@ class Article < ActiveRecord::Base
 	has_many	:comments, :as => :commentable
     
 	has_friendly_id :title, :use_slug => :true
-	#acts_as_taggable_on	:topics
-	#acts_as_taggable_on	:keywords
+	acts_as_taggable_on	:topics
+	acts_as_taggable_on	:keywords
 	acts_as_followed
 	gets_activities
 	

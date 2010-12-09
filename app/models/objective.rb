@@ -1,18 +1,19 @@
 # == Schema Information
-# Schema version: 20101208063306
+# Schema version: 20101209043322
 #
 # Table name: objectives
 #
-#  id          :integer(4)      not null, primary key
-#  name        :string(255)
-#  creator_id  :integer(4)
-#  description :text
-#  times       :integer(4)
-#  period      :string(255)
-#  points      :integer(4)      default(1)
-#  level       :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id           :integer(4)      not null, primary key
+#  name         :string(255)
+#  creator_id   :integer(4)
+#  description  :text
+#  times        :integer(4)
+#  period       :string(255)
+#  req_approval :boolean(1)
+#  points       :integer(4)      default(1)
+#  level        :integer(4)
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 class Objective < ActiveRecord::Base

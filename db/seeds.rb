@@ -16,6 +16,11 @@ c.relations.first.update_attributes :role => 'father'
 puts "Setup default Site"
 site = Site.create :name => "Seedz", :domain => 'localhost'
 
+puts "Create some forums"
+f = Forum.create :title => "General", :description => 'Just a place to hang out and discuss anything and everything'
+f = Forum.create :title => "Exercise", :description => 'Discuss excersize and activities'
+f = Forum.create :title => "Nutrition", :description => 'Discuss nutrition'
+
 puts "Create some prizes"
 
 u = Unlockable.create :name => '1 Hour Free Time', :description => "TV, Videogames, Playtime, the choice is yours - You've earned it!", :points => 100

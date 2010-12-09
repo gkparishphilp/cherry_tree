@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101208063306
+# Schema version: 20101209043322
 #
 # Table name: checkins
 #
@@ -7,7 +7,7 @@
 #  user_id      :integer(4)
 #  content      :string(255)
 #  objective_id :integer(4)
-#  status       :string(255)     default("didit")
+#  status       :string(255)     default("did_not")
 #  approved_by  :integer(4)
 #  approved_at  :datetime
 #  created_at   :datetime
