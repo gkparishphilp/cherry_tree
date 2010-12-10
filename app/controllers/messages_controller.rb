@@ -17,6 +17,8 @@ class MessagesController < ApplicationController
 			if @message.points > 0
 				@message.recipient.earn_points_for( @message )
 				@message.recipient.do_activity( "Receive #{@message.points} points from #{@message.sender.relation_to( @message.recipient )}", @message )
+			else
+				@message.recipient.do_activity( "Have a message from #{@message.sender.relation_to( @message.recipient )}", @message )
 			end
 			pop_flash "Message Added"
 		else

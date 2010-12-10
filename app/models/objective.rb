@@ -22,4 +22,5 @@ class Objective < ActiveRecord::Base
 	has_many	:earnings, :as => :earned_for
 	
 	attr_accessor	:user_id
+	
 end
