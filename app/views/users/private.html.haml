@@ -6,10 +6,11 @@
 	#tabs
 		%ul
 			%li= link_to "Welcome", "#welcome"
-			%li= link_to "Children", "#children"
+			%li= link_to "Children And Teams", "#children"
 			%li= link_to "Objectives", "#objectives"
 			%li= link_to "Send Kudos", '#kudos'
 			%li= link_to "Settings", "#settings"
+			%li= link_to "Supporting", '#supporting'
 		#welcome
 			%p
 				Welcome to our prototype.  This is still very much a work in progress, but should give a feel for what we're trying to do.  Have fun!
@@ -28,7 +29,25 @@
 			%h3 Add a Child
 			= form_for Child.new do |f|
 				= render 'children/form', :f => f
-			
+				
+			%h3 Invite Team Members
+			= form_for Relation.new do |f|
+				= f.label "For:"
+				= f.collection_select :child_id, @current_user.children, :id, :name
+				= f.label "Role:"
+				= f.select :role, %w( mother father grandmother grandfather aunt uncle )
+				= f.label "Name:"
+				= f.text_field :name
+				= f.label "Email:"
+				= f.text_field :email
+				= f.submit "Invite", :class => :button
+				
+		#supporting
+			%h3 Children You Support
+			- for child in @current_user.supported_children
+				= child.name
+				%br
+				
 		#settings
 			.column2
 				%h3 Change Your Picture

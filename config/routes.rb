@@ -66,6 +66,7 @@ Seedz::Application.routes.draw do
 		get 'resend', :on => :member
 	end
 	
+	resources :relations
 	
 
 	match '/blog/archive/(:year/(:month))', :to => 'blog#index'

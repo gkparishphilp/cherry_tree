@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
 	has_many	:facebook_accounts,	:as => :owner
 	
 	has_many	:relations
-	has_many	:supported_children, :through => :relations
+	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child
 	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian' )"
 	
 	

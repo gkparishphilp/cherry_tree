@@ -19,4 +19,7 @@ class Relation < ActiveRecord::Base
 	
 	gets_activities
 	
+	# for sending invitations
+	attr_accessor :name, :email
+	
 end
