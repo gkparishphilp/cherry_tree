@@ -30,6 +30,9 @@ GEM
       activesupport (= 3.0.1)
     activesupport (3.0.1)
     acts-as-taggable-on (2.0.6)
+    amazon-ecs (1.0.0)
+      hpricot (>= 0.4)
+      ruby-hmac (>= 0.3.2)
     ambethia-recaptcha (0.2.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
@@ -44,6 +47,7 @@ GEM
       babosa (~> 0.2.0)
     haml (3.0.22)
     hashie (0.4.0)
+    hpricot (0.8.3)
     httparty (0.6.1)
       crack (= 0.1.8)
     i18n (0.4.2)
@@ -85,6 +89,7 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    ruby-hmac (0.4.0)
     subexec (0.0.4)
     thor (0.14.3)
     treetop (1.4.8)
@@ -102,6 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  amazon-ecs
   ambethia-recaptcha
   compass
   friendly_id
