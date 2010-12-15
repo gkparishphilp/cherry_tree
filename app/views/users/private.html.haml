@@ -23,14 +23,17 @@
 			- unless @current_user.children.empty?
 				%h3 Your Children
 				- for child in @current_user.children
-					= child.name
+					%b= child.name
+					Age:
+					= distance_of_time_in_words( child.birthday, Time.now )
 					%br
 			
 			- unless @current_user.supported_children.empty?
 				%h3 Children You Support
 				- for child in @current_user.supported_children
-					= child.name
-					%br
+					%b= child.name
+					Age:
+					= distance_of_time_in_words( child.birthday, Time.now )
 				
 			%h3 Add a Child
 			= form_for Child.new do |f|
@@ -38,16 +41,17 @@
 			
 			- unless @current_user.children.empty?
 				%h3 Invite Team Members
-				= form_for Relation.new do |f|
-					= f.label "For:"
-					= f.collection_select :child_id, @current_user.children, :id, :name
-					= f.label "Role:"
-					= f.select :role, %w( mother father grandmother grandfather aunt uncle friend )
-					= f.label "Name:"
-					= f.text_field :name
-					= f.label "Email:"
-					= f.text_field :email
-					= f.submit "Invite", :class => :button
+				.form_group
+					= form_for Relation.new do |f|
+						= f.label "For:"
+						= f.collection_select :child_id, @current_user.children, :id, :name
+						= f.label "Role:"
+						= f.select :role, %w( mother father grandmother grandfather aunt uncle friend )
+						= f.label "Name:"
+						= f.text_field :name
+						= f.label "Email:"
+						= f.text_field :email
+						= f.submit "Invite", :class => :button
 
 		#settings
 			.column2
@@ -89,10 +93,13 @@
 					= render 'objectives/form', :f => f
 				
 				%h3 Add a prize from Amazon
-				= form_tag amazon_path do 
-					%label Search Amazon:
-					= text_field_tag :search_term
-					= submit_tag "Search", :class => 'button'
+				.form_group
+					= form_tag amazon_path do 
+						Search Amazon:
+						= text_field_tag :search_term
+						For:
+						= select_tag :search_index, options_for_select( ['Apparel', 'Books', 'DVD', 'Electronics', 'Toys', 'HealthPersonalCare', 'Kitchen', 'Music', 'DigitalMusic', 'SportingGoods', 'Video', 'VideoGames' ] )
+						= submit_tag "Search", :class => 'button'
 
 
 

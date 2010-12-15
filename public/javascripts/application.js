@@ -22,10 +22,13 @@ $(document).ready(function(){
 	});
 	
 	$('.button').button();
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({
+		dateFormat: 'yy-mm-dd'
+	});
 	$('.birthday_field').datepicker({
 			changeMonth: true,
 			changeYear: true,
+			dateFormat: 'yy-mm-dd',
 			defaultDate: '-10y'
 		});
 	$('#tabs').tabs({
@@ -47,4 +50,19 @@ $(document).ready(function(){
 	});
 	
 	
+	///////////// Objective Form /////////////////////////////
+	$('#objective_req_checkin').click( function() {
+		$('#confirmation_fields').toggle();
+	});
+	
+	$('#objective_objective_type').mouseup( function() {
+		if( $(this).attr('value') == 'recurring' ){
+			$('#recurring_fields').show( 'slow' );
+			$('#one_time_fields').hide( 'slow' );
+		}
+		else{
+			$('#recurring_fields').hide( 'slow' );
+			$('#one_time_fields').show( 'slow' );
+		}
+	});
 });

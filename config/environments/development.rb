@@ -22,5 +22,13 @@ Seedz::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+
+	config.after_initialize do
+		Amazon::Ecs.configure do |options| 
+			options[:aWS_access_key_id] = AMAZON_ID
+			options[:aWS_secret_key] = AMAZON_SECRET
+		end
+	end
 end
 

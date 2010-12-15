@@ -26,4 +26,6 @@ class Objective < ActiveRecord::Base
 	
 	attr_accessor	:user_id
 	
+	scope :recurring, where( "objective_type = 'recurring' " )
+	scope :once, where( "objective_type = 'once' " )
 end

@@ -1,33 +1,34 @@
-This child is a
-= f.radio_button :gender, 'male'
-boy
-= f.radio_button :gender, 'female'
-girl
-%br
+.form_group
+	This child is a
+	= f.radio_button :gender, 'male'
+	boy
+	= f.radio_button :gender, 'female'
+	girl
+	%br
 
-%span.gender
-	&nbsp;
-name is
-= f.text_field :name
+	%span.gender
+		&nbsp;
+	name is
+	= f.text_field :name
 
-%br
-%span.name
-	&nbsp;
-birthday is
-= f.text_field :birthday, :class => 'birthday_field'
-%br
+	%br
+	%span.name
+		&nbsp;
+	birthday is
+	= f.text_field :birthday, :class => 'birthday_field'
+	%br
 
-%br
-I am
-%span.name 
-	&nbsp
-= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
-%br
-PIN:
-= f.text_field :password
+	%br
+	I am
+	%span.name 
+		&nbsp
+	= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
+	%br
+	PIN:
+	= f.text_field :password
 
-= f.label "Welcome Message:"
-= f.text_area :welcome_message
+	= f.label "Welcome Message:"
+	= f.text_area :welcome_message
 
-%br
-= f.submit "Add", :class => 'button'
+	%br
+	= f.submit "Add", :class => 'button'

@@ -33,7 +33,15 @@ class UnlockablesController < ApplicationController
 	end
 
 	def create
-		@unlockable = Unlockable.new params[:unlockable]
+		if asin = params[:unlockable][:asin]
+			search_index = params[:unlockable][:search_index]
+			@unlockable = Unlockable.create_from_amazon( asin, search_index )
+			redirect_to edit_unlockable_path( @unlockable )
+			return false
+		else
+			@unlockable = Unlockable.new params[:unlockable]
+		end
+		
 		if @unlockable.save
 			process_attachments_for( @unlockable )
 			pop_flash "Unlockable Created"
@@ -55,13 +63,10 @@ class UnlockablesController < ApplicationController
 	end
 	
 	def search_amazon
-		Amazon::Ecs.configure do |options| 
-			options[:aWS_access_key_id] = AMAZON_ID
-			options[:aWS_secret_key] = AMAZON_SECRET
-		end
 		
 		@search_term = params[:search_term]
-		@response = Amazon::Ecs.item_search(@search_term,  :response_group => "Large", :sort => "salesrank", :search_index => "Books")
+		@search_index = params[:search_index]
+		@response = Amazon::Ecs.item_search( @search_term,  :response_group => "Medium", :search_index => @search_index )
 	end
 		
 end

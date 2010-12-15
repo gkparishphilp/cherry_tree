@@ -56,6 +56,21 @@ class GameStuff < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :docs, :force => true do |t|
+			t.string	:title
+			t.text		:content
+			t.string	:status
+			t.timestamps
+		end
+		
+		create_table :reviews, :force => true do |t|
+			t.references	:reviewable, :polymorphic => true
+			t.references	:user
+			t.integer		:score
+			t.text			:content
+			t.timestamps
+		end
+		
 		create_table :messages, :force => true do |t|
 			t.references	:sender, :polymorphic => true
 			t.references	:recipient, :polymorphic => true

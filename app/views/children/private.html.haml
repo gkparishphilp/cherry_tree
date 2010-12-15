@@ -59,21 +59,34 @@
 					
 		
 		#objectives
-			%h3 Your Objectives
-			- for obj in @child.objectives
-				%b= obj.name
-				%br
-				= obj.times
-				times per
-				= obj.period
-				= form_for Checkin.new do |f|
-					= f.hidden_field :objective_id, :value => obj.id
-					= f.hidden_field :user_id, :value => @child.id
-					= f.radio_button :status, 'did'
-					I did It!
-					= f.radio_button :status, 'did_not'
-					I'm Working on it
-					= f.submit
+			- unless @child.objectives.once.empty?
+				%h3 Your Goals:
+				- for obj in @child.objectives.once
+					%b= obj.name
+					%br
+					Target: 
+					= format_date_only obj.due_at
+					That is only
+					= distance_of_time_in_words( Time.now, obj.due_at )
+					from Now!!!
+					%br
+					%br
+			- unless @child.objectives.recurring.empty?
+				%h3 Your Objectives
+				- for obj in @child.objectives.recurring
+					%b= obj.name
+					%br
+					= obj.times
+					times per
+					= obj.period
+					= form_for Checkin.new do |f|
+						= f.hidden_field :objective_id, :value => obj.id
+						= f.hidden_field :user_id, :value => @child.id
+						= f.radio_button :status, 'did'
+						I did It!
+						= f.radio_button :status, 'did_not'
+						I'm Working on it
+						= f.submit
 			
 		#games
 			%h3 Games
