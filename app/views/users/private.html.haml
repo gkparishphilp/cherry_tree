@@ -7,7 +7,7 @@
 		%ul
 			%li= link_to "Welcome", "#welcome"
 			%li= link_to "Children / Teams", "#children"
-			%li= link_to "Objectives / Awards", "#objectives"
+			%li= link_to "Objectives / Awards", "#objectives" unless @current_user.children.empty?
 			%li= link_to "Kudos", '#kudos'
 			%li= link_to "Settings", "#settings"
 		#welcome
@@ -35,18 +35,19 @@
 			%h3 Add a Child
 			= form_for Child.new do |f|
 				= render 'children/form', :f => f
-				
-			%h3 Invite Team Members
-			= form_for Relation.new do |f|
-				= f.label "For:"
-				= f.collection_select :child_id, @current_user.children, :id, :name
-				= f.label "Role:"
-				= f.select :role, %w( mother father grandmother grandfather aunt uncle )
-				= f.label "Name:"
-				= f.text_field :name
-				= f.label "Email:"
-				= f.text_field :email
-				= f.submit "Invite", :class => :button
+			
+			- unless @current_user.children.empty?
+				%h3 Invite Team Members
+				= form_for Relation.new do |f|
+					= f.label "For:"
+					= f.collection_select :child_id, @current_user.children, :id, :name
+					= f.label "Role:"
+					= f.select :role, %w( mother father grandmother grandfather aunt uncle friend )
+					= f.label "Name:"
+					= f.text_field :name
+					= f.label "Email:"
+					= f.text_field :email
+					= f.submit "Invite", :class => :button
 
 		#settings
 			.column2
@@ -80,16 +81,18 @@
 			%h3 Send Kudos
 			= form_for Message.new do |f|
 				= render 'messages/form', :f => f
-		#objectives
-			%h3 Create an Objective
-			= form_for Objective.new do |f|
-				= render 'objectives/form', :f => f
+		
+		- unless @current_user.children.empty?
+			#objectives
+				%h3 Create an Objective
+				= form_for @objective do |f|
+					= render 'objectives/form', :f => f
 				
-			%h3 Add a prize from Amazon
-			= form_tag amazon_path do 
-				%label Search Amazon:
-				= text_field_tag :search_term
-				= submit_tag "Search", :class => 'button'
+				%h3 Add a prize from Amazon
+				= form_tag amazon_path do 
+					%label Search Amazon:
+					= text_field_tag :search_term
+					= submit_tag "Search", :class => 'button'
 
 
 - content_for :right_column do

@@ -3,6 +3,10 @@ class RelationsController < ApplicationController
 	def create
 		@relation = Relation.new( params[:relation] )
 		@related_user = User.find_or_initialize_by_email( :email => @relation.email, :name => @relation.name, :password => '1234' )
+		# todo -- send email with invitation code
+		# user clicks link, gets looked up by invite code and asked to change pass
+		# for now, set new user's pass to '1234' like everyone else's
+		@related_user.password = '1234'
 		@related_user.save
 		@relation.user = @related_user
 		

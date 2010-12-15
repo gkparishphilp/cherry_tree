@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
 		# first things first, public or private?
 		if @user == @current_user
+			@objective = Objective.new
 			@activities = Activity.feed @user, @user.children, @user.supported_children
 			render :private
 		else 

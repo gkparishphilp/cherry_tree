@@ -68,6 +68,7 @@ class Users < ActiveRecord::Migration
 			t.datetime		:remember_token_expires_at
 			t.string		:activation_code
 			t.datetime		:activated_at
+			t.string		:invitation_code
 			t.string		:status, :default => 'first'
 			t.string		:cached_slug
 		

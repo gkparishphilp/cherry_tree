@@ -7,13 +7,28 @@ For:&nbsp;&nbsp;&nbsp;&nbsp;
 = f.label 'Description:'
 = f.text_area :description
 
-= f.label 'Frequency:'
-= f.text_field :times
-Times
-Per
-= f.select :period, [ ['Day', 'day'], ['Week', 'week'], ['Month', 'month'] ]
+= f.check_box :req_checkin, :checked => @objective.req_checkin?
+Require Checkin?
+
+= f.check_box :req_confirm, :checked => @objective.req_confirm?
+Require Confirmation?
+%br
+= f.label 'Objective Type:'
+= f.select :objective_type, { 'Recurring' => 'recurring', 'One Time' => 'once' }
+
+#one_time_fields
+	= f.label 'Due Date'
+	= f.text_field :due_at, :class => 'datepicker'
+	
+#recurring_fields
+	= f.label 'Frequency:'
+	= f.text_field :times
+	Times
+	Per
+	= f.select :period, { 'Day' => 'day', 'Week' => 'week', 'Month' => 'month' }
+	
 
 = f.label "Points:"
 = f.text_field :points
 %br
-= f.submit "Send", :class => 'button'
+= f.submit "Add", :class => 'button'
