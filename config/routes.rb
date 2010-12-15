@@ -78,6 +78,7 @@ Seedz::Application.routes.draw do
 	match '/reset' => 'users#reset_password', :as => 'reset'
 	match '/activate/:token' => 'users#activate', :as => 'activate'
 	match '/resend' => 'users#resend', :as => 'resend'
+	match '/amazon' => 'unlockables#search_amazon', :as => 'amazon'
 	
 	match "/:permalink", :to => 'static_pages#show'
 	
