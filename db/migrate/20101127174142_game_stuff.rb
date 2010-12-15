@@ -4,9 +4,12 @@ class GameStuff < ActiveRecord::Migration
 			t.string		:name
 			t.references	:creator
 			t.text			:description
+			t.string		:objective_type  # recurring, one-time
+			t.datetime		:due_at # for one-time objectives
 			t.integer		:times
 			t.string		:period
-			t.boolean		:req_approval, :default => false
+			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
+			t.boolean		:req_confirm, :default => false # parent must confirm checking to award points
 			t.integer		:points, :default => 1
 			t.integer		:level
 			t.timestamps
@@ -21,10 +24,12 @@ class GameStuff < ActiveRecord::Migration
 		
 		
 		create_table :unlockables, :force => true do |t|
-			t.string	:name
-			t.text		:description
-			t.integer	:points
-			t.integer	:level, :default => 0
+			t.references	:objective # for unlockables that are earned, not bought
+			t.string		:name
+			t.text			:description
+			t.string		:asin # for Amazon products
+			t.integer		:points
+			t.integer		:level, :default => 0
 			t.timestamps
 		end
 		
@@ -46,8 +51,8 @@ class GameStuff < ActiveRecord::Migration
 			t.string		:content
 			t.references	:objective # not necessary
 			t.string		:status, :default => 'did_not'
-			t.integer		:approved_by # this is a user_id
-			t.datetime		:approved_at
+			t.integer		:confirmed_by # this is a user_id
+			t.datetime		:confirmed_at
 			t.timestamps
 		end
 		

@@ -10,7 +10,6 @@
 			%li= link_to "Objectives", "#objectives"
 			%li= link_to "Send Kudos", '#kudos'
 			%li= link_to "Settings", "#settings"
-			%li= link_to "Supporting", '#supporting'
 		#welcome
 			%p
 				Welcome to our prototype.  This is still very much a work in progress, but should give a feel for what we're trying to do.  Have fun!
@@ -26,6 +25,13 @@
 				- for child in @current_user.children
 					= child.name
 					%br
+			
+			- unless @current_user.supported_children.empty?
+				%h3 Children You Support
+				- for child in @current_user.supported_children
+					= child.name
+					%br
+				
 			%h3 Add a Child
 			= form_for Child.new do |f|
 				= render 'children/form', :f => f
@@ -41,13 +47,7 @@
 				= f.label "Email:"
 				= f.text_field :email
 				= f.submit "Invite", :class => :button
-				
-		#supporting
-			%h3 Children You Support
-			- for child in @current_user.supported_children
-				= child.name
-				%br
-				
+
 		#settings
 			.column2
 				%h3 Change Your Picture

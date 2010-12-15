@@ -8,8 +8,8 @@
 #  content      :string(255)
 #  objective_id :integer(4)
 #  status       :string(255)     default("did_not")
-#  approved_by  :integer(4)
-#  approved_at  :datetime
+#  confirmed_by :integer(4)
+#  confirmed_at :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
 #
