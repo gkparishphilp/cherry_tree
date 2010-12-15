@@ -54,4 +54,14 @@ class UnlockablesController < ApplicationController
 		redirect_to :back
 	end
 	
+	def search_amazon
+		Amazon::Ecs.configure do |options| 
+			options[:aWS_access_key_id] = AMAZON_ID
+			options[:aWS_secret_key] = AMAZON_SECRET
+		end
+		
+		@search_term = params[:search_term]
+		@response = Amazon::Ecs.item_search(@search_term, {:response_group => "Large", :sort => "salesrank"})
+	end
+		
 end

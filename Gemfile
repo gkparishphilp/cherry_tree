@@ -12,6 +12,8 @@ gem 'twitter'
 gem 'mini_fb'
 gem 'friendly_id'
 gem 'acts-as-taggable-on'
+gem 'amazon-ecs', :require=>'amazon/ecs'
+
 
 
 source "http://gems.github.com"

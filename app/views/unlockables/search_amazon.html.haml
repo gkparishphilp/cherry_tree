@@ -1,0 +1,12 @@
+- content_for :left_column do
+	%h1 Amazon results return page
+
+	- @response.items.each do |item|
+		%p
+			-item_name = item.get("itemattributes/title")
+			-image_url = item.get_hash("smallimage")
+			-item_url = item.get("url")
+			= item_name
+			=link_to image_tag(image_url[:url]), item_url 
+		%p
+	= pp @response.inspect
