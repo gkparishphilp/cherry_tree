@@ -61,7 +61,7 @@ class UnlockablesController < ApplicationController
 		end
 		
 		@search_term = params[:search_term]
-		@response = Amazon::Ecs.item_search(@search_term, {:response_group => "Large", :sort => "salesrank"})
+		@response = Amazon::Ecs.item_search(@search_term,  :response_group => "Large", :sort => "salesrank", :search_index => "Books")
 	end
 		
 end
