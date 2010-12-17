@@ -7,7 +7,7 @@ u1 = User.new :name => 'Gk'
 u1.password = '1234'
 u1.save( false )
 
-c = u1.children.create :name => 'Avery'
+c = u1.children.create :name => 'Avery', :birthday => '2002-3-12'
 c.password = '1234'
 c.save
 
