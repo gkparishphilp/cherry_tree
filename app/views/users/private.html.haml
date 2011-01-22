@@ -104,18 +104,19 @@
 
 
 - content_for :right_column do
+	-#
+		%h3
+			Add a Twitter Accoount:
+		#twitter
+			= form_tag go_twitter_sessions_path do
+				= image_submit_tag 'twitter_button.png'
+		%h3
+			Add a Facebook Account:
+		#facebook
+			= form_tag go_facebook_sessions_path do
+				= image_submit_tag 'facebook_connect.png'
 	%h3
-		Add a Twitter Accoount:
-	#twitter
-		= form_tag go_twitter_sessions_path do
-			= image_submit_tag 'twitter_button.png'
-	%h3
-		Add a Facebook Account:
-	#facebook
-		= form_tag go_facebook_sessions_path do
-			= image_submit_tag 'facebook_connect.png'
-	%h3
-		Activity
+		Recent Activity
 	= render @activities
 	
 	

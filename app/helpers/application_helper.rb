@@ -22,16 +22,16 @@ module ApplicationHelper
 	
 	def get_title
 		if @title
-			title = "Seedz | " + @title
+			title = "Cherry Tree | " + @title
 		else
-			title = "Seedz | " + controller.controller_name.capitalize
+			title = "Cherry Tree | " + controller.controller_name.capitalize
 		end
 		return title
 	end
 	
 	
 	def link_to_add_fields( name, f, association )
-		new_object = f.object.class.reflect_on_association(association).klass.new
+		new_object = f.object.class.reflect_on_association( association ).klass.new
 		fields = f.fields_for( association, new_object, :child_index => "new_#{association}" ) do |builder|
 			render( association.to_s + "/form", :f => builder )
 		end

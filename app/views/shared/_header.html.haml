@@ -1,8 +1,14 @@
 #hd
 	.wrapper
-		= link_to image_tag( "children.png", :alt=> "Awesome Logo", :class => 'logo' ), root_path
+		= link_to image_tag( "cherry_tree_icon.png", :alt=> "Awesome Logo", :class => 'logo' ), root_path
+		
+		
 		
 		%ul.top_main_menu
+			%li.tagline
+				%b TheCherryTree.com
+				%br
+				Where Children Blossom
 			%li= link_to "Blog", blog_index_path
 			%li= link_to "Forums", forums_path
 		
