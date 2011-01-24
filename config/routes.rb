@@ -1,5 +1,6 @@
 CherryTree::Application.routes.draw do
 
+
 	root :to => "site#index"
 	
 	
@@ -18,7 +19,9 @@ CherryTree::Application.routes.draw do
 	resources :children do
 		get 'login', :on => :collection
 	end
-	
+
+	resources :contacts
+
 	resources :forums do
 		resources :topics do
 			resources :posts
