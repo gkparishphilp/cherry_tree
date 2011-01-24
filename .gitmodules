@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/tinymce_hammer"]
+	path = vendor/plugins/tinymce_hammer
+	url = https://github.com/trevorrowe/tinymce_hammer.git
