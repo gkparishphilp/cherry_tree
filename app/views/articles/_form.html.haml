@@ -1,10 +1,10 @@
 = f.label "Title:"
 = f.text_field :title, :class => 'title'
 
-= f.text_area :content, :class => 'long_desc_area'
+= f.text_area :content
 
 = f.label "Excerpt (Or blank for first 200 chars)"
-= f.text_field :excerpt
+= f.text_area :excerpt
 
 = f.label "Publish On:"
 = f.text_field :publish_at, :class => 'datepicker'
@@ -21,6 +21,7 @@
 
 = f.check_box :comments_allowed, {}, 'true', 'false'
 Allow Comments
+%br
 = f.label "Status:"
 = f.select :status, [ ['Publish',  'publish'], ['Draft', 'draft'] ]
 

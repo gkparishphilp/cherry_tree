@@ -21,7 +21,6 @@
 #
 
 class Article < ActiveRecord::Base
-	before_create :set_excerpt
 	before_save :set_publish_at
 	
 	belongs_to :owner, :polymorphic => true
@@ -77,7 +76,10 @@ class Article < ActiveRecord::Base
 private
 	
 	def set_excerpt
-		
+		unless self.excerpt.blank?
+			excerpt = self.content.gsub!(%r{</?[^>]+?>}, '') #remove html tags?		
+			self.update_attributes :excerpt => excerpt[0..200]
+		end
 	end
 	
 	def set_publish_at

@@ -28,7 +28,8 @@ class BlogController < ApplicationController
 	def show
 		@article = Article.find params[:id]
 		
-		set_meta @article.title, @article.content
+		@title = @article.title
+		@description = @article.excerpt
 		
 		@comment = Comment.new
 		@commentable = @article

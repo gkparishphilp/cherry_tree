@@ -3,10 +3,10 @@ class Blog < ActiveRecord::Migration
 		create_table :articles, :force => true do |t|
 			t.references	:owner, :polymorphic => true
 			t.string		:title
-			t.string		:excerpt
 			t.integer		:snip_at
 			t.integer		:view_count,	:default => 0
 			t.text			:content
+			t.text			:excerpt
 			t.string		:status, :default => 'publish'
 			t.boolean		:comments_allowed
 			t.datetime		:publish_at

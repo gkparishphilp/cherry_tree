@@ -3,13 +3,15 @@
 		%h2
 			= link_to article.title, blog_path( article )
 		%span.article_meta
-			%b posted
+			%b posted:
 			= format_date_only( article.publish_at )
 			- if article.comments_allowed?
 				= link_to pluralize( article.comments.count, "Comment" ), blog_path( article ) + "#comments"
+			by:
+			= article.owner.name
 	.article_body.text
 		- if article.snip_at && ( article.content.size > article.snip_at )
 			= snip article.content.html_safe, article.snip_at
-			= link_to "Click to continue or comment", blog_link( article )
+			= link_to "Click to continue or comment", blog_path( article )
 		- else
 			= article.content.html_safe
