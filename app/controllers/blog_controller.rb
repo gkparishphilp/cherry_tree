@@ -2,7 +2,14 @@ class BlogController < ApplicationController
 	# should just show and index blogs.  Used to display Articles so we can use /blog paths instead of /articles paths
 
 	before_filter	:get_sidebar_data
+	helper_method	:sort_column, :sort_dir
 
+	def admin
+		@articles = Article.search( params[:q] ).order( sort_column + " " + sort_dir ).paginate( :per_page => 10, :page => params[:page] )
+	end
+	
+	
+	
 	def index
 		if @tag = params[:tag]
             @articles = Article.tagged_with( @tag ).published.paginate :order => "publish_at desc", :page => params[:page], :per_page => 10
@@ -41,6 +48,15 @@ private
 		@recent_posts = Article.recent.published[0..9]
 		@archives = Article.find_by_sql( "select month(publish_at) as month, year(publish_at) as year from articles  group by month(publish_at) " )
 	end
+	
+	def sort_column
+		Article.column_names.include?( params[:sort] ) ? params[:sort] : 'publish_at'
+	end
+	
+	def sort_dir
+		%w[ asc desc ].include?( params[:dir] ) ? params[:dir] : 'desc'
+	end
+
 
 	
 end

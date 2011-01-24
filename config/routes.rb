@@ -1,12 +1,15 @@
-Seedz::Application.routes.draw do
+CherryTree::Application.routes.draw do
 
 	root :to => "site#index"
+	
 	
 	resources :articles do
 		resources :comments
 	end
 	
-	resources :blog
+	resources :blog do
+		get	:admin, :on => :collection
+	end
 	
 	resources :checkins do
 		get 'approve', :on => :member
@@ -68,6 +71,7 @@ Seedz::Application.routes.draw do
 	
 	resources :relations
 	
+	match '/admin/' => 'admin#index', :as => :admin_index
 
 	match '/blog/archive/(:year/(:month))', :to => 'blog#index'
 	

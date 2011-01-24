@@ -15,7 +15,10 @@ class Site < ActiveRecord::Base
 	
 	validates :domain, :uniqueness => true
 	
-	has_many :articles, :as => :owner
+	has_many :roles
+	has_many :admins, :through => :roles, :source => :user, :conditions => "role = 'admin'"
+	has_many :contributors, :through => :roles, :source => :user, :conditions => "role = 'contributor'"
+	
 	
 	has_many :links, :as => :owner
 	has_many :twitter_accounts, :as => :owner

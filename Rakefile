@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Seedz::Application.load_tasks
+CherryTree::Application.load_tasks

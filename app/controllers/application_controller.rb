@@ -1,13 +1,30 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
-	before_filter :fetch_logged_in_user
+	before_filter :fetch_session_data
 
 
 protected
-	# Grabs @current_user from session cookie
-	def fetch_logged_in_user
+
+	def http_auth
+		authenticate_or_request_with_http_basic do |name, pass|
+			name == 'admin' && pass == 'gr0undsw3ll'
+		end
+	end
+
+	# Custom 404s & 500 catch-all
+	if Rails.env.production?
+		rescue_from ActionController::UnknownAction, :with => :invalid_method
+		rescue_from ActionController::RoutingError, :with => :invalid_method
+		rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+		rescue_from Exception, :with => :server_error
+	end
+	
+	# Grabs @current_user from session cookie, also sets human attribute 
+	# and @current_site, which in this case is always just the first (and only) site object
+	def fetch_session_data
 		@current_user = ( session[:user_id] && User.find( session[:user_id] ) ) || User.anonymous
 		@current_user.human = @current_user.logged_in? || cookies[:human] == 'true'
+		@current_site = Site.first
 	end
 	
 	# simply sets session cookie for passed-in user
@@ -64,26 +81,26 @@ protected
 	# Controller filters -- todo -- add @current_user.validated? for filter on valid email
 	def require_admin
 		if @current_user.anonymous?
-			flash[:notice] = "Please log in first"
+			pop_flash "Please log in first", :notice
 			redirect_to new_session_path
 			return false
 		else
-			unless @current_user.is_admin?
-				flash[:notice] = "Admins Only"
+			unless @current_user.admin?( @current_site )
+				pop_flash "Admins Only", :notice
 				redirect_to root_path
 				return false
 			end
 		end
 	end
 	
-	def require_contributor
+	def require_admin_or_contributor
 		if @current_user.anonymous?
-			flash[:notice] = "Please log in first"
+			pop_flash "Please log in first", :notice
 			redirect_to new_session_path
 			return false
 		else
-			unless @current_user.contributor? @current_site
-				flash[:notice] = "Contributors Only"
+			unless @current_user.admin?( @current_site ) || @current_user.contributor?( @current_site )
+				pop_flash "Admins or Contributors Only", :notice
 				redirect_to root_path
 				return false
 			end
@@ -93,7 +110,6 @@ protected
 	def require_login
 		if @current_user.anonymous?
 			pop_flash  "Please log in first", :notice
-			@dest = request.url
 			redirect_to new_session_path
 			return false
 		end
@@ -109,22 +125,13 @@ protected
 	
 	
 	def require_user_can_manage( object )
-		unless ( object.user == @current_user ) || ( @current_site.admins.include? @current_user )
+		unless ( object.user == @current_user ) || @current_user.admin?( @current_site ) 
 			pop_flash "Not your #{object.class.to_s}", :error
 			redirect_to root_path
 			return false
 		end
 	end
 	
-	def require_author_can_manage( object )
-		#todo
-	end
-	
-	# sets page metadata like page title and description
-	def set_meta( title, *description )
-		@title = title
-		@description = description.first[0..200] unless description.first.blank?
-	end
 	
 	
 end

@@ -21,6 +21,7 @@
 #
 
 class Article < ActiveRecord::Base
+	before_create :set_excerpt
 	before_save :set_publish_at
 	
 	belongs_to :owner, :polymorphic => true
@@ -30,8 +31,11 @@ class Article < ActiveRecord::Base
 	has_friendly_id :title, :use_slug => :true
 	acts_as_taggable_on	:topics
 	acts_as_taggable_on	:keywords
+	
 	acts_as_followed
 	gets_activities
+	
+	searchable_on [ :title ]
 	
 	scope :published, where( "publish_at <= ? and status = 'publish'", Time.now )
 		
@@ -71,7 +75,11 @@ class Article < ActiveRecord::Base
 	end
 	
 private
-
+	
+	def set_excerpt
+		
+	end
+	
 	def set_publish_at
 		self.publish_at = Time.now unless self.publish_at
 	end

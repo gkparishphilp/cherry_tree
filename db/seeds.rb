@@ -14,7 +14,11 @@ c.save
 c.relations.first.update_attributes :role => 'father'
 
 puts "Setup default Site"
-site = Site.create :name => "Seedz", :domain => 'localhost'
+site = Site.create :name => "Cherry Tree", :domain => 'localhost'
+# Todo - change to following for production:
+# site = Site.create :name => "Cherry Tree", :domain => 'thecherrytree.com'
+
+u1.make_admin site
 
 puts "Create some forums"
 f = Forum.create :title => "General", :description => 'Just a place to hang out and discuss anything and everything'

@@ -185,19 +185,28 @@ class User < ActiveRecord::Base
 	end
 	
 	def make_admin( site )
-		r = Role.create :user_id => self.id, :role => 'admin'
+		r = Role.create :user_id => self.id, :role => 'admin', :site_id => site.id
 	end
 	
 	def make_contributor( site )
-		r = Role.create :user_id => self.id, :role => 'contributor'
+		r = Role.create :user_id => self.id, :role => 'contributor', :site_id => site.id
 	end
 	
-	def is_admin?
-		
+	def make_site_role( site, role )
+		r = Role.create :user_id => self.id, :site_id => site.id, :role => role
 	end
 	
-	def is_contributor?
+	def site_role?( site, role )
+		#todo
+	end
 	
+	def admin?( site )
+		site.admins.include? self
+	end
+	
+	def contributor?( site )
+		contribs = site.contributors + site.admins
+		contribs.include? self
 	end
   
 	#ruby attribute names can't end with question marks, only method names, so I'll
@@ -274,7 +283,7 @@ private
 	end
 
 	def self.encrypted_password( pw, salt )
-		string_to_hash = pw + "439fgfg334gergersd9fhq34ufq" + salt
+		string_to_hash = pw + "rtreterty546trmmfcsdid045itr343" + salt
 		Digest::SHA1.hexdigest(string_to_hash)
 	end
 

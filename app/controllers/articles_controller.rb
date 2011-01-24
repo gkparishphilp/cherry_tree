@@ -1,17 +1,12 @@
 class ArticlesController < ApplicationController
+	before_filter :get_owner
 	
 	def new
 		@article = Article.new
-		render :layout => '3col'
 	end
 	
 	def edit
 		@article = Article.find params[:id]
-		unless author_owns( @article )
-			redirect_to root_path
-			return false
-		end
-		render :layout => '3col'
 	end
 	
 	def create
@@ -48,6 +43,13 @@ class ArticlesController < ApplicationController
 		@article.destroy
 		pop_flash 'Article was successfully deleted.'
 		redirect_to :back
+	end
+	
+	private
+	
+	def get_owner
+		require_admin_or_contributor
+		@owner = @current_user
 	end
 
 end

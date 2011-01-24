@@ -31,6 +31,7 @@ class Users < ActiveRecord::Migration
 		end
 	
 		create_table :roles, :force => true  do |t|
+			t.references	:site
 			t.references	:user
 			t.string		:role
 			

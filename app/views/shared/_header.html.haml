@@ -3,23 +3,23 @@
 		= link_to image_tag( "cherry_tree_icon.png", :alt=> "Awesome Logo", :class => 'logo' ), root_path
 		
 		
-		
 		%ul.top_main_menu
 			%li.tagline
 				%b TheCherryTree.com
 				%br
 				Where Children Blossom
-			%li= link_to "Blog", blog_index_path
-			%li= link_to "Forums", forums_path
-		
-		%ul.top_user_menu
-			- if @current_user.anonymous?
-				%li.user
-					= link_to image_tag( "/images/anonymous_avatar.png", :width => 20 ), "", :class => 'avatar'
-					= link_to "Login", login_path, :class=>'username'
-				%li= link_to "Register", register_path
-			- else
-				%li.user
-					= link_to avatar_tag( @current_user, :tiny, :width => 20 ), user_path( @current_user ), :class => 'avatar'
-					= link_to @current_user.name, user_path( @current_user ), :class => 'username'
-				%li= link_to "Logout", logout_path
+			-# todo - implement blog and forum
+				%li= link_to "Blog", blog_index_path
+				%li= link_to "Forums", forums_path
+		-# todo -- add user reg/login
+			%ul.top_user_menu
+				- if @current_user.anonymous?
+					%li.user
+						= link_to image_tag( "/images/anonymous_avatar.png", :width => 20 ), "", :class => 'avatar'
+						= link_to "Login", login_path, :class=>'username'
+					%li= link_to "Register", register_path
+				- else
+					%li.user
+						= link_to avatar_tag( @current_user, :tiny, :width => 20 ), user_path( @current_user ), :class => 'avatar'
+						= link_to @current_user.name, user_path( @current_user ), :class => 'username'
+					%li= link_to "Logout", logout_path

@@ -20,6 +20,11 @@ module ApplicationHelper
 		date.strftime("%b %d, %Y")
 	end
 	
+	def get_description
+		description = @description.blank? ? APP_DESCRIPTION : @description[0..200]
+		"<meta name='description' content='#{description}' />".html_safe
+	end
+	
 	def get_title
 		if @title
 			title = "Cherry Tree | " + @title
@@ -42,7 +47,6 @@ module ApplicationHelper
 	def link_to_remove_fields( name, f )
 		f.hidden_field( :_destroy ) + link_to_function( name, "remove_fields(this)" )
 	end
-	
 	
 	
 	def possessize( text )
@@ -70,7 +74,13 @@ module ApplicationHelper
 
 	end 
 	
-	
+	# For admin
+	def sortable( column, title=nil )
+		title ||= column.titleize
+		css_class = column == sort_column ? "current #{sort_dir}" : nil
+		dir = column == sort_column && sort_dir == 'asc' ? 'desc' : 'asc'
+		link_to title, params.merge( :sort => column, :dir => dir, :page => nil ), :class => css_class
+	end
 	
 	
 end
