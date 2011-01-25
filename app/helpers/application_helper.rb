@@ -75,7 +75,7 @@ module ApplicationHelper
 	end 
 	
 	# For admin
-	def sortable( column, title=nil )
+	def sortable_header( column, title=nil )
 		title ||= column.titleize
 		css_class = column == sort_column ? "current #{sort_dir}" : nil
 		dir = column == sort_column && sort_dir == 'asc' ? 'desc' : 'asc'

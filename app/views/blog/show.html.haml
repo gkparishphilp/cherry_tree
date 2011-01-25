@@ -23,14 +23,14 @@
 				- for article in @article.related_articles
 					= link_to article.title, blog_path( article )
 		%br
-		%br
 		- if @article.comments_allowed?
-			#comment
-				= render :partial=>'comments/new'
 			- unless @article.comments.empty?
 				#comments
 					%h3 Comments
 					= render :partial => 'comments/comment', :collection => @article.comments
+			#comment
+				= render :partial=>'comments/new'
+			
 	
 - content_for :right_column do
 	= render :partial => 'sidebar'

@@ -102,6 +102,19 @@ h1, h2, h3, h4, h5
 	:color $link
 	:margin 0 0 4px 1px
 		
+		
+em
+	font-style: italic
+	
+blockquote
+	border-left: 1px solid #999
+	margin-left: 30px
+	margin-right: 25px
+
+strong
+	font-weight: bold
+	
+	
 // Flashes
 #flash
 	:width 96%
@@ -131,8 +144,10 @@ h1, h2, h3, h4, h5
 textarea
 	+rounded
 	:width 500px
-	:height 150px
 	:display block
+	
+.small_area
+	height: 150px
 	
 input[type="text"],input[type="password"], textarea
 	:font-size 16px
@@ -145,20 +160,79 @@ label
 	:padding 4px 3px
 	:display block
 	
+.title_field
+	:font-size 120%
+	:font-weight bold
+	:width 500px
+	:padding 4px
+	:margin-bottom 18px
+
+
+.admin_title
+	:float left
+.new_button
+	:margin-right 1em
+	:float right
+	:padding 5px
+	:text-align center
+	:width 140px
+	:border 1px solid $link
+	:background-color #eee
+	:font-size 85%
+	+rounded( 4px )
+	img
+		:vertical-align middle
+		:margin-top -4px
+		
+.admin_header
+	:margin-top 10px
+	:margin-bottom 20px
 .admin_table
-	:width 640px
+	:border 1px solid #999
+	+rounded( 8px )
+	:width 100%
 	th
 		:padding 5px
 		:font-weight bold
 		:text-align left
 	td
 		:padding 5px
+		
+.label
+	:float left
+	:width 200px
+	:font-weight bold
+	:margin 5px 0px
+.data
+	:margin 5px 0px
+	:float left
+	:width 300px
+		
+.current
+	:padding-right 24px
+	:background-repeat no-repeat
+	:background-position right center
+.asc
+	:background-image url( "../images/arrow_up.png" )
+.desc
+	:background-image url( "../images/arrow_down.png" )
 
 .button
+	:background-color #F2F2F2
+	:border 1px solid #0085AE
+	:margin-top 6px
+	:padding 4px 10px
+	:color #0085AE
+	:font-weight bold
+	:margin-bottom 10px
 	img
 		:vertical-align middle
-	:margin-top 1em
-
+	+rounded()
+	:cursor pointer
+	&:hover
+		:background-color #fff
+		:color #0085AE + #333
+		:border 1px solid #0085AE + #333
 .new
 	:float right
 	
