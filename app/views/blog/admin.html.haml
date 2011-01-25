@@ -12,7 +12,7 @@
 	= form_tag admin_blog_index_path, :method => :get, :id => 'search_form' do
 
 		= text_field_tag :q, params[:q]
-		= submit_tag 'Search', :class => 'buttons'
+		= submit_tag 'Search', :class => 'button'
 		|
 		= link_to 'Clear', :sort => params[:sort], :dir => params[:dir], :q => nil
 		#admin_table= render 'admin_table'

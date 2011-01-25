@@ -1,10 +1,10 @@
 = f.label "Title:"
-= f.text_field :title, :class => 'title'
+= f.text_field :title, :class => 'title_field'
 
-= f.text_area :content
+= f.tinymce :content
 
 = f.label "Excerpt (Or blank for first 200 chars)"
-= f.text_area :excerpt
+= f.text_area :excerpt, :class => :small_area
 
 = f.label "Publish On:"
 = f.text_field :publish_at, :class => 'datepicker'

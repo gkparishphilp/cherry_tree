@@ -4,9 +4,9 @@
 	No Articles
 - else
 	%table.admin_table
-		%th= sortable 'title'
-		%th= sortable 'publish_at', "Publish Date"
-		%th= sortable 'status'
+		%th= sortable_header 'title'
+		%th= sortable_header 'publish_at', "Publish Date"
+		%th= sortable_header 'status'
 		- for article in @articles
 			%tr
 				%td( style = 'width:200px;' )

@@ -1,6 +1,4 @@
 - content_for :left_column do
-	= render :partial => 'admin/nav'
-- content_for :middle_column do
 	.form_group
 		%h1 
 			Edit Blog Article
@@ -8,10 +6,4 @@
 			= render :partial => 'form', :locals => { :f => f, :m => 'Update' }
 		
 - content_for :right_column do
-	= render 'shared/help'
-	%h3 Notice
-	By uploading content to BackMyBook, you agree to our 
-	= link_to "terms of service", "/terms", :target => "_blank"
-	and our 
-	= link_to "content publishing agreement", "/content", :target => "_blank"
-	&#46;
+	= render 'admin/nav'
