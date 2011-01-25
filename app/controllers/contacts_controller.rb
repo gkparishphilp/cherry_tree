@@ -22,6 +22,7 @@ class ContactsController < ApplicationController
 	
 	def create
 		@contact = Contact.new( params[:contact] )
+		@contact.ip = request.ip
 
 		if @contact.save
 			pop_flash "Contact was successfully created."

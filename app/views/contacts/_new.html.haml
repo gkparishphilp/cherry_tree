@@ -1,0 +1,6 @@
+= form_for Contact.new , :html => { :mutipart => true } do |f|
+	= render 'contacts/form', :f => f
+	.actions
+		= f.submit 'Submit', :class => 'button'
+		|
+		= link_to 'Cancel', :back
