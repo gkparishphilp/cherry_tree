@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
 	before_filter :get_owner, :except => [ :show, :index ]
+	cache_sweeper :article_sweeper, :only => [:create, :update, :destroy]
 	
 	def show
 		redirect_to blog_path( :id => params[:id] )
@@ -19,7 +20,6 @@ class ArticlesController < ApplicationController
 	
 	def create
 		@article = Article.new params[:article]
-
 		if @owner.articles << @article
 			pop_flash 'Article was successfully created.'
 			@owner.do_activity( "write", @article )
