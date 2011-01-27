@@ -13,7 +13,7 @@
 			
 	.article_body.text
 		- if article.snip_at && ( article.content.size > article.snip_at )
-			= snip article.content.html_safe, article.snip_at
+			= truncate_html( article.content, article.snip_at ).html_safe
 			= link_to "Click to continue or comment", blog_path( article )
 		- else
 			= article.content.html_safe

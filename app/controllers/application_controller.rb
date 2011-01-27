@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
+	helper	:all
+	
 	before_filter :fetch_session_data
 
 

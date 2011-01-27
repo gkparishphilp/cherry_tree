@@ -1,5 +1,13 @@
 class ArticlesController < ApplicationController
-	before_filter :get_owner
+	before_filter :get_owner, :except => [ :show, :index ]
+	
+	def show
+		redirect_to blog_path( :id => params[:id] )
+	end
+	
+	def index
+		redirect_to blog_index_path
+	end
 	
 	def new
 		@article = Article.new
