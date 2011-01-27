@@ -20,8 +20,10 @@ CherryTree::Application.routes.draw do
 		get 'login', :on => :collection
 	end
 
-	resources :contacts
-
+	resources :contacts do
+		get 'admin', :on  => :collection
+	end
+	
 	resources :forums do
 		resources :topics do
 			resources :posts

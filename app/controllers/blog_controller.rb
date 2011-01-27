@@ -38,6 +38,12 @@ class BlogController < ApplicationController
 		
 	end
 
+	def destroy
+		@article = Article.find params[:id]
+		@article.destroy
+		pop_flash 'Article was successfully deleted.'
+		redirect_to :back
+	end
 
 private
 
