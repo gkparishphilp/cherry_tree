@@ -14,6 +14,7 @@ gem 'friendly_id'
 gem 'acts-as-taggable-on'
 gem 'amazon-ecs', :require=>'amazon/ecs'
 gem 'sitemap_generator'
+gem 'newrelic_rpm'
 
 source "http://gems.github.com"
 gem 'ambethia-recaptcha', :require => "recaptcha/rails"
