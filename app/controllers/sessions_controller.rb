@@ -4,25 +4,28 @@ class SessionsController < ApplicationController
 	end
   
 	def create
-		user = User.authenticate( params[:credential], params[:password] )
+		
+		user, msg = User.authenticate( params[:email], params[:password] )
+
 		if user
 			login( user )
-			pop_flash  "#{user.email} successfully logged in"
-			
-			redirect_to polymorphic_path( user )
-
+			pop_flash msg
+			redirect_to user_path( user )
+		elsif user == false
+			pop_flash "#{params[:email]} has not been registered"
+			redirect_to register_path( :email => params[:email] )
 		else
 			params[:password] = nil
-			@user = User.new
-			pop_flash "Invalid user/password combination", :error
+			pop_flash msg, :error
 			redirect_to new_session_path
 		end
 	end
 	
 	def register
 		@user = User.new
+		@user.email = params[:email]
 	end
-
+	
 	def destroy
 		if @current_user
 			user = User.find_by_id @current_user.id
