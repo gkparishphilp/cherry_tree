@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_filter :get_owner, :except => [ :show, :index ]
-	cache_sweeper :article_sweeper, :only => [:create, :update, :destroy]
+	# cache_sweeper :article_sweeper, :only => [:create, :update, :destroy]
 	
 	def show
 		redirect_to blog_path( :id => params[:id] )

@@ -3,7 +3,7 @@ class BlogController < ApplicationController
 
 	before_filter	:get_sidebar_data
 	helper_method	:sort_column, :sort_dir
-	caches_page :show
+	# caches_page :show
 
 	def admin
 		@articles = Article.search( params[:q] ).order( sort_column + " " + sort_dir ).paginate( :per_page => 10, :page => params[:page] )

@@ -1,0 +1,157 @@
+
+/* =Structure */
+body
+	background: #fff url(../images/bg.jpg) no-repeat
+
+#container
+	:width $width-main
+	:min-height 600px
+
+#bd, #ft
+	:margin auto
+	:width $page-width
+	
+#hd
+	:height 55px
+
+#hd .wrapper
+	:margin auto
+	:width $page-width
+
+.wrapper:after,#bd:after,#ft:after
+	+clearfix
+
+#hd .logo
+	:float left
+	:margin-top 4px
+	height: 55px
+
+ul.top_main_menu
+	:float left
+	+top_menu(right)
+	.tagline
+		margin-left: -15px
+		color: #a9071e
+ul.top_user_menu
+	:float right
+	+top_menu(left)
+	li.user
+		:margin-top -6px
+		:position relative
+		:vertical-align middle
+	li a.avatar
+		:background none
+		:margin-right 5px
+		:vertical-align middle
+	li .avatar img
+		:position absolute
+		:vertical-align middle
+		:top 6px
+		:left -4px
+		:float left
+	li a.username
+		:vertical-align middle
+		:float right
+		:margin-top 8px
+
+#bd
+	:background-color #fff
+	:border 1px solid #b0d3e1
+	:border-bottom none
+	:min-height 600px
+	+rounded-sides(top, 5px)
+
+.column1, .column2
+	:float left
+
+.column1
+	:width 65.5%
+	// 642px ?
+
+.column2
+	:width 34.4%
+	// 337 px ?
+	
+.banner_name
+	:float left
+	:width 450px
+.banner_points
+	:float right
+	:width 150px
+	:font-size 200%
+	.pts
+		:font-size 33%
+
+#one_time_fields
+	:display none
+
+
+.amzn_item
+	:width 600px
+	:margin 0 auto
+	:margin-top 20px
+.amzn_thumb
+	:float left
+	:width 70px
+.amzn_data
+	:width 430px
+	:float left
+	.amzn_title
+		:font-weight bold
+	.amzn_desc
+		:font-size 85%
+		:margin-left 15px
+.amzn_confirm
+	:width 100px
+	:float left
+
+
+.owned_unlock
+	:width 150px
+	:float left
+	:background-color #afa
+	:border 2px solid #9a9
+	:text-align center
+	:padding 10px 5px
+	:margin 10px
+	+rounded(8px)
+	img
+		:margin 0 auto
+		
+.not_owned_unlock
+	:width 150px
+	:float left
+	:text-align center
+	:padding 10px 5px
+	:margin 10px
+	img
+		:margin 0 auto
+		
+#canvascontainer 
+	:margin 0 auto
+	:width 300px
+	:border 1px solid #999
+	
+.activity
+	:font-size 90%
+	:margin 10px 0px
+/* =Footer */
+#ft
+	:background-color #b0d3e1
+	+rounded-sides(bottom)
+	:border 1px solid #b0d3e1
+	:border-top none
+	:color #2c7cac
+
+ul.footer_menu
+	:float left
+	+footer_menu(right)
+	img
+		:margin-top -2px
+		:margin-bottom -4px
+
+ul.author_copy
+	:float right
+	:margin-right 30px
+	+footer_menu(left)
+	

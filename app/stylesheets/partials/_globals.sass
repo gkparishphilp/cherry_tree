@@ -21,7 +21,7 @@ $page-width: 980px
 	-webkit-border-radius: $radius
 	border-radius: $radius
 
-=rounded-sides($side, $radius: 4px)
+=rounded-side($side, $radius: 4px)
 	-moz-border-radius-#{$side}left: $radius
 	-webkit-border-#{$side}-left-radius: $radius
 	border-#{$side}-left-radius: $radius
@@ -29,21 +29,15 @@ $page-width: 980px
 	-webkit-border-#{$side}-right-radius: $radius
 	border-#{$side}-right-radius: $radius
 
-=rounded-right($side, $radius: 4px)
-	-moz-border-radius-#{$side}right: $radius
-	-webkit-border-#{$side}-right-radius: $radius
-	border-#{$side}-right-radius: $radius
-
-=rounded-left($side, $radius: 4px)
-	-moz-border-radius-#{$side}left: $radius
-	-webkit-border-#{$side}-left-radius: $radius
-	border-#{$side}-right-radius: $radius
-
 =shadow($x: 1px, $y: 2px, $offset: 8px)
 	box-shadow: $x $y $offset #888888
 	-moz-box-shadow: $x $y $offset #888888
 	-webkit-box-shadow: $x $y $offset #888888
-	
+
+=alpha_bg($x)
+	background: rgba(255, 255, 255, $x)
+
+
 =top_menu($side: right)
 	:padding 7px 0
 	:margin-left 20px
@@ -57,19 +51,7 @@ $page-width: 980px
 			:padding 3px 14px 3px 2px
 			:background transparent url() no-repeat 100% 44%
 
-=footer_menu($side: right)
-	:padding 7px 0
-	:margin-left 20px
-	:color #fff
-	li
-		:float left
-		:margin-#{$side} 8px
-		a
-			:vertical-align baseline
-			:font-size 11px
-			:font-weight bold
-			:padding 3px 14px 3px 2px
-			:color #2c7cac
+
 			
 .clear
 	:clear both
@@ -149,12 +131,31 @@ textarea
 .small_area
 	height: 150px
 	
-input[type="text"],input[type="password"], textarea
-	:font-size 16px
-	:padding 4px
+input.email_collect
+	:font-size 24px
+	:padding 6px
 	:background #f9f9f9
-	:border 1px solid $border-color
-	+rounded
+	:border 1px solid #eee
+	+rounded(15px)
+	
+
+.ct_button
+	:background #98cd65 url() no-repeat
+	:border 6px solid #b7ea87
+	+shadow
+	:color #ffffff
+	:font-family "Corben", arial, sans-serif
+	:font-weight bold
+	:padding 6px 6px 0px 6px
+	:font-size 16px
+	+rounded(20px)
+	:cursor pointer
+	&:hover
+		:background-color #98cd65 + #111
+		:border 6px solid #b7ea87 + #111
+
+
+
 
 label
 	:padding 4px 3px
@@ -217,22 +218,7 @@ label
 .desc
 	:background-image url( "../images/arrow_down.png" )
 
-.button
-	:background-color #F2F2F2
-	:border 1px solid #0085AE
-	:margin-top 6px
-	:padding 4px 10px
-	:color #0085AE
-	:font-weight bold
-	:margin-bottom 10px
-	img
-		:vertical-align middle
-	+rounded()
-	:cursor pointer
-	&:hover
-		:background-color #fff
-		:color #0085AE + #333
-		:border 1px solid #0085AE + #333
+
 .new
 	:float right
 	

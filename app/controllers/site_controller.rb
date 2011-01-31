@@ -1,5 +1,4 @@
 class SiteController < ApplicationController
-	before_filter	:require_admin, :except => :index
 	caches_page :index
 	
 	def index
@@ -7,7 +6,7 @@ class SiteController < ApplicationController
 		# @activities = Activity.feed Site.first
 		@title = "Welcome"
 		@articles = Article.published.order( 'publish_at asc' )
-		
+		render :layout => 'home'
 	end
 	
 end

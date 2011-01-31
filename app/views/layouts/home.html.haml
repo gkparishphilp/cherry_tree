@@ -1,0 +1,11 @@
+!!!strict
+%html
+	%head
+		= render 'layouts/meta'
+	%body
+		#container
+			= render 'shared/header'
+			#bd
+				= yield
+		= render 'shared/footer'
+		= render 'shared/analytics'

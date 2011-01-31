@@ -1,1 +1,4 @@
-= f.text_field :email
+= form_for @contact do |f|
+	= f.text_field :suject
+	= f.text_field :email
+	= f.text_area :content
