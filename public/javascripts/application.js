@@ -31,6 +31,9 @@ if( audio.canPlayType ){
 		audio.src = '/audio/theme.ogg'
 	}
 }
+else{
+	$('#audio_control').hide();
+}
 
 audio.addEventListener('ended', function() {
 	this.load();
@@ -39,7 +42,6 @@ audio.addEventListener('ended', function() {
 
 
 $(document).ready(function(){
-	
 	
 	$(audio).bind('play',function() {
 		$("#audio_control").html('Pause');   
