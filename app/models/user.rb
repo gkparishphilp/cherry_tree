@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
 	# Instance Methods	------------------------------------
 	
 	# For sessions / Validations, etc..
-	
+		
 	def anonymous?
 		self.id == ANONYMOUS_ID
 	end
