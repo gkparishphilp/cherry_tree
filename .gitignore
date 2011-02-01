@@ -3,14 +3,9 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-public/stylesheets/screen.scss
-public/stylesheets/print.scss
-public/stylesheets/ie.scss
 public/system/**/*
 public/stylesheets/**/*
-public/stylesheets/screen.css
-public/stylesheets/print.css
-public/stylesheets/ie.css
+public/stylesheets/*
 assets/**/*
 config/database.yml
 db/schema.rb

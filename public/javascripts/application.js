@@ -14,15 +14,64 @@ function remove_fields( link ) {
   $(link).closest(".fields").hide();
 }
 
+// experiment with audio
+	var ding = new Audio("/audio/ding.wav");
+	var pop = new Audio("/audio/pop1.wav");
+	var pop2 = new Audio("/audio/pop2.wav");
+	var pop3 = new Audio("/audio/pop3.wav");
+	
+
+var audio = new Audio();
+
+if( audio.canPlayType ){
+	if( audio.canPlayType('audio/mpeg') != "" ){
+		audio.src = '/audio/theme.mp3'
+	}
+	else{
+		audio.src = '/audio/theme.ogg'
+	}
+}
+
+audio.addEventListener('ended', function() {
+	this.load();
+    this.play();
+}, false);
+
 
 $(document).ready(function(){
 	
-	var ding = new Audio("/ding.wav");
 	
-	$('.red_button').click(function() {
+	$(audio).bind('play',function() {
+		$("#audio_control").html('Pause');   
+		}).bind('pause', function() {
+			$("#audio_control").html('Play');    
+	});
+	
+	$('#audio_control').click( function(){
+		if ( audio.paused || audio.ended ) { audio.play(); } 
+  		else { audio.pause(); }     
+	});
+	
+	$('.ding').mouseenter( function() {
+		pop.load();
+		pop.play();
+	});
+	
+	$('.ding').click(function() {
+		ding.load();
 		ding.play();
 	});
 	
+	$('.pop').mouseenter( function() {
+		pop2.load();
+		pop2.play();
+	});
+	
+	$('.pop').click(function() {
+		pop3.load();
+		pop3.play();
+	});
+
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
 	});

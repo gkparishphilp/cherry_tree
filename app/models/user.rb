@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
 	validates	:name, :uniqueness => true, 
 						:length => {:minimum => 2, :maximum => 254},
-						:format => /\A[a-zA-Z0-9]+\z/,
+						:format => /\A[a-zA-Z0-9_]+\z/,
 						:if => :has_name?
 
 
@@ -250,7 +250,7 @@ class User < ActiveRecord::Base
 	end
 	
 	def set_name
-		self.name = self.email.gsub(/\W/, "-") unless self.name.present?
+		self.name = self.email.gsub(/\W/, "_") unless self.name.present?
 	end
 	
 	
