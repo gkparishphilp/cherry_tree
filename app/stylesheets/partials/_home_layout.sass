@@ -1,10 +1,10 @@
 
 /* =Structure */
 body
-	:background #bce0ce url(../images/app_body_bg.jpg) repeat-x
+	:background #51371a url(../images/home_body_bg.jpg) repeat-x
 	
 #container
-	:background #bce0ce url(../images/app_bg.jpg) no-repeat
+	:background #cee9dd url(../images/home_bg.jpg) no-repeat
 	width: 1200px
 	
 
@@ -21,14 +21,18 @@ body
 	width: $page-width
 	:min-height 668px
 	
-	#content
+	#welcome_box
 		+rounded(20px)
 		+alpha_bg(.65)
 		border: 1px solid #ddd
 		padding: 25px
-		width: 800px
+		width: 600px
 		min-height: 400px
-		margin: 0 auto
+		position: relative
+		top: 10px
+		left: 300px
+		p
+			font-size: 24px
 		.disclaimer
 			font-size: 12px
 		h1

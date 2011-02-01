@@ -1,4 +1,9 @@
 = form_for @contact do |f|
-	= f.text_field :suject
-	= f.text_field :email
-	= f.text_area :content
+	= f.label "Your Email:"
+	= f.text_field :email, :class => 'email_collect'
+	= f.label "Subject:"
+	= f.text_field :subject, :class => 'email_collect'
+	
+	= f.text_area :content, :class => 'collect'
+	
+	= f.submit "Submit", :class => 'green_button'

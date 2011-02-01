@@ -14,6 +14,7 @@ class ContactsController < ApplicationController
 	
 	def new
 		@contact = Contact.new
+		render :layout => 'underground'
 	end
 	
 	def edit

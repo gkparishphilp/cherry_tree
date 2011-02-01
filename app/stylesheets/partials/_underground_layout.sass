@@ -1,10 +1,9 @@
-
 /* =Structure */
 body
-	:background #bce0ce url(../images/app_body_bg.jpg) repeat-x
+	:background #51371a url(../images/underground_body_bg.jpg) repeat-x
 	
 #container
-	:background #bce0ce url(../images/app_bg.jpg) no-repeat
+	:background #cee9dd url(../images/underground_bg.jpg) no-repeat
 	width: 1200px
 	
 
@@ -19,22 +18,24 @@ body
 	
 #bd
 	width: $page-width
-	:min-height 668px
 	
 	#content
+		color: #ceb58a
 		+rounded(20px)
-		+alpha_bg(.65)
+		background: #51371a url() no-repeat
 		border: 1px solid #ddd
 		padding: 25px
-		width: 800px
-		min-height: 400px
 		margin: 0 auto
+		width: 800px
+		margin-top: 15px
+		label
+			font-size: 24px
 		.disclaimer
 			font-size: 12px
 		h1
 			font-family: "Corben", arial, sans-serif
-			color: #0092b7
-			+text-shadow(#fff, 3px, 3px, 0)
+			color: #ceb58a
+			+text-shadow(#000, 3px, 3px, 0)
 
 #ft
 	width: 100%
@@ -54,7 +55,3 @@ body
 			li
 				display: inline
 				list-style: none
-		
-	
-
-	

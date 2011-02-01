@@ -37,6 +37,21 @@ $page-width: 980px
 =alpha_bg($x)
 	background: rgba(255, 255, 255, $x)
 
+=ct_button($color)
+	:background $color url() no-repeat
+	:border 6px solid $color + #111
+	+shadow
+	:color #ffffff
+	:font-family "Corben", arial, sans-serif
+	:font-weight bold
+	:padding 6px 6px 0px 6px
+	:font-size 16px
+	+rounded(20px)
+	:cursor pointer
+	&:hover
+		:background-color $color + #111
+		:border 6px solid $color + #222
+		text-decoration: none
 
 =top_menu($side: right)
 	:padding 7px 0
@@ -123,9 +138,14 @@ strong
 	:margin 0 auto
 	:padding 20px
 
-textarea
-	+rounded
-	:width 500px
+textarea.collect
+	+rounded(20px)
+	margin-top: 20px
+	margin-bottom: 10px
+	font-size: 18px
+	padding: 10px
+	:width 600px
+	height: 200px
 	:display block
 	
 .small_area
@@ -139,22 +159,17 @@ input.email_collect
 	+rounded(15px)
 	
 
-.ct_button
-	:background #98cd65 url() no-repeat
-	:border 6px solid #b7ea87
-	+shadow
-	:color #ffffff
-	:font-family "Corben", arial, sans-serif
-	:font-weight bold
-	:padding 6px 6px 0px 6px
-	:font-size 16px
-	+rounded(20px)
-	:cursor pointer
-	&:hover
-		:background-color #98cd65 + #111
-		:border 6px solid #b7ea87 + #111
+.email_submit
+	+ct_button($leaf_green)
 
+.blue_button
+	+ct_button($big_blue)
 
+.red_button
+	+ct_button($cherry_red)
+	
+.green_button
+	+ct_button($leaf_green)
 
 
 label

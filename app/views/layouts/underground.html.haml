@@ -1,11 +1,12 @@
 !!!strict
 %html
 	%head
-		= render 'layouts/meta', :css => 'home'
+		= render 'layouts/meta', :css => 'underground'
 	%body
 		#container
 			= render 'shared/header'
 			#bd
-				= yield
+				#content
+					= yield
 		= render 'shared/footer'
 		= render 'shared/analytics'
