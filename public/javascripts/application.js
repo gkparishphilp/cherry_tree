@@ -17,6 +17,12 @@ function remove_fields( link ) {
 
 $(document).ready(function(){
 	
+	var ding = new Audio("/ding.wav");
+	
+	$('.red_button').click(function() {
+		ding.play();
+	});
+	
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
 	});
