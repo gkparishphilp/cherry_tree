@@ -4,7 +4,7 @@ class SiteBase < ActiveRecord::Migration
 		
 		create_table :contacts, :force => true do |t|
 			t.references	:site
-			t.string		:email
+			t.references	:user
 			t.string		:subject
 			t.string		:ip
 			t.integer		:crash_id
@@ -47,7 +47,6 @@ class SiteBase < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		add_index :contacts, :email
 		add_index :contacts, :crash_id
 		add_index :raw_stats, :statable_id
 		add_index :sites, :domain

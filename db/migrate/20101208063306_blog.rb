@@ -16,6 +16,7 @@ class Blog < ActiveRecord::Migration
 		end
 		
 		create_table :comments, :force => true do |t|
+			t.references	:site
 			t.references	:user
 			t.references	:commentable, :polymorphic => true
 			t.references	:reply_to_comment

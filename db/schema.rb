@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
   end
 
   create_table "comments", :force => true do |t|
+    t.integer  "site_id"
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -118,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
 
   create_table "contacts", :force => true do |t|
     t.integer  "site_id"
-    t.string   "email"
+    t.integer  "user_id"
     t.string   "subject"
     t.string   "ip"
     t.integer  "crash_id"
@@ -128,7 +129,6 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
   end
 
   add_index "contacts", ["crash_id"], :name => "index_contacts_on_crash_id"
-  add_index "contacts", ["email"], :name => "index_contacts_on_email"
 
   create_table "crashes", :force => true do |t|
     t.integer  "site_id"

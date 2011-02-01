@@ -24,11 +24,24 @@ class ContactsController < ApplicationController
 	def create
 		@contact = Contact.new( params[:contact] )
 		@contact.ip = request.ip
-
-		if @contact.save
-			pop_flash "Contact was successfully created."
+		if @current_user.anonymous?
+			user = User.find_by_email params[:email]
+			
+			if user.nil?
+				user = User.new :email => params[:email]
+				if user.save
+					@contact.user = user
+					@contact.save
+					pop_flash "Thanks for submitting your email!  We'll be in touch soon.", :success
+				else
+					pop_flash "There was a problem saving your email address", :error, user
+				end
+			end
 		else
-        	pop_flash "Contact could not be created.", :error, @contact
+			@contact.user = @current_user
+			@contact.save
+			pop_flash "Thanks for submitting your email! We'll be in touch soon.", :success
+			
 		end
 		redirect_to :back
 	end
