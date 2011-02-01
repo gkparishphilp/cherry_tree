@@ -25,22 +25,24 @@ class ContactsController < ApplicationController
 		@contact = Contact.new( params[:contact] )
 		@contact.ip = request.ip
 		if @current_user.anonymous?
-			user = User.find_by_email params[:email]
-			
-			if user.nil?
-				user = User.new :email => params[:email]
+			if user = User.find_by_email( @contact.email )
+				@contact.user = user
+				@contact.save
+				pop_flash "Thanks for your submission!", :success
+			else
+				user = User.new :email => @contact.email
 				if user.save
 					@contact.user = user
 					@contact.save
-					pop_flash "Thanks for submitting your email!  We'll be in touch soon.", :success
+					pop_flash "Thanks for your submission!", :success
 				else
-					pop_flash "There was a problem saving your email address", :error, user
+					pop_flash "There was a problem with your submission.", :error, user
 				end
 			end
 		else
 			@contact.user = @current_user
 			@contact.save
-			pop_flash "Thanks for submitting your email! We'll be in touch soon.", :success
+			pop_flash "Thanks for your submission!", :success
 			
 		end
 		redirect_to :back
