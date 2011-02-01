@@ -16,7 +16,7 @@ function init() {
 }
 
 function insertAbbr() {
-	SXE.insertElement('abbr');
+	SXE.insertElement(tinymce.isIE ? 'html:abbr' : 'abbr');
 	tinyMCEPopup.close();
 }
 

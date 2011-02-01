@@ -25,13 +25,6 @@
 			selectedCell = getCell(startPos.x, startPos.y);
 		}
 
-		function cloneNode(node, children) {
-			node = node.cloneNode(children);
-			node.removeAttribute('id');
-
-			return node;
-		}
-
 		function buildGrid() {
 			var startY = 0;
 
@@ -129,25 +122,25 @@
 
 				if (node.nodeType == 3) {
 					each(dom.getParents(node.parentNode, null, cell).reverse(), function(node) {
-						node = cloneNode(node, false);
+						node = node.cloneNode(false);
 
 						if (!formatNode)
 							formatNode = curNode = node;
-						else if (curNode)
+						else
 							curNode.appendChild(node);
 
 						curNode = node;
 					});
 
 					// Add something to the inner node
-					if (curNode)
-						curNode.innerHTML = tinymce.isIE ? '&nbsp;' : '<br _mce_bogus="1" />';
+					if (curNode && !tinymce.isIE)
+						curNode.innerHTML = '<br _mce_bogus="1" />';
 
 					return false;
 				}
 			}, 'childNodes');
 
-			cell = cloneNode(cell, false);
+			cell = cell.cloneNode(false);
 			cell.rowSpan = cell.colSpan = 1;
 
 			if (formatNode) {
@@ -316,7 +309,7 @@
 					if (isCellSelected(cell)) {
 						cell = cell.elm;
 						rowElm = cell.parentNode;
-						newRow = cloneNode(rowElm, false);
+						newRow = rowElm.cloneNode(false);
 						posY = y;
 
 						if (before)
@@ -497,7 +490,7 @@
 			var rows = getSelectedRows();
 
 			each(rows, function(row, i) {
-				rows[i] = cloneNode(row, true);
+				rows[i] = row.cloneNode(true);
 			});
 
 			return rows;
@@ -886,7 +879,7 @@
 					ed.plugins.contextmenu.onContextMenu.add(function(th, m, e) {
 						var sm, se = ed.selection, el = se.getNode() || ed.getBody();
 
-						if (ed.dom.getParent(e, 'td') || ed.dom.getParent(e, 'th') || ed.dom.select('td.mceSelected,th.mceSelected').length) {
+						if (ed.dom.getParent(e, 'td') || ed.dom.getParent(e, 'th')) {
 							m.removeAll();
 
 							if (el.nodeName == 'A' && !ed.dom.getAttrib(el, 'name')) {
