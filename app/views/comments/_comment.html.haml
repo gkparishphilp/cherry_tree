@@ -2,7 +2,7 @@
 	.header.clearfix
 		.userinfo
 			= link_to( avatar_tag( comment.user, :thumb, :width => 64 ), user_url( comment.user ) )
-			= link_to comment.user.name, user_url( comment.user )
+			= link_to comment.user.display_name, user_url( comment.user )
 			- unless comment.user.website_url.blank?
 				(
 				-if comment.user.website_name.blank?

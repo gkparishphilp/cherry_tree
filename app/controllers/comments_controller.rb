@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 			user = User.find_by_email params[:email]
 			@comment.user = user
 			if user.nil?
-				user = User.new :email => params[:email], :website_name => params[:website_name], :website_url => params[:website_url], :name => params[:name], :site_id => @current_site.id
+				user = User.new :email => params[:email], :website_name => params[:website_name], :website_url => params[:website_url], :display_name => params[:display_name], :site_id => @current_site.id
 				if user.save
 					@comment.user = user
 				else 

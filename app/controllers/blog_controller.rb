@@ -1,6 +1,6 @@
 class BlogController < ApplicationController
 	# should just show and index blogs.  Used to display Articles so we can use /blog paths instead of /articles paths
-
+	before_filter	:require_admin_or_contributor, :only => :admin
 	before_filter	:get_sidebar_data
 	helper_method	:sort_column, :sort_dir
 	# caches_page :show

@@ -54,7 +54,8 @@ class Users < ActiveRecord::Migration
 			t.references	:sites
 			t.references	:registered_by # the user_id who entered the child
 			t.string		:email
-			t.string		:name
+			t.string		:name         # Like user_name, can login with this, must be unique
+			t.string		:display_name # Just for cosmetics, can be anything
 			t.integer		:score, :default => 0
 			t.datetime		:birthday
 			t.string		:gender
