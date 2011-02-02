@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-	caches_page :index
+	# caches_page :index
 	
 	def index
 		# todo - implement site activities

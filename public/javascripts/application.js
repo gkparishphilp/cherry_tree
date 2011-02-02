@@ -15,51 +15,12 @@ function remove_fields( link ) {
 }
 
 // experiment with audio
+	var pop = new Audio("/audio/pop.wav");
 	var pop2 = new Audio("/audio/pop2.wav");
-	var pop = new Audio("/audio/pop3.wav");
 	var birds = new Audio("/audio/birds.mp3");
 
-var audio = new Audio();
-var audible = true
-
-if( audio.canPlayType ){
-	if( audio.canPlayType('audio/mpeg') != "" ){
-		audio.src = '/audio/cherrytree.mp3'
-	}
-	else if( audio.canPlayType('audio/ogg') != ""){
-		audio.src = '/audio/cherrytree.ogg'
-	}
-	else{
-		audible = false
-	}
-	
-}
-else{
-	$('#audio_control').hide();
-}
-
-audio.addEventListener('ended', function() {
-	this.load();
-    this.play();
-}, false);
-
-
 $(document).ready(function(){
-	
-	$(audio).bind('play',function() {
-		$("#audio_control").html('Pause');   
-		}).bind('pause', function() {
-			$("#audio_control").html('Play');    
-	});
-	
-	if( !audible ){
-		$('#audio_control').hide();
-	}
-	
-	$('#audio_control').click( function(){
-		if ( audio.paused || audio.ended ) { audio.play(); } 
-  		else { audio.pause(); birds.pause(); }     
-	});
+	// experimental soundeffects
 	
 	$('.pop').mouseenter( function() {
 		pop.load();
@@ -70,6 +31,9 @@ $(document).ready(function(){
 		pop2.load();
 		pop2.play();
 	});
+	
+	
+	
 
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
@@ -96,6 +60,7 @@ $(document).ready(function(){
 	
 	
 	$('.button').button();
+	
 	$('.datepicker').datepicker({
 		dateFormat: 'yy-mm-dd'
 	});
