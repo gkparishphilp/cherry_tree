@@ -1,7 +1,9 @@
 !!!strict
 %html
 	%head
+		= stylesheet_link_tag 'jplayer_skin/jplayer.blue.monday.css'
 		= render 'layouts/meta', :css => 'home'
+		= javascript_include_tag 'jquery.jplayer.min'
 	%body
 		#container
 			= render 'shared/header'
