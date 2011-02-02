@@ -22,6 +22,8 @@ body
 	:min-height 668px
 	
 	#content
+		position: relative
+		z-index: 5
 		+rounded(20px)
 		+alpha_bg(.65)
 		border: 1px solid #ddd
@@ -29,13 +31,22 @@ body
 		width: 800px
 		min-height: 400px
 		margin: 0 auto
+		margin-bottom: 25px
 		.disclaimer
 			font-size: 12px
 		h1
-			font-family: "Corben", arial, sans-serif
-			color: #0092b7
-			+text-shadow(#fff, 3px, 3px, 0)
+			+ct_title(#0092b7)
+		h2
+			+ct_title(#0092b7)
+		h3
+			+ct_title(#0092b7)
 
+#big_tree
+	z-index: 3
+	position: absolute
+	top: 160px
+	left: -200px
+	
 #ft
 	width: 100%
 	color: #ceb58a

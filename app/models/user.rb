@@ -1,3 +1,37 @@
+# == Schema Information
+# Schema version: 20101209043322
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  type                      :string(255)
+#  registered_by_id          :integer(4)
+#  email                     :string(255)
+#  name                      :string(255)
+#  score                     :integer(4)      default(0)
+#  birthday                  :datetime
+#  gender                    :string(255)
+#  points_earned             :integer(4)      default(0)
+#  points_balance            :integer(4)      default(0)
+#  level                     :integer(4)      default(0)
+#  website_name              :string(255)
+#  website_url               :string(255)
+#  bio                       :text
+#  hashed_password           :string(255)
+#  salt                      :string(255)
+#  remember_token            :string(255)
+#  remember_token_expires_at :datetime
+#  activation_code           :string(255)
+#  activated_at              :datetime
+#  invitation_code           :string(255)
+#  status                    :string(255)     default("first")
+#  cached_slug               :string(255)
+#  orig_ip                   :string(255)
+#  last_ip                   :string(255)
+#  created_at                :datetime
+#  updated_at                :datetime
+#
+
 
 require 'digest/sha1'
 
@@ -34,25 +68,30 @@ class User < ActiveRecord::Base
 	has_many	:twitter_accounts, 	:as => :owner
 	has_many	:facebook_accounts,	:as => :owner
 	
-	has_many	:geo_addresses
-	has_many	:shipping_addresses, :class_name => 'GeoAddress', :conditions => "address_type='shipping'"
-	has_one		:billing_address, :class_name => 'GeoAddress', :conditions => "address_type='billing'"
+	has_many	:articles, :as => :owner
 	
-	accepts_nested_attributes_for	:billing_address, :shipping_addresses
-	
-	has_one		:author
-	has_many	:orders
-	has_many	:reviews
-	has_many	:subscribings
-	has_many	:subscriptions, :through => :subscribings
-	has_many	:coupons
-	has_many	:redemptions
-	has_many	:email_subscribings, :as => :subscriber
+	has_many	:relations
+	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child, :conditions => "role NOT IN ( 'mother', 'father', 'guardian', 'pro' )"
+	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian', 'pro' )"
+
+	has_many	:received_messages, :as => :recipient, :class_name => 'Message'
+	has_many	:sent_messages, :as => :sender, :class_name => 'Message'
+
+	has_many	:assignments
+	has_many	:objectives, :through => :assignments
+
+	has_many	:earnings
+
 	has_many	:ownings
-	has_many	:skus, :through => :ownings
-	has_many	:coupons
-	
-	belongs_to :site
+	has_many	:unlockables, :through => :ownings
+
+	has_many	:playings
+	has_many	:games, :through => :playings
+
+	has_many	:checkins
+
+	has_many	:quizzings
+
 	
 	# Plugins	--------------------------------------
 	has_friendly_id   :name, :use_slug => :true
@@ -79,7 +118,7 @@ class User < ActiveRecord::Base
 		
 		if user.nil?
 			return user, "Invalid user/password combination"
-		elsif not user.registered?
+		elsif !user.registered?
 			return false, "User not registered"
 		else
 			expected_password = encrypted_password( password, user.salt )
@@ -175,7 +214,6 @@ class User < ActiveRecord::Base
 	end
 	
 	def make_admin( site )
-		return false if self.author?
 		r = Role.create :user_id => self.id, :site_id => site.id, :role => 'admin'
 	end
 	
@@ -203,6 +241,7 @@ class User < ActiveRecord::Base
 	end
 	
 	# App-specific
+	
 	def relation_to( child )
 		self.relations.find_by_child_id( child.id ).role
 	end

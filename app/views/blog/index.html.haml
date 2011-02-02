@@ -1,4 +1,4 @@
-- content_for :left_column do
+#blog_list
 	- if @topic
 		%h4
 			= pluralize @articles.count, 'Article'
@@ -27,5 +27,5 @@
 	%br
 	= will_paginate @articles
 
-- content_for :right_column do
+#blog_sidebar
 	= render :partial => 'sidebar'

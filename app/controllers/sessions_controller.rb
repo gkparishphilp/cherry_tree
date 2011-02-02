@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
   
 	def create
 		
-		user, msg = User.authenticate( params[:email], params[:password] )
+		user, msg = User.authenticate( params[:credential], params[:password] )
 
 		if user
 			login( user )
 			pop_flash msg
 			redirect_to user_path( user )
 		elsif user == false
-			pop_flash "#{params[:email]} has not been registered"
+			pop_flash msg, :error
 			redirect_to register_path( :email => params[:email] )
 		else
 			params[:password] = nil

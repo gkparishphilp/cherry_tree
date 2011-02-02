@@ -19,6 +19,7 @@ function remove_fields( link ) {
 	var pop = new Audio("/audio/pop1.wav");
 	var pop2 = new Audio("/audio/pop2.wav");
 	var pop3 = new Audio("/audio/pop3.wav");
+	var birds = new Audio("/audio/birds.mp3");
 	
 
 var audio = new Audio();
@@ -77,6 +78,27 @@ $(document).ready(function(){
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
 	});
+	
+	
+	
+	$('#big_tree').mouseover( function(){
+		$(this).animate({
+			left:'+=166'
+		});
+		$(this).css( 'z-index', 10 );
+		birds.load();
+		birds.play();
+	});
+	
+	$('#big_tree').mouseout( function(){
+		$(this).animate({
+			left:'-=166'
+		});
+		$(this).css( 'z-index', 3 );
+		birds.pause();
+	});
+	
+	
 	
 	$('.button').button();
 	$('.datepicker').datepicker({

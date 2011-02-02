@@ -1,4 +1,6 @@
-%h2 Editing static_page
+%h2 
+	Editing 
+	= @static_page.title
 
 -form_for @static_page do |f|
 	=render :partial => 'form', :locals => {:f => f, :m => 'Update'}

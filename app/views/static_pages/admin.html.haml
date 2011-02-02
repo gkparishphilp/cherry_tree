@@ -17,7 +17,7 @@
 			%th Permalink
 
 	%tbody
-		-@pages.each do |static_page|
+		- @pages.each do |static_page|
 			%tr
 				%td= link_to static_page.title, static_page
 				%td

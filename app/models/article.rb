@@ -7,10 +7,10 @@
 #  owner_id         :integer(4)
 #  owner_type       :string(255)
 #  title            :string(255)
-#  excerpt          :string(255)
 #  snip_at          :integer(4)
 #  view_count       :integer(4)      default(0)
 #  content          :text
+#  excerpt          :text
 #  status           :string(255)     default("publish")
 #  comments_allowed :boolean(1)
 #  publish_at       :datetime

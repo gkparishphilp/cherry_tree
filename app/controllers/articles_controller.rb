@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
 	
 	def new
 		@article = Article.new
+		@article.publish_at = Time.now
+		@article.comments_allowed = true
 	end
 	
 	def edit
@@ -23,7 +25,7 @@ class ArticlesController < ApplicationController
 		if @owner.articles << @article
 			pop_flash 'Article was successfully created.'
 			@owner.do_activity( "write", @article )
-			redirect_to :back
+			redirect_to admin_blog_index_path
 		else
 			pop_flash 'Oooops, Article not saved...', :error, @article
 			render :action => :new

@@ -1,36 +1,35 @@
-- content_for :left_column do
-	#article_list
-		.article_header
-			%h2.text
-				= @article.title
+#blog_list
+	.article_header
+		%h2.text
+			= @article.title
 
-			%span.article_meta
-				- if @article.comments_allowed?
-					= link_to pluralize( @article.comments.count, "Comment" ), blog_path( @article ) + "#comment"
-				%br
-				- unless @article.topics.empty?
-					#article_topics
-						Filed under:
-						- for topic in @article.topics
-							= link_to separated_list( @article.topics, topic.name, "," ), blog_index_path( :topic => topic.name )
+		%span.article_meta
+			- if @article.comments_allowed?
+				= link_to pluralize( @article.comments.count, "Comment" ), blog_path( @article ) + "#comment"
+			%br
+			- unless @article.topics.empty?
+				#article_topics
+					Filed under:
+					- for topic in @article.topics
+						= link_to separated_list( @article.topics, topic.name, "," ), blog_index_path( :topic => topic.name )
 
-		.article_content.text
-			= @article.content.html_safe
-		
-		- unless @article.related_articles.empty?
-			#related
-				%h3 Related Posts
-				- for article in @article.related_articles
-					= link_to article.title, blog_path( article )
-		%br
-		- if @article.comments_allowed?
-			- unless @article.comments.empty?
-				#comments
-					%h3 Comments
-					= render :partial => 'comments/comment', :collection => @article.comments
-			#comment
-				= render :partial=>'comments/new'
+	.article_content.text
+		= @article.content.html_safe
+	
+	- unless @article.related_articles.empty?
+		#related
+			%h3 Related Posts
+			- for article in @article.related_articles
+				= link_to article.title, blog_path( article )
+	%br
+	- if @article.comments_allowed?
+		- unless @article.comments.empty?
+			#comments
+				%h3 Comments
+				= render :partial => 'comments/comment', :collection => @article.comments
+		#comment
+			= render :partial=>'comments/new'
 			
 	
-- content_for :right_column do
+#blog_sidebar
 	= render :partial => 'sidebar'

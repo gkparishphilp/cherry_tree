@@ -1,20 +1,20 @@
 base: &base
-	adapter: mysql2
-	encoding: utf8
-	reconnect: false
-	pool: 5
-	username: root
-	password: 
-	socket: /tmp/mysql.sock
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: root
+  password: 
+  socket: /tmp/mysql.sock
 
 development:
-	<<: *base
-	database: cherry_dev
+  <<: *base
+  database: cherry_dev
 
 test:
-	<<: *base
-	database: cherry_test
-  
+  <<: *base
+  database: cherry_test
+
 production:
-	<<: *base
-	database: cherry_prod
+  <<: *base
+  database: cherry_prod

@@ -4,6 +4,7 @@
 # Table name: comments
 #
 #  id                  :integer(4)      not null, primary key
+#  site_id             :integer(4)
 #  user_id             :integer(4)
 #  commentable_id      :integer(4)
 #  commentable_type    :string(255)

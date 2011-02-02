@@ -1,6 +1,5 @@
 CherryTree::Application.routes.draw do
 
-
 	root :to => "site#index"
 	
 	
@@ -36,6 +35,19 @@ CherryTree::Application.routes.draw do
 	
 	resources :objectives
 	
+	resources :quizzes do
+		get 'admin', :on => :collection
+		get 'inspect', :on => :member
+		get 'recap', :on => :member
+		resources :questions do
+			get 'admin', :on => :collection
+			post 'answer', :on => :member
+			resources :answers do
+				get 'admin', :on => :collection
+			end
+		end
+	end
+	
 	resources :sessions do
 		collection do
 			get 'pending'
@@ -51,17 +63,8 @@ CherryTree::Application.routes.draw do
 		end
 	end
 	
-	resources :quizzes do
+	resources :static_pages do
 		get 'admin', :on => :collection
-		get 'inspect', :on => :member
-		get 'recap', :on => :member
-		resources :questions do
-			get 'admin', :on => :collection
-			post 'answer', :on => :member
-			resources :answers do
-				get 'admin', :on => :collection
-			end
-		end
 	end
 	
 	

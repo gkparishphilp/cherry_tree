@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 	before_filter   :require_admin, :except => [ :show  ]
 	
 	def admin
-
+		@pages = StaticPage.all
 	end
 
 	def show
@@ -19,7 +19,9 @@ class StaticPagesController < ApplicationController
 			return false
 		end
 		
-		set_meta @static_page.title, @static_page.content
+		@title = @static_page.title
+		
+		render :layout => 'underground'
 	end
 
 	def new
