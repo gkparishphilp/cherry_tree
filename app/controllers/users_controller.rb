@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 			render :private
 		else 
 			# Let's just show the public profile
-			set_meta @user.name, @user.bio
 			render	:public
 		end
 	end
