@@ -55,24 +55,14 @@ $(document).ready(function(){
   		else { audio.pause(); }     
 	});
 	
-	$('.ding').mouseover( function() {
+	$('.pop').mouseenter( function() {
 		pop3.load();
 		pop3.play();
-	});
-	
-	$('.ding').click(function() {
-		pop2.load();
-		pop2.play();
-	});
-	
-	$('.pop').mouseenter( function() {
-		pop2.load();
-		pop2.play();
 	});
 	
 	$('.pop').click(function() {
-		pop3.load();
-		pop3.play();
+		pop2.load();
+		pop2.play();
 	});
 
 	$('#flash').click(function () {

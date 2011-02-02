@@ -52,13 +52,14 @@ class UsersController < ApplicationController
 		@user = User.find_or_initialize_by_email params[:user][:email]
 		if @user.hashed_password.present?
 			# someone created an account with this email address before.... send to forgot pass?
+			pop_flash "This email address has already been registered.  Perhaps you've forgottne the password?", :notice
+			redirect_to forgot_path
 		else
 			# this is a brand-new user, whether we found an email or not
 			@user.attributes = params[:user]
 		end
 		
 		@user.orig_ip = request.ip
-		dest = params[:dest]
 		
 		@user.status = 'pending'
 	
@@ -78,10 +79,21 @@ class UsersController < ApplicationController
 
 		else
 			pop_flash 'Ooops, User not saved.... ', :error, @user
-			@dest = dest
 			redirect_to register_path
 		end
 
+	end
+	
+	def collect_email
+		@user = User.find_or_initialize_by_email params[:user][:email]
+		@user.orig_ip = request.ip
+		@user.status = 'email_collect'
+		if @user.save
+			pop_flash "Thank You for Signing Up!"
+		else
+			pop_flash "There was a problem with your submission", :error, @user
+		end
+		redirect_to :back
 	end
 
 	def update

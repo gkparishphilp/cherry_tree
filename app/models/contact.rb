@@ -16,5 +16,10 @@
 
 class Contact < ActiveRecord::Base
 	belongs_to :user
+	
+	validates_presence_of :subject, :message => "Please provide a subject"
+	validates_presence_of :content, :message => "You should have something to say to contact us ;-)"
+	
+	
 	attr_accessor :email
 end

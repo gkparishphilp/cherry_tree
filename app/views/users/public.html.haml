@@ -1,20 +1,13 @@
-- content_for :left_column do
-	.user
-		.pic
-			= image_tag @user.avatar.location, :width => 60
-		.name
-			= @user.name
-		.data
-			Member Since:
-			%br
-			= format_date_only @user.created_at
-	
-	- unless @user.reviews.empty?
-		%h3
-			= possessize @user.name
-			Reviews:
+.user
+	.pic
+		= image_tag @user.avatar.location, :width => 60
+	.name
+		= @user.name
+	.data
+		Member Since:
 		%br
-		- for review in @user.reviews
-			= link_to review.book.title, "#{author_book_path( review.book.author, review.book )}#reviews"
+		= format_date_only @user.created_at
+
+
 
 	

@@ -1,0 +1,3 @@
+= form_for User.new, :url => collect_email_users_path, :html => { :mutipart => true } do |f|
+	= f.text_field :email, :class => 'email_collect'
+	= f.submit 'Sign Me Up!', :class => 'email_submit pop'

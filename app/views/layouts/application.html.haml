@@ -5,12 +5,16 @@
 		= init_tinymce_hammer_if_required
 	%body
 		#big_tree
-			= image_tag 'big_tree.png'
+			- if @current_user.anonymous?
+				= image_tag 'big_tree.png'
+			- else
+				= link_to image_tag( 'big_tree.png' ), user_path( @current_user )
 		#container
 			= render 'shared/header'
 			#bd
 				#content
 					= render 'shared/flash', :flash => flash 
 					= yield
+					%br.clear
 		= render 'shared/footer'
 		= render 'shared/analytics'

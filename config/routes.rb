@@ -75,6 +75,7 @@ CherryTree::Application.routes.draw do
 	
 	resources  :users do
 		get 'resend', :on => :member
+		post 'collect_email', :on => :collection
 	end
 	
 	resources :relations

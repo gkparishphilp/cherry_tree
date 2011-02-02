@@ -44,12 +44,12 @@ class User < ActiveRecord::Base
 	after_create	:set_avatar
   
 	# Validations	--------------------------------------
-	validates	:password, :confirmation => true, :length => { :minimum => 4, :maximum => 254 }, :if => :has_password?
-
 	validates	:email, :uniqueness => true, 
 						:length => {:minimum => 3, :maximum => 254},
 						:email => true,
-						:if => :has_email?
+						:unless => :is_child?
+						
+	validates	:password, :confirmation => true, :length => { :minimum => 4, :maximum => 254 }, :if => :has_password?
 
 	validates	:name, :uniqueness => true, 
 						:length => {:minimum => 2, :maximum => 254},
@@ -65,6 +65,7 @@ class User < ActiveRecord::Base
 	has_many	:contributor_sites, :through => :roles, :source => :site, :conditions => "role = 'contributor'"
 	has_many	:posts
 	has_many	:comments
+	has_many	:contacts
 	has_many	:twitter_accounts, 	:as => :owner
 	has_many	:facebook_accounts,	:as => :owner
 	
@@ -242,6 +243,10 @@ class User < ActiveRecord::Base
 	
 	# App-specific
 	
+	def is_child?
+		return self.type == 'Child'
+	end
+	
 	def relation_to( child )
 		self.relations.find_by_child_id( child.id ).role
 	end
@@ -289,7 +294,7 @@ class User < ActiveRecord::Base
 	end
 	
 	def set_name
-		self.name = self.email.gsub(/\W/, "_") unless self.name.present?
+		self.name = self.email.gsub(/\W/, "_") unless( self.name.present? || self.is_child? )
 	end
 	
 	

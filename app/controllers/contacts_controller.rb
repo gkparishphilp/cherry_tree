@@ -26,19 +26,25 @@ class ContactsController < ApplicationController
 		@contact.ip = request.ip
 		if user = User.find_by_email( @contact.email )
 			@contact.user = user
-			@contact.save
-			pop_flash "Thanks for your submission!", :success
 		else
 			user = User.new :email => @contact.email
-			if user.save
-				@contact.user = user
-				@contact.save
-				pop_flash "Thanks for your submission!", :success
+			if user.valid?
+				user.save
 			else
-				pop_flash "There was a problem with your submission.", :error, user
+				pop_flash "There was a problem with your message", :error, user
+				redirect_to :back
+				return false
 			end
 		end
-		redirect_to :back
+		
+		if user.contacts << @contact
+			pop_flash "Thank you for your Contact"
+		else
+			pop_flash "There was a problem with your message", :error, @contact
+			redirect_to :back
+			return false
+		end
+		redirect_to root_path
 	end
 
 	def update

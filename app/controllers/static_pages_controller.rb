@@ -8,10 +8,10 @@ class StaticPagesController < ApplicationController
 
 	def show
 		if params[:permalink]
-			@static_page = @current_site.static_pages.find_by_permalink params[:permalink]
+			@static_page = StaticPage.find_by_permalink( params[:permalink] )
 			raise ActiveRecord::RecordNotFound if @static_page.nil?
 		else
-			@static_page = @current_site.static_pages.find params[:id]
+			@static_page = StaticPage.find( params[:id] )
 		end
 		
 		unless @static_page.redirect_path.blank?
@@ -29,7 +29,7 @@ class StaticPagesController < ApplicationController
 	end
 
 	def edit
-		@static_page = StaticPage.find params[:id]
+		@static_page = StaticPage.find( params[:id] )
 	end
 
 	def create
