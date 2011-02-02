@@ -27,7 +27,7 @@ In addition to the above proposes, we may do the following with the information 
     <li>Use it internally to continually improve the product by developing new features, applications, services, or promotions
 
     <li>Use it to address any problems or issues with the Service or to protect the security and integrity of the Service
-
+</ul>
 
 <b>What we share, and with whom</b>
 
