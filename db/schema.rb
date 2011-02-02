@@ -427,9 +427,11 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
 
   create_table "users", :force => true do |t|
     t.string   "type"
+    t.integer  "site_id"
     t.integer  "registered_by_id"
     t.string   "email"
     t.string   "name"
+    t.string   "display_name"
     t.integer  "score",                     :default => 0
     t.datetime "birthday"
     t.string   "gender"

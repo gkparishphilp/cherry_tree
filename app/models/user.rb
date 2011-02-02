@@ -5,9 +5,11 @@
 #
 #  id                        :integer(4)      not null, primary key
 #  type                      :string(255)
+#  site_id                   :integer(4)
 #  registered_by_id          :integer(4)
 #  email                     :string(255)
 #  name                      :string(255)
+#  display_name              :string(255)
 #  score                     :integer(4)      default(0)
 #  birthday                  :datetime
 #  gender                    :string(255)
@@ -294,7 +296,13 @@ class User < ActiveRecord::Base
 	end
 	
 	def set_name
-		self.name = self.email.gsub(/\W/, "_") unless( self.name.present? || self.is_child? )
+		unless( self.name.present? || self.is_child? )
+			if self.display_name.present?
+				self.name = self.display_name.gsub( /\W/, "_" )
+			else
+				self.name = self.email.gsub( /\W/, "_" ) 
+			end
+		end
 	end
 	
 	
