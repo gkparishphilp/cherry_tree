@@ -13,6 +13,8 @@
 	= text_field_tag :website_url
 
 	- unless @current_user.human?
+		%br
+		= f.label 'Please type the following words:'
 		- recap = recaptcha_tags :display => { :theme=>"clean" }
 		= recap.html_safe
 -#= check_box_tag :subscribe_comments, 1, true

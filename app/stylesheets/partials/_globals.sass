@@ -53,10 +53,10 @@ $page-width: 980px
 		:border 6px solid $color + #222
 		text-decoration: none
 
-=ct_title($color)
+=ct_title($color, $shadow: #ddd)
 	font-family: "Corben", arial, sans-serif
 	color: $color
-	+text-shadow(#fff, 3px, 3px, 0)
+	+text-shadow($shadow, 3px, 3px, 0)
 
 =top_menu($side: right)
 	:padding 7px 0
@@ -129,14 +129,17 @@ strong
 	:margin 20px auto
 	.error
 		:background #ffd1d6 url(../images/close_error.png) 99% 15% no-repeat
+		color: #555
 		+flash( #ff3333 )
 		+rounded(12px)
 	.success
 		:background #e6efc2 url(../images/close_success.png) 99% 15% no-repeat
+		color: #555
 		+flash( #c6d880 )
 		+rounded(12px)
 	.notice
 		:background #fff6bf url(../images/close_notice.png) 99% 15% no-repeat
+		color: #555
 		+flash( #ffd324 )
 		+rounded(12px)
 			
@@ -168,7 +171,22 @@ input.email_collect
 	:background #f9f9f9
 	:border 1px solid #eee
 	+rounded(15px)
+
+textarea
+	+rounded
+	width: 600px
+	padding: 4px
+	font-size: 16px
+	:background #f9f9f9
+	:border 1px solid #ddd
 	
+input[type="text"],input[type="password"]
+	font-size: 16px
+	:padding 2px
+	width: 200px
+	:background #f9f9f9
+	:border 1px solid #ddd
+	+rounded
 
 .email_submit
 	+ct_button($leaf_green)
