@@ -26,10 +26,10 @@ var audio = new Audio();
 
 if( audio.canPlayType ){
 	if( audio.canPlayType('audio/mpeg') != "" ){
-		audio.src = '/audio/theme.mp3'
+		audio.src = '/audio/cherrytree.mp3'
 	}
 	else{
-		audio.src = '/audio/theme.ogg'
+		audio.src = '/audio/cherrytree.ogg'
 	}
 }
 else{
@@ -55,14 +55,14 @@ $(document).ready(function(){
   		else { audio.pause(); }     
 	});
 	
-	$('.ding').mouseenter( function() {
-		pop.load();
-		pop.play();
+	$('.ding').mouseover( function() {
+		pop3.load();
+		pop3.play();
 	});
 	
 	$('.ding').click(function() {
-		ding.load();
-		ding.play();
+		pop2.load();
+		pop2.play();
 	});
 	
 	$('.pop').mouseenter( function() {

@@ -1,40 +1,34 @@
 - if @current_user.anonymous?
-	- content_for :left_column do
-		.form_group
-			%h1
-				Login to your account:
-			= form_tag :controller=>'sessions' do
-				%label
-					- if current_page?( login_children_path )
-						Name:
-					- else
-						Email:
-				= text_field_tag :credential, params[:credential], :class => :login_email
-				%label
-					- if current_page?( login_children_path )
-						PIN:
-					- else
-						Password:
-				= password_field_tag :password, params[:password], :class => :login_email
-				%br
-				%br
-				= submit_tag	"Login", :class => :button
-				|
-				= link_to 'Cancel', root_path, :class => :cancel_button
-				|
-				= link_to 'Register', register_path +  (params['dest'] ? '?dest=' + params['dest'] : '')
-				|
-				= link_to "Forgot Password?", forgot_path
-					
-
-	- content_for :right_column do
-		%h2 Need Help?
+	.form_group
+		%h1
+			Login to your account:
+		= form_tag :controller=>'sessions' do
+			%label
+				- if current_page?( login_children_path )
+					Name:
+				- else
+					Email:
+			= text_field_tag :credential, params[:credential], :class => :login_email
+			%label
+				- if current_page?( login_children_path )
+					PIN:
+				- else
+					Password:
+			= password_field_tag :password, params[:password], :class => :login_email
+			%br
+			%br
+			= submit_tag	"Login", :class => :button
+			|
+			= link_to 'Cancel', root_path, :class => :cancel_button
+			|
+			= link_to 'Register', register_path +  (params['dest'] ? '?dest=' + params['dest'] : '')
+			|
+			= link_to "Forgot Password?", forgot_path
 			
 - else
-	- content_for :left_column do
-		%h2 
-			You are already logged in as:
-			= @current_user.name
-		If this is not you, please 
-		= link_to "Logout", logout_path
-		and log back in with your account.
+	%h2 
+		You are already logged in as:
+		= @current_user.name
+	If this is not you, please 
+	= link_to "Logout", logout_path
+	and log back in with your account.

@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20101209043322
+#
+# Table name: static_pages
+#
+#  id            :integer(4)      not null, primary key
+#  site_id       :integer(4)
+#  title         :string(255)
+#  description   :string(255)
+#  permalink     :string(255)
+#  redirect_path :string(255)
+#  content       :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 
 
 class StaticPage < ActiveRecord::Base
