@@ -51,6 +51,7 @@ class Users < ActiveRecord::Migration
 	 
 		create_table :users, :force => true do |t|
 			t.string		:type
+			t.references	:sites
 			t.references	:registered_by # the user_id who entered the child
 			t.string		:email
 			t.string		:name
@@ -72,6 +73,7 @@ class Users < ActiveRecord::Migration
 			t.string		:invitation_code
 			t.string		:status, :default => 'first'
 			t.string		:cached_slug
+			
 		
 			t.string		:orig_ip
 			t.string		:last_ip
