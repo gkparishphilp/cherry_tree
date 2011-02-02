@@ -1,0 +1,15 @@
+<p>
+Welcome to Cherry Tree!  
+</p>
+
+<p>
+Thanks for stopping by.  I know there's not a whole lot to see right now, but how do you like the design for the website?  
+</p>
+
+<p>
+GK and I are feverishly working on the core application and hope we can show something in the next two weeks.  Until then, stay tuned and leave us your email.  We'll drop you an email when we launch the application. 
+</p>
+
+<p>
+Tay
+</p>

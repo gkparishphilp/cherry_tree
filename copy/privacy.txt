@@ -1,0 +1,42 @@
+<p>
+CherryTree, LLC (“CherryTree”) takes your privacy very seriously.  We want to ensure that you know what information we collect, and how we use it.   This document specifies what information of yours we collect and how we use it.  By using TheCherryTree.com website (“the Website”) you are agreeing that this privacy policy is acceptable to you.  If it isn’t, do not use the Website.  We also reserve the right to change this policy at any time.
+</p>
+
+<b>Information we collect and how we use it</b>
+
+<p>
+We collect a variety of information from you if you use the Website.  Some of this information is personally identifiable and some of it is non-personally identifiable.
+</p>  
+<ul>
+	<li><b>Information you provide </b>- When you sign up for a CherryTree account, we ask for personal information such as your name, email address and account password.  For certain services, we also request payment information such as a credit card or other payment account information.</li> 
+
+	<li><b>Cookies</b> – When you visit the Website, we send one or more cookies, a small file containing a string of characters, to your device that contains information used for storing user preferences or tracking user trends.  Cookies are also used to track referrers in our marketing programs.</li>
+
+	<li><b>Log Information</b> – When you use the Website, our servers automatically record information that your browser sends, such as your web request, Internet Protocol address, browser type, browser language, the date and time of your request, and any cookie information that your browser may send.</li>
+
+	<li><b>User communication</b> – When you email or send other communications to CherryTree or the Website, we may retain those communications to process your inquiries, respond to you requests, and improve our services.</li>
+</ul>
+
+<p>
+In addition to the above proposes, we may do the following with the information you provide.
+</p>
+
+<ul>
+    <li>Use it for non-marketing or administrative purposes, including but not limited to notifying you of your interactions with the Service, requesting your feedback, or for customer service or data security related purposes.
+
+    <li>Use it internally to continually improve the product by developing new features, applications, services, or promotions
+
+    <li>Use it to address any problems or issues with the Service or to protect the security and integrity of the Service
+
+
+<b>What we share, and with whom</b>
+
+<p>
+CherryTree may aggregate and share non-personally identifiable information with our partners, advertising networks, advertising agencies, or other third parties.  
+</p>
+<p>
+We will not disclose personally identifiable information such as your full name, mailing address, email address, or mobile number without your consent unless we have good faith belief that such disclosure is reasonably necessary to (1) satisfy any applicable law, regulation, legal process, or enforceable government request; (2) detect, prevent, or otherwise address fraud, security, or technical issues; (3) enforce the provision of this Privacy Policy and/or any other agreements between you and CherryTree, including investigation of potential violations thereof; or (4) protect against imminent harm to the rights, property, or safety of CherryTree, its visitors and/or the public. 
+</p>
+<p>
+We may transfer or assign all information we have collected as part of a merger, acquisition, sale or other change of control of our company.
+</p>
