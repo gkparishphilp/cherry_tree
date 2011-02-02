@@ -30,4 +30,8 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
 	Article.find_each do |a|
 		sitemap.add blog_path(a), :lastmod => a.updated_at
 	end
+	
+	sitemap.add '/about'
+	sitemap.add '/terms'
+	sitemap.add '/privacy'
 end
