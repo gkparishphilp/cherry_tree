@@ -51,7 +51,7 @@ class Users < ActiveRecord::Migration
 	 
 		create_table :users, :force => true do |t|
 			t.string		:type
-			t.references	:sites
+			t.references	:site
 			t.references	:registered_by # the user_id who entered the child
 			t.string		:email
 			t.string		:name
