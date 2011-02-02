@@ -3,9 +3,13 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+public/index.html
+public/blog
+public/cache
 public/system/**/*
 public/stylesheets/**/*
 public/stylesheets/*
+public/javascripts/tiny_mce/*
 assets/**/*
 config/database.yml
 db/schema.rb
