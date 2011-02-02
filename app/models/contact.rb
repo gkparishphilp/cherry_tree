@@ -15,6 +15,7 @@
 #
 
 class Contact < ActiveRecord::Base
+	belongs_to :crash
 	belongs_to :user
 	
 	validates_presence_of :subject, :message => "Please provide a subject"

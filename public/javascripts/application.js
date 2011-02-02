@@ -15,22 +15,24 @@ function remove_fields( link ) {
 }
 
 // experiment with audio
-	var ding = new Audio("/audio/ding.wav");
-	var pop = new Audio("/audio/pop1.wav");
 	var pop2 = new Audio("/audio/pop2.wav");
-	var pop3 = new Audio("/audio/pop3.wav");
+	var pop = new Audio("/audio/pop3.wav");
 	var birds = new Audio("/audio/birds.mp3");
-	
 
 var audio = new Audio();
+var audible = true
 
 if( audio.canPlayType ){
 	if( audio.canPlayType('audio/mpeg') != "" ){
 		audio.src = '/audio/cherrytree.mp3'
 	}
-	else{
+	else if( audio.canPlayType('audio/ogg') != ""){
 		audio.src = '/audio/cherrytree.ogg'
 	}
+	else{
+		audible = false
+	}
+	
 }
 else{
 	$('#audio_control').hide();
@@ -50,14 +52,18 @@ $(document).ready(function(){
 			$("#audio_control").html('Play');    
 	});
 	
+	if( !audible ){
+		$('#audio_control').hide();
+	}
+	
 	$('#audio_control').click( function(){
 		if ( audio.paused || audio.ended ) { audio.play(); } 
-  		else { audio.pause(); }     
+  		else { audio.pause(); birds.pause(); }     
 	});
 	
 	$('.pop').mouseenter( function() {
-		pop3.load();
-		pop3.play();
+		pop.load();
+		pop.play();
 	});
 	
 	$('.pop').click(function() {
@@ -68,7 +74,6 @@ $(document).ready(function(){
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
 	});
-	
 	
 	
 	$('#big_tree').mouseover( function(){
