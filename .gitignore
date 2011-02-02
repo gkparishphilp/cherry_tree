@@ -7,8 +7,14 @@ public/index.html
 public/blog
 public/cache
 public/system/**/*
-public/stylesheets/**/*
-public/stylesheets/*
+public/stylesheets/ie.css
+public/stylesheets/screen.css
+public/stylesheets/underground.css
+public/stylesheets/home.css
+public/stylesheets/homepage.css
+public/stylesheets/app.css
+public/stylesheets/print.css
+
 public/javascripts/tiny_mce/*
 assets/**/*
 config/database.yml
