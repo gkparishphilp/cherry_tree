@@ -138,19 +138,19 @@ protected
 	def record_not_found( exception )
 		@crash = Crash.create :message => exception.to_s, :requested_url => request.url, 
 						:referrer => request.env['HTTP_REFERER'], :backtrace => exception.backtrace.join("\n")
-		render 'errors/not_found', :status => :not_found
+		render 'errors/not_found', :layout => 'error', :status => :not_found
 	end
 
 	def invalid_method( exception )
 		@crash = Crash.create :message => exception.to_s, :requested_url => request.url, 
 						:referrer => request.env['HTTP_REFERER'], :backtrace => exception.backtrace.join("\n")
-		render 'errors/not_found', :status => :method_not_allowed
+		render 'errors/not_found', :layout => 'error', :status => :method_not_allowed
 	end
 	
 	def server_error( exception )
 		@crash = Crash.create :message => exception.to_s, :requested_url => request.url, 
 						:referrer => request.env['HTTP_REFERER'], :backtrace => exception.backtrace.join("\n")
-		render 'errors/server_error', :status => 500
+		render 'errors/server_error', :layout => 'error', :status => 500
 	end
 	
 	
