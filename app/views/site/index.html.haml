@@ -9,11 +9,21 @@
 					%li
 						= link_to 'pause', '#', :class => 'jp-pause', :tabindex => 1
 					%li
+						= link_to 'stop', '#', :class => 'jp-stop', :tabindex => 1
+					%li
 						= link_to 'mute', '#', :class => 'jp-mute', :tabindex => 1
 					%li
 						= link_to 'unmute', '#', :class => 'jp-unmute', :tabindex => 1
+				.jp-progress
+					.jp-seek-bar
+						.jp-play-bar
 				.jp-volume-bar
 					.jp-volume-bar-value
+				.jp-current-time
+				.jp-duration
+			#jp_playlist_1.jp-playlist
+				%ul
+					%li Title of Media
 #welcome_box
 	%h1
 		"Where Children Blossom"

@@ -34,7 +34,7 @@ $(document).ready(function(){
 	
 	// more audio experimentation
 	
-	/*
+/*
 	$("#jquery_jplayer_1").jPlayer({
         ready: function () {
           $(this).jPlayer("setMedia", {
@@ -42,13 +42,13 @@ $(document).ready(function(){
             oga: "/audio/cherrytree.ogg"
           }).jPlayer('play');
         },
-        ended: function() { // The $.jPlayer.event.ended event
+        ended: function( ended ) { // The $.jPlayer.event.ended event
             $(this).jPlayer("play"); // Repeat the media
         },
-        swfPath: "/javascripts",
+        swfPath: "../javascripts",
         supplied: "mp3, oga"
       });
-      */
+*/
 	
 	
 
