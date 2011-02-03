@@ -7,16 +7,16 @@
 		.fields
 
 			= f.label "Email"
-			= f.text_field :email, :class => :login_email
+			= f.text_field :email, :class => :regular
 
 			= f.label :name, "User Name"
-			= f.text_field :name, :class => :login_email
+			= f.text_field :name, :class => :regular
 
 			= f.label :password, "Password"
-			= f.password_field :password, :class => :login_email
+			= f.password_field :password, :class => :regular
 
 			= f.label :password_confirmation, "Confirm Password"
-			= f.password_field :password_confirmation, :class => :login_email
+			= f.password_field :password_confirmation, :class => :regular
 			%br
 			%br
 			= f.submit 'Register', :class => "button"

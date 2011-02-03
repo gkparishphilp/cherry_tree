@@ -165,25 +165,26 @@ textarea.collect
 .small_area
 	height: 150px
 	
-input.email_collect
+
+textarea
+	+rounded
+	width: 500px
+	padding: 4px
+	font-size: 16px
+	:background #f9f9f9
+	:border 1px solid #ddd
+	
+input.large
 	:font-size 24px
 	:padding 6px
 	:background #f9f9f9
 	:border 1px solid #eee
 	+rounded(15px)
 
-textarea
-	+rounded
-	width: 600px
-	padding: 4px
-	font-size: 16px
-	:background #f9f9f9
-	:border 1px solid #ddd
-	
-input[type="text"],input[type="password"]
+input.regular
 	font-size: 16px
 	:padding 2px
-	width: 200px
+	width: 250px
 	:background #f9f9f9
 	:border 1px solid #ddd
 	+rounded

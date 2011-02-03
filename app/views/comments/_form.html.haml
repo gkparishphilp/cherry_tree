@@ -4,13 +4,13 @@
 - if @current_user.anonymous?
 
 	= f.label "Name: (required)"
-	= text_field_tag :display_name
+	= text_field_tag :display_name, "", :class => :regular
 
 	= f.label "Email: (required, but won't be published)"
-	= text_field_tag :email
+	= text_field_tag :email, "", :class => :regular
 
 	= f.label "Website or Blog URL: (optional)"
-	= text_field_tag :website_url
+	= text_field_tag :website_url, "", :class => :regular
 
 	- unless @current_user.human?
 		%br
