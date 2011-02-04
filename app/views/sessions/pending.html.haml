@@ -4,7 +4,7 @@
 	You need to supply a valid email to use this feature
 	= form_for @user do |f|
 		= f.label "Email"
-		= f.text_field :email
+		= f.text_field :email, :class => :regular
 		%br
 		= f.submit "Enter"
 

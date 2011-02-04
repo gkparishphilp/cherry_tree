@@ -4,8 +4,9 @@
 		= render 'layouts/meta', :css => 'home'
 		= stylesheet_link_tag 'jplayer_skin/jplayer.blue.monday.css'
 		= javascript_include_tag 'jquery.jplayer.min'
-		-#
-			:javascript
+		
+		:javascript
+			$(document).ready(function(){
 				$("#jquery_jplayer_1").jPlayer({
 					ready: function () {
 						$(this).jPlayer("setMedia", {
@@ -16,10 +17,11 @@
 					ended: function (event) {
 						$(this).jPlayer("play");
 					},
-					swfPath: "../javascripts",
+					swfPath: "/javascripts",
 					supplied: "m4a, oga"
 				});
-		
+			});
+
 	%body
 		#container
 			= render 'shared/header'

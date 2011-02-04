@@ -32,8 +32,6 @@ $(document).ready(function(){
 		pop2.play();
 	});
 	
-	
-
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
 	});

@@ -8,13 +8,13 @@
 					Name:
 				- else
 					Email:
-			= text_field_tag :credential, params[:credential], :class => :login_email
+			= text_field_tag :credential, params[:credential], :class => :regular
 			%label
 				- if current_page?( login_children_path )
 					PIN:
 				- else
 					Password:
-			= password_field_tag :password, params[:password], :class => :login_email
+			= password_field_tag :password, params[:password], :class => :regular
 			%br
 			%br
 			= submit_tag	"Login", :class => :button
