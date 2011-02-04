@@ -16,16 +16,15 @@ class CheckinsController < ApplicationController
 			end
 			
 			@checkin.user.save
-			#pop_flash "Checkin was successfully created."
 			
-			#Some simple processing of checkin to test logic
+			#Some simple processing of checkins to award points
 			if @checkin.status == 'did'
-				if @checkin.process_checkin > @checkin.objective.times
+				if @checkin.number_checkin_times > @checkin.objective.times
 					pop_flash "Congratulations! You've reached your goal of #{@checkin.objective.times} checkins for #{@checkin.objective.name}"				
-					#Award points if points have not been previously awarded
+
 					@checkin.user.earn_points_for(@checkin.objective, @checkin.objective.points) unless @checkin.objective.earned_for_period
 				else	
-					pop_flash "Checkins so far this #{@checkin.objective.period}: #{@checkin.process_checkin}"
+					pop_flash "Checkins so far this #{@checkin.objective.period}: #{@checkin.number_checkin_times}"
 				end
 			end	
 			

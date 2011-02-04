@@ -31,7 +31,7 @@ class Objective < ActiveRecord::Base
 	scope :once, where( "objective_type = 'once' " )
 	
 	def earned_for_period
-		start_time = self.get_start_time
+		start_time = self.get_period_start_time
 		if self.earnings.dated_between(start_time, Time.now.getutc).count > 0
 			return true
 		else
@@ -39,7 +39,7 @@ class Objective < ActiveRecord::Base
 		end
 	end
 	
-	def get_start_time
+	def get_period_start_time
 		case self.period
 		when 'day'
 			start_time = Time.now.beginning_of_day.getutc

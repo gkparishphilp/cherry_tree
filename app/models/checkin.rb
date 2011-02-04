@@ -28,8 +28,8 @@ class Checkin < ActiveRecord::Base
 		return self.status.gsub( /_/, " " )
 	end
 	
-	def process_checkin
-		start_time = self.objective.get_start_time
+	def number_checkin_times
+		start_time = self.objective.get_period_start_time
 
 		if start_time.present?
 			return num_checkins = objective.checkins.dated_between(Time.now.beginning_of_day.getutc, Time.now.getutc).positive.count
