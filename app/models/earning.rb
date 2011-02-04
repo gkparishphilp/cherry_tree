@@ -14,4 +14,7 @@
 
 class Earning < ActiveRecord::Base
 	belongs_to	:child
+	scope :dated_between, lambda { |*args| 
+		where( "created_at between ? and ?", args.first, args.second ) 
+	}
 end

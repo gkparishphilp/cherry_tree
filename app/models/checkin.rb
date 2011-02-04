@@ -19,8 +19,22 @@ class Checkin < ActiveRecord::Base
 	belongs_to	:objective
 	
 	scope :update, where( "objective_id is null" )
+	scope :positive, where('status = ?', 'did')
+	scope :dated_between, lambda { |*args| 
+		where( "created_at between ? and ?", args.first, args.second ) 
+	}
 	
 	def expanded_status
 		return self.status.gsub( /_/, " " )
+	end
+	
+	def process_checkin
+		start_time = self.objective.get_start_time
+
+		if start_time.present?
+			return num_checkins = objective.checkins.dated_between(Time.now.beginning_of_day.getutc, Time.now.getutc).positive.count
+		else
+			return 0
+		end
 	end
 end

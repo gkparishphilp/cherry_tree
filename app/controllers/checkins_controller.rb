@@ -14,10 +14,21 @@ class CheckinsController < ApplicationController
 			else
 				@checkin.user.do_activity( "#{@checkin.expanded_status} ", @checkin.objective )
 			end
-			@checkin.user.points_balance += @checkin.objective.points
 			
 			@checkin.user.save
-			pop_flash "Checkin was successfully created."
+			#pop_flash "Checkin was successfully created."
+			
+			#Some simple processing of checkin to test logic
+			if @checkin.status == 'did'
+				if @checkin.process_checkin > @checkin.objective.times
+					pop_flash "Congratulations! You've reached your goal of #{@checkin.objective.times} checkins for #{@checkin.objective.name}"				
+					#Award points if points have not been previously awarded
+					@checkin.user.earn_points_for(@checkin.objective, @checkin.objective.points) unless @checkin.objective.earned_for_period
+				else	
+					pop_flash "Checkins so far this #{@checkin.objective.period}: #{@checkin.process_checkin}"
+				end
+			end	
+			
 		else
         	pop_flash "Checkin could not be created.", :error, @checkin
 		end
@@ -28,6 +39,8 @@ class CheckinsController < ApplicationController
 		@checkin = Checkin.find( params[:id] )
 
 		if @checkin.update_attributes( params[:checkin] )
+			count = process_checkin( @checkin )
+
 			pop_flash "Checkin was successfully updated."
 		else
 			pop_flash "Checkin could not be updated.", :error, @checkin

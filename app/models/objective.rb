@@ -23,9 +23,32 @@ class Objective < ActiveRecord::Base
 	has_many	:assignments
 	has_many	:users, :through => :assignments
 	has_many	:earnings, :as => :earned_for
+	has_many	:checkins
 	
 	attr_accessor	:user_id
 	
 	scope :recurring, where( "objective_type = 'recurring' " )
 	scope :once, where( "objective_type = 'once' " )
+	
+	def earned_for_period
+		start_time = self.get_start_time
+		if self.earnings.dated_between(start_time, Time.now.getutc).count > 0
+			return true
+		else
+			return false
+		end
+	end
+	
+	def get_start_time
+		case self.period
+		when 'day'
+			start_time = Time.now.beginning_of_day.getutc
+		when 'week'
+			start_time = Time.now.beginning_of_week.getutc
+		when 'month'
+			start_time = Time.now.beginning_of_month.getutc
+		when nil
+			start_time = nil
+		end
+	end
 end
