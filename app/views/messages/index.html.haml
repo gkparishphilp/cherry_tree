@@ -5,6 +5,8 @@
 		%h3 Your Messages:
 		- for msg in @messages
 			%b= msg.subject
+			%br
+			= msg.content
 	- else
 		%h3 No Messages
 	
