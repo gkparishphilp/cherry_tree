@@ -1,22 +1,23 @@
 # == Schema Information
-# Schema version: 20101209043322
+# Schema version: 20110203215818
 #
 # Table name: messages
 #
-#  id             :integer(4)      not null, primary key
-#  sender_id      :integer(4)
-#  sender_type    :string(255)
-#  recipient_id   :integer(4)
-#  recipient_type :string(255)
-#  subject        :string(255)
-#  content        :text
-#  points         :integer(4)      default(0)
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id         :integer(4)      not null, primary key
+#  sender_id  :integer(4)
+#  subject    :string(255)
+#  content    :text
+#  points     :integer(4)      default(0)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Message < ActiveRecord::Base
-	belongs_to :sender, :polymorphic => true
-	belongs_to :recipient, :polymorphic => true
+	belongs_to	:sender, :class_name => 'User'
+	has_many	:messagings
 	has_many	:earnings, :as => :earned_for
+	
+	def send_to( user )
+		self.messagings.create :recipient => user
+	end
 end

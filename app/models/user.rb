@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101209043322
+# Schema version: 20110203215818
 #
 # Table name: users
 #
@@ -77,8 +77,13 @@ class User < ActiveRecord::Base
 	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child, :conditions => "role NOT IN ( 'mother', 'father', 'guardian', 'pro' )"
 	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian', 'pro' )"
 
-	has_many	:received_messages, :as => :recipient, :class_name => 'Message'
-	has_many	:sent_messages, :as => :sender, :class_name => 'Message'
+	has_many	:sent_messages, :foreign_key => :sender_id, :class_name => 'Message'
+	
+	has_many	:messagings, :foreign_key => :recipient_id
+	has_many	:received_messages, :through => :messagings, :source => :message
+		# I'm also going to alias that relationship because it's easier to type and understand
+	has_many	:messages, :through => :messagings, :source => :message
+	
 
 	has_many	:assignments
 	has_many	:objectives, :through => :assignments
