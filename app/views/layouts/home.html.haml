@@ -5,11 +5,12 @@
 		= render 'layouts/meta', :css => 'home'
 		= javascript_include_tag 'jquery.jplayer.min'
 		:javascript
+			$(document).ready(function(){
 				$("#jquery_jplayer_1").jPlayer({
 					ready: function () {
 						$(this).jPlayer("setMedia", {
-							m4a: "/audio/cherrytree.m4a",
-							oga: "/audio/cherrytree.ogg"
+							m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+							oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
 						}).jPlayer("play");
 					},
 					ended: function (event) {
@@ -18,6 +19,7 @@
 					swfPath: "/javascripts",
 					supplied: "m4a, oga"
 				});
+			});
 	%body
 		#container
 			= render 'shared/header'
