@@ -1,0 +1,15 @@
+= render 'children/banner', :title => 'Messages'
+= render 'children/nav'
+- if @messages.present?
+	%h3 Your Messages:
+	- for msg in @messages
+		%b= msg.subject
+- else
+	%h3 No Messages
+	
+- if @sent_messages.present?
+	%h3 Your Sent Messages
+	- for msg in @sent_messages
+		%b= msg.subject
+- else
+	%h3 No Sent Messages

@@ -9,10 +9,10 @@
 	%span.gender
 		&nbsp;
 	name is
-	= f.text_field :name
+	= f.text_field :display_name
 
 	%br
-	%span.name
+	%span.name_owner
 		&nbsp;
 	birthday is
 	= f.text_field :birthday, :class => 'birthday_field'
@@ -20,11 +20,19 @@
 
 	%br
 	I am
-	%span.name 
+	%span.name_owner
 		&nbsp
 	= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
+	
 	%br
-	PIN:
+	Please Provide a unique login name for
+	%span.name
+		&nbsp;
+	= f.text_field :name
+	%br
+	Please Provide a PIN Code or Password for
+	%span.name
+		&nbsp;
 	= f.text_field :password
 
 	= f.label "Welcome Message:"

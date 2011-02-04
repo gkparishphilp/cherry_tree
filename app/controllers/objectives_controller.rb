@@ -5,7 +5,7 @@ class ObjectivesController < ApplicationController
 	end
 	
 	def index
-		@objectives = Objective.all
+		@objectives = @current_user.objectives
 	end
 	
 	def show

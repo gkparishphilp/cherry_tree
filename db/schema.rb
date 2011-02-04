@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101209043322) do
+ActiveRecord::Schema.define(:version => 20110203215818) do
 
   create_table "activities", :force => true do |t|
     t.integer  "actor_id",                            :null => false
@@ -140,14 +140,6 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
     t.datetime "updated_at"
   end
 
-  create_table "docs", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "earnings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "earned_for_id"
@@ -212,12 +204,17 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
-    t.string   "sender_type"
-    t.integer  "recipient_id"
-    t.string   "recipient_type"
     t.string   "subject"
     t.text     "content"
-    t.integer  "points",         :default => 0
+    t.integer  "points",     :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messagings", :force => true do |t|
+    t.integer  "message_id"
+    t.integer  "recipient_id"
+    t.boolean  "unread",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -328,16 +325,6 @@ ActiveRecord::Schema.define(:version => 20101209043322) do
 
   add_index "relations", ["child_id"], :name => "index_relations_on_child_id"
   add_index "relations", ["user_id"], :name => "index_relations_on_user_id"
-
-  create_table "reviews", :force => true do |t|
-    t.integer  "reviewable_id"
-    t.string   "reviewable_type"
-    t.integer  "user_id"
-    t.integer  "score"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "roles", :force => true do |t|
     t.integer  "site_id"

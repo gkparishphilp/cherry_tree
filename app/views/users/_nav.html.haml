@@ -1,0 +1,8 @@
+%ul.navbar
+	%li= link_to "Home", user_path( @current_user )
+	%li= link_to "Children and Family"
+	
+	%li= link_to "Objectives / Awards", "#objectives" unless @current_user.children.empty?
+	%li= link_to "Messages", messages_path
+	
+	%li= link_to "Settings"
