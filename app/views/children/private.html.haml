@@ -17,16 +17,17 @@
 		- for msg in @messages
 			%b
 				From:
-				= msg.sender.name
-				(
-				Your
-				= msg.sender.relation_to( @child )
-				)
+				= msg.message.sender.name
+				-#
+					(
+					Your
+					= msg.message.sender.relation_to( @child )
+					)
 			%p
-				= msg.content
+				= msg.message.content
 			%br
 			%b
-				= msg.points
+				= msg.message.points
 				Kudos
 			%hr
 			

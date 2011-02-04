@@ -1,6 +1,6 @@
 .form_group
 	Dear:&nbsp;&nbsp;&nbsp;&nbsp;
-	= f.collection_select :recipient_id, @current_user.children, :id, :name
+	= f.collection_select :recipient_id, @recipient_list, :id, :name
 	%br
 	Subject:
 	= f.text_field :subject
