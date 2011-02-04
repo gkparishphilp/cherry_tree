@@ -5,19 +5,19 @@
 		= render 'layouts/meta', :css => 'home'
 		= javascript_include_tag 'jquery.jplayer.min'
 		:javascript
-			$("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-            mp3: "/audio/cherrytree.mp3",
-            oga: "/audio/cherrytree.ogg"
-          }).jPlayer('play');
-        },
-        ended: function() { // The $.jPlayer.event.ended event
-            $(this).jPlayer("play"); // Repeat the media
-        },
-        swfPath: "/javascripts",
-        supplied: "mp3, oga"
-      });
+				$("#jquery_jplayer_1").jPlayer({
+					ready: function () {
+						$(this).jPlayer("setMedia", {
+							m4a: "/audio/cherrytree.m4a",
+							oga: "/audio/cherrytree.ogg"
+						}).jPlayer("play");
+					},
+					ended: function (event) {
+						$(this).jPlayer("play");
+					},
+					swfPath: "/javascripts",
+					supplied: "m4a, oga"
+				});
 	%body
 		#container
 			= render 'shared/header'
