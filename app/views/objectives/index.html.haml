@@ -25,7 +25,7 @@
 		= obj.period
 		= form_for Checkin.new do |f|
 			= f.hidden_field :objective_id, :value => obj.id
-			= f.hidden_field :user_id, :value => @child.id
+			= f.hidden_field :user_id, :value => @current_user.id
 			= f.radio_button :status, 'did'
 			I did It!
 			= f.radio_button :status, 'did_not'

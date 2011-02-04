@@ -37,4 +37,23 @@ class Checkin < ActiveRecord::Base
 			return 0
 		end
 	end
+	
+	def process_checkin
+		if self.number_checkin_times >= self.objective.times
+			if self.objective.earned_for_period
+				pop_msg = "Way to overachieve!  You've exceeded your goal of #{self.objective.times} checkins for #{self.objective.name}"
+			else
+				pop_msg = "Congratulations! You've reached your goal of #{self.objective.times} checkins for #{self.objective.name}"				
+				self.user.earn_points_for(self.objective, self.objective.points) 
+			end
+		else	
+			if self.number_checkin_times == self.objective.times - 1
+				pop_msg = "Almost there!  Only one more to go!"
+			else
+				pop_msg = "Awesome!  You have #{self.number_checkin_times} checkins so far this #{self.objective.period}.  Keep it up!"
+			end
+		end
+		
+		return pop_msg
+	end
 end

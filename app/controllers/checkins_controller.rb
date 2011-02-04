@@ -17,15 +17,11 @@ class CheckinsController < ApplicationController
 			
 			@checkin.user.save
 			
-			#Some simple processing of checkins to award points
 			if @checkin.status == 'did'
-				if @checkin.number_checkin_times > @checkin.objective.times
-					pop_flash "Congratulations! You've reached your goal of #{@checkin.objective.times} checkins for #{@checkin.objective.name}"				
-
-					@checkin.user.earn_points_for(@checkin.objective, @checkin.objective.points) unless @checkin.objective.earned_for_period
-				else	
-					pop_flash "Checkins so far this #{@checkin.objective.period}: #{@checkin.number_checkin_times}"
-				end
+				pop_msg = @checkin.process_checkin
+				pop_flash pop_msg
+			else
+				pop_flash "Thanks for checking in!  Keep working on it, you're doing great."
 			end	
 			
 		else
