@@ -1,0 +1,135 @@
+= render 'banner'
+= render 'nav'
+
+#welcome
+	%p
+		Welcome to our prototype.  This is still very much a work in progress, but should give a feel for what we're trying to do.  Have fun!
+	%h3 
+		Hi
+		= "#{@child.name},"
+		What's Up?
+	= form_for [ Checkin.new ] do |f|
+		= f.text_field :content
+		= f.hidden_field :user_id, :value => @current_user.id
+		= f.submit "Enter", :class => :button
+	- unless @messages.empty?
+		%h3 Recent Messages
+		- for msg in @messages
+			%b
+				From:
+				= msg.sender.name
+				(
+				Your
+				= msg.sender.relation_to( @child )
+				)
+			%p
+				= msg.content
+			%br
+			%b
+				= msg.points
+				Kudos
+			%hr
+	
+#stuff
+	%h3 Your Stuff
+	- if @child.unlockables.empty?
+		You don't have any stuff yet...
+	- else
+		Here you can savor the sweet, sweet rewards that come with a job well done -- Bravo!
+		- for unlockable in @child.unlockables
+			%p
+				%b= unlockable.name
+				%br
+				= link_to avatar_tag( unlockable, :thumb, :width => 64 ), unlockable_path( unlockable )
+				%br
+			
+
+#objectives
+	- unless @child.objectives.once.empty?
+		%h3 Your Goals:
+		- for obj in @child.objectives.once
+			%b= obj.name
+			%br
+			Target: 
+			= format_date_only obj.due_at
+			That is only
+			= distance_of_time_in_words( Time.now, obj.due_at )
+			from Now!!!
+			%br
+			%br
+	- unless @child.objectives.recurring.empty?
+		%h3 Your Objectives
+		- for obj in @child.objectives.recurring
+			%b= obj.name
+			%br
+			= obj.times
+			times per
+			= obj.period
+			= form_for Checkin.new do |f|
+				= f.hidden_field :objective_id, :value => obj.id
+				= f.hidden_field :user_id, :value => @child.id
+				= f.radio_button :status, 'did'
+				I did It!
+				= f.radio_button :status, 'did_not'
+				I'm Working on it
+				= f.submit
+	
+#games
+	%h3 Games
+	%table( style = 'width:100%;' )
+		- for game in Game.all
+			%tr
+				%td
+					= game.name
+				%td
+					This game is worth: 
+					= game.points
+					points.
+				%td
+					= link_to "Play it", game
+		
+		
+	%h3 Quizzes
+	%table( style = 'width:100%;' )
+		- for quiz in Quiz.all
+			%tr
+				%td
+					= quiz.name
+				- if quiz.taken_by?( @current_user )
+					%td
+						You already took this quiz!  You scored:
+						= number_to_percentage( ( quiz.user_score( @current_user ).to_f / quiz.questions.count.to_f ) * 100, :precision => 0 )
+				- else
+					%td
+						This quiz is worth up to: 
+						= quiz.points
+						total points.
+					%td
+						= link_to "Take it", quiz_question_path( quiz, quiz.first_question )
+	
+	
+#buy
+	%h3 Stuff to Buy
+	- for unlockable in Unlockable.all
+		- if @child.owns?( unlockable )
+			.owned_unlock
+				= avatar_tag( unlockable, :thumb, :width => 64 )
+				%br
+				= unlockable.name
+		- else
+			.not_owned_unlock
+				= link_to avatar_tag( unlockable, :thumb, :width => 64 ), unlockable_path( unlockable )
+				%br
+				= link_to unlockable.name, unlockable_path( unlockable )
+				%br
+				= unlockable.points
+				Points
+				%br
+				%b
+					= link_to "Unlock", unlock_unlockable_path( unlockable )
+	.clear
+
+%h3
+	Activity
+= render @activities
+	

@@ -19,9 +19,8 @@ class ChildrenController < ApplicationController
 		if @child.save
 			relation = @current_user.relations.new :role => params[:child][:role], :child_id => @child.id
 			if params[:child][:welcome_message].present?
-				msg = Message.create :sender => @current_user, :recipient => @child, 
-						:subject => "Welcome, #{@child.name}!",
-						:content => params[:child][:welcome_message], :points => 10
+				msg = @current_user.sent_messages.create( :content => params[:child][:welcome_message] )
+				msg.deliver_to( @child )
 				@child.earn_points_for( msg )
 			end
 			if relation.save
@@ -38,21 +37,15 @@ class ChildrenController < ApplicationController
 	
 	def show
 		@child = Child.find( params[:id] )
-		if @child.anonymous?
-			flash[:notice] = "Invalid Child"
-			redirect_to root_path
-			return false
-		end
-
-		# first things first, public or private?
+		# first things first, is the child logged in?
 		if @child == @current_user
 			@activities = Activity.feed @child
-			@messages = @child.received_messages.reverse
+			@messages = @child.messagings.unread.reverse
 			render :private
 		else 
-			# Let's just show the public profile
-			set_meta @child.name, @child.bio
-			render	:public
+			pop_flash "Invalid Child", :error
+			redirect_to root_path
+			return false
 		end
 	end
 

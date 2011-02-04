@@ -58,8 +58,6 @@ class User < ActiveRecord::Base
 						:format => /\A[a-zA-Z0-9_]+\z/,
 						:if => :has_name?
 
-
-
 	# Relations   	--------------------------------------
 	has_many	:openids
 	has_many	:roles

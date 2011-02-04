@@ -14,7 +14,7 @@ class CheckinsController < ApplicationController
 			else
 				@checkin.user.do_activity( "#{@checkin.expanded_status} ", @checkin.objective )
 			end
-			@checkin.user.points_balance += @checkin.objective.points
+			@checkin.user.points_balance += @checkin.objective.points if @checkin.objective.present?
 			
 			@checkin.user.save
 			pop_flash "Checkin was successfully created."

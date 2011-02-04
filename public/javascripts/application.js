@@ -69,12 +69,12 @@ $(document).ready(function(){
 			dateFormat: 'yy-mm-dd',
 			defaultDate: '-10y'
 		});
-	$('#tabs').tabs({
-					cookie: {
-						// store cookie for a day, without, it would be a session cookie
-						expires: 1
-					}
-				});
+	//$('#tabs').tabs({
+	//				cookie: {
+	//					// store cookie for a day, without, it would be a session cookie
+	//					expires: 1
+	//				}
+	//			});
 				
 	/////////// Let's try some fancy judo for Child Reg  ////////////////
 	$('#child_gender_male').click(function () {
@@ -83,9 +83,11 @@ $(document).ready(function(){
 	$('#child_gender_female').click(function () {
 		$('.gender').html( "Her" );
 	});
-	$('#child_name').keyup(function () {
-		$('.name').html( this.value + "'s" );
+	$('#child_display_name').keyup(function () {
+		$('.name_owner').html( this.value + "'s" );
+		$('.name').html( this.value );
 	});
+	
 	
 	
 	///////////// Objective Form /////////////////////////////

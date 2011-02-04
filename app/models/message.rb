@@ -15,9 +15,14 @@
 class Message < ActiveRecord::Base
 	belongs_to	:sender, :class_name => 'User'
 	has_many	:messagings
+	has_many	:recipients, :through => :messagings
 	has_many	:earnings, :as => :earned_for
+
+	validates_presence_of :content, :message => "You should have something to say ;-)"
 	
-	def send_to( user )
+	attr_accessor	:recipient_id # so we can set the recipient int he form without form_tag
+	
+	def deliver_to( user )
 		self.messagings.create :recipient => user
 	end
 end

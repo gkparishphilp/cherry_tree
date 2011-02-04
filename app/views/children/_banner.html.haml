@@ -1,0 +1,9 @@
+.banner_name
+	%h1
+		= possessize @current_user.name
+		= title
+	= @current_user.checkins.update.last.content unless @current_user.checkins.update.empty?
+.banner_points
+	= @current_user.points_balance
+	%span.pts Pts
+.clear

@@ -9,7 +9,13 @@ class MessagesController < ApplicationController
 		@message = Message.find params[:id]
 	end
 	
+	def index
+		@messages = @current_user.messages
+		@sent_messages = @current_user.sent_messages
+	end
+	
 	def create
+		dfs
 		@message = Message.new params[:message]
 		@message.sender = @current_user
 		@message.recipient = User.find_by_id( params[:message][:recipient_id] )
