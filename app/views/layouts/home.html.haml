@@ -10,14 +10,16 @@
 					ready: function () {
 						$(this).jPlayer("setMedia", {
 							m4a: "/audio/cherrytree.m4a",
-							oga: "/audio/cherrytree.ogg"
+							oga: "/audio/cherrytree.ogg", 
+							mp3: "/audio/cherrytree.mp3",
+							wav: "/audio/cherrtree.wav"
 						}).jPlayer("play");
 					},
 					ended: function (event) {
 						$(this).jPlayer("play");
 					},
 					swfPath: "/javascripts",
-					supplied: "m4a, oga"
+					supplied: "m4a, oga, mp3, wav"
 				});
 			});
 	%body

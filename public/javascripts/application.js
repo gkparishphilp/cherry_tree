@@ -17,7 +17,7 @@ function remove_fields( link ) {
 // experiment with audio
 	var pop = new Audio("/audio/pop.wav");
 	var pop2 = new Audio("/audio/pop2.wav");
-	var birds = new Audio("/audio/birds.mp3");
+	var bird = new Audio("/audio/bird.wav");
 
 $(document).ready(function(){
 	// experimental soundeffects
@@ -43,8 +43,8 @@ $(document).ready(function(){
 			left:'+=166'
 		});
 		$(this).css( 'z-index', 10 );
-		birds.load();
-		birds.play();
+		bird.load();
+		bird.play();
 	});
 	
 	$('#big_tree').mouseout( function(){
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			left:'-=166'
 		});
 		$(this).css( 'z-index', 3 );
-		birds.pause();
+		bird.pause();
 	});
 	
 	
@@ -102,4 +102,5 @@ $(document).ready(function(){
 			$('#one_time_fields').show( 'slow' );
 		}
 	});
+	
 });
