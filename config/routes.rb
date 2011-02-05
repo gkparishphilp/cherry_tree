@@ -70,7 +70,7 @@ CherryTree::Application.routes.draw do
 	end
 	
 	
-	resources :unlockables do
+	resources :awards do
 		get 'admin', :on => :collection
 		get 'unlock', :on => :member
 	end
@@ -93,7 +93,7 @@ CherryTree::Application.routes.draw do
 	match '/reset' => 'users#reset_password', :as => 'reset'
 	match '/activate/:token' => 'users#activate', :as => 'activate'
 	match '/resend' => 'users#resend', :as => 'resend'
-	match '/amazon' => 'unlockables#search_amazon', :as => 'amazon'
+	match '/amazon' => 'awards#search_amazon', :as => 'amazon'
 	
 	match "/:permalink", :to => 'static_pages#show'
 	

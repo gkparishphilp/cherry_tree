@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
 	has_many	:earnings
 
 	has_many	:ownings
-	has_many	:unlockables, :through => :ownings
+	has_many	:awards, :through => :ownings
 
 	has_many	:playings
 	has_many	:games, :through => :playings
@@ -264,14 +264,14 @@ class User < ActiveRecord::Base
 		self.update_attributes :points_earned => ( self.points_earned + points ), :points_balance => ( self.points_balance + points )
 	end
 	
-	def can_unlock?( unlockable )
-		return self.level >= unlockable.level && self.points_balance >= unlockable.points
+	def can_unlock?( award )
+		return self.level >= award.level && self.points_balance >= award.points
 	end
 	
-	def unlock( unlockable )
-		return false, "You can't unlock this yet" unless self.can_unlock?( unlockable )
-		self.unlockables << unlockable
-		self.update_attributes :points_balance => self.points_balance - unlockable.points
+	def unlock( award )
+		return false, "You can't unlock this yet" unless self.can_unlock?( award )
+		self.awards << award
+		self.update_attributes :points_balance => self.points_balance - award.points
 		return true, "Unlocked!"
 	end
 	
@@ -281,8 +281,8 @@ class User < ActiveRecord::Base
 		self.do_activity( "Earned #{game.points} points for playing", game )
 	end
 	
-	def owns?( unlockable )
-		self.unlockables.include?( unlockable )
+	def owns?( award )
+		self.awards.include?( award )
 	end
 
 	protected

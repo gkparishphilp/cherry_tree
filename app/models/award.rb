@@ -14,7 +14,7 @@
 #  updated_at   :datetime
 #
 
-class Unlockable < ActiveRecord::Base
+class Award < ActiveRecord::Base
 	has_many	:ownings
 	has_many	:children, :through => :ownings
 	
@@ -26,13 +26,13 @@ class Unlockable < ActiveRecord::Base
 			return "didn't find product for asin #{asin}"
 		end
 		
-		unlockable = Unlockable.new( :name => result.get('title'), :description => result.get('editorialreview/content') )
+		award = Award.new( :name => result.get('title'), :description => result.get('editorialreview/content') )
 		
-		if unlockable.save
-			avatar = Attachment.create_from_resource( result.get('mediumimage/url'), 'avatar', :owner => unlockable, :remote => 'true' )
-			return unlockable
+		if award.save
+			avatar = Attachment.create_from_resource( result.get('mediumimage/url'), 'avatar', :owner => award, :remote => 'true' )
+			return award
 		else
-			return "couldn't save unlockable"
+			return "couldn't save award"
 		end
 	end
 end

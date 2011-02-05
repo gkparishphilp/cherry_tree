@@ -11,6 +11,6 @@
 #
 
 class Owning < ActiveRecord::Base
-	belongs_to	:unlockable
+	belongs_to	:award
 	belongs_to	:child
 end
