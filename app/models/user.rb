@@ -75,13 +75,12 @@ class User < ActiveRecord::Base
 	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child, :conditions => "role NOT IN ( 'mother', 'father', 'guardian', 'pro' )"
 	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian', 'pro' )"
 
-	has_many	:sent_messages, :foreign_key => :sender_id, :class_name => 'Message'
+	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	
-	has_many	:messagings, :foreign_key => :recipient_id
-	has_many	:received_messages, :through => :messagings, :source => :message
+	has_many	:note_deliveries, :foreign_key => :recipient_id
+	has_many	:received_notes, :through => :note_deliveries, :source => :note
 		# I'm also going to alias that relationship because it's easier to type and understand
-	has_many	:messages, :through => :messagings, :source => :message
-	
+	has_many	:notes, :through => :note_deliveries, :source => :note
 
 	has_many	:assignments
 	has_many	:objectives, :through => :assignments

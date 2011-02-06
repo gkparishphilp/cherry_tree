@@ -19,9 +19,9 @@ class ChildrenController < ApplicationController
 		if @child.save
 			relation = @current_user.relations.new :role => params[:child][:role], :child_id => @child.id
 			if params[:child][:welcome_message].present?
-				msg = @current_user.sent_messages.create( :content => params[:child][:welcome_message] )
-				msg.deliver_to( @child )
-				@child.earn_points_for( msg )
+				note = @current_user.sent_notes.create( :content => params[:child][:welcome_message] )
+				note.deliver_to( @child )
+				@child.earn_points_for( note )
 			end
 			if relation.save
 				pop_flash "Child Added"
@@ -40,7 +40,7 @@ class ChildrenController < ApplicationController
 		# first things first, is the child logged in?
 		if @child == @current_user
 			@activities = Activity.feed @child
-			@messages = @child.messagings.unread.reverse
+			@recent_note_deliveries = @child.note_deliveries.unread.reverse
 			render :private
 		else 
 			pop_flash "Invalid Child", :error

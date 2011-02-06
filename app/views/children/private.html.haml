@@ -12,22 +12,22 @@
 		= f.text_field :content
 		= f.hidden_field :user_id, :value => @current_user.id
 		= f.submit "Enter", :class => :button
-	- unless @messages.empty?
-		%h3 Recent Messages
-		- for msg in @messages
+	- unless @recent_note_deliveries.empty?
+		%h3 Recent Notes
+		- for note_delivery in @recent_note_deliveries
 			%b
 				From:
-				= msg.message.sender.name
+				= note_delivery.sender.name
 				-#
 				(
 				Your
-				= msg.message.sender.relation_to( @child )
+				= note_delivery.sender.relation_to( @child )
 				)
 			%p
-				= msg.message.content
+				= note_delivery.note.content
 			%br
 			%b
-				= msg.message.points
+				= note_delivery.note.points
 				Kudos
 			%hr
 			

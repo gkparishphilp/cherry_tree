@@ -31,7 +31,7 @@ CherryTree::Application.routes.draw do
 	
 	resources :games
 	
-	resources :messages
+	resources :notes
 	
 	resources :objectives
 	

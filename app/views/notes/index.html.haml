@@ -1,0 +1,22 @@
+- if @current_user.is_child?
+	= render 'children/banner'
+	= render 'children/nav'
+- else
+	= render 'users/banner'
+	= render 'users/nav'
+
+- if @notes.present?
+	.cork_board
+		- for note in @notes
+			%div[note]{ :class => note.font }
+				.from
+					From:
+					= note.sender.display_name
+				.subject
+					= note.subject
+				.content
+					= note.content
+		%br.clear
+- else
+	%h3 No Notes
+

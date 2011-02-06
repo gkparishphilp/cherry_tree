@@ -1,0 +1,13 @@
+.form_group
+	Dear:&nbsp;&nbsp;&nbsp;&nbsp;
+	= f.collection_select :recipient_id, @recipient_list, :id, :display_name
+	%br
+	Subject:
+	= f.text_field :subject
+	%br
+	= f.text_area :content
+	%br
+	Kudos:
+	= f.text_field :points
+	%br
+	= f.submit "Send", :class => 'button'
