@@ -14,6 +14,9 @@ CherryTree::Application.configure do
   config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
 
+  # Set cache directory to public/cache
+  config.action_controller.page_cache_directory = Rails.public_path + '/cache'
+
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
