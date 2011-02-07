@@ -6,7 +6,7 @@ class NotesController < ApplicationController
 		if @current_user.is_child?
 			@recipient_list += @current_user.supporters
 		end
-		if @reply_to_note = Note.find( params[:reply_to] )
+		if @reply_to_note = Note.find_by_id( params[:reply_to] )
 			@note.subject = @reply_to_note.subject
 		end
 			
@@ -23,7 +23,7 @@ class NotesController < ApplicationController
 	
 	def show
 		@note = Note.find( params[:id] )
-		@note.update_attributes :unread => false
+		#@note.update_attributes :unread => false
 	end
 	
 	def create

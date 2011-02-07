@@ -57,7 +57,11 @@ $(document).ready(function(){
 	$('#note_font').change( function(){
 		$('.note_form').css('font-family', this.value );
 		$('.note_content textarea').css('font-family', this.value );
-	})
+	});
+	
+	$('.note').click( function(){
+		$(this).hide( 2000 );
+	});
 	
 	
 	$('.button').button();
