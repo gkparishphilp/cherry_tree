@@ -1,6 +1,15 @@
-= render 'children/banner', :title => 'Messages'
-= render 'children/nav'
-.left_nav
+- if @current_user.is_child?
+	= render 'children/banner', :title => 'Messages'
+	= render 'children/nav'
+- else
+	= render 'users/banner', :title => 'Messages'
+	= render 'users/nav'
+.left
+	= link_to "Inbox"
+	%br
+	= link_to "Sent Messages"
+
+.main
 	- if @messages.present?
 		%h3 Your Messages:
 		- for msg in @messages
@@ -9,7 +18,7 @@
 			= msg.content
 	- else
 		%h3 No Messages
-	
+
 	- if @sent_messages.present?
 		%h3 Your Sent Messages
 		- for msg in @sent_messages

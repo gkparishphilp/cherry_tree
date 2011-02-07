@@ -222,19 +222,22 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
     t.datetime "updated_at"
   end
 
-  create_table "messages", :force => true do |t|
-    t.integer  "sender_id"
-    t.string   "subject"
-    t.text     "content"
-    t.integer  "points",     :default => 0
+  create_table "note_deliveries", :force => true do |t|
+    t.integer  "note_id"
+    t.integer  "recipient_id"
+    t.boolean  "unread",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "messagings", :force => true do |t|
-    t.integer  "message_id"
-    t.integer  "recipient_id"
-    t.boolean  "unread",       :default => true
+  create_table "notes", :force => true do |t|
+    t.integer  "sender_id"
+    t.string   "font"
+    t.string   "font_color"
+    t.string   "background_color"
+    t.string   "subject"
+    t.text     "content"
+    t.integer  "points",           :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

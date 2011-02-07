@@ -2,19 +2,31 @@
 %html
 	%head
 		= render 'layouts/meta', :css => 'app'
+		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Sunshiney'
+		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Schoolbell'
+		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Homemade+Apple'
 		= init_tinymce_hammer_if_required
 	%body
 		#big_tree
 			- if @current_user.anonymous?
 				= image_tag 'big_tree.png'
 			- else
-				= link_to image_tag( 'big_tree.png' ), user_path( @current_user )
+				= link_to image_tag( 'http://thecherrytree.com/big_tree.png' ), user_path( @current_user )
 		#container
 			= render 'shared/header'
 			#bd
 				#content
+					#loading_div( style='position: absolute; top: 0; left: 0; width:100%; height:100%; text-align: center; background: #fff; z-index: 99;' )
+						%h1( style='margin-top:150px;' ) Loading.....
+						= image_tag 'spinner.gif'
+						
 					= render 'shared/flash', :flash => flash 
 					= yield
 					%br.clear
 		= render 'shared/footer'
 		= render 'shared/analytics'
+		:javascript
+			// This should hide the loading_div when the page is ready
+			$(document).ready(function(){
+				$('#loading_div').hide();
+			});

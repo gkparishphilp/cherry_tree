@@ -12,6 +12,8 @@ body
 	width: $page-width
 	.logo
 		margin: 10px
+		:margin-left 30px
+		:width 100px
 	.nav
 		float: right
 		margin-top: 40px
@@ -40,10 +42,6 @@ body
 			+ct_title(#0092b7)
 		h3
 			+ct_title(#0092b7)
-			
-		.left_nav
-			width: 200px
-			border: 1px solid #999
 
 #big_tree
 	z-index: 3
@@ -51,8 +49,14 @@ body
 	top: 160px
 	left: -200px
 	
+.banner_name
+	:float left
+.banner_points
+	:font-size 36px
+	:float right
+
 ul.navbar
-	width: 100%
+	width: 860px
 	padding: 5px
 	background: #ddf url() no-repeat
 	border: 1px solid #999

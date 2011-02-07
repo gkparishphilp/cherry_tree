@@ -2,7 +2,10 @@ class MessagesController < ApplicationController
 	
 	def new
 		@message = Message.new
-		render :layout => false  # cause we'll use this inside a tab...
+		@recipient_list = @current_user.children
+		if @current_user.is_child?
+			@recipient_list += @current_user.supporters
+		end
 	end
 	
 	def edit

@@ -73,10 +73,7 @@
 			= hidden_field_tag :token, @user.remember_token
 			= submit_tag "Change Password", :class => 'button'
 	.clear
-#kudos
-	%h3 Send Kudos
-	= form_for Message.new do |f|
-		= render 'messages/form', :f => f
+
 
 - unless @current_user.children.empty?
 	#objectives
