@@ -329,6 +329,16 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
   add_index "relations", ["child_id"], :name => "index_relations_on_child_id"
   add_index "relations", ["user_id"], :name => "index_relations_on_user_id"
 
+  create_table "relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "related_user_id"
+    t.string   "nickname"
+    t.string   "role"
+    t.string   "status",          :default => "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.integer  "site_id"
     t.integer  "user_id"

@@ -72,8 +72,15 @@ class User < ActiveRecord::Base
 	has_many	:articles, :as => :owner
 	
 	has_many	:relations
-	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child, :conditions => "role NOT IN ( 'mother', 'father', 'guardian', 'pro' )"
-	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian', 'pro' )"
+#	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child, :conditions => "role NOT IN ( 'mother', 'father', 'guardian', 'pro' )"
+#	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian', 'pro' )"
+
+	# Testing robust relationships
+	has_many	:relationships
+	has_many	:related_users, :through => :relationships
+	has_many	:supported_children, :through => :relationships, :foreign_key => :related_user_id, :class_name => 'Child', :source => :related_user, :conditions => "role NOT IN ( 'mother', 'father', 'guardian' )"
+	has_many	:children, :through => :relationships, :foreign_key => :related_user_id, :class_name => 'Child', :source => :related_user, :conditions => "role IN ( 'mother', 'father', 'guardian' )"
+
 
 	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	
@@ -255,6 +262,13 @@ class User < ActiveRecord::Base
 		self.relations.find_by_child_id( child.id ).role
 	end
 	
+	def relate_to( user, args={} )
+		args[:as].present? ? role = args[:as] : role = 'relative'
+		args[:nickname].present? ? nickname = args[:nickname] : nickname = self.display_name
+
+		self.relationships.create :related_user => user, :role => role, :nickname => nickname
+	end
+	
 	def earn_points_for( obj, points=nil )
 		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaciton 
 		# and add points to the user's point_balance and point_total
@@ -305,6 +319,7 @@ class User < ActiveRecord::Base
 				self.name = self.email.gsub( /\W/, "_" ) 
 			end
 		end
+		self.display_name = self.name unless self.display_name.present?
 	end
 	
 	
