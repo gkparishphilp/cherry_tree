@@ -1,8 +1,0 @@
-- content_for :left_column do
-	%h1 
-		= pluralize @wishlists.size, "Wishlist"
-
-	= render @wishlists
-
-	%br
-	= link_to 'New Wishlist', new_wishlist_path

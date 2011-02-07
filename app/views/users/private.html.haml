@@ -92,9 +92,26 @@
 				For:
 				= select_tag :search_index, options_for_select( ['Apparel', 'Books', 'DVD', 'Electronics', 'Toys', 'HealthPersonalCare', 'Kitchen', 'Music', 'DigitalMusic', 'SportingGoods', 'Video', 'VideoGames' ] )
 				= submit_tag "Search", :class => 'button'
+%br 
 
-
-
+#wishitems
+	-for child in @current_user.children
+		%h3 
+			Add a prize from  
+			= possessize child.name 
+			Wishlist items
+		
+		.form_group
+			= form_for @award=Award.new, :html => { :multipart => true } do |f|
+				= f.collection_select :name, child.wishitems, :name, :name
+				= f.label 'Points:'
+				= f.text_field :points
+				= f.label 'Level Required:'
+				= f.text_field :level
+				%br
+				= f.submit "Enter", :class => 'button'
+				
+		
 %h3
 	Recent Activity
 = render @activities

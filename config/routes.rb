@@ -1,6 +1,8 @@
 CherryTree::Application.routes.draw do
 
-  resources :wishlists
+  resources :merches
+
+  resources :wishitems
 
 	root :to => "site#index"
 	
