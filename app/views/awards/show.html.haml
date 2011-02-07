@@ -1,8 +1,7 @@
-- content_for :left_column do
-	%h1= @award.name
-	= avatar_tag( @award, :thumb )
-	= @award.description
-	
-	%br
-	Cost:
-	= @award.points
+%h1= @award.name
+= avatar_tag( @award, :thumb )
+= @award.description
+
+%br
+Cost:
+= @award.points

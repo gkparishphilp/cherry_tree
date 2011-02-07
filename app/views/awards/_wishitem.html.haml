@@ -5,9 +5,3 @@
 = @award.asin.present? ? ( file_field_tag :attached_avatar_file ) : ""
 = f.label 'Description:'
 = @award.asin.present? ? @award.description.html_safe : ( f.text_area :description ) 
-= f.label 'Points:'
-= f.text_field :points
-= f.label 'Level Required:'
-= f.text_field :level
-%br
-= f.submit "Enter", :class => 'button'

@@ -1,5 +1,4 @@
-- content_for :left_column do
-	%h1 Awards index
-	- for award in @awards
-		%div[award]= link_to award.name, award_path( award )
+%h1 Awards index
+- for award in @awards
+	%div[award]= link_to award.name, award_path( award )
 		

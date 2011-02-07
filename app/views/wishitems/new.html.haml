@@ -1,7 +1,7 @@
 %h1 New Wishitem
 
-= form_for @wishitem , :html => { :mutipart => true } do |f|
-	= render 'form', :f => f
+= form_for @award=Award.new , :html => { :mutipart => true } do |f|
+	= render 'awards/wishitem', :f => f
 	.actions
 		= f.submit 'Create', :class => 'button'
 		|
