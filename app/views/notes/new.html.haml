@@ -1,3 +1,12 @@
-%h3 New Note
-= form_for @note do |f|
-	= render 'form', :f => f
+- if @current_user.is_child?
+	= render 'children/banner'
+	= render 'children/nav'
+- else
+	= render 'users/banner'
+	= render 'users/nav'
+.cork_board
+	.note_detail.schoolbell
+		.note_title
+			Write a Note!
+		= form_for @note do |f|
+			= render 'form', :f => f

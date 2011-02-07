@@ -17,12 +17,7 @@
 		- for note_delivery in @recent_note_deliveries
 			%b
 				From:
-				= note_delivery.sender.name
-				-#
-				(
-				Your
-				= note_delivery.sender.relation_to( @child )
-				)
+				= note_delivery.sender.display_name
 			%p
 				= note_delivery.note.content
 			%br

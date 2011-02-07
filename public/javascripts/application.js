@@ -54,6 +54,10 @@ $(document).ready(function(){
 		bird.pause();
 	});
 	
+	$('#note_font').change( function(){
+		$('.note_form').css('font-family', this.value );
+		$('.note_content textarea').css('font-family', this.value );
+	})
 	
 	
 	$('.button').button();

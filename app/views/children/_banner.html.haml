@@ -1,6 +1,6 @@
 .banner_name
 	%h1
-		= possessize @current_user.name
+		= possessize @current_user.display_name.capitalize
 		= controller.controller_name.capitalize
 	= @current_user.checkins.update.last.content unless @current_user.checkins.update.empty?
 .banner_points

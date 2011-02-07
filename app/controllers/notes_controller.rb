@@ -6,6 +6,11 @@ class NotesController < ApplicationController
 		if @current_user.is_child?
 			@recipient_list += @current_user.supporters
 		end
+		if @reply_to_note = Note.find( params[:reply_to] )
+			@note.subject = @reply_to_note.subject
+		end
+			
+			 
 	end
 	
 	def edit
@@ -14,6 +19,11 @@ class NotesController < ApplicationController
 	
 	def index
 		@notes = @current_user.notes.order( :subject )
+	end
+	
+	def show
+		@note = Note.find( params[:id] )
+		@note.update_attributes :unread => false
 	end
 	
 	def create

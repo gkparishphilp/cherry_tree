@@ -1,13 +1,33 @@
-.form_group
-	Dear:&nbsp;&nbsp;&nbsp;&nbsp;
-	= f.collection_select :recipient_id, @recipient_list, :id, :display_name
-	%br
+.inline_label
+	To:
+.inline_field
+	- if @reply_to_note
+		= @reply_to_note.sender.display_name
+		= f.hidden_field :recipient_id, :value => @reply_to_note.sender.id
+	- else
+		= f.collection_select :recipient_id, @recipient_list, :id, :display_name
+.inline_label
 	Subject:
-	= f.text_field :subject
-	%br
+.inline_field
+	= f.text_field :subject, :class => 'regular'
+.inline_label
+	Font:
+.inline_field
+	= f.select :font, [ ['Print', 'schoolbell'], ['Curly Print', 'sunshiney'], ['Cursive', 'homemade apple'] ]
+- unless @current_user.is_child?
+	.inline_label
+		Points
+	.inline_field
+		= f.text_field :points
+%br.clear
+.note_content
+	- if @reply_to_note
+		= @reply_to_note.sender.display_name
+		Said:
+		%br
+		= @reply_to_note.content
 	= f.text_area :content
-	%br
-	Kudos:
-	= f.text_field :points
-	%br
+.actions
 	= f.submit "Send", :class => 'button'
+	| 
+	= link_to 'Cancel', notes_path

@@ -28,4 +28,17 @@ class Note < ActiveRecord::Base
 	def deliver_to( user )
 		self.note_deliveries.create :recipient => user
 	end
+	
+	def font_class
+		# the font name as a CSS class (just whitespace to underscores)
+		self.font.gsub( /\s/, "_" )
+	end
+	
+	def font_css
+		# the font name as appropriate for linking in the stylesheet:
+		# e.g. stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Homemade+Apple'
+		self.font.gsub( /\s/, "+" )
+	end
+	
+	
 end
