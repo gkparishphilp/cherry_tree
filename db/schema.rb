@@ -206,15 +206,16 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
     t.integer  "note_id"
     t.integer  "recipient_id"
     t.boolean  "unread",       :default => true
+    t.string   "status",       :default => "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "notes", :force => true do |t|
     t.integer  "sender_id"
-    t.string   "font"
-    t.string   "font_color"
-    t.string   "background_color"
+    t.string   "font",             :default => "schoolbell"
+    t.string   "font_color",       :default => "#333"
+    t.string   "background_color", :default => "#ffd"
     t.string   "subject"
     t.text     "content"
     t.integer  "points",           :default => 0

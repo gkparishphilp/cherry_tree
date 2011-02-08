@@ -16,12 +16,12 @@ class NotesController < ApplicationController
 	end
 	
 	def index
-		@notes = @current_user.notes.order( :subject )
+		@inbox_notes = @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
 	end
 	
 	def show
 		@note = Note.find( params[:id] )
-		#@note.update_attributes :unread => false
+		@note.mark_read_by( @current_user )
 	end
 	
 	def create
@@ -40,6 +40,12 @@ class NotesController < ApplicationController
 			pop_flash "Ooops, Note not added", :error, @note
 		end
 		redirect_to :back
+	end
+	
+	def destroy
+		@note = Note.find( params[:id] )
+		@note.mark_deleted_by( @current_user )
+		pop_flash "Note trashed"
 	end
 	
 end

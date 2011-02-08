@@ -15,6 +15,7 @@ class Messaging < ActiveRecord::Migration
 			t.references	:note
 			t.references	:recipient
 			t.boolean		:unread, :default => true
+			t.string		:status, :default => 'active'
 			t.timestamps
 		end
 	end
