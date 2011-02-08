@@ -1,8 +1,10 @@
 %h1 New Wishitem
 
-= form_for @award=Award.new , :html => { :mutipart => true } do |f|
-	= render 'awards/wishitem', :f => f
+= form_for @wishitem , :html => { :mutipart => true } do |f|
+	= render 'wishitem', :f => f
 	.actions
 		= f.submit 'Create', :class => 'button'
 		|
 		= link_to 'Cancel', :back
+		
+

@@ -11,6 +11,13 @@ CherryTree::Application.routes.draw do
 		resources :comments
 	end
 	
+	resources :awards do
+		get 'admin', :on => :collection
+		get 'unlock', :on => :member
+		get 'prize_shelf', :on => :collection
+		get 'set', :on => :collection
+	end
+	
 	resources :blog do
 		get	:admin, :on => :collection
 	end
@@ -37,7 +44,7 @@ CherryTree::Application.routes.draw do
 	
 	resources :notes
 	
-	resources :objectives
+	resources :objectives 
 	
 	resources :quizzes do
 		get 'admin', :on => :collection
@@ -69,12 +76,6 @@ CherryTree::Application.routes.draw do
 	
 	resources :static_pages do
 		get 'admin', :on => :collection
-	end
-	
-	
-	resources :awards do
-		get 'admin', :on => :collection
-		get 'unlock', :on => :member
 	end
 	
 	resources  :users do

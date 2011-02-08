@@ -32,12 +32,19 @@ class AwardsController < ApplicationController
 		redirect_to :back
 	end
 
+	def prize_shelf
+		@awards = Award.available( @current_user )
+	end
+
 	def create
-		if asin = params[:award][:asin]
-			search_index = params[:award][:search_index]
-			@award = Award.create_from_amazon( asin, search_index )
+		if params[:award][:asin]
+			@award = Award.create_from_amazon(params[:award] )
 			redirect_to edit_award_path( @award )
 			return false
+		elsif params[:award][:id]
+			@award = Award.find params[:award][:id] 
+			@award.points = params[:award][:points]
+			@award.level = params[:award][:level]
 		else
 			@award = Award.new params[:award]
 		end

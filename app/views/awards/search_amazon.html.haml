@@ -19,5 +19,11 @@
 			= form_for Award.new do |f|
 				= f.hidden_field :asin, :value => item.get('asin')
 				= f.hidden_field :search_index, :value => @search_index
+				= f.collection_select :child_id, @current_user.children, :id, :name
+				= f.label "Points Required"
+				= f.text_field :points
+				= f.label "Level Required"
+				= f.text_field :level
 				= f.submit "Yeah, Add it!"
 	.clear
+	%hr

@@ -22,23 +22,17 @@ class WishitemsController < ApplicationController
 	end
 	
 	def create
-		if asin = params[:wishitem][:asin]
-			search_index = params[:wishitem][:search_index]
-			@award = Wishitem.create_from_amazon( asin, search_index )
-			redirect_to edit_wishitem_path( @wishitem )
-			return false
+		@wishitem = Wishitem.new params[:wishitem]
+		@award = Award.new
+		@award.name = params[:wishitem][:name]
+		@award.description = params[:wishitem][:description]
+		@award.child_id = @child.id
+		if @award.save
+			Wishitem.create :child_id => @child.id, :award_id => @award.id
+			pop_flash "Wishlist item saved!"
 		else
-			@wishitem = Wishitem.new params[:wishitem]
-		end
-		
-		@wishitem.child = @child
-		
-		if @wishitem.save
-			process_attachments_for( @wishitem )
-			pop_flash "Wishlist item Created"
-		else
-			pop_flash "Oooops, Wishlist item not saved", :error, @award
-		end
+			pop_flash "Oooops, Wishlist item not saved", :error
+		end		
 		redirect_to :back
 	end
 	

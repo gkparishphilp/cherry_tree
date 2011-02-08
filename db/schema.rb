@@ -462,10 +462,7 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
 
   create_table "wishitems", :force => true do |t|
     t.integer  "child_id"
-    t.integer  "merch_id"
-    t.string   "asin"
-    t.string   "name"
-    t.string   "description"
+    t.integer  "award_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

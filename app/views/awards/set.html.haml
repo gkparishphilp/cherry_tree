@@ -1,0 +1,22 @@
+%h1 Add Awards
+= render 'users/nav'
+%br
+%h3 Add an award from Amazon
+=render 'awards/amazon_form'
+
+#wishitems
+	-for child in @current_user.children
+		%h3 
+			Add an award from  
+			= possessize child.name 
+			Wishlist items
+	
+		.form_group
+			= form_for @award=Award.new, :html => { :multipart => true } do |f|
+				= f.collection_select :id, child.wishitems, :award_id, :award_id
+				= f.label 'Points:'
+				= f.text_field :points
+				= f.label 'Level Required:'
+				= f.text_field :level
+				%br
+				= f.submit "Enter", :class => 'button'
