@@ -17,7 +17,7 @@
 		- for note_delivery in @recent_note_deliveries
 			%b
 				From:
-				= note_delivery.sender.display_name
+				= note_delivery.sender.nickname( @child )
 			%p
 				= note_delivery.note.content
 			%br

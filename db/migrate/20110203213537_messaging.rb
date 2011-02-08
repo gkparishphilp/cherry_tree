@@ -2,9 +2,9 @@ class Messaging < ActiveRecord::Migration
 	def self.up
 		create_table :notes, :force => true do |t|
 			t.references	:sender
-			t.string		:font
-			t.string		:font_color
-			t.string		:background_color
+			t.string		:font, :default => 'schoolbell'
+			t.string		:font_color, :default => '#333'
+			t.string		:background_color, :default => '#ffd'
 			t.string		:subject
 			t.text			:content
 			t.integer		:points, :default => 0

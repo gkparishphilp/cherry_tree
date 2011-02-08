@@ -2,10 +2,10 @@
 	To:
 .inline_field
 	- if @reply_to_note
-		= @reply_to_note.sender.display_name
+		= @reply_to_note.sender.nickname( @current_user )
 		= f.hidden_field :recipient_id, :value => @reply_to_note.sender.id
 	- else
-		= f.collection_select :recipient_id, @recipient_list, :id, :display_name
+		= f.select :recipient_id, @recipient_list
 .inline_label
 	Subject:
 .inline_field
@@ -22,7 +22,7 @@
 %br.clear
 .note_content
 	- if @reply_to_note
-		= @reply_to_note.sender.display_name
+		= @reply_to_note.sender.nickname( @current_user )
 		Said:
 		%br
 		= @reply_to_note.content

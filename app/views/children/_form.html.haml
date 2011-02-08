@@ -25,6 +25,12 @@
 	= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
 	
 	%br
+	%span.name
+		&nbsp;
+	calls me (your name or nickname):
+	= f.text_field :nickname
+	
+	%br
 	Please Provide a unique login name for
 	%span.name
 		&nbsp;

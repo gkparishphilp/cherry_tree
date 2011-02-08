@@ -15,7 +15,7 @@
 
 class Relationship < ActiveRecord::Base
 	
-	#after_create :create_symmetric_relationship, :unless => :symmetric_relationship_exists? #only going to do this on create for now
+	after_create :create_symmetric_relationship, :unless => :symmetric_relationship_exists? #only going to do this on create for now
 	
 	belongs_to	:user
 	belongs_to	:related_user, :class_name => 'User'
@@ -73,12 +73,16 @@ class Relationship < ActiveRecord::Base
 		
 	end
 	
+	def symmetric_relationship
+		self.related_user.relationships.find_by_related_user_id( self.user.id )
+	end
+	
 	def symmetric_relationship_exists?
 		self.related_user.related_users.include?( self.user )
 	end
 	
 	def create_symmetric_relationship
-		self.related_user.relationships.create :related_user => self.user, :role => self.opposite_role, :nickname => self.related_user.display_name
+		self.related_user.relationships.create :related_user_id => self.user.id, :role => self.opposite_role, :nickname => self.related_user.display_name
 	end
 	
 	

@@ -2,10 +2,8 @@ class NotesController < ApplicationController
 	
 	def new
 		@note = Note.new
-		@recipient_list = @current_user.children
-		if @current_user.is_child?
-			@recipient_list += @current_user.supporters
-		end
+		@recipient_list = @current_user.related_users.map { |u| [ u.nickname( @current_user ), u.id ] }
+		
 		if @reply_to_note = Note.find_by_id( params[:reply_to] )
 			@note.subject = @reply_to_note.subject
 		end

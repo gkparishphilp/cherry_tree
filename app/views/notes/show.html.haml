@@ -10,7 +10,7 @@
 			= @note.subject
 		.note_content
 			From:
-			= @note.sender.display_name
+			= @note.sender.nickname( @current_user )
 			%hr
 			= @note.content
 		.actions

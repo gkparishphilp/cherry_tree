@@ -44,6 +44,7 @@ class Child < User
 	
 	does_activities
 	
-	attr_accessor :role, :welcome_message
+	# for the child/create form -- may just switch to form_tag at some point....
+	attr_accessor :role, :nickname, :welcome_message
 	
 end
