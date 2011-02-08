@@ -20,7 +20,7 @@ class GameStuff < ActiveRecord::Migration
 		
 		create_table :ownings, :force => true do |t|
 			t.references	:user
-			t.references	:unlockable
+			t.references	:award
 			t.timestamps
 		end
 		
@@ -31,8 +31,10 @@ class GameStuff < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		create_table :unlockables, :force => true do |t|
-			t.references	:objective # for unlockables that are earned, not bought
+		create_table :awards, :force => true do |t|
+			t.references	:objective # for awards that are earned, not bought
+			t.references	:merch 
+			t.references	:child
 			t.string		:name
 			t.text			:description
 			t.string		:asin # for Amazon products
@@ -42,9 +44,6 @@ class GameStuff < ActiveRecord::Migration
 		end
 		
 	end
-
-	
-	
 
 	def self.down
 

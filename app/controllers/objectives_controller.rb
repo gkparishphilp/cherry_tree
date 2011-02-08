@@ -20,6 +20,10 @@ class ObjectivesController < ApplicationController
 		@objective = Objective.find params[:id]
 	end
 	
+	def set
+		@objective = Objective.new
+	end
+	
 	def create
 		@objective = Objective.new params[:objective]
 		if @objective.save

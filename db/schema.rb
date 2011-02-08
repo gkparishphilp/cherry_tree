@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110203215818) do
+ActiveRecord::Schema.define(:version => 20110207173417) do
 
   create_table "activities", :force => true do |t|
     t.integer  "actor_id",                            :null => false
@@ -89,6 +89,18 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
   end
 
   add_index "attachments", ["owner_id", "owner_type"], :name => "fk_owner"
+
+  create_table "awards", :force => true do |t|
+    t.integer  "objective_id"
+    t.integer  "merch_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "asin"
+    t.integer  "points"
+    t.integer  "level",        :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
@@ -202,6 +214,14 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
     t.datetime "updated_at"
   end
 
+  create_table "merches", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "note_deliveries", :force => true do |t|
     t.integer  "note_id"
     t.integer  "recipient_id"
@@ -241,7 +261,7 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
 
   create_table "ownings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "unlockable_id"
+    t.integer  "award_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -415,17 +435,6 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
 
   add_index "twitter_accounts", ["owner_id"], :name => "index_twitter_accounts_on_owner_id"
 
-  create_table "unlockables", :force => true do |t|
-    t.integer  "objective_id"
-    t.string   "name"
-    t.text     "description"
-    t.string   "asin"
-    t.integer  "points"
-    t.integer  "level",        :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "type"
     t.integer  "site_id"
@@ -461,5 +470,12 @@ ActiveRecord::Schema.define(:version => 20110203215818) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "wishitems", :force => true do |t|
+    t.integer  "child_id"
+    t.integer  "award_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

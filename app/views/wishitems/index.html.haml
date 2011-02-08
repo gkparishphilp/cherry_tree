@@ -1,0 +1,17 @@
+= render 'children/nav'
+
+
+%h3 Wish List Items
+- for item in @wishitems
+	%p
+		Item: 
+		= item.name
+	%p
+		Description: 
+		= item.description
+	%hr
+	
+	%br
+= link_to 'New Wishitem', new_wishitem_path
+%br
+= render 'awards/amazon_form'

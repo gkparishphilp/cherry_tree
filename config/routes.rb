@@ -1,10 +1,21 @@
 CherryTree::Application.routes.draw do
 
+  resources :merches
+
+  resources :wishitems
+
 	root :to => "site#index"
 	
 	
 	resources :articles do
 		resources :comments
+	end
+	
+	resources :awards do
+		get 'admin', :on => :collection
+		get 'unlock', :on => :member
+		get 'prize_shelf', :on => :collection
+		get 'set', :on => :collection
 	end
 	
 	resources :blog do
@@ -33,7 +44,7 @@ CherryTree::Application.routes.draw do
 	
 	resources :notes
 	
-	resources :objectives
+	resources :objectives 
 	
 	resources :quizzes do
 		get 'admin', :on => :collection
@@ -67,12 +78,6 @@ CherryTree::Application.routes.draw do
 		get 'admin', :on => :collection
 	end
 	
-	
-	resources :unlockables do
-		get 'admin', :on => :collection
-		get 'unlock', :on => :member
-	end
-	
 	resources  :users do
 		get 'resend', :on => :member
 		post 'collect_email', :on => :collection
@@ -91,7 +96,7 @@ CherryTree::Application.routes.draw do
 	match '/reset' => 'users#reset_password', :as => 'reset'
 	match '/activate/:token' => 'users#activate', :as => 'activate'
 	match '/resend' => 'users#resend', :as => 'resend'
-	match '/amazon' => 'unlockables#search_amazon', :as => 'amazon'
+	match '/amazon' => 'awards#search_amazon', :as => 'amazon'
 	
 	match "/:permalink", :to => 'static_pages#show'
 	

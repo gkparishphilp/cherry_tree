@@ -1,0 +1,23 @@
+- content_for :left_column do
+	.new.button
+		= link_to image_tag( 'add.png', :width => 20 ), new_wishitem_path
+		= link_to 'New Wishitem', new_wishitem_path
+	
+	%h1 Wishitems Admin 
+	%table.admin_table
+		%thead
+			%th{ :colspan => 2 }
+		%tbody
+			- for wishitem in @wishitems
+				%tr{ :class => cycle(:odd, :even) }
+					%td
+						= link_to image_tag( 'view.png', :width => 20 ), wishitem
+						= link_to 'view', wishitem
+					%td
+						= link_to image_tag( 'edit.png', :width => 20 ), edit_wishitem_path( wishitem )
+						= link_to 'edit', edit_wishitem_path( wishitem )
+					%td
+						= link_to image_tag( 'trash.png', :width => 20 ), wishitem, :confirm => 'Are you sure?', :method => :delete
+						= link_to 'delete', wishitem, :confirm => 'Are you sure?', :method => :delete
+
+

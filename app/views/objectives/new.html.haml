@@ -1,4 +1,5 @@
-- content_for :left_column do
-	%h3 New Objective
-	= form_for @objective do |f|
-		= render 'form', :f => f
+%h1 Set New Objectives
+= render 'users/nav'
+%br
+= form_for @objective do |f|
+	= render 'form', :f => f
