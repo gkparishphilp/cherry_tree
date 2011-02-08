@@ -17,17 +17,11 @@ class ChildrenController < ApplicationController
 	def create
 		@child = Child.new params[:child]
 		if @child.save
-			relation = @current_user.relations.new :role => params[:child][:role], :child_id => @child.id
+			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nickname]
 			if params[:child][:welcome_message].present?
 				note = @current_user.sent_notes.create( :content => params[:child][:welcome_message] )
 				note.deliver_to( @child )
 				@child.earn_points_for( note )
-			end
-			if relation.save
-				pop_flash "Child Added"
-			else
-				@child.destroy # todo: better to wrap in a transaction....
-				pop_flash "Child Not Added", :error, relation
 			end
 		else
 			pop_flash "Ooops, Child not added", :error, @child

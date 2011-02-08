@@ -11,21 +11,8 @@
 			%br
 			%br
 			= link_to "Write a Note", new_note_path, :class => 'green_button'
-	- for note in @notes
-		%div[note]{ :class => note.font_class }
-			.subject
-				= note.subject
-			.from
-				From:
-				= note.sender.display_name
-			%hr
-			.content
-				= snip( note.content, 150 )
-				- if note.content.length > 150
-					= link_to "More", note
-			.note_footer
-				= link_to "read", note
-				= link_to "reply", new_note_path( :reply_to => note.id )
+	= render @inbox_notes
+		
 	%br.clear
 
 

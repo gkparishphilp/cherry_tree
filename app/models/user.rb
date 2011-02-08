@@ -70,10 +70,27 @@ class User < ActiveRecord::Base
 	has_many	:facebook_accounts,	:as => :owner
 	
 	has_many	:articles, :as => :owner
-	
-	has_many	:relations
-	has_many	:supported_children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :source => :child, :conditions => "role NOT IN ( 'mother', 'father', 'guardian', 'pro' )"
-	has_many	:children, :through => :relations, :foreign_key => :child_id, :class_name => 'Child', :conditions => "role IN ( 'mother', 'father', 'guardian', 'pro' )"
+
+
+	# Testing robust relationships
+	has_many	:relationships
+	has_many	:related_users, :through => :relationships
+	has_many	:relatives, :through => :relationships, 
+							:source => :related_user, 
+							:conditions => "role IN ( 'son', 'daughter', 'mother', 'father', 'guardian', 'brother',
+							'sister', 'aunt', 'uncle', 'niece', 'nephew','cousin', 'grandmother', 'grandfather',
+							'grandson', 'granddaughter', 'relative', 'stepmother', 'stepfather' )"
+	has_many	:children, :through => :relationships, 
+							:foreign_key => :related_user_id, 
+							:class_name => 'Child', 
+							:source => :related_user, 
+							:conditions => "role IN ( 'mother', 'father', 'guardian' )"
+	has_many	:supported_children, :through => :relationships, 
+									:foreign_key => :related_user_id, 
+									:class_name => 'Child', 
+									:source => :related_user, 
+									:conditions => "role NOT IN ( 'mother', 'father', 'guardian' )"
+
 
 	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	
@@ -251,8 +268,39 @@ class User < ActiveRecord::Base
 		return self.type == 'Child'
 	end
 	
-	def relation_to( child )
-		self.relations.find_by_child_id( child.id ).role
+	def relation_to( user )
+		self.relationships.find_by_related_user_id( user.id ).role
+	end
+	
+	def nickname( user=nil )
+		# nickname is defined in the relationship between users -- what one user calls another
+		# if called without a user for the relationship, just returns the display_name
+		if user.present?
+			self.relationships.find_by_related_user_id( user.id ).nickname
+		else
+			self.display_name
+		end
+	end
+	
+	def relate_to( user, args={} )
+		relationship = self.relationships.find_or_initialize_by_related_user_id( user.id )
+		if args[:as].present? 
+			role = args[:as]
+		elsif relationship.role.present?
+			role = relationship.role
+		else
+			role = 'relative'
+		end
+		if args[:nickname].present?
+			nickname = args[:nickname]
+		elsif relationship.nickname.present?
+			nickname = relationship.nickname
+		else
+			nickname = self.display_name
+		end
+		relationship.attributes = { :role => role, :nickname => nickname }
+		relationship.save
+		return relationship, relationship.symmetric_relationship
 	end
 	
 	def earn_points_for( obj, points=nil )
@@ -305,6 +353,7 @@ class User < ActiveRecord::Base
 				self.name = self.email.gsub( /\W/, "_" ) 
 			end
 		end
+		self.display_name = self.name unless self.display_name.present?
 	end
 	
 	

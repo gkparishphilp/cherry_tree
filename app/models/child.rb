@@ -35,15 +35,10 @@
 #
 
 class Child < User
-	
-	has_many	:relations
-	has_many	:supporters, :through => :relations, :class_name => 'User', :foreign_key => :user_id, :source => :user
-	has_many	:parents, :through => :relations, :class_name => 'User', :foreign_key => :user_id, :source => :user,
-				:conditions => "role IN ( 'mother', 'father' )"
 	has_many	:wishitems
-	
 	does_activities
 	
-	attr_accessor :role, :welcome_message
+	# for the child/create form -- may just switch to form_tag at some point....
+	attr_accessor :role, :nickname, :welcome_message
 	
 end

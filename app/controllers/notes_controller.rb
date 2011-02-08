@@ -2,10 +2,8 @@ class NotesController < ApplicationController
 	
 	def new
 		@note = Note.new
-		@recipient_list = @current_user.children
-		if @current_user.is_child?
-			@recipient_list += @current_user.supporters
-		end
+		@recipient_list = @current_user.related_users.map { |u| [ u.nickname( @current_user ), u.id ] }
+		
 		if @reply_to_note = Note.find_by_id( params[:reply_to] )
 			@note.subject = @reply_to_note.subject
 		end
@@ -18,12 +16,12 @@ class NotesController < ApplicationController
 	end
 	
 	def index
-		@notes = @current_user.notes.order( :subject )
+		@inbox_notes = @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
 	end
 	
 	def show
 		@note = Note.find( params[:id] )
-		#@note.update_attributes :unread => false
+		@note.mark_read_by( @current_user )
 	end
 	
 	def create
@@ -42,6 +40,12 @@ class NotesController < ApplicationController
 			pop_flash "Ooops, Note not added", :error, @note
 		end
 		redirect_to :back
+	end
+	
+	def destroy
+		@note = Note.find( params[:id] )
+		@note.mark_deleted_by( @current_user )
+		pop_flash "Note trashed"
 	end
 	
 end

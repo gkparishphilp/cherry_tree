@@ -226,15 +226,16 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
     t.integer  "note_id"
     t.integer  "recipient_id"
     t.boolean  "unread",       :default => true
+    t.string   "status",       :default => "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "notes", :force => true do |t|
     t.integer  "sender_id"
-    t.string   "font"
-    t.string   "font_color"
-    t.string   "background_color"
+    t.string   "font",             :default => "schoolbell"
+    t.string   "font_color",       :default => "#333"
+    t.string   "background_color", :default => "#ffd"
     t.string   "subject"
     t.text     "content"
     t.integer  "points",           :default => 0
@@ -348,6 +349,16 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
 
   add_index "relations", ["child_id"], :name => "index_relations_on_child_id"
   add_index "relations", ["user_id"], :name => "index_relations_on_user_id"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "related_user_id"
+    t.string   "nickname"
+    t.string   "role"
+    t.string   "status",          :default => "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.integer  "site_id"

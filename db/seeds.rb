@@ -7,6 +7,12 @@ u1 = User.new :name => 'Gk', :email => 'gk.parishphilp@gmail.com'
 u1.password = '1234'
 u1.save( false )
 
+#c1 = u1.children.create :name => 'avery', :password => '1234', :display_name => 'Avery'
+#u1.relations.new :role => 'father', :child_id => c1.id
+
+#n1 = u1.sent_notes.create :subject => 'Hi, Welcome to the Site', :content => "I can't wait to play this with you. I know you are going to do great! Love, Dad"
+#n1.deliver_to( c1 )
+
 u2 = User.new :name => 'Tay', :email => 'tay.x.nguyen@gmail.com'
 u2.password = '1234'
 u2.save( false )

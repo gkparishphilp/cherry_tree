@@ -20,6 +20,15 @@ class Users < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :relationships, :force => true do |t|
+			t.references	:user
+			t.references	:related_user
+			t.string		:nickname
+			t.string		:role
+			t.string		:status, :default => 'active'
+			t.timestamps
+		end
+		
 		create_table :facebook_accounts, :force => true do |t|
 			t.references	:owner, :polymorphic => true
 			t.string		:name
