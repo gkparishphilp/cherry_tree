@@ -36,6 +36,12 @@
 
 class Child < User
 	
+	has_many	:parents, :through => :relationships, 
+					:foreign_key => :related_user_id, 
+					:class_name => 'User', 
+					:source => :related_user, 
+					:conditions => "role IN ( 'mother', 'father', 'guardian' )"
+					
 	does_activities
 	
 	# for the child/create form -- may just switch to form_tag at some point....
