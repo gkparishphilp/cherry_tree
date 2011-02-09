@@ -3,22 +3,21 @@
 #
 # Table name: awards
 #
-#  id           :integer(4)      not null, primary key
-#  objective_id :integer(4)
-#  merch_id     :integer(4)
-#  owner_id     :integer(4)
-#  owner_type   :string(255)
-#  name         :string(255)
-#  description  :text
-#  asin         :string(255)
-#  points       :integer(4)
-#  level        :integer(4)      default(0)
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id            :integer(4)      not null, primary key
+#  objective_id  :integer(4)
+#  merch_id      :integer(4)
+#  created_by_id :integer(4)
+#  name          :string(255)
+#  description   :text
+#  asin          :string(255)
+#  points        :integer(4)
+#  level         :integer(4)      default(0)
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Award < ActiveRecord::Base
-	belongs_to	:owner, :polymorphic => true
+	belongs_to	:creator, :class_name => 'User'
 	has_many	:ownings
 	has_many	:children, :through => :ownings
 	

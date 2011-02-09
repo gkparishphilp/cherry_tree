@@ -20,8 +20,9 @@
 #
 
 class Objective < ActiveRecord::Base
-	has_many	:assignments
-	has_many	:users, :through => :assignments
+	belongs_to	:creator, :foreign_key => :created_by, :class_name => 'User'
+	has_many	:objective_assignments
+	has_many	:users, :through => :objective_assignments
 	has_many	:earnings, :as => :earned_for
 	has_many	:checkins
 

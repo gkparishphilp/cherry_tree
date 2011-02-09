@@ -1,11 +1,5 @@
 class Objectives < ActiveRecord::Migration
 	def self.up
-		create_table :assignments, :force => true do |t|
-			t.references	:user
-			t.references	:objective
-			t.references	:assigned_by
-			t.timestamps
-		end
 		
 		create_table :checkins, :force => true do |t|
 			t.references	:user
@@ -26,11 +20,19 @@ class Objectives < ActiveRecord::Migration
 			t.integer		:times
 			t.string		:period
 			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
-			t.boolean		:req_confirm, :default => false # parent must confirm checking to award points
+			t.boolean		:req_confirm, :default => false # parent must confirm checkin to award points
 			t.integer		:points, :default => 1
 			t.integer		:level
 			t.timestamps
 		end
+		
+		create_table :objective_assignments, :force => true do |t|
+			t.references	:user
+			t.references	:objective
+			t.references	:creator
+			t.timestamps
+		end
+		
 	end
 
 	def self.down

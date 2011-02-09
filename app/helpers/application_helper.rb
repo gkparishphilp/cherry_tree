@@ -58,9 +58,19 @@ module ApplicationHelper
 		end
 	end
 	
-	def separated_list( array, element, separator )
+	def old_separated_list( array, element, separator )
 		element += "#{separator} " unless element.to_s == array.last.to_s
 		return element
+	end
+	
+	def separated_list( array, fieldname, separator=", " )
+		return eval( "array.first.#{fieldname}" ) if array.size < 2
+		ret_value = ""
+		for element in array
+			ret_value += eval( "element.#{fieldname}" )
+			ret_value += separator unless element == array.last
+		end
+		return ret_value	
 	end
 	
 	def snip( text, snip_at=200 )

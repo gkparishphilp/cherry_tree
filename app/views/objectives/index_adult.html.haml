@@ -4,16 +4,18 @@
 = render 'users/nav'
 
 
-- if @objectives.present?
+- unless @objectives.empty?
 	%h3 Objectives
 	- for obj in @objectives
-		%b= obj.name
-		%br
-		= obj.times
-		times per
-		= obj.period
-		Assigned To:
-		blah blah b;ah
+		%div[obj]
+			%b= obj.name
+			%br
+			= obj.times
+			times per
+			= obj.period
+			Assigned To:
+			= separated_list( obj.users, 'display_name' )
+
 		
 = form_for Objective.new do |f|
 	= render 'form', :f => f

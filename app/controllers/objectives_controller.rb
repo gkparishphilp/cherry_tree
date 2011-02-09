@@ -9,8 +9,8 @@ class ObjectivesController < ApplicationController
 			@objectives = @current_user.objectives
 			render :index_child
 		else
-			@objectives = @current_user.assigned_objectives
-			@objective = @current_user.assigned_objectives.new
+			@objectives = @current_user.created_objectives
+			@objective = @current_user.created_objectives.new
 			render :index_adult
 		end
 	end
@@ -32,7 +32,7 @@ class ObjectivesController < ApplicationController
 	end
 	
 	def create
-		@objective = Objective.new params[:objective]
+		@objective = @current_user.created_objectives.new params[:objective]
 		if @objective.save
 			for id in params[:assign_to_ids]
 				if assignee = User.find( id )

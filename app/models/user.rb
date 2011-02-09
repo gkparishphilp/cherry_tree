@@ -102,12 +102,12 @@ class User < ActiveRecord::Base
 	has_many	:notes, :through => :note_deliveries, :source => :note
 
 		# for kids, the assignemnts they have
-	has_many	:assignments
-	has_many	:objectives, :through => :assignments
+	has_many	:objective_assignments
+	has_many	:objectives, :through => :objective_assignments
 	
 		# for adults, assignments they've made
-	has_many	:assigned_by, :class_name => 'Assignment'
-	has_many	:assigned_objectives, :through => :assigned_by, :source => :objective
+	has_many	:created_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
+	has_many	:created_objectives, :class_name => 'Objective', :foreign_key => :creator_id
 
 	has_many	:wishlists
 	has_many	:wishlist_items, :through => :wishlists
@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
 	has_many	:ownings
 	has_many	:awards, :through => :ownings
 	
-	has_many	:managed_awards, :as => :owner, :class_name => 'Award'
+	has_many	:created_awards, :class_name => 'Award', :foreign_key => :creator_id
 
 	has_many	:playings
 	has_many	:games, :through => :playings
@@ -280,6 +280,8 @@ class User < ActiveRecord::Base
 		return self.type == 'Child'
 	end
 	
+	alias :child? :is_child?
+	
 	def relation_to( user )
 		self.relationships.find_by_related_user_id( user.id ).role
 	end
@@ -321,9 +323,13 @@ class User < ActiveRecord::Base
 		end
 	end
 	
+	
+	
 	def assign_objective_to( obj, user )
-		self.assigned_by.create :objective => obj, :user_id => user.id, :assigned_by_id => self.id
+		self.created_assignments.create :objective => obj, :user_id => user.id
 	end
+	
+	
 	
 	
 	def earn_points_for( obj, points=nil )

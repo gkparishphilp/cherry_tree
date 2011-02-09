@@ -64,14 +64,6 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   add_index "articles", ["cached_slug"], :name => "index_articles_on_cached_slug", :unique => true
   add_index "articles", ["owner_id"], :name => "index_articles_on_owner_id"
 
-  create_table "assignments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "objective_id"
-    t.integer  "assigned_by_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "attachments", :force => true do |t|
     t.integer  "owner_id",                              :null => false
     t.string   "owner_type",                            :null => false
@@ -93,13 +85,12 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   create_table "awards", :force => true do |t|
     t.integer  "objective_id"
     t.integer  "merch_id"
-    t.integer  "owner_id"
-    t.string   "owner_type"
+    t.integer  "created_by_id"
     t.string   "name"
     t.text     "description"
     t.string   "asin"
     t.integer  "points"
-    t.integer  "level",        :default => 0
+    t.integer  "level",         :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -243,6 +234,14 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
     t.string   "subject"
     t.text     "content"
     t.integer  "points",           :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "objective_assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "objective_id"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
