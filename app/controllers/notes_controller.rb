@@ -4,11 +4,11 @@ class NotesController < ApplicationController
 		@note = Note.new
 		@recipient_list = @current_user.related_users.map { |u| [ u.nickname( @current_user ), u.id ] }
 		
+		@note.recipient_id = params[:to] if params[:to].present?
+		
 		if @reply_to_note = Note.find_by_id( params[:reply_to] )
 			@note.subject = @reply_to_note.subject
 		end
-			
-			 
 	end
 	
 	def edit
@@ -16,7 +16,13 @@ class NotesController < ApplicationController
 	end
 	
 	def index
-		@inbox_notes = @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
+		if params[:read]
+			@notes = @current_user.note_deliveries.published.read.order( "created_at desc" ).collect { |deliv| deliv.note }
+		elsif params[:trash]
+			@notes = @current_user.note_deliveries.deleted.order( "created_at desc" ).collect { |deliv| deliv.note }
+		else
+			@notes = @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
+		end
 	end
 	
 	def show
@@ -46,6 +52,7 @@ class NotesController < ApplicationController
 		@note = Note.find( params[:id] )
 		@note.mark_deleted_by( @current_user )
 		pop_flash "Note trashed"
+		redirect_to notes_path
 	end
 	
 end

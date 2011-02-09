@@ -5,7 +5,14 @@ class ObjectivesController < ApplicationController
 	end
 	
 	def index
-		@objectives = @current_user.objectives
+		if @current_user.is_child?
+			@objectives = @current_user.objectives
+			render :index_child
+		else
+			@objectives = @current_user.assigned_objectives
+			@objective = @current_user.assigned_objectives.new
+			render :index_adult
+		end
 	end
 	
 	def show
@@ -27,10 +34,12 @@ class ObjectivesController < ApplicationController
 	def create
 		@objective = Objective.new params[:objective]
 		if @objective.save
-			@assigned_user = User.find( params[:objective][:user_id] )
-			@objective.assignments.create :user_id => @assigned_user.id, :assigned_by_id => @current_user
-			
-			@current_user.do_activity "assign objective to #{@assigned_user.name}", @objective
+			for id in params[:assign_to_ids]
+				if assignee = User.find( id )
+					@current_user.assign_objective_to( @objective, assignee )
+					@current_user.do_activity "assign objective to #{assignee.display_name}", @objective
+				end
+			end
 			pop_flash "Objective Added"
 		else
 			pop_flash "Ooops, Objective not added", :error, @objective

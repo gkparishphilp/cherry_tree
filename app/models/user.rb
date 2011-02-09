@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110203215818
+# Schema version: 20110207173417
 #
 # Table name: users
 #
@@ -90,7 +90,9 @@ class User < ActiveRecord::Base
 									:class_name => 'Child', 
 									:source => :related_user, 
 									:conditions => "role NOT IN ( 'mother', 'father', 'guardian' )"
-
+	has_many	:parents, :through => :relationships, 
+						:source => :related_user, 
+						:conditions => "role IN ( 'mother', 'father', 'guardian' )"
 
 	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	
@@ -99,13 +101,23 @@ class User < ActiveRecord::Base
 		# I'm also going to alias that relationship because it's easier to type and understand
 	has_many	:notes, :through => :note_deliveries, :source => :note
 
+		# for kids, the assignemnts they have
 	has_many	:assignments
 	has_many	:objectives, :through => :assignments
+	
+		# for adults, assignments they've made
+	has_many	:assigned_by, :class_name => 'Assignment'
+	has_many	:assigned_objectives, :through => :assigned_by, :source => :objective
+
+	has_many	:wishlists
+	has_many	:wishlist_items, :through => :wishlists
 
 	has_many	:earnings
 
 	has_many	:ownings
 	has_many	:awards, :through => :ownings
+	
+	has_many	:managed_awards, :as => :owner, :class_name => 'Award'
 
 	has_many	:playings
 	has_many	:games, :through => :playings
@@ -302,6 +314,17 @@ class User < ActiveRecord::Base
 		relationship.save
 		return relationship, relationship.symmetric_relationship
 	end
+	
+	def write_note( args={} )
+		if note = self.sent_notes.create( :subject => args[:subject], :content => args[:content] )
+			note.deliver_to( args[:to] )
+		end
+	end
+	
+	def assign_objective_to( obj, user )
+		self.assigned_by.create :objective => obj, :user_id => user.id, :assigned_by_id => self.id
+	end
+	
 	
 	def earn_points_for( obj, points=nil )
 		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaciton 

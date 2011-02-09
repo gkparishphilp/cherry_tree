@@ -1,4 +1,7 @@
-- content_for :left_column do
-	%h3 Add a Child
-	= form_for @child do |f|
-		= render 'form', :f => f
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+%h3 Add a Child
+= form_for @child do |f|
+	= render 'form', :f => f

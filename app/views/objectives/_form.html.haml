@@ -1,13 +1,16 @@
 .form_group
-	For:&nbsp;&nbsp;&nbsp;&nbsp;
-	= f.collection_select :user_id, @current_user.children, :id, :name
-	%br
+	- unless @current_user.children.empty?
+		= f.label "Assign To:"
+		- for child in @current_user.children do
+			= check_box_tag 'assign_to_ids[]', child.id, @objective.users.include?( child )
+			= child.display_name
+	
 	= f.label 'Name:'
 	= f.text_field :name
 
 	= f.label 'Description:'
 	= f.text_area :description
-
+	%br
 	= f.check_box :req_checkin, :checked => @objective.req_checkin?
 	Require Checkin?
 	%span#confirmation_fields

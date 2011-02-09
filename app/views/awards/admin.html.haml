@@ -1,31 +1,30 @@
-- content_for :left_column do
-	.new.button
-		= link_to image_tag( 'add.png', :width => 20 ), new_award_path
-		= link_to 'New', new_award_path
-	
-	%h1 awards Admin
-	
-	%table.admin_table
-		%th
-		%th Name
-		%th Points
-		%th Level
-		- for award in @awards
-			%tr
-				%td
-					= link_to avatar_tag( award, :thumb, :width => 64 ), award_path( award )
-				%td
-					= link_to award.name, award_path( award )
-				%td
-					= award.points
-				%td
-					= award.level
-				%td
-					= link_to image_tag( 'edit.png', :width => 20 ), edit_award_path( award )
-					= link_to 'edit', edit_award_path( award )
-				%td
-					= link_to image_tag( 'trash.png', :width => 20 ), award_path( award )
-					= link_to 'delete', award_path( award )
+.new.button
+	= link_to image_tag( 'add.png', :width => 20 ), new_award_path
+	= link_to 'New', new_award_path
+
+%h1 awards Admin
+
+%table.admin_table
+	%th
+	%th Name
+	%th Points
+	%th Level
+	- for award in @awards
+		%tr
+			%td
+				= link_to avatar_tag( award, :thumb, :width => 64 ), award_path( award )
+			%td
+				= link_to award.name, award_path( award )
+			%td
+				= award.points
+			%td
+				= award.level
+			%td
+				= link_to image_tag( 'edit.png', :width => 20 ), edit_award_path( award )
+				= link_to 'edit', edit_award_path( award )
+			%td
+				= link_to image_tag( 'trash.png', :width => 20 ), award_path( award )
+				= link_to 'delete', award_path( award )
 					
 					
 - content_for :right_column do

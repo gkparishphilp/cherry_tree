@@ -2,11 +2,18 @@ class ChildrenController < ApplicationController
 	
 	def new
 		@child = Child.new
-		render :layout => false
 	end
 	
 	def login
 		render 'sessions/new'
+	end
+	
+	def home
+		@activities = Activity.feed @child
+	end
+	
+	def index
+		@children = @current_user.children
 	end
 	
 	def edit
@@ -17,7 +24,7 @@ class ChildrenController < ApplicationController
 	def create
 		@child = Child.new params[:child]
 		if @child.save
-			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nickname]
+			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nick]
 			if params[:child][:welcome_message].present?
 				note = @current_user.sent_notes.create( :content => params[:child][:welcome_message] )
 				note.deliver_to( @child )
@@ -33,13 +40,7 @@ class ChildrenController < ApplicationController
 		@child = Child.find( params[:id] )
 		# first things first, is the child logged in?
 		if @child == @current_user
-			@activities = Activity.feed @child
-			@recent_note_deliveries = @child.note_deliveries.unread.reverse
-			render :private
-		else 
-			pop_flash "Invalid Child", :error
-			redirect_to root_path
-			return false
+			redirect_to :home
 		end
 	end
 

@@ -1,11 +1,6 @@
 CherryTree::Application.routes.draw do
 
-  resources :merches
-
-  resources :wishitems
-
 	root :to => "site#index"
-	
 	
 	resources :articles do
 		resources :comments
@@ -28,6 +23,7 @@ CherryTree::Application.routes.draw do
 	
 	resources :children do
 		get 'login', :on => :collection
+		get 'home', :on => :collection
 	end
 
 	resources :contacts do
@@ -41,6 +37,8 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources :games
+	
+	resources :merches
 	
 	resources :notes
 	
@@ -79,17 +77,24 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources  :users do
-		get 'resend', :on => :member
 		post 'collect_email', :on => :collection
+		get 'resend', :on => :member
+		get 'settings', :on => :collection
+		get 'home', :on => :collection
 	end
 	
 	resources :relations
+	
+	resources :wishlist_items
 	
 	match '/admin/' => 'admin#index', :as => :admin_index
 
 	match '/blog/archive/(:year/(:month))', :to => 'blog#index'
 	
 	match '/forgot' => 'users#forgot_password', :as => 'forgot'
+	
+	match '/home' => 'users#home', :as => 'home'
+	
 	match '/logout' => 'sessions#destroy', :as => 'logout'
 	match '/login' => 'sessions#new', :as => 'login'
 	match '/register' => 'sessions#register', :as => 'register'

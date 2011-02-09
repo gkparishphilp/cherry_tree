@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   create_table "awards", :force => true do |t|
     t.integer  "objective_id"
     t.integer  "merch_id"
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.string   "name"
     t.text     "description"
     t.string   "asin"
@@ -151,6 +153,8 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "crashes", ["site_id"], :name => "index_crashes_on_site_id"
 
   create_table "earnings", :force => true do |t|
     t.integer  "user_id"
@@ -471,9 +475,22 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
-  create_table "wishitems", :force => true do |t|
-    t.integer  "child_id"
-    t.integer  "award_id"
+  create_table "wishlist_items", :force => true do |t|
+    t.integer  "wishlist_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "asin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wishlist_items", ["wishlist_id"], :name => "index_wishlist_items_on_wishlist_id"
+
+  create_table "wishlists", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "status",      :default => "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

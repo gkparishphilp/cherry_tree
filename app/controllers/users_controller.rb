@@ -1,23 +1,29 @@
 class UsersController < ApplicationController
 	before_filter   :require_admin,   :only => [ :admin, :destroy ]
+	before_filter	:require_login, :home
 
 	def admin
 		@users = User.all.paginate :page => params[:page], :per_page => 25
 	end
 	
+	def home
+		if @current_user.is_child?
+			redirect_to home_children_path
+		else
+			@activities = Activity.feed @current_user, @current_user.children, @current_user.supported_children
+		end
+	end
+	
 	def show
 		@user = User.find( params[:id] )
-		if @user.anonymous?
+		if @user.anonymous? 
 			flash[:notice] = "Invalid User"
 			redirect_to root_path
 			return false
 		end
-
 		# first things first, public or private?
 		if @user == @current_user
-			@objective = Objective.new
-			@activities = Activity.feed @user, @user.children, @user.supported_children
-			render :private
+			redirect_to home_path
 		else 
 			# Let's just show the public profile
 			render	:public
@@ -74,7 +80,7 @@ class UsersController < ApplicationController
 			
 			login( @user )
 
-			redirect_to @user
+			redirect_to home_path
 
 		else
 			pop_flash 'Ooops, User not saved.... ', :error, @user

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110203215818
+# Schema version: 20110207173417
 #
 # Table name: assignments
 #
@@ -14,4 +14,5 @@
 class Assignment < ActiveRecord::Base
 	belongs_to	:user
 	belongs_to	:objective
+	belongs_to	:assigned_by, :class_name => 'User'
 end

@@ -48,6 +48,7 @@ class SiteBase < ActiveRecord::Migration
 		end
 		
 		add_index :contacts, :crash_id
+		add_index :crashes, :site_id
 		add_index :raw_stats, :statable_id
 		add_index :sites, :domain
 		add_index :static_pages, :site_id

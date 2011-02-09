@@ -1,0 +1,8 @@
+- content_for :left_column do
+	%h1 Wishitem
+
+	= render @wishlist_item
+
+	= link_to 'Edit', edit_wishlist_item_path(@wishitem)
+	| 
+	= link_to 'Back', wishlist_items_path

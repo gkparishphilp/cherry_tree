@@ -1,0 +1,19 @@
+%h1
+	= possessize @current_user.name
+	Objectives
+= render 'users/nav'
+
+
+- if @objectives.present?
+	%h3 Objectives
+	- for obj in @objectives
+		%b= obj.name
+		%br
+		= obj.times
+		times per
+		= obj.period
+		Assigned To:
+		blah blah b;ah
+		
+= form_for Objective.new do |f|
+	= render 'form', :f => f

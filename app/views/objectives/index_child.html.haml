@@ -1,0 +1,21 @@
+= render 'children/banner', :title => 'Objectives'
+= render 'children/nav'
+
+- if @objectives.recurring.present?
+	%h3 Your Objectives
+	- for obj in @objectives.recurring
+		%b= obj.name
+		%br
+		= obj.times
+		times per
+		= obj.period
+		= form_for Checkin.new do |f|
+			= f.hidden_field :objective_id, :value => obj.id
+			= f.hidden_field :user_id, :value => @current_user.id
+			= f.radio_button :status, 'did'
+			I did It!
+			= f.radio_button :status, 'did_not'
+			I'm Working on it
+			= f.submit
+- else
+	%h3 No Objectives

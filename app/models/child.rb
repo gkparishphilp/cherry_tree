@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110203215818
+# Schema version: 20110207173417
 #
 # Table name: users
 #
@@ -35,17 +35,10 @@
 #
 
 class Child < User
-	has_many	:parents, :through => :relationships, 
-					:foreign_key => :related_user_id, 
-					:class_name => 'User', 
-					:source => :related_user, 
-					:conditions => "role IN ( 'mother', 'father', 'guardian' )"
-
-	has_many	:wishitems
 
 	does_activities
 	
 	# for the child/create form -- may just switch to form_tag at some point....
-	attr_accessor :role, :nickname, :welcome_message
+	attr_accessor :role, :nick, :welcome_message
 	
 end

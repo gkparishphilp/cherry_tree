@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110203215818
+# Schema version: 20110207173417
 #
 # Table name: sites
 #
@@ -23,6 +23,8 @@ class Site < ActiveRecord::Base
 	has_many :links, :as => :owner
 	has_many :twitter_accounts, :as => :owner
 	has_many :facebook_accounts, :as => :owner
+	
+	has_many	:managed_awards, :as => :owner, :class_name => 'Award'
 
 	has_many :static_pages
 	has_many :contacts

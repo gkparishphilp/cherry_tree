@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110203215818
+# Schema version: 20110207173417
 #
 # Table name: objectives
 #
@@ -24,8 +24,7 @@ class Objective < ActiveRecord::Base
 	has_many	:users, :through => :assignments
 	has_many	:earnings, :as => :earned_for
 	has_many	:checkins
-	
-	attr_accessor	:user_id
+
 	
 	scope :recurring, where( "objective_type = 'recurring' " )
 	scope :once, where( "objective_type = 'once' " )
