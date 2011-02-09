@@ -85,12 +85,13 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   create_table "awards", :force => true do |t|
     t.integer  "objective_id"
     t.integer  "merch_id"
-    t.integer  "created_by_id"
+    t.integer  "creator_id"
+    t.string   "creator_type"
     t.string   "name"
     t.text     "description"
     t.string   "asin"
     t.integer  "points"
-    t.integer  "level",         :default => 0
+    t.integer  "level",        :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

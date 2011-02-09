@@ -39,13 +39,13 @@ u2.make_admin( s )
 
 # some awards
 
-a = s.managed_awards.create :name => '1 Hour Free Time', :description => "TV, Videogames, Playtime, the choice is yours - You've earned it!", :points => 100
+a = s.created_awards.create :name => '1 Hour Free Time', :description => "TV, Videogames, Playtime, the choice is yours - You've earned it!", :points => 100
 a.attachments.create :attachment_type => 'avatar', :name => 'clock', :format => 'png', :path => '/images/unlockables/clock.png', :remote => true
 
-a = s.managed_awards.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :points => 25
+a = s.created_awards.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :points => 25
 a.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
 
-a = s.managed_awards.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :points => 10
+a = s.created_awards.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :points => 10
 a.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
 # Static Pages

@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
 	has_many	:ownings
 	has_many	:awards, :through => :ownings
 	
-	has_many	:created_awards, :class_name => 'Award', :foreign_key => :creator_id
+	has_many	:created_awards, :class_name => 'Award', :as => :creator
 
 	has_many	:playings
 	has_many	:games, :through => :playings

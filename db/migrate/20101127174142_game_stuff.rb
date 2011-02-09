@@ -34,7 +34,7 @@ class GameStuff < ActiveRecord::Migration
 		create_table :awards, :force => true do |t|
 			t.references	:objective # for awards that are earned, not bought
 			t.references	:merch 
-			t.references	:created_by # the creator is the entity who has the right to manage the award
+			t.references	:creator, :polymorphic => true # the creator is the entity who has the right to manage the award
 			t.string		:name
 			t.text			:description
 			t.string		:asin # for Amazon products
