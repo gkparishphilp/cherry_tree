@@ -9,7 +9,7 @@
 	= f.text_field :name
 
 	= f.label 'Description:'
-	= f.text_area :description
+	= f.text_area :description, :class => 'small_area'
 	%br
 	= f.check_box :req_checkin, :checked => @objective.req_checkin?
 	Require Checkin?

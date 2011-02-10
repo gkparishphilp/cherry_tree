@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110207173417
+# Schema version: 20110210211558
 #
 # Table name: users
 #
@@ -105,24 +105,29 @@ class User < ActiveRecord::Base
 	has_many	:objective_assignments
 	has_many	:objectives, :through => :objective_assignments
 	
-		# for adults, assignments they've made
+	has_many	:checkins
+	
+		# for adults, objectives and assignments they've made
 	has_many	:created_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
 	has_many	:created_objectives, :class_name => 'Objective', :foreign_key => :creator_id
 
 	has_many	:wishlists
 	has_many	:wishlist_items, :through => :wishlists
 
-	has_many	:earnings
+	has_many	:point_earnings
+	has_many	:point_spendings
+
+	has_many	:award_assignments
+	has_many	:assigned_awards, :through => :award_assignments, :source => :award
+	
+	has_many	:acheivement_earnings
+	has_many	:acheivements, :through => :acheivement_earnings
 
 	has_many	:ownings
-	has_many	:awards, :through => :ownings
+	has_many	:awards, :through => :ownings, :source => :ownable, :class_name => 'Award'
+	has_many	:unlockables, :through => :ownings, :source => :ownable, :class_name => 'Unlockable'
 	
 	has_many	:created_awards, :class_name => 'Award', :as => :creator
-
-	has_many	:playings
-	has_many	:games, :through => :playings
-
-	has_many	:checkins
 
 	has_many	:quizzings
 
@@ -275,6 +280,15 @@ class User < ActiveRecord::Base
 	end
 	
 	# App-specific
+	
+	def awards
+		self.ownings.awards
+	end
+	
+	def unlockables
+		self.ownings.unlockables
+	end
+	
 	
 	def is_child?
 		return self.type == 'Child'

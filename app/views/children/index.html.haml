@@ -2,12 +2,12 @@
 	= possessize @current_user.name
 	Children
 = render 'users/nav'
+
 %br
+= render @children
+%br.clear
 %br
-= link_to 'Add Child', new_child_path, :class => 'green_button'
+
+= link_to 'Register Child', new_child_path, :class => 'green_button'
 %br
-%br
-- for child in @children
-	%li
-		= child.name
-		= link_to "Send Note", new_note_path( :to => child.id )
+

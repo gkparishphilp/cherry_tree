@@ -1,18 +1,17 @@
 # == Schema Information
 # Schema version: 20110210211558
 #
-# Table name: wishlists
+# Table name: unlockables
 #
 #  id          :integer(4)      not null, primary key
-#  user_id     :integer(4)
 #  name        :string(255)
 #  description :text
-#  status      :string(255)     default("active")
+#  point_cost  :integer(4)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
 
-class Wishlist < ActiveRecord::Base
-	belongs_to	:user
-	has_many	:wishlist_items
+class Unlockable < ActiveRecord::Base
+	has_many	:ownings, :as => :ownable
+	has_many	:users, :through => :ownings
 end

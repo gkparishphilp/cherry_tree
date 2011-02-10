@@ -1,0 +1,15 @@
+%div[child]
+	.pic
+		= avatar_tag( child, :thumb )
+	.name_nav
+		.name
+			= child.name
+		.nav
+			= link_to "Awards"
+			|
+			= link_to "Objectives"
+			|
+			= link_to "Profile"
+			|
+			= link_to "Send Note", new_note_path( :to => child.id )
+	%hr.clear

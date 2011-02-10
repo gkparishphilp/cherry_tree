@@ -1,16 +1,20 @@
 # == Schema Information
-# Schema version: 20110207173417
+# Schema version: 20110210211558
 #
 # Table name: ownings
 #
-#  id         :integer(4)      not null, primary key
-#  user_id    :integer(4)
-#  award_id   :integer(4)
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer(4)      not null, primary key
+#  user_id      :integer(4)
+#  ownable_id   :integer(4)
+#  ownable_type :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 class Owning < ActiveRecord::Base
-	belongs_to	:award
+	belongs_to	:ownable, :polymorphic => true
 	belongs_to	:user
+	
+	scope :awards, where( :ownable_type => 'Award' )
+	scope :unlockables, where( :ownable_type => 'Unlockable' )
 end

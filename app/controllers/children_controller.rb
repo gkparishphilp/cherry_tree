@@ -28,7 +28,7 @@ class ChildrenController < ApplicationController
 			if params[:child][:welcome_message].present?
 				note = @current_user.sent_notes.create( :content => params[:child][:welcome_message] )
 				note.deliver_to( @child )
-				@child.earn_points_for( note )
+				#@child.earn_points_for( note )
 			end
 		else
 			pop_flash "Ooops, Child not added", :error, @child

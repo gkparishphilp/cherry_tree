@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110207173417) do
+ActiveRecord::Schema.define(:version => 20110210211558) do
+
+  create_table "acheivement_earnings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "acheivement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "acheivements", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "requirements_to_earn"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "activities", :force => true do |t|
     t.integer  "actor_id",                            :null => false
@@ -82,16 +97,21 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
 
   add_index "attachments", ["owner_id", "owner_type"], :name => "fk_owner"
 
+  create_table "award_assignments", :force => true do |t|
+    t.integer  "award_id"
+    t.integer  "user_id"
+    t.integer  "creator_id"
+    t.integer  "point_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "awards", :force => true do |t|
-    t.integer  "objective_id"
-    t.integer  "merch_id"
     t.integer  "creator_id"
     t.string   "creator_type"
     t.string   "name"
     t.text     "description"
     t.string   "asin"
-    t.integer  "points"
-    t.integer  "level",        :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -99,8 +119,8 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
     t.string   "content"
-    t.integer  "objective_id"
-    t.string   "status",       :default => "did_not"
+    t.integer  "objective_assignment_id"
+    t.string   "status",                  :default => "did_not"
     t.integer  "confirmed_by"
     t.datetime "confirmed_at"
     t.datetime "created_at"
@@ -148,15 +168,6 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
 
   add_index "crashes", ["site_id"], :name => "index_crashes_on_site_id"
 
-  create_table "earnings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "earned_for_id"
-    t.string   "earned_for_type"
-    t.integer  "points",          :default => 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "facebook_accounts", :force => true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
@@ -198,26 +209,6 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   add_index "forums", ["cached_slug"], :name => "index_forums_on_cached_slug", :unique => true
   add_index "forums", ["owner_id"], :name => "index_forums_on_owner_id"
 
-  create_table "games", :force => true do |t|
-    t.string   "name"
-    t.integer  "created_by_id"
-    t.text     "description"
-    t.text     "content"
-    t.integer  "points",        :default => 0
-    t.integer  "level"
-    t.string   "game_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "merches", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "note_deliveries", :force => true do |t|
     t.integer  "note_id"
     t.integer  "recipient_id"
@@ -243,6 +234,12 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
     t.integer  "user_id"
     t.integer  "objective_id"
     t.integer  "creator_id"
+    t.datetime "due_at"
+    t.integer  "times"
+    t.string   "period"
+    t.boolean  "req_checkin",  :default => true
+    t.boolean  "req_confirm",  :default => false
+    t.integer  "point_value",  :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -252,28 +249,32 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
     t.integer  "creator_id"
     t.text     "description"
     t.string   "objective_type"
-    t.datetime "due_at"
-    t.integer  "times"
-    t.string   "period"
-    t.boolean  "req_checkin",    :default => true
-    t.boolean  "req_confirm",    :default => false
-    t.integer  "points",         :default => 1
-    t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "ownings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "award_id"
+    t.integer  "ownable_id"
+    t.string   "ownable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "playings", :force => true do |t|
-    t.integer  "game_id"
+  create_table "point_spendings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "score"
+    t.integer  "owning_id"
+    t.integer  "points_spent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "points_earnings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "earned_for_id"
+    t.string   "earned_for_type"
+    t.integer  "points_earned"
+    t.string   "earning_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -438,6 +439,14 @@ ActiveRecord::Schema.define(:version => 20110207173417) do
   end
 
   add_index "twitter_accounts", ["owner_id"], :name => "index_twitter_accounts_on_owner_id"
+
+  create_table "unlockables", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "point_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "type"
