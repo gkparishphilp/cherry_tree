@@ -46,4 +46,7 @@ CherryTree::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Set cache directory to public/cache
+  config.action_controller.page_cache_directory = Rails.public_path + '/cache'
 end

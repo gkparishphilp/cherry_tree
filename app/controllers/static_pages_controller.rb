@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
 	
 	before_filter   :require_admin, :except => [ :show  ]
+	caches_page :show
+	cache_sweeper :static_page_sweeper, :only => [:create, :update, :destroy]
 	
 	def admin
 		@pages = StaticPage.all
