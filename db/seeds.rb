@@ -37,16 +37,13 @@ u2.relate_to c4, :as => 'father', :nickname => 'Dad'
 u1.make_admin( s )
 u2.make_admin( s )
 
-# some awards
+# some unlockables
 
-a = s.created_awards.create :name => '1 Hour Free Time', :description => "TV, Videogames, Playtime, the choice is yours - You've earned it!", :points => 100
-a.attachments.create :attachment_type => 'avatar', :name => 'clock', :format => 'png', :path => '/images/unlockables/clock.png', :remote => true
+ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25
+ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
 
-a = s.created_awards.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :points => 25
-a.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
-
-a = s.created_awards.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :points => 10
-a.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
+ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
+ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
 # Static Pages
 about = ""

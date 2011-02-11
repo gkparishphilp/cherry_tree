@@ -5,5 +5,5 @@
 	= @current_user.checkins.update.last.content unless @current_user.checkins.update.empty?
 .banner_points
 	= @current_user.points_balance
-	%span.pts Pts
+	= image_tag "cherry.png", :class => 'cherry'
 .clear

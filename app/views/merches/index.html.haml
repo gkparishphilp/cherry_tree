@@ -1,8 +1,0 @@
-- content_for :left_column do
-	%h1 
-		= pluralize @merches.size, "Merch"
-
-	= render @merches
-
-	%br
-	= link_to 'New Merch', new_merch_path
