@@ -19,7 +19,7 @@ class Note < ActiveRecord::Base
 	belongs_to	:sender, :class_name => 'User'
 	has_many	:note_deliveries
 	has_many	:recipients, :through => :note_deliveries
-	has_many	:earnings, :as => :earned_for
+	has_many	:point_earnings, :as => :earned_for
 
 	validates_presence_of :content, :message => "You should have something to say ;-)"
 	

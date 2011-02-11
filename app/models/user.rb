@@ -347,10 +347,10 @@ class User < ActiveRecord::Base
 	
 	
 	def earn_points_for( obj, points=nil )
-		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaciton 
+		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaction 
 		# and add points to the user's point_balance and point_total
 		points = obj.points if points.nil?
-		self.earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => points
+		self.point_earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => points
 		self.update_attributes :points_earned => ( self.points_earned + points ), :points_balance => ( self.points_balance + points )
 	end
 	

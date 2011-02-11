@@ -11,7 +11,7 @@
 #  updated_at   :datetime
 #
 
-class PointSpending < ActiveRecord::Base
+class PointSpendings < ActiveRecord::Base
 	belongs_to	:user
 	belongs_to	:owning
 end

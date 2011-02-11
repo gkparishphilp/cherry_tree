@@ -11,7 +11,7 @@ class Objectives < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		create_table :points_earnings, :force => true do |t|
+		create_table :point_earnings, :force => true do |t|
 			t.references	:user # the person who earned this
 			t.references	:earned_for, :polymorphic => true # an objective_assignment, checkin, note, acheivement, etc.
 			t.integer		:points_earned
@@ -36,7 +36,7 @@ class Objectives < ActiveRecord::Migration
 			t.string		:period
 			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
 			t.boolean		:req_confirm, :default => false # parent must confirm checkin to award points
-			t.integer		:point_value, :default => 1
+			t.integer		:points_value, :default => 1
 			t.timestamps
 		end
 		

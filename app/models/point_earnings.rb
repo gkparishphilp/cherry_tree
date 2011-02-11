@@ -13,7 +13,7 @@
 #  updated_at      :datetime
 #
 
-class PointsEarning < ActiveRecord::Base
+class PointEarnings < ActiveRecord::Base
 	belongs_to	:user
 	belongs_to	:earned_for, :polymorphic => true
 

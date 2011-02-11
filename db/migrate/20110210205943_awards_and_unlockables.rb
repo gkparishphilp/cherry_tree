@@ -14,14 +14,14 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.references	:award
 			t.references	:user  # the user that this award is available to
 			t.references	:creator # who created the assignemnt
-			t.integer		:point_cost
+			t.integer		:points_cost
 			t.timestamps
 		end
 		
 		create_table :unlockables, :force => true do |t|
 			t.string	:name
 			t.text		:description
-			t.integer	:point_cost
+			t.integer	:points_cost
 			t.timestamps
 		end
 		

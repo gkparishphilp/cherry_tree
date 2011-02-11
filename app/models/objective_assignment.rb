@@ -22,7 +22,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	belongs_to	:objective
 	belongs_to	:creator, :foreign_key => :creator_id, :class_name => 'User'
 	
-	has_many	:earnings, :as => :earned_for
+	has_many	:point_earnings, :as => :earned_for
 	has_many	:checkins
 
 	
@@ -31,7 +31,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	
 	def earned_for_period
 		start_time = self.get_period_start_time
-		if self.earnings.dated_between(start_time, Time.now.getutc).count > 0
+		if self.point_earnings.dated_between(start_time, Time.now.getutc).count > 0
 			return true
 		else
 			return false
