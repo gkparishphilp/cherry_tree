@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "award_id"
     t.integer  "user_id"
     t.integer  "creator_id"
-    t.integer  "point_cost"
+    t.integer  "points_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -239,7 +239,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "period"
     t.boolean  "req_checkin",  :default => true
     t.boolean  "req_confirm",  :default => false
-    t.integer  "point_value",  :default => 1
+    t.integer  "points_value", :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "objectives", :force => true do |t|
     t.string   "name"
     t.integer  "creator_id"
+    t.string   "creator_type"
     t.text     "description"
     t.string   "objective_type"
     t.datetime "created_at"
@@ -261,20 +262,20 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.datetime "updated_at"
   end
 
-  create_table "point_spendings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "owning_id"
-    t.integer  "points_spent"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "points_earnings", :force => true do |t|
+  create_table "point_earnings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "earned_for_id"
     t.string   "earned_for_type"
     t.integer  "points_earned"
     t.string   "earning_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "point_spendings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "owning_id"
+    t.integer  "points_spent"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -443,7 +444,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "unlockables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "point_cost"
+    t.integer  "points_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

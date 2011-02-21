@@ -21,7 +21,7 @@ class Objectives < ActiveRecord::Migration
 		
 		create_table :objectives, :force => true do |t|
 			t.string		:name
-			t.references	:creator
+			t.references	:creator, :polymorphic => true
 			t.text			:description
 			t.string		:objective_type  # 
 			t.timestamps

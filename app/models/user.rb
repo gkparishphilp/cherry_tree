@@ -342,9 +342,7 @@ class User < ActiveRecord::Base
 	def assign_objective_to( obj, user )
 		self.created_assignments.create :objective => obj, :user_id => user.id
 	end
-	
-	
-	
+
 	
 	def earn_points_for( obj, points=nil )
 		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaction 

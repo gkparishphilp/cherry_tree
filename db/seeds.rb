@@ -37,12 +37,19 @@ u2.relate_to c4, :as => 'father', :nickname => 'Dad'
 u1.make_admin( s )
 u2.make_admin( s )
 
+#some objectives
+o1 = Objective.create :name => 'Clean your room', :creator_type =>'User', :creator_id => 1, :description => 'Pick up your toys'
+o2 = Objective.create :name => 'Eat your vegtables', :creator_type =>'User', :creator_id => 2, :description => 'Pick up your toys'
+
+a1 = ObjectiveAssignment.create :user_id => 6, :objective_id => 1, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :points_value => 5
+a2 = ObjectiveAssignment.create :user_id => 6, :objective_id => 2, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :points_value => 5
+
 # some unlockables
 
-ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25
+ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :points_cost => 25
 ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
 
-ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
+ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :points_cost => 10
 ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
 # Static Pages

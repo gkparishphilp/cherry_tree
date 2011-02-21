@@ -1,16 +1,16 @@
 = render 'children/banner', :title => 'Objectives'
 = render 'children/nav'
 
-- if @objectives.recurring.present?
+- if @objective_assignments.recurring.present?
 	%h3 Your Objectives
-	- for obj in @objectives.recurring
-		%b= obj.name
+	- for assignment in @objective_assignments.recurring
+		%b= assignment.objective.name
 		%br
-		= obj.times
+		= assignment.times
 		times per
-		= obj.period
+		= assignment.period
 		= form_for Checkin.new do |f|
-			= f.hidden_field :objective_id, :value => obj.id
+			= f.hidden_field :objective_assignment_id, :value => assignment.id
 			= f.hidden_field :user_id, :value => @current_user.id
 			= f.radio_button :status, 'did'
 			I did It!

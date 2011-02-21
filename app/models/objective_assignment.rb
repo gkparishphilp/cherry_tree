@@ -26,8 +26,8 @@ class ObjectiveAssignment < ActiveRecord::Base
 	has_many	:checkins
 
 	
-	scope :recurring, where( "objective_type = 'recurring' " )
-	scope :once, where( "objective_type = 'once' " )
+	scope :recurring, where( "times > 1 " )
+	scope :once, where( "due_at is NOT NULL " )
 	
 	def earned_for_period
 		start_time = self.get_period_start_time
