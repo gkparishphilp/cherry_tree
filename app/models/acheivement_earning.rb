@@ -10,7 +10,7 @@
 #  updated_at     :datetime
 #
 
-class AcheivementEarning < ActiveRecord::Base
+class AchievementEarning < ActiveRecord::Base
 	belongs_to	:user
-	belongs_to	:acheivement
+	belongs_to	:achievement
 end

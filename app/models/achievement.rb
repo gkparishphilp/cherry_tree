@@ -11,8 +11,8 @@
 #  updated_at           :datetime
 #
 
-class Acheivement < ActiveRecord::Base
-	has_many	:acheivement_earnings
-		# people who have earned this acheivement
-	has_many	:users, :through => :acheivement_earnings
+class Achievement < ActiveRecord::Base
+	has_many	:achievement_earnings
+		# people who have earned this achievement
+	has_many	:users, :through => :achievement_earnings
 end

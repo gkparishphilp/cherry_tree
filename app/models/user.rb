@@ -120,8 +120,8 @@ class User < ActiveRecord::Base
 	has_many	:award_assignments
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
 	
-	has_many	:acheivement_earnings
-	has_many	:acheivements, :through => :acheivement_earnings
+	has_many	:achievement_earnings
+	has_many	:achievements, :through => :achievement_earnings
 
 	has_many	:ownings
 	has_many	:awards, :through => :ownings, :source => :ownable, :class_name => 'Award'
