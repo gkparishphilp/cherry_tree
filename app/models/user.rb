@@ -343,6 +343,10 @@ class User < ActiveRecord::Base
 		self.created_assignments.create :objective => obj, :user_id => user.id
 	end
 
+	def get_unchecked_assignments
+		assignments = self.objective_assignments.unchecked_for_today + self.objective_assignments.never_checked
+	end
+
 	
 	def earn_points_for( obj, points=nil )
 		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaction 

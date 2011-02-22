@@ -6,7 +6,7 @@ class ObjectivesController < ApplicationController
 	
 	def index
 		if @current_user.is_child?
-			@objective_assignments = @current_user.objective_assignments
+			@objective_assignments = @current_user.get_unchecked_assignments
 			
 			render :index_child
 		else
