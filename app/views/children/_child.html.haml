@@ -3,11 +3,11 @@
 		= avatar_tag( child, :thumb )
 	.name_nav
 		.name
-			= child.display_name
+			= link_to child.display_name, child
 		.nav
-			= link_to "Awards"
+			= link_to "Objectives", child_objective_assignments_path( child )
 			|
-			= link_to "Objectives"
+			= link_to "Awards"
 			|
 			= link_to "Profile"
 			|

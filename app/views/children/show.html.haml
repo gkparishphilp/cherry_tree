@@ -1,0 +1,34 @@
+-# Used to show Child to Parent
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%br
+.child_profile
+	.pic
+		= avatar_tag( @child, :profile )
+	.name_nav
+		.name
+			= @child.display_name
+		.nav
+			= link_to "Objectives", child_objectives_path( @child )
+			|
+			= link_to "Awards"
+			|
+			= link_to "Profile"
+			|
+			= link_to "Send Note", new_note_path( :to => @child.id )
+	%hr.clear
+	.timeline
+		%p
+			Stream of stuff related to this child.
+		%p
+			Maybe color-coded by importance, etc.
+		%p
+			Blah blah blah....
+
+
+%br.clear
+%br
+

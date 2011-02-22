@@ -1,0 +1,42 @@
+-# Used to assign objective to a Child
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%br
+.child_profile
+	.pic
+		= avatar_tag( @child, :profile )
+	.name_nav
+		.name
+			= @child.display_name
+		.nav
+			= link_to "Objectives", child_objective_assignments_path( @child )
+			|
+			= link_to "Awards"
+			|
+			= link_to "Profile"
+			|
+			= link_to "Send Note", new_note_path( :to => @child.id )
+		.stuff
+			= link_to "Assign New Objective", new_child_objective_assignment_path( @child )
+	%hr.clear
+	%h2
+		New Objective for
+		= @child.display_name
+	
+	= form_for [ @child, @assignment ] do |f|
+		= f.label 'Objective'
+		= f.collection_select :objective_id, @objectives, :id, :name
+		%br
+		Times Per Week:
+		= f.text_field :times
+		%br
+		Points Per Week:
+		= f.text_field :points_value
+		
+		= f.submit
+
+%br.clear
+%br

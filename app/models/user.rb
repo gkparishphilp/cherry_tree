@@ -337,11 +337,6 @@ class User < ActiveRecord::Base
 		end
 	end
 	
-	
-	
-	def assign_objective_to( obj, user )
-		self.created_assignments.create :objective => obj, :user_id => user.id
-	end
 
 	
 	def earn_points_for( obj, points=nil )

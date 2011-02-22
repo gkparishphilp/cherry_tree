@@ -24,6 +24,10 @@ class Checkin < ActiveRecord::Base
 		where( "created_at between ? and ?", args.first, args.second ) 
 	}
 	
+	scope :by, lambda { |child| 
+		where( "user_id = ?", child.id )
+	}
+	
 	def expanded_status
 		return self.status.gsub( /_/, " " )
 	end

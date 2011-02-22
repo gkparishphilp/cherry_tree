@@ -24,6 +24,7 @@ CherryTree::Application.routes.draw do
 	resources :children do
 		get 'login', :on => :collection
 		get 'home', :on => :collection
+		resources :objective_assignments
 	end
 
 	resources :contacts do
