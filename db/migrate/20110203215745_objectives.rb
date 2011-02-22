@@ -35,11 +35,19 @@ class Objectives < ActiveRecord::Migration
 			t.string		:period
 			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
 			t.boolean		:req_confirm, :default => false # parent must confirm checkin to award points
-			t.integer		:points_value, :default => 1
+			t.integer		:point_value, :default => 1
 			t.timestamps
 		end
 		
+		create_table :weekly_approvals, :force => true do |t|
+			t.references	:objective_assignment
+			t.references	:creator 
+			t.date			:week_ending
+			t.string		:status
+			t.timestamps
+		end
 	end
+		
 
 	def self.down
 	end

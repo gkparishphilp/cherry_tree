@@ -10,7 +10,6 @@
 #  background_color :string(255)     default("#ffd")
 #  subject          :string(255)
 #  content          :text
-#  points           :integer(4)      default(0)
 #  created_at       :datetime
 #  updated_at       :datetime
 #

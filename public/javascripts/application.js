@@ -62,9 +62,11 @@ $(document).ready(function(){
 	$('.archived_note').hover( function(){
 		if( $(this).css('height') == '65px' ){
 			$(this).animate({ height : 250, backgroundColor : '#fff' } );
+			$(this).children('.archived_note_actions').show();
 		}
 		else{
 			$(this).animate({ height: 65, backgroundColor : '#ffd' } );
+			$(this).children('.archived_note_actions').hide();
 		}
 	});
 	

@@ -24,6 +24,10 @@ class Checkin < ActiveRecord::Base
 		where( "created_at between ? and ?", args.first, args.second ) 
 	}
 	
+	scope :by, lambda { |child| 
+		where( "user_id = ?", child.id )
+	}
+	
 	def expanded_status
 		return self.status.gsub( /_/, " " )
 	end
@@ -44,7 +48,7 @@ class Checkin < ActiveRecord::Base
 				pop_msg = "Way to overachieve!  You've exceeded your goal of #{self.objective_assigment.times} checkins for #{self.objective_assignment.objective.name}"
 			else
 				pop_msg = "Congratulations! You've reached your goal of #{self.objective_assignment.times} checkins for #{self.objective_assignment.objective.name}"				
-				self.user.earn_points_for(self.objective_assignment, self.objective_assignment.points_value) 
+				self.user.earn_points_for(self.objective_assignment, self.objective_assignment.point_value) 
 			end
 		else	
 			if self.number_checkin_times == self.objective_assignment.times - 1

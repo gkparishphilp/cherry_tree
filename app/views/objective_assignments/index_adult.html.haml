@@ -1,0 +1,51 @@
+-# Used to show the objective asignments for a child to the Parent
+	
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%br
+.child_profile
+	.pic
+		= avatar_tag( @child, :profile )
+	.name_nav
+		.name
+			= @child.display_name
+		.nav
+			= link_to "Objectives", child_objective_assignments_path( @child )
+			|
+			= link_to "Awards"
+			|
+			= link_to "Profile"
+			|
+			= link_to "Send Note", new_note_path( :to => @child.id )
+		.stuff
+			= link_to "Assign New Objective", new_child_objective_assignment_path( @child )
+	%hr.clear
+	%h2
+		= @child.display_name
+		Objectives
+	
+	- for assignment in @assignments
+		%b= assignment.objective.name
+		= assignment.times
+		per week
+		for
+		= assignment.point_value
+		Points
+		||
+		On / Off
+		Trash
+		
+		- for checkin in assignment.checkins.by( @child )
+			%li
+				= checkin.expanded_status
+				on
+				= format_date( checkin.created_at )
+			%br
+			
+
+
+%br.clear
+%br
