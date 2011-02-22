@@ -36,7 +36,7 @@ $(document).ready(function(){
 		$(this).fadeOut(2000);
 	});
 	
-	
+	/*
 	$('#big_tree').click( function(){
 		$(this).animate({
 			left:'+=166'
@@ -53,10 +53,22 @@ $(document).ready(function(){
 		$(this).css( 'z-index', 3 );
 		bird.pause();
 	});
+	*/
 	
 	$('#note_font').change( function(){
 		$('.note_content textarea').css('font-family', this.value );
 	});
+	
+	$('.archived_note').hover( function(){
+		if( $(this).css('height') == '65px' ){
+			$(this).animate({ height : 250, backgroundColor : '#fff' } );
+		}
+		else{
+			$(this).animate({ height: 65, backgroundColor : '#ffd' } );
+		}
+	});
+	
+
 	
 	//$('.note').click( function(){
 	//	$(this).hide( 2000 );

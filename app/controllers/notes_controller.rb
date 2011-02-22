@@ -1,5 +1,9 @@
 class NotesController < ApplicationController
 	
+	def archive
+		@notes = @current_user.note_deliveries.published.order( "created_at desc" ).collect { |deliv| deliv.note }
+	end
+	
 	def new
 		@note = Note.new
 		@recipient_list = @current_user.related_users.map { |u| [ u.nickname( @current_user ), u.id ] }

@@ -11,7 +11,7 @@
 			- if @current_user.anonymous?
 				= image_tag 'big_tree.png'
 			- else
-				= link_to image_tag( 'http://thecherrytree.com/big_tree.png' ), user_path( @current_user )
+				= link_to image_tag( 'big_tree.png' ), user_path( @current_user )
 		#container
 			= render 'shared/header'
 			#bd

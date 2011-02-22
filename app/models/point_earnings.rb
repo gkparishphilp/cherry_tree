@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110210211558
 #
-# Table name: points_earnings
+# Table name: point_earnings
 #
 #  id              :integer(4)      not null, primary key
 #  user_id         :integer(4)

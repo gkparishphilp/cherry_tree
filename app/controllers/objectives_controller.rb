@@ -21,6 +21,8 @@ class ObjectivesController < ApplicationController
 	
 	def new
 		@objective = Objective.new
+		@child = Child.find_by_id( params[:child_id] )
+		@objective.objective_assignments.build
 	end
 	
 	def edit
@@ -33,6 +35,7 @@ class ObjectivesController < ApplicationController
 	
 	def create
 		@objective = @current_user.created_objectives.new params[:objective]
+		sd
 		if @objective.save
 			for id in params[:assign_to_ids]
 				if assignee = User.find( id )
