@@ -41,8 +41,8 @@ u2.make_admin( s )
 o1 = Objective.create :name => 'Clean your room', :creator_type =>'User', :creator_id => 2, :description => 'Pick up your toys'
 o2 = Objective.create :name => 'Eat your vegtables', :creator_type =>'User', :creator_id => 2, :description => 'Pick up your toys'
 
-a1 = ObjectiveAssignment.create :user_id => 6, :objective_id => 1, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :points_value => 5
-a2 = ObjectiveAssignment.create :user_id => 6, :objective_id => 2, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :points_value => 5
+a1 = ObjectiveAssignment.create :user_id => 6, :objective_id => 1, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 5
+a2 = ObjectiveAssignment.create :user_id => 6, :objective_id => 2, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 5
 
 # some unlockables
 

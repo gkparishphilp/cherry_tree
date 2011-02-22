@@ -12,7 +12,7 @@ class CheckinsController < ApplicationController
 			if @checkin.content.present?
 				@checkin.user.do_activity( "check in: '#{@checkin.content}' ", @checkin )
 			else
-				@checkin.user.do_activity( "#{@checkin.expanded_status} ", @checkin.objective_assignment )
+				@checkin.user.do_activity( "#{@checkin.expanded_status} #{@checkin.objective_assignment.objective.name}", @checkin.objective_assignment )
 			end
 			
 			@checkin.user.save

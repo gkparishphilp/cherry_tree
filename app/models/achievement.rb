@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110210211558
 #
-# Table name: acheivements
+# Table name: achievements
 #
 #  id                   :integer(4)      not null, primary key
 #  name                 :string(255)

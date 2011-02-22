@@ -7,7 +7,6 @@ class Notes < ActiveRecord::Migration
 			t.string		:background_color, :default => '#ffd'
 			t.string		:subject
 			t.text			:content
-			t.integer		:points, :default => 0
 			t.timestamps
 		end
 		

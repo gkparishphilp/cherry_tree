@@ -20,7 +20,7 @@ class Quizzes < ActiveRecord::Migration
 			t.references	:quiz
 			t.text			:content
 			t.string		:extra_content # e.g. DYK
-			t.integer		:points, :default => 0
+			t.integer		:point_value, :default => 0
 			t.integer		:seq  # for ordering questions ?
 			t.timestamps
 		end
@@ -29,7 +29,7 @@ class Quizzes < ActiveRecord::Migration
 			t.string		:name
 			t.references	:created_by
 			t.text			:description
-			t.integer		:points, :default => 0
+			t.integer		:point_value, :default => 0
 			t.integer		:level
 			t.string		:quiz_type # e.g. for surveys with no right or wrong answers
 			t.timestamps

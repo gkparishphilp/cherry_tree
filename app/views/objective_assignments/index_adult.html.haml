@@ -32,15 +32,17 @@
 		= assignment.times
 		per week
 		for
-		= assignment.points_value
+		= assignment.point_value
 		Points
 		||
 		On / Off
 		Trash
 		
 		- for checkin in assignment.checkins.by( @child )
-			= format_date( checkin.created_at )
-			= checkin.expanded_status
+			%li
+				= checkin.expanded_status
+				on
+				= format_date( checkin.created_at )
 			%br
 			
 

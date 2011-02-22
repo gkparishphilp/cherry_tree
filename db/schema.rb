@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(:version => 20110210211558) do
 
-  create_table "acheivement_earnings", :force => true do |t|
+  create_table "achievement_earnings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "acheivement_id"
+    t.integer  "achievement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "acheivements", :force => true do |t|
+  create_table "achievements", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.text     "requirements_to_earn"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "award_id"
     t.integer  "user_id"
     t.integer  "creator_id"
-    t.integer  "points_cost"
+    t.integer  "point_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -225,7 +225,6 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "background_color", :default => "#ffd"
     t.string   "subject"
     t.text     "content"
-    t.integer  "points",           :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -239,7 +238,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "period"
     t.boolean  "req_checkin",  :default => true
     t.boolean  "req_confirm",  :default => false
-    t.integer  "points_value", :default => 1
+    t.integer  "point_value",  :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -274,7 +273,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "point_spendings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "owning_id"
-    t.integer  "points_spent"
+    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -304,7 +303,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "quiz_id"
     t.text     "content"
     t.string   "extra_content"
-    t.integer  "points",        :default => 0
+    t.integer  "point_value",   :default => 0
     t.integer  "seq"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -314,7 +313,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "name"
     t.integer  "created_by_id"
     t.text     "description"
-    t.integer  "points",        :default => 0
+    t.integer  "point_value",   :default => 0
     t.integer  "level"
     t.string   "quiz_type"
     t.datetime "created_at"
@@ -443,7 +442,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "unlockables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "points_cost"
+    t.integer  "point_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -483,6 +482,15 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "weekly_approvals", :force => true do |t|
+    t.integer  "objective_assignment_id"
+    t.integer  "creator_id"
+    t.date     "week_ending"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "wishlist_items", :force => true do |t|
     t.integer  "wishlist_id"
