@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "objectives", :force => true do |t|
     t.string   "name"
     t.integer  "creator_id"
+    t.string   "creator_type"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -120,8 +120,8 @@ class User < ActiveRecord::Base
 	has_many	:award_assignments
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
 	
-	has_many	:acheivement_earnings
-	has_many	:acheivements, :through => :acheivement_earnings
+	has_many	:achievement_earnings
+	has_many	:achievements, :through => :achievement_earnings
 
 	has_many	:ownings
 	has_many	:awards, :through => :ownings, :source => :ownable, :class_name => 'Award'
@@ -342,9 +342,7 @@ class User < ActiveRecord::Base
 	def assign_objective_to( obj, user )
 		self.created_assignments.create :objective => obj, :user_id => user.id
 	end
-	
-	
-	
+
 	
 	def earn_points_for( obj, points=nil )
 		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaction 

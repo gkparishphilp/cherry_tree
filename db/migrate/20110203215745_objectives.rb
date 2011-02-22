@@ -13,15 +13,15 @@ class Objectives < ActiveRecord::Migration
 		
 		create_table :point_earnings, :force => true do |t|
 			t.references	:user # the person who earned this
-			t.references	:earned_for, :polymorphic => true # an objective_assignment, checkin, note, acheivement, etc.
+			t.references	:earned_for, :polymorphic => true # an objective_assignment, checkin, note, achievement, etc.
 			t.integer		:points_earned
-			t.string		:earning_type # to use later? e.g. gift, acheivement, etc???
+			t.string		:earning_type # to use later? e.g. gift, achievement, etc???
 			t.timestamps
 		end
 		
 		create_table :objectives, :force => true do |t|
 			t.string		:name
-			t.references	:creator
+			t.references	:creator, :polymorphic => true
 			t.text			:description
 			t.timestamps
 		end

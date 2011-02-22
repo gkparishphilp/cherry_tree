@@ -14,4 +14,5 @@
 class Unlockable < ActiveRecord::Base
 	has_many	:ownings, :as => :ownable
 	has_many	:users, :through => :ownings
+	has_attached
 end

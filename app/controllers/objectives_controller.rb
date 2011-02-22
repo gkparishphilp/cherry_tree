@@ -6,7 +6,8 @@ class ObjectivesController < ApplicationController
 	
 	def index
 		if @current_user.is_child?
-			@objectives = @current_user.objectives
+			@objective_assignments = @current_user.objective_assignments
+			
 			render :index_child
 		else
 			@objectives = @current_user.created_objectives
