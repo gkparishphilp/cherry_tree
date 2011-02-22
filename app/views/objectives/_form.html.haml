@@ -11,28 +11,27 @@
 	= f.label 'Description:'
 	= f.text_area :description, :class => 'small_area'
 	%br
-	= f.check_box :req_checkin, :checked => @objective.req_checkin?
-	Require Checkin?
-	%span#confirmation_fields
-		= f.check_box :req_confirm, :checked => @objective.req_confirm?
-		Require Confirmation?
-	%br
-	= f.label 'Objective Type:'
-	= f.select :objective_type, { 'Recurring' => 'recurring', 'One Time' => 'once' }
-
-	#one_time_fields
-		= f.label 'Due Date'
-		= f.text_field :due_at, :class => 'datepicker'
 	
-	#recurring_fields
-		= f.label 'Frequency:'
-		= f.text_field :times
-		Times
-		Per
-		= f.select :period, { 'Day' => 'day', 'Week' => 'week', 'Month' => 'month' }
+	= f.fields_for :objective_assignments do |assign_form|
 	
+		= assign_form.check_box :req_checkin#, :checked => @objective.req_checkin?
+		Require Checkin?
+		%span#confirmation_fields
+			= assign_form.check_box :req_confirm#, :checked => @objective.req_confirm?
+			Require Confirmation?
 
-	= f.label "Points:"
-	= f.text_field :points
+		#recurring_fields
+			= assign_form.label 'Frequency:'
+			= assign_form.text_field :times
+			Times
+			Per
+			= assign_form.select :period, { 'Day' => 'day', 'Week' => 'week', 'Month' => 'month' }
+			
+		#one_time_fields
+			= assign_form.label 'Due Date'
+			= assign_form.text_field :due_at, :class => 'datepicker'
+	
+		= assign_form.label "Points:"
+		= assign_form.text_field :points_value
 	%br
 	= f.submit "Add", :class => 'button'

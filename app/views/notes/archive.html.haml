@@ -14,10 +14,10 @@
 		.all_notes
 			%br
 			%br
-			=link_to "All Notes", archive_notes_path
+			=link_to "Note Board", notes_path
 	.note_main
-		= render @notes
-		%br.clear
+		- for note in @notes
+			= render "archived", :note => note
 		
 	%br.clear
 

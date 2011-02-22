@@ -23,7 +23,6 @@ class Objectives < ActiveRecord::Migration
 			t.string		:name
 			t.references	:creator, :polymorphic => true
 			t.text			:description
-			t.string		:objective_type  # 
 			t.timestamps
 		end
 		
@@ -31,8 +30,8 @@ class Objectives < ActiveRecord::Migration
 			t.references	:user
 			t.references	:objective
 			t.references	:creator
-			t.datetime		:due_at # for one-time activities -- i.e. goals
 			t.integer		:times
+			t.datetime		:due_at # for one-time activities -- i.e. goals
 			t.string		:period
 			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
 			t.boolean		:req_confirm, :default => false # parent must confirm checkin to award points

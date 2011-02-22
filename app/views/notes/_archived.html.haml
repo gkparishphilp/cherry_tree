@@ -1,0 +1,11 @@
+.archived_note{ :class => note.font_class }
+	.subject
+		= note.subject
+	.from
+		From:
+		= note.sender.nickname( @current_user )
+	.content
+		= note.content
+
+
+

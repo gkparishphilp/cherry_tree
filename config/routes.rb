@@ -40,7 +40,9 @@ CherryTree::Application.routes.draw do
 	
 	resources :merches
 	
-	resources :notes
+	resources :notes do
+		get 'archive', :on => :collection
+	end
 	
 	resources :objectives 
 	

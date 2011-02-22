@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "user_id"
     t.integer  "objective_id"
     t.integer  "creator_id"
-    t.datetime "due_at"
     t.integer  "times"
+    t.datetime "due_at"
     t.string   "period"
     t.boolean  "req_checkin",  :default => true
     t.boolean  "req_confirm",  :default => false
@@ -249,7 +249,6 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "creator_id"
     t.string   "creator_type"
     t.text     "description"
-    t.string   "objective_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
