@@ -28,11 +28,12 @@ class ObjectiveAssignment < ActiveRecord::Base
 	
 	scope :recurring, where( "times > 1 " )
 	scope :once, where( "due_at is NOT NULL " )
-	scope :unchecked_for_today, joins("join checkins on checkins.objective_assignment_id = objective_assignments.id").where("checkins.created_at < ?",Time.now.getutc.beginning_of_day)
-	scope :never_checked, joins('left outer join checkins on objective_assignments.id = checkins.id').where('checkins.objective_assignment_id is null')	
 
 	def checkin_in_last?( period = 1.day.ago)
-		if self.checkins.dated_between(period, Time.now.getutc)
+		if self.checkins.dated_between(period.getutc, Time.now.getutc).present?
+			return true
+		else
+			return false
 		end
 	end
 	
