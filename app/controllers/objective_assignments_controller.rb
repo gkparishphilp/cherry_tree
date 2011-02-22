@@ -5,8 +5,9 @@ class ObjectiveAssignmentsController < ApplicationController
 	def create
 		@assignment = @current_user.created_assignments.new( params[:objective_assignment] )
 		@assignment.user = @child
+		@assignment.period ||= 'week'
 		if @assignment.save
-			@current_user.do_activity "assign objective to #{@child.display_name}", @assignment.objective
+			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment.objective
 			pop_flash "Assignment Made"
 		else
 			pop_flash "There was a problem with the assignment", :error, @assignment
