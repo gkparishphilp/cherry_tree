@@ -22,6 +22,15 @@ class ObjectiveAssignmentsController < ApplicationController
 		else
 			@assignments = @child.objective_assignments
 			@new_assignemnt = @child.objective_assignments.new
+			
+			end_of_week = Time.now.end_of_week
+			@last_four_weeks = []
+			4.times do
+				@last_four_weeks << end_of_week
+				end_of_week -= 7.days
+			end
+				
+			
 			render :index_adult
 		end
 	end

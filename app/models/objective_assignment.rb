@@ -24,10 +24,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	
 	has_many	:point_earnings, :as => :earned_for
 	has_many	:checkins
-	
-	
-	scope :recurring, where( "times > 1 " )
-	scope :once, where( "due_at is NOT NULL " )
+	has_many	:weekly_approvals
 
 	def checkin_in_last?( period = 1.day.ago)
 		if self.checkins.dated_between(period.getutc, Time.now.getutc).present?

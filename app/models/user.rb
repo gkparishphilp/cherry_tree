@@ -129,6 +129,10 @@ class User < ActiveRecord::Base
 	
 	has_many	:created_awards, :class_name => 'Award', :as => :creator
 
+	has_many	:weekly_approvals, :as => :creator
+	
+	has_many	:journals
+	
 	has_many	:quizzings
 
 	
@@ -140,6 +144,11 @@ class User < ActiveRecord::Base
 				:thumb => "64",
 				:tiny => "20"
 				}}
+	
+	acts_as_taggable_on	:favorite_books
+	acts_as_taggable_on	:favorite_movies_tv
+	acts_as_taggable_on	:favorite_toys
+	acts_as_taggable_on	:favorite_music
 	
 	acts_as_follower
 	does_activities

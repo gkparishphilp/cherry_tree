@@ -3,19 +3,20 @@
 = render 'children/banner', :title => 'Objectives'
 = render 'children/nav'
 
-- if @assignments.recurring.present?
+- if @assignments.present?
 	%h3 Your Objectives
-	- for assignment in @assignments.recurring
-		%b= assignment.objective.name
-		%br
-		= assignment.times
-		times per
-		= assignment.period
-		= form_for Checkin.new do |f|
-			= f.hidden_field :objective_assignment_id, :value => assignment.id
-			= f.hidden_field :user_id, :value => @current_user.id
-			= f.radio_button :status, 'did'
-			I did It!
-			= f.submit
+	- for assignment in @assignments
+		- unless assignment.checkin_in_last?( 1.day.ago )
+			%b= assignment.objective.name
+			%br
+			= assignment.times
+			times per
+			= assignment.period
+			= form_for Checkin.new do |f|
+				= f.hidden_field :objective_assignment_id, :value => assignment.id
+				= f.hidden_field :user_id, :value => @current_user.id
+				= f.hidden_field :status, :value => 'did'
+				= f.submit
+			%br
 - else
 	%h3 No Objectives

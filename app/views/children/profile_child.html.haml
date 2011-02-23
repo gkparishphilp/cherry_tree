@@ -1,0 +1,21 @@
+= render 'banner', :title => 'Home'
+= render 'nav'
+
+#welcome
+	%h3 
+		= @current_user.display_name
+		Profile
+	= form_for @child, :html => { :multipart => true } do |f|
+		= f.label 'Favorite Books:'
+		= f.text_field :favorite_book_list
+		
+		= f.label 'Favorite Movies and TV:'
+		= f.text_field :favorite_movies_tv_list
+		
+		= f.label 'Favorite Toys:'
+		= f.text_field :favorite_toy_list
+		
+		= f.label 'Favorite Music:'
+		= f.text_field :favorite_music_list
+		
+		= f.submit

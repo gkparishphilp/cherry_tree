@@ -26,24 +26,37 @@
 	%h2
 		= @child.display_name
 		Objectives
-	
-	- for assignment in @assignments
-		%b= assignment.objective.name
-		= assignment.times
-		per week
-		for
-		= assignment.point_value
-		Points
-		||
-		On / Off
-		Trash
 		
-		- for checkin in assignment.checkins.by( @child )
-			%li
-				= checkin.expanded_status
-				on
-				= format_date( checkin.created_at )
-			%br
+	- for week in @last_four_weeks
+		Week Ending
+		= format_date_only( week )
+		- for assignment in @assignments
+			%div[assignment]
+				%b= assignment.objective.name
+				= assignment.times
+				per week
+				for
+				= assignment.point_value
+				Points
+				||
+				On / Off
+				Trash
+			
+				- if assignment.checkins.by( @child ).empty?
+					%p
+						%b No Checkins!
+				-else
+					- for checkin in assignment.checkins.by( @child )
+						%li
+							= checkin.expanded_status
+							on
+							= format_date( checkin.created_at )
+						%br
+			
+				= form_for WeeklyApproval.new do |f|
+					= f.hidden_field :assignment_id, :value => assignment.id
+					= f.select :status, [ ['Great! 100%', 'great'], ['Good (50%)', 'good'], ['Work on It (0%)', 'no good'] ]
+					= f.submit
 			
 
 

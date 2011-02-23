@@ -6,7 +6,7 @@
 #  id          :integer(4)      not null, primary key
 #  name        :string(255)
 #  description :text
-#  points_cost :integer(4)
+#  point_cost  :integer(4)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -14,5 +14,7 @@
 class Unlockable < ActiveRecord::Base
 	has_many	:ownings, :as => :ownable
 	has_many	:users, :through => :ownings
-	has_attached
+	
+	has_attached :avatar
+	
 end

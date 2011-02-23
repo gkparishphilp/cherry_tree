@@ -28,6 +28,7 @@ class Article < ActiveRecord::Base
 	has_many	:comments, :as => :commentable
     
 	has_friendly_id :title, :use_slug => :true
+	
 	acts_as_taggable_on	:topics
 	acts_as_taggable_on	:keywords
 	

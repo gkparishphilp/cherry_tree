@@ -2,6 +2,8 @@
 	%li= link_to "Home", home_path
 	%li= link_to "Objectives", child_objective_assignments_path( @current_user )
 	%li= link_to "Notes", notes_path
+	%li= link_to "Profile", profile_child_path( @current_user )
+	%li= link_to "Journal", journal_entries_path
 	%li= link_to "Wishlist", wishlist_items_path
 	%li= link_to "Store", store_index_path
 	

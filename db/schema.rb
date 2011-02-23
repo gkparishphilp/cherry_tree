@@ -209,6 +209,25 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   add_index "forums", ["cached_slug"], :name => "index_forums_on_cached_slug", :unique => true
   add_index "forums", ["owner_id"], :name => "index_forums_on_owner_id"
 
+  create_table "journal_entries", :force => true do |t|
+    t.integer  "journal_id"
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "private",    :default => false
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "journals", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.boolean  "private",    :default => false
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "note_deliveries", :force => true do |t|
     t.integer  "note_id"
     t.integer  "recipient_id"

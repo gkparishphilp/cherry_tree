@@ -17,14 +17,36 @@ class ChildrenController < ApplicationController
 	end
 	
 	def edit
-		@child = Child.find params[:id]
+		@child = Child.find( params[:id] )
 		render :layout => false
+	end
+	
+	def update
+		@child = Child.find( params[:id] )
+		if @child.update_attributes( params[:child] )
+			process_attachments_for( @child )
+			pop_flash 'Successfully updated.'	
+		else
+			pop_flash 'Oooops, Not updated...', 'error', @child
+		end
+		
+		redirect_to :back
+	end
+	
+	def profile
+		@child = Child.find( params[:id] )
+		if @current_user.is_child?
+			render :profile_child
+		else
+			render :profile_adult
+		end
 	end
 	
 	def create
 		@child = Child.new params[:child]
 		if @child.save
 			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nick]
+			process_attachments_for( @child )
 			if params[:child][:welcome_message].present?
 				note = @current_user.sent_notes.create( :content => params[:child][:welcome_message] )
 				note.deliver_to( @child )

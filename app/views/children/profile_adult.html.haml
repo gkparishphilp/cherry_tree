@@ -2,6 +2,9 @@
 	= possessize @current_user.name
 	Children
 = render 'users/nav'
-%h3 Add a Child
+
+%h3 
+	= @current_user.display_name
+	Profile
 = form_for @child, :html => { :multipart => true } do |f|
 	= render 'form', :f => f

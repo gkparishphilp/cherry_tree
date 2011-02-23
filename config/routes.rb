@@ -24,6 +24,7 @@ CherryTree::Application.routes.draw do
 	resources :children do
 		get 'login', :on => :collection
 		get 'home', :on => :collection
+		get 'profile', :on => :member
 		resources :objective_assignments
 	end
 
@@ -38,6 +39,8 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources :games
+	
+	resources :journal_entries
 	
 	resources :merches
 	
@@ -59,6 +62,8 @@ CherryTree::Application.routes.draw do
 			end
 		end
 	end
+	
+	resources :relations
 	
 	resources :sessions do
 		collection do
@@ -88,7 +93,7 @@ CherryTree::Application.routes.draw do
 		get 'home', :on => :collection
 	end
 	
-	resources :relations
+	resources :weekly_approvals
 	
 	resources :wishlist_items
 	
