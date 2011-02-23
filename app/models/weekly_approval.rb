@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110221232318
 #
 # Table name: weekly_approvals
 #
@@ -16,11 +16,14 @@ class WeeklyApproval < ActiveRecord::Base
 	belongs_to	:objective_assignment
 	belongs_to	:creator, :foreign_key => :creator_id, :class_name => 'User'
 
+	scope :for_assignment, lambda { |assignment| 
+		where( "objective_assignment_id = ?", assignment.id )
+	}
 	
-	def self.exists_for?( assignment, week )
-		week = week.end_of_week
-		where( "objective_assignment_id = ? and week_ending = ?", assignment.id, week.getutc )
-	end
+	scope :for_week_ending, lambda { |week|
+		where( "week_ending like ?", week.end_of_week.strftime("%Y-%m-%d") )
+	}
+	
 	
 	
 	

@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110221232318
 #
-# Table name: acheivement_earnings
+# Table name: achievement_earnings
 #
 #  id             :integer(4)      not null, primary key
 #  user_id        :integer(4)
-#  acheivement_id :integer(4)
+#  achievement_id :integer(4)
 #  created_at     :datetime
 #  updated_at     :datetime
 #

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110221232318
 #
 # Table name: users
 #
@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
 	
 	has_many	:created_awards, :class_name => 'Award', :as => :creator
 
-	has_many	:weekly_approvals, :as => :creator
+	has_many	:weekly_approvals, :foreign_key => :creator_id
 	
 	has_many	:journals
 	
