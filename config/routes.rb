@@ -40,6 +40,8 @@ CherryTree::Application.routes.draw do
 	
 	resources :games
 	
+	resources :invitations
+	
 	resources :journal_entries do
 		resources :comments
 	end
@@ -93,6 +95,7 @@ CherryTree::Application.routes.draw do
 		get 'resend', :on => :member
 		get 'settings', :on => :collection
 		get 'home', :on => :collection
+		post 'invite', :on => :collection
 	end
 	
 	resources :weekly_approvals
@@ -114,7 +117,6 @@ CherryTree::Application.routes.draw do
 	match '/activate/:token' => 'users#activate', :as => 'activate'
 	match '/resend' => 'users#resend', :as => 'resend'
 	match '/amazon' => 'awards#search_amazon', :as => 'amazon'
-	
 	match "/:permalink", :to => 'static_pages#show'
 	
 	

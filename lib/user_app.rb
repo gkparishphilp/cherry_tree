@@ -94,6 +94,5 @@ module UserApp
 	def owns?( award )
 		self.awards.include?( award )
 	end
-
-
+	
 end

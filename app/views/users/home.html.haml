@@ -2,6 +2,17 @@
 	= possessize @current_user.name
 	Home
 = render 'nav'
+
+%h3
+	Invite Users
+	
+= form_tag invitations_path do
+	Email:
+	%p= text_field_tag :email
+	Child ID:
+	%p= text_field_tag :child_id
+	Relationship
+	%p= submit_tag "Invite"
 		
 %h3
 	Recent Activity
