@@ -4,7 +4,16 @@
 = render 'users/nav'
 
 %h3 
-	= @current_user.display_name
+	= @child.display_name
 	Profile
-= form_for @child, :html => { :multipart => true } do |f|
-	= render 'form', :f => f
+	
+= avatar_tag( @child, :thumb )
+%br
+%br
+
+%b
+	= possessize @child.display_name
+	Favorite Books:
+%p
+	= @child.favorite_books.join ", "
+

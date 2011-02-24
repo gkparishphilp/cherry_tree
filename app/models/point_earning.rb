@@ -7,7 +7,7 @@
 #  user_id         :integer(4)
 #  earned_for_id   :integer(4)
 #  earned_for_type :string(255)
-#  points_earned   :integer(4)
+#  points          :integer(4)
 #  earning_type    :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime

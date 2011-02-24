@@ -39,12 +39,7 @@ class NotesController < ApplicationController
 		recipient = User.find_by_id( params[:note][:recipient_id] )
 		if @note.save
 			@note.deliver_to( recipient )
-			if @note.points > 0
-				recipient.earn_points_for( @note )
-				recipient.do_activity( "Receive #{@note.points} points from #{@note.sender.display_name}", @note )
-			else
-				recipient.do_activity( "Have a note from #{@note.sender.display_name}", @note )
-			end
+			recipient.do_activity( "Have a note from #{@note.sender.display_name}", @note )
 			pop_flash "Note Added"
 		else
 			pop_flash "Ooops, Note not added", :error, @note

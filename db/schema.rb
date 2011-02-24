@@ -283,7 +283,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "user_id"
     t.integer  "earned_for_id"
     t.string   "earned_for_type"
-    t.integer  "points_earned"
+    t.integer  "points"
     t.string   "earning_type"
     t.datetime "created_at"
     t.datetime "updated_at"
