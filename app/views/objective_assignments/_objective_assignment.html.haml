@@ -1,0 +1,34 @@
+%div[objective_assignment]
+	.title_bar
+		.data
+			.name= objective_assignment.objective.name
+			.info
+				= objective_assignment.times
+				per week
+				for
+				= objective_assignment.point_value
+				Points
+		.actions
+			On / Off
+			Trash
+		.clear
+
+	- if objective_assignment.checkins.by( @child ).empty?
+		%p.no_checkins
+			No Checkins This Week!
+	-else
+		- for checkin in objective_assignment.checkins.by( @child )
+			%div[checkin]
+				= checkin.expanded_status
+				%span.date
+					on
+					= format_date( checkin.created_at )
+			%br
+	.approval_bar
+		- if WeeklyApproval.for_assignment( objective_assignment ).for_week_ending( week ).first
+			.already_approved
+				= image_tag 'green_check.png', :width => 20, :valign => :middle
+				Already Approved
+		- else
+			= form_for WeeklyApproval.new do |f|
+				= render 'weekly_approvals/form', :f => f, :objective_assignment => objective_assignment

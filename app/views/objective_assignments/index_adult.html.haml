@@ -27,71 +27,14 @@
 		= @child.display_name
 		Objectives
 		
-		%h4 This week
-		
-		- for assignment in @assignments
-			%div[assignment]
-				%b= assignment.objective.name
-				= assignment.times
-				per week
-				for
-				= assignment.point_value
-				Points
-				||
-				On / Off
-				Trash
+	#this_week
+		%h3 This week
+		= render @assignments, :week => @this_week
+	
+	#last_week				
+		%h3 Last week
+		= render @assignments, :week => @last_week
 			
-				- if assignment.checkins.by( @child ).empty?
-					%p
-						%b No Checkins!
-				-else
-					- for checkin in assignment.checkins.by( @child )
-						%li
-							= checkin.expanded_status
-							on
-							= format_date( checkin.created_at )
-						%br
-				- if WeeklyApproval.for_assignment( assignment ).for_week_ending( @this_week ).first
-					Already Approved
-				- else
-					= form_for WeeklyApproval.new do |f|
-						= f.hidden_field :objective_assignment_id, :value => assignment.id
-						= f.hidden_field :week_ending, :value => @this_week
-						= f.select :status, [ ['Great! 100%', 'great'], ['Good (50%)', 'good'], ['Work on It (0%)', 'no good'] ]
-						= f.submit
-						
-		%h4 Last week
-
-		- for assignment in @assignments
-			%div[assignment]
-				%b= assignment.objective.name
-				= assignment.times
-				per week
-				for
-				= assignment.point_value
-				Points
-				||
-				On / Off
-				Trash
-
-				- if assignment.checkins.by( @child ).empty?
-					%p
-						%b No Checkins!
-				-else
-					- for checkin in assignment.checkins.by( @child )
-						%li
-							= checkin.expanded_status
-							on
-							= format_date( checkin.created_at )
-						%br
-				- if WeeklyApproval.for_assignment( assignment ).for_week_ending( @last_week ).first
-					Already Approved
-				- else
-					= form_for WeeklyApproval.new do |f|
-						= f.hidden_field :objective_assignment_id, :value => assignment.id
-						= f.hidden_field :week_ending, :value => @last_week
-						= f.select :status, [ ['Great! 100%', 'great'], ['Good (50%)', 'good'], ['Work on It (0%)', 'no good'] ]
-						= f.submit
 
 
 
