@@ -9,7 +9,7 @@ class JournalEntriesController < ApplicationController
 	end
 	
 	def index
-		@entries = @current_user.journals.first.entries
+		@entries = @current_user.journals.first.journal_entries
 	end
 	
 	def show
@@ -17,10 +17,8 @@ class JournalEntriesController < ApplicationController
 	end
 	
 	def create
-		if @current_user.journals.empty?
-			@current_user.journals.create :name => 'Default'
-		end
-		@entry = @current_user.journals.first.new( params[:journal_entry] )
+
+		@entry = @current_user.journals.first.journal_entries.new( params[:journal_entry] )
 		if @entry.save
 			@current_user.do_activity( "Wrote in journal", @entry )
 			pop_flash "Entry Added"

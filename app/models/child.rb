@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110221232318
+# Schema version: 20110210211558
 #
 # Table name: users
 #
@@ -35,10 +35,20 @@
 #
 
 class Child < User
+	
+	after_create	:setup_wishlist_and_journal
 
 	does_activities
 	
 	# for the child/create form -- may just switch to form_tag at some point....
 	attr_accessor :role, :nick, :welcome_message
+	
+	private
+	
+	def setup_wishlist_and_journal
+		# Only doing this as a shitty hack because kids need default
+		self.journals.create :name => 'Default'
+		self.wishlists.create :name => 'Default'
+	end
 	
 end

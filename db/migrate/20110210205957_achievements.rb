@@ -3,7 +3,7 @@ class Achievements < ActiveRecord::Migration
 		create_table :achievements, :force => true do |t|
 			t.string	:name
 			t.text		:description
-			t.text		:requirements_to_earn # todo
+			t.text		:requirements # todo
 			t.timestamps
 		end
 		

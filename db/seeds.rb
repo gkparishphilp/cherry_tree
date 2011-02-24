@@ -53,6 +53,11 @@ ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format =
 ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
 ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
+a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
+a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"
+a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"
+
+
 # Static Pages
 about = ""
 File.open("#{Rails.root}/copy/about.txt") {|f| about = f.read}	

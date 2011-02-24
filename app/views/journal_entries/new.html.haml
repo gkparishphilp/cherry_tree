@@ -1,0 +1,11 @@
+- if @current_user.is_child?
+	= render 'children/banner'
+	= render 'children/nav'
+- else
+	= render 'users/banner'
+	= render 'users/nav'
+	
+%h3 New Journal Entry
+
+= form_for @entry do |f|
+	= render 'form', :f => f

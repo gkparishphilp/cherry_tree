@@ -1,11 +1,18 @@
-= render 'banner', :title => 'Home'
-= render 'nav'
+= render 'children/banner', :title => 'Objectives'
+= render 'children/nav'
 
 #welcome
 	%h3 
 		= @current_user.display_name
 		Profile
 	= form_for @child, :html => { :multipart => true } do |f|
+		%h3 Change Your Picture
+		= avatar_tag( @current_user, :thumb )
+		= file_field_tag :attached_avatar_file
+
+		= f.label 'Tell a little about yourself:'
+		= f.text_area :bio, :class => :small_area
+	
 		= f.label 'Favorite Books:'
 		= f.text_field :favorite_book_list
 		

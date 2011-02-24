@@ -3,9 +3,20 @@ class ApplicationController < ActionController::Base
 	helper	:all
 	
 	before_filter :fetch_session_data
+	
+	after_filter	:check_for_achievements
 
 
 protected
+
+	def check_for_achievements
+		return false if @current_user.nil? || @current_user.anonymous? || !@current_user.child?
+		for achievement in Achievement.all
+			if @current_user.newly_earned?( achievement )
+				pop_flash "<br>Congratulations... You earned an Achievement: '#{achievement.name}'!"
+			end
+		end
+	end
 
 	def http_auth
 		authenticate_or_request_with_http_basic do |name, pass|

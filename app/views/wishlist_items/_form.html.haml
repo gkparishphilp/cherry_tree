@@ -1,11 +1,8 @@
 .form_group
-	%h3 Enter wishlist item
+	%h3 Add to your Wishlist
 	= f.label "Name:"
 	= f.text_field :name
-	= f.label "Description:"
-	= f.text_field :description
-	.actions
-		= f.submit 'Create', :class => 'button'
+	= f.submit 'Add', :class => 'button'
 
 		
 

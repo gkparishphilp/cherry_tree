@@ -9,7 +9,7 @@ class ChildrenController < ApplicationController
 	end
 	
 	def home
-		@activities = Activity.feed @child
+		@activities = Activity.feed @current_user
 	end
 	
 	def index

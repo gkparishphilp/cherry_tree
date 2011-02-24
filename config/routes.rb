@@ -40,7 +40,9 @@ CherryTree::Application.routes.draw do
 	
 	resources :games
 	
-	resources :journal_entries
+	resources :journal_entries do
+		resources :comments
+	end
 	
 	resources :merches
 	

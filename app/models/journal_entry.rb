@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110221232318
+# Schema version: 20110210211558
 #
 # Table name: journal_entries
 #
@@ -15,4 +15,9 @@
 
 class JournalEntry < ActiveRecord::Base
 	belongs_to	:journal
+	
+	has_many	:comments, :as => :commentable
+	
+	
+	
 end
