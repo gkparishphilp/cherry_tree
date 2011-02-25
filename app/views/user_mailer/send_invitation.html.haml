@@ -1,0 +1,11 @@
+Hello 
+= @user.display_name
+%br
+%br
+You've been invited to be a part of 
+= @child.name 
+website.
+
+To login, 
+= link_to 'click here', "http://localhost:3000/register?email=#{@user.email}"
+

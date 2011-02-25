@@ -222,6 +222,14 @@ class User < ActiveRecord::Base
 		self.password.present?
 	end
 	
+	def has_default?( name )
+		if name == self.email.gsub( /\W/, "_" ) 
+			return true
+		else
+			return false
+		end
+	end
+	
 		#ruby attribute names can't end with question marks, only method names, so I'll
 		#write my own attr_writer and a custom attr_reader that ends with a ?
 	def human=(val)

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 		if @current_user.is_child?
 			redirect_to home_children_path
 		else
+			@children = @current_user.children.map {|child| [child.name, child.id]}
 			@activities = Activity.feed @current_user, @current_user.children, @current_user.supported_children
 		end
 	end

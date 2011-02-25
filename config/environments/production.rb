@@ -37,6 +37,18 @@ CherryTree::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+	config.action_mailer.delivery_method = :smtp
+	config.action_mailer.smtp_settings = {
+	    :address        => "localhost",
+	    :port           =>  25,
+	    :domain         => "thecherrytree.com",
+	    :enable_starttls_auto => false
+	}
+
+	config.action_mailer.default_url_options = {
+	    :host   => 'thecherrytree.com'
+	}
+
   # Enable threaded mode
   # config.threadsafe!
 
