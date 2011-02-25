@@ -1,3 +1,26 @@
-%h3 New award
-= form_for @award, :html => { :multipart => true } do |f|
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%h2 New Award
+
+%h4 Your Awards:
+- for award in @current_user.created_awards.amazon
+	%li= award.name
+	
+Search Amazon
+= render 'amazon_form'
+
+
+
+%p
+	Wishlists
+	
+%h4 Your Coupons:
+- for award in @current_user.created_awards.coupon
+	%li= award.name
+
+Create Coupon
+= form_for Award.new do |f|
 	= render 'form', :f => f

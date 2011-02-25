@@ -1,0 +1,4 @@
+= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
+= f.hidden_field :week_ending, :value => @last_week
+= f.select :status, [ ['Great! 100%', 'great'], ['Good (50%)', 'good'], ['Work on It (0%)', 'no good'] ]
+= f.submit

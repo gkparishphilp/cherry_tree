@@ -69,7 +69,7 @@ module UserApp
 		# and add points to the user's point_balance and point_total
 		points = obj.point_value if points.nil?
 		self.point_earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => points
-		self.update_attributes :points_earned => ( self.points_earned + points ), :points_balance => ( self.points_balance + points )
+		self.update_attributes :points_earned => ( self.points_earned + points ), :point_balance => ( self.point_balance + points )
 	end
 	
 	

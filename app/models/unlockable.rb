@@ -17,4 +17,7 @@ class Unlockable < ActiveRecord::Base
 	
 	has_attached :avatar
 	
+	def available_to?( user )
+		self.point_cost <= user.point_balance
+	end
 end

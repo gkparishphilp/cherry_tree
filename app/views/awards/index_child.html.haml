@@ -1,0 +1,19 @@
+-# The Treasure Chest
+= render 'children/banner', :title => 'Objectives'
+= render 'children/nav'
+%h3 Pick a prize!
+- for award in @awards
+	.listing
+		.listing_avatar
+			= avatar_tag( award, :thumb )
+		= award.description
+	.clear
+	%hr
+	
+- for unlockable in @unlockables
+	.listing
+		.listing_avatar
+			= avatar_tag( unlockable, :thumb )
+		= unlockable.description
+	.clear
+	%hr

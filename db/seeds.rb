@@ -56,6 +56,7 @@ ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format =
 a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
 a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"
 a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"
+a = Achievement.create :name => 'First Checkin!', :requirements => "checkins.count > 0"
 
 
 # Static Pages

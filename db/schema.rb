@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "name"
     t.text     "description"
     t.string   "asin"
+    t.integer  "point_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -477,7 +478,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.datetime "birthday"
     t.string   "gender"
     t.integer  "points_earned",             :default => 0
-    t.integer  "points_balance",            :default => 0
+    t.integer  "point_balance",             :default => 0
     t.integer  "level",                     :default => 0
     t.string   "website_name"
     t.string   "website_url"

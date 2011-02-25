@@ -1,4 +1,4 @@
--# Used to show the objective asignments for a child to the Parent
+-# Used to show the award asignments for a child to the Parent
 	
 %h1
 	= possessize @current_user.name
@@ -15,7 +15,7 @@
 		.nav
 			= link_to "Objectives", child_objective_assignments_path( @child )
 			|
-			= link_to "Awards"
+			= link_to "Awards", child_award_assignments_path( @child )
 			|
 			= link_to "Profile", profile_child_path( @child )
 			|
@@ -24,24 +24,12 @@
 			= link_to "Assign New Objective", new_child_objective_assignment_path( @child )
 	%hr.clear
 	%h2
-		= @child.display_name
-		Objectives
+		= possessize @child.display_name
+		Awards
 		
-	#this_week
-		%h3 This week
-		(
-		Ending
-		= format_date_only @this_week.end_of_week
-		)
-		= render @assignments, :week => @this_week
-	
-	#last_week				
-		%h3 Last week
-		(
-		Ending
-		= format_date_only @last_week.end_of_week
-		)
-		= render @assignments, :week => @last_week
+	= link_to 'Create a New Reward', new_award_path
+		
+
 			
 
 

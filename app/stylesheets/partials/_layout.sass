@@ -57,6 +57,9 @@ body
 .cherry
 	width: 35px
 	vertical-align: bottom
+	
+.checkin
+	margin: 5px
 
 ul.navbar
 	width: 860px
@@ -67,7 +70,7 @@ ul.navbar
 	li
 		list-style: none
 		display: inline
-		margin: 5px 20px
+		margin: 5px 10px
 	
 .child_profile
 	width: 860px
@@ -120,6 +123,48 @@ ul.navbar
 		.nav
 			font-size: 14px
 			padding: 5px
+
+#this_week
+	border: 1px solid #ddf
+	margin: 10px 10px 0px 0px
+	padding: 5px
+	+rounded(12px)
+	+shadow
+#last_week
+	border: 1px solid #ddf
+	margin: 10px 10px 0px 0px
+	padding: 5px
+	+rounded(12px)
+	+shadow
+	
+.objective_assignment
+	:border 1px solid #999
+	+rounded-side(top, 10px)
+	:margin 5px
+	:padding 5px
+	.title_bar
+		:background #ddd url() no-repeat
+		:padding 3px
+		.data
+			:width 600px
+			:float left
+			.name
+				:font-weight bold
+			.info
+				:font-size 85%
+		.actions
+			:float right
+	.no_checkins
+		:font-weight bold
+		:color = $cherry_red
+	.approval_bar
+		:padding 3px
+		:background #333 url() no-repeat
+		.already_approved
+			:font-weight bold
+			:color = $leaf_green
+		
+			
 	
 #ft
 	width: 100%

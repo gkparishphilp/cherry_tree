@@ -4,6 +4,6 @@
 		= controller.controller_name.capitalize
 	= @current_user.checkins.update.last.content unless @current_user.checkins.update.empty?
 .banner_points
-	= @current_user.points_balance
+	= @current_user.point_balance
 	= image_tag "cherry.png", :class => 'cherry'
 .clear
