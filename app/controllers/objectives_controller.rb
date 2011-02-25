@@ -36,14 +36,7 @@ class ObjectivesController < ApplicationController
 	
 	def create
 		@objective = @current_user.created_objectives.new params[:objective]
-		sd
 		if @objective.save
-			for id in params[:assign_to_ids]
-				if assignee = User.find( id )
-					@current_user.assign_objective_to( @objective, assignee )
-					@current_user.do_activity "assign objective to #{assignee.display_name}", @objective
-				end
-			end
 			pop_flash "Objective Added"
 		else
 			pop_flash "Ooops, Objective not added", :error, @objective

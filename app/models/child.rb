@@ -14,7 +14,7 @@
 #  birthday                  :datetime
 #  gender                    :string(255)
 #  points_earned             :integer(4)      default(0)
-#  points_balance            :integer(4)      default(0)
+#  point_balance             :integer(4)      default(0)
 #  level                     :integer(4)      default(0)
 #  website_name              :string(255)
 #  website_url               :string(255)

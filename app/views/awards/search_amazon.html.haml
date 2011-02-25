@@ -6,7 +6,7 @@
 - @response.items.each do |item|
 	.amzn_item
 		.amzn_thumb
-			= image_tag( item.get( 'mediumimage/url' ), :width => 64 )
+			= image_tag( item.get( 'mediumimage/url' ), :width => 64 ) if item.get( 'mediumimage/url' ).present?
 		.amzn_data
 			.amzn_title
 				= link_to item.get("title"), item.get('url')
@@ -19,11 +19,6 @@
 			= form_for Award.new do |f|
 				= f.hidden_field :asin, :value => item.get('asin')
 				= f.hidden_field :search_index, :value => @search_index
-				= f.collection_select :child_id, @current_user.children, :id, :name
-				= f.label "Points Required"
-				= f.text_field :points
-				= f.label "Level Required"
-				= f.text_field :level
 				= f.submit "Yeah, Add it!"
 	.clear
 	%hr

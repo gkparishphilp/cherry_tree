@@ -3,9 +3,12 @@
 		.data
 			.name= objective_assignment.objective.name
 			.info
+				= objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).count
+				out of
 				= objective_assignment.times
-				per week
-				for
+				this week.
+				
+				This objective is worth:
 				= objective_assignment.point_value
 				Points
 		.actions
@@ -13,13 +16,16 @@
 			Trash
 		.clear
 
-	- if objective_assignment.checkins.by( @child ).empty?
+	- if objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).empty?
 		%p.no_checkins
 			No Checkins This Week!
 	-else
-		- for checkin in objective_assignment.checkins.by( @child )
+		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
 			%div[checkin]
+				= image_tag 'check.png', :width => 16
+				= checkin.user.display_name
 				= checkin.expanded_status
+				this
 				%span.date
 					on
 					= format_date( checkin.created_at )

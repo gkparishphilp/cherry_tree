@@ -9,6 +9,7 @@
 #  name         :string(255)
 #  description  :text
 #  asin         :string(255)
+#  point_cost   :integer(4)
 #  created_at   :datetime
 #  updated_at   :datetime
 #
@@ -25,6 +26,12 @@ class Award < ActiveRecord::Base
 	
 	has_attached	:avatar
 	
+	scope :amazon, where( 'asin is not null' )
+	scope :coupon, where( 'asin is null' )
+	
+	def available_to?( user )
+		self.assigned_users.include?( user )
+	end
 	
 	def self.create_from_amazon( award )
 		result = Amazon::Ecs.item_search( award[:asin], :response_group => 'Medium', :search_index => award[:search_index] ).items.first
@@ -32,8 +39,8 @@ class Award < ActiveRecord::Base
 			return "didn't find product for asin #{asin}"
 		end
 		
-		award = Award.new( :name => result.get('title'), :description => result.get('editorialreview/content'), :child_id => award[:child_id], :points => award[:points], :level => award[:level], :asin =>award[:asin] )
-		
+		award = Award.new( :name => result.get('title'), :description => result.get('editorialreview/content'), :asin =>award[:asin] )
+		award.point_cost = result.get('formattedprice').gsub( /\D/, "" ).to_i.roundup
 		if award.save
 			avatar = Attachment.create_from_resource( result.get('mediumimage/url'), 'avatar', :owner => award, :remote => 'true' )
 			return award

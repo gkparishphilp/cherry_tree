@@ -13,10 +13,6 @@
 	
 		.form_group
 			= form_for @award=Award.new, :html => { :multipart => true } do |f|
-				= f.collection_select :id, child.wishlist_items, :award_id, :award_id
-				= f.label 'Points:'
-				= f.text_field :points
-				= f.label 'Level Required:'
-				= f.text_field :level
+
 				%br
 				= f.submit "Enter", :class => 'button'

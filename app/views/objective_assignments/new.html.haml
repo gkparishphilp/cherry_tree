@@ -29,6 +29,8 @@
 	= form_for [ @child, @assignment ] do |f|
 		= f.label 'Objective'
 		= f.collection_select :objective_id, @objectives, :id, :name
+		&nbsp;&nbsp;
+		= link_to "Add Objective", "", :id => :open_modal
 		%br
 		Times Per Week:
 		= f.text_field :times
@@ -37,6 +39,14 @@
 		= f.text_field :point_value
 		
 		= f.submit
+		
+	#modal_form{ :title => 'Add an Objective' }
+		= form_for Objective.new do |f|
+			= f.label 'Create an Objective:'
+			= f.text_field :name
+			= f.text_area :description, :class => 'tiny_area'
+			%br
+			= f.submit 'Add'
 
 %br.clear
 %br

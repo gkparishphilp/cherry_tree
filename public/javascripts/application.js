@@ -70,11 +70,20 @@ $(document).ready(function(){
 		}
 	});
 	
-
+	
 	
 	//$('.note').click( function(){
 	//	$(this).hide( 2000 );
 	//});
+	
+	
+	$('#modal_form').dialog({ autoOpen: false, modal: true, width: 500 });
+	
+	$('#open_modal').click( function(){
+		$('#modal_form').dialog('open');
+		return false;
+	});
+	
 	
 	
 	$('.button').button();

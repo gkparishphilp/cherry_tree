@@ -6,7 +6,7 @@ class AwardsController < ApplicationController
 	end
 	
 	def index
-		@awards = Award.all
+
 	end
 	
 	def show
@@ -32,22 +32,14 @@ class AwardsController < ApplicationController
 		redirect_to :back
 	end
 
-	def prize_shelf
-		@awards = Award.available( @current_user )
-	end
-
 	def create
 		if params[:award][:asin]
-			@award = Award.create_from_amazon(params[:award] )
-			redirect_to edit_award_path( @award )
-			return false
-		elsif params[:award][:id]
-			@award = Award.find params[:award][:id] 
-			@award.points = params[:award][:points]
-			@award.level = params[:award][:level]
+			@award = Award.create_from_amazon( params[:award] )
 		else
 			@award = Award.new params[:award]
 		end
+		
+		@award.update_attributes :creator_id => @current_user.id, :creator_type => @current_user.class.name
 		
 		if @award.save
 			process_attachments_for( @award )
@@ -55,7 +47,7 @@ class AwardsController < ApplicationController
 		else
 			pop_flash "Oooops, award not saved", :error, @award
 		end
-		redirect_to :back
+		redirect_to new_award_path
 	end
 	
 	def update
@@ -73,6 +65,8 @@ class AwardsController < ApplicationController
 		@search_term = params[:search_term]
 		@search_index = params[:search_index]
 		@response = Amazon::Ecs.item_search( @search_term,  :response_group => "Medium", :search_index => @search_index )
+
+		
 	end
 		
 end
