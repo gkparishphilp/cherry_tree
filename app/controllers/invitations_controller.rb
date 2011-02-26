@@ -8,13 +8,14 @@ class InvitationsController < ApplicationController
 		@nickname = params[:nickname]
 		
 		# Create a user entry and relationship
-		@user = User.find_or_initialize_by_email( :email => @email)
-		@user.invitation_setup( @name, @nickname, @child, @role )
-
-		# Send an email with the invitation
-		UserMailer.send_invitation( @user, @child ).deliver
-
-		pop_flash "Invitation sent to #{@email}"
+		if @user = User.find_or_initialize_by_email( :email => @email)
+			@user.invitation_setup( @name, @nickname, @child, @role )
+			UserMailer.send_invitation( @user, @child ).deliver
+			pop_flash "Invitation sent to #{@email}"
+		else 
+			pop_flash "Could not send invitation", :error, @user
+		end
+		
 		redirect_to :back
 
 	end

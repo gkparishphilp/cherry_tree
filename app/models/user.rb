@@ -142,6 +142,8 @@ class User < ActiveRecord::Base
 	
 	has_many	:quizzings
 
+	has_many	:invitations
+	has_many	:sent_invitations, :class_name => 'Invitations', :foreign_key => :creator_id
 	
 	# Plugins	--------------------------------------
 	has_friendly_id   :name, :use_slug => :true

@@ -1,7 +1,7 @@
 = f.label "Title:"
 = f.text_field :title, :class => 'title_field'
 
-= f.tinymce :content
+= f.text_area :content, :class => 'mceEditor'
 
 = f.label "Excerpt (Or blank for first 200 chars)"
 = f.text_area :excerpt, :class => :small_area
