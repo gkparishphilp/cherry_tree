@@ -9,7 +9,7 @@ CherryTree::Application.routes.draw do
 	resources :awards do
 		get 'admin', :on => :collection
 		get 'unlock', :on => :member
-		get 'treasure_chest', :on => :collection
+		get 'earned', :on => :collection
 		get 'set', :on => :collection
 	end
 	

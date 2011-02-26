@@ -8,6 +8,7 @@
 #  user_id    :integer(4)
 #  creator_id :integer(4)
 #  point_cost :integer(4)
+#  status     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
 #

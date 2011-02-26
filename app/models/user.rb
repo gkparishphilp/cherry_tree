@@ -114,6 +114,7 @@ class User < ActiveRecord::Base
 	has_many	:checkins
 	
 		# for adults, objectives and assignments they've made
+					# TODO -- change this to created_objective_assignments to avoid name confilct/confusion with created_award_assignemtns
 	has_many	:created_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
 	has_many	:created_objectives, :class_name => 'Objective', :foreign_key => :creator_id
 
@@ -124,14 +125,25 @@ class User < ActiveRecord::Base
 	has_many	:point_spendings
 
 	has_many	:award_assignments
+	# Awards that are available to the child
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
+	
+		# for adults, awards and assignments they've made
+	has_many	:created_award_assignments, :class_name => 'AwardAssignment', :foreign_key => :creator_id
+	has_many	:created_awards, :class_name => 'Award', :foreign_key => :creator_id
 	
 	has_many	:achievement_earnings
 	has_many	:achievements, :through => :achievement_earnings
 
 	has_many	:ownings
-	has_many	:awards, :through => :ownings, :source => :ownable, :class_name => 'Award'
-	has_many	:unlockables, :through => :ownings, :source => :ownable, :class_name => 'Unlockable'
+	# putting these here because they act like relations, but you can't have a :through relation on a polymorphic object
+	def awards
+		self.ownings.awards
+	end
+	
+	def unlockables
+		self.ownings.unlockables
+	end
 	
 	has_many	:created_awards, :class_name => 'Award', :as => :creator
 

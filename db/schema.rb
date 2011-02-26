@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "user_id"
     t.integer  "creator_id"
     t.integer  "point_cost"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.text     "description"
     t.string   "asin"
     t.integer  "point_cost"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -462,7 +464,9 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "unlockables", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "unlockable_type"
     t.integer  "point_cost"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

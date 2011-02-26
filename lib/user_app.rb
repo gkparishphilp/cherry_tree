@@ -2,15 +2,6 @@ module UserApp
 	# Misc App-Specific User Methods
 	
 	
-	def awards
-		self.ownings.awards
-	end
-	
-	def unlockables
-		self.ownings.unlockables
-	end
-	
-	
 	def is_child?
 		return self.type == 'Child'
 	end
@@ -75,13 +66,13 @@ module UserApp
 	
 	
 	def can_unlock?( award )
-		return self.level >= award.level && self.points_balance >= award.points
+		return self.point_balance >= award.point_cost # && self.level >= award.level
 	end
 	
 	def unlock( award )
 		return false, "You can't unlock this yet" unless self.can_unlock?( award )
-		self.awards << award
-		self.update_attributes :points_balance => self.points_balance - award.points
+		self.ownings.create :ownable_id => award.id, :ownable_type => award.class.name
+		self.update_attributes :point_balance => self.point_balance - award.point_cost
 		return true, "Unlocked!"
 	end
 	

@@ -29,9 +29,9 @@
 		
 	= link_to 'Create a New Reward', new_award_path
 		
-
-			
-
+		
+	= form_for [ @child, @new_assignment ] do |f|
+		= render 'form', :f => f
 
 
 %br.clear

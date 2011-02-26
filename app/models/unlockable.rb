@@ -3,12 +3,14 @@
 #
 # Table name: unlockables
 #
-#  id          :integer(4)      not null, primary key
-#  name        :string(255)
-#  description :text
-#  point_cost  :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id              :integer(4)      not null, primary key
+#  name            :string(255)
+#  description     :text
+#  unlockable_type :string(255)
+#  point_cost      :integer(4)
+#  status          :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
 #
 
 class Unlockable < ActiveRecord::Base

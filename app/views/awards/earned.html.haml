@@ -1,0 +1,31 @@
+-# The Treasure Chest
+= render 'children/banner', :title => 'Objectives'
+= render 'children/nav'
+
+%h3 Your Achievements
+- for achievement in @achievements
+	%li
+		= achievement.achievement.name
+		on
+		= format_date_only achievement.created_at
+
+
+%h3 Your Prizes
+- for awarding in @awards
+	.listing
+		.listing_avatar
+			= avatar_tag( awarding.ownable, :thumb )
+		= awarding.ownable.description
+		Unlocked on
+		= format_date_only awarding.created_at
+	.clear
+	%hr
+
+- for unlocking in @unlockables
+	.listing
+		.listing_avatar
+			= avatar_tag( unlocking.ownable, :thumb )
+		= unlocking.ownable.description
+		= format_date_only unlocking.created_at
+	.clear
+	%hr
