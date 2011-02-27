@@ -16,10 +16,11 @@ module UserApp
 		# nickname is defined in the relationship between users -- what one user calls another
 		# if called without a user for the relationship, just returns the display_name
 		if user.present?
-			self.relationships.find_by_related_user_id( user.id ).nickname
-		else
-			self.display_name
+			relationship = self.relationships.find_by_related_user_id( user.id )
+			return relationship.nickname if relationship
 		end
+			
+		self.display_name
 	end
 	
 	def relate_to( user, args={} )

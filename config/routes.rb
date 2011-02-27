@@ -27,6 +27,9 @@ CherryTree::Application.routes.draw do
 		get 'profile', :on => :member
 		resources :objective_assignments
 		resources :award_assignments
+		resources :journal_entries do
+			resources :comments
+		end
 	end
 
 	resources :contacts do
@@ -40,10 +43,6 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources :games
-	
-	resources :journal_entries do
-		resources :comments
-	end
 	
 	resources :merches
 	

@@ -1,0 +1,27 @@
+
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%br
+.child_profile
+
+	= render 'children/child_sub_nav', :child => @child
+	
+	%h2
+		= possessize @child.display_name
+		Journal
+		
+	.journal_entry
+		%h3= @entry.title
+		.journal_content
+			= @entry.content.html_safe
+	
+
+	- unless @entry.comments.empty?
+		#comments
+			%h3 Comments
+			= render @entry.comments
+	#comment
+		= render 'comments/new'

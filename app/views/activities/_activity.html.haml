@@ -8,9 +8,11 @@
 	= activity.verb
 	- if activity.target.respond_to? 'title'
 		- if activity.target.is_a? Topic
-			= link_to activity.target.title, polymorphic_path( [ activity.target.forum, activity.target ] )
+			= link_to activity.target.title, polymorphic_path( activity.target.forum, activity.target )
 		- elsif activity.target.is_a? Post
-			= link_to activity.target.topic.title, polymorphic_path( [ activity.target.forum, activity.target.topic ] )
+			= link_to activity.target.topic.title, polymorphic_path( activity.target.forum, activity.target.topic )
+		- elsif activity.target.is_a? JournalEntry
+			= activity.target.title#, polymorphic_path( activity.target.journal.user, activity.target )
 		- else
 			= link_to activity.target.title, polymorphic_path( activity.target )
 	- elsif activity.target.respond_to? 'subject'

@@ -430,6 +430,24 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   add_index "static_pages", ["permalink"], :name => "index_static_pages_on_permalink"
   add_index "static_pages", ["site_id"], :name => "index_static_pages_on_site_id"
 
+  create_table "stickers", :force => true do |t|
+    t.string   "name"
+    t.integer  "point_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stickings", :force => true do |t|
+    t.integer  "sticker_id"
+    t.integer  "stickable_id"
+    t.string   "stickable_type"
+    t.integer  "top"
+    t.integer  "left"
+    t.integer  "width"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"

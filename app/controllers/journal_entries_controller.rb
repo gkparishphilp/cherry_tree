@@ -1,4 +1,5 @@
 class JournalEntriesController < ApplicationController
+	before_filter :get_child
 	
 	def new
 		@entry = JournalEntry.new
@@ -9,11 +10,25 @@ class JournalEntriesController < ApplicationController
 	end
 	
 	def index
-		@entries = @current_user.journals.first.journal_entries
+		if @current_user.child?
+			@entries = @current_user.journals.first.journal_entries
+			render 'index_child'
+		else
+			@entries = @child.journals.first.journal_entries
+			render 'index_adult'
+		end
 	end
 	
 	def show
 		@entry = JournalEntry.find( params[:id] )
+		@comment = Comment.new
+		@commentable = @entry
+		@commentable_parent = @child
+		if @current_user.child?
+			render 'show_child'
+		else
+			render 'show_adult'
+		end
 	end
 	
 	def create
@@ -33,6 +48,12 @@ class JournalEntriesController < ApplicationController
 		@entry.mark_deleted_by( @current_user )
 		pop_flash "Entry trashed"
 		redirect_to journal_entries_path
+	end
+	
+	private
+	
+	def get_child
+		@child = Child.find( params[:child_id] )
 	end
 	
 end

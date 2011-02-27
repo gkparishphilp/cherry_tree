@@ -6,20 +6,7 @@
 
 %br
 .child_profile
-	.pic
-		= avatar_tag( @child, :profile )
-	.name_nav
-		.name
-			= @child.display_name
-		.nav
-			= link_to "Objectives", child_objective_assignments_path( @child )
-			|
-			= link_to "Awards"
-			|
-			= link_to "Profile", profile_child_path( child )
-			|
-			= link_to "Send Note", new_note_path( :to => @child.id )
-	%hr.clear
+	= render 'children/child_sub_nav', :child => @child
 	.timeline
 		%p
 			Stream of stuff related to this child.

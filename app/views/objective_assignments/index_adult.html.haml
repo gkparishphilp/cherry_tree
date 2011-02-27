@@ -7,25 +7,14 @@
 
 %br
 .child_profile
-	.pic
-		= avatar_tag( @child, :profile )
-	.name_nav
-		.name
-			= @child.display_name
-		.nav
-			= link_to "Objectives", child_objective_assignments_path( @child )
-			|
-			= link_to "Awards"
-			|
-			= link_to "Profile", profile_child_path( @child )
-			|
-			= link_to "Send Note", new_note_path( :to => @child.id )
-		.stuff
-			= link_to "Assign New Objective", new_child_objective_assignment_path( @child )
-	%hr.clear
+	= render 'children/child_sub_nav', :child => @child
 	%h2
 		= @child.display_name
 		Objectives
+		
+	.stuff
+		= link_to "Assign New Objective", new_child_objective_assignment_path( @child )
+		
 		
 	#this_week
 		%h3 This week

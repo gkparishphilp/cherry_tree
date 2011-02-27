@@ -97,6 +97,16 @@ $(document).ready(function(){
 			dateFormat: 'yy-mm-dd',
 			defaultDate: '-10y'
 		});
+		
+		
+	$('.sticking').draggable({
+		containment: "parent",
+		stop: function(){
+			alert( "Top: " + $(this).position().top + " Left: " + $(this).position().left );
+		}
+		
+	});
+		
 	//$('#tabs').tabs({
 	//				cookie: {
 	//					// store cookie for a day, without, it would be a session cookie
