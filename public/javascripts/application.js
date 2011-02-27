@@ -99,10 +99,25 @@ $(document).ready(function(){
 		});
 		
 	
-
+	$('.resize')	.resizable({
+		aspectRatio: 1 / 1,
+		maxWidth: 200,
+		minWidth: 16,
+		stop: function(event, ui){
+			var id = $(this).attr('id').replace( /sticking_/, "" );
+			var width = $(this).width()
+			
+			var the_url = "http://localhost:3000/stickings/" + id + "/stick?width=" + width
+			$(this).children('img').attr('width', $(this).width());
+			
+			$.get( the_url );
+			
+		}
+	});
 		
 	$('.sticking').draggable({
 		containment: "parent",
+		stack: ".sticking",
 		stop: function(){
 			var id = $(this).attr('id').replace( /sticking_/, "" );
 			var top = $(this).position().top;
