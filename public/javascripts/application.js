@@ -98,11 +98,21 @@ $(document).ready(function(){
 			defaultDate: '-10y'
 		});
 		
+	
+
 		
 	$('.sticking').draggable({
 		containment: "parent",
 		stop: function(){
-			alert( "Top: " + $(this).position().top + " Left: " + $(this).position().left );
+			var id = $(this).attr('id').replace( /sticking_/, "" );
+			var top = $(this).position().top;
+			var left = $(this).position().left
+			
+			var the_url = "http://localhost:3000/stickings/" + id + "/stick?top=" + top + "&left=" + left
+
+			$.get( the_url );
+
+			
 		}
 		
 	});

@@ -443,7 +443,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "stickable_type"
     t.integer  "top"
     t.integer  "left"
-    t.integer  "width"
+    t.integer  "width",          :default => 30
     t.datetime "created_at"
     t.datetime "updated_at"
   end

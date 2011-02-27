@@ -9,7 +9,7 @@
 #  stickable_type :string(255)
 #  top            :integer(4)
 #  left           :integer(4)
-#  width          :integer(4)
+#  width          :integer(4)      default(30)
 #  created_at     :datetime
 #  updated_at     :datetime
 #

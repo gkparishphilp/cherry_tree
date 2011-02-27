@@ -53,8 +53,14 @@ ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format =
 ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
 ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
-s = Sticker.create :name => 'Test Sticker', :point_cost => 10
-s.attachments.create :attachment_type => 'avatar', :name => 'test', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
+s = Sticker.create :name => 'Happy', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'happy_girl', :format => 'png', :path => '/images/stickers/happy_girl.png', :remote => true
+
+s = Sticker.create :name => 'Star', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'star', :format => 'png', :path => '/images/stickers/star.png', :remote => true
+
+s = Sticker.create :name => 'Heart', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'heart', :format => 'png', :path => '/images/stickers/heart.png', :remote => true
 
 a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
 a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"

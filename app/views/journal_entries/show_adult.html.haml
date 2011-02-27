@@ -14,8 +14,14 @@
 		Journal
 		
 	.journal_entry
-		%h3= @entry.title
-		.journal_content
+		.entry_data
+			= format_date @entry.created_at
+			%br
+			By:
+			= @entry.journal.user.display_name
+		.entry_title
+			= @entry.title
+		.entry_content
 			= @entry.content.html_safe
 	
 

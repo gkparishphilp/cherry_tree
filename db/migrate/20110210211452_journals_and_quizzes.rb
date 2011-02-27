@@ -71,7 +71,7 @@ class JournalsAndQuizzes < ActiveRecord::Migration
 			t.references	:stickable, :polymorphic => true
 			t.integer		:top
 			t.integer		:left
-			t.integer		:width
+			t.integer		:width, :default => 64
 			t.timestamps
 		end
 		
