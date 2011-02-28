@@ -10,6 +10,7 @@ class AwardsController < ApplicationController
 			# so far, this is only used for the child's treasure chest
 			@unlockables = Unlockable.all
 			@awards = @current_user.assigned_awards
+			@stickers = Sticker.all
 			render 'index_child'
 		else
 			# todo -- move awards/new to here?
@@ -37,7 +38,7 @@ class AwardsController < ApplicationController
 	end
 	
 	def unlock
-		@award = eval "#{params[:type].capitalize}.find params[:id]"
+		@award = eval "#{params[:type].capitalize}.find( params[:id] )"
 		success, msg = @current_user.unlock( @award )
 		if success
 			pop_flash msg

@@ -29,6 +29,7 @@ CherryTree::Application.routes.draw do
 		resources :award_assignments
 		resources :journal_entries do
 			resources :comments
+			get 'stickers', :on => :member
 		end
 	end
 
@@ -87,7 +88,8 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources :stickings do
-		get 'stick', :on => :member
+		get 'update_pos', :on => :member
+		get 'update_width', :on => :member
 	end
 	
 	resources  :users do

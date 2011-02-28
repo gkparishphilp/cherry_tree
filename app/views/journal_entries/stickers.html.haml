@@ -1,0 +1,43 @@
+- if @current_user.is_child?
+	= render 'children/banner'
+	= render 'children/nav'
+- else
+	= render 'users/banner'
+	= render 'users/nav'
+
+#sticker_nav
+	= link_to 'Edit Entry', edit_child_journal_entry_path( @current_user, @entry )
+	|
+	= link_to 'Sticker Drawer', "#", :id => :open_sticker_drawer
+	|
+	= link_to 'Done!', child_journal_entry_path( @current_user, @entry )
+
+#sticker_drawer
+	- if @stickers.empty?
+		No Stickers Yet.  You can buy some in the
+		= link_to 'Treasure Chest', awards_path
+	- for sticker_owning in @stickers
+		.sticker
+			= form_for Sticking.new do |f|
+				= f.hidden_field :sticker_id, :value => sticker_owning.ownable.id
+				= f.hidden_field :stickable_id, :value => @entry.id
+				= f.hidden_field :stickable_type, :value => @entry.class.name
+				= image_submit_tag sticker_owning.ownable.avatar.location, :width => 64
+	%br.clear
+.journal_entry
+	.journal_entry
+		.entry_data
+			= format_date @entry.created_at
+			%br
+			By:
+			= @entry.journal.user.display_name
+		.entry_title
+			= @entry.title
+		.entry_content
+			= @entry.content.html_safe
+	- for sticking in @entry.stickings
+		.resizable.draggable[sticking]{ :style => "top:#{sticking.top}px; left:#{sticking.left}px;" }
+			= image_tag sticking.sticker.avatar.location, :width => sticking.width, :class => :del_toggle
+			.delete_sticker
+				= link_to image_tag( 'trash.png' ), sticking_path( sticking ), :method => :delete
+				= link_to 'Delete', sticking_path( sticking ), :method => :delete

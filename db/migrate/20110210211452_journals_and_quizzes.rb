@@ -62,6 +62,8 @@ class JournalsAndQuizzes < ActiveRecord::Migration
 		
 		create_table :stickers, :force => true do |t|
 			t.string		:name
+			t.text			:description
+			t.string		:sticker_type
 			t.integer		:point_cost
 			t.timestamps
 		end
@@ -69,8 +71,8 @@ class JournalsAndQuizzes < ActiveRecord::Migration
 		create_table :stickings, :force => true do |t|
 			t.references	:sticker
 			t.references	:stickable, :polymorphic => true
-			t.integer		:top
-			t.integer		:left
+			t.integer		:top, :default => 0
+			t.integer		:left, :default => 0
 			t.integer		:width, :default => 64
 			t.timestamps
 		end

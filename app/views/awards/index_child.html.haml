@@ -2,26 +2,60 @@
 = render 'children/banner', :title => 'Objectives'
 = render 'children/nav'
 %h3 Pick a prize!
-- for award in @awards
-	.listing
-		.listing_avatar
-			= avatar_tag( award, :thumb )
-		= award.description
-		%br
-		= award.point_cost
-		%br
-		= link_to "Unlock It!", unlock_award_path( award, :type => 'award' )
-	.clear
-	%hr
+
+
+.tabs
+	%ul
+		%li= link_to 'Awards', '#awards'
+		%li= link_to 'Unlockables', '#unlockables'
+		%li= link_to 'Stickers', '#stickers'
 	
-- for unlockable in @unlockables
-	.listing
-		.listing_avatar
-			= avatar_tag( unlockable, :thumb )
-		= unlockable.description
-		%br
-		= unlockable.point_cost
-		%br
-		= link_to "Unlock It!", unlock_award_path( unlockable, :type => 'unlockable' )
-	.clear
-	%hr
+	#unlockables
+		- for unlockable in @unlockables
+			.treasure_item
+				= link_to avatar_tag( unlockable, :thumb ), unlock_award_path( unlockable, :type => 'unlockable' )
+				%br
+				= unlockable.description
+				.cost
+					- if @current_user.owns?( unlockable )
+						You Own This!
+					- else
+						Cost:
+						= unlockable.point_cost
+						pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( unlockable, :type => 'unlockable' )
+		%br.clear
+				
+	#awards
+		- if @awards.empty?
+			No Awards Available Yet
+		- for award in @awards
+			.treasure_item
+				= link_to avatar_tag( award, :thumb ), unlock_award_path( award, :type => 'award' )
+				%br
+				= award.description
+				.cost
+					Cost:
+					= award.point_cost
+					pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( award, :type => 'award' )
+		%br.clear
+	
+	#stickers
+		- for sticker in @stickers
+			.treasure_item
+				= link_to image_tag( sticker.avatar.location, :width => 64 ), unlock_award_path( sticker, :type => 'sticker' )
+				%br
+				= sticker.description
+				.cost
+					- if @current_user.owns?( sticker )
+						You Own This!
+					- else
+						Cost:
+						= sticker.point_cost
+						pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( sticker, :type => 'sticker' )
+		%br.clear

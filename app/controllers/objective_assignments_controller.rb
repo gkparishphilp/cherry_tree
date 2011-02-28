@@ -32,6 +32,8 @@ class ObjectiveAssignmentsController < ApplicationController
 	
 	def new
 		@assignment = ObjectiveAssignment.new
+		@assignment.req_confirm = true
+		
 		@objectives = Objective.all
 	end
 	

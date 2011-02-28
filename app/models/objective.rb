@@ -3,13 +3,14 @@
 #
 # Table name: objectives
 #
-#  id           :integer(4)      not null, primary key
-#  name         :string(255)
-#  creator_id   :integer(4)
-#  creator_type :string(255)
-#  description  :text
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id             :integer(4)      not null, primary key
+#  name           :string(255)
+#  creator_id     :integer(4)
+#  creator_type   :string(255)
+#  description    :text
+#  objective_type :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 class Objective < ActiveRecord::Base

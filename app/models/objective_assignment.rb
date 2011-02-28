@@ -11,7 +11,7 @@
 #  due_at       :datetime
 #  period       :string(255)
 #  req_checkin  :boolean(1)      default(TRUE)
-#  req_confirm  :boolean(1)
+#  req_confirm  :boolean(1)      default(TRUE)
 #  point_value  :integer(4)      default(1)
 #  created_at   :datetime
 #  updated_at   :datetime

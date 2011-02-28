@@ -83,8 +83,8 @@ module UserApp
 		self.do_activity( "Earned #{game.points} points for playing", game )
 	end
 	
-	def owns?( award )
-		self.awards.include?( award )
+	def owns?( item )
+		self.ownings.find_by_ownable_id_and_ownable_type( item.id, item.class.name )
 	end
 
 

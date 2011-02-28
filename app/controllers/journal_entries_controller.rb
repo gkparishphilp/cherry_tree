@@ -40,7 +40,13 @@ class JournalEntriesController < ApplicationController
 		else
 			pop_flash "Ooops, Entry not added", :error, @entry
 		end
-		redirect_to :back
+		redirect_to stickers_child_journal_entry_path( @current_user, @entry )
+	end
+	
+	def stickers
+		@entry = JournalEntry.find( params[:id] )
+		
+		@stickers = @current_user.ownings.stickers
 	end
 	
 	def destroy

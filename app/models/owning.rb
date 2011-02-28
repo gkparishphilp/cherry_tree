@@ -17,4 +17,5 @@ class Owning < ActiveRecord::Base
 	
 	scope :awards, where( :ownable_type => 'Award' )
 	scope :unlockables, where( :ownable_type => 'Unlockable' )
+	scope :stickers, where( :ownable_type => 'Sticker' )
 end

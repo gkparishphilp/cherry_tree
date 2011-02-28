@@ -7,9 +7,9 @@
 #  sticker_id     :integer(4)
 #  stickable_id   :integer(4)
 #  stickable_type :string(255)
-#  top            :integer(4)
-#  left           :integer(4)
-#  width          :integer(4)      default(30)
+#  top            :integer(4)      default(0)
+#  left           :integer(4)      default(0)
+#  width          :integer(4)      default(64)
 #  created_at     :datetime
 #  updated_at     :datetime
 #

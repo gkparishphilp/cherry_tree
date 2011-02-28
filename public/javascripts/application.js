@@ -91,6 +91,10 @@ $(document).ready(function(){
 	$('.datepicker').datepicker({
 		dateFormat: 'yy-mm-dd'
 	});
+	
+	$('.tabs').tabs();
+	
+	
 	$('.birthday_field').datepicker({
 			changeMonth: true,
 			changeYear: true,
@@ -98,8 +102,12 @@ $(document).ready(function(){
 			defaultDate: '-10y'
 		});
 		
+		
+	$('#open_sticker_drawer').click( function(){
+		$('#sticker_drawer').toggle('slow');
+	});
 	
-	$('.resize')	.resizable({
+	$('.resizable').resizable({
 		aspectRatio: 1 / 1,
 		maxWidth: 200,
 		minWidth: 16,
@@ -107,23 +115,29 @@ $(document).ready(function(){
 			var id = $(this).attr('id').replace( /sticking_/, "" );
 			var width = $(this).width()
 			
-			var the_url = "http://localhost:3000/stickings/" + id + "/stick?width=" + width
+			var the_url = "http://localhost:3000/stickings/" + id + "/update_width?width=" + width
 			$(this).children('img').attr('width', $(this).width());
 			
 			$.get( the_url );
 			
 		}
 	});
+	
+	$('.del_toggle').bind( "contextmenu", function(event) {
+		event.preventDefault();
+		$(this).siblings('.delete_sticker').toggle();
+	});
+
 		
-	$('.sticking').draggable({
+	$('.draggable').draggable({
 		containment: "parent",
-		stack: ".sticking",
+		stack: ".draggable",
 		stop: function(){
 			var id = $(this).attr('id').replace( /sticking_/, "" );
 			var top = $(this).position().top;
 			var left = $(this).position().left
 			
-			var the_url = "http://localhost:3000/stickings/" + id + "/stick?top=" + top + "&left=" + left
+			var the_url = "http://localhost:3000/stickings/" + id + "/update_pos?top=" + top + "&left=" + left
 
 			$.get( the_url );
 
@@ -131,13 +145,8 @@ $(document).ready(function(){
 		}
 		
 	});
-		
-	//$('#tabs').tabs({
-	//				cookie: {
-	//					// store cookie for a day, without, it would be a session cookie
-	//					expires: 1
-	//				}
-	//			});
+	
+	
 				
 	/////////// Let's try some fancy judo for Child Reg  ////////////////
 	$('#child_gender_male').click(function () {

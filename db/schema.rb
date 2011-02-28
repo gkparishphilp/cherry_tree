@@ -259,7 +259,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.datetime "due_at"
     t.string   "period"
     t.boolean  "req_checkin",  :default => true
-    t.boolean  "req_confirm",  :default => false
+    t.boolean  "req_confirm",  :default => true
     t.integer  "point_value",  :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "creator_id"
     t.string   "creator_type"
     t.text     "description"
+    t.string   "objective_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -432,6 +433,8 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
 
   create_table "stickers", :force => true do |t|
     t.string   "name"
+    t.text     "description"
+    t.string   "sticker_type"
     t.integer  "point_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -441,9 +444,9 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "sticker_id"
     t.integer  "stickable_id"
     t.string   "stickable_type"
-    t.integer  "top"
-    t.integer  "left"
-    t.integer  "width",          :default => 30
+    t.integer  "top",            :default => 0
+    t.integer  "left",           :default => 0
+    t.integer  "width",          :default => 64
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -499,8 +502,8 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "score",                     :default => 0
     t.datetime "birthday"
     t.string   "gender"
-    t.integer  "points_earned",             :default => 0
-    t.integer  "point_balance",             :default => 0
+    t.integer  "points_earned",             :default => 10
+    t.integer  "point_balance",             :default => 10
     t.integer  "level",                     :default => 0
     t.string   "website_name"
     t.string   "website_url"
