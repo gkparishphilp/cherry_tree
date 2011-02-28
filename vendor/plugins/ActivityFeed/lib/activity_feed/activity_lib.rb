@@ -6,6 +6,7 @@ module ActivityFeed
 			'read' => 'read',
 			'publish' => 'published',
 			'write' => 'wrote',
+			'wrote' => 'wrote',
 			'have' => 'had',
 			'win' => 'won',
 			'sell' => 'sold',
