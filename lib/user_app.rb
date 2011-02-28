@@ -95,12 +95,6 @@ module UserApp
 		self.awards.include?( award )
 	end
 	
-	def invitation_setup( name, nickname, child, role)
-		self.status = 'invited' if ( self.status.nil? || self.status == 'first' )
-		self.display_name = name if self.has_default?( self.display_name )
-		self.save
 
-		self.relate_to( child, :as => role, :nickname => nickname)
-	end
 	
 end

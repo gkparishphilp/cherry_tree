@@ -1,10 +1,11 @@
 class UserMailer < ActionMailer::Base
 	
-	def send_invitation( user, child )
-		@user = user
-		@child = child
-		mail :to => "#{user.name} <#{user.email}>", :from => "noreply@thecherrytree.com", :subject => "#{child.name} has invited you to their Cherry Tree website."
+	def send_invitation_for_child(invitation )
+		@invitation = invitation
+		@invitee = invitation.user
+		@child = invitation.invited_to
+		mail :to => "tay3@backmybook.com", :from => "noreply@thecherrytree.com", :subject => "#{@child.name} has invited you to their Cherry Tree website."
 	end
 	
-
+	# #{@invitee.name} <#{@invitee.email}>
 end

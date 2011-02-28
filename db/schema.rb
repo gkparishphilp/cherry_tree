@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210211558) do
+ActiveRecord::Schema.define(:version => 20110225230157) do
 
   create_table "achievement_earnings", :force => true do |t|
     t.integer  "user_id"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.string   "creator_type"
     t.string   "name"
     t.text     "description"
+    t.string   "award_type"
     t.string   "asin"
     t.integer  "point_cost"
     t.datetime "created_at"
@@ -209,6 +210,20 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
 
   add_index "forums", ["cached_slug"], :name => "index_forums_on_cached_slug", :unique => true
   add_index "forums", ["owner_id"], :name => "index_forums_on_owner_id"
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "creator_id"
+    t.string   "creator_type"
+    t.integer  "user_id"
+    t.integer  "invited_to_id"
+    t.string   "invited_to_type"
+    t.string   "code"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["code"], :name => "index_invitations_on_code"
 
   create_table "journal_entries", :force => true do |t|
     t.integer  "journal_id"
@@ -462,6 +477,7 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
   create_table "unlockables", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "unlockable_type"
     t.integer  "point_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -489,7 +505,6 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code"
     t.datetime "activated_at"
-    t.string   "invitation_code"
     t.string   "status",                    :default => "first"
     t.string   "cached_slug"
     t.string   "orig_ip"

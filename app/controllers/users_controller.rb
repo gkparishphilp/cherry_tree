@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 			@children = @current_user.children.map {|child| [child.name, child.id]}
 			@activities = Activity.feed @current_user, @current_user.children, @current_user.supported_children
 		end
+		@invitation=Invitation.new
 	end
 	
 	def show
