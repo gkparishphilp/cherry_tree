@@ -1,0 +1,17 @@
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%br
+.child_profile
+
+	= render 'children/child_sub_nav', :child => @child
+	
+	%h2
+		= possessize @child.display_name
+		Journal
+		
+	- for entry in @entries
+		%b= link_to entry.title, child_journal_entry_path( @child, entry )
+		%p= entry.content.html_safe

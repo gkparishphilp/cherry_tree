@@ -1,10 +1,10 @@
 .archived_note{ :class => note.font_class }
 	.archived_note_actions
-		View
+		= link_to 'View', note
 		| 
-		Reply
+		= link_to 'Reply', new_note_path( :reply_to => note.id )
 		|
-		Trash
+		= link_to 'Trash', note, :method => :delete
 		
 	.subject
 		= note.subject

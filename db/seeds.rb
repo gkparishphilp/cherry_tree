@@ -38,9 +38,10 @@ u1.make_admin( s )
 u2.make_admin( s )
 
 #some objectives
-o1 = Objective.create :name => 'Clean room', :creator_type =>'User', :creator_id => 2, :description => 'Pick up your toys'
-o2 = Objective.create :name => 'Practice Guitar', :creator_type =>'User', :creator_id => 2, :description => 'Appregiate and Scalify'
-o3 = Objective.create :name => 'Mow Lawn', :creator_type =>'User', :creator_id => 2, :description => "Don't forget to sweep up"
+o1 = Objective.create :name => 'Clean room', :objective_type => 'Chores', :creator_type =>'User', :creator_id => 2, :description => 'Pick up your toys'
+o2 = Objective.create :name => 'Practice Guitar', :objective_type => 'Misc', :creator_type =>'User', :creator_id => 2, :description => 'Appregiate and Scalify'
+o3 = Objective.create :name => 'Mow Lawn',  :objective_type => 'Chores', :creator_type =>'User', :creator_id => 2, :description => "Don't forget to sweep up"
+
 
 a1 = ObjectiveAssignment.create :user_id => 6, :objective_id => 1, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 5
 a2 = ObjectiveAssignment.create :user_id => 6, :objective_id => 2, :creator_id => 5, :times => 5, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 10
@@ -52,6 +53,39 @@ ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format =
 
 ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
 ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
+
+s = Sticker.create :name => 'Beaver', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'beaver', :format => 'png', :path => '/images/stickers/beaver.png', :remote => true
+
+s = Sticker.create :name => 'Blue Bird', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'blue_bird', :format => 'png', :path => '/images/stickers/blue_bird.png', :remote => true
+
+s = Sticker.create :name => 'butterfly1', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'butterfly1', :format => 'png', :path => '/images/stickers/butterfly1.png', :remote => true
+
+s = Sticker.create :name => 'butterfly2', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'butterfly2', :format => 'png', :path => '/images/stickers/butterfly2.png', :remote => true
+
+s = Sticker.create :name => 'Cat', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'cat', :format => 'png', :path => '/images/stickers/cat.png', :remote => true
+
+s = Sticker.create :name => 'Flower', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'flower', :format => 'png', :path => '/images/stickers/flower.png', :remote => true
+
+s = Sticker.create :name => 'Frog', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'frog', :format => 'png', :path => '/images/stickers/frog.png', :remote => true
+
+s = Sticker.create :name => 'Heart', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'heart', :format => 'png', :path => '/images/stickers/heart.png', :remote => true
+
+s = Sticker.create :name => 'Lady Bug', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'ladybug', :format => 'png', :path => '/images/stickers/ladybug.png', :remote => true
+
+s = Sticker.create :name => 'Sham Rock', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'shamrock', :format => 'png', :path => '/images/stickers/shamrock.png', :remote => true
+
+s = Sticker.create :name => 'Squirrel', :point_cost => 10
+s.attachments.create :attachment_type => 'avatar', :name => 'squirrel', :format => 'png', :path => '/images/stickers/squirrel.png', :remote => true
 
 a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
 a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"

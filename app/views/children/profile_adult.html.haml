@@ -1,19 +1,27 @@
+-# Used to show Child's profile  to Parent
 %h1
 	= possessize @current_user.name
 	Children
 = render 'users/nav'
 
-%h3 
-	= @child.display_name
-	Profile
+%br
+.child_profile
+	= render 'children/child_sub_nav', :child => @child
 	
-= avatar_tag( @child, :thumb )
-%br
-%br
+	%b
+		= possessize @child.display_name
+		Favorite Books:
+	%p
+		= @child.favorite_books.join ", "
+		
+	%b
+		= possessize @child.display_name
+		Achievements:
+	%p
+		- for earning in @child.achievement_earnings
+			= eanring.achievement.name
+			on
+			= format_date_only earning.created_at
 
-%b
-	= possessize @child.display_name
-	Favorite Books:
-%p
-	= @child.favorite_books.join ", "
-
+%br.clear
+%br

@@ -2,15 +2,6 @@ module UserApp
 	# Misc App-Specific User Methods
 	
 	
-	def awards
-		self.ownings.awards
-	end
-	
-	def unlockables
-		self.ownings.unlockables
-	end
-	
-	
 	def is_child?
 		return self.type == 'Child'
 	end
@@ -25,10 +16,11 @@ module UserApp
 		# nickname is defined in the relationship between users -- what one user calls another
 		# if called without a user for the relationship, just returns the display_name
 		if user.present?
-			self.relationships.find_by_related_user_id( user.id ).nickname
-		else
-			self.display_name
+			relationship = self.relationships.find_by_related_user_id( user.id )
+			return relationship.nickname if relationship
 		end
+			
+		self.display_name
 	end
 	
 	def relate_to( user, args={} )
@@ -75,13 +67,27 @@ module UserApp
 	
 	
 	def can_unlock?( award )
-		return self.level >= award.level && self.points_balance >= award.points
+		if award.is_a?( Award )
+			assignment = award.award_assignments.find_by_user_id( self.id )
+			return false if assignment.nil?
+			cost = assignment.point_cost
+		else
+			cost = award.point_cost
+		end
+		return self.point_balance >= cost # && self.level >= award.level
 	end
 	
 	def unlock( award )
+		if award.is_a?( Award )
+			assignment = award.award_assignments.find_by_user_id( self.id )
+			return false, "You can't unlock this yet" if assignment.nil?
+			cost = assignment.point_cost
+		else
+			cost = award.point_cost
+		end
 		return false, "You can't unlock this yet" unless self.can_unlock?( award )
-		self.awards << award
-		self.update_attributes :points_balance => self.points_balance - award.points
+		self.ownings.create :ownable_id => award.id, :ownable_type => award.class.name
+		self.update_attributes :point_balance => self.point_balance - cost
 		return true, "Unlocked!"
 	end
 	
@@ -91,8 +97,8 @@ module UserApp
 		self.do_activity( "Earned #{game.points} points for playing", game )
 	end
 	
-	def owns?( award )
-		self.awards.include?( award )
+	def owns?( item )
+		self.ownings.find_by_ownable_id_and_ownable_type( item.id, item.class.name )
 	end
 	
 	def invitation_setup( name, nickname, child, role)

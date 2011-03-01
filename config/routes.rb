@@ -9,7 +9,7 @@ CherryTree::Application.routes.draw do
 	resources :awards do
 		get 'admin', :on => :collection
 		get 'unlock', :on => :member
-		get 'treasure_chest', :on => :collection
+		get 'earned', :on => :collection
 		get 'set', :on => :collection
 	end
 	
@@ -27,6 +27,10 @@ CherryTree::Application.routes.draw do
 		get 'profile', :on => :member
 		resources :objective_assignments
 		resources :award_assignments
+		resources :journal_entries do
+			resources :comments
+			get 'stickers', :on => :member
+		end
 	end
 
 	resources :contacts do
@@ -42,10 +46,6 @@ CherryTree::Application.routes.draw do
 	resources :games
 	
 	resources :invitations
-	
-	resources :journal_entries do
-		resources :comments
-	end
 	
 	resources :merches
 	
@@ -89,12 +89,18 @@ CherryTree::Application.routes.draw do
 		get 'admin', :on => :collection
 	end
 	
+	resources :stickings do
+		get 'update_pos', :on => :member
+		get 'update_width', :on => :member
+	end
+	
 	resources  :users do
 		post 'collect_email', :on => :collection
 		get 'resend', :on => :member
 		get 'settings', :on => :collection
 		get 'home', :on => :collection
 		post 'invite', :on => :collection
+		resources :photos
 	end
 	
 	resources :weekly_approvals
