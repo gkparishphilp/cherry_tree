@@ -10,5 +10,5 @@ website.
 = @invitation.message
 
 To login, 
-= link_to 'click here', "http://localhost:3000/register?email=#{@invitee.email}"
+= link_to 'click here', "http://localhost:3000/invitation/#{@invitation.code}"
 

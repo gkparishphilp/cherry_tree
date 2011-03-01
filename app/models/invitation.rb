@@ -2,7 +2,7 @@ class Invitation < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :creator, :polymorphic => true
 	belongs_to :invited_to, :polymorphic => true
-	after_create :generate_invitation_code
+	before_save :generate_invitation_code
 	attr_accessor :name, :nickname, :email, :role
 		
 	def setup(invitor, invitee)
@@ -16,7 +16,6 @@ class Invitation < ActiveRecord::Base
 		if self.code == nil
 			self.code = Digest::SHA1.hexdigest random_string
 		end
-		self.save		
 	end
 	
 end

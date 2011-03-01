@@ -46,10 +46,6 @@ CherryTree::Application.routes.draw do
 	resources :games
 	
 	resources :invitations
-	
-	resources :journal_entries do
-		resources :comments
-	end
 
 	resources :merches
 	
@@ -118,7 +114,7 @@ CherryTree::Application.routes.draw do
 	match '/forgot' => 'users#forgot_password', :as => 'forgot'
 	
 	match '/home' => 'users#home', :as => 'home'
-	
+	match '/invitation/:code' => 'invitations#accept_invite', :as => 'invitation'
 	match '/logout' => 'sessions#destroy', :as => 'logout'
 	match '/login' => 'sessions#new', :as => 'login'
 	match '/register' => 'sessions#register', :as => 'register'
