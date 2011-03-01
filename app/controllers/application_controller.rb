@@ -14,6 +14,7 @@ protected
 		for achievement in Achievement.all
 			if @current_user.newly_earned?( achievement )
 				pop_flash "<br>Congratulations... You earned an Achievement: '#{achievement.name}'!"
+				@current_user.do_activity( "Earn an Achievement: ", achievement)
 			end
 		end
 	end

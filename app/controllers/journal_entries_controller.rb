@@ -35,7 +35,7 @@ class JournalEntriesController < ApplicationController
 
 		@entry = @current_user.journals.first.journal_entries.new( params[:journal_entry] )
 		if @entry.save
-			@current_user.do_activity( "Wrote in journal", @entry )
+			@current_user.do_activity( "Write in journal", @entry )
 			pop_flash "Entry Added"
 		else
 			pop_flash "Ooops, Entry not added", :error, @entry

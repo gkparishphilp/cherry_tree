@@ -97,6 +97,7 @@ CherryTree::Application.routes.draw do
 		get 'resend', :on => :member
 		get 'settings', :on => :collection
 		get 'home', :on => :collection
+		resources :photos
 	end
 	
 	resources :weekly_approvals

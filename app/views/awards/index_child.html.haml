@@ -6,7 +6,8 @@
 
 .tabs
 	%ul
-		%li= link_to 'Awards', '#awards'
+		- unless @award_assignments.empty?
+			%li= link_to 'Awards', '#awards'
 		%li= link_to 'Unlockables', '#unlockables'
 		%li= link_to 'Stickers', '#stickers'
 	
@@ -26,22 +27,21 @@
 				%br
 				= link_to "Unlock It!", unlock_award_path( unlockable, :type => 'unlockable' )
 		%br.clear
-				
-	#awards
-		- if @awards.empty?
-			No Awards Available Yet
-		- for award in @awards
-			.treasure_item
-				= link_to avatar_tag( award, :thumb ), unlock_award_path( award, :type => 'award' )
-				%br
-				= award.description
-				.cost
-					Cost:
-					= award.point_cost
-					pts.
-				%br
-				= link_to "Unlock It!", unlock_award_path( award, :type => 'award' )
-		%br.clear
+		
+	- unless @award_assignments.empty?
+		#awards
+			- for assignment in @award_assignments
+				.treasure_item
+					= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
+					%br
+					= assignment.award.name
+					.cost
+						Cost:
+						= assignment.point_cost
+						pts.
+					%br
+					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
+			%br.clear
 	
 	#stickers
 		- for sticker in @stickers

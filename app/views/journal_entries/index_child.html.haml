@@ -9,7 +9,7 @@
 = link_to "New Entry", new_child_journal_entry_path( @current_user )
 
 - for entry in @entries
-	%div[entry]
+	.entry_preview
 		%b= link_to entry.title, child_journal_entry_path( @current_user, entry )
 		%p
 			= entry.content

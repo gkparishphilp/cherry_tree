@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110228224652
 #
 # Table name: users
 #
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
 	# Filters		--------------------------------------
 	before_save	 	:strip_website_url, :set_name
-	after_create	:set_avatar
+	after_create	:set_avatar, :setup_default_photo_album
   
 	# Validations	--------------------------------------
 	validates	:email, :uniqueness => true, 
@@ -155,6 +155,9 @@ class User < ActiveRecord::Base
 	
 	has_many	:journals
 	has_many	:journal_entries, :through => :journals
+	
+	has_many	:photo_albums
+	has_many	:photos, :through => :photo_albums
 	
 	has_many	:quizzings
 
@@ -319,6 +322,10 @@ class User < ActiveRecord::Base
 			photo_url = "http://gravatar.com/avatar/" + Digest::MD5.hexdigest( self.email ) + "?d=identicon"
 			pic = Attachment.create( :path => photo_url, :attachment_type => 'avatar', :owner => self, :remote => true, :format => 'jpg' )
 		end
+	end
+	
+	def setup_default_photo_album
+		self.photo_albums.create :title => 'Default'
 	end
 	
 	def strip_website_url

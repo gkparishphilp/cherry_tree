@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210211558) do
+ActiveRecord::Schema.define(:version => 20110228224652) do
 
   create_table "achievement_earnings", :force => true do |t|
     t.integer  "user_id"
@@ -279,6 +279,35 @@ ActiveRecord::Schema.define(:version => 20110210211558) do
     t.integer  "user_id"
     t.integer  "ownable_id"
     t.string   "ownable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photo_albums", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photo_attachments", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.integer  "top",             :default => 0
+    t.integer  "left",            :default => 0
+    t.integer  "width",           :default => 64
+    t.string   "frame_style"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "photo_album_id"
+    t.string   "title"
+    t.string   "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -23,7 +23,9 @@
 			= @entry.title
 		.entry_content
 			= @entry.content.html_safe
-	
+		- for sticking in @entry.stickings
+			%div[sticking]{ :style => "top:#{sticking.top}px; left:#{sticking.left}px;" }
+				= image_tag sticking.sticker.avatar.location, :width => sticking.width
 
 	- unless @entry.comments.empty?
 		#comments

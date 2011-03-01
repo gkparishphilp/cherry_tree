@@ -9,7 +9,7 @@ class AwardsController < ApplicationController
 		if @current_user.child?
 			# so far, this is only used for the child's treasure chest
 			@unlockables = Unlockable.all
-			@awards = @current_user.assigned_awards
+			@award_assignments = @current_user.award_assignments
 			@stickers = Sticker.all
 			render 'index_child'
 		else

@@ -14,7 +14,8 @@
 - for awarding in @awards
 	.listing
 		.listing_avatar
-			= avatar_tag( awarding.ownable, :thumb )
+			= avatar_tag( awarding.ownable, :thumb, :width => 64 )
+		%b= awarding.ownable.name
 		= awarding.ownable.description
 		Unlocked on
 		= format_date_only awarding.created_at
@@ -24,7 +25,8 @@
 - for unlocking in @unlockables
 	.listing
 		.listing_avatar
-			= avatar_tag( unlocking.ownable, :thumb )
+			= avatar_tag( unlocking.ownable, :thumb, :width => 64 )
+		%b= unlocking.ownable.name
 		= unlocking.ownable.description
 		= format_date_only unlocking.created_at
 	.clear

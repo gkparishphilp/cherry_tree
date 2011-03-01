@@ -6,18 +6,17 @@
 	= render 'users/nav'
 
 .journal_entry
-	.journal_entry
-		.entry_data
-			= format_date @entry.created_at
-			%br
-			By:
-			= @entry.journal.user.display_name
-		.entry_title
-			= @entry.title
-		.entry_content
-			= @entry.content.html_safe
+	.entry_data
+		= format_date @entry.created_at
+		%br
+		By:
+		= @entry.journal.user.display_name
+	.entry_title
+		= @entry.title
+	.entry_content
+		= @entry.content.html_safe
 	- for sticking in @entry.stickings
-		.resize[sticking]{ :style => "top:#{sticking.top}px; left:#{sticking.left}px;" }
+		%div[sticking]{ :style => "top:#{sticking.top}px; left:#{sticking.left}px;" }
 			= image_tag sticking.sticker.avatar.location, :width => sticking.width
 
 

@@ -9,9 +9,9 @@ class CheckinsController < ApplicationController
 
 		if @checkin.save
 			if @checkin.content.present?
-				@checkin.user.do_activity( "check in: '#{@checkin.content}' ", @checkin )
+				@checkin.user.do_activity( "Check in: '#{@checkin.content}' ", @checkin )
 			else
-				@checkin.user.do_activity( "#{@checkin.expanded_status} #{@checkin.objective_assignment.objective.name}", @checkin.objective_assignment )
+				@checkin.user.do_activity( "#{@checkin.expanded_status} '#{@checkin.objective_assignment.objective.name}'", @checkin.objective_assignment )
 			end
 			
 			# if the objective doesn't need to be confirmed, go ahead and give the kid the value of one checkin
