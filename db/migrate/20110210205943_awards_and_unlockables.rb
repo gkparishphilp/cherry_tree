@@ -6,9 +6,9 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.references	:creator, :polymorphic => true # the creator is basically the parent who added the award
 			t.string		:name
 			t.text			:description
-			t.string		:award_type # asin will determine amzn prods, maybe use this for coupons vs certificates, etc.
 			t.string		:asin # for Amazon products
 			t.integer		:point_cost  # TODO - I'm going to re-add this here for now... to be overridden by cost in assignemnt
+			t.string		:status
 			t.timestamps
 		end
 		
@@ -17,6 +17,7 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.references	:user  # the user that this award is available to
 			t.references	:creator # who created the assignemnt
 			t.integer		:point_cost
+			t.string		:status
 			t.timestamps
 		end
 		
@@ -25,6 +26,7 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.text		:description
 			t.string	:unlockable_type
 			t.integer	:point_cost
+			t.string	:status
 			t.timestamps
 		end
 		

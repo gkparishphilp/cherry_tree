@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110228224652
 #
 # Table name: ownings
 #
@@ -17,4 +17,5 @@ class Owning < ActiveRecord::Base
 	
 	scope :awards, where( :ownable_type => 'Award' )
 	scope :unlockables, where( :ownable_type => 'Unlockable' )
+	scope :stickers, where( :ownable_type => 'Sticker' )
 end

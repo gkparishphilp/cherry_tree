@@ -1,8 +1,11 @@
 #comment
 	.header.clearfix
 		.userinfo
-			= link_to( avatar_tag( comment.user, :thumb, :width => 64 ), user_url( comment.user ) )
-			= link_to comment.user.display_name, user_url( comment.user )
+			= avatar_tag( comment.user, :thumb, :width => 64 )
+			- if @current_user.child?
+				= comment.user.nickname( @current_user )
+			- else
+				= comment.user.display_name
 			- unless comment.user.website_url.blank?
 				(
 				-if comment.user.website_name.blank?

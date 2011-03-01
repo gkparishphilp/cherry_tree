@@ -1,18 +1,5 @@
 %div[child]
-	.pic
-		= avatar_tag( child, :thumb )
-	.name_nav
-		.name
-			= link_to child.display_name, child
-		.nav
-			= link_to "Objectives", child_objective_assignments_path( child )
-			|
-			= link_to "Awards", child_award_assignments_path( child )
-			|
-			= link_to "Profile", profile_child_path( child )
-			|
-			= link_to "Send Note", new_note_path( :to => child.id )
-	%hr.clear
+	= render 'child_sub_nav', :child => child
 	.timeline
 		- for activity in Activity.feed( child )
 			= render activity

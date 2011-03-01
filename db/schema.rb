@@ -10,7 +10,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110225230157) do
+
+ActiveRecord::Schema.define(:version => 20110228224652) do
 
   create_table "achievement_earnings", :force => true do |t|
     t.integer  "user_id"
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.integer  "user_id"
     t.integer  "creator_id"
     t.integer  "point_cost"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.string   "award_type"
     t.string   "asin"
     t.integer  "point_cost"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -272,7 +275,7 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.datetime "due_at"
     t.string   "period"
     t.boolean  "req_checkin",  :default => true
-    t.boolean  "req_confirm",  :default => false
+    t.boolean  "req_confirm",  :default => true
     t.integer  "point_value",  :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -283,6 +286,7 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.integer  "creator_id"
     t.string   "creator_type"
     t.text     "description"
+    t.string   "objective_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -291,6 +295,35 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.integer  "user_id"
     t.integer  "ownable_id"
     t.string   "ownable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photo_albums", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photo_attachments", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.integer  "top",             :default => 0
+    t.integer  "left",            :default => 0
+    t.integer  "width",           :default => 64
+    t.string   "frame_style"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "photo_album_id"
+    t.string   "title"
+    t.string   "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -443,6 +476,26 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
   add_index "static_pages", ["permalink"], :name => "index_static_pages_on_permalink"
   add_index "static_pages", ["site_id"], :name => "index_static_pages_on_site_id"
 
+  create_table "stickers", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "sticker_type"
+    t.integer  "point_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stickings", :force => true do |t|
+    t.integer  "sticker_id"
+    t.integer  "stickable_id"
+    t.string   "stickable_type"
+    t.integer  "top",            :default => 0
+    t.integer  "left",           :default => 0
+    t.integer  "width",          :default => 64
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -479,6 +532,7 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.text     "description"
     t.string   "unlockable_type"
     t.integer  "point_cost"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -493,8 +547,8 @@ ActiveRecord::Schema.define(:version => 20110225230157) do
     t.integer  "score",                     :default => 0
     t.datetime "birthday"
     t.string   "gender"
-    t.integer  "points_earned",             :default => 0
-    t.integer  "point_balance",             :default => 0
+    t.integer  "points_earned",             :default => 100
+    t.integer  "point_balance",             :default => 100
     t.integer  "level",                     :default => 0
     t.string   "website_name"
     t.string   "website_url"

@@ -39,7 +39,7 @@ class NotesController < ApplicationController
 		recipient = User.find_by_id( params[:note][:recipient_id] )
 		if @note.save
 			@note.deliver_to( recipient )
-			recipient.do_activity( "Have a note from #{@note.sender.display_name}", @note )
+			recipient.do_activity( "Have a new note from #{@note.sender.display_name}", @note )
 			pop_flash "Note Added"
 		else
 			pop_flash "Ooops, Note not added", :error, @note

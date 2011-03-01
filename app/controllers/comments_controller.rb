@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 	end
 
 	def create
+		
 		@comment = Comment.new params[:comment]
 		@comment.ip = request.ip
 		if @current_user.anonymous?
@@ -57,7 +58,7 @@ class CommentsController < ApplicationController
 		if ( @commentable.is_a? Article )
 			redirect_to blog_path @commentable
 		else
-			redirect_to polymorphic_path [ @commentable_parent, @commentable ] 
+			redirect_to child_journal_entry_path( @commentable_parent, @commentable )
 		end
 		
 	end #create
@@ -88,10 +89,10 @@ private
 
 	def get_commentable
 		if params[:article_id] 
-			@commentable = Article.find params[:article_id]
+			@commentable = Article.find( params[:article_id] )
 		else
-			@commentable = Episode.find params[:episode_id]
-			@commentable_parent = @commentable.podcast
+			@commentable = JournalEntry.find( params[:journal_entry_id] )
+			@commentable_parent = Child.find( params[:child_id] )
 		end
 	end 
 	

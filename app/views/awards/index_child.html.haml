@@ -2,18 +2,60 @@
 = render 'children/banner', :title => 'Objectives'
 = render 'children/nav'
 %h3 Pick a prize!
-- for award in @awards
-	.listing
-		.listing_avatar
-			= avatar_tag( award, :thumb )
-		= award.description
-	.clear
-	%hr
+
+
+.tabs
+	%ul
+		- unless @award_assignments.empty?
+			%li= link_to 'Awards', '#awards'
+		%li= link_to 'Unlockables', '#unlockables'
+		%li= link_to 'Stickers', '#stickers'
 	
-- for unlockable in @unlockables
-	.listing
-		.listing_avatar
-			= avatar_tag( unlockable, :thumb )
-		= unlockable.description
-	.clear
-	%hr
+	#unlockables
+		- for unlockable in @unlockables
+			.treasure_item
+				= link_to avatar_tag( unlockable, :thumb ), unlock_award_path( unlockable, :type => 'unlockable' )
+				%br
+				= unlockable.description
+				.cost
+					- if @current_user.owns?( unlockable )
+						You Own This!
+					- else
+						Cost:
+						= unlockable.point_cost
+						pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( unlockable, :type => 'unlockable' )
+		%br.clear
+		
+	- unless @award_assignments.empty?
+		#awards
+			- for assignment in @award_assignments
+				.treasure_item
+					= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
+					%br
+					= assignment.award.name
+					.cost
+						Cost:
+						= assignment.point_cost
+						pts.
+					%br
+					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
+			%br.clear
+	
+	#stickers
+		- for sticker in @stickers
+			.treasure_item
+				= link_to image_tag( sticker.avatar.location, :width => 64 ), unlock_award_path( sticker, :type => 'sticker' )
+				%br
+				= sticker.description
+				.cost
+					- if @current_user.owns?( sticker )
+						You Own This!
+					- else
+						Cost:
+						= sticker.point_cost
+						pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( sticker, :type => 'sticker' )
+		%br.clear

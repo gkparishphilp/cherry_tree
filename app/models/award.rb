@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110228224652
 #
 # Table name: awards
 #
@@ -10,6 +10,7 @@
 #  description  :text
 #  asin         :string(255)
 #  point_cost   :integer(4)
+#  status       :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
 #
@@ -28,6 +29,11 @@ class Award < ActiveRecord::Base
 	
 	scope :amazon, where( 'asin is not null' )
 	scope :coupon, where( 'asin is null' )
+	
+	
+	def award_type
+		return self.asin.present? ? 'product' : 'coupon'
+	end
 	
 	def available_to?( user )
 		self.assigned_users.include?( user )

@@ -91,18 +91,62 @@ $(document).ready(function(){
 	$('.datepicker').datepicker({
 		dateFormat: 'yy-mm-dd'
 	});
+	
+	$('.tabs').tabs();
+	
+	
 	$('.birthday_field').datepicker({
 			changeMonth: true,
 			changeYear: true,
 			dateFormat: 'yy-mm-dd',
 			defaultDate: '-10y'
 		});
-	//$('#tabs').tabs({
-	//				cookie: {
-	//					// store cookie for a day, without, it would be a session cookie
-	//					expires: 1
-	//				}
-	//			});
+		
+		
+	$('#open_sticker_drawer').click( function(){
+		$('#sticker_drawer').toggle('slow');
+	});
+	
+	$('.resizable').resizable({
+		aspectRatio: 1 / 1,
+		maxWidth: 200,
+		minWidth: 16,
+		stop: function(event, ui){
+			var id = $(this).attr('id').replace( /sticking_/, "" );
+			var width = $(this).width()
+			
+			var the_url = "http://localhost:3000/stickings/" + id + "/update_width?width=" + width
+			$(this).children('img').attr('width', $(this).width());
+			
+			$.get( the_url );
+			
+		}
+	});
+	
+	$('.del_toggle').bind( "contextmenu", function(event) {
+		event.preventDefault();
+		$(this).siblings('.delete_sticker').toggle();
+	});
+
+		
+	$('.draggable').draggable({
+		containment: "parent",
+		stack: ".draggable",
+		stop: function(){
+			var id = $(this).attr('id').replace( /sticking_/, "" );
+			var top = $(this).position().top;
+			var left = $(this).position().left
+			
+			var the_url = "http://localhost:3000/stickings/" + id + "/update_pos?top=" + top + "&left=" + left
+
+			$.get( the_url );
+
+			
+		}
+		
+	});
+	
+	
 				
 	/////////// Let's try some fancy judo for Child Reg  ////////////////
 	$('#child_gender_male').click(function () {
