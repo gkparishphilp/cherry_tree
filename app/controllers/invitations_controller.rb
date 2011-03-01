@@ -24,7 +24,7 @@ class InvitationsController < ApplicationController
 	def accept_invite
 		@invitation = Invitation.find_by_code params[:code]
 		if @invitation.user.registered?
-			redirect_to login_path( :email => @invitation.user.email )
+			redirect_to login_path( :credential => @invitation.user.email )
 		else
 			redirect_to register_path( :email => @invitation.user.email )
 		end
