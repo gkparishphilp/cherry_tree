@@ -6,17 +6,19 @@
 - if @assignments.present?
 	%h3 Your Objectives
 	- for assignment in @assignments
-		- unless assignment.checkin_in_last?( 1.day.ago )
-			%b= assignment.objective.name
-			%br
-			= assignment.times
-			times per
-			= assignment.period
+		%b= assignment.objective.name
+		%br
+		= assignment.times
+		times per
+		= assignment.period
+		- if assignment.checkin_in_last?( 1.day.ago )
+			You did this today!
+		- else
 			= form_for Checkin.new do |f|
 				= f.hidden_field :objective_assignment_id, :value => assignment.id
 				= f.hidden_field :user_id, :value => @current_user.id
 				= f.hidden_field :status, :value => 'did'
 				= f.submit
-			%br
+		%br
 - else
 	%h3 No Objectives

@@ -26,10 +26,10 @@
 		- unless @article.comments.empty?
 			#comments
 				%h3 Comments
-				= render :partial => 'comments/comment', :collection => @article.comments
+				= render @article.comments
 		#comment
-			= render :partial=>'comments/new'
+			= render 'comments/new'
 			
 	
 #blog_sidebar
-	= render :partial => 'sidebar'
+	= render 'sidebar'

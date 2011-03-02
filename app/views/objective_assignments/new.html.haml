@@ -38,6 +38,10 @@
 		Points Per Week:
 		= f.text_field :point_value
 		
+		%br
+		Require Confirmation?
+		= f.check_box :req_confirm, :checked => @assignment.req_confirm
+		
 		= f.submit
 		
 	#modal_form{ :title => 'Add an Objective' }

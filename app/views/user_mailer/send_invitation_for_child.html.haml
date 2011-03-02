@@ -1,0 +1,14 @@
+Hello 
+= @invitee.nickname( @child )
+,
+%br
+%br
+You've been invited to be a part of 
+= @child.name 
+website.
+
+= @invitation.message
+
+To login, 
+= link_to 'click here', "http://localhost:3000/invitation/#{@invitation.code}"
+

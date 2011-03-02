@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110210211558
+# Schema version: 20110228224652
 #
 # Table name: users
 #
@@ -13,8 +13,8 @@
 #  score                     :integer(4)      default(0)
 #  birthday                  :datetime
 #  gender                    :string(255)
-#  points_earned             :integer(4)      default(0)
-#  point_balance             :integer(4)      default(0)
+#  points_earned             :integer(4)      default(100)
+#  point_balance             :integer(4)      default(100)
 #  level                     :integer(4)      default(0)
 #  website_name              :string(255)
 #  website_url               :string(255)
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
 	# Filters		--------------------------------------
 	before_save	 	:strip_website_url, :set_name
-	after_create	:set_avatar
+	after_create	:set_avatar, :setup_default_photo_album
   
 	# Validations	--------------------------------------
 	validates	:email, :uniqueness => true, 
@@ -114,6 +114,7 @@ class User < ActiveRecord::Base
 	has_many	:checkins
 	
 		# for adults, objectives and assignments they've made
+					# TODO -- change this to created_objective_assignments to avoid name confilct/confusion with created_award_assignemtns
 	has_many	:created_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
 	has_many	:created_objectives, :class_name => 'Objective', :foreign_key => :creator_id
 
@@ -124,14 +125,29 @@ class User < ActiveRecord::Base
 	has_many	:point_spendings
 
 	has_many	:award_assignments
+	# Awards that are available to the child
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
+	
+		# for adults, awards and assignments they've made
+	has_many	:created_award_assignments, :class_name => 'AwardAssignment', :foreign_key => :creator_id
+	has_many	:created_awards, :class_name => 'Award', :foreign_key => :creator_id
 	
 	has_many	:achievement_earnings
 	has_many	:achievements, :through => :achievement_earnings
 
 	has_many	:ownings
-	has_many	:awards, :through => :ownings, :source => :ownable, :class_name => 'Award'
-	has_many	:unlockables, :through => :ownings, :source => :ownable, :class_name => 'Unlockable'
+	# putting these here because they act like relations, but you can't have a :through relation on a polymorphic object
+	def awards
+		self.ownings.awards
+	end
+	
+	def unlockables
+		self.ownings.unlockables
+	end
+	
+	def stickers
+		self.ownings.stickers
+	end
 	
 	has_many	:created_awards, :class_name => 'Award', :as => :creator
 
@@ -140,10 +156,13 @@ class User < ActiveRecord::Base
 	has_many	:journals
 	has_many	:journal_entries, :through => :journals
 	
+	has_many	:photo_albums
+	has_many	:photos, :through => :photo_albums
+	
 	has_many	:quizzings
 
 	has_many	:invitations
-	has_many	:sent_invitations, :class_name => 'Invitations', :foreign_key => :creator_id
+	has_many	:sent_invitations, :class_name => 'Invitation', :foreign_key => :creator_id
 	
 	# Plugins	--------------------------------------
 	has_friendly_id   :name, :use_slug => :true
@@ -313,6 +332,10 @@ class User < ActiveRecord::Base
 			photo_url = "http://gravatar.com/avatar/" + Digest::MD5.hexdigest( self.email ) + "?d=identicon"
 			pic = Attachment.create( :path => photo_url, :attachment_type => 'avatar', :owner => self, :remote => true, :format => 'jpg' )
 		end
+	end
+	
+	def setup_default_photo_album
+		self.photo_albums.create :title => 'Default'
 	end
 	
 	def strip_website_url

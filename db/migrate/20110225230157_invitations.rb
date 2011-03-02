@@ -5,6 +5,7 @@ class Invitations < ActiveRecord::Migration
 		t.references	:user 
 		t.references	:invited_to, :polymorphic => true #Can be a child, the site, or other TBD's like events, etc.
 		t.string		:code
+		t.string		:message
 		t.timestamps
 	end
 	

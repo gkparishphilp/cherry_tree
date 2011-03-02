@@ -6,10 +6,10 @@
 	= render 'users/nav'
 	
 	
-= link_to "New Entry", new_journal_entry_path
+= link_to "New Entry", new_child_journal_entry_path( @current_user )
 
 - for entry in @entries
-	%div[entry]
-		%b= entry.title
+	.entry_preview
+		%b= link_to entry.title, child_journal_entry_path( @current_user, entry )
 		%p
 			= entry.content

@@ -1,22 +1,34 @@
 class InvitationsController < ApplicationController
-
-	def create		
-		@email = params[:email]
-		@name = params[:name]
-		@child = Child.find params[:child_id]
-		@role = params[:role]
-		@nickname = params[:nickname]
+	
+	def new
+		@invitation = Invitation.new
+	end
+	
+	def create	
 		
+		@invitation = Invitation.new params[:invitation]
 		# Create a user entry and relationship
-		if @user = User.find_or_initialize_by_email( :email => @email)
-			@user.invitation_setup( @name, @nickname, @child, @role )
-			UserMailer.send_invitation( @user, @child ).deliver
-			pop_flash "Invitation sent to #{@email}"
-		else 
-			pop_flash "Could not send invitation", :error, @user
+		if @invitee = User.find_or_initialize_by_email( :email => @invitation.email) and @invitation.setup( @current_user, @invitee)
+				@invitee.relate_to(@invitation.invited_to, :as => @invitation.role, :nickname => @invitation.nickname)
+				UserMailer.send_invitation_for_child( @invitation ).deliver
+				@invitation.save
+				pop_flash "Invitation sent"			
+				
+		else
+			pop_flash "Could not send invitation", :error, @invitee
 		end
 		
 		redirect_to :back
-
+	end
+	
+	def accept_invite
+		@invitation = Invitation.find_by_code params[:code]
+		if @invitation.user.registered?
+			redirect_to login_path( :credential => @invitation.user.email )
+		else
+			redirect_to register_path( :email => @invitation.user.email )
+		end
+		
 	end
 end
+

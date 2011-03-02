@@ -6,28 +6,36 @@
 %h3
 	Invite Users
 .form_group	
-	= form_tag invitations_path do
+	= form_for @invitation do |f|
 		Name:
 		%br
-		= text_field_tag :name
+		= f.text_field :name
 		%br 
 		Nickname:
 		%br
-		= text_field_tag :nickname
+		= f.text_field :nickname
 		%br
 		Email:
 		%br
-		= text_field_tag :email
+		= f.text_field :email
 		%br
 		Child:
 		%br
-		= select_tag :child_id, options_for_select(@children)
+		= f.collection_select(:invited_to_id, @current_user.children, :id, :name )
 		%br
 		Relationship
 		%br
-		= select_tag :role,  options_for_select([ ['Father', 'father'], ['Mother', 'mother'], ['Grandmother', 'grandmother'], ['Grandfather', 'grandfather'], ['Uncle', 'uncle'], ['Aunt', 'aunt'], ['Relative', 'relative'], ])
+		= f.select :role,  options_for_select([ ['Father', 'father'], ['Mother', 'mother'], ['Grandmother', 'grandmother'], ['Grandfather', 'grandfather'], ['Uncle', 'uncle'], ['Aunt', 'aunt'], ['Relative', 'relative'], ])
 
-		%p= submit_tag "Invite"
+		=f.hidden_field :invited_to_type, :value => 'Child'
+		%br
+		%br
+		Message:
+		%br
+		= f.text_area :message, :value => "Come and join us!"
+		%br
+		%br
+		= f.submit "Invite"
 		
 %h3
 	Recent Activity

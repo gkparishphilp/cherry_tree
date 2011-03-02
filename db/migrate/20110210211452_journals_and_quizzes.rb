@@ -60,6 +60,23 @@ class JournalsAndQuizzes < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :stickers, :force => true do |t|
+			t.string		:name
+			t.text			:description
+			t.string		:sticker_type
+			t.integer		:point_cost
+			t.timestamps
+		end
+		
+		create_table :stickings, :force => true do |t|
+			t.references	:sticker
+			t.references	:stickable, :polymorphic => true
+			t.integer		:top, :default => 0
+			t.integer		:left, :default => 0
+			t.integer		:width, :default => 64
+			t.timestamps
+		end
+		
 		
 	end
 
