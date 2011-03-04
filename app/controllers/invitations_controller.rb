@@ -19,4 +19,10 @@ class InvitationsController < ApplicationController
 		redirect_to :back
 
 	end
+	
+	def index
+		@children = @current_user.children.map {|child| [child.name, child.id]}
+	end
+	
+	
 end

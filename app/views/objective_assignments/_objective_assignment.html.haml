@@ -35,6 +35,16 @@
 			.already_approved
 				= image_tag 'green_check.png', :width => 20, :valign => :middle
 				Already Approved
-		- else
-			= form_for WeeklyApproval.new do |f|
-				= render 'weekly_approvals/form', :f => f, :objective_assignment => objective_assignment
+		- else 
+			- if objective_assignment.req_confirm?
+				= form_for WeeklyApproval.new do |f|
+					= render 'weekly_approvals/form', :f => f, :objective_assignment => objective_assignment
+			- else
+				%span{ :style => 'color:#fff;' } Approvals Not Required for this Objective
+				
+				
+				
+				
+				
+				
+				
