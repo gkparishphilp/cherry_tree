@@ -17,6 +17,7 @@
 class Checkin < ActiveRecord::Base
 	belongs_to	:user
 	belongs_to	:objective_assignment
+	has_one		:approval
 	
 	scope :update, where( "objective_assignment_id is null" )
 	scope :positive, where('status = ?', 'did')

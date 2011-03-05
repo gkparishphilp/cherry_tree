@@ -47,6 +47,13 @@ class Objectives < ActiveRecord::Migration
 			t.string		:status
 			t.timestamps
 		end
+		
+		create_table :approvals, :force => true do |t|
+			t.references	:checkin
+			t.references	:creator
+			t.string		:status
+			t.timestamps
+		end
 	end
 		
 

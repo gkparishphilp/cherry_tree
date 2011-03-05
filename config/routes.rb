@@ -2,6 +2,8 @@ CherryTree::Application.routes.draw do
 
 	root :to => "site#index"
 	
+	resources :approvals
+	
 	resources :articles do
 		resources :comments
 	end

@@ -20,21 +20,16 @@
 		%p.no_checkins
 			No Checkins This Week!
 	-else
-		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
-			%div[checkin]
-				= image_tag 'check.png', :width => 16
-				= checkin.user.display_name
-				= checkin.expanded_status
-				this
-				%span.date
-					on
-					= format_date( checkin.created_at )
-			%br
-	.approval_bar
-		- if WeeklyApproval.for_assignment( objective_assignment ).for_week_ending( week ).first
-			.already_approved
-				= image_tag 'green_check.png', :width => 20, :valign => :middle
-				Already Approved
-		- else
-			= form_for WeeklyApproval.new do |f|
-				= render 'weekly_approvals/form', :f => f, :objective_assignment => objective_assignment
+		=form_tag approvals_path do
+	
+			- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
+				%div[checkin]
+					= checkin.user.display_name
+					= checkin.expanded_status
+					this
+					%span.date
+						on
+						= format_date( checkin.created_at )
+						= check_box_tag :checkin_id
+				%br
+			= submit_tag
