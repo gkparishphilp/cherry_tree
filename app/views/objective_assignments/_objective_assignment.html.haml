@@ -20,16 +20,16 @@
 		%p.no_checkins
 			No Checkins This Week!
 	-else
-		=form_tag approvals_path do
-	
-			- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
-				%div[checkin]
+		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
+			%div[checkin]
+			
+				=form_tag approvals_path do
+			
 					= checkin.user.display_name
 					= checkin.expanded_status
 					this
 					%span.date
 						on
 						= format_date( checkin.created_at )
-						= check_box_tag :checkin_id
-				%br
-			= submit_tag
+					= hidden_field_tag :checkin, checkin.id
+					= submit_tag 'Approve'

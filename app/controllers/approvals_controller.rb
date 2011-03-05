@@ -4,7 +4,11 @@ class ApprovalsController < ApplicationController
 	end
 	
 	def create
-		@approval = Approval.new params[:approval]
+		@approval = Approval.new 
+		@checkin = Checkin.find params[:checkin]
+		@approval.checkin = @checkin
+		@approval.creator = @current_user
+		@approval.status = 'approved'
 		if @approval.save
 			pop_flash "Approval saved!"
 		else

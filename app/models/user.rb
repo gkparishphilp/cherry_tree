@@ -152,6 +152,7 @@ class User < ActiveRecord::Base
 	has_many	:created_awards, :class_name => 'Award', :as => :creator
 
 	has_many	:weekly_approvals, :foreign_key => :creator_id
+	has_many	:approvals, :foreign_key  => :creator_id
 	
 	has_many	:journals
 	has_many	:journal_entries, :through => :journals
