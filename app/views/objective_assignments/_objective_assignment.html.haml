@@ -40,7 +40,7 @@
 				%br
 				%br
 		- if approval_needed
-			= form_tag create_many_approvals_path(:start_time => week.beginning_of_week, :end_time => week.end_of_week, :id => checkin.objective_assignment) do
+			= form_tag create_many_approvals_path(:start_time => week.beginning_of_week.getutc, :end_time => Time.now.getutc, :id => checkin.objective_assignment) do
 				=submit_tag 'Approve All'
 
 

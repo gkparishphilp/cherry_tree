@@ -11,6 +11,8 @@ class ApprovalsController < ApplicationController
 		@approval.status = 'approved'
 		if @approval.save
 			pop_flash "Approval saved!"
+			@checkin.user.earn_points_for( @checkin, @checkin.objective_assignment.point_value / @checkin.objective_assignment.times )
+			
 		else
 			pop_flash "Error"
 		end
