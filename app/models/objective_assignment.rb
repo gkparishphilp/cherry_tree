@@ -25,9 +25,12 @@ class ObjectiveAssignment < ActiveRecord::Base
 	has_many	:point_earnings, :as => :earned_for
 	has_many	:checkins
 	has_many	:weekly_approvals
+	
+	scope :available, where("status <> 'deleted'")
+	scope :active, where("status = 'active'")
 
 	def checkin_in_last?( period = 1.day.ago)
-		if self.checkins.dated_between(period.getutc, Time.now.getutc).present?
+		if self.checkins.dated_between(period, Time.now).present?
 			return true
 		else
 			return false
@@ -36,7 +39,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	
 	def earned_for_period
 		start_time = self.get_period_start_time
-		if self.point_earnings.dated_between(start_time, Time.now.getutc).count > 0
+		if self.point_earnings.dated_between(start_time, Time.now).count > 0
 			return true
 		else
 			return false
@@ -46,15 +49,20 @@ class ObjectiveAssignment < ActiveRecord::Base
 	def get_period_start_time
 		case self.period
 		when 'day'
-			start_time = Time.now.beginning_of_day.getutc
+			start_time = Time.now.beginning_of_day
 		when 'week'
-			start_time = Time.now.beginning_of_week.getutc
+			start_time = Time.now.beginning_of_week
 		when 'month'
-			start_time = Time.now.beginning_of_month.getutc
+			start_time = Time.now.beginning_of_month
 		when nil
 			start_time = nil
 		end
 	end
 	
-
+	def approve_checkins_dated_between( start_time, end_time, approver )
+		for checkin in self.checkins.dated_between(start_time, end_time)
+			checkin.approval.present? ? checkin.approval.status = 'approved' : Approval.create( :checkin_id => checkin.id, :creator_id => approver.id, :status => 'approved' )
+		end
+	end
+	
 end

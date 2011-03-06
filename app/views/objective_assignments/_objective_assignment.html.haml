@@ -12,8 +12,11 @@
 				= objective_assignment.point_value
 				Points
 		.actions
-			On / Off
-			Trash
+			=link_to "Turn On", enable_child_objective_assignment_path( @child, objective_assignment ) if objective_assignment.status == 'inactive'
+		 
+			= link_to "Turn Off", disable_child_objective_assignment_path( @child, objective_assignment ) if objective_assignment.status == 'active'
+			|
+			= link_to "Trash", discard_child_objective_assignment_path( @child, objective_assignment )
 		.clear
 
 	- if objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).empty?
@@ -21,16 +24,23 @@
 			No Checkins This Week!
 	-else
 		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
-			%div[checkin]
-			
-				=form_tag approvals_path do
-			
-					= checkin.user.display_name
-					= checkin.expanded_status
-					this
-					%span.date
-						on
-						= format_date( checkin.created_at )
-					= hidden_field_tag :checkin, checkin.id
-					= submit_tag 'Approve'
+			%div[checkin]			
+				= checkin.user.display_name
+				= checkin.expanded_status
+				this
+				%span.date
+					on
+					= format_date( checkin.created_at )
+				- if checkin.objective_assignment.req_confirm == true and !checkin.approved?
+					- approval_needed = true
+					=form_tag approvals_path do
+						= hidden_field_tag :checkin, checkin.id
+						= submit_tag 'Approve'
+
+				%br
+				%br
+		- if approval_needed
+			= form_tag create_many_approvals_path(:start_time => week.beginning_of_week, :end_time => week.end_of_week, :id => checkin.objective_assignment) do
+				=submit_tag 'Approve All'
+
 

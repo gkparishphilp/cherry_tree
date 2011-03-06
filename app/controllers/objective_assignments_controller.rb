@@ -17,10 +17,10 @@ class ObjectiveAssignmentsController < ApplicationController
 	
 	def index
 		if @current_user.is_child?
-			@assignments = @current_user.objective_assignments
+			@assignments = @current_user.objective_assignments.active
 			render :index_child
 		else
-			@assignments = @child.objective_assignments
+			@assignments = @child.objective_assignments.available
 			@new_assignemnt = @child.objective_assignments.new
 			
 			@this_week = Time.now.end_of_week
@@ -36,11 +36,30 @@ class ObjectiveAssignmentsController < ApplicationController
 		
 		@objectives = Objective.all
 	end
+
+	def enable
+		@assignment = ObjectiveAssignment.find params[:id]
+		@assignment.update_attributes :status => 'active'
+		redirect_to :back
+	end
+	
+	def disable
+		@assignment = ObjectiveAssignment.find params[:id]
+		@assignment.update_attributes :status => 'inactive'
+		redirect_to :back
+	end
+	
+	def discard
+		@assignment = ObjectiveAssignment.find params[:id]
+		@assignment.update_attributes :status => 'deleted'
+		redirect_to :back
+	end
 	
 	private
 	
 	def get_child
 		@child = Child.find( params[:child_id] )
 	end
+
 	
 end

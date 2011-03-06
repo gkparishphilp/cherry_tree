@@ -22,13 +22,12 @@ class Checkin < ActiveRecord::Base
 	scope :update, where( "objective_assignment_id is null" )
 	scope :positive, where('status = ?', 'did')
 	scope :dated_between, lambda { |*args| 
-		where( "created_at between ? and ?", args.first, args.second ) 
+		where( "checkins.created_at between ? and ?", args.first, args.second ) 
 	}
-	
 	scope :by, lambda { |child| 
-		where( "user_id = ?", child.id )
+		where( "checkins.user_id = ?", child.id )
 	}
-	
+		
 	def expanded_status
 		return self.status.gsub( /_/, " " )
 	end
@@ -37,7 +36,7 @@ class Checkin < ActiveRecord::Base
 		start_time = self.objective_assignment.get_period_start_time
 
 		if start_time.present?
-			return num_checkins = self.objective_assignment.checkins.dated_between(Time.now.beginning_of_day.getutc, Time.now.getutc).positive.count
+			return num_checkins = self.objective_assignment.checkins.dated_between(Time.now.beginning_of_day, Time.now).positive.count
 		else
 			return 0
 		end
@@ -60,4 +59,13 @@ class Checkin < ActiveRecord::Base
 		
 		return pop_msg
 	end
+	
+	def approved?
+		self.approval.present? ? true : false
+	end
+	
+	def not_approved?
+		self.approval.nil? ? true : false
+	end
+	
 end

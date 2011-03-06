@@ -20,4 +20,10 @@ class ApprovalsController < ApplicationController
 	def update
 	end
 	
+	def create_many
+		@assignment = ObjectiveAssignment.find params[:id]
+		@assignment.approve_checkins_dated_between( params[:start_time], params[:end_time], @current_user )
+		redirect_to :back
+	end
+	
 end

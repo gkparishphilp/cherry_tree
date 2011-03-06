@@ -2,7 +2,9 @@ CherryTree::Application.routes.draw do
 
 	root :to => "site#index"
 	
-	resources :approvals
+	resources :approvals do
+		post 'create_many', :on => :collection
+	end
 	
 	resources :articles do
 		resources :comments
@@ -27,7 +29,11 @@ CherryTree::Application.routes.draw do
 		get 'login', :on => :collection
 		get 'home', :on => :collection
 		get 'profile', :on => :member
-		resources :objective_assignments
+		resources :objective_assignments do
+			get 'enable', :on  => :member
+			get 'disable', :on  => :member
+			get 'discard', :on  => :member
+		end
 		resources :award_assignments
 		resources :journal_entries do
 			resources :comments
