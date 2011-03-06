@@ -1,19 +1,41 @@
 = render 'children/banner', :title => 'Home'
 = render 'children/nav'
 
-#welcome
-	%h3 
-		Hi
-		= "#{@current_user.display_name},"
-		What's Up?
-	= form_for [ Checkin.new ] do |f|
-		= f.text_field :content
-		= f.hidden_field :user_id, :value => @current_user.id
-		= f.submit "Enter", :class => :button
+#child_home_left
+	.home_panel
+		%h3 My Tree
+		= image_tag 'big_tree.png', :width => 100
+	.home_panel
+		%h3 My Journal
+		- for entry in @current_user.journal_entries
+			%div= link_to entry.title, child_journal_entry_path( @current_user, entry )
+	.home_panel
+		%h3 My Prizes
+		- for awarding in @current_user.awards
+			.home_item
+				= avatar_tag( awarding.ownable, :thumb, :width => 64 )
+		.clear
+		- for unlocking in @current_user.unlockables
+			.home_item
+				= avatar_tag( unlocking.ownable, :thumb, :width => 64 )
+		.clear
+		= link_to image_tag( 'treasure_chest.png', :width => 100 ), awards_path
 
-
-
-%h3
-	Activity
-= render @activities
+#child_home_right
+	.home_panel
+		%h3 My Objectives	
+		- for assignment in @current_user.objective_assignments
+			%div= assignment.objective.name
+	.home_panel
+		%h3 My Notes
+		- for note in @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
+			%div
+				%b
+					From
+					= "#{note.sender.nickname( @current_user )}: "
+				= link_to note.subject, note
+	.home_panel.activity
+		%h3
+			Activity
+		= render @activities
 	

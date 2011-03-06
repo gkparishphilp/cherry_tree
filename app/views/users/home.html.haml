@@ -4,40 +4,6 @@
 = render 'nav'
 
 %h3
-	Invite Users
-.form_group	
-	= form_for @invitation do |f|
-		Name:
-		%br
-		= f.text_field :name
-		%br 
-		Nickname:
-		%br
-		= f.text_field :nickname
-		%br
-		Email:
-		%br
-		= f.text_field :email
-		%br
-		Child:
-		%br
-		= f.collection_select(:invited_to_id, @current_user.children, :id, :name )
-		%br
-		Relationship
-		%br
-		= f.select :role,  options_for_select([ ['Father', 'father'], ['Mother', 'mother'], ['Grandmother', 'grandmother'], ['Grandfather', 'grandfather'], ['Uncle', 'uncle'], ['Aunt', 'aunt'], ['Relative', 'relative'], ])
-
-		=f.hidden_field :invited_to_type, :value => 'Child'
-		%br
-		%br
-		Message:
-		%br
-		= f.text_area :message, :value => "Come and join us!"
-		%br
-		%br
-		= f.submit "Invite"
-		
-%h3
 	Recent Activity
 = render @activities
 

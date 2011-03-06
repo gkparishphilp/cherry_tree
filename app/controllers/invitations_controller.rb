@@ -3,6 +3,10 @@ class InvitationsController < ApplicationController
 	def new
 		@invitation = Invitation.new
 	end
+
+	def index
+		@children = @current_user.children.map {|child| [child.name, child.id]}
+	end
 	
 	def create	
 		
@@ -30,5 +34,9 @@ class InvitationsController < ApplicationController
 		end
 		
 	end
+
+
+	
+	
 end
 
