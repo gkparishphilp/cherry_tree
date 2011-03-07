@@ -1,41 +1,70 @@
 = render 'children/banner', :title => 'Home'
 = render 'children/nav'
 
-#child_home_left
-	.home_panel
-		%h3 My Tree
-		= image_tag 'big_tree.png', :width => 100
-	.home_panel
-		%h3 My Journal
-		- for entry in @current_user.journal_entries
-			%div= link_to entry.title, child_journal_entry_path( @current_user, entry )
-	.home_panel
-		%h3 My Prizes
-		- for awarding in @current_user.awards
-			.home_item
-				= avatar_tag( awarding.ownable, :thumb, :width => 64 )
-		.clear
-		- for unlocking in @current_user.unlockables
-			.home_item
-				= avatar_tag( unlocking.ownable, :thumb, :width => 64 )
-		.clear
-		= link_to image_tag( 'treasure_chest.png', :width => 100 ), awards_path
-
-#child_home_right
-	.home_panel
-		%h3 My Objectives	
-		- for assignment in @current_user.objective_assignments
-			%div= assignment.objective.name
-	.home_panel
-		%h3 My Notes
-		- for note in @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
-			%div
-				%b
-					From
-					= "#{note.sender.nickname( @current_user )}: "
-				= link_to note.subject, note
-	.home_panel.activity
-		%h3
-			Activity
+#home_objectives
+	%h3 Your Objectives
+	- for assignment in @current_user.objective_assignments.active
+		%b= assignment.objective.name
+		%br
+		Do this
+		= assignment.times
+		times per
+		= assignment.period
+		for
+		= assignment.point_value
+		points.
+		%br
+		You've done this
+		-# assignment.count( this_week )
+		2 times so far this week.
+		
+		- if assignment.checkin_in_last?( 1.day.ago )
+			You did this today!
+		- else
+			= form_for Checkin.new do |f|
+				= f.hidden_field :objective_assignment_id, :value => assignment.id
+				= f.hidden_field :user_id, :value => @current_user.id
+				= f.hidden_field :status, :value => 'did'
+				= f.submit
+		%br
+#home_prizes
+	%h3 Your Prizes
+	- for assignment in @current_user.award_assignments
+		.item
+			= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
+			%br
+			%b= assignment.award.name
+			%br
+			- if assignment.point_cost > @current_user.point_balance
+				Only
+				= assignment.point_cost - @current_user.point_balance
+				Points to Go!
+			- else
+				.cost
+					Cost:
+					= assignment.point_cost
+					pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
+	.item
+		= link_to image_tag( 'treasure_chest.png', :width => 64 ), awards_path
+		%br
+		= link_to 'Go to Treasure Chest', awards_path
+%br.clear
+#home_news
+	%h3
+		News
+	.activity
 		= render @activities
-	
+#home_notes
+	%h3 Your Notes
+	- for note in @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
+		From
+		%b= "#{note.sender.nickname( @current_user )}: "
+		= link_to note.subject, note
+#home_journal
+	%h3 Your Journal
+	- for entry in @current_user.journals.first.journal_entries
+		.entry
+			= link_to entry.title, edit_child_journal_entry_path( @current_user, entry )
+

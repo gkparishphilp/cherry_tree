@@ -10,6 +10,7 @@
 #  invited_to_id   :integer(4)
 #  invited_to_type :string(255)
 #  code            :string(255)
+#  message         :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
 #

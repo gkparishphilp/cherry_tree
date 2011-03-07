@@ -13,6 +13,7 @@
 #  req_checkin  :boolean(1)      default(TRUE)
 #  req_confirm  :boolean(1)      default(TRUE)
 #  point_value  :integer(4)      default(1)
+#  status       :string(255)     default("active")
 #  created_at   :datetime
 #  updated_at   :datetime
 #

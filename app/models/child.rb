@@ -25,7 +25,6 @@
 #  remember_token_expires_at :datetime
 #  activation_code           :string(255)
 #  activated_at              :datetime
-#  invitation_code           :string(255)
 #  status                    :string(255)     default("first")
 #  cached_slug               :string(255)
 #  orig_ip                   :string(255)

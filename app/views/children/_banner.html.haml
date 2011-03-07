@@ -2,13 +2,7 @@
 	%h1
 		= possessize @current_user.display_name.capitalize
 		Home
-	= @current_user.checkins.update.last.content unless @current_user.checkins.update.empty?
-.banner_status
-	What's Up?
-	= form_for [ Checkin.new ] do |f|
-		= f.text_field :content
-		= f.hidden_field :user_id, :value => @current_user.id
-		= f.submit "Enter", :class => :button
+
 .banner_points
 	= @current_user.point_balance
 	= image_tag "cherry.png", :class => 'cherry'
