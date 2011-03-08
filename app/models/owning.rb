@@ -16,6 +16,8 @@ class Owning < ActiveRecord::Base
 	belongs_to	:user
 	
 	scope :awards, where( :ownable_type => 'Award' )
-	scope :unlockables, where( :ownable_type => 'Unlockable' )
 	scope :stickers, where( :ownable_type => 'Sticker' )
+	scope :fonts, where( :ownable_type => 'Font' )
+	scope :backgrounds, where( :ownable_type => 'Background' )
+	scope :borders, where( :ownable_type => 'Border' )
 end

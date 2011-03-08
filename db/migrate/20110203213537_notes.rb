@@ -2,7 +2,10 @@ class Notes < ActiveRecord::Migration
 	def self.up
 		create_table :notes, :force => true do |t|
 			t.references	:sender
-			t.string		:font, :default => 'schoolbell'
+			t.references	:font
+			t.references	:background
+			t.references	:border
+			t.string		:font, :default => 'schoolbell' # todo -- deprecate this
 			t.string		:font_color, :default => '#333'
 			t.string		:background_color, :default => '#ffd'
 			t.string		:subject

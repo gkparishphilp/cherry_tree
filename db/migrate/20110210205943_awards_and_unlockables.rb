@@ -21,14 +21,47 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		create_table :unlockables, :force => true do |t|
+		create_table :fonts, :force => true do |t|
 			t.string	:name
-			t.text		:description
-			t.string	:unlockable_type
+			t.string	:resource_path
 			t.integer	:point_cost
-			t.string	:status
 			t.timestamps
 		end
+		
+		create_table :backgrounds, :force => true do |t|
+			t.string	:name
+			t.integer	:point_cost
+			t.timestamps
+		end
+		
+		create_table :borders, :force => true do |t|
+			t.string	:name
+			t.integer	:point_cost
+			t.timestamps
+		end
+		
+		create_table :stickers, :force => true do |t|
+			t.string		:name
+			t.text			:description
+			t.integer		:point_cost
+			t.timestamps
+		end
+		
+		# These are things that appear on a page
+		create_table :page_elements do |t|
+			t.references	:page, :polymorphic => true # note, or journal entry
+			t.references	:photo
+			t.references	:sticker
+			t.string		:type			# header, paragraph, image
+			t.integer		:top, :default => 0
+			t.integer		:left, :default => 0
+			t.integer		:width, :default => 100
+			t.integer		:height, :default => 24
+			t.text			:copy
+			t.string		:caption # for pictures only
+			t.timestamps
+		end
+		
 		
 		create_table :ownings, :force => true do |t|
 			t.references	:user

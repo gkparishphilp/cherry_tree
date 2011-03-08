@@ -66,35 +66,29 @@ module UserApp
 	
 	
 	
-	def can_unlock?( award )
-		if award.is_a?( Award )
-			assignment = award.award_assignments.find_by_user_id( self.id )
+	def can_unlock?( reward )
+		if reward.is_a?( Award )
+			assignment = reward.award_assignments.find_by_user_id( self.id )
 			return false if assignment.nil?
 			cost = assignment.point_cost
 		else
-			cost = award.point_cost
+			cost = reward.point_cost
 		end
-		return self.point_balance >= cost # && self.level >= award.level
+		return self.point_balance >= cost # && self.level >= reward.level
 	end
 	
-	def unlock( award )
-		if award.is_a?( Award )
-			assignment = award.award_assignments.find_by_user_id( self.id )
+	def unlock( reward )
+		if reward.is_a?( Award )
+			assignment = reward.award_assignments.find_by_user_id( self.id )
 			return false, "You can't unlock this yet" if assignment.nil?
 			cost = assignment.point_cost
 		else
-			cost = award.point_cost
+			cost = reward.point_cost
 		end
-		return false, "You can't unlock this yet" unless self.can_unlock?( award )
-		self.ownings.create :ownable_id => award.id, :ownable_type => award.class.name
+		return false, "You can't unlock this yet" unless self.can_unlock?( reward )
+		self.ownings.create :ownable_id => reward.id, :ownable_type => reward.class.name
 		self.update_attributes :point_balance => self.point_balance - cost
 		return true, "Unlocked!"
-	end
-	
-	def play( game )
-		self.games << game
-		self.earn_points_for( game )
-		self.do_activity( "Earned #{game.points} points for playing", game )
 	end
 	
 	def owns?( item )

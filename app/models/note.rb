@@ -5,6 +5,9 @@
 #
 #  id               :integer(4)      not null, primary key
 #  sender_id        :integer(4)
+#  font_id          :integer(4)
+#  background_id    :integer(4)
+#  border_id        :integer(4)
 #  font             :string(255)     default("schoolbell")
 #  font_color       :string(255)     default("#333")
 #  background_color :string(255)     default("#ffd")
@@ -18,7 +21,13 @@ class Note < ActiveRecord::Base
 	belongs_to	:sender, :class_name => 'User'
 	has_many	:note_deliveries
 	has_many	:recipients, :through => :note_deliveries
-	has_many	:point_earnings, :as => :earned_for
+
+	belongs_to	:font
+	belongs_to	:background
+	belongs_to	:border
+	
+	has_many	:page_elements, :as => :page
+	
 
 	validates_presence_of :content, :message => "You should have something to say ;-)"
 	
