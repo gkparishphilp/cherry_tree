@@ -51,11 +51,11 @@ a4 = ObjectiveAssignment.create :user_id => 6, :objective_id => 4, :creator_id =
  
 # some unlockables
 
-ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25
-ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
+#ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25
+#ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
 
-ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
-ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
+#ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
+#ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
 s = Sticker.create :name => 'Beaver', :point_cost => 10
 s.attachments.create :attachment_type => 'avatar', :name => 'beaver', :format => 'png', :path => '/images/stickers/beaver.png', :remote => true
@@ -90,10 +90,10 @@ s.attachments.create :attachment_type => 'avatar', :name => 'shamrock', :format 
 s = Sticker.create :name => 'Squirrel', :point_cost => 10
 s.attachments.create :attachment_type => 'avatar', :name => 'squirrel', :format => 'png', :path => '/images/stickers/squirrel.png', :remote => true
 
-a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
-a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"
-a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"
-a = Achievement.create :name => 'First Checkin!', :requirements => "checkins.count > 0"
+#a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
+#a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"
+#a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"
+#a = Achievement.create :name => 'First Checkin!', :requirements => "checkins.count > 0"
 
 
 # Static Pages
