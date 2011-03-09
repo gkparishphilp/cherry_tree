@@ -50,13 +50,6 @@ a3 = ObjectiveAssignment.create :user_id => 6, :objective_id => 3, :creator_id =
 a4 = ObjectiveAssignment.create :user_id => 6, :objective_id => 4, :creator_id => 5, :times => 7, :period => 'week', :req_checkin => 1, :req_confirm => 0, :point_value => 100
  
 # some unlockables
-
-ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25
-ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
-
-ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
-ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
-
 s = Sticker.create :name => 'Beaver', :point_cost => 10
 s.attachments.create :attachment_type => 'avatar', :name => 'beaver', :format => 'png', :path => '/images/stickers/beaver.png', :remote => true
 

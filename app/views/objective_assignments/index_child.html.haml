@@ -5,21 +5,18 @@
 
 - if @assignments.present?
 	%h3 Your Objectives
-	- for assignment in @assignments
-		%b= assignment.objective.name
+	- for @assignment in @assignments
+		%b= @assignment.objective.name
 		%br
-		= assignment.times
+		= @assignment.times
 		times per
-		= assignment.period
+		= @assignment.period
 
-		- if assignment.checkin_in_last?( 1.day.ago )
-			%br You did this today!
+		- if @assignment.checkin_in_last?( 1.day.ago )
+			%br You checked in today!
 		- else
-			= form_for Checkin.new do |f|
-				= f.hidden_field :objective_assignment_id, :value => assignment.id
-				= f.hidden_field :user_id, :value => @current_user.id
-				= f.hidden_field :status, :value => 'did'
-				= f.submit
+			= render :partial => 'checkins/form'
+				
 		%br
 		%br
 	

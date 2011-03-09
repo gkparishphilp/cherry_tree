@@ -5,7 +5,7 @@ class Objectives < ActiveRecord::Migration
 			t.references	:user
 			t.string		:content
 			t.references	:objective_assignment # not always necessary, e.g. for status
-			t.string		:status, :default => 'did_not'
+			t.string		:status, :default => 'red'
 			t.integer		:confirmed_by # this is a user_id
 			t.datetime		:confirmed_at
 			t.timestamps
@@ -41,7 +41,7 @@ class Objectives < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		create_table :weekly_approvals, :force => true do |t|
+		create_table :approvals, :force => true do |t|
 			t.references	:objective_assignment
 			t.references	:creator 
 			t.date			:week_ending
@@ -49,12 +49,7 @@ class Objectives < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		create_table :approvals, :force => true do |t|
-			t.references	:checkin
-			t.references	:creator
-			t.string		:status
-			t.timestamps
-		end
+
 	end
 		
 

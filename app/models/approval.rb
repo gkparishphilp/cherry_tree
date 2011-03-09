@@ -12,7 +12,15 @@
 #
 
 class Approval < ActiveRecord::Base
-	belongs_to :checkin
+	belongs_to :objective_assignment
 	belongs_to	:creator, :foreign_key => :creator_id, :class_name => 'User'
+	scope :for_week, lambda {|*args|
+		where(" approvals.created_at between ? and ?", args.first.beginning_of_week, args.first.end_of_week)
+	}
+	
+	scope :dated_between, lambda { |*args| 
+		where( "approvals.created_at between ? and ?", args.first, args.second ) 
+	}
+	 
 	
 end
