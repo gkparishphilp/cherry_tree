@@ -12,8 +12,5 @@
 #
 
 class Sticker < ActiveRecord::Base
-
-	has_many	:stickings
-	
 	has_attached	:avatar
 end

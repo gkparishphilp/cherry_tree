@@ -24,6 +24,7 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 		create_table :fonts, :force => true do |t|
 			t.string	:name
 			t.string	:resource_path
+			t.text		:description
 			t.integer	:point_cost
 			t.timestamps
 		end

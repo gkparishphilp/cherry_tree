@@ -55,8 +55,14 @@ $(document).ready(function(){
 	});
 	*/
 	
-	$('#note_font').change( function(){
-		$('.note_content textarea').css('font-family', this.value );
+	$('#font_target textarea').addClass( $('.font_select option:first').html() );
+
+
+	$('.font_select').change( function(){
+		$(this).children('option:selected').each( function(){
+			$('#font_target textarea').removeClass();
+			$('#font_target textarea').addClass( this.text );
+		});
 	});
 	
 	$('.archived_note').hover( function(){

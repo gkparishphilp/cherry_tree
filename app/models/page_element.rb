@@ -21,4 +21,6 @@
 
 class PageElement < ActiveRecord::Base
 	belongs_to	:page, :polymorphic => true
+	belongs_to	:sticker
+	belongs_to	:photo
 end

@@ -37,7 +37,7 @@ CherryTree::Application.routes.draw do
 		resources :award_assignments
 		resources :journal_entries do
 			resources :comments
-			get 'stickers', :on => :member
+			get 'customize', :on => :member
 		end
 	end
 
@@ -59,6 +59,7 @@ CherryTree::Application.routes.draw do
 	
 	resources :notes do
 		get 'archive', :on => :collection
+		get 'customize', :on => :member
 	end
 	
 	resources :objectives 

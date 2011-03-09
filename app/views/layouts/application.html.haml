@@ -2,9 +2,9 @@
 %html
 	%head
 		= render 'layouts/meta', :css => 'app'
-		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Sunshiney'
-		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Schoolbell'
-		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Homemade+Apple'
+		- if @fonts
+			- for font in @fonts	
+				= stylesheet_link_tag font.resource_path
 		= include_tiny_mce_if_needed
 	%body
 		#big_tree

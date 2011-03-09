@@ -4,11 +4,17 @@ class NotesController < ApplicationController
 		@notes = @current_user.note_deliveries.published.order( "created_at desc" ).collect { |deliv| deliv.note }
 	end
 	
+	def customize
+		@note = Note.find( params[:id] )
+	end
+	
 	def new
 		@note = Note.new
 		@recipient_list = @current_user.related_users.map { |u| [ u.nickname( @current_user ), u.id ] }
 		
 		@note.recipient_id = params[:to] if params[:to].present?
+		
+		@fonts = @current_user.ownings.fonts.collect{ |o| o.ownable }
 		
 		if @reply_to_note = Note.find_by_id( params[:reply_to] )
 			@note.subject = @reply_to_note.subject
@@ -41,10 +47,12 @@ class NotesController < ApplicationController
 			@note.deliver_to( recipient )
 			recipient.do_activity( "Have a new note from #{@note.sender.display_name}", @note )
 			pop_flash "Note Added"
+			redirect_to customize_note_path( @note )
 		else
 			pop_flash "Ooops, Note not added", :error, @note
+			redirect_to :back
 		end
-		redirect_to :back
+		
 	end
 	
 	def destroy

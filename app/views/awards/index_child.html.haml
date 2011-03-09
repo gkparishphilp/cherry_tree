@@ -8,24 +8,23 @@
 	%ul
 		- unless @award_assignments.empty?
 			%li= link_to 'Awards', '#awards'
-		%li= link_to 'Unlockables', '#unlockables'
+		%li= link_to 'Fonts', '#fonts'
 		%li= link_to 'Stickers', '#stickers'
 	
-	#unlockables
-		- for unlockable in @unlockables
+	#fonts
+		- for font in @fonts
 			.treasure_item
-				= link_to avatar_tag( unlockable, :thumb ), unlock_award_path( unlockable, :type => 'unlockable' )
-				%br
-				= unlockable.description
+				.font{ :class => font.name, :style => 'font-size:24px;' }
+					= font.name.humanize
 				.cost
-					- if @current_user.owns?( unlockable )
+					- if @current_user.owns?( font )
 						You Own This!
 					- else
 						Cost:
-						= unlockable.point_cost
+						= font.point_cost
 						pts.
 				%br
-				= link_to "Unlock It!", unlock_award_path( unlockable, :type => 'unlockable' )
+				= link_to "Unlock It!", unlock_award_path( font, :type => 'font' )
 		%br.clear
 		
 	- unless @award_assignments.empty?

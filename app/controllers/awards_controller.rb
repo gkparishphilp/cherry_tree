@@ -8,8 +8,8 @@ class AwardsController < ApplicationController
 	def index
 		if @current_user.child?
 			# so far, this is only used for the child's treasure chest
-			@unlockables = Unlockable.all
 			@award_assignments = @current_user.award_assignments
+			@fonts = Font.all
 			@stickers = Sticker.all
 			render 'index_child'
 		else
