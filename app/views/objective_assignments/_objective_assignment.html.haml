@@ -25,22 +25,24 @@
 	-else
 		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
 			%div[checkin]			
+				= checkin.status
+				= checkin.content
 				= checkin.user.display_name
-				= checkin.expanded_status
-				this
 				%span.date
 					on
 					= format_date( checkin.created_at )
-				- if checkin.objective_assignment.req_confirm == true and !checkin.approved?
-					- approval_needed = true
-					=form_tag approvals_path do
-						= hidden_field_tag :checkin, checkin.id
-						= submit_tag 'Approve'
-
 				%br
 				%br
-		- if approval_needed
-			= form_tag create_many_approvals_path(:start_time => week.beginning_of_week.getutc, :end_time => Time.now.getutc, :id => checkin.objective_assignment) do
-				=submit_tag 'Approve All'
+		- unless objective_assignment.approved_for_week(week)
+			= form_for Approval.new do |f|
+				= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
+				= f.hidden_field :week_ending, :value => week.end_of_week
+				Red
+				= f.radio_button :status, "red", :id => "status"
+				Yellow
+				= f.radio_button :status, "yellow", :id => "status"
+				Green
+				= f.radio_button :status, "green", :id => "status"
+				= f.submit 'Save'
 
 

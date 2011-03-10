@@ -3,7 +3,7 @@ CherryTree::Application.routes.draw do
 	root :to => "site#index"
 	
 	resources :approvals do
-		post 'create_many', :on => :collection
+		post 'weekly', :on => :collection
 	end
 	
 	resources :articles do

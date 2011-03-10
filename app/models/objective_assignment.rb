@@ -25,7 +25,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	
 	has_many	:point_earnings, :as => :earned_for
 	has_many	:checkins
-	has_many	:weekly_approvals
+	has_many	:approvals
 	
 	scope :available, where("status <> 'deleted'")
 	scope :active, where("status = 'active'")
@@ -64,6 +64,10 @@ class ObjectiveAssignment < ActiveRecord::Base
 		for checkin in self.checkins.dated_between(start_time, end_time)
 			checkin.approval.present? ? checkin.approval.status = 'approved' : Approval.create( :checkin_id => checkin.id, :creator_id => approver.id, :status => 'approved' )
 		end
+	end
+	
+	def approved_for_week(week)
+		self.approvals.for_week(week).count > 0 ? true : false
 	end
 	
 end

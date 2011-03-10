@@ -4,14 +4,21 @@ class ApprovalsController < ApplicationController
 	end
 	
 	def create
-		@approval = Approval.new 
-		@checkin = Checkin.find params[:checkin]
-		@approval.checkin = @checkin
+		@approval = Approval.new params[:approval]
 		@approval.creator = @current_user
-		@approval.status = 'approved'
+
+		case @approval.status
+			when 'green'
+				multiplier = 1.0
+			when 'yellow'
+				multiplier = 0.5
+			when 'red'
+				multiplier = 0.0
+		end
+				
 		if @approval.save
 			pop_flash "Approval saved!"
-			@checkin.user.earn_points_for( @checkin, @checkin.objective_assignment.point_value / @checkin.objective_assignment.times )
+			@approval.objective_assignment.user.earn_points_for( @approval.objective_assignment, @approval.objective_assignment.point_value / @approval.objective_assignment.times * multiplier )
 			
 		else
 			pop_flash "Error"
@@ -20,12 +27,6 @@ class ApprovalsController < ApplicationController
 	end
 	
 	def update
-	end
-	
-	def create_many
-		@assignment = ObjectiveAssignment.find params[:id]
-		@assignment.approve_checkins_dated_between( params[:start_time], params[:end_time], @current_user )
-		redirect_to :back
 	end
 	
 end

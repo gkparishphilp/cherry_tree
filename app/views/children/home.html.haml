@@ -3,30 +3,25 @@
 
 #home_objectives
 	%h3 Your Objectives
-	- for assignment in @current_user.objective_assignments.active
-		%b= assignment.objective.name
-		%br
-		Do this
-		= assignment.times
-		times per
-		= assignment.period
-		for
-		= assignment.point_value
-		points.
-		%br
-		You've done this
-		-# assignment.count( this_week )
-		2 times so far this week.
-		
-		- if assignment.checkin_in_last?( 1.day.ago )
-			You did this today!
-		- else
-			= form_for Checkin.new do |f|
-				= f.hidden_field :objective_assignment_id, :value => assignment.id
-				= f.hidden_field :user_id, :value => @current_user.id
-				= f.hidden_field :status, :value => 'did'
-				= f.submit
-		%br
+	- for @assignment in @current_user.objective_assignments.active
+		.title_bar
+			.data
+				.name= @assignment.objective.name
+				.info
+					Do this
+					= @assignment.times
+					times per
+					= @assignment.period
+					for
+					= @assignment.point_value
+					points.
+			.clear
+			%br	
+			- if @assignment.checkin_in_last?( 1.day.ago )
+				You did this today!
+			- else
+				=render :partial => 'checkins/form' 
+			%br
 #home_prizes
 	%h3 Your Prizes
 	- for assignment in @current_user.award_assignments
