@@ -14,16 +14,20 @@
 	Font:
 .inline_field
 	= f.collection_select :font_id, @fonts, :id, :name, {}, :class => 'font_select'
+.inline_label
+	Background:
+.inline_field
+	= f.collection_select :background_id, @backgrounds, :id, :name, {}, :class => 'bg_select'
 
 %br.clear
 .note_content
-	#font_target
+	#style_target
 		- if @reply_to_note
 			= @reply_to_note.sender.nickname( @current_user )
 			Said:
 			%br
 			= @reply_to_note.content
-		= f.text_area :content
+		= f.text_area :content, :id => 'note_content'
 .actions
 	= f.submit "Send", :class => 'green_button'
 

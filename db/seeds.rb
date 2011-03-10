@@ -102,6 +102,12 @@ f = Font.create :name => 'growler', :resource_path => 'http://fonts.googleapis.c
 f = Font.create :name => 'stencil', :resource_path => 'http://fonts.googleapis.com/css?family=Allerta+Stencil', :point_cost => 10
 f = Font.create :name => 'coming_soon', :resource_path => 'http://fonts.googleapis.com/css?family=Coming+Soon', :point_cost => 10
 
+b1 = Background.create :name => 'blue_paisley', :repeat => 'none', :point_cost => 40
+b1.attachments.create :attachment_type => 'image', :name => 'blue_paisley', :format => 'jpg', :path => '/images/backgrounds/blue_paisley.jpg', :remote => true
+b2 = Background.create :name => 'parchment', :repeat => 'none', :point_cost => 40
+b2.attachments.create :attachment_type => 'image', :name => 'parchment', :format => 'jpg', :path => '/images/backgrounds/parchment.jpg', :remote => true
+
+
 #a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"
 #a = Achievement.create :name => 'Wish Master', :requirements => "wishlist_items.count > 0"
 #a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"

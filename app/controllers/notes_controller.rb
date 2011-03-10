@@ -15,6 +15,7 @@ class NotesController < ApplicationController
 		@note.recipient_id = params[:to] if params[:to].present?
 		
 		@fonts = @current_user.ownings.fonts.collect{ |o| o.ownable }
+		@backgrounds = @current_user.ownings.backgrounds.collect{ |o| o.ownable }
 		
 		if @reply_to_note = Note.find_by_id( params[:reply_to] )
 			@note.subject = @reply_to_note.subject

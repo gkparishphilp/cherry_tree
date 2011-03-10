@@ -55,15 +55,32 @@ $(document).ready(function(){
 	});
 	*/
 	
-	$('#font_target textarea').addClass( $('.font_select option:first').html() );
-
+	$('#style_target textarea').addClass( "font_" + $('.font_select option:first').html() );
 
 	$('.font_select').change( function(){
 		$(this).children('option:selected').each( function(){
-			$('#font_target textarea').removeClass();
-			$('#font_target textarea').addClass( this.text );
+			var existing_font_class = $('#style_target textarea').attr("class").match(/font_\w+/)
+			$('#style_target textarea').removeClass( existing_font_class );
+			$('#style_target textarea').addClass( "font_" + this.text );
 		});
 	});
+	
+	
+	$('#style_target textarea').addClass( "bg_" + $('.bg_select option:first').html() );
+
+	$('.bg_select').change( function(){
+		$(this).children('option:selected').each( function(){
+			var existing_bg_class = $('#style_target textarea').attr("class").match(/bg_\w+/);
+			
+			alert( "All classes: " + $('#style_target textarea').attr("class") + " Removing: '" + existing_bg_class +"'" );
+			
+			$('#style_target textarea').removeClass(existing_bg_class);
+			$('#style_target textarea').addClass( "bg_" + this.text );
+			
+			alert( $('#style_target textarea').attr("class") );
+		});
+	});
+	
 	
 	$('.archived_note').hover( function(){
 		if( $(this).css('height') == '65px' ){

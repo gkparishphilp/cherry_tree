@@ -9,7 +9,9 @@
 		- unless @award_assignments.empty?
 			%li= link_to 'Awards', '#awards'
 		%li= link_to 'Fonts', '#fonts'
+		%li= link_to 'Backgrounds', '#backgrounds'
 		%li= link_to 'Stickers', '#stickers'
+		
 	
 	#fonts
 		- for font in @fonts
@@ -57,4 +59,21 @@
 						pts.
 				%br
 				= link_to "Unlock It!", unlock_award_path( sticker, :type => 'sticker' )
+		%br.clear
+	
+	#backgrounds
+		- for background in @backgrounds
+			.treasure_item
+				= link_to image_tag( background.image.location, :width => 64 ), unlock_award_path( background, :type => 'background' )
+				%br
+				= background.name
+				.cost
+					- if @current_user.owns?( background )
+						You Own This!
+					- else
+						Cost:
+						= background.point_cost
+						pts.
+				%br
+				= link_to "Unlock It!", unlock_award_path( background, :type => 'background' )
 		%br.clear

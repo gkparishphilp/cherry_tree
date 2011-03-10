@@ -31,6 +31,8 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 		
 		create_table :backgrounds, :force => true do |t|
 			t.string	:name
+			t.text		:description
+			t.string	:repeat
 			t.integer	:point_cost
 			t.timestamps
 		end

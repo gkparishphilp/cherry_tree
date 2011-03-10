@@ -11,6 +11,7 @@ class AwardsController < ApplicationController
 			@award_assignments = @current_user.award_assignments
 			@fonts = Font.all
 			@stickers = Sticker.all
+			@backgrounds = Background.all
 			render 'index_child'
 		else
 			# todo -- move awards/new to here?
