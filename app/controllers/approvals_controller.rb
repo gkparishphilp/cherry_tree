@@ -18,7 +18,7 @@ class ApprovalsController < ApplicationController
 				
 		if @approval.save
 			pop_flash "Approval saved!"
-			@approval.objective_assignment.user.earn_points_for( @approval.objective_assignment, @approval.objective_assignment.point_value / @approval.objective_assignment.times * multiplier )
+			@approval.objective_assignment.user.earn_points_for( @approval.objective_assignment, @approval.objective_assignment.point_value * multiplier )
 			
 		else
 			pop_flash "Error"

@@ -3,8 +3,8 @@
 		.data
 			.name= objective_assignment.objective.name
 			.info
-				= objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).count
-				out of
+				= objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).green.count
+				green out of
 				= objective_assignment.times
 				this week.
 				

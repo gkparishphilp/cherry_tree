@@ -16,11 +16,13 @@
 					= @assignment.point_value
 					points.
 			.clear
+		.clear
 			%br	
-			- if @assignment.checkin_in_last?( 1.day.ago )
-				You did this today!
-			- else
-				=render :partial => 'checkins/form' 
+			-# todo uncomment this after testing to allow children to check in just once daily
+			-# if @assignment.checkin_in_last?( 1.day.ago )
+			-#	You did this today!
+			-# else
+			=render :partial => 'checkins/form' 
 			%br
 #home_prizes
 	%h3 Your Prizes

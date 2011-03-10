@@ -1,13 +1,12 @@
 = form_for Checkin.new do |f|
 	= f.hidden_field :objective_assignment_id, :value => @assignment.id
 	= f.hidden_field :user_id, :value => @current_user.id
-	Red
+	R
 	= f.radio_button :status, "red", :id => "status"
-	Yellow
+	Y
 	= f.radio_button :status, "yellow", :id => "status"
-	Green
+	G
 	= f.radio_button :status, "green", :id => "status"
-	= f.label "How's it going?"
 	= f.text_field :content
 	= f.submit "Check In!"
 	
