@@ -106,6 +106,8 @@ b1 = Background.create :name => 'blue_paisley', :repeat => 'none', :point_cost =
 b1.attachments.create :attachment_type => 'image', :name => 'blue_paisley', :format => 'jpg', :path => '/images/backgrounds/blue_paisley.jpg', :remote => true
 b2 = Background.create :name => 'parchment', :repeat => 'none', :point_cost => 40
 b2.attachments.create :attachment_type => 'image', :name => 'parchment', :format => 'jpg', :path => '/images/backgrounds/parchment.jpg', :remote => true
+b3 = Background.create :name => 'notebook', :repeat => 'none', :point_cost => 20
+b3.attachments.create :attachment_type => 'image', :name => 'notebook', :format => 'png', :path => '/images/backgrounds/notebook_paper.png', :remote => true
 
 
 #a = Achievement.create :name => 'Journalist', :requirements => "journal_entries.count > 0"

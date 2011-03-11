@@ -5,9 +5,7 @@ class Notes < ActiveRecord::Migration
 			t.references	:font
 			t.references	:background
 			t.references	:border
-			t.string		:font, :default => 'schoolbell' # todo -- deprecate this
 			t.string		:font_color, :default => '#333'
-			t.string		:background_color, :default => '#ffd'
 			t.string		:subject
 			t.text			:content
 			t.timestamps

@@ -14,4 +14,8 @@
 
 class Background < ActiveRecord::Base
 	has_attached :image
+	
+	def css_class
+		return "bg_" + self.name
+	end
 end

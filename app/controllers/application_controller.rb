@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	
 	before_filter :fetch_session_data
 	
-	after_filter	:check_for_achievements
+	#after_filter	:check_for_achievements
 
 
 protected

@@ -27,4 +27,10 @@ class JournalEntry < ActiveRecord::Base
 	
 	has_many	:page_elements, :as => :page
 	
+	def css
+		font_class = self.font.present? ? self.font.css_class : 'font_plain'
+		bg_class = self.background.present? ? self.background.css_class : 'bg_plain'
+		return font_class + " " + bg_class
+	end
+	
 end

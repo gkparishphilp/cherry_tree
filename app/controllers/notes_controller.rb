@@ -2,6 +2,12 @@ class NotesController < ApplicationController
 	
 	def archive
 		@notes = @current_user.note_deliveries.published.order( "created_at desc" ).collect { |deliv| deliv.note }
+		
+		@fonts = []
+		
+		for note in @notes
+			@fonts << note.font if note.font.present?
+		end
 	end
 	
 	def customize
@@ -34,11 +40,18 @@ class NotesController < ApplicationController
 		else
 			@notes = @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
 		end
+		
+		@fonts = []
+		
+		for note in @notes
+			@fonts << note.font if note.font.present?
+		end
 	end
 	
 	def show
 		@note = Note.find( params[:id] )
 		@note.mark_read_by( @current_user )
+		@fonts = [] << @note.font if @note.font.present?
 	end
 	
 	def create
@@ -48,7 +61,7 @@ class NotesController < ApplicationController
 			@note.deliver_to( recipient )
 			recipient.do_activity( "Have a new note from #{@note.sender.display_name}", @note )
 			pop_flash "Note Added"
-			redirect_to customize_note_path( @note )
+			redirect_to notes_path
 		else
 			pop_flash "Ooops, Note not added", :error, @note
 			redirect_to :back

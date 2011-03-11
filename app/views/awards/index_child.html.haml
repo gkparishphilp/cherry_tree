@@ -16,7 +16,7 @@
 	#fonts
 		- for font in @fonts
 			.treasure_item
-				.font{ :class => font.name, :style => 'font-size:24px;' }
+				.font{ :class => font.css_class, :style => 'font-size:24px;' }
 					= font.name.humanize
 				.cost
 					- if @current_user.owns?( font )

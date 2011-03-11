@@ -14,4 +14,7 @@
 
 class Font < ActiveRecord::Base
 	
+	def css_class
+		return "font_" + self.name
+	end
 end

@@ -24,6 +24,7 @@ class JournalEntriesController < ApplicationController
 		@comment = Comment.new
 		@commentable = @entry
 		@commentable_parent = @child
+		@fonts = [] << @entry.font if @entry.font.present?
 		if @current_user.child?
 			render 'show_child'
 		else
@@ -43,10 +44,20 @@ class JournalEntriesController < ApplicationController
 		redirect_to customize_child_journal_entry_path( @current_user, @entry )
 	end
 	
+	def update
+		@entry = JournalEntry.find( params[:id] )
+		@entry.update_attributes( params[:journal_entry] )
+		redirect_to child_journal_entry_path( @current_user, @entry )
+	end
+	
 	def customize
 		@entry = JournalEntry.find( params[:id] )
 		
 		@stickers = @current_user.ownings.stickers
+		
+		@fonts = @current_user.ownings.fonts.collect{ |o| o.ownable }
+		@backgrounds = @current_user.ownings.backgrounds.collect{ |o| o.ownable }
+		
 	end
 	
 	def destroy

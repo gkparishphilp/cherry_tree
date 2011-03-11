@@ -13,7 +13,7 @@
 		= possessize @child.display_name
 		Journal
 		
-	.journal_entry
+	.journal_entry{ :class => @entry.css }
 		.entry_data
 			= format_date @entry.created_at
 			%br

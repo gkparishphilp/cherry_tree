@@ -5,7 +5,7 @@
 	= render 'users/banner'
 	= render 'users/nav'
 
-.journal_entry
+.journal_entry{ :class => @entry.css }
 	.entry_data
 		= format_date @entry.created_at
 		%br

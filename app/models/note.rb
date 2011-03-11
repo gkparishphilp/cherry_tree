@@ -3,18 +3,16 @@
 #
 # Table name: notes
 #
-#  id               :integer(4)      not null, primary key
-#  sender_id        :integer(4)
-#  font_id          :integer(4)
-#  background_id    :integer(4)
-#  border_id        :integer(4)
-#  font             :string(255)     default("schoolbell")
-#  font_color       :string(255)     default("#333")
-#  background_color :string(255)     default("#ffd")
-#  subject          :string(255)
-#  content          :text
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id            :integer(4)      not null, primary key
+#  sender_id     :integer(4)
+#  font_id       :integer(4)
+#  background_id :integer(4)
+#  border_id     :integer(4)
+#  font_color    :string(255)     default("#333")
+#  subject       :string(255)
+#  content       :text
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Note < ActiveRecord::Base
@@ -60,17 +58,13 @@ class Note < ActiveRecord::Base
 	end
 	
 	
-	
-	def font_class
-		# the font name as a CSS class (just whitespace to underscores)
-		self.font.gsub( /\s/, "_" )
+	def css
+		font_class = self.font.present? ? self.font.css_class : 'font_plain'
+		bg_class = self.background.present? ? self.background.css_class : 'bg_plain'
+		return font_class + " " + bg_class
 	end
 	
-	def font_css
-		# the font name as appropriate for linking in the stylesheet:
-		# e.g. stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Homemade+Apple'
-		self.font.gsub( /\s/, "+" )
-	end
+
 	
 	
 end

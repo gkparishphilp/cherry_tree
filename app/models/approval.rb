@@ -3,12 +3,13 @@
 #
 # Table name: approvals
 #
-#  id         :integer(4)      not null, primary key
-#  checkin_id :integer(4)
-#  creator_id :integer(4)
-#  status     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                      :integer(4)      not null, primary key
+#  objective_assignment_id :integer(4)
+#  creator_id              :integer(4)
+#  week_ending             :date
+#  status                  :string(255)
+#  created_at              :datetime
+#  updated_at              :datetime
 #
 
 class Approval < ActiveRecord::Base
