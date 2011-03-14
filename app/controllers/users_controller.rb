@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
 	before_filter   :require_admin,   :only => [ :admin, :destroy ]
-	before_filter	:require_login, :home
+	before_filter	:require_login, :only => [ :home, :edit, :update ]
 
-	def admin
-		@users = User.all.paginate :page => params[:page], :per_page => 25
-	end
 	
 	def home
 		if @current_user.is_child?
@@ -55,7 +52,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.find_or_initialize_by_email params[:user][:email]
+		@user = User.find_or_initialize_by_email( params[:user][:email] )
 		if @user.hashed_password.present?
 			# someone created an account with this email address before.... send to forgot pass?
 			pop_flash "This email address has already been registered.  Perhaps you've forgottne the password?", :notice
@@ -75,7 +72,6 @@ class UsersController < ApplicationController
 			@user.reload
 			
 			#email = UserMailer.welcome( @user, @current_site ).deliver
-			@user.did_join Site.first
 			
 			pop_flash "User successfully registered."
 			
