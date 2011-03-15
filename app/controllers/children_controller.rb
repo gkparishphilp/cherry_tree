@@ -47,15 +47,13 @@ class ChildrenController < ApplicationController
 		if @child.save
 			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nick]
 			process_attachments_for( @child )
-			if params[:child][:welcome_message].present?
-				note = @current_user.sent_notes.create( :content => params[:child][:welcome_message] )
-				note.deliver_to( @child )
-				#@child.earn_points_for( note )
-			end
+			pop_flash "Child Registered"
+			redirect_to new_child_objective_assignment_path( @child )
 		else
 			pop_flash "Ooops, Child not added", :error, @child
+			redirect_to :back
 		end
-		redirect_to :back
+		
 	end
 	
 	def show

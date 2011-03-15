@@ -6,51 +6,8 @@
 
 %br
 .child_profile
-	.pic
-		= avatar_tag( @child, :profile )
-	.name_nav
-		.name
-			= @child.display_name
-		.nav
-			= link_to "Objectives", child_objective_assignments_path( @child )
-			|
-			= link_to "Awards"
-			|
-			= link_to "Profile"
-			|
-			= link_to "Send Note", new_note_path( :to => @child.id )
-		.stuff
-			= link_to "Assign New Objective", new_child_objective_assignment_path( @child )
-	%hr.clear
-	%h2
-		New Objective for
-		= @child.display_name
+	= render 'children/child_sub_nav', :child => @child
 	
-	= form_for [ @child, @assignment ] do |f|
-		= f.label 'Objective'
-		= f.collection_select :objective_id, @objectives, :id, :name
-		&nbsp;&nbsp;
-		= link_to "Add Objective", "", :id => :open_modal
-		%br
-		Times Per Week:
-		= f.text_field :times
-		%br
-		Points Per Week:
-		= f.text_field :point_value
-		
-		%br
-		Require Confirmation?
-		= f.check_box :req_confirm, :checked => @assignment.req_confirm
-		
-		= f.submit
-		
-	#modal_form{ :title => 'Add an Objective' }
-		= form_for Objective.new do |f|
-			= f.label 'Create an Objective:'
-			= f.text_field :name
-			= f.text_area :description, :class => 'tiny_area'
-			%br
-			= f.submit 'Add'
 
 %br.clear
 %br

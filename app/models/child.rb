@@ -35,7 +35,7 @@
 
 class Child < User
 	
-	after_create	:setup_wishlist_and_journal
+	after_create	:setup_defaults
 
 	does_activities
 	
@@ -44,10 +44,11 @@ class Child < User
 	
 	private
 	
-	def setup_wishlist_and_journal
+	def setup_defaults
 		# Only doing this as a shitty hack because kids need default
 		self.journals.create :name => 'Default'
 		self.wishlists.create :name => 'Default'
+		self.objective_assignments.create :objective_id => 1
 	end
 	
 end

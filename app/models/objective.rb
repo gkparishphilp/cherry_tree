@@ -17,6 +17,4 @@ class Objective < ActiveRecord::Base
 	belongs_to	:creator, :polymorphic => true
 	has_many	:objective_assignments
 	has_many	:users, :through => :objective_assignments
-	
-	accepts_nested_attributes_for	:objective_assignments
 end

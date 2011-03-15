@@ -6,9 +6,8 @@
 
 %br
 = render @children
+.child
+	.register_child_button
+		= link_to 'Register Child', new_child_path, :class => 'green_button'
 %br.clear
-%br
-
-= link_to 'Register Child', new_child_path, :class => 'green_button'
-%br
 

@@ -3,7 +3,11 @@ class ObjectiveAssignmentsController < ApplicationController
 	
 	
 	def create
+		@objective = @current_user.created_objectives.create( :name => params[:objective_assignment][:objective_name], 
+							:description => params[:objective_assignment][:objective_description] )
+		@objective.update_attributes( :creator_type => 'User', :objective_type => 'Misc' )
 		@assignment = @current_user.created_assignments.new( params[:objective_assignment] )
+		@assignment.objective = @objective
 		@assignment.user = @child
 		@assignment.period ||= 'week'
 		if @assignment.save
@@ -21,7 +25,8 @@ class ObjectiveAssignmentsController < ApplicationController
 			render :index_child
 		else
 			@assignments = @child.objective_assignments.available
-			@new_assignemnt = @child.objective_assignments.new
+			@new_assignment = ObjectiveAssignment.new
+			@new_assignment.req_confirm = true
 			
 			@this_week = Time.now.end_of_week
 			@last_week = @this_week - 7.days

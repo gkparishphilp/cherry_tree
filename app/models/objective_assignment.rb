@@ -27,6 +27,8 @@ class ObjectiveAssignment < ActiveRecord::Base
 	has_many	:checkins
 	has_many	:approvals
 	
+	attr_accessor	:objective_name, :objective_description # so we can create objectives from the objective_assignment screen
+	
 	scope :available, where("status <> 'deleted'")
 	scope :active, where("status = 'active'")
 

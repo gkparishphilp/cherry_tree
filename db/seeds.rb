@@ -1,6 +1,8 @@
 
 s = Site.create :name => 'Cherry Tree'
 
+o = Objective.create :name => 'Be Good'
+
 puts "Setup Default Anonymous User"
 
 anon = User.new :name => 'Anonymous'
@@ -41,13 +43,13 @@ u2.make_admin( s )
 o1 = Objective.create :name => 'Clean room', :objective_type => 'Chores', :creator_type =>'User', :creator_id => 2, :description => 'Pick up your toys'
 o2 = Objective.create :name => 'Practice Guitar', :objective_type => 'Misc', :creator_type =>'User', :creator_id => 2, :description => 'Appregiate and Scalify'
 o3 = Objective.create :name => 'Mow Lawn',  :objective_type => 'Chores', :creator_type =>'User', :creator_id => 2, :description => "Don't forget to sweep up"
-o3 = Objective.create :name => 'Take out Trash',  :objective_type => 'Chores', :creator_type =>'User', :creator_id => 2, :description => "Take it out before it overflows"
+o4 = Objective.create :name => 'Take out Trash',  :objective_type => 'Chores', :creator_type =>'User', :creator_id => 2, :description => "Take it out before it overflows"
 
 
-a1 = ObjectiveAssignment.create :user_id => 6, :objective_id => 1, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 5
-a2 = ObjectiveAssignment.create :user_id => 6, :objective_id => 2, :creator_id => 5, :times => 5, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 10
-a3 = ObjectiveAssignment.create :user_id => 6, :objective_id => 3, :creator_id => 5, :times => 1, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 20
-a4 = ObjectiveAssignment.create :user_id => 6, :objective_id => 4, :creator_id => 5, :times => 7, :period => 'week', :req_checkin => 1, :req_confirm => 0, :point_value => 100
+a1 = ObjectiveAssignment.create :user_id => 6, :objective => o1, :creator_id => 5, :times => 3, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 5
+a2 = ObjectiveAssignment.create :user_id => 6, :objective => o2, :creator_id => 5, :times => 5, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 10
+a3 = ObjectiveAssignment.create :user_id => 6, :objective => o3, :creator_id => 5, :times => 1, :period => 'week', :req_checkin => 1, :req_confirm => 1, :point_value => 20
+a4 = ObjectiveAssignment.create :user_id => 6, :objective => o4, :creator_id => 5, :times => 7, :period => 'week', :req_checkin => 1, :req_confirm => 0, :point_value => 100
  
 # some unlockables
 

@@ -6,11 +6,13 @@
 	girl
 	%br
 
-	%span.gender
-		&nbsp;
-	name is
+	%label
+		%span.gender
+			&nbsp;
+		name is
 	= f.text_field :display_name
 	
+	%br
 	Upload a Picture for
 	%span.name
 		&nbsp;
@@ -46,11 +48,6 @@
 		&nbsp;
 	= f.text_field :password
 
-	= f.label "Welcome Message:"
-	= f.text_area :welcome_message, :class => 'small_area'
-
-	= f.label 'Favorite Books:'
-	= f.text_field :favorite_book_list
 
 	%br
 	= f.submit "Add", :class => 'button'
