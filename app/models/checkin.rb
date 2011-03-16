@@ -19,9 +19,11 @@ class Checkin < ActiveRecord::Base
 	belongs_to	:objective_assignment
 		
 	scope :update, where( "objective_assignment_id is null" )
-	scope :green, where("status = 'green'")
-	scope :yellow, where("status = 'yellow'")
-	scope :red, where("status = 'red'")
+	
+	scope :good, where("status = 'good'")
+	scope :ok, where("status = 'ok'")
+	scope :bad, where("status = 'bad'")
+	
 	scope :dated_between, lambda { |*args| 
 		where( "checkins.created_at between ? and ?", args.first, args.second ) 
 	}
@@ -29,14 +31,24 @@ class Checkin < ActiveRecord::Base
 		where( "checkins.user_id = ?", child.id )
 	}
 	
+	def multiplier
+		case self.status
+			when 'good'
+				return 1.0
+			when 'ok'
+				return 0.5
+			when 'bad'
+				return 0.0
+		end
+	end
 		
 	def expanded_status
 		case self.status
-			when 'red'
+			when 'bad'
 				phrase = 'needs to work on'
-			when 'yellow'
-				phrase = 'did a good job'
-			when 'green'
+			when 'ok'
+				phrase = 'did an OK job'
+			when 'good'
 				phrase = 'did a great job'
 		end
 		return phrase
@@ -59,31 +71,23 @@ class Checkin < ActiveRecord::Base
 	end
 	
 	def get_banner_message
-		if self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).green.count > self.objective_assignment.times
+		if self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).count > self.objective_assignment.times
 			pop_msg = "Way to overachieve!  You've exceeded your goal of #{self.objective_assigment.times} green checkins for #{self.objective_assignment.objective.name}"
-		elsif self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).green.count == self.objective_assignment.times
+		elsif self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).count == self.objective_assignment.times
 			pop_msg = "Congratulations! You've reached your goal of #{self.objective_assignment.times} checkins for #{self.objective_assignment.objective.name}"
-		elsif self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).green.count == (self.objective_assignment.times - 1) && self.objective_assignment.times != 1
+		elsif self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).count == (self.objective_assignment.times - 1) && self.objective_assignment.times != 1
 			pop_msg = "Almost there!  Only one more to go!"
 		else
-			pop_msg = "Awesome!  You have #{self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).green.count} green checkins so far this #{self.objective_assignment.period}.  Keep it up!"
+			pop_msg = "Awesome!  You have #{self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).count} green checkins so far this #{self.objective_assignment.period}.  Keep it up!"
 		end
 		
 		return pop_msg
 	end
 	
 	def award_points
-		case self.status
-			when 'green'
-				multiplier = 1.0
-			when 'yellow'
-				multiplier = 0.5
-			when 'red'
-				multiplier = 0.0
-		end
 		#award points for checkins that don't need confirmation
 		if self.objective_assignment.present? && self.objective_assignment.req_confirm == false
-			self.user.earn_points_for( self.objective_assignment, self.objective_assignment.point_value / self.objective_assignment.times * multiplier)
+			self.user.earn_points_for( self.objective_assignment, self.objective_assignment.point_value / self.objective_assignment.times * self.multiplier)
 		end	
 
 	end

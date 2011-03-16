@@ -22,8 +22,14 @@
 			-# if @assignment.checkin_in_last?( 1.day.ago )
 			-#	You did this today!
 			-# else
-			=render :partial => 'checkins/form' 
+			= render 'checkins/form' 
 			%br
+	.title_bar
+		.data
+			.name Anything else?
+		.clear
+	= render 'checkins/form'
+		
 #home_prizes
 	%h3 Your Prizes
 	- for assignment in @current_user.award_assignments

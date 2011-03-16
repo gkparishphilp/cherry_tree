@@ -1,10 +1,10 @@
 %div[objective_assignment]
 	.title_bar
 		.data
-			.name= objective_assignment.objective.name
+			.name= link_to objective_assignment.objective.name, child_objective_assignment_path( @child, objective_assignment )
 			.info
-				= objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).green.count
-				green out of
+				= objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).count
+				checkins out of
 				= objective_assignment.times
 				this week.
 				
@@ -12,11 +12,12 @@
 				= objective_assignment.point_value
 				Points
 		.actions
-			=link_to "Turn On", enable_child_objective_assignment_path( @child, objective_assignment ) if objective_assignment.status == 'inactive'
-		 
-			= link_to "Turn Off", disable_child_objective_assignment_path( @child, objective_assignment ) if objective_assignment.status == 'active'
-			|
-			= link_to "Trash", discard_child_objective_assignment_path( @child, objective_assignment )
+			- if objective_assignment.is_active?
+				= button_to "Turn Off", child_objective_assignment_path( @child, objective_assignment, :status => 'deleted' ), :method => :put
+			- else
+				= button_to "Turn On", child_objective_assignment_path( @child, objective_assignment, :status => 'active' ), :method => :put
+
+			= button_to "Trash", child_objective_assignment_path( @child, objective_assignment, :status => 'deleted' ), :method => :put
 		.clear
 
 	- if objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).empty?
@@ -24,25 +25,10 @@
 			No Checkins This Week!
 	-else
 		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
-			%div[checkin]			
-				= checkin.status
-				= checkin.content
-				= checkin.user.display_name
-				%span.date
-					on
-					= format_date( checkin.created_at )
-				%br
-				%br
-		- unless objective_assignment.approved_for_week(week)
-			= form_for Approval.new do |f|
-				= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
-				= f.hidden_field :week_ending, :value => week.end_of_week
-				Red
-				= f.radio_button :status, "red", :id => "status"
-				Yellow
-				= f.radio_button :status, "yellow", :id => "status"
-				Green
-				= f.radio_button :status, "green", :id => "status"
-				= f.submit 'Save'
+			= render checkin
+
+	- unless objective_assignment.approved_for_week( week )
+		= form_for Approval.new do |f|
+			= render 'approvals/form', :f => f, :objective_assignment => objective_assignment, :week => week
 
 

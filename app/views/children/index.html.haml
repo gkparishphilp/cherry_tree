@@ -5,8 +5,13 @@
 = render 'users/nav'
 
 %br
+
+- if @current_user.children.empty?
+	Just click on the 'Register Child' button to get started!
+
 = render @children
 .child
+	Add a child.  He or She will be able to log in with the username and password you assign.
 	.register_child_button
 		= link_to 'Register Child', new_child_path, :class => 'green_button'
 %br.clear

@@ -30,9 +30,7 @@ CherryTree::Application.routes.draw do
 		get 'home', :on => :collection
 		get 'profile', :on => :member
 		resources :objective_assignments do
-			get 'enable', :on  => :member
-			get 'disable', :on  => :member
-			get 'discard', :on  => :member
+			resources :comments
 		end
 		resources :award_assignments
 		resources :journal_entries do

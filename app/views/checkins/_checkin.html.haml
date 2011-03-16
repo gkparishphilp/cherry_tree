@@ -1,0 +1,7 @@
+%div[checkin]			
+	= checkin.status
+	= checkin.content
+	= checkin.user.display_name
+	%span.date
+		on
+		= format_date( checkin.created_at )

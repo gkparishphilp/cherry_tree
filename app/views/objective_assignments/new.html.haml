@@ -4,10 +4,22 @@
 	Children
 = render 'users/nav'
 
-%br
-.child_profile
-	= render 'children/child_sub_nav', :child => @child
-	
+%h3 
+	Add a Child Step 2: Create an objective for
+	= @child.display_name
 
-%br.clear
-%br
+Objectives can be anything you'd like 
+= @child.display_name.capitalize
+to work on or be mindful of.
+= @child.display_name.capitalize
+will be able to check in on 
+= @child.possessive_gender
+objectives and earn points for them.  You can choose how many points to award per week, and whether to award the points only when you approve (by checking the Parental Approval Required? box) or award the points automatically whenever
+= @child.display_name
+checks in.
+
+%hr
+
+= form_for [ @child, @new_assignment ] do |f|
+	= hidden_field_tag :first, :true
+	= render 'form', :f => f

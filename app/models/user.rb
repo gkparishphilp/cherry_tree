@@ -277,6 +277,11 @@ class User < ActiveRecord::Base
 		self.hashed_password = User.encrypted_password(self.password, self.salt)
 	end
 	
+	def possessive_gender
+		return 'their' if self.gender.blank?
+		self.gender == 'male' ? 'his' : 'her'
+	end
+	
 	def registered?
 		self.hashed_password.present?
 	end

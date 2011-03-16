@@ -8,7 +8,7 @@ class CheckinsController < ApplicationController
 		@checkin = Checkin.new( params[:checkin] )
 
 		if @checkin.save
-			@checkin.user.do_activity( "#{@checkin.expanded_status} '#{@checkin.objective_assignment.objective.name}'", @checkin.objective_assignment )
+			@checkin.user.do_activity( "#{@checkin.expanded_status} '#{@checkin.objective_assignment.third_person_gerund}'", @checkin.objective_assignment )
 			@checkin.award_points
 			@checkin.user.save
 

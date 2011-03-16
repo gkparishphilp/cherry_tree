@@ -1,0 +1,23 @@
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%br
+.child_profile
+
+	= render 'children/child_sub_nav', :child => @child
+	
+	%h2
+		= possessize @child.display_name
+		Objective:
+		= @assignment.objective.name
+	Began on:
+	= format_date_only @assignment.checkins.first.created_at
+	%br
+	Has checked in
+	= pluralize @assignment.checkins.count, 'time'
+	so far.
+	
+	= render @assignment.checkins
+

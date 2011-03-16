@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 			
 			login( @user )
 
-			redirect_to home_path
+			redirect_to children_path
 
 		else
 			pop_flash 'Ooops, User not saved.... ', :error, @user

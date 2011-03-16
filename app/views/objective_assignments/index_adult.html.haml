@@ -9,7 +9,7 @@
 .child_profile
 	= render 'children/child_sub_nav', :child => @child
 	%h2
-		= @child.display_name
+		= possessize @child.display_name
 		Objectives
 		
 	.stuff
@@ -41,26 +41,7 @@
 			= @child.display_name
 	
 		= form_for [ @child, @new_assignment ] do |f|
-			= f.label 'Objective:'
-			= f.text_field :objective_name
-			= f.label 'Description (optional):'
-			= f.text_area :objective_description, :class => 'tiny_area'
-			%br
-			How many times per week should
-			= @child.display_name
-			checkin for this objective?
-			%br
-			= f.text_field :times
-			%br
-			Points Per Week:
-			%br
-			= f.text_field :point_value
-			%br
-			Parental Approval Required?
-			= f.check_box :req_confirm, :checked => @new_assignment.req_confirm
-			%br
-			= f.submit
-
+			= render 'form', :f => f
 
 %br.clear
 %br

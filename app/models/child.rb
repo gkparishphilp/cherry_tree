@@ -48,7 +48,6 @@ class Child < User
 		# Only doing this as a shitty hack because kids need default
 		self.journals.create :name => 'Default'
 		self.wishlists.create :name => 'Default'
-		self.objective_assignments.create :objective_id => 1
 	end
 	
 end

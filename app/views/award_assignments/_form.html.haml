@@ -1,5 +1,10 @@
-= f.label 'Pick an Award:'
-= f.select :award_id, @awards
+= f.label 'Award:'
+= f.text_field :award_name
+%br
+= check_box_tag :amazon
+Search Amazon
+= f.label 'Description (optional)'
+= f.text_area :award_description, :class => 'tiny_area'
 
 = f.label 'Cost:'
 = f.text_field :point_cost

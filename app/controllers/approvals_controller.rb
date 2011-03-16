@@ -8,11 +8,11 @@ class ApprovalsController < ApplicationController
 		@approval.creator = @current_user
 
 		case @approval.status
-			when 'green'
+			when 'good'
 				multiplier = 1.0
-			when 'yellow'
+			when 'ok'
 				multiplier = 0.5
-			when 'red'
+			when 'bad'
 				multiplier = 0.0
 		end
 				

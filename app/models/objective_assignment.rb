@@ -27,17 +27,19 @@ class ObjectiveAssignment < ActiveRecord::Base
 	has_many	:checkins
 	has_many	:approvals
 	
+	has_many	:comments, :as => :commentable
+	
 	attr_accessor	:objective_name, :objective_description # so we can create objectives from the objective_assignment screen
 	
 	scope :available, where("status <> 'deleted'")
 	scope :active, where("status = 'active'")
+	
+	def is_active?
+		self.status == 'active'
+	end
 
 	def checkin_in_last?( period = 1.day.ago)
-		if self.checkins.dated_between(period, Time.now).present?
-			return true
-		else
-			return false
-		end
+		return  self.checkins.dated_between( period, Time.now ).present?
 	end
 	
 	def earned_for_period
@@ -68,8 +70,19 @@ class ObjectiveAssignment < ActiveRecord::Base
 		end
 	end
 	
-	def approved_for_week(week)
-		self.approvals.for_week(week).count > 0 ? true : false
+	def approved_for_week( week )
+		self.approvals.for_week( week ).count > 0 ? true : false
+	end
+	
+	def third_person_gerund
+		msg = self.objective.name.gsub( /your/, self.user.possessive_gender )
+		first_word = msg.match( /\A\w+/ ).to_s
+		
+		first_word.chop! if first_word.last == 'e'
+		first_word += 'ing'
+		
+		return msg.gsub( /\A\w+/, first_word )
+		
 	end
 	
 end

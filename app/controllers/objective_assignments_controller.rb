@@ -13,10 +13,15 @@ class ObjectiveAssignmentsController < ApplicationController
 		if @assignment.save
 			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment.objective
 			pop_flash "Assignment Made"
+			if params[:first]
+				redirect_to new_child_award_assignment_path( @child )
+			else
+				redirect_to child_objective_assignments_path( @child )
+			end
 		else
 			pop_flash "There was a problem with the assignment", :error, @assignment
+			redirect_to :back
 		end
-		redirect_to child_objective_assignments_path( @child )
 	end
 	
 	def index
@@ -35,30 +40,23 @@ class ObjectiveAssignmentsController < ApplicationController
 		end
 	end
 	
+	def show
+		@assignment = ObjectiveAssignment.find( params[:id] )
+	end
+	
 	def new
-		@assignment = ObjectiveAssignment.new
-		@assignment.req_confirm = true
-		
-		@objectives = Objective.all
+		@new_assignment = ObjectiveAssignment.new
+		@new_assignment.req_confirm = true
 	end
-
-	def enable
-		@assignment = ObjectiveAssignment.find params[:id]
-		@assignment.update_attributes :status => 'active'
+	
+	def update
+		@assignment = ObjectiveAssignment.find( params[:id] )
+		@assignment.update_attributes( :status => params[:status] )
 		redirect_to :back
 	end
 	
-	def disable
-		@assignment = ObjectiveAssignment.find params[:id]
-		@assignment.update_attributes :status => 'inactive'
-		redirect_to :back
-	end
 	
-	def discard
-		@assignment = ObjectiveAssignment.find params[:id]
-		@assignment.update_attributes :status => 'deleted'
-		redirect_to :back
-	end
+	
 	
 	private
 	

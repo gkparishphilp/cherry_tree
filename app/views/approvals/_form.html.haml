@@ -1,0 +1,13 @@
+= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
+= f.hidden_field :week_ending, :value => week.end_of_week
+How did
+= @child.display_name
+do this week?
+= f.radio_button :status, "bad", :id => "status"
+Needs Improvement
+= f.radio_button :status, "ok", :id => "status"
+OK
+= f.radio_button :status, "good", :id => "status"
+Great!
+
+= f.submit 'Save'
