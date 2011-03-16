@@ -1,24 +1,8 @@
-%h1 
-	= @search_index
-	results for
-	= @search_term
 
-- @response.items.each do |item|
-	.amzn_item
-		.amzn_thumb
-			= image_tag( item.get( 'mediumimage/url' ), :width => 64 ) if item.get( 'mediumimage/url' ).present?
-		.amzn_data
-			.amzn_title
-				= link_to item.get("title"), item.get('url')
-				(
-				= item.get('formattedprice')
-				)
-			.amzn_desc
-				= item.get('editorialreview/content').html_safe if item.get('editorialreview/content').present?
-		.amzn_confirm
-			= form_for Award.new do |f|
-				= f.hidden_field :asin, :value => item.get('asin')
-				= f.hidden_field :search_index, :value => @search_index
-				= f.submit "Yeah, Add it!"
+	.amzn_confirm
+		= form_for Award.new do |f|
+			= f.hidden_field :asin, :value => item.get('asin')
+			= f.hidden_field :search_index, :value => @search_index
+			= f.submit "Yeah, Add it!"
 	.clear
 	%hr

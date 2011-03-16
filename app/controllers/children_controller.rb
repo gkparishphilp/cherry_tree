@@ -8,6 +8,10 @@ class ChildrenController < ApplicationController
 		render 'sessions/new'
 	end
 	
+	def complete
+		@child = Child.find( params[:id] )
+	end
+	
 	def home
 		@activities = Activity.feed @current_user
 	end

@@ -1,24 +1,27 @@
 class AwardAssignmentsController < ApplicationController
 	before_filter :get_child
 	
+	def amzn
+		@term = params[:term]
+		@index = params[:index]
+		@response = Amazon::Ecs.item_search( @term,  :response_group => "Medium", :search_index => @index )
+	end
 	
 	def create
-		
-		if params[:amazon]
-			redirect_to amazon_path( :search_term => params[:award_assignment][:award_name] )
-			return false
-		end
-		
-		@award = @current_user.created_awards.create( :name => params[:award_assignment][:award_name], 
+		if params[:award_assignment][:asin]
+			@award = Award.create_from_amazon( params[:award_assignment] )
+		else
+			@award = Award.create( :name => params[:award_assignment][:award_name], 
 									:description => params[:award_assignment][:award_description])
-		@award.update_attributes( :creator_type => 'User' )
+		end
+		@award.update_attributes( :creator_id => @current_user.id, :creator_type => 'User' )
 		@assignment = @current_user.created_award_assignments.new( params[:award_assignment] )
 		@assignment.award = @award
 		@assignment.user = @child
 		if @assignment.save
 			pop_flash "Assignment Made"
 			if params[:first]
-				redirect_to new_child_award_assignment_path( @child )
+				redirect_to complete_child_path( @child )
 			else
 				redirect_to child_award_assignments_path( @child )
 			end
@@ -39,7 +42,7 @@ class AwardAssignmentsController < ApplicationController
 	end
 	
 	def new
-		@assignment = AwardAssignment.new
+		@new_assignment = AwardAssignment.new
 	end
 	
 	private

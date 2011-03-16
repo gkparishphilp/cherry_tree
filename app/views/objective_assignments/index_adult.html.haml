@@ -13,7 +13,7 @@
 		Objectives
 		
 	.stuff
-		= link_to "Assign New Objective", "#", :id => 'open_modal'
+		= link_to "Assign New Objective", "#", :class => 'open_modal', :id => 'objective'
 		
 	.tabs
 		%ul
@@ -35,7 +35,7 @@
 			)
 			= render @assignments, :week => @last_week
 			
-	#modal_form
+	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2
 			New Objective for
 			= @child.display_name

@@ -1,0 +1,23 @@
+%h1
+	= possessize @current_user.name
+	Children
+= render 'users/nav'
+
+%h3 
+	Add a Child Step 3: Create a Reward for
+	= @child.display_name
+
+Rewards are incentives that you enter for your children to work towards.  As they earn points, they may decide to spend their points to unlock the rewards you provide. There are two kinds of rewards: Coupons and Amazon prizes.  Coupons are the easiest and most flexible way to motivate your children.  They can be for anything you like (e.g. an hour of free time, a trip to a favorite park or restaurant, an item from the store, etc.).  When 
+= @child.display_name.capitalize
+decides to unlock a coupon, they can print it out and redeem it with you.  Let's go ahead and create a coupon for
+= @child.display_name.capitalize
+now:
+
+%hr
+
+= form_for [ @child, @new_assignment ] do |f|
+	= hidden_field_tag :first, :true
+	= render 'coupon_form', :f => f
+
+%br.clear
+%br

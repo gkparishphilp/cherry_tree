@@ -40,7 +40,7 @@ class Award < ActiveRecord::Base
 	end
 	
 	def self.create_from_amazon( award )
-		result = Amazon::Ecs.item_search( award[:asin], :response_group => 'Medium', :search_index => award[:search_index] ).items.first
+		result = Amazon::Ecs.item_search( award[:asin], :response_group => 'Medium', :search_index => award[:index] ).items.first
 		if result.nil?
 			return "didn't find product for asin #{asin}"
 		end

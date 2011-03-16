@@ -78,12 +78,6 @@ class AwardsController < ApplicationController
 		redirect_to :back
 	end
 	
-	def search_amazon	
-		@search_term = params[:search_term]
-		@search_index = params[:search_index]
-		@response = Amazon::Ecs.item_search( @search_term,  :response_group => "Medium", :search_index => @search_index )
-
-		
-	end
+	
 		
 end

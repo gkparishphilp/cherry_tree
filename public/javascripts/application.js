@@ -100,10 +100,10 @@ $(document).ready(function(){
 	//});
 	
 	
-	$('#modal_form').dialog({ autoOpen: false, modal: true, width: 500 });
+	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
 	
-	$('#open_modal').click( function(){
-		$('#modal_form').dialog('open');
+	$('.open_modal').click( function(){
+		$( "#new_" + $(this).attr('id') ).dialog('open');
 		return false;
 	});
 	

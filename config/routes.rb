@@ -29,10 +29,13 @@ CherryTree::Application.routes.draw do
 		get 'login', :on => :collection
 		get 'home', :on => :collection
 		get 'profile', :on => :member
+		get 'complete', :on => :member
 		resources :objective_assignments do
 			resources :comments
 		end
-		resources :award_assignments
+		resources :award_assignments do
+			post 'amzn', :on => :collection
+		end
 		resources :journal_entries do
 			resources :comments
 			get 'customize', :on => :member
@@ -128,7 +131,7 @@ CherryTree::Application.routes.draw do
 	match '/reset' => 'users#reset_password', :as => 'reset'
 	match '/activate/:token' => 'users#activate', :as => 'activate'
 	match '/resend' => 'users#resend', :as => 'resend'
-	match '/amazon' => 'awards#search_amazon', :as => 'amazon'
+	match '/amazon/(:index/(:term))' => 'amazon#search', :as => 'amazon'
 	match "/:permalink", :to => 'static_pages#show'
 	
 	

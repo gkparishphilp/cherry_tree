@@ -1,0 +1,9 @@
+%h1 
+	= @response.items.count
+	results in
+	= @index
+	for
+	= "'#{@term}'"
+
+- for item in @response.items
+	= render 'amzn_item', :item => item

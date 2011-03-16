@@ -75,7 +75,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	end
 	
 	def third_person_gerund
-		msg = self.objective.name.gsub( /your/, self.user.possessive_gender )
+		msg = self.objective.name.gsub( /your/, self.user.pronoun_gender_possessive )
 		first_word = msg.match( /\A\w+/ ).to_s
 		
 		first_word.chop! if first_word.last == 'e'

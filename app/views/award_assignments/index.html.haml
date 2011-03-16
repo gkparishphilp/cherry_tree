@@ -14,28 +14,28 @@
 		= possessize @child.display_name
 		Awards
 		
-	= link_to 'Create a New Reward', "#", :id => 'open_modal'
+	= link_to 'Create a New Coupon', "#", :class => 'open_modal', :id => 'coupon'
+	= link_to 'Create a New Amzn Prize', "#", :class => 'open_modal', :id => 'amzn'
 		
 	= render @child.award_assignments
 	
 		
 		
 		
-	#modal_form
-		%h2
-			New Award for
-			= @child.display_name
-	
+	#new_coupon.modal{ :title => "New Coupon for #{@child.display_name}" }
 		= form_for [ @child, @new_assignment ] do |f|
-			= render 'form', :f => f
+			= render 'coupon_form', :f => f
+			
+	#new_amzn.modal{ :title => "New Amazon Reward for #{@child.display_name}" }
+		= form_tag amzn_child_award_assignments_path( @child ) do |f|
+			= render 'amzn_form', :f => f
 
-
-	
-	#wishlist_sidebar
-		%h3
-			= possessize @child.display_name
-			Wishlist
-		= render @child.wishlists.first.wishlist_items
+	- unless @child.wishlists.first.wishlist_items.empty?
+		#wishlist_sidebar
+			%h3
+				= possessize @child.display_name
+				Wishlist
+			= render @child.wishlists.first.wishlist_items
 
 %br.clear
 %br
