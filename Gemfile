@@ -17,4 +17,4 @@ gem 'sitemap_generator'
 gem 'tiny_mce'
 
 source "http://gems.github.com"
-gem 'ambethia-recaptcha', :require => "recaptcha/rails"
+gem 'recaptcha', :require => "recaptcha/rails"
