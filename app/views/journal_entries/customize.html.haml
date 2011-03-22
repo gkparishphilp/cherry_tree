@@ -23,10 +23,10 @@
 		= link_to 'Treasure Chest', awards_path
 	- for sticker_owning in @stickers
 		.sticker
-			= form_for Sticking.new do |f|
+			= form_for PageElement.new do |f|
 				= f.hidden_field :sticker_id, :value => sticker_owning.ownable.id
-				= f.hidden_field :stickable_id, :value => @entry.id
-				= f.hidden_field :stickable_type, :value => @entry.class.name
+				= f.hidden_field :page_id, :value => @entry.id
+				= f.hidden_field :page_type, :value => @entry.class.name
 				= image_submit_tag sticker_owning.ownable.avatar.location, :width => 64
 	%br.clear
 .journal_entry{ :class => @entry.css }

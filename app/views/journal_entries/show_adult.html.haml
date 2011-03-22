@@ -22,9 +22,9 @@
 			= @entry.title
 		.entry_content
 			= @entry.content.html_safe
-		- for sticking in @entry.stickings
-			%div[sticking]{ :style => "top:#{sticking.top}px; left:#{sticking.left}px;" }
-				= image_tag sticking.sticker.avatar.location, :width => sticking.width
+		- for page_element in @entry.page_elements
+			%div[page_element]{ :style => "top:#{page_element.top}px; left:#{page_element.left}px;" }
+				= image_tag page_element.sticker.avatar.location, :width => page_element.width
 
 	- unless @entry.comments.empty?
 		#comments

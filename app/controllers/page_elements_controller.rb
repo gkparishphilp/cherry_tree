@@ -1,9 +1,9 @@
-class StickingsController < ApplicationController
+class PageElementsController < ApplicationController
 	
 	def create
-		@stickable = eval "#{params[:sticking][:stickable_type]}.find( #{params[:sticking][:stickable_id]} )"
-		@sticker = Sticker.find( params[:sticking][:sticker_id] )
-		@sticking = @stickable.stickings.create :sticker => @sticker
+		@page = eval "#{params[:page_element][:page_type]}.find( #{params[:page_element][:page_id]} )"
+		@sticker = Sticker.find( params[:page_element][:sticker_id] )
+		@sticking = @page.page_elements.create :sticker => @sticker
 		pop_flash "Sticker Added"
 		
 		redirect_to :back

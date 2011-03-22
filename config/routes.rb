@@ -99,7 +99,7 @@ CherryTree::Application.routes.draw do
 		get 'admin', :on => :collection
 	end
 	
-	resources :stickings do
+	resources :page_elements do
 		get 'update_pos', :on => :member
 		get 'update_width', :on => :member
 	end
