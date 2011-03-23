@@ -5,24 +5,4 @@
 
 .form_group	
 	= form_tag invitations_path do
-		Name:
-		%br
-		= text_field_tag :name
-		%br 
-		Nickname:
-		%br
-		= text_field_tag :nickname
-		%br
-		Email:
-		%br
-		= text_field_tag :email
-		%br
-		Child:
-		%br
-		= select_tag :child_id, options_for_select( @children )
-		%br
-		Relationship
-		%br
-		= select_tag :role,  options_for_select([ ['Father', 'father'], ['Mother', 'mother'], ['Grandmother', 'grandmother'], ['Grandfather', 'grandfather'], ['Uncle', 'uncle'], ['Aunt', 'aunt'], ['Relative', 'relative'], ])
-
-		%p= submit_tag "Invite"
+		

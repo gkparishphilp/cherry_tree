@@ -1,25 +1,33 @@
 class InvitationsController < ApplicationController
 	
+	before_filter :get_child
+	
 	def new
 		@invitation = Invitation.new
 	end
-
-	def index
-		@children = @current_user.children.map {|child| [child.name, child.id]}
-	end
 	
 	def create	
+		@invitation = Invitation.new( params[:invitation] )
 		
-		@invitation = Invitation.new params[:invitation]
-		# Create a user entry and relationship
-		if @invitee = User.find_or_initialize_by_email( :email => @invitation.email) and @invitation.setup( @current_user, @invitee)
-				@invitee.relate_to(@invitation.invited_to, :as => @invitation.role, :nickname => @invitation.nickname)
-				UserMailer.send_invitation_for_child( @invitation ).deliver
-				@invitation.save
-				pop_flash "Invitation sent"			
-				
+		@invitation.creator = @current_user
+		@invitation.child = @child
+		invitee = User.find_by_email( :email => @invitation.email )
+		if invitee.nil?
+			invitee = User.new( :email => @invitation.email, :display_name => @invitation.name )
+			unless invitee.save
+				pop_flash "There was a problem with your invitation", :error, invitee
+				redirect_to :back
+				return false
+			end
+		end
+
+		@invitation.user = invitee
+		
+		if @invitation.save
+		#	UserMailer.send_invitation_for_child( @invitation ).deliver
+			pop_flash "Invitation Sent!"
 		else
-			pop_flash "Could not send invitation", :error, @invitee
+			pop_flash "Could not send invitation", :error, @invitation
 		end
 		
 		redirect_to :back
@@ -27,6 +35,7 @@ class InvitationsController < ApplicationController
 	
 	def accept_invite
 		@invitation = Invitation.find_by_code params[:code]
+		@invitation.user.relate_to( @invitation.child, :as => @invitation.role, :nickname => @invitation.nickname )
 		if @invitation.user.registered?
 			redirect_to login_path( :credential => @invitation.user.email )
 		else
@@ -35,7 +44,11 @@ class InvitationsController < ApplicationController
 		
 	end
 
-
+	private
+	
+	def get_child
+		@child = Child.find( params[:child_id] )
+	end
 	
 	
 end

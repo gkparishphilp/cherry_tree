@@ -40,6 +40,7 @@ CherryTree::Application.routes.draw do
 			resources :comments
 			get 'customize', :on => :member
 		end
+		resources :invitations
 	end
 
 	resources :contacts do
