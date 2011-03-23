@@ -8,7 +8,10 @@
 #  user_id    :integer(4)
 #  child_id   :integer(4)
 #  code       :string(255)
+#  role       :string(255)
+#  nickname   :string(255)
 #  message    :string(255)
+#  status     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
 #

@@ -1,12 +1,4 @@
 = form_for Checkin.new do |f|
-	= f.hidden_field :objective_assignment_id, :value => @assignment.id
-	= f.hidden_field :user_id, :value => @current_user.id
-	= image_tag 'red_light.jpg', :width => 20
-	= f.radio_button :status, "bad", :id => "status"
-	= image_tag 'yellow_light.jpg', :width => 20
-	= f.radio_button :status, "ok", :id => "status"
-	= image_tag 'green_light.jpg', :width => 20
-	= f.radio_button :status, "good", :id => "status"
 	= f.text_field :content
-	= f.submit "Check In!"
+	= f.submit "Did It!"
 	

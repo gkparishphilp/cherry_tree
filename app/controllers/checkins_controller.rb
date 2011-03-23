@@ -5,15 +5,15 @@ class CheckinsController < ApplicationController
 	end
 	
 	def create
-		@checkin = Checkin.new( params[:checkin] )
+		@checkin = @current_user.checkins.new( params[:checkin] )
 
 		if @checkin.save
-			@checkin.user.do_activity( "#{@checkin.expanded_status} '#{@checkin.objective_assignment.third_person_gerund}'", @checkin.objective_assignment )
+			@checkin.user.do_activity( "#{@checkin.expanded_status} ", @checkin )
 			@checkin.award_points
 			@checkin.user.save
 
-			pop_msg = @checkin.get_banner_message
-			pop_flash pop_msg
+			#pop_msg = @checkin.get_banner_message
+			#pop_flash pop_msg
 
 		else
         	pop_flash "Checkin could not be created.", :error, @checkin

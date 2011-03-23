@@ -30,6 +30,10 @@ class SessionsController < ApplicationController
 		@user.email = params[:email]
 	end
 	
+	def register_invitee
+		@user = User.find( params[:id] )
+	end
+	
 	def destroy
 		if @current_user
 			user = User.find_by_id @current_user.id

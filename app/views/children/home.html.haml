@@ -3,17 +3,17 @@
 
 #home_objectives
 	%h3 Your Objectives
-	- for @assignment in @current_user.objective_assignments.active
+	- for assignment in @current_user.objective_assignments.active
 		.title_bar
 			.data
-				.name= @assignment.objective.name
+				.name= assignment.objective.name
 				.info
 					Do this
-					= @assignment.times
+					= assignment.times
 					times per
-					= @assignment.period
+					= assignment.period
 					for
-					= @assignment.point_value
+					= assignment.point_value
 					points.
 			.clear
 		.clear
@@ -22,7 +22,11 @@
 			-# if @assignment.checkin_in_last?( 1.day.ago )
 			-#	You did this today!
 			-# else
-			= render 'checkins/form' 
+			= form_for Checkin.new do |f|
+				= f.hidden_field :objective_assignment_id, :value => assignment.id
+				= f.hidden_field :user_id, :value => @current_user.id
+				= f.text_field :content
+				= f.submit "Did It!"
 			%br
 	.title_bar
 		.data
@@ -53,21 +57,11 @@
 		= link_to image_tag( 'treasure_chest.png', :width => 64 ), awards_path
 		%br
 		= link_to 'Go to Treasure Chest', awards_path
-%br.clear
 #home_news
 	%h3
 		News
 	.activity
 		= render @activities
-#home_notes
-	%h3 Your Notes
-	- for note in @current_user.note_deliveries.published.unread.order( "created_at desc" ).collect { |deliv| deliv.note }
-		From
-		%b= "#{note.sender.nickname( @current_user )}: "
-		= link_to note.subject, note
-#home_journal
-	%h3 Your Journal
-	- for entry in @current_user.journals.first.journal_entries
-		.entry
-			= link_to entry.title, edit_child_journal_entry_path( @current_user, entry )
+
+
 

@@ -8,6 +8,7 @@ class Invitations < ActiveRecord::Migration
 			t.string		:role
 			t.string		:nickname
 			t.string		:message
+			t.string		:status
 			t.timestamps
 		end
 		

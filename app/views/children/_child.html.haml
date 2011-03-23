@@ -1,5 +1,5 @@
 %div[child]
-	= render 'child_sub_nav', :child => child
+	= render "child_#{as}_nav", :child => child
 	.timeline
 		- for activity in Activity.feed( child )
 			= render activity

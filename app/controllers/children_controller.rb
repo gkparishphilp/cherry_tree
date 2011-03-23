@@ -18,6 +18,7 @@ class ChildrenController < ApplicationController
 	
 	def index
 		@children = @current_user.children
+		@supported_children = @current_user.supported_children
 	end
 	
 	def edit

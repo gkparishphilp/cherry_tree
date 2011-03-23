@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 		else
 			@activities = Activity.feed @current_user, @current_user.children, @current_user.supported_children
 		end
-		@invitation=Invitation.new
 	end
 	
 	def show
@@ -108,7 +107,7 @@ class UsersController < ApplicationController
 			pop_flash 'Oooops, User not updated...', 'error', @user
 		end
 		
-		redirect_to request.env['HTTP_REFERER']
+		redirect_to :back
 	end
 
 	def destroy

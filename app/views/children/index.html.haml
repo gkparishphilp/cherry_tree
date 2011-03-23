@@ -5,14 +5,29 @@
 = render 'users/nav'
 
 %br
+.tabs
+	%ul
+		%li= link_to 'Your Children', "#your_children"
+		%li= link_to 'Supported Children', "#supported_children"
+	#your_children
+		- if @children.empty?
+			%h3 Just click on the 'Register Child' button to get started!
+		= render @children, :as => 'parent'
+		.child
+			Add a child.  He or She will be able to log in with the username and password you assign.
+			.register_child_button
+				= link_to 'Register Child', new_child_path, :class => 'green_button'
+		%br.clear
 
-- if @current_user.children.empty?
-	Just click on the 'Register Child' button to get started!
+	#supported_children
+		= render @supported_children, :as => 'supporter'
+		%br.clear
 
-= render @children
-.child
-	Add a child.  He or She will be able to log in with the username and password you assign.
-	.register_child_button
-		= link_to 'Register Child', new_child_path, :class => 'green_button'
-%br.clear
+
+
+
+
+
+
+
 

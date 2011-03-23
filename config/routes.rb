@@ -85,6 +85,7 @@ CherryTree::Application.routes.draw do
 		collection do
 			get 'pending'
 			get 'register'
+			get 'register_invitee'
 			post 'go_facebook'
 			post 'go_site_facebook'
 			get 'ret_facebook'

@@ -5,17 +5,17 @@
 
 - if @assignments.present?
 	%h3 Your Objectives
-	- for @assignment in @assignments
-		%b= @assignment.objective.name
+	- for assignment in @assignments
+		%b= assignment.objective.name
 		%br
-		= @assignment.times
+		= assignment.times
 		times per
-		= @assignment.period
+		= assignment.period
 
-		- if @assignment.checkin_in_last?( 1.day.ago )
+		- if assignment.checkin_in_last?( 1.day.ago )
 			%br You checked in today!
 		- else
-			= render :partial => 'checkins/form'
+			= render :partial => 'checkins/form', :assignment => assignment
 				
 		%br
 		%br

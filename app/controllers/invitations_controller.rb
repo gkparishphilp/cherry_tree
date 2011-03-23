@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
 	
-	before_filter :get_child
+	before_filter :get_child, :except => :accept_invite
 	
 	def new
 		@invitation = Invitation.new
@@ -11,7 +11,7 @@ class InvitationsController < ApplicationController
 		
 		@invitation.creator = @current_user
 		@invitation.child = @child
-		invitee = User.find_by_email( :email => @invitation.email )
+		invitee = User.find_by_email( @invitation.email )
 		if invitee.nil?
 			invitee = User.new( :email => @invitation.email, :display_name => @invitation.name )
 			unless invitee.save
@@ -23,8 +23,12 @@ class InvitationsController < ApplicationController
 
 		@invitation.user = invitee
 		
+		if invitee.registered?
+			invitee.relate_to( @invitation.child, :as => @invitation.role, :nickname => @invitation.nickname )
+		end
+		
 		if @invitation.save
-		#	UserMailer.send_invitation_for_child( @invitation ).deliver
+			# UserMailer.send_invitation_for_child( @invitation ).deliver
 			pop_flash "Invitation Sent!"
 		else
 			pop_flash "Could not send invitation", :error, @invitation
@@ -34,12 +38,12 @@ class InvitationsController < ApplicationController
 	end
 	
 	def accept_invite
-		@invitation = Invitation.find_by_code params[:code]
+		@invitation = Invitation.find_by_code( params[:code] )
 		@invitation.user.relate_to( @invitation.child, :as => @invitation.role, :nickname => @invitation.nickname )
 		if @invitation.user.registered?
 			redirect_to login_path( :credential => @invitation.user.email )
 		else
-			redirect_to register_path( :email => @invitation.user.email )
+			redirect_to register_invitee_sessions_path( :id => @invitation.user.id )
 		end
 		
 	end
