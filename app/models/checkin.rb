@@ -80,7 +80,6 @@ class Checkin < ActiveRecord::Base
 		else
 			pop_msg = "Awesome!  You have #{self.objective_assignment.checkins.dated_between(Time.now.beginning_of_week, Time.now).count} green checkins so far this #{self.objective_assignment.period}.  Keep it up!"
 		end
-		
 		return pop_msg
 	end
 	
