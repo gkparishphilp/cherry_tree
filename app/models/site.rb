@@ -30,6 +30,5 @@ class Site < ActiveRecord::Base
 	has_many :contacts
 	has_many :crashes
 	
-	gets_activities
 
 end

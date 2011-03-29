@@ -130,21 +130,32 @@ $(document).ready(function(){
 		$('#sticker_drawer').toggle('slow');
 	});
 	
+	
 	$('.resizable').resizable({
-		aspectRatio: 1 / 1,
-		maxWidth: 200,
 		minWidth: 16,
+		maxWidth: 800,
+		resize: function(){
+			if( $(this).attr('id').replace( /_.*/, "" ) == 'heading' ){
+				$(this).css('fontSize', $(this).height() );
+			}
+			else if( $(this).attr('id').replace( /_.*/, "" ) == 'picture'  ){
+				$(this).children('img').attr('width', $(this).width());
+			}
+		},
 		stop: function(event, ui){
-			var id = $(this).attr('id').replace( /sticking_/, "" );
-			var width = $(this).width()
+			var id = $(this).attr('id').replace( /.*_/, "" );
+			var type = $(this).attr('id').replace( /_.*/, "" );
+			var width = $(this).width();
+			var height = $(this).height();
 			
-			var the_url = "http://localhost:3000/stickings/" + id + "/update_width?width=" + width
-			$(this).children('img').attr('width', $(this).width());
-			
+			var the_url = "http://localhost:3000/update_page/" + type + "/" + id + "?width=" + width + "&height=" + height;
+
 			$.get( the_url );
 			
 		}
 	});
+	
+	
 	
 	$('.del_toggle').bind( "contextmenu", function(event) {
 		event.preventDefault();

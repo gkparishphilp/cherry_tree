@@ -36,8 +36,6 @@
 class Child < User
 	
 	after_create	:setup_defaults
-
-	does_activities
 	
 	# for the child/create form -- may just switch to form_tag at some point....
 	attr_accessor :role, :nick, :welcome_message

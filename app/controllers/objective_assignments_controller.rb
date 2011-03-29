@@ -11,7 +11,7 @@ class ObjectiveAssignmentsController < ApplicationController
 		@assignment.user = @child
 		@assignment.period ||= 'week'
 		if @assignment.save
-			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment.objective
+			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment
 			pop_flash "Assignment Made"
 			if params[:first]
 				redirect_to new_child_award_assignment_path( @child )

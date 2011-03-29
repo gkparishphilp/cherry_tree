@@ -23,4 +23,12 @@ class PageElement < ActiveRecord::Base
 	belongs_to	:page, :polymorphic => true
 	belongs_to	:sticker
 	belongs_to	:photo
+	
+	def content
+		if self.sticker.present?
+			return "<img src='#{self.sticker.avatar.location}' width='#{self.width}' />".html_safe
+		elsif self.photo.present?
+			return "<img src='#{self.photo.avatar.location}' width='#{self.width}' />".html_safe
+		end
+	end
 end

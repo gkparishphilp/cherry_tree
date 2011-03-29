@@ -31,7 +31,7 @@ class Topic < Post
 
 	has_friendly_id :title, :use_slug => :true
 	acts_as_followed
-	gets_activities
+
 
 	scope :recent, lambda { |*args|
 		limit( args.first || 5 )

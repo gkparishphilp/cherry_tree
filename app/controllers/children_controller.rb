@@ -13,7 +13,7 @@ class ChildrenController < ApplicationController
 	end
 	
 	def home
-		@activities = Activity.feed @current_user
+		@activities = Activity.feed( @current_user )
 	end
 	
 	def index

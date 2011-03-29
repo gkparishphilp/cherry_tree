@@ -4,10 +4,9 @@
 # Table name: activities
 #
 #  id            :integer(4)      not null, primary key
-#  actor_id      :integer(4)      not null
-#  actor_type    :string(255)     not null
-#  target_id     :integer(4)      not null
-#  target_type   :string(255)     not null
+#  user_id       :integer(4)      not null
+#  target_id     :integer(4)
+#  target_type   :string(255)
 #  verb          :string(255)
 #  activity_type :string(255)
 #  status        :string(255)     default("active")
@@ -17,15 +16,12 @@
 
 class Activity < ActiveRecord::Base
   
-	belongs_to :actor, :polymorphic => true
+	belongs_to :user
 	belongs_to :target, :polymorphic => true
 	
-	
-	scope :for_actor, lambda { |actor| where( ["actor_id = ? AND actor_type = ?", 
-									actor.id, actor.class.name ] ) }
+
 	scope :for_target, lambda { |target| where( ["target_id = ? AND target_type = ?", 
 										target.id, target.class.name] ) }
-	scope :for_actor_type, lambda { |actor_type| where( "actor_type = ?", actor_type ) }
 	scope :for_target_type, lambda { |target_type| where( "target_type = ?", target_type ) }
 	scope :active, where( "status = 'active'" )
 	
@@ -35,19 +31,12 @@ class Activity < ActiveRecord::Base
 		where( "created_at > ?", since )
 	end
 	
-	def self.feed( *arg_list ) # take a list of gets_activities objects and generate a feed for them
-		return Activity.all if arg_list.empty?
+	def self.feed( *user_list ) # take a list of users objects and generate a feed for them
+		return Activity.all if user_list.empty?
 		activities = []
-		for obj in arg_list
-			if obj.respond_to? 'each'
-				for child in obj
-					next unless child.respond_to? 'activities'
-					activities += child.activities
-				end
-			else
-				next unless obj.respond_to? 'activities'
-				activities += obj.activities
-			end
+		user_list.flatten!
+		for user in user_list
+			activities += user.activities
 		end
 		activities.uniq!
 		activities.sort! { |a, b| b.created_at <=> a.created_at }
@@ -60,11 +49,8 @@ class Activity < ActiveRecord::Base
 	end
 	
 	def to_s
-		if self.actor.respond_to? 'name' 
-			subj = self.actor.name 
-		else
-			subj = self.actor.title
-		end
+		subj = self.user.display_name
+
 		if self.target.respond_to? 'name' 
 			obj = self.target.name
 		else

@@ -1,8 +1,8 @@
 class ActivityFeedMigration < ActiveRecord::Migration
 	def self.up
 		create_table :activities, :force => true do |t|
-			t.references	:actor, :polymorphic => true, :null => false
-			t.references	:target, :polymorphic => true, :null => false
+			t.references	:user, :null => false
+			t.references	:target, :polymorphic => true
 			t.string		:verb
 			t.string		:activity_type
 			t.string		:status, :default => 'active'
@@ -10,7 +10,7 @@ class ActivityFeedMigration < ActiveRecord::Migration
 			t.timestamps
 		end
 
-		add_index :activities, ["actor_id", "actor_type"], :name => "fk_actor"
+		add_index :activities, "user_id", :name => "fk_activity_user"
 		add_index :activities, ["target_id", "target_type"], :name => "fk_target"
 	end
 

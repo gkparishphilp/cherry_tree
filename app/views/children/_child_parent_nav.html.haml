@@ -8,11 +8,9 @@
 		|
 		= link_to "Awards", child_award_assignments_path( child )
 		|
-		= link_to "Journal", child_journal_entries_path( child )
-		|
 		= link_to "Profile", profile_child_path( child )
 		|
 		= link_to "Send Note", new_note_path( :to => child.id )
 		|
-		= link_to "Invite Supporters", new_child_invitation_path( child )
+		= link_to "Supporters", new_child_invitation_path( child )
 %hr.clear

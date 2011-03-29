@@ -8,7 +8,12 @@ class CheckinsController < ApplicationController
 		@checkin = @current_user.checkins.new( params[:checkin] )
 
 		if @checkin.save
-			@checkin.user.do_activity( "#{@checkin.expanded_status} ", @checkin )
+			if @checkin.objective_assignment.present?
+				@checkin.user.do_activity( "did '#{@checkin.objective_assignment.objective.name}'.", @checkin.objective_assignment )
+			else
+				@checkin.user.do_activity( " said: '#{@checkin.content}' " )
+			end
+			
 			@checkin.award_points
 			@checkin.user.save
 

@@ -20,10 +20,6 @@ class Checkin < ActiveRecord::Base
 		
 	scope :update, where( "objective_assignment_id is null" )
 	
-	scope :good, where("status = 'good'")
-	scope :ok, where("status = 'ok'")
-	scope :bad, where("status = 'bad'")
-	
 	scope :dated_between, lambda { |*args| 
 		where( "checkins.created_at between ? and ?", args.first, args.second ) 
 	}
@@ -31,30 +27,10 @@ class Checkin < ActiveRecord::Base
 		where( "checkins.user_id = ?", child.id )
 	}
 	
-	def multiplier
-		case self.status
-			when 'good'
-				return 1.0
-			when 'ok'
-				return 0.5
-			when 'bad'
-				return 0.0
-		end
-	end
-		
-	def expanded_status
-		case self.status
-			when 'bad'
-				phrase = 'needs to work on'
-			when 'ok'
-				phrase = 'did an OK job'
-			when 'good'
-				phrase = 'did a great job'
-		end
-		return phrase
-	end
+	has_many :comments, :as => :commentable
+
 	
-	def number_checkin_times(period = 'week')
+	def number_checkin_times( period = 'week' )
 		if period == 'day'
 			start = Time.now.beginning_of_day
 		else

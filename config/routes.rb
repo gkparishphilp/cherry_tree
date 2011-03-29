@@ -119,6 +119,8 @@ CherryTree::Application.routes.draw do
 	
 	resources :wishlist_items
 	
+	match '/update_page/:obj_type/:obj_id', :to => 'page_elements#updater'
+	
 	match '/admin/' => 'admin#index', :as => :admin_index
 
 	match '/blog/archive/(:year/(:month))', :to => 'blog#index'

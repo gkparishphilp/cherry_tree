@@ -75,6 +75,8 @@ class User < ActiveRecord::Base
 	has_many	:facebook_accounts,	:as => :owner
 	
 	has_many	:articles, :as => :owner
+	
+	has_many	:activities
 
 
 	# Testing robust relationships
@@ -179,7 +181,6 @@ class User < ActiveRecord::Base
 	acts_as_taggable_on	:favorite_music
 	
 	acts_as_follower
-	does_activities
 
 	# Class methods 	------------------------------------
 
@@ -338,6 +339,21 @@ class User < ActiveRecord::Base
 		!self.twitter_accounts.empty?
 	end
 	
+	
+	
+	def do_activity( verb, target=nil )
+		self.activities.create :verb => verb, :target => target unless duplicate_activity?( verb, target, 5.minutes.ago )
+	end
+	
+	def duplicate_activity?( verb, target, since )
+		if target.present?
+			count = Activity.active.recent( since ).where( "activities.user_id = ? AND activities.target_id = ? AND activities.target_type = ? AND verb = ? ", 
+				self.id, target.id, target.class.name, verb ).count
+		else
+			count = Activity.active.recent( since ).where( "activities.user_id = ? AND verb = ? ", self.id, verb ).count
+		end
+		return 0 < count
+	end
 	
 
 	protected

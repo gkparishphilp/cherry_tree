@@ -39,5 +39,6 @@
 		= @entry.title
 	.entry_content
 		= @entry.content.html_safe
+	= render @entry.page_elements, :editable => true
 	
 

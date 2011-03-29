@@ -33,7 +33,6 @@ class Article < ActiveRecord::Base
 	acts_as_taggable_on	:keywords
 	
 	acts_as_followed
-	gets_activities
 	
 	searchable_on [ :title ]
 	

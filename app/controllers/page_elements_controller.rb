@@ -9,23 +9,18 @@ class PageElementsController < ApplicationController
 		redirect_to :back
 	end
 	
-	def update_pos
-		@sticking = Sticking.find( params[:id] )
-		top = params[:top] || @sticking.top
-		left = params[:left] || @sticking.left
+	def updater
+		obj = eval "#{params[:obj_type].capitalize}.find( #{params[:obj_id]} )"
+		attrs = {}
+		for key in params.keys do
+			attrs[key] = params[key] if obj.respond_to?( key ) && params[key].present?
+		end
 		
-		sticking_attrs = { :top => top, :left => left }
-		@sticking.update_attributes( sticking_attrs )
+		obj.update_attributes( attrs )
+		
 		redirect_to :back
 	end
 	
-	def update_width
-		@sticking = Sticking.find( params[:id] )
-		width = params[:width] || @sticking.width
-		
-		@sticking.update_attributes( :width => width )
-		redirect_to :back
-	end
 	
 	def destroy
 		@sticking = Sticking.find( params[:id] )

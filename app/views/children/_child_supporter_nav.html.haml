@@ -4,8 +4,6 @@
 	.name
 		= link_to child.display_name, child
 	.nav
-		= link_to "Journal", child_journal_entries_path( child )
-		|
 		= link_to "Profile", profile_child_path( child )
 		|
 		= link_to "Send Note", new_note_path( :to => child.id )
