@@ -6,6 +6,10 @@ CherryTree::Application.routes.draw do
 		post 'weekly', :on => :collection
 	end
 	
+	resources :activities do
+		resources :comments
+	end
+	
 	resources :articles do
 		resources :comments
 	end

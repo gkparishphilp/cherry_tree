@@ -2,19 +2,20 @@
 = f.text_field :objective_name
 = f.label 'Description (optional):'
 = f.text_area :objective_description, :class => 'tiny_area'
-%br
-How many times per week should
-= @child.display_name
-checkin for this objective?
-%br
-= f.text_field :times
-%br
-Award up to how many points per week:
-%br
-= f.text_field :point_value
-%br
-= f.check_box :req_confirm, :checked => @new_assignment.req_confirm
-Parental approval required?
+-#
+	%br
+	How many times per week should
+	= @child.display_name
+	checkin for this objective?
+	%br
+	= f.text_field :times
+	%br
+	Award up to how many points per week:
+	%br
+	= f.text_field :point_value
+	%br
+	= f.check_box :req_confirm, :checked => @new_assignment.req_confirm
+	Parental approval required?
 
 %br
 = f.submit

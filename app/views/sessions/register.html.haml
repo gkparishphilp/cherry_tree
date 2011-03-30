@@ -7,8 +7,14 @@
 			= f.label "Email"
 			= f.text_field :email, :class => :regular
 
-			= f.label :name, "User Name"
-			= f.text_field :name, :class => :regular
+			= f.label :name, "First Name"
+			= text_field_tag :fname, '', :class => :regular
+			
+			= f.label :name, "Last Name"
+			= text_field_tag :lname, '', :class => :regular
+			
+			= f.label :name, "What do your children call you?"
+			= text_field_tag :nick_name, '', :class => :regular
 
 			= f.label :password, "Password"
 			= f.password_field :password, :class => :regular

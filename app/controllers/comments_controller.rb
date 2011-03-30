@@ -89,6 +89,8 @@ private
 			@commentable = Checkin.find( params[:checkin_id] )
 		elsif params[:objective_assignemnt_id]
 			@commentable = ObjectiveAsignment.find( params[:objcetive_assignment_id] )
+		elsif params[:activity_id]
+			@commentable = Activity.find( params[:activity_id] )
 		end
 	end 
 	

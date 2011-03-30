@@ -26,7 +26,8 @@
 				= f.hidden_field :objective_assignment_id, :value => assignment.id
 				= f.hidden_field :user_id, :value => @current_user.id
 				= f.text_field :content
-				= f.submit "Did It!"
+				= image_submit_tag "big_green_check.png", :width => 30
+				= image_tag "red_x.png", :width => 30
 			%br
 	.title_bar
 		.data

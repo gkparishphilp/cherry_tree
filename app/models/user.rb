@@ -342,7 +342,7 @@ class User < ActiveRecord::Base
 	
 	
 	def do_activity( verb, target=nil )
-		self.activities.create :verb => verb, :target => target unless duplicate_activity?( verb, target, 5.minutes.ago )
+		return self.activities.create :verb => verb, :target => target unless duplicate_activity?( verb, target, 5.minutes.ago )
 	end
 	
 	def duplicate_activity?( verb, target, since )

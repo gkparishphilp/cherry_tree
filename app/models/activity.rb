@@ -19,6 +19,8 @@ class Activity < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :target, :polymorphic => true
 	
+	has_many :comments, :as => :commentable
+	
 
 	scope :for_target, lambda { |target| where( ["target_id = ? AND target_type = ?", 
 										target.id, target.class.name] ) }
