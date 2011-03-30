@@ -23,6 +23,7 @@ CherryTree::Application.routes.draw do
 	
 	resources :checkins do
 		get 'approve', :on => :member
+		resources :comments
 	end
 	
 	resources :children do

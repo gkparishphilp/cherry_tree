@@ -9,9 +9,13 @@
 	= time_ago_in_words( activity.created_at )
 	ago.
 	
-	- if activity.target.present? && activity.target.is_a?( ObjectiveAssignment )
+	- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present?
 		%br
 		Approve
+		
+	= form_for [ activity.target, Comment.new ] do |f|
+		= f.text_field :content
+		= f.submit
 		
 	
 	%br.clear
