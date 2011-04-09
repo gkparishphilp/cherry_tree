@@ -46,8 +46,21 @@ class User < ActiveRecord::Base
 	# Constants    --------------------------------------
 
 	# Filters		--------------------------------------
-	before_save	 	:strip_website_url, :set_name
-	after_create	:set_avatar, :setup_default_photo_album
+
+		# Order of filter invocation:
+		# before_validation
+		# before_validation_on_update or before_validation_on_create
+		# validate
+		# validate_on_update or validate_on_create
+		# after_validation
+		# after_validation_on_update or after_validation_on_create
+		# before_save
+		# before_update or before_create
+		# after_update or after_create
+		# after_save
+
+	before_validation		:set_name
+	after_create			:set_avatar, :setup_default_photo_album
   
 	# Validations	--------------------------------------
 	validates	:email, :uniqueness => true, 

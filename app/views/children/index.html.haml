@@ -1,27 +1,26 @@
 -# Used to show Children Dashboard to Parent
-%h1
-	= possessize @current_user.name
-	Children
-= render 'users/nav'
+= render 'parents/nav'
 
 %br
+- if @children.empty?
+	%h2 Add a Child to get started!
+	= form_for Child.new, :html => { :multipart => true } do |f|
+		= render 'form', :f => f
 .tabs
 	%ul
-		%li= link_to 'Your Children', "#your_children"
-		%li= link_to 'Supported Children', "#supported_children"
-	#your_children
-		- if @children.empty?
-			%h3 Just click on the 'Register Child' button to get started!
-		= render @children, :as => 'parent'
-		.child
-			Add a child.  He or She will be able to log in with the username and password you assign.
-			.register_child_button
-				= link_to 'Register Child', new_child_path, :class => 'green_button'
-		%br.clear
+		- for child in @children
+			%li= link_to child.display_name, "##{child.display_name}"
+		%li
+			= link_to "+ Add Child", "#new_child"
 
-	#supported_children
-		= render @supported_children, :as => 'supporter'
+	- for child in @children
+		%div{ :id => child.display_name }
+			= render child, :as => 'parent'
 		%br.clear
+		
+	#new_child
+		= form_for Child.new, :html => { :multipart => true } do |f|
+			= render 'form', :f => f
 
 
 
