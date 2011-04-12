@@ -37,6 +37,10 @@ u2.relate_to c4, :as => 'father', :nickname => 'Dad'
 u1.make_admin( s )
 u2.make_admin( s )
 
+f = Forum.create :title => 'General', :description => 'Anything and Everything'
+f = Forum.create :title  => 'Socialization', :description => 'Autism, Aspergers, Playing well with others'
+f = Forum.create :title  => 'Attention', :description => 'ADD, Focus, Time Management'
+
 # some unlockables
 
 #ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25

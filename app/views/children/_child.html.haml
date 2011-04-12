@@ -1,6 +1,16 @@
 %div[child]
-	= render "child_#{as}_nav", :child => child
-	.timeline
+	= render "child_nav", :child => child
+	.floatted_box
+		Objectives
+		
+	.floatted_box
+		Awards
+		
+	.floatted_box
+		Send a Note
+		
+	.floatted_box
+		Recent Activities
 		- for activity in Activity.feed( child )
 			= render activity
 		

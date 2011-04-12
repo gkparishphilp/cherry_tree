@@ -6,21 +6,22 @@
 	%h2 Add a Child to get started!
 	= form_for Child.new, :html => { :multipart => true } do |f|
 		= render 'form', :f => f
-.tabs
-	%ul
-		- for child in @children
-			%li= link_to child.display_name, "##{child.display_name}"
-		%li
-			= link_to "+ Add Child", "#new_child"
+- else
+	.tabs
+		%ul
+			- for child in @children
+				%li= link_to child.display_name, "##{child.display_name}"
+			%li
+				= link_to "+ Add Child", "#new_child"
 
-	- for child in @children
-		%div{ :id => child.display_name }
-			= render child, :as => 'parent'
-		%br.clear
+		- for child in @children
+			%div{ :id => child.display_name }
+				= render child, :as => 'parent'
+			%br.clear
 		
-	#new_child
-		= form_for Child.new, :html => { :multipart => true } do |f|
-			= render 'form', :f => f
+		#new_child
+			= form_for Child.new, :html => { :multipart => true } do |f|
+				= render 'form', :f => f
 
 
 
