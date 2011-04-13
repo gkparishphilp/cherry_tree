@@ -13,6 +13,7 @@ class ChildrenController < ApplicationController
 	end
 	
 	def home
+	#	@screen_item = @current_user.best_item
 		@activities = Activity.feed( @current_user )
 	end
 	

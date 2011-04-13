@@ -1,7 +1,8 @@
 = render 'children/banner', :title => 'Home'
 = render 'children/nav'
 
-#home_objectives
+#child_main_screen
+	
 	%h3 Your Objectives
 	- for assignment in @current_user.objective_assignments.active
 		.title_bar
