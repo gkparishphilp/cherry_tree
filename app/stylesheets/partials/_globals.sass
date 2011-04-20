@@ -20,6 +20,7 @@ $page-width: 980px
 	-khtml-border-radius: $radius
 	-webkit-border-radius: $radius
 	border-radius: $radius
+	:behavior url(/javascripts/PIE.htc)	
 
 =rounded-side($side, $radius: 4px)
 	-moz-border-radius-#{$side}left: $radius
@@ -28,14 +29,17 @@ $page-width: 980px
 	-moz-border-radius-#{$side}right: $radius
 	-webkit-border-#{$side}-right-radius: $radius
 	border-#{$side}-right-radius: $radius
+	:behavior url(/javascripts/PIE.htc)	
 
 =shadow($x: 1px, $y: 2px, $offset: 8px)
 	box-shadow: $x $y $offset #888888
 	-moz-box-shadow: $x $y $offset #888888
 	-webkit-box-shadow: $x $y $offset #888888
+	:behavior url(/javascripts/PIE.htc)	
 
 =alpha_bg()
 	:background transparent url(../images/bg_opaque.png)
+	:behavior url(/javascripts/PIE.htc)
 	// background: rgba(255, 255, 255, $x)
 
 =ct_button($color)
@@ -53,11 +57,13 @@ $page-width: 980px
 		:background-color $color + #111
 		:border 6px solid $color + #222
 		text-decoration: none
+	:behavior url(/javascripts/PIE.htc)
 
 =ct_title($color, $shadow: #ddd)
 	font-family: "Corben", arial, sans-serif
 	color: $color
 	+text-shadow($shadow, 3px, 3px, 0)
+	:behavior url(/javascripts/PIE.htc)
 
 =top_menu($side: right)
 	:padding 7px 0
