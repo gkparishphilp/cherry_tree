@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110228224652
+# Schema version: 20110420185439
 #
 # Table name: journal_entries
 #

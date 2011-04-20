@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110228224652
+# Schema version: 20110420185439
 #
 # Table name: questions
 #
@@ -8,7 +8,7 @@
 #  content       :text
 #  extra_content :string(255)
 #  point_value   :integer(4)      default(0)
-#  seq           :integer(4)
+#  sequence      :integer(4)
 #  created_at    :datetime
 #  updated_at    :datetime
 #

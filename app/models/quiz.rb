@@ -1,9 +1,10 @@
 # == Schema Information
-# Schema version: 20110228224652
+# Schema version: 20110420185439
 #
 # Table name: quizzes
 #
 #  id            :integer(4)      not null, primary key
+#  lesson_id     :integer(4)
 #  name          :string(255)
 #  created_by_id :integer(4)
 #  description   :text
@@ -15,6 +16,8 @@
 #
 
 class Quiz < ActiveRecord::Base
+	belongs_to	:lesson
+	
 	has_many	:questions, :dependent => :destroy
 	
 	accepts_nested_attributes_for	:questions, :reject_if => lambda { |attrs| attrs[:content].blank? }, :allow_destroy => true

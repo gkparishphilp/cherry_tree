@@ -3,7 +3,9 @@
 
 #child_main_screen
 	
-	%h3 Your Objectives
+	%h3
+		= @best_item.class.name
+	
 	- for assignment in @current_user.objective_assignments.active
 		.title_bar
 			.data

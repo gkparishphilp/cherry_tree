@@ -1,8 +1,8 @@
-- content_for :left_column do
-	%h1 
-		= pluralize @quizzes.size, "Quiz"
 
-	= render @quizzes
+%h1 
+	= pluralize @quizzes.size, "Quiz"
 
-	%br
-	= link_to 'New Quiz', new_quiz_path
+= render @quizzes
+
+%br
+= link_to 'New Quiz', new_quiz_path

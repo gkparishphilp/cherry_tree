@@ -1,19 +1,19 @@
-= content_for :left_column do
-	%h1
-		= @quiz.name
-		Summary
+
+%h1
+	= @quiz.name
+	Summary
+
+%h3
+	You got
+	= @num_right
+	Right
+	out of
+	= @quiz.questions.count
+	%br
+	You Earned
+	= @points_earned.to_i
+	Points!
 	
-	%h3
-		You got
-		= @num_right
-		Right
-		out of
-		= @quiz.questions.count
-		%br
-		You Earned
-		= @points_earned.to_i
-		Points!
-		
-	%h4
-		= link_to "Back", polymorphic_path( @current_user )
+%h4
+	= link_to "Back", polymorphic_path( @current_user )
 

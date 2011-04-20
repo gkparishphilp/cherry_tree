@@ -1,33 +1,33 @@
-- content_for :left_column do
-	.new.button
-		= link_to image_tag( 'add.png', :width => 20 ), new_quiz_path
-		= link_to 'New Quiz', new_quiz_path
-	
-	%h1 Quizzes Admin 
-	%table.admin_table
-		%thead
-			%th Name
-			%th Point value
-			%th Level
-			%th{ :colspan => 2 }
-		%tbody
-			- for quiz in @quizzes
-				%tr{ :class => cycle(:odd, :even) }
-					%td= quiz.name
-					%td= quiz.points
-					%td= quiz.level
-					%td
-						= link_to image_tag( 'view.png', :width => 20 ), inspect_quiz_path( quiz )
-						= link_to 'view', inspect_quiz_path( quiz )
-					
-					%td
-						= link_to image_tag( 'edit.png', :width => 20 ), edit_quiz_path( quiz )
-						= link_to 'edit', edit_quiz_path( quiz )
-					%td
-						= link_to image_tag( 'admin.png', :width => 20 ), admin_quiz_questions_path( quiz )
-						= link_to 'admin', admin_quiz_questions_path( quiz )
-					%td
-						= link_to image_tag( 'trash.png', :width => 20 ), quiz, :confirm => 'Are you sure?', :method => :delete
-						= link_to 'delete', quiz, :confirm => 'Are you sure?', :method => :delete
+
+.new.button
+	= link_to image_tag( 'add.png', :width => 20 ), new_quiz_path
+	= link_to 'New Quiz', new_quiz_path
+
+%h1 Quizzes Admin 
+%table.admin_table
+	%thead
+		%th Name
+		%th Point value
+		%th Level
+		%th{ :colspan => 2 }
+	%tbody
+		- for quiz in @quizzes
+			%tr{ :class => cycle(:odd, :even) }
+				%td= quiz.name
+				%td= quiz.points
+				%td= quiz.level
+				%td
+					= link_to image_tag( 'view.png', :width => 20 ), inspect_quiz_path( quiz )
+					= link_to 'view', inspect_quiz_path( quiz )
+				
+				%td
+					= link_to image_tag( 'edit.png', :width => 20 ), edit_quiz_path( quiz )
+					= link_to 'edit', edit_quiz_path( quiz )
+				%td
+					= link_to image_tag( 'admin.png', :width => 20 ), admin_quiz_questions_path( quiz )
+					= link_to 'admin', admin_quiz_questions_path( quiz )
+				%td
+					= link_to image_tag( 'trash.png', :width => 20 ), quiz, :confirm => 'Are you sure?', :method => :delete
+					= link_to 'delete', quiz, :confirm => 'Are you sure?', :method => :delete
 
 

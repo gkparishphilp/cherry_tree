@@ -1,15 +1,14 @@
-- content_for :left_column do
-	%h1 
-		= @quiz.name
-	%h2
-		Question Number
-		= @question.seq
-		
-	%b= @question.content
-	= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
-		- for answer in @question.answers
-			.answer
-				= radio_button_tag :answer_id, answer.id
-				= answer.content
-		= submit_tag "Enter", :class => 'button'
+%h1 
+	= @quiz.name
+%h2
+	Question Number
+	= @question.seq
+	
+%b= @question.content
+= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
+	- for answer in @question.answers
+		.answer
+			= radio_button_tag :answer_id, answer.id
+			= answer.content
+	= submit_tag "Enter", :class => 'button'
 

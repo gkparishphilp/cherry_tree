@@ -1,13 +1,12 @@
-- content_for :left_column do
-	%h1 Editing Answer
-	= link_to 'Show', @answer
+%h1 Editing Answer
+= link_to 'Show', @answer
 
-	= form_for @answer , :html => { :mutipart => true } do |f|
-		= render 'form', :f => f
-		.actions
-			= f.submit 'Update', :class => 'button'
-			|
-			= link_to 'Cancel', :back
+= form_for @answer , :html => { :mutipart => true } do |f|
+	= render 'form', :f => f
+	.actions
+		= f.submit 'Update', :class => 'button'
+		|
+		= link_to 'Cancel', :back
 
 
 

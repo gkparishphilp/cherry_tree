@@ -1,8 +1,8 @@
-- content_for :left_column do
-	%h1 Quiz
 
-	= render @quiz
+%h1 Quiz
 
-	= link_to 'Edit', edit_quiz_path(@quiz)
-	| 
-	= link_to 'Back', quizzes_path
+= render @quiz
+
+= link_to 'Edit', edit_quiz_path(@quiz)
+| 
+= link_to 'Back', quizzes_path

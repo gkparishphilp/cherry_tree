@@ -1,6 +1,10 @@
 module UserApp
 	# Misc App-Specific User Methods
 	
+	def best_item
+		self.objective_assignments.active.first
+	end
+	
 	
 	def is_child?
 		return self.type == 'Child'

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110228224652
+# Schema version: 20110420185439
 #
 # Table name: users
 #
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 		# after_save
 
 	before_validation		:set_name
-	after_create			:set_avatar, :setup_default_photo_album
+	after_create			:set_avatar
   
 	# Validations	--------------------------------------
 	validates	:email, :uniqueness => true, 
@@ -148,6 +148,9 @@ class User < ActiveRecord::Base
 	
 	has_many	:achievement_earnings
 	has_many	:achievements, :through => :achievement_earnings
+	
+	has_many	:lesson_assignments
+	has_many	:lessons, :through => :lesson_assignments
 
 	has_many	:ownings
 	# putting these here because they act like relations, but you can't have a :through relation on a polymorphic object
