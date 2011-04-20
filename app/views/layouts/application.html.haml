@@ -7,11 +7,13 @@
 				= stylesheet_link_tag font.resource_path
 		= include_tiny_mce_if_needed
 	%body
-		#big_tree
-			- if @current_user.anonymous?
-				= image_tag 'big_tree.png'
-			- else
-				= link_to image_tag( 'big_tree.png' ), user_path( @current_user )
+		-#
+			#big_tree
+				- if @current_user.anonymous?
+					= image_tag 'big_tree.png'
+				- else
+					= link_to image_tag( 'big_tree.png' ), user_path( @current_user )
+	#wrapper
 		#container
 			= render 'shared/app_header'
 			#bd
@@ -23,10 +25,10 @@
 					= render 'shared/flash', :flash => flash 
 					= yield
 					%br.clear
-		= render 'shared/footer'
-		= render 'shared/analytics'
-		:javascript
-			// This should hide the loading_div when the page is ready
-			$(document).ready(function(){
-				$('#loading_div').hide();
-			});
+			= render 'shared/footer'
+			= render 'shared/analytics'
+			:javascript
+				// This should hide the loading_div when the page is ready
+				$(document).ready(function(){
+					$('#loading_div').hide();
+				});

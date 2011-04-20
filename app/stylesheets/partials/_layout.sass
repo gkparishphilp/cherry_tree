@@ -1,80 +1,74 @@
-
 /* =Structure */
+html
+	:background #d2e9df url(../images/bg_bottom.jpg) repeat-x left bottom
+
 body
-	:background #bce0ce url(../images/app_body_bg.jpg) repeat-x
+	:background transparent url(../images/bg_top.jpg) repeat-x left top
+	
+#wrapper
+	:background transparent url(../images/tree.png) no-repeat left bottom
+	:position relative
+	:z-index 2
 	
 #container
-	:background #bce0ce url(../images/app_bg.jpg) no-repeat
-	width: 1200px
-	
+	:width $page-width
+	:margin auto
+	:behavior url(../javascripts/PIE.php)
 
 #hd
-	width: $page-width
+	:width $page-width
+	:margin-bottom 40px
 	.logo
-		margin: 10px
-		:margin-left 30px
+		:margin 10px 10px 30px
 		:width 100px
 	.nav
-		float: right
-		margin-top: 40px
-		margin-right: 20px
-	
+		:float right
+		:margin-top 40px
+		:margin-right 20px
+
 #bd
-	width: $page-width
-	:min-height 668px
+	:position relative
+	:z-index 5
+	:width $page-width
+	:min-height 590px
+
+.nav
+	a
+		:margin-left 6px
 	
-	#content
-		position: relative
-		z-index: 5
-		+rounded(20px)
-		+alpha_bg(.65)
-		border: 1px solid #ddd
-		padding: 25px
-		width: 860px
-		min-height: 400px
-		margin: 0 auto
-		margin-bottom: 25px
-		.disclaimer
-			font-size: 12px
-		h1
-			+ct_title(#0092b7)
-		h2
-			+ct_title(#0092b7)
-		h3
-			+ct_title(#0092b7)
+#content
+	+alpha_bg
+	+rounded(20px)
+	:padding 30px
+	:border 1px solid #fff
 
-#big_tree
-	z-index: 3
-	position: absolute
-	top: 160px
-	left: -200px
-	
+	.disclaimer
+		font-size: 12px
+	h1
+		+ct_title(#0092b7)
+	h2
+		+ct_title(#0092b7)
+	h3
+		+ct_title(#0092b7)
 
-
-			
 .button_to
 	display: inline
 	
-
-	
 #ft
-	width: 100%
 	color: #ceb58a
-	background: #51371a url() no-repeat
 	min-height: 50px
-	#ft_contain
-		width: $page-width
-		a
-			color: #ceb58a
-		.copyright
-			float: left
-			padding: 10px
-		.footer_menu
-			float: right
-			padding: 10px
-			li
-				display: inline
-				list-style: none
+	:margin-top 180px
+	a
+		color: #ceb58a
+	.copyright
+		float: left
+		padding: 10px
+	.footer_menu
+		float: right
+		padding: 10px
+		li
+			display: inline
+			list-style: none
 		
 	
 

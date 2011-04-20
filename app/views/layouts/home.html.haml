@@ -25,9 +25,10 @@
 			});
 
 	%body
-		#container
-			= render 'shared/home_header'
-			#bd
-				= yield
-		= render 'shared/footer'
-		= render 'shared/analytics'
+		#wrapper
+			#container
+				= render 'shared/home_header'
+				#bd
+					= yield
+				= render 'shared/footer'
+				= render 'shared/analytics'

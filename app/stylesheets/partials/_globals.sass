@@ -34,17 +34,18 @@ $page-width: 980px
 	-moz-box-shadow: $x $y $offset #888888
 	-webkit-box-shadow: $x $y $offset #888888
 
-=alpha_bg($x)
-	background: rgba(255, 255, 255, $x)
+=alpha_bg()
+	:background transparent url(../images/bg_opaque.png)
+	// background: rgba(255, 255, 255, $x)
 
 =ct_button($color)
-	:background $color url() no-repeat
+	:background-color $color
 	:border 6px solid $color + #111
 	+shadow
 	:color #ffffff
 	:font-family "Corben", arial, sans-serif
 	:font-weight bold
-	:padding 6px 6px 0px 6px
+	:padding 6px 15px 0px
 	:font-size 16px
 	+rounded(20px)
 	:cursor pointer
@@ -74,7 +75,9 @@ $page-width: 980px
 body
 	:font 16px Arial, helvetica, verdana, sans-serif
 	:color = $font
-			
+
+.clearfix
+	+clearfix
 .clear
 	:clear both
 	
@@ -190,22 +193,22 @@ textarea.collect
 textarea
 	+rounded
 	width: 500px
-	padding: 4px
+	padding: 8px 15px
 	font-size: 16px
 	:background #f9f9f9
 	:border 1px solid #ddd
 	
 input.large
 	:font-size 24px
-	:padding 6px
+	:padding 8px 15px
 	:background #f9f9f9
 	:border 1px solid #eee
 	+rounded(15px)
 
 input.regular
 	font-size: 16px
-	:padding 2px
-	width: 250px
+	:padding 6px 10px
+	// :width 250px
 	:background #f9f9f9
 	:border 1px solid #ddd
 	+rounded
