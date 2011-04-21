@@ -17,13 +17,13 @@
 
 	%div.clear	
 
-	%label.name
+	%label.pic
 		Upload a Picture for
 	= file_field_tag :attached_avatar_file, :class => 'button_flat'
 
 	%div.clear
 	
-	%label.name_owner
+	%label.birthday
 		birthday is
 	
 	= f.text_field :birthday, :class => 'birthday_field'
@@ -36,20 +36,22 @@
 	
 	%div.clear
 
-	%label.name
+	%label.nickname
 		calls me (your name or nickname):
 	= f.text_field :nick
 	
 	%div.divider
 	
-	%label.name
+	%label.login
 		Please Provide a unique login name for
+		%span.name
 	= f.text_field :name
 
 	%div.clear
 	
-	%label.name
-		Please Provide a PIN Code or Password for
+	%label.password
+		Please Provide a PIN Code or Password for 
+		%span.name
 	= f.text_field :password
 
 	%div.divider

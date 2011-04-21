@@ -11,17 +11,17 @@
 		.floatted_box
 			%h3
 				Awards
-			%div
+			%div.text
 
 		.floatted_box
 			%h3
 				Send a Note
-			%div
+			%div.text
 		
 		.floatted_box
 			%h3
 				Recent Activities
-			%div
+			%div.text
 				- for activity in Activity.feed( child )
 					= render activity
 		
