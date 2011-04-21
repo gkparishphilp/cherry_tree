@@ -1,20 +1,78 @@
 ul.navbar
-	width: 860px
-	padding: 5px
-	background: #ddf url() no-repeat
-	border: 1px solid #999
+	:padding 5px
+	:background-color #60a3c1
 	+rounded
 	li
 		list-style: none
 		display: inline
 		margin: 5px 10px
+		a
+			:color #edf5f8
+			:font-weight bold
+			:font-size 14px
 	
 .child
-	width: 800px
+	// width: 800px
 	min-height: 400px
-	float: left
-	border: 1px solid #ddf
-	margin: 10px 10px 0px 0px
-	padding: 5px
-	+rounded(12px)
-	+shadow
+	// float: left
+	// border: 1px solid #ddf
+	// margin: 10px 10px 0px 0px
+	// padding: 5px
+	+rounded(7px)
+	// +shadow
+	:background-color #ebebeb
+	
+	.nav
+		:margin 5px 5px 0
+		:padding 0 5px 5px 0
+		:font-size 12px
+		:color #4182a7
+		:font-weight bold
+		a
+			:color #4182a7
+
+.child_header
+	:background-color #5b9cb8
+	:padding 10px
+	+rounded-side(top,7px)
+	.pic
+		:float left
+		:width 50px
+		:margin 0 10px 0 0
+		img
+			+rounded(6px)
+	.name
+		:float left
+		:margin 0
+		:line-height 32px
+		:font-size 26px
+		:color #fff
+		:padding-top 7px
+		a
+			:color #fff
+.child_dash
+	:padding 5px
+
+	.floatted_box
+		:border-color #a8d7eb
+		:background-color #fff
+		+rounded(6px)
+		:width 47%
+		:min-height 100px
+		:padding 0
+		:margin 10px
+		
+#content
+	.child_dash
+		h3
+			:font 16px Arial,helvetica,verdana,sans-serif
+			:text-shadow none
+			:font-weight bold
+			:background-color #5b9cb8
+			:padding 5px 10px
+			:margin 0
+			:color #fff
+			+rounded-side(top,6px)
+#new_child
+	input[type="text"]
+		:width 400px

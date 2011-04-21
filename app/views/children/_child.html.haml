@@ -1,16 +1,27 @@
 %div[child]
 	= render "child_nav", :child => child
-	.floatted_box
-		Objectives
+
+	.child_dash.clearfix
+		.floatted_box
+			%h3
+				Objectives
+			%div.text
+				Something here
 		
-	.floatted_box
-		Awards
+		.floatted_box
+			%h3
+				Awards
+			%div
+
+		.floatted_box
+			%h3
+				Send a Note
+			%div
 		
-	.floatted_box
-		Send a Note
-		
-	.floatted_box
-		Recent Activities
-		- for activity in Activity.feed( child )
-			= render activity
+		.floatted_box
+			%h3
+				Recent Activities
+			%div
+				- for activity in Activity.feed( child )
+					= render activity
 		

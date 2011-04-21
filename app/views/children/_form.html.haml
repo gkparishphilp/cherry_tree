@@ -1,53 +1,59 @@
-.form_group
-	This child is a
-	= f.radio_button :gender, 'male'
-	boy
-	= f.radio_button :gender, 'female'
-	girl
-	%br
+.form_group.add_child
+	%label
+		This child is a
+	%div.roundy
+		= f.radio_button :gender, 'male'
+		boy
+	%div.roundy
+		= f.radio_button :gender, 'female'
+		girl
 
+	%div.clear
+		
 	%label
 		%span.gender
-			&nbsp;
-		name is
+			name is
 	= f.text_field :display_name
+
+	%div.clear	
+
+	%label.name
+		Upload a Picture for
+	= file_field_tag :attached_avatar_file, :class => 'button_flat'
+
+	%div.clear
 	
-	%br
-	Upload a Picture for
-	%span.name
-		&nbsp;
-	= file_field_tag :attached_avatar_file
-
-	%br
-	%span.name_owner
-		&nbsp;
-	birthday is
+	%label.name_owner
+		birthday is
+	
 	= f.text_field :birthday, :class => 'birthday_field'
-	%br
 
-	%br
-	I am
-	%span.name_owner
-		&nbsp
+	%div.divider
+	
+	%label.name_owner
+		I am
 	= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
 	
-	%br
-	%span.name
-		&nbsp;
-	calls me (your name or nickname):
+	%div.clear
+
+	%label.name
+		calls me (your name or nickname):
 	= f.text_field :nick
 	
-	%br
-	Please Provide a unique login name for
-	%span.name
-		&nbsp;
+	%div.divider
+	
+	%label.name
+		Please Provide a unique login name for
 	= f.text_field :name
-	%br
-	Please Provide a PIN Code or Password for
-	%span.name
-		&nbsp;
+
+	%div.clear
+	
+	%label.name
+		Please Provide a PIN Code or Password for
 	= f.text_field :password
 
+	%div.divider
 
-	%br
-	= f.submit "Add", :class => 'button'
+	%label
+		&nbsp;
+	= f.submit "Add", :class => 'button_flat'

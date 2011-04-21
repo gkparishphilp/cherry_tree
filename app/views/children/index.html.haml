@@ -17,7 +17,6 @@
 		- for child in @children
 			%div{ :id => child.display_name }
 				= render child, :as => 'parent'
-			%br.clear
 		
 		#new_child
 			= form_for Child.new, :html => { :multipart => true } do |f|

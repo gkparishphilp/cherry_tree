@@ -1,7 +1,9 @@
 - if @current_user.anonymous?
-	.form_group
+	.form_group.login
 		%h1
 			Login to your account:
+		%div.clear
+		%div.clear
 		= form_tag :controller=>'sessions' do
 			%label
 				- if current_page?( login_children_path )
@@ -9,14 +11,17 @@
 				- else
 					Email:
 			= text_field_tag :credential, params[:credential], :class => :regular
+			%div.clear
 			%label
 				- if current_page?( login_children_path )
 					PIN:
 				- else
 					Password:
 			= password_field_tag :password, params[:password], :class => :regular
+			
+			%div.clear
 			%br
-			%br
+			
 			= submit_tag	"Login", :class => 'button blue'
 			|
 			= link_to 'Cancel', root_path, :class => :cancel_button

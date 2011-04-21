@@ -54,6 +54,20 @@ $page-width: 980px
 	+rounded(20px)
 	:cursor pointer
 	:behavior url(/javascripts/PIE.htc)
+
+=ct_button_flat()
+	:color #ffffff
+	:background-color #60a4c2
+	:font-weight bold
+	:border none
+	:padding 4px 15px 3px
+	:min-width 80px
+	:font-size 14px !important
+	:line-height 20px
+	:display inline-block
+	+rounded(7px)
+	:cursor pointer
+	:behavior url(/javascripts/PIE.htc)
 	
 =ct_button_color($color)
 	:background-color $color
@@ -87,7 +101,7 @@ body
 	:font 16px Arial, helvetica, verdana, sans-serif
 	:color = $font
 
-.clearfix
+.clearfix:after
 	+clearfix
 .clear
 	:clear both
@@ -115,7 +129,7 @@ a
 	&:hover
 		:text-decoration underline
 p
-	:margin 15px
+	:margin-bottom 15px
 li
 	:margin-left 15px
 // Headers
@@ -173,13 +187,45 @@ strong
 		+rounded(12px)
 			
 // Forms
+// .form_group
+// 	+rounded
+// 	// :border 1px solid #999
+// 	// :background-color #eee
+// 	:width 90%
+// 	:margin 0 auto
+// 	:padding 20px
+=forms
+	:border 1px solid #ddd
+	:background #f9f9f9
+	+rounded(7px)
+	:padding 6px 10px
+	:font-size 16px
+
 .form_group
-	+rounded
-	// :border 1px solid #999
-	// :background-color #eee
-	:width 90%
-	:margin 0 auto
-	:padding 20px
+	:width auto
+	:padding 0
+	label
+		:width 280px
+		:float left
+		:text-align right
+		:font-weight normal
+		:font-size 13px
+		:line-height 20px
+		:padding-right 20px
+	.clear
+		:padding 5px
+	.divider
+		:border none
+		:border-top 1px solid #ccc
+		:height 1px
+		:margin 20px 0
+	.roundy
+		:width 70px
+		:border 1px solid #ccc
+		:float left
+		:padding 2px 4px 4px
+		:margin-right 10px
+		+rounded(7px)
 
 textarea.collect
 	+rounded(20px)
@@ -202,30 +248,28 @@ textarea.collect
 	display: none
 
 textarea
-	+rounded
-	width: 500px
-	padding: 8px 15px
-	font-size: 16px
-	:background #f9f9f9
-	:border 1px solid #ddd
+	+forms
+input[type="text"]
+	+forms
+input[type="password"]
+	+forms
+input[type="file"]
+	+forms
+select
+	+forms
+	:padding 4px
 	
 input.large
 	:font-size 24px
 	:padding 8px 15px
-	:background #f9f9f9
 	:border 1px solid #eee
 	+rounded(15px)
 
-input.regular
-	font-size: 16px
-	:padding 6px 10px
-	// :width 250px
-	:background #f9f9f9
-	:border 1px solid #ddd
-	+rounded
-
 .button
 	+ct_button
+	
+.button_flat
+	+ct_button_flat
 
 .green
 	+ct_button_color($leaf_green)
@@ -236,11 +280,16 @@ input.regular
 .red
 	+ct_button_color($cherry_red)
 
+.login
+	label
+		:width 100px
+		:font-size 15px
+		:padding-top 5px
 
-label
-	:padding 4px 3px
-	:display block
-	:font-weight bold
+// label
+// 	:padding 4px 3px
+// 	:display block
+// 	:font-weight bold
 	
 .title_field
 	:font-size 120%
@@ -248,7 +297,6 @@ label
 	:width 500px
 	:padding 4px
 	:margin-bottom 18px
-
 
 .admin_title
 	:float left
@@ -279,7 +327,10 @@ label
 		:text-align left
 	td
 		:padding 5px
-		
+.text
+	:padding 10px
+	:font-size 13px
+			
 .label
 	:float left
 	:width 200px
@@ -299,18 +350,18 @@ label
 .desc
 	:background-image url( "../images/arrow_down.png" )
 
-
 .new
 	:float right
 	
 .divider
-	:width 66%
+	:width 97.5%
 	:margin 0 auto
-	:border-bottom 1px solid #ddd
+	:border-top 1px solid #5b9cb8
+	:border-bottom 1px solid #fff
 	:display block
 	:clear both
-	:height 20px
-	:margin-bottom 20px
+	:height 0
+	// :margin-bottom 20px
 	
 	
 .birthday_field

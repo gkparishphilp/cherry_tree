@@ -1,0 +1,64 @@
+=ui_clear
+	:background none
+	:border none
+=ui_border
+	:border 1px solid #ccc
+	
+.ui-tabs
+	:padding 0
+	+ui_clear
+	.ui-state-default
+		+ui_clear
+		+ui_border
+
+	.ui-widget-content 
+		+ui_clear
+		.ui-state-default
+			+ui_clear
+		.ui-state-hover
+			+ui_clear	
+		.ui-state-focus
+			+ui_clear
+		.ui-state-active
+			+ui_border
+		
+	.ui-widget-header 
+		+ui_clear
+		.ui-state-default
+			+ui_clear
+			+ui_border
+		.ui-state-hover
+			+ui_clear
+			+ui_border
+		.ui-state-focus
+			+ui_clear
+			+ui_border
+		.ui-state-hover
+			+ui_clear
+			+ui_border
+		.ui-state-default
+			:background-color #ededed
+		.ui-tabs-selected
+			:background-color #fff
+		.ui-state-active
+			+ui_border
+			:background-color #fff
+
+	.ui-tabs-panel
+		:padding 20px
+		:background-color #fff
+		:border 1px solid #ccc
+	.ui-tabs-nav
+		:padding 0
+		li
+			:margin-right 7px
+			a
+				:padding 0.3em 1em
+
+	.ui-state-active 
+		a
+			color: #2779AA	
+		a:link
+			color: #2779AA
+		a:visited
+			color: #2779AA

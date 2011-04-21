@@ -1,16 +1,18 @@
-.pic
-	= avatar_tag( child, :thumb, :width => 50 )
-.name_nav
+.child_header.clearfix
+	.pic
+		= avatar_tag( child, :thumb, :width => 50 )
 	.name
 		= link_to child.display_name, child
-	.nav
-		= link_to "Objectives", child_objective_assignments_path( child )
-		|
-		= link_to "Awards", child_award_assignments_path( child )
-		|
-		= link_to "Profile", profile_child_path( child )
-		|
-		= link_to "Send Note", new_note_path( :to => child.id )
-		|
-		= link_to "Supporters", new_child_invitation_path( child )
-%hr.clear
+
+.nav
+	= link_to "Objectives", child_objective_assignments_path( child )
+	|
+	= link_to "Awards", child_award_assignments_path( child )
+	|
+	= link_to "Profile", profile_child_path( child )
+	|
+	= link_to "Send Note", new_note_path( :to => child.id )
+	|
+	= link_to "Supporters", new_child_invitation_path( child )
+
+%div.divider
