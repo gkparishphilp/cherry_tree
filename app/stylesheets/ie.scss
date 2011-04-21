@@ -8,7 +8,10 @@
 	zoom: 1;
 	*display: inline
 }
-input[type="submit"] {
+input[type="submit"].button {
 	padding:0;
 	margin:0;
+}
+#welcome input[type="submit"] {
+	width: 165px;
 }
