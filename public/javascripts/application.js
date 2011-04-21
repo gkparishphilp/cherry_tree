@@ -105,11 +105,10 @@ $(document).ready(function(){
 	$('.open_modal').click( function(){
 		$( "#new_" + $(this).attr('id') ).dialog('open');
 		return false;
-	});
+	});	
 	
-	
-	
-	$('.button').button();
+	// Changed class name here so we can use univeral "button" class for everything else.
+	$('.jbutton').button();
 	
 	$('.datepicker').datepicker({
 		dateFormat: 'yy-mm-dd'

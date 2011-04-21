@@ -35,30 +35,34 @@ $page-width: 980px
 	box-shadow: $x $y $offset #888888
 	-moz-box-shadow: $x $y $offset #888888
 	-webkit-box-shadow: $x $y $offset #888888
-	:behavior url(/javascripts/PIE.htc)	
+	:behavior url(/javascripts/PIE.htc)
 
 =alpha_bg()
 	:background transparent url(../images/bg_opaque.png)
 	:behavior url(/javascripts/PIE.htc)
 	// background: rgba(255, 255, 255, $x)
 
-=ct_button($color)
-	:background-color $color
-	:border 6px solid $color + #111
+=ct_button()
 	+shadow
 	:color #ffffff
 	:font-family "Corben", arial, sans-serif
 	:font-weight bold
-	:padding 6px 15px 0px
+	:padding 4px 15px 2px
 	:font-size 16px
-	// :line-height 45px
+	:line-height 25px
+	:display inline-block
 	+rounded(20px)
 	:cursor pointer
+	:behavior url(/javascripts/PIE.htc)
+	
+=ct_button_color($color)
+	:background-color $color
+	:border 6px solid $color + #111
 	&:hover
 		:background-color $color + #111
 		:border 6px solid $color + #222
 		text-decoration: none
-	:behavior url(/javascripts/PIE.htc)
+
 
 =ct_title($color, $shadow: #ddd)
 	font-family: "Corben", arial, sans-serif
@@ -171,8 +175,8 @@ strong
 // Forms
 .form_group
 	+rounded
-	:border 1px solid #999
-	:background-color #eee
+	// :border 1px solid #999
+	// :background-color #eee
 	:width 90%
 	:margin 0 auto
 	:padding 20px
@@ -220,22 +224,23 @@ input.regular
 	:border 1px solid #ddd
 	+rounded
 
-.email_submit
-	+ct_button($leaf_green)
+.button
+	+ct_button
 
-.blue_button
-	+ct_button($big_blue)
+.green
+	+ct_button_color($leaf_green)
 
-.red_button
-	+ct_button($cherry_red)
-	
-.green_button
-	+ct_button($leaf_green)
+.blue
+	+ct_button_color($big_blue)
+
+.red
+	+ct_button_color($cherry_red)
 
 
 label
 	:padding 4px 3px
 	:display block
+	:font-weight bold
 	
 .title_field
 	:font-size 120%
