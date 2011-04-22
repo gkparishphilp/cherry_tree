@@ -30,12 +30,5 @@
 		= form_tag amzn_child_award_assignments_path( @child ) do |f|
 			= render 'amzn_form', :f => f
 
-	- unless @child.wishlists.first.wishlist_items.empty?
-		#wishlist_sidebar
-			%h3
-				= possessize @child.display_name
-				Wishlist
-			= render @child.wishlists.first.wishlist_items
-
 %br.clear
 %br
