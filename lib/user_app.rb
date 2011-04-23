@@ -1,10 +1,41 @@
 module UserApp
 	# Misc App-Specific User Methods
 	
+	attr_accessor :generic_msg_prompt_timestamp
+	
 	def best_item
 		self.objective_assignments.active.first
 	end
 	
+	def most_relevant
+		
+		#gather up assignments with no checkins for this week
+		unfinished_assignments = Array.new
+		for assignment in self.objective_assignments
+			unfinished_assignments << assignment unless assignment.has_checkin_since(Time.now.beginning_of_week)
+		end
+		
+		#gather up uncompleted lesson assignments
+		unfinished_lessons = Array.new
+		for lesson in self.lesson_assignments
+			unfinished_lessons << lesson unless lesson.completed?
+		end
+	
+		#gather up closing messages
+		closing_message = 'Great job today!  Find something fun to do!'
+		
+		#Keep falling down the tree until a most relevant item is found or return the closing message
+		if unfinished_assignments.present?
+			parent = unfinished_assignments.first.objective
+			return unfinished_assignments.first, parent
+		elsif unfinished_lessons.present?
+			parent = unfinished_lessons.first.lesson
+			return unfinished_lessons.first, parent
+		else
+			return closing_message, nil
+		end
+
+	end
 	
 	def is_child?
 		return self.type == 'Child'

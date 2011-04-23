@@ -6,6 +6,7 @@ puts "Setup Default Anonymous User"
 anon = User.new :name => 'Anonymous'
 anon.save( false )
 
+puts "Create GK's test data"
 u1 = User.new :name => 'Gk', :email => 'gk.parishphilp@gmail.com'
 u1.password = '1234'
 u1.save( false )
@@ -21,6 +22,7 @@ u1.relate_to c2, :as => 'father', :nickname => 'Pops'
 
 n2 = u1.write_note :to => c2, :subject => 'You da Man!', :content => "Hey, great Job!"
 
+puts "Create Tay's test data"
 
 u2 = User.new :name => 'Tay', :email => 'tay.x.nguyen@gmail.com'
 u2.password = '1234'
@@ -34,9 +36,11 @@ c4 = u2.children.create :name => 'Grace', :gender => 'female', :birthday => 5.ye
 c4.password = '1234'
 u2.relate_to c4, :as => 'father', :nickname => 'Dad'
 
+puts "Create admins"
 u1.make_admin( s )
 u2.make_admin( s )
 
+puts "Create forums"
 f = Forum.create :title => 'General', :description => 'Anything and Everything'
 f = Forum.create :title  => 'Socialization', :description => 'Autism, Aspergers, Playing well with others'
 f = Forum.create :title  => 'Attention', :description => 'ADD, Focus, Time Management'
@@ -49,6 +53,7 @@ f = Forum.create :title  => 'Attention', :description => 'ADD, Focus, Time Manag
 #ul = Unlockable.create :name => 'Poof', :description => "A beutiful flower for your TreeHouse", :point_cost => 10
 #ul.attachments.create :attachment_type => 'avatar', :name => 'spiked', :format => 'gif', :path => '/images/unlockables/spiked.gif', :remote => true
 
+puts "Create stickers"
 s = Sticker.create :name => 'Beaver', :point_cost => 10
 s.attachments.create :attachment_type => 'avatar', :name => 'beaver', :format => 'png', :path => '/images/stickers/beaver.png', :remote => true
 
@@ -94,6 +99,8 @@ f = Font.create :name => 'growler', :resource_path => 'http://fonts.googleapis.c
 f = Font.create :name => 'stencil', :resource_path => 'http://fonts.googleapis.com/css?family=Allerta+Stencil', :point_cost => 10
 f = Font.create :name => 'coming_soon', :resource_path => 'http://fonts.googleapis.com/css?family=Coming+Soon', :point_cost => 10
 
+puts "Create backgrounds"
+
 b1 = Background.create :name => 'blue_paisley', :repeat => 'none', :point_cost => 40
 b1.attachments.create :attachment_type => 'image', :name => 'blue_paisley', :format => 'jpg', :path => '/images/backgrounds/blue_paisley.jpg', :remote => true
 b2 = Background.create :name => 'parchment', :repeat => 'none', :point_cost => 40
@@ -107,6 +114,7 @@ b3.attachments.create :attachment_type => 'image', :name => 'notebook', :format 
 #a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"
 #a = Achievement.create :name => 'First Checkin!', :requirements => "checkins.count > 0"
 
+puts "Create static pages"
 
 # Static Pages
 about = ""

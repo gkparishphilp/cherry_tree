@@ -45,7 +45,7 @@ class Child < User
 	def setup_defaults
 		# Only doing this as a shitty hack because kids need default
 		self.journals.create :name => 'Default'
-		self.wishlists.create :name => 'Default'
+		#self.wishlists.create :name => 'Default' #Pulling wishlists from the first release
 	end
 	
 end

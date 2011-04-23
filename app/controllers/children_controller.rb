@@ -15,6 +15,7 @@ class ChildrenController < ApplicationController
 	def home
 		@screen_item = @current_user.best_item
 		@activities = Activity.feed( @current_user )
+		@relevant_assignment,@relevant_assignment_parent = @current_user.most_relevant
 	end
 	
 	def index

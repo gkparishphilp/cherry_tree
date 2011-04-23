@@ -3,38 +3,49 @@
 
 #child_main_screen
 	
-	%h3
-		= @best_item.class.name
-	
-	- for assignment in @current_user.objective_assignments.active
+	-unless @relevant_assignment.is_a? String
+		%h3
+			Did you...
+
 		.title_bar
 			.data
-				.name= assignment.objective.name
+				.name
+					= @relevant_assignment_parent.name
+					?
 				.info
 					Do this
-					= assignment.times
+					= @relevant_assignment.times
 					times per
-					= assignment.period
+					= @relevant_assignment.period
 					for
-					= assignment.point_value
-					points.
+					= @relevant_assignment.point_value
+					points
 			.clear
 		.clear
-			%br	
-			-# todo uncomment this after testing to allow children to check in just once daily
-			-# if @assignment.checkin_in_last?( 1.day.ago )
-			-#	You did this today!
-			-# else
-			= form_for Checkin.new do |f|
-				= f.hidden_field :objective_assignment_id, :value => assignment.id
-				= f.hidden_field :user_id, :value => @current_user.id
-				= f.text_field :content
-				= image_submit_tag "big_green_check.png", :width => 30
-				= image_tag "red_x.png", :width => 30
-			%br
+
+		%br	
+		-# todo uncomment this after testing to allow children to check in just once daily
+		-# if @assignment.checkin_in_last?( 1.day.ago )
+		-#	You did this today!
+		-# else
+		= form_for Checkin.new do |f|
+			= f.hidden_field :objective_assignment_id, :value => @relevant_assignment.id
+			= f.hidden_field :user_id, :value => @current_user.id
+			= f.text_field :content
+			= image_submit_tag "big_green_check.png", :width => 30
+			= image_tag "red_x.png", :width => 30
+		%br		
+	-else
+		%h3
+			You're done!
+		= @relevant_assignment
+		%br
+		%br
+
+
 	.title_bar
 		.data
-			.name Anything else?
+			.name Anything else on your mind?
 		.clear
 	= render 'checkins/form'
 		

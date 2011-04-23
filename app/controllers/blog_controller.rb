@@ -35,8 +35,6 @@ class BlogController < ApplicationController
 		@comment = Comment.new
 		@commentable = @article
 		
-		@current_user.did_read @article unless @current_user.anonymous?
-		
 	end
 
 	def destroy

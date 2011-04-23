@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 			@user.create_activation_code
 			@user.reload
 			
-			#email = UserMailer.welcome( @user, @current_site ).deliver
+			email = UserMailer.send_welcome_email( @user, @current_site ).deliver
 			
 			
 			login( @user )
@@ -121,7 +121,7 @@ class UsersController < ApplicationController
 				user.create_remember_token
 				user.reload
 
-				email = UserMailer.forgot_password( @user, @current_site ).deliver
+				email = UserMailer.forgot_password( user, @current_site ).deliver
 				pop_flash = "Email sent to #{user.email}.Please follow the enclosed instructions to recover your password.", :notice
 				redirect_to root_path
 			else
@@ -149,21 +149,22 @@ class UsersController < ApplicationController
 			return false
 		end
 		
-		if ( params[:password] == params[:password_confirmation] && params[:password].present? )
-			@user.password = params[:password]
-			@user.remember_token = nil
-			if @user.save
-				pop_flash "Password updated"
-				#just in case we're coming from forgot pw / email flow
-				login( @user )
+		if request.post?
+			if ( params[:password] == params[:password_confirmation] && params[:password].present? )
+				@user.password = params[:password]
+				@user.remember_token = nil
+				if @user.save
+					pop_flash "Password updated"
+					#just in case we're coming from forgot pw / email flow
+					login( @user )
+					redirect_to children_path
+				else
+					pop_flash "Invalid Password", :error, @user
+				end
 			else
-				pop_flash "Invalid Password", :error, @user
+				pop_flash "Passwords must match", :error
 			end
-		else
-			pop_flash "Passwords must match", :error
 		end
-		redirect_to :back
-
 	end
 
 	def activate
