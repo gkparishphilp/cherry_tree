@@ -1,11 +1,12 @@
 # == Schema Information
 # Schema version: 20110420185439
 #
-# Table name: lesson_materials
+# Table name: lesson_screens
 #
 #  id            :integer(4)      not null, primary key
 #  lesson_id     :integer(4)
 #  content       :text
+#  seq           :integer(4)
 #  material_type :string(255)
 #
 

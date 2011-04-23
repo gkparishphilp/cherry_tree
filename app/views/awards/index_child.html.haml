@@ -3,77 +3,19 @@
 = render 'children/nav'
 %h3 Pick a prize!
 
-
-.tabs
-	%ul
-		- unless @award_assignments.empty?
-			%li= link_to 'Awards', '#awards'
-		%li= link_to 'Fonts', '#fonts'
-		%li= link_to 'Backgrounds', '#backgrounds'
-		%li= link_to 'Stickers', '#stickers'
-		
 	
-	#fonts
-		- for font in @fonts
-			.treasure_item
-				.font{ :class => font.css_class, :style => 'font-size:24px;' }
-					= font.name.humanize
-				.cost
-					- if @current_user.owns?( font )
-						You Own This!
-					- else
-						Cost:
-						= font.point_cost
-						pts.
-				%br
-				= link_to "Unlock It!", unlock_award_path( font, :type => 'font' )
-		%br.clear
-		
-	- unless @award_assignments.empty?
-		#awards
-			- for assignment in @award_assignments
-				.treasure_item
-					= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
-					%br
-					= assignment.award.name
-					.cost
-						Cost:
-						= assignment.point_cost
-						pts.
-					%br
-					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
-			%br.clear
 	
-	#stickers
-		- for sticker in @stickers
+- unless @award_assignments.empty?
+	#awards
+		- for assignment in @award_assignments
 			.treasure_item
-				= link_to image_tag( sticker.avatar.location, :width => 64 ), unlock_award_path( sticker, :type => 'sticker' )
+				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
 				%br
-				= sticker.description
+				= assignment.award.name
 				.cost
-					- if @current_user.owns?( sticker )
-						You Own This!
-					- else
-						Cost:
-						= sticker.point_cost
-						pts.
+					Cost:
+					= assignment.point_cost
+					pts.
 				%br
-				= link_to "Unlock It!", unlock_award_path( sticker, :type => 'sticker' )
-		%br.clear
-	
-	#backgrounds
-		- for background in @backgrounds
-			.treasure_item
-				= link_to image_tag( background.image.location, :width => 64 ), unlock_award_path( background, :type => 'background' )
-				%br
-				= background.name
-				.cost
-					- if @current_user.owns?( background )
-						You Own This!
-					- else
-						Cost:
-						= background.point_cost
-						pts.
-				%br
-				= link_to "Unlock It!", unlock_award_path( background, :type => 'background' )
+				= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
 		%br.clear

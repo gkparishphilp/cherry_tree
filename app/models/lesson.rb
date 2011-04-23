@@ -3,12 +3,11 @@
 #
 # Table name: lessons
 #
-#  id           :integer(4)      not null, primary key
-#  name         :string(255)
-#  no_materials :integer(4)
-#  lesson_type  :string(255)
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id          :integer(4)      not null, primary key
+#  name        :string(255)
+#  lesson_type :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Lesson < ActiveRecord::Base
