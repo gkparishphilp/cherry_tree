@@ -1,41 +1,22 @@
 -# Used to show the award asignments for a child to the Parent
-	
-%h1
-	= possessize @current_user.name
-	Children
-= render 'users/nav'
+
+= render 'parents/nav'
 
 %br
 .child_profile
 
-	= render 'children/child_sub_nav', :child => @child
-	
-	%h2
-		= possessize @child.display_name
-		Awards
-		
-	= link_to 'Create a New Coupon', "#", :class => 'open_modal', :id => 'coupon'
-	= link_to 'Create a New Amzn Prize', "#", :class => 'open_modal', :id => 'amzn'
+	= render 'children/child_nav', :child => @child
+
+	.new_thing
+		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'coupon'
+		= link_to 'Create a New Coupon', "#", :class => 'open_modal', :id => 'coupon'
 		
 	= render @child.award_assignments
 	
 		
-		
-		
 	#new_coupon.modal{ :title => "New Coupon for #{@child.display_name}" }
 		= form_for [ @child, @new_assignment ] do |f|
 			= render 'coupon_form', :f => f
-			
-	#new_amzn.modal{ :title => "New Amazon Reward for #{@child.display_name}" }
-		= form_tag amzn_child_award_assignments_path( @child ) do |f|
-			= render 'amzn_form', :f => f
-
-	- unless @child.wishlists.first.wishlist_items.empty?
-		#wishlist_sidebar
-			%h3
-				= possessize @child.display_name
-				Wishlist
-			= render @child.wishlists.first.wishlist_items
 
 %br.clear
 %br

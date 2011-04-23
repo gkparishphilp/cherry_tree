@@ -5,11 +5,9 @@
 %br
 .child_profile
 	= render "children/child_nav", :child => @child
-	%h2
-		= possessize @child.display_name
-		Objectives
-		
-	.stuff
+	
+	.new_thing
+		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
 		= link_to "Assign New Objective", "#", :class => 'open_modal', :id => 'objective'
 		
 	.tabs

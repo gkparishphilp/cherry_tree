@@ -1,17 +1,23 @@
-= f.label 'Name:'
-= f.text_field :name
-
-= f.label "Nickname: (what #{@child.display_name} calls them)"
-= f.text_field :nickname
-
-= f.label 'Email:'
-= f.text_field :email
-
-= f.label 'Relationship:'
-= f.select :role,  options_for_select([ ['Father', 'father'], ['Mother', 'mother'], ['Grandmother', 'grandmother'], ['Grandfather', 'grandfather'], ['Uncle', 'uncle'], ['Aunt', 'aunt'], ['Relative', 'relative'], ])
-
-= f.label 'Message:'
-= f.text_area :message, :class => :tiny_area
+%p
+	= f.label 'Name:'
+	%br
+	= f.text_field :name
+%p
+	= f.label "Nickname: (what #{@child.display_name} calls them)"
+	%br
+	= f.text_field :nickname
+%p
+	= f.label 'Email:'
+	%br
+	= f.text_field :email
+%p
+	= f.label 'Relationship:'
+	%br
+	= f.select :role,  options_for_select([ ['Father', 'father'], ['Mother', 'mother'], ['Grandmother', 'grandmother'], ['Grandfather', 'grandfather'], ['Uncle', 'uncle'], ['Aunt', 'aunt'], ['Relative', 'relative'], ])
+%p
+	= f.label 'Message:'
+	%br
+	= f.text_area :message, :class => :tiny_area
 
 %p
 	= f.submit "Invite"

@@ -1,7 +1,9 @@
 .form_group
-	= f.label 'Question:'
-	= link_to_remove_fields( "Remove Question", f )
-	= f.text_area :content
+	%p
+		= f.label 'Question:'
+		%br
+		= link_to_remove_fields( "Remove Question", f )
+		= f.text_area :content
 	
 
 	= f.fields_for :answers do |builder|

@@ -2,10 +2,9 @@
 	= render 'children/banner'
 	= render 'children/nav'
 - else
-	= render 'users/banner'
-	= render 'users/nav'
+	= render 'parents/nav'
 .cork_board
-	.note_detail{ :class => @note.css }
+	.note_detail
 		.note_title
 			= @note.subject
 		.note_content

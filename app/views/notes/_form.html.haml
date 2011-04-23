@@ -10,14 +10,6 @@
 	Subject:
 .inline_field
 	= f.text_field :subject, :class => 'regular'
-.inline_label
-	Font:
-.inline_field
-	= f.collection_select :font_id, @fonts, :id, :name, { :prompt => 'Plain' }, :class => 'font_select'
-.inline_label
-	Background:
-.inline_field
-	= f.collection_select :background_id, @backgrounds, :id, :name, { :prompt => 'Plain' }, :class => 'bg_select'
 
 %br.clear
 .note_content

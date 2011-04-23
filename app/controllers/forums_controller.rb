@@ -12,7 +12,6 @@ class ForumsController < ApplicationController
 
 	def show
 		@forum = Forum.find params[:id] 
-		set_meta @forum.title, @forum.description
 	end
 
 	def new
