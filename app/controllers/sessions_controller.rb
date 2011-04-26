@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
 	
 	def register_invitee
 		@user = User.find( params[:id] )
+		@invite_code = params[:invite_code]
 	end
 	
 	def destroy

@@ -44,7 +44,7 @@ class InvitationsController < ApplicationController
 		if @invitation.user.registered?
 			redirect_to login_path( :credential => @invitation.user.email )
 		else
-			redirect_to register_invitee_sessions_path( :id => @invitation.user.id )
+			redirect_to register_invitee_sessions_path( :id => @invitation.user.id, :invite_code => @invitation.code )
 		end
 		
 	end

@@ -149,6 +149,9 @@ class UsersController < ApplicationController
 				return false
 			end
 			@user = valid_token_user
+		elsif params[:invite_code]
+			invitation = Invitation.find_by_code params[:invite_code]
+			@user = invitation.user
 		else
 			pop_flash "No access without credential", :error
 			redirect_to login_path
@@ -163,7 +166,7 @@ class UsersController < ApplicationController
 					pop_flash "Password updated"
 					#just in case we're coming from forgot pw / email flow but don't login if we're resetting a child's password
 					login( @user ) unless params[:child_id]
-					redirect_to children_path
+					redirect_to home_path
 				else
 					pop_flash "Invalid Password", :error, @user
 				end
