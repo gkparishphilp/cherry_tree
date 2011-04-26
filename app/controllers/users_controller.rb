@@ -132,7 +132,10 @@ class UsersController < ApplicationController
 	end
   
 	def reset_password
-		if session[:user_id].present?
+		# Check to see if this is changing the password for a child first, and then go on to changing a user's password
+		if params[:child_id].present?
+			@user = User.find params[:child_id]
+		elsif session[:user_id].present?
 			# a user is logged in, 
 			@user = User.find session[:user_id]
 		elsif params[:token]
@@ -155,8 +158,8 @@ class UsersController < ApplicationController
 				@user.remember_token = nil
 				if @user.save
 					pop_flash "Password updated"
-					#just in case we're coming from forgot pw / email flow
-					login( @user )
+					#just in case we're coming from forgot pw / email flow but don't login if we're resetting a child's password
+					login( @user ) unless params[:child_id]
 					redirect_to children_path
 				else
 					pop_flash "Invalid Password", :error, @user
