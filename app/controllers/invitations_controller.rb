@@ -6,9 +6,6 @@ class InvitationsController < ApplicationController
 		@invitation = Invitation.new
 	end
 	
-	def index
-		@supporters = @child.related_users
-	end
 	
 	def create	
 		@invitation = Invitation.new( params[:invitation] )

@@ -5,9 +5,12 @@ class UsersController < ApplicationController
 	
 	def home
 		if @current_user.is_child?
-			redirect_to home_children_path
+			@screen_item = @current_user.best_item
+			@activities = Activity.feed( @current_user )
+			@relevant_assignment, @relevant_assignment_parent = @current_user.most_relevant
+			render 'child/home'
 		else
-			@activities = Activity.feed @current_user, @current_user.children, @current_user.supported_children
+			render 'adult/home'
 		end
 	end
 	

@@ -10,9 +10,10 @@
 	= link_to "Awards", child_award_assignments_path( child )
 	|
 	= link_to "Profile", profile_child_path( child )
+	-#
+		|
+		= link_to "Send Note", new_note_path( :to => child.id )
 	|
-	= link_to "Send Note", new_note_path( :to => child.id )
-	|
-	= link_to "Supporters", child_invitations_path( child )
+	= link_to "Supporters", child_supporters_path( child )
 
 %div.divider

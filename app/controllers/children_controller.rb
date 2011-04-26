@@ -55,7 +55,7 @@ class ChildrenController < ApplicationController
 			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nick]
 			process_attachments_for( @child )
 			pop_flash "Child Registered"
-			redirect_to new_child_objective_assignment_path( @child )
+			redirect_to @child
 		else
 			pop_flash "Ooops, Child not added", :error, @child
 			redirect_to :back

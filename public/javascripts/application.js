@@ -36,6 +36,7 @@ $(document).ready(function(){
 		$(this).fadeOut(2000);
 	});
 	
+	
 	/*
 	$('#big_tree').click( function(){
 		$(this).animate({

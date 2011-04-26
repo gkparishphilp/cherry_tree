@@ -10,11 +10,7 @@ class SessionsController < ApplicationController
 		if user
 			login( user )
 			pop_flash msg
-			if user.child?
-				redirect_to home_path
-			else
-				redirect_to children_path
-			end
+			redirect_to home_path
 		elsif user == false
 			pop_flash msg, :error
 			redirect_to register_path( :email => params[:email] )
