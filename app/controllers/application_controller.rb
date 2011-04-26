@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
 
 protected
 
+	#Get parental permission for a child
+	def get_parental_permission( child )
+		child.parents.include?( @current_user ) ? (return true) : (return false)
+	end
+
 	def check_for_achievements
 		return false if @current_user.nil? || @current_user.anonymous? || !@current_user.child?
 		for achievement in Achievement.all
@@ -40,6 +45,7 @@ protected
 		@current_user.human = @current_user.logged_in? || cookies[:human] == 'true'
 		@current_site = Site.first
 	end
+	
 	
 	# simply sets session cookie for passed-in user
 	def login( user )
@@ -91,6 +97,7 @@ protected
 		end
 	end
 	
+
 	
 	# Controller filters -- todo -- add @current_user.validated? for filter on valid email
 	def require_admin

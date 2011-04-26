@@ -110,9 +110,11 @@ class User < ActiveRecord::Base
 									:class_name => 'Child', 
 									:source => :related_user, 
 									:conditions => "role NOT IN ( 'mother', 'father', 'guardian' )"
-	has_many	:parents, :through => :relationships, 
+
+	# User is the subject of the sentence.  User(child) has parents and he/she is their 'son/daughter'
+	has_many	:parents, :through => :relationships,
 						:source => :related_user, 
-						:conditions => "role IN ( 'mother', 'father', 'guardian' )"
+						:conditions => "role IN ( 'son', 'daughter')"
 
 	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	
