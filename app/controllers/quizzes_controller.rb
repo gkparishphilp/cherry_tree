@@ -53,7 +53,7 @@ class QuizzesController < ApplicationController
 		@num_right = @quizzing.answerings.collect{ |a| a.answer == a.question.correct_answer }.count { |a| a == true }
 
 		@quizzing.update_attributes :score => @num_right
-		@points_earned = ( @num_right.to_f / @quiz.questions.count.to_f ) * @quiz.points.to_f
+		@points_earned = ( @num_right.to_f / @quiz.questions.count.to_f ) * @quiz.point_value.to_f
 		@current_user.earn_points_for( @quiz, @points_earned.to_i )
 		@current_user.do_activity( "Earned #{@points_earned.to_i} points taking ", @quiz )
 	end

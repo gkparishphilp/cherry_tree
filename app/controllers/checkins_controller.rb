@@ -9,8 +9,12 @@ class CheckinsController < ApplicationController
 
 		if @checkin.save
 			if @checkin.objective_assignment.present?
-				@checkin.user.do_activity( "did '#{@checkin.objective_assignment.objective.name}'.", @checkin )
+				activity = @checkin.user.do_activity( "did '#{@checkin.objective_assignment.objective.name}'.", @checkin )
 				# todo -- auto-add content as comment
+				if @checkin.content.present?
+					activity.comments.create :user => @current_user, :content => @checkin.content
+					@checkin.update_attributes :content => ""
+				end
 			else
 				@checkin.user.do_activity( " said: '#{@checkin.content}' ", @checkin )
 			end

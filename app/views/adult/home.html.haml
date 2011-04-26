@@ -10,3 +10,4 @@
 	%h4 This is your home
 	- for child in @current_user.children
 		= link_to child.display_name, child
+	= render @current_user.children

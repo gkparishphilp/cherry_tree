@@ -13,5 +13,17 @@
 class Lesson < ActiveRecord::Base
 	has_many	:lesson_screens
 	has_many	:lesson_assignments
+	has_many	:quizzes
 	acts_as_taggable_on	:keywords
+	
+	
+	def first_screen
+		self.lesson_screens.find_by_sequence( 1 ) || self.lesson_screens.first
+	end
+	
+	def last_screen
+		self.lesson_screens.order( "sequence ASC" ).last || self.lesson_screens.last
+	end
+	
+	
 end

@@ -21,20 +21,20 @@ class Question < ActiveRecord::Base
 	accepts_nested_attributes_for	:answers, :reject_if => lambda { |attrs| attrs[:content].blank? }, :allow_destroy => true
 	has_one		:correct_answer, :class_name => 'Answer', :conditions => "correct = true"
 	
-	after_create :set_seq
+	after_create :set_sequence
 
 	def next_question
-		self.quiz.questions.find_by_seq( self.seq + 1 )
+		self.quiz.questions.find_by_sequence( self.sequence + 1 )
 	end
 	
 	private 
 	
-	def set_seq
-		return if self.seq.present?
+	def set_sequence
+		return if self.sequence.present?
 		if self.quiz.questions.count < 2
-			self.seq = 1
+			self.sequence = 1
 		else
-			self.seq = self.quiz.last_question.seq + 1
+			self.sequence = self.quiz.last_question.sequence + 1
 		end
 		self.save
 	end

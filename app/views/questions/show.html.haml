@@ -2,13 +2,19 @@
 	= @quiz.name
 %h2
 	Question Number
-	= @question.seq
+	= @question.sequence
 	
-%b= @question.content
-= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
-	- for answer in @question.answers
-		.answer
-			= radio_button_tag :answer_id, answer.id
-			= answer.content
-	= submit_tag "Enter", :class => 'button'
+%b
+	= @question.content
+- if @question.answers.empty?
+	= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
+		= text_field_tag :response
+		= submit_tag "Enter", :class => 'button blue'
+- else
+	= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
+		- for answer in @question.answers
+			.answer
+				= radio_button_tag :answer_id, answer.id
+				= answer.content
+		= submit_tag "Enter", :class => 'button blue'
 

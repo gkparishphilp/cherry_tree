@@ -8,16 +8,17 @@ class QuestionsController < ApplicationController
 	def answer
 		# get stuff
 		@question = Question.find( params[:id] )
-		@answer = Answer.find( params[:answer_id] ) || params[:response]
-		
-		# process stuff
-		@quizzing.answer( @question, @answer )
-		
-		if @answer.correct?
-			pop_flash "Yay, You're right!"
+		if @answer = Answer.find_by_id( params[:answer_id] )
+			@quizzing.answer( @question, @answer )
+			if @answer.correct?
+				pop_flash "Yay, You're right!"
+			else
+				pop_flash "Bummer, wrong answer", :error
+			end
 		else
-			pop_flash "Bummer, wrong answer", :error
+			@quizzing.answer( @question, params[:response] )
 		end
+		
 		if @question == @quiz.last_question
 			pop_flash "Yay, You're Done!", :notice
 			redirect_to recap_quiz_path( @quiz )
