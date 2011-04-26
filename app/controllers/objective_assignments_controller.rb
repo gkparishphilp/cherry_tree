@@ -1,6 +1,5 @@
 class ObjectiveAssignmentsController < ApplicationController
-	before_filter :get_child
-	
+	before_filter :get_child	
 	
 	def create
 		@objective = @current_user.created_objectives.create( :name => params[:objective_assignment][:objective_name], 
@@ -25,14 +24,19 @@ class ObjectiveAssignmentsController < ApplicationController
 			@assignments = @current_user.objective_assignments.active
 			render :child_index
 		else
-			@assignments = @child.objective_assignments.available
-			@new_assignment = ObjectiveAssignment.new
-			@new_assignment.req_confirm = true
+			if get_parental_permission( @child )
+				@assignments = @child.objective_assignments.available
+				@new_assignment = ObjectiveAssignment.new
+				@new_assignment.req_confirm = true
 			
-			@this_week = Time.now.end_of_week
-			@last_week = @this_week - 7.days
+				@this_week = Time.now.end_of_week
+				@last_week = @this_week - 7.days
 
-			render :adult_index
+				render :adult_index
+			else
+				pop_flash "Sorry, access denied", :error
+				redirect_to :root
+			end
 		end
 	end
 	
@@ -51,7 +55,7 @@ class ObjectiveAssignmentsController < ApplicationController
 		redirect_to :back
 	end
 	
-	
+
 	
 	
 	private
@@ -59,6 +63,7 @@ class ObjectiveAssignmentsController < ApplicationController
 	def get_child
 		@child = Child.find( params[:child_id] )
 	end
-
 	
+
+
 end

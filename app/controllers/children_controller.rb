@@ -45,7 +45,12 @@ class ChildrenController < ApplicationController
 		if @current_user.is_child?
 			render :profile_child
 		else
-			render :profile_adult
+			if get_parental_permission( @child )
+				render :profile_adult
+			else
+				pop_flash "Sorry, access denied", :error
+				redirect_to :root
+			end
 		end
 	end
 	

@@ -5,8 +5,13 @@ class SupportersController < ApplicationController
 		if @current_user.is_child?
 			render :child_index
 		else
-			@supporters = @child.related_users
-			render :adult_index
+			if get_parental_permission( @child )
+				@supporters = @child.related_users
+				render :adult_index
+			else
+				pop_flash "Sorry, access denied", :error
+				redirect_to :root
+			end
 		end
 	end
 	

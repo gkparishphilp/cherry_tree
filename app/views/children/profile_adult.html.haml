@@ -5,6 +5,19 @@
 .child_profile
 	= render 'children/sub_nav', :child => @child
 	
+	%p 
+		%b 
+			Change password for
+			= @child.display_name
+			
+		= form_tag reset_path do
+			%label New Password:
+			= password_field_tag :password, params[:password], :size=>30, :class=>"password"
+			%label Confirm Password:
+			= password_field_tag :password_confirmation, params[:password_confirmation], :size=>30, :class=>"password"
+			= hidden_field_tag :child_id, @child.id
+			= submit_tag "Change Password", :class => 'button'
+	
 	%b
 		= possessize @child.display_name
 		Favorite Books:

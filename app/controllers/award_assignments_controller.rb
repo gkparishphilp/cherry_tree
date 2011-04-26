@@ -29,12 +29,17 @@ class AwardAssignmentsController < ApplicationController
 	end
 	
 	def index
-		@assignments = @child.award_assignments
-		@awards = @current_user.created_awards.map{ |award| 
-			[ "#{award.name} - #{award.award_type} (#{award.point_cost})", award.id ]
-			}
+		if get_parental_permission( @child )
+			@assignments = @child.award_assignments
+			@awards = @current_user.created_awards.map{ |award| 
+				[ "#{award.name} - #{award.award_type} (#{award.point_cost})", award.id ]
+				}
 		
-		@new_assignment = @child.award_assignments.new
+			@new_assignment = @child.award_assignments.new
+		else
+			pop_flash "Sorry, access denied", :error
+			redirect_to :root
+		end
 	end
 	
 	def new
