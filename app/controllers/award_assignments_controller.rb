@@ -20,11 +20,7 @@ class AwardAssignmentsController < ApplicationController
 		@assignment.user = @child
 		if @assignment.save
 			pop_flash "Assignment Made"
-			if params[:first]
-				redirect_to complete_child_path( @child )
-			else
-				redirect_to child_award_assignments_path( @child )
-			end
+			redirect_to child_award_assignments_path( @child )
 		else
 			pop_flash "There was a problem with the assignment", :error, @assignment
 			redirect_to :back

@@ -13,11 +13,7 @@ class ObjectiveAssignmentsController < ApplicationController
 		if @assignment.save
 			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment
 			pop_flash "Assignment Made"
-			if params[:first]
-				redirect_to new_child_award_assignment_path( @child )
-			else
-				redirect_to child_objective_assignments_path( @child )
-			end
+			redirect_to child_objective_assignments_path( @child )
 		else
 			pop_flash "There was a problem with the assignment", :error, @assignment
 			redirect_to :back
@@ -27,7 +23,7 @@ class ObjectiveAssignmentsController < ApplicationController
 	def index
 		if @current_user.is_child?
 			@assignments = @current_user.objective_assignments.active
-			render :index_child
+			render :child_index
 		else
 			@assignments = @child.objective_assignments.available
 			@new_assignment = ObjectiveAssignment.new
@@ -36,7 +32,7 @@ class ObjectiveAssignmentsController < ApplicationController
 			@this_week = Time.now.end_of_week
 			@last_week = @this_week - 7.days
 
-			render :index_adult
+			render :adult_index
 		end
 	end
 	

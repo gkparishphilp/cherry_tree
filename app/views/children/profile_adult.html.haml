@@ -1,9 +1,9 @@
 -# Used to show Child's profile  to Parent
-= render 'parents/nav'
+= render 'adult/nav'
 
 %br
 .child_profile
-	= render 'children/child_nav', :child => @child
+	= render 'children/sub_nav', :child => @child
 	
 	%b
 		= possessize @child.display_name

@@ -5,7 +5,7 @@
 .column1
 	= form_for @current_user, :html => { :multipart => true } do |f|
 		= file_field_tag :attached_avatar_file
-		= submit_tag "Update Picture", :class => 'button'
+		= submit_tag "Update Picture", :class => 'button blue'
 .divider
 .column2
 	%h3 Change Your Email
@@ -13,7 +13,7 @@
 .column1
 	= form_for @current_user do |f|
 		= f.text_field :email
-		= f.submit "Enter", :class => 'button'
+		= f.submit "Enter", :class => 'button_flat'
 .divider
 .column2
 	%h3 Update Password
@@ -24,5 +24,5 @@
 		%label Confirm Password:
 		= password_field_tag :password_confirmation, params[:password_confirmation], :size=>30, :class=>"password"
 		= hidden_field_tag :token, @current_user.remember_token
-		= submit_tag "Change Password", :class => 'button'
+		= submit_tag "Change Password", :class => 'button blue'
 .clear
