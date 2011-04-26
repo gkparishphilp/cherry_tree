@@ -4,7 +4,7 @@
 %br
 .child_profile
 	= render 'children/sub_nav', :child => @child
-	
+	%br
 	%p 
 		%b 
 			Change password for
@@ -13,25 +13,12 @@
 		= form_tag reset_path do
 			%label New Password:
 			= password_field_tag :password, params[:password], :size=>30, :class=>"password"
+			%br
 			%label Confirm Password:
 			= password_field_tag :password_confirmation, params[:password_confirmation], :size=>30, :class=>"password"
 			= hidden_field_tag :child_id, @child.id
+			%br
 			= submit_tag "Change Password", :class => 'button'
 	
-	%b
-		= possessize @child.display_name
-		Favorite Books:
-	%p
-		= @child.favorite_books.join ", "
-		
-	%b
-		= possessize @child.display_name
-		Achievements:
-	%p
-		- for earning in @child.achievement_earnings
-			= eanring.achievement.name
-			on
-			= format_date_only earning.created_at
-
 %br.clear
 %br

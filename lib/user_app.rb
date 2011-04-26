@@ -1,8 +1,6 @@
 module UserApp
 	# Misc App-Specific User Methods
 	
-	attr_accessor :generic_msg_prompt_timestamp
-	
 	def best_item
 		self.objective_assignments.active.first
 	end
@@ -21,8 +19,8 @@ module UserApp
 			unfinished_lessons << lesson unless lesson.completed?
 		end
 	
-		#gather up closing messages
-		closing_message = 'Great job today!  Find something fun to do!'
+		#This message is actually the partial name in views/users which shows the all done screen
+		closing_message = 'done'
 		
 		#Keep falling down the tree until a most relevant item is found or return the closing message
 		if unfinished_assignments.present?
