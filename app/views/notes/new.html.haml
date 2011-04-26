@@ -1,9 +1,7 @@
 - if @current_user.is_child?
-	= render 'child/banner'
-	= render 'children/nav'
+	= render 'child/nav'
 - else
 	= render 'adult/nav'
-	= render 'child/sub_nav', :child => @child
 .cork_board
 	.note_detail.schoolbell
 		.note_title

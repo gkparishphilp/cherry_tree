@@ -74,6 +74,8 @@ class ChildrenController < ApplicationController
 		if @child == @current_user
 			redirect_to :home
 		end
+		
+		@activities = @child.activities
 	end
 
 	

@@ -1,34 +1,26 @@
-%div[objective_assignment]
-	.title_bar
-		.data
-			.name= link_to objective_assignment.objective.name, child_objective_assignment_path( @child, objective_assignment )
-			.info
-				= objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).count
-				checkins out of
-				= objective_assignment.times
-				this week.
-				
-				This objective is worth:
-				= objective_assignment.point_value
-				Points
-		.actions
-			- if objective_assignment.is_active?
-				= button_to "Turn Off", child_objective_assignment_path( @child, objective_assignment, :status => 'deleted' ), :method => :put
-			- else
-				= button_to "Turn On", child_objective_assignment_path( @child, objective_assignment, :status => 'active' ), :method => :put
+%h3
+	Did you...
 
-			= button_to "Trash", child_objective_assignment_path( @child, objective_assignment, :status => 'deleted' ), :method => :put
-		.clear
+.title_bar
+	.data
+		.name
+			= objective_assignment.objective.name
+			?
+		.info
+			Do this
+			= objective_assignment.times
+			times per
+			= objective_assignment.period
+			for
+			= objective_assignment.point_value
+			points
+	.clear
+.clear
 
-	- if objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week ).empty?
-		%p.no_checkins
-			No Checkins This Week!
-	-else
-		- for checkin in objective_assignment.checkins.by( @child ).dated_between( week.beginning_of_week, week.end_of_week )
-			= render checkin
-
-	- unless objective_assignment.approved_for_week( week )
-		= form_for Approval.new do |f|
-			= render 'approvals/form', :f => f, :objective_assignment => objective_assignment, :week => week
-
-
+= form_for Checkin.new do |f|
+	= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
+	= f.hidden_field :user_id, :value => @current_user.id
+	= f.text_field :content
+	= image_submit_tag "big_green_check.png", :width => 30
+	= image_tag "red_x.png", :width => 30
+%br		

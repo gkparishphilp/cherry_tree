@@ -1,7 +1,4 @@
-%h1
-	= possessize @current_user.name
-	Children
-= render 'users/nav'
-%h3 Add a Child Step 1: Basic Info
+= render 'adult/nav'
+%h3 Add a Child
 = form_for @child, :html => { :multipart => true } do |f|
 	= render 'form', :f => f

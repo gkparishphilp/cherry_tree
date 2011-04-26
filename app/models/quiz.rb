@@ -25,11 +25,11 @@ class Quiz < ActiveRecord::Base
 	has_many	:quizzings
 	
 	def last_question
-		self.questions.order( "seq ASC" ).last || self.questions.last
+		self.questions.order( "sequence ASC" ).last || self.questions.last
 	end
 	
 	def first_question
-		self.questions.find_by_seq( 1 ) || self.questions.first
+		self.questions.find_by_sequence( 1 ) || self.questions.first
 	end
 	
 	def taken_by?( user )

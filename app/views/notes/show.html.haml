@@ -1,8 +1,7 @@
 - if @current_user.is_child?
-	= render 'children/banner'
-	= render 'children/nav'
+	= render 'child/nav'
 - else
-	= render 'parents/nav'
+	= render 'adult/nav'
 .cork_board
 	.note_detail
 		.note_title

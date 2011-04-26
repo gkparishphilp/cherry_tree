@@ -5,12 +5,7 @@
 .child_profile
 	= render 'children/sub_nav', :child => @child
 	.timeline
-		%p
-			Stream of stuff related to this child.
-		%p
-			Maybe color-coded by importance, etc.
-		%p
-			Blah blah blah....
+		= render @activities
 
 
 %br.clear

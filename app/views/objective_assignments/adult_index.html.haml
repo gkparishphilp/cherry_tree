@@ -9,26 +9,12 @@
 	.new_thing
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
 		= link_to "Assign New Objective", "#", :class => 'open_modal', :id => 'objective'
-		
-	.tabs
-		%ul
-			%li= link_to 'This Week', "#this_week"
-			%li= link_to 'Last Week', "#last_week"
-		#this_week
-			%h3 This week
-			(
-			Ending
-			= format_date_only @this_week.end_of_week
-			)
-			= render @assignments, :week => @this_week
-	
-		#last_week				
-			%h3 Last week
-			(
-			Ending
-			= format_date_only @last_week.end_of_week
-			)
-			= render @assignments, :week => @last_week
+	%table( width=800 )
+		%th Objective
+		%th Frequency
+		%th Points
+		%th Actions
+		= render @assignments
 			
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2

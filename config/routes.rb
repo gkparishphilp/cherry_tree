@@ -30,6 +30,10 @@ CherryTree::Application.routes.draw do
 		resources :comments
 	end
 	
+	resources :lessons do
+		resources :lesson_screens
+	end
+	
 	resources :children do
 		get 'login', :on => :collection
 		get 'home', :on => :collection

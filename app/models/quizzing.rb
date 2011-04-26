@@ -20,7 +20,12 @@ class Quizzing < ActiveRecord::Base
 	def answer( question, answer )
 		# record the answer
 		self.update_attributes :question_id => question
-		self.answerings.create :question => question, :answer => answer
+		
+		if answer.is_a?( Answer )
+			self.answerings.create :question => question, :answer => answer
+		else
+			self.answerings.create :question => question, :response => answer
+		end
 	end
 
 end

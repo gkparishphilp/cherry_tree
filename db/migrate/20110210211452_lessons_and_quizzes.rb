@@ -34,8 +34,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		create_table :lesson_screens do |t|
 			t.references	:lesson
 			t.text			:content
-			t.integer		:seq
-			t.string		:material_type
+			t.integer		:sequence
 		end
 		
 		create_table :questions, :force => true do |t|
