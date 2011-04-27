@@ -2,25 +2,36 @@
 	%h1
 		Let's get started!
 	= form_for @user do |f|
-		.fields
+		.fields.register
 
 			= f.label "Email"
 			= f.text_field :email, :class => :regular
 
+			%div.clear
+			
 			= f.label :name, "First Name"
-			= text_field_tag :fname, '', :class => :regular
+			= text_field_tag :fname, '', :class => :regular, :size => '30'
+			
+			%div.clear
 			
 			= f.label :name, "Last Name"
-			= text_field_tag :lname, '', :class => :regular
+			= text_field_tag :lname, '', :class => :regular, :size => '30'
+
+			%div.clear
 
 			= f.label :password, "Password"
 			= f.password_field :password, :class => :regular
-
+			
+			%div.clear
+			
 			= f.label :password_confirmation, "Confirm Password"
 			= f.password_field :password_confirmation, :class => :regular
 			%br
 			%br
-			= f.submit 'Register', :class => "button"
+			%div.clear
+			%label
+				&nbsp;
+			= f.submit 'Register', :class => "button blue"
 			|
 			= link_to 'Login', new_session_path
 			|
