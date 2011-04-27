@@ -1,21 +1,21 @@
 .form_group
 	%h1
-		Let's get started!
+		New to CherryTree?  Register here!
 	= form_for @user do |f|
 		.fields
 
 			= f.label "Email"
 			= f.text_field :email, :class => :regular
-
+			%br
 			= f.label :name, "First Name"
 			= text_field_tag :fname, '', :class => :regular
-			
+			%br
 			= f.label :name, "Last Name"
 			= text_field_tag :lname, '', :class => :regular
-
+			%br
 			= f.label :password, "Password"
 			= f.password_field :password, :class => :regular
-
+			%br
 			= f.label :password_confirmation, "Confirm Password"
 			= f.password_field :password_confirmation, :class => :regular
 			%br

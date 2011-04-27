@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
 	# User is the subject of the sentence.  User(child) has parents and he/she is their 'son/daughter'
 	has_many	:parents, :through => :relationships,
 						:source => :related_user, 
-						:conditions => "role IN ( 'son', 'daughter')"
+						:conditions => "role IN ( 'son', 'daughter', 'ward', 'client')"
 
 	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	

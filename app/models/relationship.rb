@@ -32,9 +32,10 @@ class Relationship < ActiveRecord::Base
 			'friend' => 'friend',
 			'teacher' => 'student',
 			'doctor' => 'patient', 
-			'professional' => 'client',
+			'pro' => 'client',
 			'cousin' => 'cousin', 
-			'relative' => 'relative'
+			'relative' => 'relative',
+			'guardian'  => 'ward'
 		}
 		
 		male_roles = {

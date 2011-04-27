@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
 
 		if user
 			login( user )
-			pop_flash msg
 			redirect_to home_path
 		elsif user == false
 			pop_flash msg, :error
