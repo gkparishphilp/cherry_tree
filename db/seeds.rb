@@ -46,20 +46,18 @@ f = Forum.create :title  => 'Socialization', :description => 'Autism, Aspergers,
 f = Forum.create :title  => 'Attention', :description => 'ADD, Focus, Time Management'
 
 
-l = Lesson.create :name => 'A sample Lesson'
-ls1 = l.lesson_screens.create :sequence => 1, :content => "This is the first screen"
-ls2 = l.lesson_screens.create :sequence => 1, :content => "This is the second screen"
-ls3 = l.lesson_screens.create :sequence => 1, :content => "This is the third screen"
+l = Lesson.create :name => 'How to use Cherry Tree'
+ls1 = l.lesson_screens.create :sequence => 1, :content => "To get the most out of Cherry Tree, try to log in every day."
+ls2 = l.lesson_screens.create :sequence => 2, :content => "Remember, honesty is the best policy.  If you did not accomplish your objectives, just say so, and work harder the next time."
+ls3 = l.lesson_screens.create :sequence => 3, :content => "You have supporters.  You can send them notes!"
 
-q = l.quizzes.create :name => "A sample quiz for a sample lesson", :point_value => 100
-quest = q.questions.create :content => 'Why do people get mad?'
-quest2 = q.questions.create :content => "Who invented the lightbulb?"
-quest2.answers.create :content => 'Albert Einstein'
-quest2.answers.create :content => 'Thomas Edison', :correct => true
-quest2.answers.create :content => 'Mother necessity'
-quest3 = q.questions.create :content => 'What is the capital of California?'
-
-c3.lessons << l
+q = l.quizzes.create :name => "A quiz for How to use Cherry Tree", :point_value => 100
+quest = q.questions.create :content => "If you didn't acheive one of your objectives, what should you do?"
+quest2 = q.questions.create :content => "How often should you log into Cherry Tree?"
+quest2.answers.create :content => 'When You feel like it'
+quest2.answers.create :content => 'Every Day', :correct => true
+quest2.answers.create :content => 'Once a week'
+quest3 = q.questions.create :content => 'What are your goals for the next month?'
 
 # some unlockables
 

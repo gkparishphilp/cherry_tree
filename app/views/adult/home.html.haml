@@ -1,7 +1,5 @@
 -# Used to show Children Dashboard to Parent
-= render 'adult/nav'
 
-%br
 - if @current_user.children.empty? && @current_user.supported_children.empty?
 	%h2 Welcome to CherryTree!
 	CherryTree provides a safe online environment for your child to interact with you and other role models.  Let's get started by entering your child's information.
