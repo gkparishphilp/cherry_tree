@@ -1,27 +1,15 @@
 %p
-	= f.label 'Objective:'
+	= f.label 'Goal:'
 	= f.text_field :objective_name
 %p
 	= f.label 'Description (optional):'
 	= f.text_area :objective_description, :class => 'tiny_area'
 %p
-	Award how many points per week:
+	Award how many points per week?
 	= f.text_field :point_value
 %p
-	How many times a week should a child report in?
+	How many times per week should a child report in?
 	= f.select :times, [['1',1], ['2',2], ['3',3], ['4',4],['5',5],['6',6],['7',7]], :selected => 3
--#
-	%br
-	How many times per week should
-	= @child.display_name
-	checkin for this objective?
-	%br
-	= f.text_field :times
-	%br
-
-	%br
-	= f.check_box :req_confirm, :checked => @new_assignment.req_confirm
-	Parental approval required?
 
 %br
-= f.submit
+= f.submit "Create Goal"

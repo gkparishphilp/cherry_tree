@@ -59,7 +59,7 @@ class ChildrenController < ApplicationController
 		if @child.save
 			@current_user.relate_to @child, :as => params[:child][:role], :nickname => params[:child][:nick]
 			process_attachments_for( @child )
-			pop_flash "Child Registered"
+			pop_flash "Child Registered.  You can now set objectives for your child.."
 			redirect_to @child
 		else
 			pop_flash "Ooops, Child not added", :error, @child

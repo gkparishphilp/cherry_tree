@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 		@user = User.find_or_initialize_by_email( params[:user][:email] )
 		if @user.hashed_password.present?
 			# someone created an account with this email address before.... send to forgot pass?
-			pop_flash "This email address has already been registered.  Perhaps you've forgottne the password?", :notice
+			pop_flash "This email address has already been registered.  Perhaps you've forgotten the password?", :notice
 			redirect_to forgot_path
 		else
 			# this is a brand-new user, whether we found an email or not
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 			
 			login( @user )
 
-			redirect_to children_path
+			redirect_to home_path
 
 		else
 			pop_flash 'Ooops, User not saved.... ', :error, @user

@@ -5,9 +5,17 @@
 	= @current_user.point_balance
 	= image_tag "cherry.png", :class => 'cherry'
 .clear
+<<<<<<< HEAD
 #main-nav
 	%ul.navbar
 		%li= link_to "Home", home_path
 		%li= link_to "Objectives", child_objective_assignments_path( @current_user )
 		%li= link_to "Notes", notes_path
 		%li= link_to "Treasure Chest", awards_path
+=======
+%ul.navbar
+	%li= link_to "Home", home_path
+	%li= link_to "Goals", child_objective_assignments_path( @current_user )
+	%li= link_to "Notes", notes_path
+	%li= link_to "Treasure Chest", awards_path
+>>>>>>> 1e89b5f80a8501ce4b911f3580e93099ff7fc25b
