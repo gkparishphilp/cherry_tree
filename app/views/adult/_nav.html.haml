@@ -12,7 +12,13 @@
 			
 		
 		- unless @current_user.supported_children.empty?
-			%li= link_to "Supported Children", ""
+			%li.more
+				= link_to "Supported Children", ""
+				%ul
+					- for child in @current_user.supported_children
+						%li
+							= link_to child.display_name, child
+			
 		%li.more
 			= link_to "Notes", notes_path
 			%ul

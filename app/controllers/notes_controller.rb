@@ -59,7 +59,7 @@ class NotesController < ApplicationController
 		recipient = User.find_by_id( params[:note][:recipient_id] )
 		if @note.save
 			@note.deliver_to( recipient )
-			recipient.do_activity( "Have a new note from #{@note.sender.display_name}", @note )
+			recipient.do_activity( "Got a new <a href=#{note_path( @note )}>note</a> from #{@note.sender.display_name}", @note )
 			pop_flash "Note Added"
 			redirect_to notes_path
 		else

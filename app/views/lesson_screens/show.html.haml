@@ -1,4 +1,18 @@
-= render 'child/nav'
+%p
+	= @screen.content.html_safe
 
-= @screen.content.html_safe
+- unless @screen == @lesson.first_screen
+	= link_to "Last", lesson_lesson_screen_path( @lesson, @screen.previous_screen )
+- if @screen == @lesson.last_screen
+	The End
+	- if @lesson.quizzes.first.present? #todo - not taken by child
+		This lesson has a quiz that is worth
+		= @lesson.quizzes.first.point_value
+		points.
+		%br
+		Would you like to take it now?
+		= link_to "Yes", quiz_question_path( @lesson.quizzes.first, @lesson.quizzes.first.questions.first )
+		= link_to "No", home_path
+- else
+	= link_to "Next", lesson_lesson_screen_path( @lesson, @screen.next_screen )
 

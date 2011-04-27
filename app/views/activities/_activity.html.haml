@@ -4,7 +4,7 @@
 	- else
 		= activity.user.display_name
 		
-	= activity.verb
+	= activity.verb.html_safe
 		
 	= time_ago_in_words( activity.created_at )
 	ago.
