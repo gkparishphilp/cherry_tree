@@ -5,7 +5,10 @@
 		= link_to child.display_name, child
 
 .nav
-	= link_to "Goals", child_objective_assignments_path( child )
+	= link_to "Objectives", child_objective_assignments_path( child )
+	|
+	-# todo -- if unapproved checkins
+	= link_to "Approvals", child_approvals_path( child )
 	|
 	= link_to "Awards", child_award_assignments_path( child )
 	|

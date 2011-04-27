@@ -12,31 +12,35 @@
 		
 	%label
 		%span.gender
-			name is
+		name is
 	= f.text_field :display_name
 
 	%div.clear	
 
 	%label.pic
 		Upload a Picture for
+		%span.name
 	= file_field_tag :attached_avatar_file, :class => 'button_flat'
 
 	%div.clear
 	
 	%label.birthday
+		%span.name_owner
 		birthday is
 	
 	= f.text_field :birthday, :class => 'birthday_field'
 
 	%div.divider
 	
-	%label.name_owner
+	%label
 		I am
+		%span.name_owner
 	= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
 	
 	%div.clear
 
 	%label.nickname
+		%span.name
 		calls me (your name or nickname):
 	= f.text_field :nick
 	

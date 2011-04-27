@@ -4,10 +4,31 @@
 %br
 .child_profile
 	= render 'children/sub_nav', :child => @child
-	.timeline
-		= render @activities
+	
+	
+	#child_main_screen
+		%h3 Activity?
+		.timeline
+			= render @activities
 
 
-%br.clear
-%br
+	#home_prizes
+		%h3 Prizes
+		- for assignment in @child.award_assignments
+			.item
+				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
+				%br
+				%b= assignment.award.name
+				.cost
+					Cost:
+					= assignment.point_cost
+					pts.
+	#home_news
+		%h3 Notes?
+	
+	
+	
+	
+	
+
 
