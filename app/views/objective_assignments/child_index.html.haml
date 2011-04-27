@@ -3,7 +3,7 @@
 = render 'child/nav'
 
 - if @assignments.present?
-	%h3 Your Objectives
+	%h3 Your Goals
 	- for assignment in @assignments
 		%b= assignment.objective.name
 		%br
@@ -20,4 +20,4 @@
 		%br
 	
 - else
-	%h3 No Objectives
+	%h3 No Goals
