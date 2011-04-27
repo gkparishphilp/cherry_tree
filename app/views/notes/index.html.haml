@@ -3,16 +3,11 @@
 - else
 	= render 'adult/nav'
 .cork_board
-	.note_nav.schoolbell
-		.new_note
-			%br
-			= link_to image_tag( 'pencil.png', :width => 20 ), new_note_path
-			%br
-			= link_to "Write a Note", new_note_path, :class => 'tiny_green_button'
-		.all_notes
-			%br
-			%br
-			=link_to "All Notes", archive_notes_path
+	.note_nav.schoolbell.clearfix
+		.black_button.new_note
+			=link_to content_tag(:span, 'Write a Note'), new_note_path
+		.black_button.all_notes
+			=link_to content_tag(:span, 'All Notes'), archive_notes_path
 	.note_main
 		= render @notes
 		%br.clear
