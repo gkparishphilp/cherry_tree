@@ -2,9 +2,7 @@
 %html
 	%head
 		= render 'layouts/meta', :css => 'app'
-		- if @fonts
-			- for font in @fonts	
-				= stylesheet_link_tag font.resource_path
+
 		= include_tiny_mce_if_needed
 	%body
 		-#

@@ -1,6 +1,5 @@
 .banner_name
-	%h1
-		= @current_user.display_name.capitalize
+	= @current_user.display_name.capitalize
 .banner_points
 	= @current_user.point_balance
 	= image_tag "cherry.png", :class => 'cherry'
