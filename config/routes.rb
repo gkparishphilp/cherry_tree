@@ -2,10 +2,6 @@ CherryTree::Application.routes.draw do
 
 	root :to => "site#index"
 	
-	resources :approvals do
-		post 'weekly', :on => :collection
-	end
-	
 	resources :activities do
 		resources :comments
 	end
@@ -38,13 +34,14 @@ CherryTree::Application.routes.draw do
 		get 'login', :on => :collection
 		get 'home', :on => :collection
 		get 'profile', :on => :member
-		get 'complete', :on => :member
+		
+		resources :approvals
+
 		resources :objective_assignments do
 			resources :comments
 		end
-		resources :award_assignments do
-			post 'amzn', :on => :collection
-		end
+		resources :award_assignments
+		
 		resources :journal_entries do
 			resources :comments
 			get 'customize', :on => :member
