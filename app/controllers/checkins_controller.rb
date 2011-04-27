@@ -36,13 +36,26 @@ class CheckinsController < ApplicationController
 		@checkin = Checkin.find( params[:id] )
 
 		if @checkin.update_attributes( params[:checkin] )
-			count = process_checkin( @checkin )
 
 			pop_flash "Checkin was successfully updated."
 		else
 			pop_flash "Checkin could not be updated.", :error, @checkin
 		end
 		redirect_to :back
+	end
+
+	def approve
+		@checkin = Checkin.find( params[:id] )
+		@checkin.confirmed_by = params[:confirmed_by]
+		@checkin.confirmed_at = params[:confirmed_at]
+
+		if @checkin.save
+			pop_flash "Checkin was successfully updated."
+		else
+			pop_flash "Checkin could not be updated.", :error, @checkin
+		end
+		redirect_to :back
+		
 	end
 
 	def destroy
