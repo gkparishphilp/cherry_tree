@@ -1,22 +1,23 @@
-%ul.navbar
-	%li
-		= link_to "Children", home_path
-		%ul
-			- unless @current_user.children.empty?
-				- for child in @current_user.children
-					%li
-						= link_to child.display_name, child
-			%li
-				= link_to '+ Add Child', new_child_path
+#main-nav
+	%ul.navbar
+		%li.more
+			= link_to "Children", home_path
+			%ul
+				- unless @current_user.children.empty?
+					- for child in @current_user.children
+						%li
+							= link_to child.display_name, child
+				%li
+					= link_to '+ Add Child', new_child_path
 			
 		
-	- unless @current_user.supported_children.empty?
-		%li= link_to "Supported Children", ""
-	%li
-		= link_to "Notes", notes_path
-		%ul
-			%li
-				= link_to 'Unread', notes_path
-			%li
-				= link_to 'All', archive_notes_path
-	%li= link_to "Settings", settings_users_path
+		- unless @current_user.supported_children.empty?
+			%li= link_to "Supported Children", ""
+		%li.more
+			= link_to "Notes", notes_path
+			%ul
+				%li
+					= link_to 'Unread', notes_path
+				%li
+					= link_to 'All', archive_notes_path
+		%li= link_to "Settings", settings_users_path

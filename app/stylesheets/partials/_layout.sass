@@ -40,6 +40,63 @@ body
 .nav
 	a
 		:margin-left 6px
+
+#main-nav
+	+rounded
+	:padding 0 5px
+	:background-color #60a3c1
+	li
+		list-style: none
+		display: inline
+		margin: 5px 10px
+	a
+		:display block
+		:line-height 16px
+		:text-decoration none
+		:color #edf5f8
+		:font-weight bold
+		:font-size 14px
+	ul
+		:float left
+	ul li
+		:font-size 108%
+		:color #fff
+		:float left
+		:position relative
+		:margin 0
+		:padding 10px 10px 9px
+		:cursor pointer
+	ul ul
+		:background-color #fff
+		:border 1px solid #60A3C1
+		:display none
+		:position absolute
+		:top 34px
+		:left 0
+		:padding 0
+		:margin 0 0 0 -4px
+		:text-align left
+		:width 190px
+		:z-index 9999
+	ul li:hover > ul
+		:display block
+	ul ul li
+		:width 100%
+		:padding 0
+	ul ul li a
+		:color #60A3C1
+		:padding 3px 8px 4px 14px
+	ul ul li a:hover
+		:color #edf5f8
+		:background-color #60a3c1
+
+#main-nav:after
+	+clearfix
+	
+
+
+	// ul.navbar
+	
 	
 #content
 	+alpha_bg
