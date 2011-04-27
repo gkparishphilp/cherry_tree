@@ -1,5 +1,5 @@
 class CheckinsController < ApplicationController
-	
+
 	def edit
 		@checkin = Checkin.find( params[:id] )
 	end

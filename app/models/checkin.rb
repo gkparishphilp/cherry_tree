@@ -31,6 +31,9 @@ class Checkin < ActiveRecord::Base
 	
 	has_many :comments, :as => :commentable
 
+	def unapproved?
+		self.objective_assignment.req_confirm && self.status == 'green' && self.confirmed_by.nil? ? (return true) : (return false)
+	end
 	
 	def number_checkin_times( period = 'week' )
 		if period == 'day'
