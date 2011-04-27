@@ -14,12 +14,15 @@ function remove_fields( link ) {
   $(link).closest(".fields").hide();
 }
 
-// experiment with audio
+
+
+$(document).ready(function(){
+	
+	// experiment with audio
 	var pop = new Audio("/audio/pop.wav");
 	var pop2 = new Audio("/audio/pop2.wav");
 	var bird = new Audio("/audio/bird.wav");
-
-$(document).ready(function(){
+	
 	// experimental soundeffects
 	
 	$('.pop').mouseenter( function() {

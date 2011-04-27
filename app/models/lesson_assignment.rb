@@ -9,6 +9,8 @@
 #  creator_id  :integer(4)
 #  point_value :integer(4)      default(1)
 #  status      :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class LessonAssignment < ActiveRecord::Base

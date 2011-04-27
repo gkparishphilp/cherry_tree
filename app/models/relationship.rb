@@ -63,9 +63,9 @@ class Relationship < ActiveRecord::Base
 		
 		self.related_user.gender == 'male' ? roles.merge!( male_roles ) : roles.merge!( female_roles )
 		
-		if roles.has_key?( role )
+		if roles.has_key?( self.role )
 			return roles[role]
-		elsif roles.invert.has_key?( role )
+		elsif roles.invert.has_key?( self.role )
 			return roles.invert[role]
 		else
 			return 'relative'
