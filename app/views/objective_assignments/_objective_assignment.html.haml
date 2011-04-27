@@ -1,26 +1,37 @@
-%h3
-	Did you...
+- if @current_user.is_child? 
+	%h3
+		Did you...
 
-.title_bar
-	.data
-		.name
-			= objective_assignment.objective.name
-			?
-		.info
-			Do this
-			= objective_assignment.times
-			times per
-			= objective_assignment.period
-			for
-			= objective_assignment.point_value
-			points
+	.title_bar
+		.data
+			.name
+				= objective_assignment.objective.name
+				?
+			.info
+				Do this
+				= objective_assignment.times
+				times per
+				= objective_assignment.period
+				for
+				= objective_assignment.point_value
+				points
+		.clear
 	.clear
-.clear
 
-= form_for Checkin.new do |f|
-	= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
-	= f.hidden_field :user_id, :value => @current_user.id
-	= f.text_field :content
-	= image_submit_tag "big_green_check.png", :width => 30
-	= image_tag "red_x.png", :width => 30
-%br		
+	= form_for Checkin.new do |f|
+		= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
+		= f.hidden_field :user_id, :value => @current_user.id
+		= f.text_field :content
+		= f.hidden_field :status, :value => 'green'
+		= image_submit_tag "big_green_check.png", :width => 30
+		= image_tag "red_x.png", :width => 30
+	%br		
+-else
+	%tr
+		%td= objective_assignment.objective.name
+		%td
+			= objective_assignment.times
+			times a
+			= objective_assignment.period
+		%td= objective_assignment.point_value
+		%td Delete

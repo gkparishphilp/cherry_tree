@@ -27,6 +27,8 @@ class Checkin < ActiveRecord::Base
 		where( "checkins.user_id = ?", child.id )
 	}
 	
+	scope :unapproved, joins("join objective_assignments on objective_assignments.id = checkins.objective_assignment_id").where("objective_assignments.req_confirm = 1 and checkins.confirmed_by is NULL and checkins.status != 'red' ")
+	
 	has_many :comments, :as => :commentable
 
 	

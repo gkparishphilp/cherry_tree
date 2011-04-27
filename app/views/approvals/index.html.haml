@@ -6,3 +6,19 @@
 	
 	
 	These activities need to be approved or unapproved
+	%br
+	%br
+	%table( width=600 )
+		%th Activity
+		%th Date
+		%th Action
+		
+		- for checkin in @checkins
+			%tr
+				%td= checkin.objective_assignment.objective.name
+				%td= format_date checkin.created_at
+				%td
+					= link_to "Approve", "#"
+					|
+					= link_to "Ignore", "#" 
+				

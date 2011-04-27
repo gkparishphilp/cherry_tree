@@ -2,7 +2,7 @@ class ApprovalsController < ApplicationController
 	before_filter :get_child
 	
 	def index
-		@checkins = @child.checkins #todo -- that haven't been approved
+		@checkins = @child.checkins.unapproved #todo -- that haven't been approved
 	end
 	
 	def create
