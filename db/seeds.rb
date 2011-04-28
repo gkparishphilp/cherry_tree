@@ -26,30 +26,11 @@ u1 = User.new :name => 'Gk', :email => 'gk.parishphilp@gmail.com'
 u1.password = '1234'
 u1.save( false )
 
-c1 = u1.children.create :name => 'Avery', :gender => 'female', :birthday => 6.years.ago, :password => '1234'
-u1.relate_to c1, :as => 'father', :nickname => 'Daddy'
-
-n1 = u1.write_note :to => c1, :subject => 'Hi, Welcome to the Site', :content => "I can't wait to play this with you. I know you are going to do great! Love You!!!"
-
-c2 = u1.children.create :name => 'Karl', :gender => 'female', :birthday => 3.years.ago, :password => '1234'
-c2.password = '1234'
-u1.relate_to c2, :as => 'father', :nickname => 'Pops'
-
-n2 = u1.write_note :to => c2, :subject => 'You da Man!', :content => "Hey, great Job!"
-
 puts "Create Tay's test data"
 
 u2 = User.new :name => 'Tay', :email => 'tay.x.nguyen@gmail.com'
 u2.password = '1234'
 u2.save( false )
-
-c3 = u2.children.create :name => 'Ethan', :gender => 'male', :birthday => 7.years.ago, :password => '1234'
-c3.password = '1234'
-u2.relate_to c3, :as => 'father', :nickname => 'Dad'
-
-c4 = u2.children.create :name => 'Grace', :gender => 'female', :birthday => 5.years.ago, :password => '1234'
-c4.password = '1234'
-u2.relate_to c4, :as => 'father', :nickname => 'Dad'
 
 puts "Create admins"
 u1.make_admin( s )

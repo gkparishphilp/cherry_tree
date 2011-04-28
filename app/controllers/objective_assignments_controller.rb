@@ -8,7 +8,7 @@ class ObjectiveAssignmentsController < ApplicationController
 		@assignment = @current_user.created_assignments.new( params[:objective_assignment] )
 		@assignment.objective = @objective
 		@assignment.user = @child
-		@assignment.period ||= 'week'
+		@assignment.period ||= 'day'
 		if @assignment.save
 			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment
 			pop_flash "Assignment Made"

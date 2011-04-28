@@ -6,13 +6,11 @@
 	.new_thing
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
 		= link_to "Assign New Goal", "#", :class => 'open_modal', :id => 'objective'
-	%table( width=800 )
+	%table( width=600 )
 		%th 
 			%b Goal
 		%th 
-			%b Frequency
-		%th 
-			%b Points
+			%b Points per checkin
 		%th 
 			%b Actions
 		= render @assignments

@@ -1,7 +1,7 @@
 = form_for Checkin.new do |f|
 	= f.text_field :content
 	= f.hidden_field :objective_assignment_id, :value => @assignment.id
-	= f.hidden_field :status, :value => 'green'
+	= f.hidden_field :done, :value => true
 	= image_submit_tag "big_green_check.png", :width => 30
 	= image_tag "red_x.png", :width => 30
 	

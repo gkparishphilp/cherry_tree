@@ -27,12 +27,15 @@ class Checkin < ActiveRecord::Base
 		where( "checkins.user_id = ?", child.id )
 	}
 	
-	scope :unapproved, joins("join objective_assignments on objective_assignments.id = checkins.objective_assignment_id").where("objective_assignments.req_confirm = 1 and checkins.confirmed_by is NULL and checkins.status != 'red' ")
+	
+	after_save :award_points
+	
+	scope :unapproved, joins("join objective_assignments on objective_assignments.id = checkins.objective_assignment_id").where("objective_assignments.req_confirm = 1 and checkins.confirmed_by is NULL and checkins.done is NOT NULL ")
 	
 	has_many :comments, :as => :commentable
 
 	def unapproved?
-		self.objective_assignment.req_confirm && self.status == 'green' && self.confirmed_by.nil? ? (return true) : (return false)
+		self.objective_assignment.req_confirm && self.done.present? && self.confirmed_by.nil? ? (return true) : (return false)
 	end
 	
 	def number_checkin_times( period = 'week' )
@@ -66,10 +69,15 @@ class Checkin < ActiveRecord::Base
 	
 	def award_points
 		#award points for checkins that don't need confirmation
-		if self.objective_assignment.present? && self.objective_assignment.req_confirm == false
-			self.user.earn_points_for( self.objective_assignment, self.objective_assignment.point_value / self.objective_assignment.times * self.multiplier)
-		end	
-
+		if self.objective_assignment.present? && self.objective_assignment.req_confirm == false && self.done?
+			self.user.earn_points_for( self.objective_assignment, self.objective_assignment.point_value)
+		end
+		
+		#award points for checkins that need confirmation
+		if self.objective_assignment.present? && self.objective_assignment.req_confirm == true && self.done? && self.confirmed_by.present?  
+			self.user.earn_points_for( self.objective_assignment, self.objective_assignment.point_value)
+		end
+		
 	end
 	
 	def approved?

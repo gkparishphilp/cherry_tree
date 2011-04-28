@@ -5,11 +5,11 @@
 	= f.label 'Description (optional):'
 	= f.text_area :objective_description, :class => 'tiny_area'
 %p
-	Award how many points per week?
-	= f.text_field :point_value
-%p
-	How many times per week should a child report in?
-	= f.select :times, [['1',1], ['2',2], ['3',3], ['4',4],['5',5],['6',6],['7',7]], :selected => 3
+	Points per checkin (based on difficulty)?
+	= f.select :point_value, [['25 (easy)',25], ['100 (medium)', 100], ['500 (hard)', 500]]
 
+%p
+	Require parental confirmation?
+	= f.select :req_confirm, [['Yes',1],['No',0]], :selected => 1
 %br
 = f.submit "Create Goal"

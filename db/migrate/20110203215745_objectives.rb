@@ -5,9 +5,9 @@ class Objectives < ActiveRecord::Migration
 			t.references	:user
 			t.string		:content
 			t.references	:objective_assignment # not always necessary, e.g. for status
-			t.string		:status, :default => 'red'
 			t.integer		:confirmed_by # this is a user_id
 			t.datetime		:confirmed_at
+			t.boolean		:done
 			t.timestamps
 		end
 		
