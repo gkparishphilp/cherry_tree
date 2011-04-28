@@ -1,29 +1,45 @@
-#main-nav
-	%ul.navbar
-		%li.more
-			= link_to "Children", home_path
-			%ul
-				- unless @current_user.children.empty?
-					- for child in @current_user.children
-						%li
-							= link_to child.display_name, child
-				%li
-					= link_to '+ Add Child', new_child_path
+.tabs
+	%ul
+		- for child in @current_user.children
+			%li= link_to child.name, "#child_#{child.id}"
+		%li
+			%a{ :href => "#new_child" }
+				= image_tag 'add.png', :width => 20
+				Add Child
+	- for child in @current_user.children
+		%div[child]
+			= render child
 			
-		
-		- unless @current_user.supported_children.empty?
+	#new_child
+		= form_for Child.new, :html => { :multipart => true } do |f|
+			= render 'children/form', :f => f
+-#
+	#main-nav
+		%ul.navbar
 			%li.more
-				= link_to "Supported Children", ""
+				= link_to "Children", home_path
 				%ul
-					- for child in @current_user.supported_children
-						%li
-							= link_to child.display_name, child
-			
-		%li.more
-			= link_to "Notes", notes_path
-			%ul
-				%li
-					= link_to 'Unread', notes_path
-				%li
-					= link_to 'All', archive_notes_path
-		%li= link_to "Settings", settings_users_path
+					- unless @current_user.children.empty?
+						- for child in @current_user.children
+							%li
+								= link_to child.display_name, child
+					%li
+						= link_to '+ Add Child', new_child_path
+		
+	
+			- unless @current_user.supported_children.empty?
+				%li.more
+					= link_to "Supported Children", ""
+					%ul
+						- for child in @current_user.supported_children
+							%li
+								= link_to child.display_name, child
+		
+			%li.more
+				= link_to "Notes", notes_path
+				%ul
+					%li
+						= link_to 'Unread', notes_path
+					%li
+						= link_to 'All', archive_notes_path
+			%li= link_to "Settings", settings_users_path
