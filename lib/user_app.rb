@@ -10,7 +10,7 @@ module UserApp
 		#gather up assignments with no checkins for this week
 		unfinished_assignments = Array.new
 		for assignment in self.objective_assignments
-			unfinished_assignments << assignment unless assignment.has_checkin_since(Time.now.beginning_of_day - 1.day)
+			unfinished_assignments << assignment unless assignment.has_checkin_since(Time.now.beginning_of_day)
 		end
 		
 		#gather up uncompleted lesson assignments
