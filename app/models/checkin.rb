@@ -35,7 +35,7 @@ class Checkin < ActiveRecord::Base
 	has_many :comments, :as => :commentable
 
 	def unapproved?
-		self.objective_assignment.req_confirm && self.done.present? && self.confirmed_by.nil? ? (return true) : (return false)
+		self.objective_assignment.req_confirm && self.done? && self.confirmed_by.nil? ? (return true) : (return false)
 	end
 	
 	def number_checkin_times( period = 'week' )

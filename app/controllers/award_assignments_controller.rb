@@ -19,10 +19,9 @@ class AwardAssignmentsController < ApplicationController
 		@assignment.award = @award
 		@assignment.user = @child
 		if @assignment.save
-			pop_flash "Assignment Made"
 			redirect_to child_award_assignments_path( @child )
 		else
-			pop_flash "There was a problem with the assignment", :error, @assignment
+			pop_flash "There was a problem granting the reward", :error, @assignment
 			redirect_to :back
 		end
 		

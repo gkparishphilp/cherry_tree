@@ -11,7 +11,6 @@ class ObjectiveAssignmentsController < ApplicationController
 		@assignment.period ||= 'day'
 		if @assignment.save
 			@current_user.do_activity "assigned '#{@assignment.objective.name}' to #{@child.display_name}", @assignment
-			pop_flash "Assignment Made"
 			redirect_to child_objective_assignments_path( @child )
 		else
 			pop_flash "There was a problem with the assignment", :error, @assignment

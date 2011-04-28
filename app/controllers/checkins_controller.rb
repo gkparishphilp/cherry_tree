@@ -7,9 +7,17 @@ class CheckinsController < ApplicationController
 	def create
 		@checkin = @current_user.checkins.new( params[:checkin] )
 
+		if params[:x] 
+			params[:x].to_i < 35 ? @checkin.done = true : @checkin.done = false
+		end
+
 		if @checkin.save
 			if @checkin.objective_assignment.present?
-				activity = @checkin.user.do_activity( "did '#{@checkin.objective_assignment.objective.name}'.", @checkin )
+				if @checkin.done?
+					activity = @checkin.user.do_activity( "did '#{@checkin.objective_assignment.objective.name}'.", @checkin )
+				else
+					activity = @checkin.user.do_activity( "did not '#{@checkin.objective_assignment.objective.name}'.", @checkin )
+				end
 				# todo -- auto-add content as comment
 				if @checkin.content.present?
 					activity.comments.create :user => @current_user, :content => @checkin.content

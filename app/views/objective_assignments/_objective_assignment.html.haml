@@ -7,14 +7,6 @@
 			.name
 				= objective_assignment.objective.name
 				?
-			.info
-				Do this
-				= objective_assignment.times
-				times per
-				= objective_assignment.period
-				for
-				= objective_assignment.point_value
-				points
 		.clear
 	.clear
 
@@ -22,9 +14,7 @@
 		= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
 		= f.hidden_field :user_id, :value => @current_user.id
 		= f.text_field :content
-		= f.hidden_field :done, :value => true
-		= image_submit_tag "big_green_check.png", :width => 30
-		= image_tag "red_x.png", :width => 30
+		= image_submit_tag("check_x_marks.png", :width => 70, :testing => 'yes')
 	%br		
 -else
 	%tr
