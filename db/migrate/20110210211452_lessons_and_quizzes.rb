@@ -19,7 +19,6 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		create_table :lessons do |t|
 			t.string	:name
 			t.string	:lesson_type
-
 			t.timestamps
 		end
 		
@@ -29,13 +28,22 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.references	:creator
 			t.integer		:point_value, :default => 1
 			t.string		:status
+			t.timestamps
 		end
 		
 		create_table :lesson_screens do |t|
 			t.references	:lesson
 			t.text			:content
 			t.integer		:sequence
+			t.timestamps
 		end
+		
+		create_table :lesson_viewings do |t|
+			t.references	:lesson
+			t.references	:user
+			t.integer 		:screen
+			t.timestamps
+	end
 		
 		create_table :questions, :force => true do |t|
 			t.references	:quiz
@@ -49,7 +57,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		create_table :quizzes, :force => true do |t|
 			t.references	:lesson
 			t.string		:name
-			t.references	:created_by
+			t.references	:creator
 			t.text			:description
 			t.integer		:point_value, :default => 0
 			t.integer		:level
@@ -65,9 +73,25 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		add_index :answers, :question_id
+		
+		add_index :answerings, [ :quizzing_id, :question_id, :answer_id ]
+		
+		add_index :lesson_assignments, [ :lesson_id, :user_id, :creator_id ]
+		
+		add_index :lesson_screens, [ :lesson_id, :sequence ]
+		
+		add_index :lesson_viewings, [ :lesson_id, :user_id, :screen ]
+		
+		add_index :questions, [ :quiz_id, :sequence ]
+		
+		add_index :quizzes, [ :lesson_id, :creator_id ]
+		
+		add_index :quizzings, [ :quiz_id, :user_id, :question_id ]
 		
 	end
 
 	def self.down
+		
 	end
 end

@@ -3,10 +3,12 @@
 #
 # Table name: lesson_screens
 #
-#  id        :integer(4)      not null, primary key
-#  lesson_id :integer(4)
-#  content   :text
-#  sequence  :integer(4)
+#  id         :integer(4)      not null, primary key
+#  lesson_id  :integer(4)
+#  content    :text
+#  sequence   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class LessonScreen < ActiveRecord::Base

@@ -9,7 +9,4 @@
 	= form_for Child.new, :html => { :multipart => true } do |f|
 		= render 'children/form', :f => f
 - else
-	%h4 This is your home
-	- for child in @current_user.children
-		= link_to child.display_name, child
-	= render @current_user.children
+	= render @activities if @activities.present?

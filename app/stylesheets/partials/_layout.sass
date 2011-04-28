@@ -16,19 +16,31 @@ body
 
 #hd
 	:width $page-width
-	:height 100px
+	:height 50px
 	:margin-bottom 40px
 	.logo
 		:margin 10px 10px 0
-		:width 150px
+		:width 100px
 	.nav
-		:float right
-		:text-align right
+		:float left
 		// :width 700px
-		:margin-top 40px
-		:margin-right 20px
+		:margin-top 20px
+		:margin-left 400px
+	.user_capsule
+		background: #fff url() no-repeat
+		+rounded(5px)
+		border: 1px solid #999
+		padding: 5px
+		float: right
+		margin-top: 20px
+		margin-right: 20px
+		.pic
+			+rounded(2px)
+			float: left
+			width: 30px
+			margin-right: 5px
 #logo
-	:width 250px
+	:width 150px
 	:float left
 
 #bd
