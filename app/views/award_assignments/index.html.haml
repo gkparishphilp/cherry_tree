@@ -3,7 +3,8 @@
 .child_profile
 
 	= render 'children/sub_nav', :child => @child
-
+	Create coupons for incentive awards here.  Your child can redeem points earned for these awards.
+	
 	.new_thing
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'coupon'
 		= link_to 'Create a New Coupon', "#", :class => 'open_modal', :id => 'coupon'
@@ -11,7 +12,7 @@
 	= render @child.award_assignments
 	
 		
-	#new_coupon.modal{ :title => "New Coupon for #{@child.display_name}" }
+	#new_coupon.modal{ :title => "New Award for #{@child.display_name}" }
 		= form_for [ @child, @new_assignment ] do |f|
 			= render 'coupon_form', :f => f
 

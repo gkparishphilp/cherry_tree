@@ -1,8 +1,13 @@
-= f.label "This Coupon Entitles #{@child.display_name} to:"
+This Coupon Entitles #{@child.display_name} to:
+= link_to image_tag('help.png', :width => 30, :title =>'Examples of awards are a toy, an hour of TV time, a trip to the ice cream shop, etc.'), "#"
+		
 = f.text_field :award_name
+%br
 = f.label 'Description (optional)'
 = f.text_area :award_description, :class => 'tiny_area'
-= f.label 'Cost:'
+%br
+= f.label 'Points Required:'
 = f.text_field :point_cost
-
-= f.submit
+= link_to image_tag('help.png', :width => 30, :title =>'Points are roughly equivalent to a penny'), "#"
+%br
+= f.submit('Create Award')
