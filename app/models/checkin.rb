@@ -7,9 +7,9 @@
 #  user_id                 :integer(4)
 #  content                 :string(255)
 #  objective_assignment_id :integer(4)
-#  status                  :string(255)     default("red")
 #  confirmed_by            :integer(4)
 #  confirmed_at            :datetime
+#  done                    :boolean(1)
 #  created_at              :datetime
 #  updated_at              :datetime
 #

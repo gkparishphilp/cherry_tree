@@ -28,7 +28,7 @@ body
 
 	.user_capsule
 		background: #eee url() no-repeat
-		:min-width 300px
+		:min-width 250px
 		+rounded(5px)
 		border: 1px solid #999
 		padding: 5px
@@ -112,7 +112,19 @@ body
 
 #main-nav:after
 	+clearfix
-	
+
+.tab_bar
+	li
+		:list-style none
+		:display inline
+		+rounded(5px)
+		:background #ddd url() no-repeat
+		:border 1px solid #999
+		:padding 10px
+	.selected
+		:background #dd0 url() no-repeat
+		:border 1px solid #333
+
 #content
 	+alpha_bg
 	+rounded(20px)

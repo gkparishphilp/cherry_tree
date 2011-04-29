@@ -1,18 +1,21 @@
-.tabs
+.tab_bar
 	%ul
 		- for child in @current_user.children
-			%li= link_to child.name, "#child_#{child.id}"
-		%li
-			%a{ :href => "#new_child" }
-				= image_tag 'add.png', :width => 20
-				Add Child
-	- for child in @current_user.children
-		%div[child]
-			= render child
-			
-	#new_child
-		= form_for Child.new, :html => { :multipart => true } do |f|
-			= render 'children/form', :f => f
+			- if @child.present? && child == @child
+				%li.selected= link_to child.name, child
+			- else
+				%li= link_to child.name, child
+		- if current_page?( new_child_path )
+			%li.selected
+				%a{ :href => new_child_path }
+					= image_tag 'add.png', :width => 20
+					Add Child
+		- else
+			%li
+				%a{ :href => new_child_path }
+					= image_tag 'add.png', :width => 20
+					Add Child
+
 -#
 	#main-nav
 		%ul.navbar
