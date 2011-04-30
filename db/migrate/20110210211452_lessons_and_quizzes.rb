@@ -18,6 +18,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		
 		create_table :lessons do |t|
 			t.string	:name
+			t.text		:description
 			t.string	:lesson_type
 			t.timestamps
 		end

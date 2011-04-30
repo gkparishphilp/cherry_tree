@@ -12,12 +12,6 @@ class ChildrenController < ApplicationController
 		@child = Child.find( params[:id] )
 	end
 	
-	def home
-		@screen_item = @current_user.best_item
-		@activities = Activity.feed( @current_user )
-		@relevant_assignment,@relevant_assignment_parent = @current_user.most_relevant
-	end
-	
 	def index
 		@children = @current_user.children
 		@supported_children = @current_user.supported_children

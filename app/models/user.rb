@@ -153,6 +153,7 @@ class User < ActiveRecord::Base
 	
 	has_many	:lesson_assignments
 	has_many	:lessons, :through => :lesson_assignments
+	has_many	:lesson_viewings
 
 	has_many	:ownings
 	# putting these here because they act like relations, but you can't have a :through relation on a polymorphic object

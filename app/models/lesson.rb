@@ -5,6 +5,7 @@
 #
 #  id          :integer(4)      not null, primary key
 #  name        :string(255)
+#  description :text
 #  lesson_type :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
@@ -13,6 +14,7 @@
 class Lesson < ActiveRecord::Base
 	has_many	:lesson_screens
 	has_many	:lesson_assignments
+	has_many	:lesson_viewings
 	has_many	:quizzes
 	acts_as_taggable_on	:keywords
 	

@@ -8,6 +8,13 @@ class UsersController < ApplicationController
 			@screen_item = @current_user.best_item
 			@activities = Activity.feed( @current_user )
 			@relevant_assignment, @relevant_assignment_parent = @current_user.most_relevant
+			
+			if @relevant_assignment_parent.is_a?( Lesson )
+				@viewing = LessonViewing.find_or_initialize_by_user_id_and_lesson_id( @current_user.id, @relevant_assignment_parent.id )
+				@viewing.screen = 0
+				@viewing.save
+			end
+		
 			render 'child/home'
 		else
 			render 'adult/home'

@@ -75,6 +75,9 @@ $(document).ready(function(){
 		$('.name_owner').html( this.value + "'s" );
 		$('.name').html( this.value );
 	});
+	$('#child_display_name').blur(function () {
+		$('#child_name').val( this.value );
+	});
 	
 	
 	
