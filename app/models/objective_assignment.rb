@@ -38,17 +38,13 @@ class ObjectiveAssignment < ActiveRecord::Base
 		self.status == 'active'
 	end
 
-	def checkin_in_last?( period = 1.day.ago)
+	def checkin_in_last?( period = 1.day.ago ) 
 		return  self.checkins.dated_between( period, Time.now ).present?
-	end
-	
-	def has_checkin_since(period = Time.now.beginning_of_week)
-		self.checkins.dated_between(period, Time.now.getutc).present? ? (return true) : (return false)
 	end
 	
 	def earned_for_period
 		start_time = self.get_period_start_time
-		if self.point_earnings.dated_between(start_time, Time.now).count > 0
+		if self.point_earnings.dated_between( start_time, Time.now ).count > 0
 			return true
 		else
 			return false

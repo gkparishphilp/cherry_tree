@@ -12,7 +12,7 @@
 #
 
 class Lesson < ActiveRecord::Base
-	has_many	:lesson_screens
+	has_many	:screens
 	has_many	:lesson_assignments
 	has_many	:lesson_viewings
 	has_many	:quizzes

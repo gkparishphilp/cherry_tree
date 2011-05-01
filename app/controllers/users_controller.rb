@@ -11,8 +11,7 @@ class UsersController < ApplicationController
 			
 			if @relevant_assignment_parent.is_a?( Lesson )
 				@viewing = LessonViewing.find_or_initialize_by_user_id_and_lesson_id( @current_user.id, @relevant_assignment_parent.id )
-				@viewing.screen = 0
-				@viewing.save
+				@viewing.update_attributes :updated_at => Time.now
 			end
 		
 			render 'child/home'

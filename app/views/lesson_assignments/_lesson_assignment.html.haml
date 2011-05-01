@@ -2,8 +2,8 @@ Do you want to learn
 = lesson_assignment.lesson.name
 ?
 %br
-= #lesson_assignment.lesson.description
+= lesson_assignment.lesson.description
 %br
-= link_to "Yes", lesson_lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.lesson_screens.first ), :class => 'button green'
+= link_to "Yes", lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.screens.first ), :class => 'button green'
 
-= link_to "Not Now", '#', :class => 'button red'
+= link_to "Not Now", home_path, :class => 'button red'

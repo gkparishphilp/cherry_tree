@@ -3,9 +3,9 @@ s = Site.create :name => 'Cherry Tree'
 
 
 l = Lesson.create :name => 'How to use Cherry Tree'
-ls1 = l.lesson_screens.create :sequence => 1, :content => "To get the most out of Cherry Tree, try to log in every day."
-ls2 = l.lesson_screens.create :sequence => 2, :content => "Remember, honesty is the best policy.  If you did not accomplish your objectives, just say so, and work harder the next time."
-ls3 = l.lesson_screens.create :sequence => 3, :content => "You have supporters.  You can send them notes!"
+s1 = l.screens.create :sequence => 1, :content => "To get the most out of Cherry Tree, try to log in every day."
+s2 = l.screens.create :sequence => 2, :content => "Remember, honesty is the best policy.  If you did not accomplish your objectives, just say so, and work harder the next time."
+s3 = l.screens.create :sequence => 3, :content => "You have supporters.  You can send them notes!"
 
 q = l.quizzes.create :name => "A quiz for How to use Cherry Tree", :point_value => 100
 quest = q.questions.create :content => "If you didn't acheive one of your objectives, what should you do?"

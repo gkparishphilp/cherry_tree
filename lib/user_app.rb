@@ -8,27 +8,25 @@ module UserApp
 	def most_relevant
 		
 		#gather up assignments with no checkins for this week
-		unfinished_assignments = Array.new
-		for assignment in self.objective_assignments
-			unfinished_assignments << assignment unless assignment.has_checkin_since(Time.now.beginning_of_day)
-		end
+		obj_assignments = self.objective_assignments.delete_if{ |assignment| 
+			assignment.checkin_in_last?( Time.now.beginning_of_day ) 
+		}
 		
 		#gather up uncompleted lesson assignments
-		unfinished_lessons = Array.new
-		for lesson in self.lesson_assignments
-			unfinished_lessons << lesson unless lesson.completed?
-		end
+		lesson_assignments = self.lesson_assignments.delete_if{ |assignment|
+			assignment.completed_by?( self ) || assignment.offered_today_to?( self )
+		}
 	
 		#This message is actually the partial name in views/users which shows the all done screen
 		closing_message = 'done'
 		
 		#Keep falling down the tree until a most relevant item is found or return the closing message
-		if unfinished_assignments.present?
-			parent = unfinished_assignments.first.objective
-			return unfinished_assignments.first, parent
-		elsif unfinished_lessons.present?
-			parent = unfinished_lessons.first.lesson
-			return unfinished_lessons.first, parent
+		if obj_assignments.present?
+			parent = obj_assignments.first.objective
+			return obj_assignments.first, parent
+		elsif lesson_assignments.present?
+			parent = lesson_assignments.first.lesson
+			return lesson_assignments.first, parent
 		else
 			return closing_message, nil
 		end

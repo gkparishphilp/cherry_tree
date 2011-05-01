@@ -32,8 +32,9 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		create_table :lesson_screens do |t|
+		create_table :screens do |t|
 			t.references	:lesson
+			t.string		:title
 			t.text			:content
 			t.integer		:sequence
 			t.timestamps
@@ -42,7 +43,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		create_table :lesson_viewings do |t|
 			t.references	:lesson
 			t.references	:user
-			t.integer 		:screen
+			t.references 	:screen, :default => 0
 			t.timestamps
 	end
 		
@@ -80,9 +81,9 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		
 		add_index :lesson_assignments, [ :lesson_id, :user_id, :creator_id ]
 		
-		add_index :lesson_screens, [ :lesson_id, :sequence ]
+		add_index :screens, [ :lesson_id, :sequence ]
 		
-		add_index :lesson_viewings, [ :lesson_id, :user_id, :screen ]
+		add_index :lesson_viewings, [ :lesson_id, :user_id, :screen_id ]
 		
 		add_index :questions, [ :quiz_id, :sequence ]
 		

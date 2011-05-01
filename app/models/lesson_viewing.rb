@@ -6,7 +6,7 @@
 #  id         :integer(4)      not null, primary key
 #  lesson_id  :integer(4)
 #  user_id    :integer(4)
-#  screen     :integer(4)
+#  screen_id  :integer(4)      default(0)
 #  created_at :datetime
 #  updated_at :datetime
 #

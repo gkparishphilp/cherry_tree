@@ -27,7 +27,7 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources :lessons do
-		resources :lesson_screens
+		resources :screens
 	end
 	
 	resources :children do

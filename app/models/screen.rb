@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110420185439
 #
-# Table name: lesson_screens
+# Table name: screens
 #
 #  id         :integer(4)      not null, primary key
 #  lesson_id  :integer(4)
@@ -11,7 +11,7 @@
 #  updated_at :datetime
 #
 
-class LessonScreen < ActiveRecord::Base
+class Screen < ActiveRecord::Base
 	belongs_to	:lesson
 	has_attached :content_file
 	
