@@ -18,9 +18,9 @@
 		- for assignment in @assignments
 			= render 'objective_assignment_table', :assignment => assignment
 		
-	#new_objective.modal{ :title => "New Goal for #{@child.display_name}"}
+	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2
-			New Goal for
+			New Objective for
 			= @child.display_name
 	
 		= form_for [ @child, @new_assignment ] do |f|

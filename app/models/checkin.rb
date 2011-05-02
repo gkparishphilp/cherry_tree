@@ -7,7 +7,7 @@
 #  user_id                 :integer(4)
 #  content                 :string(255)
 #  objective_assignment_id :integer(4)
-#  confirmed_by            :integer(4)
+#  confirmed_by            :integer(4)      default(0)
 #  confirmed_at            :datetime
 #  done                    :boolean(1)
 #  created_at              :datetime
@@ -15,6 +15,11 @@
 #
 
 class Checkin < ActiveRecord::Base
+	
+	# confirmed_by = user_id of confirming user
+	# confirmed_by == 0 is uncomfirmed
+	# confrimed_by == -1 is ignored
+	
 	belongs_to	:user
 	belongs_to	:objective_assignment
 		

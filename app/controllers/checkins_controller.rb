@@ -6,11 +6,6 @@ class CheckinsController < ApplicationController
 	
 	def create
 		@checkin = @current_user.checkins.new( params[:checkin] )
-
-		if params[:x] 
-			params[:x].to_i < 35 ? @checkin.done = true : @checkin.done = false
-		end
-
 		if @checkin.save
 			if @checkin.objective_assignment.present?
 				if @checkin.done?
@@ -18,7 +13,7 @@ class CheckinsController < ApplicationController
 				else
 					activity = @checkin.user.do_activity( "did not '#{@checkin.objective_assignment.objective.name}'.", @checkin )
 				end
-				# todo -- auto-add content as comment
+				# -- auto-add content as comment
 				if @checkin.content.present?
 					activity.comments.create :user => @current_user, :content => @checkin.content
 					@checkin.update_attributes :content => ""
@@ -29,9 +24,6 @@ class CheckinsController < ApplicationController
 			
 			@checkin.award_points
 			@checkin.user.save
-
-			#pop_msg = @checkin.get_banner_message
-			#pop_flash pop_msg
 
 		else
         	pop_flash "Checkin could not be created.", :error, @checkin

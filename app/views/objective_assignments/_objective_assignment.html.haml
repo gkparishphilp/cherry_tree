@@ -2,17 +2,16 @@
 %h3
 	Did you...
 
-.title_bar
-	.data
-		.name
-			= objective_assignment.objective.name
-			?
-	.clear
-.clear
+
+= objective_assignment.objective.name
+?
+
 
 = form_for Checkin.new do |f|
 	= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
 	= f.hidden_field :user_id, :value => @current_user.id
+	= f.hidden_field :done, :value => true
 	= f.text_field :content
-	= image_submit_tag("check_x_marks.png", :width => 70, :testing => 'yes')
+	= image_submit_tag( "green_check.png", :width => 40 )
+	= link_to image_tag( 'red_x.png', :width => 40 ), checkins_path( :checkin => { :objective_assignment_id => objective_assignment.id, :user_id => @current_user.id } ), :method => :post
 %br		

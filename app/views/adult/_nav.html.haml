@@ -9,8 +9,9 @@
 		- for child in @current_user.children
 			- if @child.present? && child == @child
 				%li.selected
-					= avatar_tag( child, :thumb, :width => 25 )
-					= child.name
+					%a{ :href => child_path( child ) }
+						= avatar_tag( child, :thumb, :width => 25 )
+						= child.name
 			- else
 				%li
 					%a{ :href => child_path( child ) }
@@ -19,8 +20,9 @@
 		- for child in @current_user.supported_children
 			- if @child.present? && child == @child
 				%li.selected
-					= avatar_tag( child, :thumb, :width => 25 )
-					= child.name
+					%a{ :href => child_path( child ) }
+						= avatar_tag( child, :thumb, :width => 25 )
+						= child.name
 			- else
 				%li
 					%a{ :href => child_path( child ) }

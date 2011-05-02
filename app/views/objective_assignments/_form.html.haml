@@ -2,9 +2,6 @@
 	= f.label 'Goal:'
 	= f.text_field :objective_name
 %p
-	= f.label 'Description (optional):'
-	= f.text_area :objective_description, :class => 'tiny_area'
-%p
 	Points per checkin (based on difficulty)?
 	= f.select :point_value, [['25 (easy)',25], ['100 (medium)', 100], ['500 (hard)', 500]]
 
@@ -12,4 +9,4 @@
 	Require parental confirmation?
 	= f.select :req_confirm, [['Yes',1],['No',0]], :selected => 1
 %br
-= f.submit "Create Goal"
+= f.submit "Create Objective"
