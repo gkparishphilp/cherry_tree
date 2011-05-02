@@ -8,8 +8,17 @@
 	.new_thing
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'coupon'
 		= link_to 'Create a New Coupon', "#", :class => 'open_modal', :id => 'coupon'
-		
-	= render @child.award_assignments
+	
+	%table( width=600 )
+		%th 
+			%b Award
+		%th 
+			%b Points Required
+		%th
+			%b Status
+		%th 
+			%b Actions	
+		= render @child.award_assignments
 	
 		
 	#new_coupon.modal{ :title => "New Award for #{@child.display_name}" }

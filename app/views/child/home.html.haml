@@ -5,7 +5,7 @@
 		
 #home_prizes
 	%h3 Your Prizes
-	- for assignment in @current_user.award_assignments
+	- for assignment in @current_user.award_assignments.active
 		.item
 			= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
 			%br

@@ -19,4 +19,9 @@ class AwardAssignment < ActiveRecord::Base
 	belongs_to	:creator, :foreign_key => 'creator_id', :class_name => 'User'
 	
 	attr_accessor	:award_name, :award_description, :asin, :index, :term
+	scope :active, where("status = 'active'")
+	
+	def active?
+		self.status == 'active' ? (return true) : (return false)
+	end
 end

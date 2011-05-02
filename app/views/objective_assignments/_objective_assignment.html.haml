@@ -20,4 +20,9 @@
 	%tr
 		%td= objective_assignment.objective.name
 		%td= objective_assignment.point_value
-		%td Delete
+		%td= objective_assignment.status
+		%td
+			-if objective_assignment.status == 'active'
+				= link_to 'Deactivate', child_objective_assignment_path( @child, objective_assignment, :status => 'inactive' ), :method => :put
+			-else
+				= link_to 'Activate', child_objective_assignment_path(@child, objective_assignment, :status => 'active'), :method => :put

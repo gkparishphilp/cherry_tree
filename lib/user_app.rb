@@ -7,8 +7,8 @@ module UserApp
 	
 	def most_relevant
 		
-		#gather up assignments with no checkins for this week
-		obj_assignments = self.objective_assignments.delete_if{ |assignment| 
+		#gather up active assignments with no checkins for today
+		obj_assignments = self.objective_assignments.active.delete_if{ |assignment| 
 			assignment.checkin_in_last?( Time.now.beginning_of_day ) 
 		}
 		

@@ -10,7 +10,7 @@
 	%td
 		= link_to "Edit", edit_child_objective_assignment_path( @child, objective_assignment )
 		|
-		- if objective_assignment.is_active?
+		- if objective_assignment.active?
 			= link_to "Turn Off", child_objective_assignment_path( @child, objective_assignment, :status => 'inactive' ), :method => :put
 		- else
 			= link_to "Turn On", child_objective_assignment_path( @child, objective_assignment, :status => 'active' ), :method => :put

@@ -12,12 +12,13 @@ class AwardAssignmentsController < ApplicationController
 			@award = Award.create_from_amazon( params[:award_assignment] )
 		else
 			@award = Award.create( :name => params[:award_assignment][:award_name], 
-									:description => params[:award_assignment][:award_description])
+									:description => params[:award_assignment][:award_description] )
 		end
-		@award.update_attributes( :creator_id => @current_user.id, :creator_type => 'User' )
+		@award.update_attributes( :creator_id => @current_user.id, :creator_type => 'User')
 		@assignment = @current_user.created_award_assignments.new( params[:award_assignment] )
 		@assignment.award = @award
 		@assignment.user = @child
+		@assignment.status = 'active'
 		if @assignment.save
 			redirect_to child_award_assignments_path( @child )
 		else
@@ -39,6 +40,12 @@ class AwardAssignmentsController < ApplicationController
 			pop_flash "Sorry, access denied", :error
 			redirect_to :root
 		end
+	end
+	
+	def update
+		@assignment = AwardAssignment.find params[:id]
+		@assignment.update_attributes( :status => params[:status])
+		redirect_to :back
 	end
 	
 	def new

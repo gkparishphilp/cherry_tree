@@ -34,7 +34,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	scope :available, where("status <> 'deleted'")
 	scope :active, where("status = 'active'")
 	
-	def is_active?
+	def active?
 		self.status == 'active'
 	end
 

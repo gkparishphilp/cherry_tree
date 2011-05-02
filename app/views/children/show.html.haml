@@ -4,7 +4,17 @@
 	
 	
 	#child_main_screen
-		%h3 Activity?
+		%h3 Activity Feed
+		- if @child.objective_assignments.empty?
+			= @child.name.capitalize
+			has no goals, create one now!
+			= link_to "Create Goal", "#", :class => 'open_modal', :id => 'objective'
+
+		- if @child.award_assignments.empty?
+			= @child.name.capitalize
+			has no awards, create one now!
+			= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'coupon'			
+
 		.timeline
 			= render @activities
 
@@ -22,10 +32,19 @@
 					pts.
 	#home_news
 		%h3 Notes?
+		
+	#new_objective.modal{ :title => "New Goal for #{@child.display_name}"}
+		%h2
+			New Goal for
+			= @child.display_name
+
+		= form_for [ @child, ObjectiveAssignment.new ] do |f|
+			= render 'objective_assignments/form', :f => f
 	
 	
-	
-	
-	
+	#new_coupon.modal{ :title => "New Award for #{@child.display_name}" }
+		= form_for [ @child, AwardAssignment.new ] do |f|
+			= render 'award_assignments/coupon_form', :f => f
+
 
 

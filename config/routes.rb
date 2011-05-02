@@ -21,10 +21,7 @@ CherryTree::Application.routes.draw do
 		get	:admin, :on => :collection
 	end
 	
-	resources :checkins do
-		get 'approve', :on => :member
-		resources :comments
-	end
+	resources :checkins 
 	
 	resources :lessons do
 		resources :screens

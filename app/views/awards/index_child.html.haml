@@ -4,7 +4,7 @@
 	
 - unless @award_assignments.empty?
 	#awards
-		- for assignment in @award_assignments
+		- for assignment in @award_assignments.active
 			.treasure_item
 				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
 				%br
