@@ -1,28 +1,18 @@
-- if @current_user.is_child? 
-	%h3
-		Did you...
 
-	.title_bar
-		.data
-			.name
-				= objective_assignment.objective.name
-				?
-		.clear
+%h3
+	Did you...
+
+.title_bar
+	.data
+		.name
+			= objective_assignment.objective.name
+			?
 	.clear
+.clear
 
-	= form_for Checkin.new do |f|
-		= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
-		= f.hidden_field :user_id, :value => @current_user.id
-		= f.text_field :content
-		= image_submit_tag("check_x_marks.png", :width => 70, :testing => 'yes')
-	%br		
--else
-	%tr
-		%td= objective_assignment.objective.name
-		%td= objective_assignment.point_value
-		%td= objective_assignment.status
-		%td
-			-if objective_assignment.status == 'active'
-				= link_to 'Deactivate', child_objective_assignment_path( @child, objective_assignment, :status => 'inactive' ), :method => :put
-			-else
-				= link_to 'Activate', child_objective_assignment_path(@child, objective_assignment, :status => 'active'), :method => :put
+= form_for Checkin.new do |f|
+	= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
+	= f.hidden_field :user_id, :value => @current_user.id
+	= f.text_field :content
+	= image_submit_tag("check_x_marks.png", :width => 70, :testing => 'yes')
+%br		

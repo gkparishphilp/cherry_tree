@@ -1,22 +1,12 @@
-.child_header.clearfix
-	.pic
-		= avatar_tag( child, :thumb, :width => 50 )
-	.name
-		= link_to child.display_name, child
+#main-nav
+	%ul.navbar
+		%li= link_to "Objectives", child_objective_assignments_path( child )
 
-.nav
-	= link_to "Objectives", child_objective_assignments_path( child )
-	|
-	-# todo -- if unapproved checkins
-	= link_to "Approvals", child_approvals_path( child )
-	|
-	= link_to "Awards", child_award_assignments_path( child )
-	|
-	= link_to "Profile", profile_child_path( child )
-	-#
-		|
-		= link_to "Send Note", new_note_path( :to => child.id )
-	|
-	= link_to "Supporters", child_supporters_path( child )
+		-# todo -- if unapproved checkins
+		%li= link_to "Approvals", child_approvals_path( child )
 
-%div.divider
+		%li= link_to "Awards", child_award_assignments_path( child )
+
+		%li= link_to "Profile", profile_child_path( child )
+
+		%li= link_to "Supporters", child_supporters_path( child )
