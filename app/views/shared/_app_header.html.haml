@@ -2,8 +2,8 @@
 	#logo
 		= link_to image_tag( "logo.png", :alt=> "The Cherry Tree", :class => 'logo' ), root_path
 	.nav
-		= link_to "Our Blog", blog_index_path
-		= link_to "Forums", forums_path
+		= link_to "Our Blog", blog_index_path, :class=> 'button red'
+		= link_to "Forums", forums_path, :class=> 'button red'
 	.user_capsule
 		- if @current_user.anonymous?
 			= link_to "Login", login_path
@@ -12,11 +12,13 @@
 		- else
 			.pic
 				= avatar_tag( @current_user, :thumb, :width => 36 )
-			Logged in as:
-			= link_to @current_user.display_name, home_path
-			%br
-			= link_to "Logout", logout_path
-			|
-			= link_to "Settings", settings_users_path
-			|
-			= link_to "Notes", notes_path
+			.user
+				Logged in as:
+				= link_to @current_user.display_name, home_path
+				%br
+				%span
+					= link_to "Logout", logout_path
+					|
+					= link_to "Settings", settings_users_path
+					|
+					= link_to "Notes", notes_path
