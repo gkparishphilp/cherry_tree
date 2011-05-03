@@ -1,13 +1,13 @@
 class AwardAssignmentsController < ApplicationController
 	before_filter :get_child
 	
-	def amzn
-		@term = params[:term]
-		@index = params[:index]
-		@response = Amazon::Ecs.item_search( @term,  :response_group => "Medium", :search_index => @index )
-	end
-	
 	def create
+		unless @child.parents.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		if params[:award_assignment][:asin]
 			@award = Award.create_from_amazon( params[:award_assignment] )
 		else
@@ -29,20 +29,26 @@ class AwardAssignmentsController < ApplicationController
 	end
 	
 	def index
-		if get_parental_permission( @child )
-			@assignments = @child.award_assignments
-			@awards = @current_user.created_awards.map{ |award| 
-				[ "#{award.name} - #{award.award_type} (#{award.point_cost})", award.id ]
-				}
-		
-			@new_assignment = @child.award_assignments.new
-		else
-			pop_flash "Sorry, access denied", :error
-			redirect_to :root
+		unless @child.parents.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
 		end
+		@assignments = @child.award_assignments
+		@awards = @current_user.created_awards.map{ |award| 
+			[ "#{award.name} - #{award.award_type} (#{award.point_cost})", award.id ]
+		}
+		
+		@new_assignment = @child.award_assignments.new
 	end
 	
 	def update
+		unless @child.parents.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		@assignment = AwardAssignment.find params[:id]
 		@assignment.update_attributes( :status => params[:status])
 		redirect_to :back

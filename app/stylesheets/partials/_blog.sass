@@ -51,21 +51,22 @@
 #comments
 	:margin-top 1em
 	
-#comment
-	.header
+.comment
+	margin-left: 12px
+	.pic
+		float: left
+		margin-right: 4px
 		img
-			:width 36px
-			:padding-right 4px
-		.userinfo			
-			:padding-top 6px 
-			a,span
-				:vertical-align text-bottom
-			img
-				:vertical-align text-top
+			width: 36px
+	.header
 		.byline
 			font-size: 75%
 	.content
+		width: 80%
 		margin-left: 44px
+		+rounded(4px)
+		border: 1px solid #999
+		background: #eee url() no-repeat
 	
 #recap
 	:width 500px

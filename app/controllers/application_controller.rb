@@ -9,11 +9,6 @@ class ApplicationController < ActionController::Base
 
 protected
 
-	#Get parental permission for a child
-	def get_parental_permission( child )
-		child.parents.include?( @current_user )
-	end
-
 	def check_for_achievements
 		return false if @current_user.nil? || @current_user.anonymous? || !@current_user.child?
 		for achievement in Achievement.all

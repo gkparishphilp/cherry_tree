@@ -39,6 +39,7 @@ class InvitationsController < ApplicationController
 	end
 	
 	def accept_invite
+		logout( @current_user ) unless @current_user.anonymous?
 		@invitation = Invitation.find_by_code( params[:code] )
 		@invitation.user.relate_to( @invitation.child, :as => @invitation.role, :nickname => @invitation.nickname )
 		if @invitation.user.registered?
