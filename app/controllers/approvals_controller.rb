@@ -2,10 +2,22 @@ class ApprovalsController < ApplicationController
 	before_filter :get_child
 	
 	def index
-		@checkins = @child.checkins.unapproved #todo -- that haven't been approved
+		unless @child.parents.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
+		@checkins = @child.checkins.unapproved 
 	end
 	
 	def create
+		unless @child.parents.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		@approval = Approval.new params[:approval]
 		@approval.creator = @current_user
 

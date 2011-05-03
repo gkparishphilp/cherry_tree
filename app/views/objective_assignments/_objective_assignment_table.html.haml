@@ -5,7 +5,7 @@
 		= assignment.point_value
 		points
 	%td
-		= assignment.status
+		= assignment.status.capitalize
 	%td
 		- if assignment.active?
 			= link_to "Turn Off", child_objective_assignment_path( @child, assignment, :status => 'inactive' ), :method => :put
