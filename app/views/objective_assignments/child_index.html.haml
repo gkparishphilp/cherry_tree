@@ -6,7 +6,7 @@
 		%b= @assignment.objective.name
 		( 
 		= @assignment.point_value
-		points per checkin.
+		points.
 		)
 		- if @assignment.checkin_in_last?( Time.now.beginning_of_day )
 			%br You checked in today!

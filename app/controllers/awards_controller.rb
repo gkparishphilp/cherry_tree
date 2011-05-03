@@ -43,6 +43,7 @@ class AwardsController < ApplicationController
 		success, msg = @current_user.unlock( @award )
 		if success
 			pop_flash msg
+			@current_user.do_activity( "Unlocked the award: '#{@award.name}'!", @award )
 		else
 			pop_flash msg, :error
 		end

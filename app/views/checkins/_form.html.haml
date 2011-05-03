@@ -1,7 +1,7 @@
 = form_for Checkin.new do |f|
-	= f.text_field :content
 	= f.hidden_field :objective_assignment_id, :value => @assignment.id
+	= f.hidden_field :user_id, :value => @current_user.id
 	= f.hidden_field :done, :value => true
-	= image_submit_tag "big_green_check.png", :width => 30
-	= image_tag "red_x.png", :width => 30
-	
+	= f.text_field :content
+	= image_submit_tag( "green_check.png", :width => 40 )
+	= link_to image_tag( 'red_x.png', :width => 40 ), checkins_path( :checkin => { :objective_assignment_id => @assignment.id, :user_id => @current_user.id } ), :method => :post

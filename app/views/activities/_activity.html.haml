@@ -14,7 +14,7 @@
 		= link_to 'Approve', checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
 		|
 		= link_to "Ignore", checkin_path( activity.target, :confirmed_by => -1, :confirmed_at => Time.now), :method => :put
-		
+	
 	- unless activity.comments.empty?
 		= render activity.comments
 		
