@@ -31,7 +31,7 @@ body
 		:min-width 200px
 		+rounded(5px)
 		border: 1px solid #999
-		padding: 10px
+		padding: 5px 10px
 		float: right
 		margin-top: 20px
 		margin-right: 20px
@@ -119,18 +119,42 @@ body
 	+clearfix
 
 .tab_bar
+	:padding 0 10px
 	li
 		:list-style none
-		:display inline
+		:float left
 		position: relative
-		+rounded(5px)
-		:background #ddd url() no-repeat
-		:border 1px solid #999
-		:padding 10px
+		+rounded-side(top,5px)
+		:background-color #ddd
+		:border 1px solid #ccc
+		:border-bottom none
+		:padding 10px 10px 7px 10px
+		:margin 0 5px
+		img
+			:float left
+			:margin-right 4px
+		a
+			:line-height 1.4em
 	.selected
-		:background #dd0 url() no-repeat
-		:border 1px solid #333
+		:background-color #fff
+		:margin-bottom -1px
+		:padding 10px 10px 8px 10px
+		// :border 1px solid #333
+	.home
+		:padding 10px 10px 9px 10px
+		&.selected
+			:padding 11px 10px 11px 10px
+	.add
+		:padding 10px 10px 9px 40px
+		:background #ddd url(../images/add-small.png) no-repeat 10px 50%
+		&.selected
+			:background-color #fff
+			:padding 11px 10px 11px 40px
+		
 
+.tab_bar:after
+	+clearfix
+	
 #content
 	+alpha_bg
 	+rounded(20px)
@@ -149,6 +173,18 @@ body
 
 .activity
 	:font-weight bold
+	:margin 5px 0 10px
+	.divider
+		:margin 20px 0
+	.title_feed
+		:padding 4px 0 8px
+	.comment
+		.pic
+			:margin-right 10px
+	.header
+		span
+			:padding 5px 0
+	
 
 .button_to
 	display: inline

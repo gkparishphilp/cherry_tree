@@ -2,17 +2,18 @@
 	.pic
 		= avatar_tag( comment.user, :thumb, :width => 64 )
 	.header.clearfix
-		- if @current_user.child?
-			= comment.user.nickname( @current_user )
-		- else
-			= comment.user.display_name
-		- unless comment.user.website_url.blank?
-			(
-			-if comment.user.website_name.blank?
-				= link_to comment.user.website_url, "http://" + comment.user.website_url
+		%span
+			- if @current_user.child?
+				= comment.user.nickname( @current_user )
 			- else
-				= link_to comment.user.website_name, "http://" + comment.user.website_url
-			)
+				= comment.user.display_name
+			- unless comment.user.website_url.blank?
+				(
+				-if comment.user.website_name.blank?
+					= link_to comment.user.website_url, "http://" + comment.user.website_url
+				- else
+					= link_to comment.user.website_name, "http://" + comment.user.website_url
+				)
 		
 		%span.byline.date
 			On

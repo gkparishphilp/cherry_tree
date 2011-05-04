@@ -22,8 +22,7 @@ class StaticPagesController < ApplicationController
 		end
 		
 		@title = @static_page.title
-		
-		render :layout => 'underground'
+
 	end
 
 	def new

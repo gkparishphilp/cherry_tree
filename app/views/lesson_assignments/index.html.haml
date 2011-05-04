@@ -1,0 +1,36 @@
+.child_profile
+
+	= render 'children/sub_nav', :child => @child
+	Assign Lessons and Activities here.
+	
+	.new_thing
+		= link_to image_tag( 'add.png', :width => 20 ), ""
+		= link_to 'Buy Lessons!', ""
+	
+	%table( width = 600 )
+		%th
+			Name
+		%th
+			Status
+		%th
+			Activate
+		- for lesson in @lessons
+			%tr
+				%td= lesson.name
+				%td
+					- if lesson.lesson_assignments.find_by_user_id( @child.id ) && lesson.lesson_assignments.find_by_user_id( @child.id ).completed_by?( @child )
+						Completed on:
+						= format_date_only lesson.lesson_viewings.find_by_user_id( @child.id ).updated_at
+					- elsif lesson.lesson_viewings.find_by_user_id( @child.id ) && lesson.lesson_viewings.find_by_user_id( @child.id ).screen_id > 0
+						Started on:
+						= format_date_only lesson.lesson_viewings.find_by_user_id( @child.id ).created_at
+					- else
+						Not Viewed
+				%td
+					- if @child.lessons.include? ( lesson )
+						= link_to 'UnAssign', child_lesson_assignment_path( @child, lesson, :status => 'inactive' ), :method => :put
+					- else
+						= link_to 'Assign', child_lesson_assignments_path( @child, :lesson_id => lesson.id ), :method => :post
+
+%br.clear
+%br

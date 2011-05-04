@@ -1,8 +1,9 @@
-- if @current_user.children.empty? && @current_user.supported_children.empty?
-	%h2 Welcome to CherryTree!
-	CherryTree provides a safe online environment for your child to interact with you and other role models.  Let's get started by entering your child's information.
-	%br
-	%br
-%h3 Add a Child
-= form_for @child, :html => { :multipart => true } do |f|
-	= render 'form', :f => f
+.child_profile
+	- if @current_user.children.empty? && @current_user.supported_children.empty?
+		%h2 Welcome to CherryTree!
+		CherryTree provides a safe online environment for your child to interact with you and other role models.  Let's get started by entering your child's information.
+		%br
+		%br
+	%h3 Add a Child
+	= form_for @child, :html => { :multipart => true } do |f|
+		= render 'form', :f => f

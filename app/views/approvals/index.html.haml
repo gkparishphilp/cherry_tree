@@ -1,24 +1,28 @@
 .child_profile
 	= render 'children/sub_nav', :child => @child
 	
-	
-	These activities need to be approved or unapproved
-	%br
-	%br
-	%table( width=600 )
-		%th 
-			%b Activity
-		%th 
-			%b Date
-		%th 
-			%b Action
+	- if @checkins.empty?
+		%br
+		%br
+		%p
+			= @child.name
+			hasn't checked in on any objectives yet.
+	- else
+		%p
+			These activities need to be approved or unapproved
+		%br
+		%br
+		%table( width=600 )
+			%th Activity
+			%th Date
+			%th Action
 		
-		- for checkin in @checkins
-			%tr
-				%td= checkin.objective_assignment.objective.name
-				%td= format_date checkin.created_at
-				%td
-					= link_to "Approve", checkin_path(checkin, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
-					|
-					= link_to "Ignore", checkin, :method => 'delete', :confirm => 'Are you sure you want to ignore this checkin?'
+			- for checkin in @checkins
+				%tr
+					%td= checkin.objective_assignment.objective.name
+					%td= format_date checkin.created_at
+					%td
+						= link_to "Approve", checkin_path( checkin, :confirmed_by => @current_user.id, :confirmed_at => Time.now ), :method => :put
+						|
+						= link_to "Ignore", checkin_path( checkin, :confirmed_by => -1, :confirmed_at => Time.now ), :method => :put
 				

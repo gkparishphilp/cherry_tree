@@ -2,7 +2,7 @@
 	= @screen.content.html_safe
 
 - unless @screen == @lesson.first_screen
-	= link_to "Last", lesson_lesson_screen_path( @lesson, @screen.previous_screen )
+	= link_to "Last", lesson_screen_path( @lesson, @screen.previous_screen )
 - if @screen == @lesson.last_screen
 	The End
 	- if @lesson.quizzes.first.present? #todo - not taken by child
@@ -14,5 +14,5 @@
 		= link_to "Yes", quiz_question_path( @lesson.quizzes.first, @lesson.quizzes.first.questions.first )
 		= link_to "No", home_path
 - else
-	= link_to "Next", lesson_lesson_screen_path( @lesson, @screen.next_screen )
+	= link_to "Next", lesson_screen_path( @lesson, @screen.next_screen )
 
