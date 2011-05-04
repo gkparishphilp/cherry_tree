@@ -30,7 +30,7 @@ l3.screens.create :sequence => 3, :content => 'So, we also need to remember that
 l3.screens.create :sequence => 4, :content => "Each day, we should make a point to tell ourselves (quietly, in our head...so others don't think we're boasting) what it is we have done well for that day, hour or moment.  The compliments we tell ourselves should focus on small things we have paid attention to and tried to modify.  Do not wait until you have done one big thing well to give yourself a compliment.  You need to talk to yourself in your positive voice every day!"
 l3.screens.create :sequence => 5, :content => 'When you become good at giving yourself small compliments each day, you are on your way to being your very own coach.  The more you coach yourself, the less you have people telling you what you should do!'
 q3 = l3.quizzes.create :name => "A quiz for 'Taking Time to Give Yourself a Compliment'", :point_value => 50
-quest1 = q2.questions.create :content => 'Go ahead and list 3 little things you have done well today:'
+quest1 = q3.questions.create :content => 'Go ahead and list 3 little things you have done well today:'
 
 
 puts "Setup Default Anonymous User"

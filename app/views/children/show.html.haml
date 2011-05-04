@@ -16,6 +16,8 @@
 		- if @child.award_assignments.empty?
 			= @child.name.capitalize
 			has no awards, create one now!
+			%br
+			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
 			= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'award'
 			
 		- for assignment in @child.award_assignments
@@ -32,6 +34,8 @@
 		- if @child.objective_assignments.empty?
 			= @child.name.capitalize
 			has no objectives, create one now!
+			%br
+			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
 			= link_to "Create Objective", "#", :class => 'open_modal', :id => 'objective'
 		
 		

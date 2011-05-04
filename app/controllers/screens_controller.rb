@@ -1,4 +1,4 @@
-class LessonScreensController < ApplicationController
+class ScreensController < ApplicationController
 	before_filter :get_lesson
 	
 	def new

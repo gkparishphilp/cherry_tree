@@ -20,11 +20,16 @@ class Lesson < ActiveRecord::Base
 	
 	
 	def first_screen
-		self.lesson_screens.find_by_sequence( 1 ) || self.lesson_screens.first
+		self.screens.find_by_sequence( 1 ) || self.screens.first
 	end
 	
 	def last_screen
-		self.lesson_screens.order( "sequence ASC" ).last || self.lesson_screens.last
+		self.screens.order( "sequence ASC" ).last || self.screens.last
+	end
+	
+	def completed_on_by( user )
+		return false unless viewing = self.lesson_viewings.find_by_user_id( user.id )
+		return viewing.updated_at
 	end
 	
 	

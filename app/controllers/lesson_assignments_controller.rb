@@ -7,7 +7,11 @@ class LessonAssignmentsController < ApplicationController
 			redirect_to :back
 			return false
 		end
-
+		
+		lesson = Lesson.find( params[:lesson_id] )
+		@child.lesson_assignments.create :lesson => lesson, :creator_id => @current_user.id
+		
+		redirect_to :back
 		
 		
 	end
