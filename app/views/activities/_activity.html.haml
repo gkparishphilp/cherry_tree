@@ -1,13 +1,14 @@
 %div[activity]
-	- if activity.user == @current_user
-		You
-	- else
-		= activity.user.display_name
+	.title_feed
+		- if activity.user == @current_user
+			You
+		- else
+			= activity.user.display_name
 		
-	= activity.verb.html_safe
+		= activity.verb.html_safe
 		
-	= time_ago_in_words( activity.created_at )
-	ago.
+		= time_ago_in_words( activity.created_at )
+		ago.
 	
 	- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present? && @current_user.children.include?( activity.user ) && activity.target.unapproved?
 		= link_to image_tag('green_check.png', :width => 20), checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
@@ -19,7 +20,7 @@
 		= render activity.comments
 		
 	= form_for [ activity, Comment.new ] do |f|
-		= f.text_field :content, :style=>'width: 250px'
+		= f.text_field :content, :style=>'width: 360px'
 		= f.submit( 'Comment' )
 		
 	
