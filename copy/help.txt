@@ -1,0 +1,55 @@
+<h3>Cherry Tree Overview</h3>
+<p>
+Cherry Tree helps kids.......
+</p>
+
+<div id='objectives'>
+<h3>Objectives</h3>
+<p>
+</p>
+</div>
+
+<div id='checkins'>
+<h3>Checking in on Objectives and Approvals</h3>
+<p>
+</p>
+</div>
+
+<div id='lessons'>
+<h3>Lessons and Activities</h3>
+<p>
+</p>
+</div>
+
+
+<div id='awards'>
+<h3>Awards and Incentives</h3>
+<p>
+Awards are incentives that can be offered to children to work towards.
+Children can redeem points earned for these awards.  The awards can be redeemable for almost anything you want.  Examples would be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
+</p>
+</div>
+
+<div id='notes'>
+<h3>Sending Notes</h3>
+<p>
+</p>
+</div>
+
+<div id='points'>
+<h3>Earning Points</h3>
+<p>
+</p>
+</div>
+
+<div id='supporters'>
+<h3>Inviting Supporters</h3>
+<p>
+</p>
+</div>
+
+<div id='participating'>
+<h3>Participating, Motivating</h3>
+<p>
+</p>
+</div>
