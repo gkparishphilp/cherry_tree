@@ -26,8 +26,7 @@ class CheckinsController < ApplicationController
 			else
 				@checkin.user.do_activity( " said: '#{@checkin.content}' ", @checkin )
 			end
-			
-			@checkin.award_points
+
 			@checkin.user.save
 
 			#pop_msg = @checkin.get_banner_message

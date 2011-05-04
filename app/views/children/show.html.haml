@@ -6,14 +6,16 @@
 	#child_main_screen
 		%h3 Activity Feed
 		- if @child.objective_assignments.empty?
-			= @child.name.capitalize
-			has no goals, create one now!
-			= link_to "Create Goal", "#", :class => 'open_modal', :id => 'objective'
-
+			%p
+				= @child.name.capitalize
+				has no goals, create one now!
+				= link_to "Create Goal", "#", :class => 'open_modal', :id => 'objective'
+			
 		- if @child.award_assignments.empty?
-			= @child.name.capitalize
-			has no awards, create one now!
-			= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'coupon'			
+			%p
+				= @child.name.capitalize
+				has no awards, create one now!
+				= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'coupon'			
 
 		.timeline
 			= render @activities
