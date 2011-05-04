@@ -128,7 +128,7 @@ body
 		:background-color #ddd
 		:border 1px solid #ccc
 		:border-bottom none
-		:padding 10px
+		:padding 10px 10px 7px 10px
 		:margin 0 5px
 		img
 			:float left
@@ -138,13 +138,19 @@ body
 	.selected
 		:background-color #fff
 		:margin-bottom -1px
-		:padding 10px 10px 9px 10px
+		:padding 10px 10px 8px 10px
 		// :border 1px solid #333
 	.home
-		:padding 10px
+		:padding 10px 10px 9px 10px
+		&.selected
+			:padding 11px 10px 11px 10px
 	.add
-		:padding 10px 10px 10px 40px
+		:padding 10px 10px 9px 40px
 		:background #dd0 url(../images/add-small.png) no-repeat 10px 50%
+		&.selected
+			:background-color #fff
+			:padding 11px 10px 11px 40px
+		
 
 .tab_bar:after
 	+clearfix
