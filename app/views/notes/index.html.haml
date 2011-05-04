@@ -1,12 +1,17 @@
 .cork_board
 	.note_nav.schoolbell.clearfix
 		.black_button.new_note
-			=link_to content_tag(:span, 'Write a Note'), new_note_path
+			= link_to content_tag(:span, 'Write a Note'), new_note_path
 		.black_button.all_notes
-			=link_to content_tag(:span, 'All Notes'), archive_notes_path
+			= link_to content_tag(:span, 'All Notes'), archive_notes_path
 	.note_main
-		= render @notes
-		%br.clear
+		- if @notes.empty?
+			.note
+				.subject
+					No Unread Notes
+				%hr
+				.content
+					Send a note to get a note ;-)
 		
 	%br.clear
 

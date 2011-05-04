@@ -54,6 +54,19 @@ $page-width: 980px
 	+rounded(20px)
 	:cursor pointer
 	:behavior url(/javascripts/PIE.htc)
+	
+=ct_button_small()
+	+shadow
+	:color #ffffff
+	:font-family "Corben", arial, sans-serif
+	:font-weight bold
+	:padding 4px 8px 2px
+	:font-size 10px
+	:line-height 12px
+	:display inline-block
+	+rounded(10px)
+	:cursor pointer
+	:behavior url(/javascripts/PIE.htc)
 
 =ct_button_flat()
 	:color #ffffff
@@ -271,6 +284,9 @@ input.large
 	
 .button_flat
 	+ct_button_flat
+
+.button_small
+	+ct_button_small
 
 .green
 	+ct_button_color($leaf_green)

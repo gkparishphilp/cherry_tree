@@ -5,6 +5,13 @@
 		.black_button.all_notes
 			=link_to content_tag(:span, 'Note Board'), archive_notes_path
 	.note_main
+		- if @notes.empty?
+			.note
+				.subject
+					No Unread Notes
+				%hr
+				.content
+					Send a note to get a note ;-)
 		- for note in @notes
 			= render "archived", :note => note
 		
