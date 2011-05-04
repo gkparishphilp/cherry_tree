@@ -15,6 +15,17 @@ class SupportersController < ApplicationController
 		end
 	end
 	
+	def disable
+		@supporter = User.find( params[:supporter_id])
+		@supporter.unrelate_to( @child )
+		redirect_to :back
+	end	
+	
+	def enable
+		@supporter = User.find( params[:supporter_id])
+		@supporter.rerelate_to( @child )
+		redirect_to :back
+	end
 	
 	private
 	
@@ -22,4 +33,5 @@ class SupportersController < ApplicationController
 		@child = Child.find( params[:child_id] )
 	end
 	
+
 end

@@ -44,7 +44,11 @@ CherryTree::Application.routes.draw do
 			get 'customize', :on => :member
 		end
 		resources :invitations
-		resources :supporters
+		
+		resources :supporters do
+			get 'disable', :on => :collection
+			get 'enable', :on => :collection
+		end
 	end
 
 	resources :contacts do

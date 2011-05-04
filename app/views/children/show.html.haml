@@ -15,8 +15,8 @@
 		%h3 Awards
 		- if @child.award_assignments.empty?
 			= @child.name.capitalize
-			has no awards, create one now!
-			= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'coupon'
+			has no awards, 
+			= link_to "create one now!", "#", :class => 'open_modal', :id => 'coupon'
 			
 		- for assignment in @child.award_assignments
 			.item
@@ -31,8 +31,12 @@
 		%h3 Objectives
 		- if @child.objective_assignments.empty?
 			= @child.name.capitalize
-			has no objectives, create one now!
-			= link_to "Create Objective", "#", :class => 'open_modal', :id => 'objective'
+			has no objectives, 
+			= link_to "create one now!", "#", :class => 'open_modal', :id => 'objective'
+		- else
+			- for assignment in @child.objective_assignments.active
+				= assignment.objective.name
+				%br
 		
 		
 		

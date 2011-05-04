@@ -6,14 +6,25 @@
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'invite'
 		= link_to 'Invite a Supporter', "#", :class => 'open_modal', :id => 'invite'
 	%table( width=600 )
-		%th Name
-		%th NickName
-		%th Relationship
+		%th 
+			%b Name
+		%th 
+			%b Nickname
+		%th 
+			%b Relationship
+		%th
+			%b Action
 		- for supporter in @supporters
 			%tr
 				%td= supporter.display_name
 				%td= supporter.nickname( @child )
-				%td= supporter.relation_to( @child )
+				%td= supporter.relation_to( @child ).capitalize
+				%td
+					-if @current_user != supporter
+						- if supporter.related_to?( @child )
+							=link_to 'Uninvite', disable_child_supporters_path( :supporter_id => supporter.id)
+						-else 
+							=link_to 'Activate', enable_child_supporters_path( :supporter_id => supporter.id )
 				
 	
 	#new_invite.modal{ :title => "Invite a Supporter for #{@child.display_name}" }
