@@ -42,7 +42,29 @@ module UserApp
 	def relation_to( user )
 		self.relationships.find_by_related_user_id( user.id ).role
 	end
+
+	def unrelate_to( user )
+		relation = self.relationships.find_by_related_user_id( user.id )
+		symmetric_relation = user.relationships.find_by_related_user_id( self.id )
+		relation.update_attributes :status => 'inactive' if relation
+		symmetric_relation.update_attributes :status => 'inactive' if symmetric_relation
+	end
+
+	def rerelate_to( user )
+		relation = self.relationships.find_by_related_user_id( user.id )
+		symmetric_relation = user.relationships.find_by_related_user_id( self.id )
+		relation.update_attributes :status => 'active'
+		symmetric_relation.update_attributes :status => 'active' 
+	end
 	
+	def related_to?( user )
+		if relation = self.relationships.find_by_related_user_id( user.id )
+			relation.status == 'active' ? (return true) : (return false)
+		else
+			return false
+		end
+	end
+
 	def nickname( user=nil )
 		# nickname is defined in the relationship between users -- what one user calls another
 		# if called without a user for the relationship, just returns the display_name

@@ -18,7 +18,7 @@
 			has no awards, create one now!
 			%br
 			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
-			= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'award'
+			= link_to "Create Award", "#", :class => 'open_modal', :id => 'award'
 			
 		- for assignment in @child.award_assignments
 			.item
@@ -36,9 +36,10 @@
 			has no objectives, create one now!
 			%br
 			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
-			= link_to "Create Objective", "#", :class => 'open_modal', :id => 'objective'
-		
-		
+			= link_to "Create Objective", "#", :class => 'open_modal', :id => 'objective'		
+		- else
+			- for assignment in @child.objective_assignments
+				= assignment.objective.name
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2

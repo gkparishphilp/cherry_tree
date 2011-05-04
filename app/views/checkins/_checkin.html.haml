@@ -1,7 +1,8 @@
 %div[checkin]			
-	= checkin.status
-	= checkin.content
-	= checkin.user.display_name
+	- if checkin.done
+		Good checkin
+	- else
+		Bad checkin
 	%span.date
 		on
 		= format_date( checkin.created_at )
