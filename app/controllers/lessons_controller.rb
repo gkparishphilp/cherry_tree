@@ -4,6 +4,7 @@ class LessonsController < ApplicationController
 		
 	end
 	
+	
 	def new
 		@lesson = Lesson.new
 	end

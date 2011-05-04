@@ -15,9 +15,12 @@
 			.user
 				Logged in as:
 				= link_to @current_user.display_name, home_path
+				(
+				= link_to "Logout", logout_path
+				)
 				%br
 				%span
-					= link_to "Logout", logout_path
+					= link_to "Help", '/help'
 					|
 					= link_to "Settings", settings_users_path
 					|

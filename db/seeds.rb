@@ -145,6 +145,11 @@ privacy = ""
 File.open("#{Rails.root}/copy/privacy.txt") {|f| privacy = f.read}	
 sp = StaticPage.create :title => 'Privacy Policy', :permalink => 'privacy', 
 					:description => 'Privacy', :content => privacy
+					
+help = ""
+File.open("#{Rails.root}/copy/help.txt") {|f| help = f.read}	
+sp = StaticPage.create :title => 'Help', :permalink => 'help', 
+					:description => 'Help', :content => help
 
 blog1 = ""
 File.open("#{Rails.root}/copy/welcome_blog.txt") {|f| blog1 = f.read} 

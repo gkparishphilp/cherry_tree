@@ -3,27 +3,42 @@
 .child_profile
 
 	= render 'children/sub_nav', :child => @child
-	Create awards for incentives here.  Your child can redeem points earned for these awards.
 	
 	.new_thing
-		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'coupon'
-		= link_to 'Create Award Coupon', "#", :class => 'open_modal', :id => 'coupon'
+		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
+		= link_to 'Create Award', "#", :class => 'open_modal', :id => 'award'
 	
-	%table( width=600 )
-		%th 
-			%b Award
-		%th 
-			%b Points Required
-		%th
-			%b Status
-		%th 
-			%b Actions	
-		= render @child.award_assignments
+	- if @child.award_assignments.empty?
+		%br
+		%br
+		Awards are incentives that can be offered to
+		= @child.name
+		to work towards.
+		= @child.name 
+		can redeem points earned for these awards.  The awards can be redeemable for almost anything you want.  Examples would be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
+		%p
+			= @child.name
+			does not have any awards to work towards yet.
+			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
+			= link_to "Let's Create one", "#", :class => 'open_modal', :id => 'award'
+	
+	- else
+	
+		%table( width=600 )
+			%th 
+				%b Award
+			%th 
+				%b Points Required
+			%th
+				%b Status
+			%th 
+				%b Actions	
+			= render @child.award_assignments
 	
 		
-	#new_coupon.modal{ :title => "New Award for #{@child.display_name}" }
+	#new_award.modal{ :title => "New Award for #{@child.display_name}" }
 		= form_for [ @child, @new_assignment ] do |f|
-			= render 'coupon_form', :f => f
+			= render 'award_form', :f => f
 
 %br.clear
 %br
