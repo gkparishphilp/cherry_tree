@@ -34,10 +34,9 @@ CherryTree::Application.routes.draw do
 		
 		resources :approvals
 
-		resources :objective_assignments do
-			resources :comments
-		end
+		resources :objective_assignments
 		resources :award_assignments
+		resources :lesson_assignments
 		
 		resources :journal_entries do
 			resources :comments

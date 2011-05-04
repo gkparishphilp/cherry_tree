@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 			if @current_user.children.empty? && @current_user.supported_children.empty?
 				redirect_to new_child_path
 			else
-				@activities = Activity.feed( @current_user, @current_user.children )
+				@activities = Activity.feed( @current_user, @current_user.children, @current_user.supported_children )
 				render 'adult/home'
 			end
 		end

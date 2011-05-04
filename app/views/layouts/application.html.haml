@@ -20,13 +20,13 @@
 					= image_tag 'spinner.gif'
 					
 				= render 'shared/flash', :flash => flash
-				- unless @current_user.anonymous?
-					- if @current_user.is_child?
-						= render 'child/nav'
-					- else
-						= render 'adult/nav'
 				
 				#content	
+					- unless @current_user.anonymous?
+						- if @current_user.is_child?
+							= render 'child/nav'
+						- else
+							= render 'adult/nav'
 					= yield
 					%br.clear
 			= render 'shared/footer'
