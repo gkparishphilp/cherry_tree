@@ -20,4 +20,13 @@ class UserMailer < ActionMailer::Base
 		@current_site = site
 		mail :to => user.email, :from => "noreply@thecherrytree.com", :subject => "Forgotten Password"
 	end
+	
+	def earned_award( user, award)
+		@child = user
+		@award = award
+		parents = @child.parents
+		for @parent in parents
+			mail :to => @parent.email, :from =>"noreply@thecherrytree.com", :subject =>" #{@child.name} has earned an award!"
+		end
+	end
 end

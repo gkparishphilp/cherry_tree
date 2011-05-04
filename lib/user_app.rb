@@ -119,6 +119,7 @@ module UserApp
 		return false, "You can't unlock this yet" unless self.can_unlock?( reward )
 		self.ownings.create :ownable_id => reward.id, :ownable_type => reward.class.name
 		self.update_attributes :point_balance => self.point_balance - cost
+		UserMailer.earned_award( self , reward ).deliver
 		return true, "Unlocked!"
 	end
 	

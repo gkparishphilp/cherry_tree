@@ -69,7 +69,7 @@ class ChildrenController < ApplicationController
 			redirect_to :home
 		end
 		
-		@activities = @child.activities
+		@activities = @child.activities.order('created_at DESC')
 	end
 
 	
