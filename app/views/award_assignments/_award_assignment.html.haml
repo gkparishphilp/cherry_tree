@@ -1,7 +1,7 @@
 %tr
 	%td= award_assignment.award.name
 	%td= award_assignment.point_cost
-	%td= award_assignment.status
+	%td= award_assignment.status.capitalize
 	%td
 		- if award_assignment.active?
 			= link_to 'Deactivate', child_award_assignment_path(@child, award_assignment, :status => 'inactive'), :method => :put

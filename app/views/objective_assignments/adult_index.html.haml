@@ -5,7 +5,7 @@
 	
 	.new_thing
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
-		= link_to "Assign New Goal", "#", :class => 'open_modal', :id => 'objective'
+		= link_to "Assign New Objective", "#", :class => 'open_modal', :id => 'objective'
 	%table( width=600 )
 		%th 
 			%b Objective
@@ -15,11 +15,12 @@
 			%b Status
 		%th 
 			%b Actions
-		= render @assignments
+		- for assignment in @assignments
+			= render 'objective_assignment_table', :assignment => assignment
 		
-	#new_objective.modal{ :title => "New Goal for #{@child.display_name}"}
+	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2
-			New Goal for
+			New Objective for
 			= @child.display_name
 	
 		= form_for [ @child, @new_assignment ] do |f|

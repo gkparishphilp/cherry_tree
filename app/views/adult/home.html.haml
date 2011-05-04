@@ -1,12 +1,3 @@
 -# Used to show Children Dashboard to Parent
 
-- if @current_user.children.empty? && @current_user.supported_children.empty?
-	%h2 Welcome to CherryTree!
-	CherryTree provides a safe online environment for your child to interact with you and other role models.  Let's get started by entering your child's information.
-	%br
-	%br
-	
-	= form_for Child.new, :html => { :multipart => true } do |f|
-		= render 'children/form', :f => f
-- else
-	= render @activities if @activities.present?
+= render @activities if @activities.present?

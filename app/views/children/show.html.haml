@@ -4,25 +4,20 @@
 	
 	
 	#child_main_screen
-		%h3 Activity Feed
-		- if @child.objective_assignments.empty?
-			%p
-				= @child.name.capitalize
-				has no goals, create one now!
-				= link_to "Create Goal", "#", :class => 'open_modal', :id => 'objective'
-			
-		- if @child.award_assignments.empty?
-			%p
-				= @child.name.capitalize
-				has no awards, create one now!
-				= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'coupon'			
 
+
+		%h3 Activity Feed
 		.timeline
 			= render @activities
 
 
 	#home_prizes
-		%h3 Prizes
+		%h3 Awards
+		- if @child.award_assignments.empty?
+			= @child.name.capitalize
+			has no awards, create one now!
+			= link_to "Create Award Coupon", "#", :class => 'open_modal', :id => 'coupon'
+			
 		- for assignment in @child.award_assignments
 			.item
 				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
@@ -33,11 +28,17 @@
 					= assignment.point_cost
 					pts.
 	#home_news
-		%h3 Notes?
+		%h3 Objectives
+		- if @child.objective_assignments.empty?
+			= @child.name.capitalize
+			has no objectives, create one now!
+			= link_to "Create Objective", "#", :class => 'open_modal', :id => 'objective'
 		
-	#new_objective.modal{ :title => "New Goal for #{@child.display_name}"}
+		
+		
+	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2
-			New Goal for
+			New Objective for
 			= @child.display_name
 
 		= form_for [ @child, ObjectiveAssignment.new ] do |f|

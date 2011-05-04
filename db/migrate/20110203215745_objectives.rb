@@ -5,7 +5,7 @@ class Objectives < ActiveRecord::Migration
 			t.references	:user
 			t.string		:content
 			t.references	:objective_assignment # not always necessary, e.g. for status
-			t.integer		:confirmed_by # this is a user_id
+			t.integer		:confirmed_by, :default => 0 # this is a user_id 0, nothing, -1 ignored
 			t.datetime		:confirmed_at
 			t.boolean		:done
 			t.timestamps
@@ -38,14 +38,6 @@ class Objectives < ActiveRecord::Migration
 			t.boolean		:req_confirm, :default => true # parent must confirm checkin to award points
 			t.integer		:point_value, :default => 100
 			t.string		:status, :default => 'active'
-			t.timestamps
-		end
-		
-		create_table :approvals, :force => true do |t|
-			t.references	:objective_assignment
-			t.references	:creator 
-			t.date			:week_ending
-			t.string		:status
 			t.timestamps
 		end
 		

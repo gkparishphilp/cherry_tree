@@ -5,6 +5,7 @@
 #
 #  id         :integer(4)      not null, primary key
 #  lesson_id  :integer(4)
+#  title      :string(255)
 #  content    :text
 #  sequence   :integer(4)
 #  created_at :datetime

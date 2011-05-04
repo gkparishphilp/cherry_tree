@@ -15,44 +15,25 @@
 				.jp-volume-bar
 					.jp-volume-bar-value
 
--#
-	#jquery_jplayer_1.jp-jplayer
-	.jp-audio
-		.jp-type-single
-			#jp_interface_1.jp-interface
-				%ul.jp-controls
-					%li
-						= link_to 'play', '#', :class => 'jp-play', :tabindex => 1
-					%li
-						= link_to 'pause', '#', :class => 'jp-pause', :tabindex => 1
-					%li
-						= link_to 'stop', '#', :class => 'jp-stop', :tabindex => 1
-					%li
-						= link_to 'mute', '#', :class => 'jp-mute', :tabindex => 1
-					%li
-						= link_to 'unmute', '#', :class => 'jp-unmute', :tabindex => 1
-				.jp-progress
-					.jp-seek-bar
-						.jp-play-bar
-				.jp-volume-bar
-					.jp-volume-bar-value
-				.jp-current-time
-				.jp-duration
-			#jp_playlist_1.jp-playlist
-				%ul
-					%li Title of Media
 
 #content
 	#welcome_box
 		%h1
 			"Where Children Blossom"
 		= render 'shared/flash', :flash => flash 
+		
 		%p
-			Coming soon! A revolutionary way to help kids  
-			cultivate good habits and behaviors through positive reinforcement and rewards.  
+			Parents:
+			%li Learn More
+			%li= link_to 'Register', register_path
+			%li= link_to 'Login', login_path
+		%p
+			Children
+			%li= link_to 'Login!', login_children_path
+		
 	
 		%p
-			Leave us your email address and we will send you an invitation when we launch.
+			Enter your email address to sign up for our newsletter:
 			= render 'users/collect_email'
 		%p.disclaimer
 			Your personal information is safe with us.  We promise not to sell, market, or otherwise distribute your information.  

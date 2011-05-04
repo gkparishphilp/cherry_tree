@@ -1,15 +1,37 @@
 .tab_bar
 	%ul
+		- if current_page?( home_path )
+			%li.selected
+				Home
+		- else
+			%li
+				= link_to "Home", home_path
 		- for child in @current_user.children
 			- if @child.present? && child == @child
-				%li.selected= link_to child.name, child
+				%li.selected
+					%a{ :href => child_path( child ) }
+						= avatar_tag( child, :thumb, :width => 25 )
+						= child.name
 			- else
-				%li= link_to child.name, child
+				%li
+					%a{ :href => child_path( child ) }
+						= avatar_tag( child, :thumb, :width => 25 )
+						= child.name
+		- for child in @current_user.supported_children
+			- if @child.present? && child == @child
+				%li.selected
+					%a{ :href => child_path( child ) }
+						= avatar_tag( child, :thumb, :width => 25 )
+						= child.name
+			- else
+				%li
+					%a{ :href => child_path( child ) }
+						= avatar_tag( child, :thumb, :width => 25 )
+						= child.name
 		- if current_page?( new_child_path )
 			%li.selected
-				%a{ :href => new_child_path }
-					= image_tag 'add.png', :width => 20
-					Add Child
+				= image_tag 'add.png', :width => 20
+				Add Child
 		- else
 			%li
 				%a{ :href => new_child_path }

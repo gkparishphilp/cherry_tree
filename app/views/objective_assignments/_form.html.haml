@@ -2,9 +2,6 @@
 	= f.label 'Goal:'
 	= f.text_field :objective_name
 %p
-	= f.label 'Description (optional):'
-	= f.text_area :objective_description, :class => 'tiny_area'
-%p
 	Points per checkin (based on difficulty)?
 	= f.select :point_value, [['25 (easy)',25], ['100 (medium)', 100], ['500 (hard)', 500]]
 	= link_to image_tag('help.png', :width => 30, :title =>'Points are roughly equivalent to a penny'), "#"
@@ -16,4 +13,4 @@
 	= link_to image_tag('help.png', :width => 30, :title =>'Points are not awarded until a parent confirms'), "#"
 	
 %br
-= f.submit "Create Goal"
+= f.submit "Create Objective"

@@ -2,30 +2,30 @@
 	
 	= render @relevant_assignment 
 
-		
-#home_prizes
-	%h3 Your Prizes
-	- for assignment in @current_user.award_assignments.active
-		.item
-			= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
-			%br
-			%b= assignment.award.name
-			%br
-			- if assignment.point_cost > @current_user.point_balance
-				Only
-				= assignment.point_cost - @current_user.point_balance
-				Points to Go!
-			- else
-				.cost
-					Cost:
-					= assignment.point_cost
-					pts.
+- unless @current_user.award_assignments.active.empty?
+	#home_prizes
+		%h3 Your Prizes
+		- for assignment in @current_user.award_assignments.active
+			.item
+				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
 				%br
-				= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
-	.item
-		= link_to image_tag( 'treasure_chest.png', :width => 64 ), awards_path
-		%br
-		= link_to 'Go to Treasure Chest', awards_path
+				%b= assignment.award.name
+				%br
+				- if assignment.point_cost > @current_user.point_balance
+					Only
+					= assignment.point_cost - @current_user.point_balance
+					Points to Go!
+				- else
+					.cost
+						Cost:
+						= assignment.point_cost
+						pts.
+					%br
+					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
+		.item
+			= link_to image_tag( 'treasure_chest.png', :width => 64 ), awards_path
+			%br
+			= link_to 'Go to Treasure Chest', awards_path
 #home_news
 	%h3
 		News

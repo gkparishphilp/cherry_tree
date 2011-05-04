@@ -10,13 +10,26 @@
 %br
 .column2
 	%h3 Change Your Email
-	Current value:  
+	Current email:  
 	= @current_user.email
 .column1
-	New value: 
+	New email: 
 	= form_for @current_user do |f|
 		= f.text_field :email
 		= f.submit "Enter", :class => 'button_flat'
+%br
+.divider
+%br
+.column2
+	%h3 Change Display Name
+	Current Display Name:
+	= @current_user.display_name
+.column1
+	New display name: 
+	= form_for @current_user do |f|
+		= f.text_field :display_name
+		= f.submit "Enter", :class => 'button_flat'
+
 %br
 .divider
 %br

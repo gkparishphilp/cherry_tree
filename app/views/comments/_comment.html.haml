@@ -1,23 +1,23 @@
-#comment
+.comment
+	.pic
+		= avatar_tag( comment.user, :thumb, :width => 64 )
 	.header.clearfix
-		.userinfo
-			= avatar_tag( comment.user, :thumb, :width => 64 )
-			- if @current_user.child?
-				= comment.user.nickname( @current_user )
+		- if @current_user.child?
+			= comment.user.nickname( @current_user )
+		- else
+			= comment.user.display_name
+		- unless comment.user.website_url.blank?
+			(
+			-if comment.user.website_name.blank?
+				= link_to comment.user.website_url, "http://" + comment.user.website_url
 			- else
-				= comment.user.display_name
-			- unless comment.user.website_url.blank?
-				(
-				-if comment.user.website_name.blank?
-					= link_to comment.user.website_url, "http://" + comment.user.website_url
-				- else
-					= link_to comment.user.website_name, "http://" + comment.user.website_url
-				)
-			
-			%span.byline.date
-				On
-				= format_date comment.created_at
-	.content.text
-		= comment.content.html_safe
+				= link_to comment.user.website_name, "http://" + comment.user.website_url
+			)
+		
+		%span.byline.date
+			On
+			= format_date comment.created_at
+		.content.text
+			= comment.content.html_safe
 
 %br.clear
