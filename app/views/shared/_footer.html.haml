@@ -11,7 +11,7 @@
 		- else
 			%li
 				Logged In As: 
-				= @current_user.name
+				= @current_user.display_name
 				| 
 				= link_to "Logout", logout_path
 	%br.clear

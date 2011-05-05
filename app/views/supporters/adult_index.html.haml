@@ -1,7 +1,10 @@
 .child_profile
 
 	= render 'children/sub_nav', :child => @child
-
+	Invite others to support and encourage
+	= @child.name.capitalize
+	\.
+	
 	.new_thing
 		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'invite'
 		= link_to 'Invite a Supporter', "#", :class => 'open_modal', :id => 'invite'
