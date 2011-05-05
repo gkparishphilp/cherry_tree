@@ -22,7 +22,7 @@
 				= render 'shared/flash', :flash => flash
 				
 				#content	
-					- unless @current_user.anonymous?
+					- unless @current_user.anonymous? || controller_name == 'sessions' || controller_name == 'blog' || controller_name == 'forums' || controller_name == 'topics' || controller_name == 'posts' || controller_name == 'static_pages'
 						- if @current_user.is_child?
 							= render 'child/nav'
 						- else

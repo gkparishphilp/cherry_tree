@@ -51,7 +51,7 @@ class Relationship < ActiveRecord::Base
 		
 		female_roles = {
 			'father' => 'daughter',
-			'mother' => 'daugher',
+			'mother' => 'daughter',
 			'uncle' => 'niece',
 			'aunt' => 'niece',
 			'grandfather' => 'granddaughter',

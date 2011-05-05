@@ -2,9 +2,11 @@
 	%ul
 		- if current_page?( home_path )
 			%li.home.selected
+				= image_tag( 'home.png', :width => 25 )
 				Home
 		- else
 			%li.home
+				= link_to image_tag( 'home.png', :width => 25 ), home_path
 				= link_to "Home", home_path
 		- for child in @current_user.children
 			- if @child.present? && child == @child
