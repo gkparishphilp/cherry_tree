@@ -11,7 +11,9 @@
 
 		- if @activities.empty?
 			=@child.name.capitalize
-			hasn't performed any activities yet.  Encourage them to login!
+			hasn't performed any activities yet.  Encourage 
+			=@child.name.capitalize
+			to login!
 		- else
 			= render @activities
 

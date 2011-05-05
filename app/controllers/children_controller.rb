@@ -69,6 +69,12 @@ class ChildrenController < ApplicationController
 			redirect_to :home
 		end
 		
+		unless  @child.relatives.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		@activities = @child.activities.order('created_at DESC')
 	end
 

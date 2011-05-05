@@ -99,22 +99,22 @@ class User < ActiveRecord::Base
 							:source => :related_user, 
 							:conditions => "role IN ( 'son', 'daughter', 'mother', 'father', 'guardian', 'brother',
 							'sister', 'aunt', 'uncle', 'niece', 'nephew','cousin', 'grandmother', 'grandfather',
-							'grandson', 'granddaughter', 'relative', 'stepmother', 'stepfather' )"
+							'grandson', 'granddaughter', 'relative', 'stepmother', 'stepfather' ) and relationships.status = 'active'"
 	has_many	:children, :through => :relationships, 
 							:foreign_key => :related_user_id, 
 							:class_name => 'Child', 
 							:source => :related_user, 
-							:conditions => "role IN ( 'mother', 'father', 'guardian' )"
+							:conditions => "role IN ( 'mother', 'father', 'guardian' ) and relationships.status = 'active'"
 	has_many	:supported_children, :through => :relationships, 
 									:foreign_key => :related_user_id, 
 									:class_name => 'Child', 
 									:source => :related_user, 
-									:conditions => "role NOT IN ( 'mother', 'father', 'guardian' )"
+									:conditions => "role NOT IN ( 'mother', 'father', 'guardian' ) and relationships.status = 'active'"
 
 	# User is the subject of the sentence.  User(child) has parents and he/she is their 'son/daughter'
 	has_many	:parents, :through => :relationships,
 						:source => :related_user, 
-						:conditions => "role IN ( 'son', 'daughter', 'ward', 'client')"
+						:conditions => "role IN ( 'son', 'daughter', 'ward', 'client') and relationships.status = 'active'"
 
 	has_many	:sent_notes, :foreign_key => :sender_id, :class_name => 'Note'
 	
