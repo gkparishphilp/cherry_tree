@@ -8,5 +8,5 @@
 			%hr
 			= @note.content
 		.actions
-			= link_to 'Reply', new_note_path( :to => @note.sender.id, :subject => "Re:#{@note.subject}"), :class => 'green_button'
-			= link_to 'Delete', note_path( @note ), :method => :delete, :class => 'red_button'
+			= link_to 'Reply', new_note_path( :to => @note.sender.id, :subject => "Re:#{@note.subject}"), :class => 'button_flat'
+			= link_to 'Delete', note_path( @note ), :method => :delete, :class => 'button_flat'
