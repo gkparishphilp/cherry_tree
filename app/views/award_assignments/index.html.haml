@@ -13,13 +13,15 @@
 		%br
 		%br
 		%p 
-			Awards are incentives that can be offered to
-			= @child.name
-			to work towards.
-			= @child.name 
-			can redeem points earned for these awards.  The awards can be redeemable for almost anything you want.  Examples would be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
+			Awards are incentives that 
+			= @child.name.capitalize
+			can work to obtain.
+			= @child.name.capitalize 
+			can earn points which are redeemable for awards that you create.  These awards can be anything that you think will motivate
+			= @child.name.capitalize
+			\. Examples could be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
 		%p
-			= @child.name
+			= @child.name.capitalize
 			does not have any awards to work towards yet.
 			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
 			= link_to "Let's create an award!", "#", :class => 'open_modal', :id => 'award'

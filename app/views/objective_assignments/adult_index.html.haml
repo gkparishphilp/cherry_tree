@@ -11,13 +11,13 @@
 		%br
 		%p
 			Objectives are behaviors, thoughts, or habits that
-			= @child.name
+			= @child.name.capitalize
 			should be working on and reminded of daily.
 		%p
-			= @child.name
+			= @child.name.capitalize
 			does not have any objectives yet.
 			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
-			= link_to "Let's Create one", "#", :class => 'open_modal', :id => 'objective'
+			= link_to "Let's create one.", "#", :class => 'open_modal', :id => 'objective'
 	- else
 		%table( width=600 )
 			%th 

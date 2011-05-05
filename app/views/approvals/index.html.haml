@@ -3,9 +3,8 @@
 	
 	- if @checkins.empty?
 		%br
-		%br
 		%p
-			= @child.name
+			= @child.name.capitalize
 			hasn't checked in on any objectives yet.
 	- else
 		%p

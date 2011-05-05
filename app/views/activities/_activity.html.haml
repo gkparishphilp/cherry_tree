@@ -20,7 +20,7 @@
 		= render activity.comments
 		
 	= form_for [ activity, Comment.new ] do |f|
-		= f.text_field :content, :style=>'width: 360px'
+		= f.text_field :content, :style=>'width: 350px'
 		= f.submit( 'Comment' )
 		
 	
