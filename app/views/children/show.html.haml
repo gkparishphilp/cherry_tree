@@ -8,6 +8,11 @@
 
 		%h3 Activity Feed
 		.timeline
+
+		- if @activities.empty?
+			=@child.name.capitalize
+			hasn't performed any activities yet.  Encourage them to login!
+		- else
 			= render @activities
 
 
