@@ -13,7 +13,7 @@
 
 	#home_prizes
 		%h3 Awards
-		- if @child.award_assignments.empty?
+		- if @child.award_assignments.empty? && @child.parents.include?( @current_user )
 			= @child.name.capitalize
 			has no awards, create one now!
 			%br
