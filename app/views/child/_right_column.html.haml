@@ -24,6 +24,10 @@
 			= link_to 'Go to Treasure Chest', awards_path
 #home_news
 	%h3
-		News
-	.activity
-		= render @current_user.activities
+		Your Supporters
+	- for supporter in @current_user.relatives
+		= avatar_tag( supporter, :thumb, :width => 25 )
+		= supporter.nickname( @current_user )
+		= link_to image_tag( 'pencil.png' ), new_note_path( :to => supporter.id )
+		= link_to "Send Note", new_note_path( :to => supporter.id )
+		.divider

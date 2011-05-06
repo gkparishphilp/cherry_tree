@@ -181,6 +181,7 @@ class User < ActiveRecord::Base
 	has_many	:photos, :through => :photo_albums
 	
 	has_many	:quizzings
+	has_many	:quiz_assignments
 
 	has_many	:invitations
 	has_many	:sent_invitations, :class_name => 'Invitation', :foreign_key => :creator_id

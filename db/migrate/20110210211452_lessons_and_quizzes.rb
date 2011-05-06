@@ -67,6 +67,15 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :quiz_assignments do |t|
+			t.references	:user
+			t.references	:quiz
+			t.references	:creator
+			t.integer		:point_value, :default => 1
+			t.string		:status
+			t.timestamps
+		end
+		
 		create_table :quizzings, :force => true do |t|
 			t.references	:quiz
 			t.references	:user

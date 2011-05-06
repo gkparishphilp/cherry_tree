@@ -16,6 +16,9 @@
 #
 
 class Award < ActiveRecord::Base
+	
+	after_create :set_avatar
+	
 	belongs_to	:creator, :polymorphic => true
 	has_many	:ownings, :as => :ownable
 	
@@ -23,7 +26,6 @@ class Award < ActiveRecord::Base
 	
 	has_many	:award_assignments
 	has_many	:assigned_users, :through => :award_assignments, :class_name => 'User', :source => :user
-
 	
 	has_attached	:avatar
 	
@@ -52,6 +54,14 @@ class Award < ActiveRecord::Base
 			return award
 		else
 			return "couldn't save award"
+		end
+	end
+	
+	private
+	
+	def set_avatar
+		if self.avatar.nil?
+			pic = Attachment.create( :path => '/images/trophy.png', :name => 'trophy', :attachment_type => 'avatar', :owner => self, :format => 'png', :remote => true )
 		end
 	end
 end

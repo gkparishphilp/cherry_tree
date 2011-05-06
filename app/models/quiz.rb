@@ -18,11 +18,17 @@
 class Quiz < ActiveRecord::Base
 	belongs_to	:lesson
 	
+	has_many	:quiz_assignments
+	
 	has_many	:questions, :dependent => :destroy
 	
 	accepts_nested_attributes_for	:questions, :reject_if => lambda { |attrs| attrs[:content].blank? }, :allow_destroy => true
 	
 	has_many	:quizzings
+	
+	def self.standalone
+		where( "lesson_id is null ")
+	end
 	
 	def last_question
 		self.questions.order( "sequence ASC" ).last || self.questions.last

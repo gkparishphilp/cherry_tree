@@ -23,6 +23,7 @@ class LessonAssignmentsController < ApplicationController
 			return false
 		end
 		@lessons = Lesson.all
+		@quizzes = Quiz.standalone
 		
 		@new_assignment = @child.lesson_assignments.new
 	end
