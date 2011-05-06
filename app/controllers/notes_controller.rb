@@ -50,6 +50,13 @@ class NotesController < ApplicationController
 	
 	def show
 		@note = Note.find( params[:id] )
+
+		unless @note.recipients.include?( @current_user ) || @note.sender == @current_user
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		@note.mark_read_by( @current_user )
 		@fonts = [] << @note.font if @note.font.present?
 	end
@@ -71,6 +78,13 @@ class NotesController < ApplicationController
 	
 	def destroy
 		@note = Note.find( params[:id] )
+
+		unless @note.recipients.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		@note.mark_deleted_by( @current_user )
 		pop_flash "Note trashed"
 		redirect_to notes_path

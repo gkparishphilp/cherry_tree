@@ -21,6 +21,6 @@
 			= @reply_to_note.content
 		= f.text_area :content, :id => 'note_content'
 .actions
-	= f.submit "Send", :class => 'green_button'
+	= f.submit "Send", :class => 'button_flat'
 
-	= link_to 'Cancel', notes_path, :class => 'red_button'
+	= link_to 'Cancel', notes_path, :class => 'button_flat'
