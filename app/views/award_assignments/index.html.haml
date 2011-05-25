@@ -4,14 +4,14 @@
 
 	= render 'children/sub_nav', :child => @child
 	
-	.new_thing
-		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
-		= link_to 'Create Award', "#", :class => 'open_modal', :id => 'award'
+	.top-header.clearfix
+		%span.title
+			Awards
+	
+		.new_thing.button_flat
+			= link_to '+ Create Award', "#", :class => 'open_modal', :id => 'award'
 	
 	- if @child.award_assignments.empty?
-		%br
-		%br
-		%br
 		%p 
 			Awards are incentives that 
 			= @child.name.capitalize
@@ -23,12 +23,9 @@
 		%p
 			= @child.name.capitalize
 			does not have any awards to work towards yet.
-			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
-			= link_to "Let's create an award!", "#", :class => 'open_modal', :id => 'award'
+			= link_to "Let's create an award!", "#", :class => 'open_modal button_flat', :id => 'award'
 	
 	- else
-		%br
-		%br
 		%table( width=600 )
 			%th 
 				%b Award

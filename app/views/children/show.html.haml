@@ -18,14 +18,14 @@
 			= render @activities
 
 
-	#home_prizes
+	#home_prizes.boxes
 		%h3 Awards
 		- if @child.award_assignments.empty? && @child.parents.include?( @current_user )
-			= @child.name.capitalize
-			has no awards, create one now!
-			%br
-			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'award'
-			= link_to "Create Award", "#", :class => 'open_modal', :id => 'award'
+			%p
+				= @child.name.capitalize
+				has no awards, create one now!
+			
+			= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
 			
 		- for assignment in @child.award_assignments
 			.item
@@ -39,18 +39,18 @@
 					Cost:
 					= assignment.point_cost
 					pts.
-	#home_news
+	#home_news.boxes
 		%h3 Objectives
 		- if @child.objective_assignments.empty? && @child.parents.include?( @current_user )
 			= @child.name.capitalize
 			has no objectives, create one now!
 			%br
-			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
-			= link_to "Create Objective", "#", :class => 'open_modal', :id => 'objective'		
+			%br
+			= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'		
 		- else
 			- for assignment in @child.objective_assignments
-				= assignment.objective.name
-				%br
+				%p
+					= assignment.objective.name
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2

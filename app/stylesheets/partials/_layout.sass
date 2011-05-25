@@ -27,11 +27,11 @@ body
 		:margin-top 20px
 
 	.user_capsule
-		background-color: #eee
+		background-color: #fff
 		:min-width 200px
 		+rounded(5px)
 		border: 1px solid #999
-		padding: 5px 10px
+		padding: 5px 10px 5px 5px
 		float: right
 		margin-top: 20px
 		margin-right: 20px
@@ -64,7 +64,7 @@ body
 #main-nav
 	+rounded
 	:padding 0 5px
-	:margin 5px
+	:margin 5px 0
 	:background-color #60a3c1
 	li
 		list-style: none
@@ -119,7 +119,7 @@ body
 	+clearfix
 
 .tab_bar
-	:padding 0 10px
+	:padding 0 10px 0 0
 	li
 		:list-style none
 		:float left
@@ -128,28 +128,30 @@ body
 		:background-color #ddd
 		:border 1px solid #ccc
 		:border-bottom none
-		:padding 10px 10px 7px 10px
-		:margin 0 5px
+		:padding 10px 10px 8px 10px
+		:margin 0 5px 0 0
+		:line-height 1.4em
 		img
 			:float left
 			:margin-right 4px
-		a
-			:line-height 1.4em
+		// a
+			// :line-height 1.4em
 	.selected
 		:background-color #fff
 		:margin-bottom -1px
-		:padding 10px 10px 8px 10px
+		:padding 10px 10px 9px
 		// :border 1px solid #333
 	.home
-		:padding 10px 10px 9px 10px
+		:padding 10px 10px 9px
+		:margin-left 0
 		&.selected
-			:padding 11px 10px 11px 10px
+			:padding 10px
 	.add
-		:padding 10px 10px 9px 40px
+		:padding 10px 10px 10px 40px
 		:background #ddd url(../images/add-small.png) no-repeat 10px 50%
 		&.selected
 			:background-color #fff
-			:padding 11px 10px 11px 40px
+			:padding 11px 10px 10px 40px
 		
 
 .tab_bar:after
@@ -172,19 +174,54 @@ body
 	:behavior url(/javascripts/PIE.htc)
 
 .activity
-	:font-weight bold
-	:margin 5px 0 10px
-	.divider
-		:margin 20px 0
-	.title_feed
-		:padding 4px 0 8px
+	:margin-bottom 15px
+	:width 80%
 	.comment
-		.pic
-			:margin-right 10px
-	.header
+		:margin-bottom 15px
+	.pic
+		float: left
+		margin-right: 4px
+		img
+			+rounded(6px)
+	.comment_box
+		:float left
+		:width 83%
+		:min-height 44px
+		:margin-left 15px
+		:padding 10px 12px
+		+rounded(6px)
+		:background-color #d6e9f2
 		span
-			:padding 5px 0
-	
+			:font-size 75%
+			:color #60A4C2
+			:line-height 15px
+			:vertical-align text-top
+		.text
+			:font-size 108%
+			:padding 0
+	.header
+		.byline
+			font-size: 75%
+	.new_comment
+		:margin-bottom 15px
+	.title_feed
+		:font-weight bold
+		:font-size 16px
+		:color #000
+		:margin-bottom 15px
+	.divider
+		:width 99%
+		:margin 30px 0 20px
+		:border-top 1px solid #ddd
+	.new_comment 
+		input[type="text"]
+			:width 77.7%
+			:margin-right 15px
+		input[type="submit"]
+			:padding 7px 15px
+	.tip
+		:float left
+		:margin 15px 0 0 -21px
 
 .button_to
 	display: inline

@@ -1,5 +1,5 @@
 - unless @current_user.award_assignments.active.empty?
-	#home_prizes
+	#home_prizes.boxes
 		%h3 Your Prizes
 		- for assignment in @current_user.award_assignments.active
 			.item
@@ -22,7 +22,7 @@
 			= link_to image_tag( 'treasure_chest.png', :width => 64 ), awards_path
 			%br
 			= link_to 'Go to Treasure Chest', awards_path
-#home_news
+#home_news.boxes
 	%h3
 		Your Supporters
 	- for supporter in @current_user.relatives

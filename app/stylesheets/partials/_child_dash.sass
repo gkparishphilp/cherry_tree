@@ -2,8 +2,41 @@
 	:background-color #fff
 	:border 1px solid #ccc
 	+rounded(6px)
-	:padding 10px
-	
+	-moz-border-radius-top-left: 0
+	-webkit-border-top-left-radius: 0
+	border-top-left-radius: 0
+	:padding 20px
+	.boxes
+		width: 33%
+		padding: 10px 15px 20px
+		margin-top: 15px
+		float: right
+		+rounded(10px)
+		:border 1px solid #ddd
+	.top-header
+		:border-bottom 1px solid #ddd
+		:padding 15px 0
+		:margin-bottom 20px
+		.title
+			:font-size 17px
+			:font-weight bold
+			:line-height 30px
+	td
+		:padding 5px 0
+	.form_group
+		label
+			:width 120px
+			:padding-top 5px
+	&.edit_profile
+		.button_flat
+			:padding 7px 15px
+		.divider
+			:margin 20px 0
+			:border-top-color #ddd
+		img
+			+rounded(10px)
+		
+
 .banner_name
 	:float left
 	:margin-left 10px
@@ -15,7 +48,7 @@
 	:float right
 	
 #child_main_screen
-	:width 58%
+	:width 57%
 	min-height: 400px
 	padding: 10px
 	margin-top: 10px
@@ -23,37 +56,38 @@
 	+rounded(10px)
 	// +shadow
 	// border: 3px solid #c33
-	
+	.activity
+		:width 99%
+		.new_comment
+			input[type="text"]
+				:width 69.7%
+		.comment_box
+			:width 78%
 
 #home_prizes
-	width: 36%
-	padding: 10px
-	margin-top: 10px
-	margin-left: 10px
-	float: left
-	+rounded(10px)
-	// +shadow
+	&.boxes
+		:padding-right 0
+		:width 34.6%
 	.item
-		margin-top: 5px
 		text-align: center
-		width: 120px
-		margin-left: 5px
+		width: 40.5%
+		:margin 5px 15px 10px 0
 		+rounded(5px)
 		float: left
-		border: 1px solid #999
-		padding: 5px
+		border: 1px solid #ddd
+		padding: 10px 5px
 		font-size: 12px
+		:background url(/images/gradient_bg.jpg) repeat-x left bottom #fff
 	
 #home_news
-	float: left
-	width: 36%
-	margin-top: 10px
-	margin-left: 10px
-	padding: 10px
-	+rounded(10px)
-	// +shadow
+	h3
+		:margin-bottom 15px
 	.activity
 		font-size: 12px
+	p
+		:padding 0 5px 5px
+		:margin-bottom 8px
+		:border-bottom 1px solid #ddd
 		
 #home_notes
 	float: left

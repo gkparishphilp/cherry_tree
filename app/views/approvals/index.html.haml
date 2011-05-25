@@ -2,13 +2,15 @@
 	= render 'children/sub_nav', :child => @child
 	
 	- if @checkins.empty?			
-		%p
-			= @child.name.capitalize
-			hasn't checked in on any objectives yet.
+		.top-header.clearfix
+			%span.title
+				= @child.name.capitalize
+				hasn't checked in on any objectives yet.
 	- else
-		%p
-			These activities need to be approved or unapproved
-		%br
+		.top-header.clearfix
+			%span.title
+				These activities need to be approved or unapproved
+
 		%table( width=600 )
 			%th Activity
 			%th Date

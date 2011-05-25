@@ -2,15 +2,16 @@
 
 .child_profile
 	= render "children/sub_nav", :child => @child
-	Create objectives for 
-	= @child.name.capitalize
-	here.
-	.new_thing
-		= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
-		= link_to "Assign New Objective", "#", :class => 'open_modal', :id => 'objective'
+	
+	.top-header.clearfix
+		%span.title
+			Create objectives for 
+			= @child.name.capitalize
+			here.
+		.new_thing.button_flat
+			= link_to "+ Assign New Objective", "#", :class => 'open_modal', :id => 'objective'
+		
 	- if @assignments.empty?
-		%br
-		%br
 		%p
 			Objectives are behaviors, thoughts, or habits that
 			= @child.name.capitalize
@@ -21,8 +22,6 @@
 			= link_to image_tag( 'add.png', :width => 20 ), "#", :class => 'open_modal', :id => 'objective'
 			= link_to "Let's create one.", "#", :class => 'open_modal', :id => 'objective'
 	- else
-		%br
-		%br
 		%table( width=600 )
 			%th 
 				%b Objective

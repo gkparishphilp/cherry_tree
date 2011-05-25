@@ -1,13 +1,14 @@
 .child_profile
 
 	= render 'children/sub_nav', :child => @child
-	Assign lessons and activities here.
 	
-	.new_thing
-		= link_to image_tag( 'add.png', :width => 20 ), ""
-		= link_to 'Buy Lessons!', ""
-	%br
-	%br
+	.top-header.clearfix
+		%span.title
+			Assign lessons and activities here.
+	
+		.new_thing.button_flat
+			= link_to 'Buy Lessons!', ""
+
 	%table( width = 600 )
 		%th
 			%b Name
