@@ -6,9 +6,10 @@
 		= link_to "Forums", forums_path, :class=> 'button red'
 	.user_capsule
 		- if @current_user.anonymous?
-			= link_to "Login", login_path
-			|
-			= link_to "Register", register_path
+			.loggedout
+				= link_to "Login", login_path
+				|
+				= link_to "Register", register_path
 		- else
 			.pic
 				= avatar_tag( @current_user, :thumb, :width => 36 )

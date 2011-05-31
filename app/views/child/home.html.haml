@@ -1,13 +1,13 @@
 #child_main_screen
 	
-	= render @relevant_assignment 
+	.boxes
+		= render @relevant_assignment 
 	
-	.divider
-	
-	%h3
-		News
-	.activity
-		= render @current_user.activities
+	.boxes
+		%h3
+			News
+		.activity
+			= render @current_user.activities
 
 = render 'child/right_column'
 

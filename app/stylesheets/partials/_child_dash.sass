@@ -6,13 +6,6 @@
 	-webkit-border-top-left-radius: 0
 	border-top-left-radius: 0
 	:padding 20px
-	.boxes
-		width: 33%
-		padding: 10px 15px 20px
-		margin-top: 15px
-		float: right
-		+rounded(10px)
-		:border 1px solid #ddd
 	.top-header
 		:border-bottom 1px solid #ddd
 		:padding 15px 0
@@ -35,7 +28,14 @@
 			:border-top-color #ddd
 		img
 			+rounded(10px)
-		
+.boxes
+	width: 33%
+	padding: 10px 15px 20px
+	margin-top: 15px
+	float: right
+	+rounded(10px)
+	:border 1px solid #ddd
+	:background-color #fff
 
 .banner_name
 	:float left
@@ -48,14 +48,9 @@
 	:float right
 	
 #child_main_screen
-	:width 57%
+	:width 58%
 	min-height: 400px
-	padding: 10px
-	margin-top: 10px
 	float: left
-	+rounded(10px)
-	// +shadow
-	// border: 3px solid #c33
 	.activity
 		:width 99%
 		.new_comment
@@ -63,6 +58,9 @@
 				:width 69.7%
 		.comment_box
 			:width 78%
+	.boxes
+		:float none
+		:width auto
 
 #home_prizes
 	&.boxes
@@ -78,7 +76,23 @@
 		padding: 10px 5px
 		font-size: 12px
 		:background url(/images/gradient_bg.jpg) repeat-x left bottom #fff
-	
+
+.objectives
+	// :border 1px solid #
+	:padding 10px 12px
+	:background-color #d6e9f2
+	:margin-top 15px
+	+rounded(6px)
+	#checkin_content
+		:float left
+		:width 71%
+		:margin-top 3px
+	.actions
+		:float right
+		:width 20%
+		img
+			:margin-left 4px
+
 #home_news
 	h3
 		:margin-bottom 15px
@@ -107,6 +121,24 @@
 	+shadow
 	margin-left: 10px
 	
+.treasure_box
+	+rounded(6px)
+	:margin 40px 15px 5px 0
+	:padding 10px 12px
+	:background-color #60a4c2
+	:position relative
+	img
+		:position absolute
+		:top -20px
+		:left -6px
+	a
+		:font-size 21px
+		:color #fff
+		&:hover
+			:text-decoration none
+	.col
+		:float right
+		:width 58%
 	
 	
 .cherry

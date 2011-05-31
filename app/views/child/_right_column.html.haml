@@ -12,16 +12,14 @@
 					= assignment.point_cost - @current_user.point_balance
 					Points to Go!
 				- else
-					.cost
-						Cost:
-						= assignment.point_cost
-						pts.
-					%br
 					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
-		.item
-			= link_to image_tag( 'treasure_chest.png', :width => 64 ), awards_path
-			%br
-			= link_to 'Go to Treasure Chest', awards_path
+				
+		.clear
+		.treasure_box.clearfix
+			= link_to image_tag( 'treasure_chest.png' ), awards_path
+			.col
+				= link_to 'Go to Treasure Chest', awards_path
+			
 #home_news.boxes
 	%h3
 		Your Supporters
