@@ -6,12 +6,11 @@
 			= link_to content_tag(:span, 'All Notes'), archive_notes_path
 	.note_main
 		- if @notes.empty?
-			.note
-				.subject
+			.note_header
+				%span
 					No Unread Notes
-				%hr
-				.content
-					Send a note to get a note ;-)
+			.note_content
+				Send a note to get a note ;-)
 		= render @notes
 	%br.clear
 

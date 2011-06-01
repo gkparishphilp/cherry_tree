@@ -1,9 +1,9 @@
 -# The Treasure Chest
 
-%h3 Pick a prize!
-	
 - unless @award_assignments.empty?
 	#awards
+		%h3 Pick a prize!
+
 		- for assignment in @award_assignments.active
 			.treasure_item
 				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )

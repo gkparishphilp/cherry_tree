@@ -1,19 +1,25 @@
 -# Used to show the objective asignments to a child 
-
-- if @assignments.present?
-	%h3 Your Goals
-	- for @assignment in @assignments
-		%b= @assignment.objective.name
-		( 
-		= @assignment.point_value
-		points.
-		)
-		- if @assignment.checkin_in_last?( Time.now.beginning_of_day )
-			%br You checked in today!
-		- else
-			= render :partial => 'checkins/form'
-		%br
-		%br
+.objective_dash.clearfix
+	- if @assignments.present?
+		%h3 Your Goals
+		- for @assignment in @assignments
+			- if @assignment.checkin_in_last?( Time.now.beginning_of_day )
+				.objectives.checked
+					%b= @assignment.objective.name
+					( 
+					= @assignment.point_value
+					points.
+					)
+					%p
+						You checked in today!
+			- else
+				.objectives
+					%b= @assignment.objective.name
+					( 
+					= @assignment.point_value
+					points.
+					)
+					= render :partial => 'checkins/form'
 	
-- else
-	%h3 No Goals
+	- else
+		%h3 No Goals

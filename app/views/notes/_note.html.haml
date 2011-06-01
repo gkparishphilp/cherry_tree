@@ -1,11 +1,15 @@
 %div[note]{ :class => note.css }
-	.subject
-		= note.subject
-	.from
-		From:
-		= note.sender.nickname( @current_user )
-	%hr
-	.content
+	.note_header
+		%span
+			%b
+				From:
+			= note.sender.nickname( @current_user )
+		%br
+		%span
+			%b
+				Subject:
+			= note.subject
+	.note_content
 		= snip( note.content, 150 )
 		- if note.content.length > 150
 			= link_to "More", note
