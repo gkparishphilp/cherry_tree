@@ -1,20 +1,22 @@
 %div[activity]
-	.title_feed
-		- if activity.user == @current_user
-			You
-		- else
-			= activity.user.display_name
-		
-		= activity.verb.html_safe
-		
-		= time_ago_in_words( activity.created_at )
-		ago.
+	.title_feed.clearfix
+		%p
+			- if activity.user == @current_user
+				You
+			- else
+				= activity.user.display_name
 	
-	- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present? && @current_user.children.include?( activity.user ) && activity.target.unapproved?
-		= link_to image_tag('green_check.png', :width => 20), checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
-		= link_to 'Approve', checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
-		|
-		= link_to "Ignore", checkin_path( activity.target, :confirmed_by => -1, :confirmed_at => Time.now), :method => :put
+			= activity.verb.html_safe
+	
+			= time_ago_in_words( activity.created_at )
+			ago.
+
+		- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present? && @current_user.children.include?( activity.user ) && activity.target.unapproved?
+			.actions
+				%span.bt_approve
+					= link_to 'Approve', checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
+				%span.bt_ignore
+					= link_to "Ignore", checkin_path( activity.target, :confirmed_by => -1, :confirmed_at => Time.now), :method => :put
 	
 	- unless activity.comments.empty?
 		= render activity.comments

@@ -28,7 +28,7 @@
 			= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
 			
 		- for assignment in @child.award_assignments
-			.item
+			.treasure_item
 				- if @current_user == @child
 					= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' ) 
 				- else

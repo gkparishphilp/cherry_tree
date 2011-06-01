@@ -227,6 +227,24 @@ body
 
 .button_to
 	display: inline
+
+.bt_approve
+	+rounded(6px)
+	:padding 3px 10px 3px 24px
+	:margin-right 10px
+	:background url(/images/bt_check_white.png) no-repeat 5px 50% #199900
+	a
+		:color #fff
+		&:hover
+			:text-decoration none
+.bt_ignore
+	+rounded(6px)
+	:padding 3px 10px 3px 24px
+	:background url(/images/bt_cross_white.png) no-repeat 5px 50% #cb070a
+	a
+		:color #fff
+		&:hover
+			:text-decoration none
 	
 #ft
 	color: #ceb58a
