@@ -3,14 +3,18 @@
 		%h3 Your Prizes
 		- for assignment in @current_user.award_assignments.active
 			.treasure_item
+				%b= snip assignment.award.name, 20
+				%br
 				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
 				%br
-				%b= assignment.award.name
-				%br
+				.cost
+					Cost:
+					= assignment.point_cost
+					cherries
 				- if assignment.point_cost > @current_user.point_balance
 					Only
 					= assignment.point_cost - @current_user.point_balance
-					Points to Go!
+					cherries to Go!
 				- else
 					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
 				

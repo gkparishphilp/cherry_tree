@@ -80,7 +80,7 @@ module ApplicationHelper
 		return "&nbsp;" if text.nil?
 		
 		text.gsub!(%r{</?[^>]+?>}, '') #remove html tags?
-		text.size <= snip_at ? text : text[0..snip_at] + ". . ."
+		text.size <= snip_at ? text : text[0..snip_at] + "..."
 
 	end 
 	

@@ -22,15 +22,19 @@
 			"Where Children Blossom"
 		= render 'shared/flash', :flash => flash 
 		
-		%p
-			Parents:
+		.float_left.rounded_outline{ :style => 'width:294px;' }
+			%h3 Parents:
+			%p
+				Use the power of positive reinforcement and family to connect with your children and improve behavior.
 			%li= link_to 'Learn More', '/about'
-			%li= link_to 'Register', register_path
-			%li= link_to 'Login', login_path
-		%p
-			Children
-			%li= link_to 'Login!', login_children_path
-		
+			= link_to 'Register', register_path, :class => 'button green'
+			= link_to 'Login', login_path, :class => 'button green'
+		.float_left.rounded_outline{ :style => 'width:294px;' }
+			%h3 Children
+			%p
+				Earn points and prizes!
+			= link_to 'Login!', login_children_path, :class => 'button green'
+		%br.clear
 	
 		%p
 			Enter your email address to sign up for our newsletter:

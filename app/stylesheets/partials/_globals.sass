@@ -131,6 +131,12 @@ body
 	
 .float_right
 	:float right
+
+.rounded_outline
+	+rounded(10px)
+	:border 1px solid #999
+	:margin 10px
+	:padding 10px
 	
 .pad
 	:margin 10px
@@ -278,6 +284,10 @@ input.large
 	:padding 8px 15px
 	:border 1px solid #eee
 	+rounded(15px)
+	
+input.small
+	:width 50px
+	+rounded(4px)
 
 .button
 	+ct_button
@@ -291,6 +301,9 @@ input.large
 	.button_small
 		:margin-top 13px
 
+.center
+	:text-align center
+	
 .green
 	+ct_button_color($leaf_green)
 

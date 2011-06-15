@@ -1,15 +1,11 @@
 This Award entitles 
 = @child.display_name
 to:
-= link_to image_tag('help.png', :width => 30, :title =>'Examples of awards are a toy, an hour of TV time, a trip to the ice cream shop, etc.'), "/help#awards"
-		
-= f.text_field :award_name
 %br
-= f.label 'Description (optional)'
-= f.text_area :award_description, :class => 'tiny_area'
+= f.text_field :award_name, :class => 'large'
 %br
-= f.label 'Points Required:'
-= f.text_field :point_cost
-= link_to image_tag('help.png', :width => 30, :title =>'Points are roughly equivalent to a penny'), "/help#points"
+= f.label 'Cherries Required:'
+%br
+= f.text_field :point_cost, :class => 'small'
 %br
 = f.submit 'Create Award', :class =>'button_flat'

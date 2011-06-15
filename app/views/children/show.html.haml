@@ -2,55 +2,97 @@
 .child_profile.clearfix
 	= render 'children/sub_nav', :child => @child
 	
-	
 	#child_main_screen
-
-
-		%h3 Activity Feed
-		.timeline
-
-		- if @activities.empty?
-			=@child.name.capitalize
-			hasn't performed any activities yet.  Encourage 
-			=@child.name.capitalize
-			to login!
+	
+		- if @child.award_assignments.empty? && @child.objective_assignments.empty?
+			%h3 
+				Congratulations! Let's get started...
+			First, let's create some awards for
+			= @child.display_name
+			to work towards....  Awards can be Toys, prizes, special treats, or anything you want.
+			= @child.display_name
+			Will be able to spend 
+			= @child.pronoun_gender_possessive
+			cherries as
+			= @child.pronoun_gender_subject
+			earns them to unlock these awards.
+			%p.center{ :style => 'margin-top: 20px;' }
+				= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
+			
+		- elsif @child.award_assignments.present? && @child.objective_assignments.empty?
+			%h3 
+				Great!
+			Now, let's enter some objectives for
+			= @child.display_name
+			Objectives can be chores, behavior goals, or milestones for 
+			= @child.display_name
+			to work towards.
+			= @child.display_name
+			will earn cherries as 
+			= @child.pronoun_gender_subject
+			checks in on 
+			= @child.pronoun_gender_possessive
+			progress and you will be able to confirm that
+			= @child.pronoun_gender_subject
+			has actually accomplished the objectives.
+			%p.center{ :style => 'margin-top: 20px;' }
+				= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'
+		
 		- else
-			= render @activities
+	
+			%h3 Activity Feed
+			.timeline
+
+			- if @activities.empty?
+				= @child.name.capitalize
+				hasn't performed any activities yet.  Encourage 
+				= @child.name.capitalize
+				to login!
+			- else
+				= render @activities
 
 
 	#home_prizes.boxes
-		%h3 Awards
+		%h3.center Awards:
 		- if @child.award_assignments.empty? && @child.parents.include?( @current_user )
 			%p
 				= @child.name.capitalize
 				has no awards, create one now!
 			
-			= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
-			
 		- for assignment in @child.award_assignments
 			.treasure_item
+				%b.center= snip assignment.award.name, 20
+				%br
 				- if @current_user == @child
 					= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' ) 
 				- else
 					= avatar_tag( assignment.award, :thumb, :width => 64 )
 				%br
-				%b= assignment.award.name
 				.cost
 					Cost:
 					= assignment.point_cost
-					pts.
-	#home_news.boxes
-		%h3 Objectives
+					cherries
+		%p.center.clear
+			= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
+					
+	#home_prizes.boxes
+		%h3.center Objectives:
 		- if @child.objective_assignments.empty? && @child.parents.include?( @current_user )
-			= @child.name.capitalize
-			has no objectives, create one now!
-			%br
-			%br
-			= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'		
+			%p
+				= @child.name.capitalize
+				has no objectives, create one now!
+		
 		- else
 			- for assignment in @child.objective_assignments
-				%p
+				.float_left{ :style => 'width:190px;' }
 					= assignment.objective.name
+				.float_left{ :style => 'width:109px;' }
+					%b= assignment.point_value
+					Cherries
+				%br.clear
+		
+		%p.center.clear
+			= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2
