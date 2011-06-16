@@ -3,11 +3,17 @@
 .banner_points
 	= @current_user.point_balance
 	= image_tag "cherry.png", :class => 'cherry'
+	%span{ :style => 'font-size:10px;' }
+		(
+		= @current_user.points_earned
+		Total Cherries Earned
+		)
 .clear
 #main-nav
 	%ul.navbar
 		%li= link_to "Home", home_path
 		%li= link_to "Objectives", child_objective_assignments_path( @current_user )
+		%li= link_to "Lessons and Activities", child_lesson_assignments_path( @current_user )
 		%li= link_to "Notes", notes_path
 		%li= link_to "Treasure Chest", awards_path
 

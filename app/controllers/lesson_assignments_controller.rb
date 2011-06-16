@@ -17,15 +17,23 @@ class LessonAssignmentsController < ApplicationController
 	end
 	
 	def index
-		unless @child.parents.include?( @current_user )
-			pop_flash "Access Denied", :error
-			redirect_to :back
-			return false
+		if @current_user.is_child?
+			@assignments = @current_user.lesson_assignments
+			render :child_index
+		else
+			unless @child.parents.include?( @current_user ) || @current_user == @child
+				pop_flash "Access Denied", :error
+				redirect_to :back
+				return false
+			end
+			@lessons = Lesson.all
+			@quizzes = Quiz.standalone
+			
+			@new_assignment = @child.lesson_assignments.new
+			
+			render :adult_index
+			
 		end
-		@lessons = Lesson.all
-		@quizzes = Quiz.standalone
-		
-		@new_assignment = @child.lesson_assignments.new
 	end
 	
 	

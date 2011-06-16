@@ -1,0 +1,23 @@
+.objective_dash.clearfix
+	- if @assignments.present?
+		%h3 Lessons and Activities
+	- else
+		%h3 No Lessons or Activities
+
+	%table( width = 600 )
+		%th
+			%b Name
+		%th
+			%b Points
+		%th
+			%b Action
+		- for assignment in @assignments
+			%tr
+				%td
+					= assignment.lesson.name
+				%td
+					= assignment.point_value
+				%td
+					= link_to "Take It", ''
+%br.clear
+%br

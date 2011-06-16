@@ -19,6 +19,9 @@
 #
 
 class ObjectiveAssignment < ActiveRecord::Base
+	
+	validates	:point_value, :numericality => { :greater_than => 0 }
+	
 	belongs_to	:user
 	belongs_to	:objective
 	belongs_to	:creator, :foreign_key => :creator_id, :class_name => 'User'
