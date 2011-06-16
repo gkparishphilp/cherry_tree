@@ -39,6 +39,10 @@ $(document).ready(function(){
 	//	$(this).hide( 2000 );
 	//});
 	
+	$('.open_comment_form').click( function(){
+		$('#comment_form_activity_' + $(this).attr('id') ).toggle( 300 );
+	});
+	
 	
 	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
 	
