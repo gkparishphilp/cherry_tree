@@ -60,19 +60,14 @@
 				has no awards, create one now!
 			
 		- for assignment in @child.award_assignments
-			.treasure_item
-				%b.center= snip assignment.award.name, 20
-				%br
-				- if @current_user == @child
-					= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' ) 
-				- else
-					= avatar_tag( assignment.award, :thumb, :width => 64 )
-				%br
-				.cost
-					Cost:
+			.float_left
+				.float_left{ :style => 'width:190px;' }
+					%b= assignment.award.name
+				.float_left{ :style => 'width:109px;' }
 					= assignment.point_cost
-					cherries
-		%p.center.clear
+					Cherries
+				%br.clear
+		%p.center.clear{ :style => 'margin-top:15px;' }
 			= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
 					
 	#home_prizes.boxes
@@ -85,14 +80,24 @@
 		- else
 			- for assignment in @child.objective_assignments
 				.float_left{ :style => 'width:190px;' }
-					= assignment.objective.name
+					%b= assignment.objective.name
 				.float_left{ :style => 'width:109px;' }
-					%b= assignment.point_value
+					= assignment.point_value
 					Cherries
 				%br.clear
-		
-		%p.center.clear
+		%p.center.clear{ :style => 'margin-top:15px;' }
 			= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'
+			
+	#home_prizes.boxes
+		%h3.center Supporters:
+		- for supporter in @child.relatives
+			%p.clearfix
+			= avatar_tag( supporter, :thumb, :width => 25 )
+			
+			= supporter.nickname( @child )
+		%p.center.clear{ :style => 'margin-top:15px;' }
+			= link_to "+ Invite a Supporter", '#', :class => 'open_modal button_flat', :id => 'supporter'
+			
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2
@@ -106,6 +111,10 @@
 	#new_award.modal{ :title => "New Award for #{@child.display_name}" }
 		= form_for [ @child, AwardAssignment.new ] do |f|
 			= render 'award_assignments/award_form', :f => f
+			
+	#new_supporter.modal{ :title => "Invite Supporter for #{@child.display_name}" }
+		= form_for [ @child, Invitation.new ] do |f|
+			= render 'invitations/form', :f => f
 
 
 
