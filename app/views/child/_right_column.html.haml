@@ -23,21 +23,16 @@
 			= link_to image_tag( 'treasure_chest.png' ), awards_path
 			.col
 				= link_to 'Go to Treasure Chest', awards_path
-			
-#home_news.boxes
-	%h3
-		Your Supporters
-	- for supporter in @current_user.relatives
-		%p.clearfix
-			= avatar_tag( supporter, :thumb, :width => 25 )
-			
-			= supporter.nickname( @current_user )
-			%span.button_flat
-				= link_to new_note_path( :to => supporter.id ) do
-					%span + Send Note
-- unless @current_user.activities.empty?
-	#home_activity.boxes
+
+	.boxes
 		%h3
-			News
-			.activity
-				= render @current_user.activities
+			Your Supporters
+		- for supporter in @current_user.relatives
+			%p.clearfix
+				= avatar_tag( supporter, :thumb, :width => 25 )
+
+				= supporter.nickname( @current_user )
+				%span{ :style => 'float:right;margin-right:10px;margin-top:5px;' }
+					= link_to "Send Note", new_note_path( :to => supporter.id )
+			%br.clear
+

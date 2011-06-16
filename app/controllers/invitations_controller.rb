@@ -29,7 +29,7 @@ class InvitationsController < ApplicationController
 		end
 		
 		if @invitation.save
-			UserMailer.send_invitation_for_child( @invitation ).deliver
+			# UserMailer.send_invitation_for_child( @invitation ).deliver
 			pop_flash "Invitation Sent!"
 		else
 			pop_flash "Could not send invitation", :error, @invitation

@@ -3,6 +3,17 @@
 	.boxes
 		= render @relevant_assignment 
 	
+	- unless @current_user.activities.empty?
+		#home_activity.boxes
+			%h3
+				News
+			.activity
+				= render @current_user.activities
+	%br
+	%br
+	%br
+	%br
+
 = render 'child/right_column'
 
 
