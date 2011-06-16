@@ -31,4 +31,9 @@
 			%span.button_flat
 				= link_to new_note_path( :to => supporter.id ) do
 					%span + Send Note
-			
+- unless @current_user.activities.empty?
+	#home_activity.boxes
+		%h3
+			News
+			.activity
+				= render @current_user.activities
