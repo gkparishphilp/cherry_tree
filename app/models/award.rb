@@ -10,7 +10,8 @@
 #  description  :text
 #  asin         :string(255)
 #  point_cost   :integer(4)
-#  status       :string(255)
+#  category     :string(255)
+#  status       :string(255)     default("active")
 #  created_at   :datetime
 #  updated_at   :datetime
 #

@@ -59,6 +59,9 @@ class ObjectiveAssignmentsController < ApplicationController
 		
 		@new_assignment = ObjectiveAssignment.new
 		@new_assignment.req_confirm = true
+		
+		
+		
 	end
 	
 	def update

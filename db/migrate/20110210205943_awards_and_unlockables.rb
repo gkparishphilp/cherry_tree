@@ -8,7 +8,8 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.text			:description
 			t.string		:asin # for Amazon products
 			t.integer		:point_cost  # TODO - I'm going to re-add this here for now... to be overridden by cost in assignemnt
-			t.string		:status
+			t.string		:category # material, time, experience
+			t.string		:status, :default => 'active'
 			t.timestamps
 		end
 		

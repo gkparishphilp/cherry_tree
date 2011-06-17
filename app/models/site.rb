@@ -25,6 +25,7 @@ class Site < ActiveRecord::Base
 	has_many :facebook_accounts, :as => :owner
 	
 	has_many	:created_awards, :as => :creator, :class_name => 'Award'
+	has_many	:created_objectives, :as => :creator, :class_name => 'Objective'
 
 	has_many :static_pages
 	has_many :contacts

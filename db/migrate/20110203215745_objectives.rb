@@ -23,7 +23,8 @@ class Objectives < ActiveRecord::Migration
 			t.string		:name
 			t.references	:creator, :polymorphic => true
 			t.text			:description
-			t.string		:objective_type # chores, school, health, etc.
+			t.string		:category # chores, school, health, etc.
+			t.string		:objective_type # one-time, recurring, milestone, daily, etc. ?????
 			t.timestamps
 		end
 		

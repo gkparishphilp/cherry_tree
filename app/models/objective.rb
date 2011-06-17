@@ -8,6 +8,7 @@
 #  creator_id     :integer(4)
 #  creator_type   :string(255)
 #  description    :text
+#  category       :string(255)
 #  objective_type :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime

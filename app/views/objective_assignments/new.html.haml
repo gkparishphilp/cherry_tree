@@ -1,23 +1,17 @@
--# Used to assign objective to a Child
-%h1
-	= possessize @current_user.name
-	Children
-= render 'users/nav'
-
-%h3 
-	Add a Child Step 2: Create an objective for
-	= @child.display_name
-
-Objectives can be anything you'd like 
-= @child.display_name.capitalize
-to work on or be mindful of.
-= @child.display_name.capitalize
-will be able to check in on 
-= @child.pronoun_gender_possessive
-objectives and earn points for them.
-
-%hr
-
-= form_for [ @child, @new_assignment ] do |f|
-	= hidden_field_tag :first, :true
-	= render 'form', :f => f
+.child_profile
+	= render "children/sub_nav", :child => @child
+	
+	.top-header.clearfix
+		%span.title
+			New Objective for 
+			= @child.name.capitalize
+			
+	- for obj in Site.first.created_objectives
+		.float_left{ :style => 'width:300px;' }
+			%b= obj.name
+		.float_left{ :style => 'width:300px;' }
+			.tiny_copy= obj.description
+		.float_left{ :style => 'width:150px;' }
+			= obj.category
+		
+		%hr.clear

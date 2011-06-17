@@ -1,23 +1,48 @@
-%h1
-	= possessize @current_user.name
-	Children
-= render 'users/nav'
 
-%h3 
-	Add a Child Step 3: Create a Reward for
-	= @child.display_name
+.child_profile
 
-Coupons are rewards that children can unlock once they've earned enough points.  When
-= @child.display_name.capitalize
-decides to unlock a coupon, they can print it out and redeem it with you.  Let's go ahead and create a coupon for
-= @child.display_name.capitalize
-now:
-
-%hr
-
-= form_for [ @child, @new_assignment ] do |f|
-	= hidden_field_tag :first, :true
-	= render 'coupon_form', :f => f
-
-%br.clear
-%br
+	= render 'children/sub_nav', :child => @child
+	
+	.top-header.clearfix
+		%span.title
+			New Award
+			
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/time.jpg', :width => 25
+		.float_left
+			%h3 PlayTime
+		.clear
+		- for award in @time_awards
+			= award.name
+			%br
+			
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/fun.jpg', :width => 25
+		.float_left
+			%h3 Fun
+		.clear
+		- for award in @fun_awards
+			= award.name
+			%br
+			
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/stuff.jpg', :width => 25
+		.float_left
+			%h3 Stuff
+		.clear
+		- for award in @stuff_awards
+			= award.name
+			%br
+			
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/money.jpg', :width => 25
+		.float_left
+			%h3 Money
+		.clear
+		- for award in @money_awards
+			= award.name
+			%br

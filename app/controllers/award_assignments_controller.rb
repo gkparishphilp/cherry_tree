@@ -56,6 +56,10 @@ class AwardAssignmentsController < ApplicationController
 	
 	def new
 		@new_assignment = AwardAssignment.new
+		@time_awards = Site.first.created_awards.where( :category => 'time' )
+		@money_awards = Site.first.created_awards.where( :category => 'money' )
+		@fun_awards = Site.first.created_awards.where( :category => 'fun' )
+		@stuff_awards = Site.first.created_awards.where( :category => 'stuff' )
 	end
 	
 	private
