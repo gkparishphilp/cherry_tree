@@ -18,7 +18,7 @@
 
 class Award < ActiveRecord::Base
 	
-	after_create :set_avatar
+	# after_create :set_avatar
 	
 	belongs_to	:creator, :polymorphic => true
 	has_many	:ownings, :as => :ownable

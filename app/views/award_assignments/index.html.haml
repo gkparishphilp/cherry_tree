@@ -36,11 +36,7 @@
 			%th 
 				%b Actions	
 			= render @child.award_assignments
-	
-		
-	#new_award.modal{ :title => "New Award for #{@child.display_name}" }
-		= form_for [ @child, @new_assignment ] do |f|
-			= render 'award_form', :f => f
+
 
 %br.clear
 %br

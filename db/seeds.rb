@@ -122,13 +122,13 @@ anon = User.new :name => 'Anonymous'
 anon.save( false )
 
 puts "Create GK's test data"
-u1 = User.new :name => 'Gk', :email => 'gk.parishphilp@gmail.com'
+u1 = User.new :name => 'Gk', :email => 'gk.parishphilp@gmail.com', :display_name => 'Gk'
 u1.password = '1234'
 u1.save( false )
 
 puts "Create Tay's test data"
 
-u2 = User.new :name => 'Tay', :email => 'tay.x.nguyen@gmail.com'
+u2 = User.new :name => 'Tay', :email => 'tay.x.nguyen@gmail.com', :display_name => 'Tay'
 u2.password = '1234'
 u2.save( false )
 

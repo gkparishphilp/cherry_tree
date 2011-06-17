@@ -1,11 +1,8 @@
-This Award entitles 
-= @child.display_name
-to:
+= f.hidden_field :award_id, :value => award.id
+%b Cherries Required:
+= f.text_field :point_cost, :class => 'small', :value => award.point_cost
 %br
-= f.text_field :award_name, :class => 'large'
+%b Description:
+= f.text_field :award_description, :value => award.description
 %br
-= f.label 'Cherries Required:'
-%br
-= f.text_field :point_cost, :class => 'small'
-%br
-= f.submit 'Create Award', :class =>'button_flat'
+= f.submit 'Update', :class =>'button_flat'

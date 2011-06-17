@@ -43,6 +43,10 @@ $(document).ready(function(){
 		$('#comment_form_activity_' + $(this).attr('id') ).toggle( 300 );
 	});
 	
+	$('.open_assignment_form').click( function(){
+		$('.show_form#' + $(this).attr('value') ).toggle( 300 );
+	});
+	
 	
 	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
 	

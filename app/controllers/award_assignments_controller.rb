@@ -8,13 +8,18 @@ class AwardAssignmentsController < ApplicationController
 			return false
 		end
 		
-		if params[:award_assignment][:asin]
+		if params[:award_assignment][:asin].present?
+			# first, try to create an award from Amazon
 			@award = Award.create_from_amazon( params[:award_assignment] )
-		else
-			@award = Award.create( :name => params[:award_assignment][:award_name], 
-									:description => params[:award_assignment][:award_description] )
+		else 
+			# maybe lookup an existing award
+			@award = Award.find_by_id( params[:award_assignment][:award_id] )
 		end
-		@award.update_attributes( :creator_id => @current_user.id, :creator_type => 'User')
+		# if all else fails, create a new award from params
+		@award ||= Award.create( :name => params[:award_assignment][:award_name], 
+								:description => params[:award_assignment][:award_description], 
+								:creator_id => @current_user.id, :creator_type => 'User' )
+
 		@assignment = @current_user.created_award_assignments.new( params[:award_assignment] )
 		@assignment.award = @award
 		@assignment.user = @child

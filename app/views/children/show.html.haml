@@ -108,9 +108,7 @@
 			= render 'objective_assignments/form', :f => f
 	
 	
-	#new_award.modal{ :title => "New Award for #{@child.display_name}" }
-		= form_for [ @child, AwardAssignment.new ] do |f|
-			= render 'award_assignments/award_form', :f => f
+
 			
 	#new_supporter.modal{ :title => "Invite Supporter for #{@child.display_name}" }
 		= form_for [ @child, Invitation.new ] do |f|
