@@ -44,7 +44,13 @@ class AwardAssignmentsController < ApplicationController
 			[ "#{award.name} - #{award.award_type} (#{award.point_cost})", award.id ]
 		}
 		
-		@new_assignment = @child.award_assignments.new
+		@new_assignment = AwardAssignment.new
+		
+		@time_awards = Site.first.created_awards.where( :category => 'time' )
+		@money_awards = Site.first.created_awards.where( :category => 'money' )
+		@fun_awards = Site.first.created_awards.where( :category => 'fun' )
+		@stuff_awards = Site.first.created_awards.where( :category => 'stuff' )
+		
 	end
 	
 	def update
@@ -58,14 +64,7 @@ class AwardAssignmentsController < ApplicationController
 		@assignment.update_attributes( :status => params[:status])
 		redirect_to :back
 	end
-	
-	def new
-		@new_assignment = AwardAssignment.new
-		@time_awards = Site.first.created_awards.where( :category => 'time' )
-		@money_awards = Site.first.created_awards.where( :category => 'money' )
-		@fun_awards = Site.first.created_awards.where( :category => 'fun' )
-		@stuff_awards = Site.first.created_awards.where( :category => 'stuff' )
-	end
+
 	
 	private
 	

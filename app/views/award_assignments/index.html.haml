@@ -1,4 +1,3 @@
--# Used to show the award asignments for a child to the Parent
 
 .child_profile
 
@@ -6,37 +5,100 @@
 	
 	.top-header.clearfix
 		%span.title
-			Awards
-	
+			New Award
 		.new_thing.button_flat
-			= link_to '+ Create Award', "#", :class => 'open_modal', :id => 'award'
-	
-	- if @child.award_assignments.empty?
-		%p 
-			Awards are incentives that 
-			= @child.name.capitalize
-			can work to obtain.
-			= @child.name.capitalize 
-			can earn points which are redeemable for awards that you create.  These awards can be anything that you think will motivate
-			= @child.name.capitalize
-			\. Examples could be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
-		%p
-			= @child.name.capitalize
-			does not have any awards to work towards yet.
-			= link_to "Let's create an award!", "#", :class => 'open_modal button_flat', :id => 'award'
-	
-	- else
-		%table( width=600 )
-			%th 
-				%b Award
-			%th 
-				%b Points Required
-			%th
-				%b Status
-			%th 
-				%b Actions	
-			= render @child.award_assignments
+			= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
+		
+	= form_for [ @child, AwardAssignment.new ], :html => { :style => 'display:none;' } do |f|
+		%b Award Name:
+		%br
+		= f.text_field :award_name, :class => 'title_field'
+		%br
+		%b Description:
+		%br
+		= f.text_field :award_description
+		%br
+		%b Cost:
+		%br
+		= f.text_field :point_cost, :class => 'small'
+		cherries
+		%br
+		= f.submit 'Enter', :class => 'button_flat'
+		|
+		= link_to 'Cancel', "#", :class => 'close_new_award_form'
 
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/time.jpg', :width => 25
+		.float_left
+			%h3 PlayTime
+		.clear
+		- for award in @time_awards
+			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
+			= award.name
+			- if @child.assigned_awards.include?( award )
+				.show_form{ :id => award.id }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			- else
+				.show_form{ :id => award.id, :style => 'display:none;' }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			%br
 
-%br.clear
-%br
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/fun.jpg', :width => 25
+		.float_left
+			%h3 Fun
+		.clear
+		- for award in @fun_awards
+			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
+			= award.name
+			- if @child.assigned_awards.include?( award )
+				.show_form{ :id => award.id }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			- else
+				.show_form{ :id => award.id, :style => 'display:none;' }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			%br
+
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/stuff.jpg', :width => 25
+		.float_left
+			%h3 Stuff
+		.clear
+		- for award in @stuff_awards
+			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
+			= award.name
+			- if @child.assigned_awards.include?( award )
+				.show_form{ :id => award.id }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			- else
+				.show_form{ :id => award.id, :style => 'display:none;' }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			%br
+		
+	.category{ :style => 'margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag 'awards/money.jpg', :width => 25
+		.float_left
+			%h3 Money
+		.clear
+		- for award in @money_awards
+			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
+			= award.name
+			- if @child.assigned_awards.include?( award )
+				.show_form{ :id => award.id }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			- else
+				.show_form{ :id => award.id, :style => 'display:none;' }
+					= form_for [ @child, AwardAssignment.new ] do |f|
+						= render 'award_form', :f => f, :award => award
+			%br

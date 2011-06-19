@@ -1,0 +1,42 @@
+-# Used to show the award asignments for a child to the Parent
+
+.child_profile
+
+	= render 'children/sub_nav', :child => @child
+	
+	.top-header.clearfix
+		%span.title
+			Awards
+	
+		.new_thing.button_flat
+			= link_to '+ Create Award', "#", :class => 'open_modal', :id => 'award'
+	
+	- if @child.award_assignments.empty?
+		%p 
+			Awards are incentives that 
+			= @child.name.capitalize
+			can work to obtain.
+			= @child.name.capitalize 
+			can earn points which are redeemable for awards that you create.  These awards can be anything that you think will motivate
+			= @child.name.capitalize
+			\. Examples could be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
+		%p
+			= @child.name.capitalize
+			does not have any awards to work towards yet.
+			= link_to "Let's create an award!", "#", :class => 'open_modal button_flat', :id => 'award'
+	
+	- else
+		%table( width=600 )
+			%th 
+				%b Award
+			%th 
+				%b Points Required
+			%th
+				%b Status
+			%th 
+				%b Actions	
+			= render @child.award_assignments
+
+
+%br.clear
+%br

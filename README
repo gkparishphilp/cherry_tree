@@ -1,5 +1,12 @@
 
 
+For awards....
+
+- ajax create award assignment on checkbox select (set inactive it on de-select) with default award settings (points, description, etc.).  Reveal Edit form that allows parent to over-ride defaults.
+
+- need ability to create user awards
+
+
 Add default award Images using JQuery 'selectable'
 	- trophy
 	- gold star

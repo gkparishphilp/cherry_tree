@@ -47,6 +47,14 @@ $(document).ready(function(){
 		$('.show_form#' + $(this).attr('value') ).toggle( 300 );
 	});
 	
+	$('.open_new_award_form').click( function(){
+		$('#new_award_assignment').show(300);
+	});
+	
+	$('.close_new_award_form').click( function(){
+		$('#new_award_assignment').hide(300);
+	});
+	
 	
 	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
 	
