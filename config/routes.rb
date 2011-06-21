@@ -128,6 +128,11 @@ CherryTree::Application.routes.draw do
 	
 	match '/update_page/:obj_type/:obj_id', :to => 'page_elements#updater'
 	
+	# for award_assignments ajax
+	match 'activate/award/:award_id/for/:child_id', :to => 'award_assignments#activate'
+	match 'deactivate/award/assignment/:assignment_id/for/:child_id', :to => 'award_assignments#deactivate'
+	match 'update/award/assignment/:assignment_id/for/:child_id', :to => 'award_assignments#update'
+	
 	match '/admin/' => 'admin#index', :as => :admin_index
 
 	match '/blog/archive/(:year/(:month))', :to => 'blog#index'

@@ -42,6 +42,10 @@ class Award < ActiveRecord::Base
 		self.assigned_users.include?( user )
 	end
 	
+	def assignment_for( user )
+		return self.award_assignments.where( :user_id => user.id ).first
+	end
+	
 	def self.create_from_amazon( award )
 		result = Amazon::Ecs.item_search( award[:asin], :response_group => 'Medium', :search_index => award[:index] ).items.first
 		if result.nil?

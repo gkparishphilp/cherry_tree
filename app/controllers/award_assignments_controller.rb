@@ -1,6 +1,25 @@
 class AwardAssignmentsController < ApplicationController
 	before_filter :get_child
 	
+	
+	def activate
+		@award = Award.find( params[:award_id] )
+		if @assignment = @award.assignment_for( @child )
+			@assignment.update_attributes :status => 'active'
+		else
+			# create assignment
+			@assignment = @current_user.created_award_assignments.create :award => @award, :user => @child, :status => 'active', :creator => @current_user, :point_cost => @award.point_cost
+		end
+		redirect_to child_award_assignments_path( @child )
+	end
+	
+	def deactivate
+		@assignment = AwardAssignment.find( params[:assignment_id] )
+		@assignment.update_attributes :status => 'inactive'
+		redirect_to child_award_assignments_path( @child )
+	end
+	
+	
 	def create
 		unless @child.parents.include?( @current_user )
 			pop_flash "Access Denied", :error
@@ -9,7 +28,7 @@ class AwardAssignmentsController < ApplicationController
 		end
 		
 		if params[:award_assignment][:asin].present?
-			# first, try to create an award from Amazon
+			# TODO -- first, try to create an award from Amazon
 			@award = Award.create_from_amazon( params[:award_assignment] )
 		else 
 			# maybe lookup an existing award
@@ -46,10 +65,12 @@ class AwardAssignmentsController < ApplicationController
 		
 		@new_assignment = AwardAssignment.new
 		
-		@time_awards = Site.first.created_awards.where( :category => 'time' )
-		@money_awards = Site.first.created_awards.where( :category => 'money' )
-		@fun_awards = Site.first.created_awards.where( :category => 'fun' )
-		@stuff_awards = Site.first.created_awards.where( :category => 'stuff' )
+		@custom_awards = @current_user.created_awards - @child.active_assigned_awards
+		
+		@time_awards = Site.first.created_awards.where( :category => 'time' ) - @child.active_assigned_awards
+		@money_awards = Site.first.created_awards.where( :category => 'money' ) - @child.active_assigned_awards
+		@fun_awards = Site.first.created_awards.where( :category => 'fun' ) - @child.active_assigned_awards
+		@stuff_awards = Site.first.created_awards.where( :category => 'stuff' ) - @child.active_assigned_awards
 		
 	end
 	
@@ -60,9 +81,9 @@ class AwardAssignmentsController < ApplicationController
 			return false
 		end
 		
-		@assignment = AwardAssignment.find params[:id]
-		@assignment.update_attributes( :status => params[:status])
-		redirect_to :back
+		@assignment = AwardAssignment.find( params[:assignment_id] )
+		@assignment.update_attributes( :point_cost => params[:point_cost] )
+		redirect_to child_award_assignments_path( @child )
 	end
 
 	

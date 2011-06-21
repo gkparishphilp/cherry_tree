@@ -25,7 +25,7 @@ class AwardAssignment < ActiveRecord::Base
 	attr_accessor	:award_name, :award_description, :asin, :index, :term
 	
 	
-	scope :active, where("status = 'active'")
+	scope :active, where( "status = 'active'" )
 	
 	def active?
 		self.status == 'active' ? (return true) : (return false)

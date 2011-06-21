@@ -5,7 +5,8 @@
 	
 	.top-header.clearfix
 		%span.title
-			New Award
+			= possessize @child.display_name
+			Awards
 		.new_thing.button_flat
 			= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
 		
@@ -13,10 +14,6 @@
 		%b Award Name:
 		%br
 		= f.text_field :award_name, :class => 'title_field'
-		%br
-		%b Description:
-		%br
-		= f.text_field :award_description
 		%br
 		%b Cost:
 		%br
@@ -27,78 +24,106 @@
 		|
 		= link_to 'Cancel', "#", :class => 'close_new_award_form'
 
-	.category{ :style => 'margin-top:20px;' }
-		.float_left{ :style => 'width:50px;' }
-			= image_tag 'awards/time.jpg', :width => 25
-		.float_left
-			%h3 PlayTime
-		.clear
-		- for award in @time_awards
-			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
-			= award.name
-			- if @child.assigned_awards.include?( award )
-				.show_form{ :id => award.id }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			- else
-				.show_form{ :id => award.id, :style => 'display:none;' }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			%br
+	- if @child.award_assignments.active.empty?
+		Setup some awards for
+		= @child.display_name
+		to work for!  You can add an award from the list below, or create your own using the button above.
+	- else
+		.category{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/custom.jpg', :width => 40
+			.float_left
+				%h3 Assigned Awards
+			.clear
+			.float_left{ :style => 'width:50px;'}
+				&nbsp;
+			.float_left{ :style => 'width:500px;'}
+				%b Name
+			.float_left{ :style => 'width:100px;'}
+				%b Cost
+			.clear
+			- for assignment in @child.award_assignments.active
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", assignment.award.id, true, :award => assignment.award.id, :class => 'assign_award', :child => @child.id, :assignment => assignment.id
+					
+				.float_left{ :style => 'width:500px;'}
+					= assignment.award.name
 
-	.category{ :style => 'margin-top:20px;' }
-		.float_left{ :style => 'width:50px;' }
-			= image_tag 'awards/fun.jpg', :width => 25
-		.float_left
-			%h3 Fun
-		.clear
-		- for award in @fun_awards
-			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
-			= award.name
-			- if @child.assigned_awards.include?( award )
-				.show_form{ :id => award.id }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			- else
-				.show_form{ :id => award.id, :style => 'display:none;' }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			%br
+				.float_left{ :style => 'width:100px;' }
+					= text_field_tag :award_cost, assignment.point_cost, :id => "award_cost_#{assignment.award.id}", :class => "award_cost", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
+				.clear
+	
+	- unless @custom_awards.empty?
+		.category{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/custom.jpg', :width => 40
+			.float_left
+				%h3 Custom Awards
+			.clear
+			- for award in @custom_awards
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+					
+				.float_left{ :style => 'width:500px;'}
+					= award.name
+				.clear
+	
+	- unless @time_awards.empty?
+		.category{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/time.jpg', :width => 25
+			.float_left
+				%h3 PlayTime Awards
+			.clear
+			- for award in @time_awards
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+					
+				.float_left{ :style => 'width:500px;'}
+					= award.name
+				.clear
 
-	.category{ :style => 'margin-top:20px;' }
-		.float_left{ :style => 'width:50px;' }
-			= image_tag 'awards/stuff.jpg', :width => 25
-		.float_left
-			%h3 Stuff
-		.clear
-		- for award in @stuff_awards
-			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
-			= award.name
-			- if @child.assigned_awards.include?( award )
-				.show_form{ :id => award.id }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			- else
-				.show_form{ :id => award.id, :style => 'display:none;' }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			%br
+	- unless @fun_awards.empty?
+		.category{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/fun.jpg', :width => 25
+			.float_left
+				%h3 Fun Awards
+			.clear
+			- for award in @fun_awards
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+					
+				.float_left{ :style => 'width:500px;'}
+					= award.name
+				.clear
+			
+	- unless @stuff_awards.empty?
+		.category{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/stuff.jpg', :width => 25
+			.float_left
+				%h3 Material Awards
+			.clear
+			- for award in @stuff_awards
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+					
+				.float_left{ :style => 'width:500px;'}
+					= award.name
+				.clear
 		
-	.category{ :style => 'margin-top:20px;' }
-		.float_left{ :style => 'width:50px;' }
-			= image_tag 'awards/money.jpg', :width => 25
-		.float_left
-			%h3 Money
-		.clear
-		- for award in @money_awards
-			= check_box_tag "form_toggle", award.id, @child.assigned_awards.include?( award ), :class => 'open_assignment_form'
-			= award.name
-			- if @child.assigned_awards.include?( award )
-				.show_form{ :id => award.id }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			- else
-				.show_form{ :id => award.id, :style => 'display:none;' }
-					= form_for [ @child, AwardAssignment.new ] do |f|
-						= render 'award_form', :f => f, :award => award
-			%br
+	- unless @money_awards.empty?
+		.category{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/money.jpg', :width => 25
+			.float_left
+				%h3 Money Awards
+			.clear
+			- for award in @money_awards
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+					
+				.float_left{ :style => 'width:500px;'}
+					= award.name
+				.clear

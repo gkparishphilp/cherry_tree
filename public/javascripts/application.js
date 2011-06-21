@@ -43,9 +43,29 @@ $(document).ready(function(){
 		$('#comment_form_activity_' + $(this).attr('id') ).toggle( 300 );
 	});
 	
-	$('.open_assignment_form').click( function(){
-		$('.show_form#' + $(this).attr('value') ).toggle( 300 );
+	$('.assign_award').click( function(){
+		$('#loading_div').show();
+		if( $(this).attr('checked') == true  ){
+			$('#award_cost_' + $(this).attr('award') ).show( 300 );
+			var url = '/activate/award/' + $(this).attr('award') + '/for/' + $(this).attr('child');
+		}
+		// todo -- look for award_assignment; create if none exists; set status according to checked state
+		else{
+			$('#award_cost_' + $(this).attr('award') ).hide( 300 );
+			var url = '/deactivate/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		}
+		$.get( url );
+		location.reload(true);
 	});
+	
+	$('.award_cost').blur( function(){
+
+		var url = '/update/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		url += "?point_cost=" + $(this).attr('value');
+		$.get( url );
+
+	});
+	
 	
 	$('.open_new_award_form').click( function(){
 		$('#new_award_assignment').show(300);

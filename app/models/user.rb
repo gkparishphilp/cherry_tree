@@ -144,6 +144,10 @@ class User < ActiveRecord::Base
 	# Awards that are available to the child
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
 	
+	def active_assigned_awards
+		self.assigned_awards.joins( :award_assignments ).where( "award_assignments.status = 'active'" )
+	end
+	
 		# for adults, awards and assignments they've made
 	has_many	:created_award_assignments, :class_name => 'AwardAssignment', :foreign_key => :creator_id
 	has_many	:created_awards, :class_name => 'Award', :foreign_key => :creator_id
