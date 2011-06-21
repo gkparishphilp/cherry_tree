@@ -17,6 +17,7 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.references	:award
 			t.references	:user  # the user that this award is available to
 			t.references	:creator # who created the assignemnt
+			t.text			:description # TODO - implement -- let parent add/over-ride award description and add details
 			t.integer		:point_cost
 			t.boolean		:recurring, :default => true # an award is eligible for multiple unlocks.  False for one-time awards
 			t.string		:status

@@ -38,8 +38,11 @@
 				
 				
 	- for objective in @app_objectives
-		= objective.name
-		%hr
+		.float_left{ :style => 'width:500px;' }
+			= objective.name
+		.float_left{ :style => 'width:200px;' }
+			= objective.category
+		%hr.clear
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2

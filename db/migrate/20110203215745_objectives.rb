@@ -24,7 +24,7 @@ class Objectives < ActiveRecord::Migration
 			t.references	:creator, :polymorphic => true
 			t.text			:description
 			t.string		:category # chores, school, health, etc.
-			t.string		:objective_type # one-time, recurring, milestone, daily, etc. ?????
+			t.string		:objective_type # one-time, recurring, milestone, daily, etc. to auto pre-set assignment values?????
 			t.timestamps
 		end
 		
@@ -32,9 +32,12 @@ class Objectives < ActiveRecord::Migration
 			t.references	:user
 			t.references	:objective
 			t.references	:creator
-			t.integer		:times
+			t.references	:award_asignment # to support ability to tie goals to specific awards on successful completion
+			t.text			:description # to customize detialed notes for an assignment
+			t.integer		:priority # placeholder to prioritize and/or sort objctives
+			t.integer		:times # number of required checkins....
+			t.string		:period # ... per this unit time
 			t.datetime		:due_at # for one-time activities -- i.e. goals
-			t.string		:period
 			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
 			t.boolean		:req_confirm, :default => true # parent must confirm checkin to award points
 			t.integer		:point_value, :default => 100
