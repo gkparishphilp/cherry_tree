@@ -4,7 +4,7 @@
 	
 	#child_main_screen
 	
-		- if @child.award_assignments.empty? && @child.objective_assignments.empty?
+		- if @child.active_assigned_awards.empty? && @child.objective_assignments.empty?
 			%h3 
 				Congratulations! Let's get started...
 			First, let's create some awards for
@@ -17,9 +17,9 @@
 			= @child.pronoun_gender_subject
 			earns them to unlock these awards.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
+				= link_to "+ Add Awards", child_award_asignments_path( @child ), :class => 'button_flat'
 			
-		- elsif @child.award_assignments.present? && @child.objective_assignments.empty?
+		- elsif @child.active_assigned_awards.present? && @child.objective_assignments.empty?
 			%h3 
 				Great!
 			Now, let's enter some objectives for
@@ -54,12 +54,12 @@
 
 	#home_prizes.boxes
 		%h3.center Awards:
-		- if @child.award_assignments.empty? && @child.parents.include?( @current_user )
+		- if @child.active_assigned_awards.empty? && @child.parents.include?( @current_user )
 			%p
 				= @child.name.capitalize
-				has no awards, create one now!
+				has no awards, add some now!
 			
-		- for assignment in @child.award_assignments
+		- for assignment in @child.award_assignments.active
 			.float_left
 				.float_left{ :style => 'width:190px;' }
 					%b= assignment.award.name
@@ -68,7 +68,7 @@
 					Cherries
 				%br.clear
 		%p.center.clear{ :style => 'margin-top:15px;' }
-			= link_to "+ Create Award", "#", :class => 'open_modal button_flat', :id => 'award'
+			= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
 					
 	#home_prizes.boxes
 		%h3.center Objectives:
