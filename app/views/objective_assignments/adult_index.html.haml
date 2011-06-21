@@ -33,6 +33,13 @@
 				%b Actions
 			- for assignment in @assignments
 				= render 'objective_assignment_table', :assignment => assignment
+				
+				
+				
+				
+	- for objective in @app_objectives
+		= objective.name
+		%hr
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
 		%h2

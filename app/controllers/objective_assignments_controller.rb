@@ -41,6 +41,8 @@ class ObjectiveAssignmentsController < ApplicationController
 			
 			@this_week = Time.now.end_of_week
 			@last_week = @this_week - 7.days
+			
+			@app_objectives = Site.first.created_objectives
 
 			render :adult_index
 		end
