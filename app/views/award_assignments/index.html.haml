@@ -49,8 +49,9 @@
 				.float_left{ :style => 'width:500px;'}
 					= assignment.award.name
 
-				.float_left{ :style => 'width:100px;' }
+				.float_left{ :style => 'width:200px;' }
 					= text_field_tag :award_cost, assignment.point_cost, :id => "award_cost_#{assignment.award.id}", :class => "award_cost", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
+					Cherries
 				.clear
 	
 	- unless @custom_awards.empty?

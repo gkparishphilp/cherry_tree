@@ -400,9 +400,9 @@ class User < ActiveRecord::Base
 	def set_name
 		unless( self.name.present? || self.is_child? )
 			if self.display_name.present?
-				self.name = self.display_name.gsub( /\W/, "_" )
+				self.name = self.display_name.gsub( /\W+/, "_" )
 			else
-				self.name = self.email.gsub( /\W/, "_" ) 
+				self.name = self.email.gsub( /\W+/, "_" ) 
 			end
 		end
 		self.display_name = self.name unless self.display_name.present?

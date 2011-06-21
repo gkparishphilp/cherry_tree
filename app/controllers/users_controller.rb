@@ -97,6 +97,17 @@ class UsersController < ApplicationController
 
 	end
 	
+	def check_name
+		clean_name = params[:name].gsub( /\W+/, '_' )
+		if User.find_by_name( clean_name )
+			@available = false
+			@result =  "#{params[:name]} has been taken."
+		else
+			@available = true
+			@result = "#{params[:name]} is available."
+		end
+	end
+	
 	def collect_email
 		@user = User.find_or_initialize_by_email params[:user][:email]
 		@user.orig_ip = request.ip

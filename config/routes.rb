@@ -133,6 +133,8 @@ CherryTree::Application.routes.draw do
 	match 'deactivate/award/assignment/:assignment_id/for/:child_id', :to => 'award_assignments#deactivate'
 	match 'update/award/assignment/:assignment_id/for/:child_id', :to => 'award_assignments#update'
 	
+	match 'check_name/:name', :to => 'users#check_name'
+	
 	match '/admin/' => 'admin#index', :as => :admin_index
 
 	match '/blog/archive/(:year/(:month))', :to => 'blog#index'

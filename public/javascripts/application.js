@@ -111,8 +111,12 @@ $(document).ready(function(){
 		$('.name_owner').html( this.value + "'s" );
 		$('.name').html( this.value );
 	});
-	$('#child_display_name').blur(function () {
-		$('#child_name').val( this.value );
+		
+	$('#child_name').blur(function () {
+		var url = '/check_name/' + this.value;
+		$.get( url );
+		//$('#name_availability').html( this.value );
+		//$('#name_availability').css( 'color', '#090' );
 	});
 	
 	

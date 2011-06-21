@@ -43,13 +43,14 @@
 		%span.name
 		calls me (your name or nickname):
 	= f.text_field :nick
-	
 	%div.divider
 	
 	%label.login
 		Please Provide a unique login name for
 		%span.name
 	= f.text_field :name
+	%span#name_availability
+		&nbsp;
 
 	%div.clear
 	
