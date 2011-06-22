@@ -3,19 +3,22 @@
 #
 # Table name: objective_assignments
 #
-#  id           :integer(4)      not null, primary key
-#  user_id      :integer(4)
-#  objective_id :integer(4)
-#  creator_id   :integer(4)
-#  times        :integer(4)
-#  due_at       :datetime
-#  period       :string(255)
-#  req_checkin  :boolean(1)      default(TRUE)
-#  req_confirm  :boolean(1)      default(TRUE)
-#  point_value  :integer(4)      default(100)
-#  status       :string(255)     default("active")
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id                 :integer(4)      not null, primary key
+#  user_id            :integer(4)
+#  objective_id       :integer(4)
+#  creator_id         :integer(4)
+#  award_asignment_id :integer(4)
+#  description        :text
+#  priority           :integer(4)
+#  times              :integer(4)
+#  period             :string(255)
+#  due_at             :datetime
+#  req_checkin        :boolean(1)      default(TRUE)
+#  req_confirm        :boolean(1)      default(TRUE)
+#  point_value        :integer(4)      default(100)
+#  status             :string(255)     default("active")
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 class ObjectiveAssignment < ActiveRecord::Base

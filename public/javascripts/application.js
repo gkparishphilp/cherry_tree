@@ -66,6 +66,14 @@ $(document).ready(function(){
 
 	});
 	
+	$('.award_desc').blur( function(){
+
+		var url = '/update/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		url += "?description=" + $(this).attr('value');
+		$.get( url );
+
+	});
+	
 	
 	$('.open_new_award_form').click( function(){
 		$('#new_award_assignment').show(300);
@@ -111,7 +119,8 @@ $(document).ready(function(){
 		$('.name_owner').html( this.value + "'s" );
 		$('.name').html( this.value );
 	});
-		
+	
+	
 	$('#child_name').blur(function () {
 		var url = '/check_name/' + this.value;
 		$.get( url );

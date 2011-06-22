@@ -8,7 +8,7 @@ class AwardAssignmentsController < ApplicationController
 			@assignment.update_attributes :status => 'active'
 		else
 			# create assignment
-			@assignment = @current_user.created_award_assignments.create :award => @award, :user => @child, :status => 'active', :creator => @current_user, :point_cost => @award.point_cost
+			@assignment = @current_user.created_award_assignments.create :award => @award, :user => @child, :status => 'active', :creator => @current_user, :point_cost => @award.point_cost, :description => @award.description
 		end
 		redirect_to child_award_assignments_path( @child )
 	end
@@ -82,7 +82,9 @@ class AwardAssignmentsController < ApplicationController
 		end
 		
 		@assignment = AwardAssignment.find( params[:assignment_id] )
-		@assignment.update_attributes( :point_cost => params[:point_cost] )
+		
+		@assignment.update_attributes( :point_cost => params[:point_cost] ) if params[:point_cost]
+		@assignment.update_attributes( :description => params[:description] ) if params[:description]
 		redirect_to child_award_assignments_path( @child )
 	end
 

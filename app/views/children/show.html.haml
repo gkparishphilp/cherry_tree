@@ -17,7 +17,7 @@
 			= @child.pronoun_gender_subject
 			earns them to unlock these awards.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Awards", child_award_asignments_path( @child ), :class => 'button_flat'
+				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
 			
 		- elsif @child.active_assigned_awards.present? && @child.objective_assignments.empty?
 			%h3 
