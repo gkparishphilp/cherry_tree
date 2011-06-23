@@ -43,6 +43,21 @@ $(document).ready(function(){
 		$('#comment_form_activity_' + $(this).attr('id') ).toggle( 300 );
 	});
 	
+	
+	$('.assign_objective').click( function(){
+		$('#loading_div').show();
+		if( $(this).attr('checked') == true  ){
+			var url = '/activate/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
+		}
+		else{
+			var url = '/deactivate/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		}
+		$.get( url );
+		location.reload(true);
+	});
+	
+	
+	
 	$('.assign_award').click( function(){
 		$('#loading_div').show();
 		if( $(this).attr('checked') == true  ){
@@ -58,20 +73,31 @@ $(document).ready(function(){
 		location.reload(true);
 	});
 	
+	
+	$('.objective_points').blur( function(){
+		var url = '/update/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		url += "?point_value=" + $(this).attr('value');
+		$.get( url );
+	});
+	
+	$('.objective_desc').blur( function(){
+		var url = '/update/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		url += "?description=" + $(this).attr('value');
+		$.get( url );
+	});
+	
+	
 	$('.award_cost').blur( function(){
 
 		var url = '/update/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
 		url += "?point_cost=" + $(this).attr('value');
 		$.get( url );
-
 	});
 	
 	$('.award_desc').blur( function(){
-
 		var url = '/update/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
 		url += "?description=" + $(this).attr('value');
 		$.get( url );
-
 	});
 	
 	
@@ -82,6 +108,18 @@ $(document).ready(function(){
 	$('.close_new_award_form').click( function(){
 		$('#new_award_assignment').hide(300);
 	});
+	
+	
+	$('.open_new_objective_form').click( function(){
+		$('#new_objective_assignment').show(300);
+	});
+	
+	$('.close_new_objective_form').click( function(){
+		$('#new_objective_assignment').hide(300);
+	});
+	
+	
+	
 	
 	
 	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });

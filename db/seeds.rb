@@ -1,44 +1,46 @@
 
 s = Site.create :name => 'Cherry Tree'
 
-obj = Objective.create :category => 'Academics', :name => 'Homework', :description => 'Complete your homework every day', :creator => s
-obj = Objective.create :category => 'Academics', :name => 'Math', :description => 'Focus on Math', :creator => s
-obj = Objective.create :category => 'Academics', :name => 'Spelling', :description => 'Work on spelling', :creator => s
-obj = Objective.create :category => 'Academics', :name => 'Reading', :description => 'Complete your homework every day', :creator => s
-obj = Objective.create :category => 'Academics', :name => 'Writing', :description => 'Complete your homework every day', :creator => s
-obj = Objective.create :category => 'Academics', :name => 'Social Studies', :description => 'Complete your homework every day', :creator => s
+obj = Objective.create :category => 'Academics', :name => 'Homework', :description => 'Complete your homework every day', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Academics', :name => 'Math', :description => 'Focus on Math', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Academics', :name => 'Spelling', :description => 'Work on spelling', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Academics', :name => 'Reading', :description => 'Complete your homework every day', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Academics', :name => 'Writing', :description => 'Complete your homework every day', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Academics', :name => 'Social Studies', :description => 'Complete your homework every day', :creator => s, :point_value => 5
 
-obj = Objective.create :category => 'Behavior', :name => 'No temper', :description => 'No temper today', :creator => s
-obj = Objective.create :category => 'Behavior', :name => 'Pleases and Thank Yous', :description => 'Said please and thank you today', :creator => s
-obj = Objective.create :category => 'Behavior', :name => 'Share and Take Turns', :description => 'Shared or took turns at least once today', :creator => s
-obj = Objective.create :category => 'Behavior', :name => 'Be Respectful', :description => 'was respectful today', :creator => s
-obj = Objective.create :category => 'Behavior', :name => 'Be Honest', :description => 'was honest today', :creator => s
-obj = Objective.create :category => 'Behavior', :name => 'Listen and Pay Attention', :description => 'was a great listener today', :creator => s
+obj = Objective.create :category => 'Behavior', :name => 'No temper', :description => 'No temper today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Pleases and Thank Yous', :description => 'Said please and thank you today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Share and Take Turns', :description => 'Shared or took turns at least once today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Be Respectful', :description => 'was respectful today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Be Honest', :description => 'was honest today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Listen and Pay Attention', :description => 'was a great listener today', :creator => s, :point_value => 5
 
 
-obj = Objective.create :category => 'Health', :name => 'Eat Veggies', :description => 'Three servings every day', :creator => s
-obj = Objective.create :category => 'Health', :name => 'No Sweets', :description => "Didn't eat any sweets or deserts today!", :creator => s
-obj = Objective.create :category => 'Health', :name => 'Exercise', :description => 'Did exercise today', :creator => s
-obj = Objective.create :category => 'Health', :name => 'Activity', :description => 'Did a physical game or activity today', :creator => s
-obj = Objective.create :category => 'Health', :name => 'Moderation', :description => 'Ate in moderation today', :creator => s
-obj = Objective.create :category => 'Health', :name => 'No Soda or Juice', :description => "Didn't drink any soda or juice today!", :creator => s
-obj = Objective.create :category => 'Health', :name => 'Stretching', :description => 'Stretched today', :creator => s
-obj = Objective.create :category => 'Health', :name => 'Five Glasses of Water', :description => 'Drank Five Glasses of water today!', :creator => s
+obj = Objective.create :category => 'Health', :name => 'Eat Veggies', :description => 'Three servings every day', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'No Sweets', :description => "Didn't eat any sweets or deserts today!", :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Exercise', :description => 'Did exercise today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Activity', :description => 'Did a physical game or activity today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Eat in Moderation', :description => 'Ate in moderation today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'No Soda or Juice', :description => "Didn't drink any soda or juice today!", :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Stretching', :description => 'Stretched today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Drink Five Glasses of Water', :description => 'Drank Five Glasses of water today!', :creator => s, :point_value => 5
 
-obj = Objective.create :category => 'Around the House', :name => 'Clean Room', :description => 'Cleaned Room today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Make Bed', :description => 'Made bed today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Dishes', :description => 'Did the dishes today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Set the Table', :description => "Set the Table Today", :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Folded Laundry', :description => 'Folded the laundry today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Put away clothes', :description => 'Put away clothes today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Sweep', :description => 'Swept today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Mop', :description => 'Mopped today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Dust', :description => 'Dusted today', :creator => s
-obj = Objective.create :category => 'Around the House', :name => 'Mow the Lawn', :description => 'Mowed the lawn today', :creator => s
+obj = Objective.create :category => 'House', :name => 'Clean Room', :description => 'Cleaned Room today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Make Bed', :description => 'Made bed today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Dishes', :description => 'Did the dishes today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Set the Table', :description => "Set the Table Today", :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Folded Laundry', :description => 'Folded the laundry today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Put away clothes', :description => 'Put away clothes today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Sweep', :description => 'Swept today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Mop', :description => 'Mopped today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Dust', :description => 'Dusted today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'House', :name => 'Mow the Lawn', :description => 'Mowed the lawn today', :creator => s, :point_value => 5
 
-obj = Objective.create :category => 'Hygeine', :name => 'Brush teeth twice', :description => 'Brushed teeth at least twice today', :creator => s
-obj = Objective.create :category => 'Hygeine', :name => 'Wash Hands', :description => 'Washed hands before every meal today', :creator => s
-obj = Objective.create :category => 'Hygeine', :name => 'Floss', :description => 'flossed teeth today', :creator => s
+obj = Objective.create :category => 'Hygeine', :name => 'Brush teeth twice', :description => 'Brushed teeth at least twice today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygeine', :name => 'Wash Hands', :description => 'Washed hands before every meal today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygeine', :name => 'Floss Teeth', :description => 'flossed teeth today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygeine', :name => 'Take Bath/Shower', :description => 'flossed teeth today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygeine', :name => 'Fingernails', :description => 'flossed teeth today', :creator => s, :point_value => 5
 
 
 

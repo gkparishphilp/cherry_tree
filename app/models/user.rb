@@ -123,15 +123,21 @@ class User < ActiveRecord::Base
 		# I'm also going to alias that relationship because it's easier to type and understand
 	has_many	:notes, :through => :note_deliveries, :source => :note
 
+
+
 		# for kids, the assignemnts they have
 	has_many	:objective_assignments
 	has_many	:objectives, :through => :objective_assignments
 	
+	def active_assigned_objectives
+		self.objectives.joins( :objective_assignments ).where( "objective_assignments.status = 'active'" )
+	end
+	
+	
 	has_many	:checkins
 	
 		# for adults, objectives and assignments they've made
-					# TODO -- change this to created_objective_assignments to avoid name confilct/confusion with created_award_assignemtns
-	has_many	:created_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
+	has_many	:created_objective_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
 	has_many	:created_objectives, :class_name => 'Objective', :foreign_key => :creator_id
 
 	has_many	:wishlists

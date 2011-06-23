@@ -37,8 +37,8 @@ class ObjectiveAssignment < ActiveRecord::Base
 	
 	attr_accessor	:objective_name, :objective_description # so we can create objectives from the objective_assignment screen
 	
-	scope :available, where("status <> 'deleted'")
-	scope :active, where("status = 'active'")
+	scope :available, where( "status <> 'deleted'" ) 
+	scope :active, where( "status = 'active'" )
 	
 	def active?
 		self.status == 'active'

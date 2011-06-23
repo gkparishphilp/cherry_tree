@@ -23,6 +23,7 @@ class Objectives < ActiveRecord::Migration
 			t.string		:name
 			t.references	:creator, :polymorphic => true
 			t.text			:description
+			t.integer		:point_value # default for app-objectives to be overridden by the assignment
 			t.string		:category # chores, school, health, etc.
 			t.string		:objective_type # one-time, recurring, milestone, daily, etc. to auto pre-set assignment values?????
 			t.timestamps
