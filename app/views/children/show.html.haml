@@ -36,7 +36,7 @@
 			= @child.pronoun_gender_subject
 			has actually accomplished the objectives.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'
+				= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
 		
 		- else
 	
@@ -86,7 +86,7 @@
 					Cherries
 				%br.clear
 		%p.center.clear{ :style => 'margin-top:15px;' }
-			= link_to "+ Create Objective", "#", :class => 'open_modal button_flat', :id => 'objective'
+			= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
 			
 	#home_prizes.boxes
 		%h3.center Supporters:
