@@ -67,8 +67,9 @@
 					= assignment.point_cost
 					Cherries
 				%br.clear
-		%p.center.clear{ :style => 'margin-top:15px;' }
-			= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
+		- if @child.parents.include?( @current_user )
+			%p.center.clear{ :style => 'margin-top:15px;' }
+				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
 					
 	#home_prizes.boxes
 		%h3.center Objectives:
@@ -85,8 +86,9 @@
 					= assignment.point_value
 					Cherries
 				%br.clear
-		%p.center.clear{ :style => 'margin-top:15px;' }
-			= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
+		- if @child.parents.include?( @current_user )
+			%p.center.clear{ :style => 'margin-top:15px;' }
+				= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
 			
 	#home_prizes.boxes
 		%h3.center Supporters:
@@ -95,8 +97,9 @@
 			= avatar_tag( supporter, :thumb, :width => 25 )
 			
 			= supporter.nickname( @child )
-		%p.center.clear{ :style => 'margin-top:15px;' }
-			= link_to "+ Invite a Supporter", '#', :class => 'open_modal button_flat', :id => 'supporter'
+		- if @child.parents.include?( @current_user )
+			%p.center.clear{ :style => 'margin-top:15px;' }
+				= link_to "+ Invite a Supporter", '#', :class => 'open_modal button_flat', :id => 'supporter'
 			
 		
 	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}

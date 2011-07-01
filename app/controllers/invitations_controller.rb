@@ -7,7 +7,12 @@ class InvitationsController < ApplicationController
 	end
 	
 	
-	def create	
+	def create
+		unless @child.parents.include?( @current_user )
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
 		@invitation = Invitation.new( params[:invitation] )
 		
 		@invitation.creator = @current_user
@@ -29,7 +34,7 @@ class InvitationsController < ApplicationController
 		end
 		
 		if @invitation.save
-			# UserMailer.send_invitation_for_child( @invitation ).deliver
+			UserMailer.send_invitation_for_child( @invitation ).deliver
 			pop_flash "Invitation Sent!"
 		else
 			pop_flash "Could not send invitation", :error, @invitation
