@@ -24,6 +24,13 @@ class ChildrenController < ApplicationController
 	
 	def update
 		@child = Child.find( params[:id] )
+		
+		unless @child.parents.include?( @current_user ) || @current_user == @child
+			pop_flash "Access Denied", :error
+			redirect_to :back
+			return false
+		end
+		
 		if @child.update_attributes( params[:child] )
 			process_attachments_for( @child )
 			pop_flash 'Successfully updated.'	
