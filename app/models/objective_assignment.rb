@@ -43,6 +43,10 @@ class ObjectiveAssignment < ActiveRecord::Base
 	def active?
 		self.status == 'active'
 	end
+	
+	def requested?
+		self.status == 'requested'
+	end
 
 	def checkin_in_last?( period = 1.day.ago ) 
 		return  self.checkins.dated_between( period, Time.now ).present?

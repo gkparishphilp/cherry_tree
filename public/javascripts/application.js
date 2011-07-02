@@ -56,6 +56,17 @@ $(document).ready(function(){
 		location.reload(true);
 	});
 	
+	$('.requested_objective').click( function(){
+		$('#loading_div').show();
+		if( $(this).attr('checked') == true  ){
+			var url = '/requested/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
+		}
+		else{
+			var url = '/unrequested/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		}
+		$.get( url );
+		location.reload(true);
+	});
 	
 	
 	$('.assign_award').click( function(){
@@ -117,11 +128,7 @@ $(document).ready(function(){
 	$('.close_new_objective_form').click( function(){
 		$('#new_objective_assignment').hide(300);
 	});
-	
-	
-	
-	
-	
+		
 	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
 	
 	$('.open_modal').click( function(){

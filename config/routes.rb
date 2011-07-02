@@ -137,6 +137,9 @@ CherryTree::Application.routes.draw do
 	match 'activate/objective/:objective_id/for/:child_id', :to => 'objective_assignments#activate'
 	match 'deactivate/objective/assignment/:assignment_id/for/:child_id', :to => 'objective_assignments#deactivate'
 	match 'update/objective/assignment/:assignment_id/for/:child_id', :to => 'objective_assignments#update'
+
+	match 'requested/objective/:objective_id/for/:child_id', :to => 'objective_assignments#requested'
+	match 'unrequested/objective/:objective_id/for/:child_id', :to => 'objective_assignments#unrequested'
 	
 	match 'check_name/:name', :to => 'users#check_name'
 	

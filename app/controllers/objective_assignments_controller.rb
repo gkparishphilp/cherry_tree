@@ -19,6 +19,18 @@ class ObjectiveAssignmentsController < ApplicationController
 		redirect_to child_objective_assignments_path( @child )
 	end
 	
+	def requested
+		@objective = Objective.find( params[:objective_id] )
+			@assignment = @current_user.created_objective_assignments.create :objective => @objective, :user => @child, :status => 'requested', :creator => @current_user, :point_value => @objective.point_value, :description => @objective.description
+		redirect_to :back
+	end
+
+	def unrequested
+		@assignment = ObjectiveAssignment.find( params[:assignment_id] )
+		@assignment.update_attributes :status => 'inactive' if @assignment.requested?
+		redirect_to :back
+	end
+
 	def create
 		unless @child.parents.include?( @current_user )
 			pop_flash "Access Denied", :error
@@ -45,6 +57,12 @@ class ObjectiveAssignmentsController < ApplicationController
 	def index
 		if @current_user.is_child?
 			@assignments = @current_user.objective_assignments.active
+			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
+			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
+			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
+			@house_objectives = Site.first.created_objectives.where( :category => 'houses' ) - @child.active_assigned_objectives
+			@hygeine_objectives = Site.first.created_objectives.where( :category => 'hygeine' ) - @child.active_assigned_objectives
+			
 			render :child_index
 		else
 			unless @child.parents.include?( @current_user )
@@ -56,7 +74,7 @@ class ObjectiveAssignmentsController < ApplicationController
 			@new_assignment = ObjectiveAssignment.new
 			@new_assignment.req_confirm = true
 			
-			
+			@requested_objectives = @child.requested_objectives
 			@custom_objectives = @current_user.created_objectives - @child.active_assigned_objectives
 			
 			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
