@@ -21,7 +21,9 @@ class ObjectiveAssignmentsController < ApplicationController
 	
 	def requested
 		@objective = Objective.find( params[:objective_id] )
+			#todo - check to make sure that the objective has not already been assigned
 			@assignment = @current_user.created_objective_assignments.create :objective => @objective, :user => @child, :status => 'requested', :creator => @current_user, :point_value => @objective.point_value, :description => @objective.description
+			pop_flash "Goal requested!", :success
 		redirect_to :back
 	end
 
@@ -57,6 +59,7 @@ class ObjectiveAssignmentsController < ApplicationController
 	def index
 		if @current_user.is_child?
 			@assignments = @current_user.objective_assignments.active
+			@requested_assignments = @current_user.objective_assignments.requested
 			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
 			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
@@ -73,10 +76,10 @@ class ObjectiveAssignmentsController < ApplicationController
 			@assignments = @child.objective_assignments.active
 			@new_assignment = ObjectiveAssignment.new
 			@new_assignment.req_confirm = true
+		
+			@requested_assignments = @child.objective_assignments.requested
 			
-			@requested_objectives = @child.requested_objectives
-			@custom_objectives = @current_user.created_objectives - @child.active_assigned_objectives
-			
+			@custom_objectives = @current_user.created_objectives - @child.active_assigned_objectives	
 			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
 			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives

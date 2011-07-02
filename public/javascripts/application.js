@@ -68,6 +68,10 @@ $(document).ready(function(){
 		location.reload(true);
 	});
 	
+	$('.show_requested_goals').click( function() {
+		$('#requested_goals').toggle('slow');
+	});	
+	
 	
 	$('.assign_award').click( function(){
 		$('#loading_div').show();

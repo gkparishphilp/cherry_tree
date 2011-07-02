@@ -2,19 +2,23 @@
 .objective_dash.clearfix
 	.top-header
 		%span
-			%h3 
+			%h3
 				Your Goals
 				.new_thing.button_flat
-					= link_to "Request a Goal", "#", :class => 'open_new_objective_form'
+					= link_to "Request a Goal", "#", :class => 'show_requested_goals'
 
-	- unless @academic_objectives.empty?
-		%h3 Academic Objectives
-		- for objective in @academic_objectives
-			.float_left{ :style => 'width:50px;'}
-				= check_box_tag "requested_objective", objective.id, @child.requested_objectives.include?( objective ), :objective => objective.id, :class => 'requested_objective', :child => @child.id
-			.float_left{ :style => 'width:500px;' }
-				= objective.name
-			.clear
+	#requested_goals{ :style => 'display:none'}
+		- unless @academic_objectives.empty?
+			%h4 Academic Objectives
+			- for objective in @academic_objectives - @child.active_assigned_objectives
+				.float_left{ :style => 'width:50px;'}
+					-if  @child.requested_objectives.include?( objective )
+						= check_box_tag "requested_objective", objective.id, @child.requested_objectives.include?( objective ), :objective => objective.id, :class => 'requested_objective', :child => @child.id, :assignment => ObjectiveAssignment.find_by_objective_id_and_user_id_and_status(objective.id, @child.id, 'requested').id
+					-else
+						= check_box_tag "requested_objective", objective.id, @child.requested_objectives.include?( objective ), :objective => objective.id, :class => 'requested_objective', :child => @child.id
+				.float_left{ :style => 'width:500px;' }
+					= objective.name
+				.clear
 	
 	- if @assignments.present?
 		- for @assignment in @assignments
