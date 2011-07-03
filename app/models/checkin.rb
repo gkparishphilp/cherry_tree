@@ -17,7 +17,7 @@
 class Checkin < ActiveRecord::Base
 	
 	# confirmed_by = user_id of confirming user
-	# confirmed_by == 0 is uncomfirmed
+	# confirmed_by == 0 is unconfirmed
 	# confrimed_by == -1 is ignored
 	
 	belongs_to	:user
@@ -39,6 +39,9 @@ class Checkin < ActiveRecord::Base
 		self.objective_assignment.req_confirm && self.done? && self.confirmed_by == 0
 	end
 	
+	def confirmed?
+		self.confirmed_by > 0
+	end
 	
 	def award_points
 		#award points for checkins that don't need confirmation
@@ -47,7 +50,7 @@ class Checkin < ActiveRecord::Base
 		end
 		
 		#award points for checkins that need confirmation
-		if self.objective_assignment.present? && self.objective_assignment.req_confirm == true && self.done? && self.confirmed_by > 0 
+		if self.objective_assignment.present? && self.objective_assignment.req_confirm == true && self.done? && self.confirmed?
 			self.user.earn_points_for( self.objective_assignment, self.objective_assignment.point_value)
 		end
 		

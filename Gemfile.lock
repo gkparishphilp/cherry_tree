@@ -49,6 +49,7 @@ GEM
       faraday (~> 0.5.4)
     friendly_id (3.2.1)
       babosa (~> 0.2.1)
+    googlecharts (1.6.7)
     haml (3.0.25)
     hashie (1.0.0)
     hpricot (0.8.3)
@@ -120,6 +121,7 @@ DEPENDENCIES
   amazon-ecs
   compass
   friendly_id
+  googlecharts
   haml
   jquery-rails
   mini_fb

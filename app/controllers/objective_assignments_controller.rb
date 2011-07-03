@@ -21,8 +21,9 @@ class ObjectiveAssignmentsController < ApplicationController
 	
 	def requested
 		@objective = Objective.find( params[:objective_id] )
-			#todo - check to make sure that the objective has not already been assigned
-			@assignment = @current_user.created_objective_assignments.create :objective => @objective, :user => @child, :status => 'requested', :creator => @current_user, :point_value => @objective.point_value, :description => @objective.description
+			unless @child.active_assigned_objectives.include?( @objective )
+				@assignment = @current_user.created_objective_assignments.create :objective => @objective, :user => @child, :status => 'requested', :creator => @current_user, :point_value => @objective.point_value, :description => @objective.description
+			end
 			pop_flash "Goal requested!", :success
 		redirect_to :back
 	end
@@ -64,7 +65,7 @@ class ObjectiveAssignmentsController < ApplicationController
 			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
 			@house_objectives = Site.first.created_objectives.where( :category => 'houses' ) - @child.active_assigned_objectives
-			@hygeine_objectives = Site.first.created_objectives.where( :category => 'hygeine' ) - @child.active_assigned_objectives
+			@hygiene_objectives = Site.first.created_objectives.where( :category => 'hygiene' ) - @child.active_assigned_objectives
 			
 			render :child_index
 		else
@@ -84,7 +85,7 @@ class ObjectiveAssignmentsController < ApplicationController
 			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
 			@house_objectives = Site.first.created_objectives.where( :category => 'houses' ) - @child.active_assigned_objectives
-			@hygeine_objectives = Site.first.created_objectives.where( :category => 'hygeine' ) - @child.active_assigned_objectives
+			@hygiene_objectives = Site.first.created_objectives.where( :category => 'hygiene' ) - @child.active_assigned_objectives
 
 			render :adult_index
 		end

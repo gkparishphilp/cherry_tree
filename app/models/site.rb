@@ -12,7 +12,6 @@
 #
 
 class Site < ActiveRecord::Base
-	
 	validates :domain, :uniqueness => true
 	
 	has_many :roles

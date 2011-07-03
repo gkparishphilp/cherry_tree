@@ -14,5 +14,7 @@
 					= assignment.point_cost
 					pts.
 				%br
-				= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
+				= raw(Gchart.bar(:data => [[@current_user.point_balance],[assignment.point_cost]], :stacked => true, :bar_colors =>'00FF00,FF0000', :orientation => 'horizontal', :size => '100x20', :custom=>'chxt=y,x&chxs=0,,0,0,_,676767|1,,0,0,_,676767&chf=bg,s,67676700&chf=bg,s,67676700', :format=>'image_tag' ))
+				
+				= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' ) if @current_user.point_balance > assignment.point_cost
 		%br.clear

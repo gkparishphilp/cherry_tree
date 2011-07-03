@@ -83,6 +83,13 @@ class ChildrenController < ApplicationController
 		end
 		
 		@activities = @child.activities.order('created_at DESC')
+		
+		points = @child.point_earnings_since( Time.now.beginning_of_week )
+		@chart_data = [points["Academics"], points["Health"], points["Hygiene"], points["Behavior"]]
+		max_points = @chart_data.max.to_i
+		@chart_axis_labels = 'Behavior|Hygiene|Health|Academics',"0| #{(max_points.to_f / 2)}| #{max_points}"
+		@chart_axis_with_labels ='y,x'
+		@custom = "chxr=0,0,#{max_points},5"
 	end
 
 	

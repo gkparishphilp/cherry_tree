@@ -149,6 +149,34 @@ module UserApp
 		self.ownings.find_by_ownable_id_and_ownable_type( item.id, item.class.name )
 	end
 	
+	def point_earnings_since(time)
+		earned = self.point_earnings.for_assignments.dated_between(time.getutc,Time.now.getutc)
+		academics = 0
+		behavior = 0
+		health = 0
+		hygiene = 0
+		
+		for earning in earned
+			case earning.earned_for.objective.category
+			when 'Academics'
+				academics += earning.points
+			when 'Health'
+				health += earning.points
+			when 'Behavior'
+				behavior += earning.points
+			when 'Hygiene'
+				hygiene += earning.points
+			end 
+		end
+		
+		points = {'Academics' => academics, 'Health' => health, 'Behavior'=> behavior, 'Hygiene'=> hygiene}
+		
+		return points
+		
+	end
+	
+	def monthly_point_earnings
+	end
 
 	
 end

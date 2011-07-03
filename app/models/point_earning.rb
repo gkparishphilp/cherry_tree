@@ -20,4 +20,6 @@ class PointEarning < ActiveRecord::Base
 	scope :dated_between, lambda { |*args| 
 		where( "created_at between ? and ?", args.first, args.second ) 
 	}
+	
+	scope :for_assignments, where("earned_for_type = 'ObjectiveAssignment'")
 end

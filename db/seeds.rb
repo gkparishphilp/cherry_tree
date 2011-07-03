@@ -36,11 +36,11 @@ obj = Objective.create :category => 'House', :name => 'Mop', :description => 'Mo
 obj = Objective.create :category => 'House', :name => 'Dust', :description => 'Dusted today', :creator => s, :point_value => 5
 obj = Objective.create :category => 'House', :name => 'Mow the Lawn', :description => 'Mowed the lawn today', :creator => s, :point_value => 5
 
-obj = Objective.create :category => 'Hygeine', :name => 'Brush teeth twice', :description => 'Brushed teeth at least twice today', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Hygeine', :name => 'Wash Hands', :description => 'Washed hands before every meal today', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Hygeine', :name => 'Floss Teeth', :description => 'flossed teeth today', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Hygeine', :name => 'Take Bath/Shower', :description => 'flossed teeth today', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Hygeine', :name => 'Fingernails', :description => 'flossed teeth today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygiene', :name => 'Brush teeth twice', :description => 'Brushed teeth at least twice today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygiene', :name => 'Wash Hands', :description => 'Washed hands before every meal today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygiene', :name => 'Floss Teeth', :description => 'flossed teeth today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygiene', :name => 'Take Bath/Shower', :description => 'flossed teeth today', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Hygiene', :name => 'Fingernails', :description => 'flossed teeth today', :creator => s, :point_value => 5
 
 
 

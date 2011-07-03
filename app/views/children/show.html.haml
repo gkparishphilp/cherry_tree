@@ -51,6 +51,10 @@
 			- else
 				= render @activities
 
+	#home_prizes.boxes
+		%h3.center Earned this Week:
+		= raw Gchart.bar(:data => @chart_data, :format =>'image_tag', :axis_with_labels => @chart_axis_with_labels, :axis_labels => @chart_axis_labels, :orientation => 'horizontal', :size => '300x150', :bar_colors => '00FF00')
+
 
 	#home_prizes.boxes
 		%h3.center Awards:
