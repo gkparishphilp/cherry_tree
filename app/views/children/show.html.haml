@@ -53,7 +53,11 @@
 
 	#home_prizes.boxes
 		%h3.center Earned this Week:
-		= raw Gchart.bar(:data => @chart_data, :format =>'image_tag', :axis_with_labels => @chart_axis_with_labels, :axis_labels => @chart_axis_labels, :orientation => 'horizontal', :size => '300x150', :bar_colors => '00FF00')
+		- if @max_points > 0
+			= raw Gchart.bar(:data => @chart_data, :format =>'image_tag', :axis_with_labels => @chart_axis_with_labels, :axis_labels => @chart_axis_labels, :orientation => 'horizontal', :size => '300x150', :bar_colors => '00FF00')
+		- else
+			=@child.name.capitalize
+			hasn't earned any cherries yet this week.
 
 
 	#home_prizes.boxes
@@ -105,21 +109,7 @@
 			%p.center.clear{ :style => 'margin-top:15px;' }
 				= link_to "+ Invite a Supporter", '#', :class => 'open_modal button_flat', :id => 'supporter'
 			
-		
-	#new_objective.modal{ :title => "New Objective for #{@child.display_name}"}
-		%h2
-			New Objective for
-			= @child.display_name
 
-		= form_for [ @child, ObjectiveAssignment.new ] do |f|
-			= render 'objective_assignments/form', :f => f
-	
-	
-
-			
-	#new_supporter.modal{ :title => "Invite Supporter for #{@child.display_name}" }
-		= form_for [ @child, Invitation.new ] do |f|
-			= render 'invitations/form', :f => f
 
 
 
