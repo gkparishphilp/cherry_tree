@@ -34,17 +34,10 @@
 #
 
 class Child < User
-	
+	validate_on_create :validate_child	
 	after_create	:setup_defaults
-	validates	:name, :uniqueness => true, 
-						:length => {:minimum => 2, :maximum => 254},
-						:format => /\A[a-zA-Z0-9_]+\z/
-						
-	validates	:display_name, :presence => true
-	validates	:gender, :presence  => true
-	validates	:nick, :presence => true
-	validates	:birthday, :presence => true
-	validates	:password, :presence => true
+
+
 	 							
 	# for the child/create form -- may just switch to form_tag at some point....
 	attr_accessor :role, :nick, :welcome_message
@@ -57,4 +50,10 @@ class Child < User
 		self.lessons << Lesson.first
 	end
 	
+	def validate_child
+		if self.name.blank? || self.display_name.blank? || self.gender.blank? || self.nick.blank? || self.birthday.blank? || self.password.blank?
+			message = "Please fill in all the fields."
+			errors.add_to_base message
+		end
+	end
 end
