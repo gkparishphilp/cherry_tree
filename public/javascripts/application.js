@@ -56,6 +56,20 @@ $(document).ready(function(){
 		location.reload(true);
 	});
 	
+	$('.req_conf_objective').click( function(){
+		$('#loading_div').show();
+		if( $(this).attr('checked') == true  ){
+			var url = '/require_confirmation/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
+		}
+		else{
+			var url = '/remove_confirmation/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		}
+		$.get( url );
+		location.reload(true);
+	});
+	
+	
+	
 	$('.requested_objective').click( function(){
 		$('#loading_div').show();
 		if( $(this).attr('checked') == true  ){

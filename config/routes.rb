@@ -140,6 +140,8 @@ CherryTree::Application.routes.draw do
 
 	match 'requested/objective/:objective_id/for/:child_id', :to => 'objective_assignments#requested'
 	match 'unrequested/objective/assignment/:assignment_id/for/:child_id', :to => 'objective_assignments#unrequested'
+	match 'require_confirmation/objective/assignment/:assignment_id/for/:child_id' :to => 'objective_assignment#require_confirmation'
+	match 'remove_confirmation/objective/assignment/:assignment_id/for/:child_id'  :to => 'objective_assignment#remove_confirmation'
 	
 	match 'check_name/:name', :to => 'users#check_name'
 	

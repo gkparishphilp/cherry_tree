@@ -8,7 +8,7 @@
 			%h3
 				News
 			.activity
-				= render @current_user.activities
+				= render @current_user.activities.order("created_at desc")
 	%br
 	%br
 	%br

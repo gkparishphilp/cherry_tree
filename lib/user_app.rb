@@ -20,15 +20,20 @@ module UserApp
 		#This message is actually the partial name in views/users which shows the all done screen
 		closing_message = 'done'
 		
+		# Send back number of assignments for counter
+		num_assignments = 0
+		num_assignments += obj_assignments.count if obj_assignments.present?
+		num_assignments += lesson_assignments.count if lesson_assignments.present?
+		
 		#Keep falling down the tree until a most relevant item is found or return the closing message
 		if obj_assignments.present?
 			parent = obj_assignments.first.objective
-			return obj_assignments.first, parent
+			return obj_assignments.first, parent, num_assignments
 		elsif lesson_assignments.present?
 			parent = lesson_assignments.first.lesson
-			return lesson_assignments.first, parent
+			return lesson_assignments.first, parent, num_assignments
 		else
-			return closing_message, nil
+			return closing_message, nil, num_assignments
 		end
 
 	end

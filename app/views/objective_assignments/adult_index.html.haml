@@ -52,8 +52,9 @@
 			.float_left{ :style => 'width:350px;'}
 				%b Description
 			.float_left{ :style => 'width:150px;'}
-				%b Point Value
-				(Cherries)
+				%b Cherries
+			.float_left{ :style => 'width:50px;'}
+				&nbsp;
 			.clear
 			- for assignment in @assignments
 				.float_left{ :style => 'width:50px;'}
@@ -68,6 +69,9 @@
 				.float_left{ :style => 'width:150px;' }
 					= text_field_tag :objective_points, assignment.point_value, :id => "objective_points_#{assignment.objective.id}", :class => "objective_points", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
 				.clear
+
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "req_conf_objective", assignment.objective.id, false, :objective => assignment.objective.id, :class => 'req_conf_objective', :child => @child.id, :assignment => assignment.id
 
 
 		- unless @requested_assignments.empty?

@@ -5,7 +5,9 @@
 .objectives.clearfix
 	%p
 		= objective_assignment.objective.name
-		?
+		? (
+		= @num_assignments
+		remaining )
 	= form_for Checkin.new do |f|
 		= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
 		= f.hidden_field :user_id, :value => @current_user.id
