@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 			@user.create_activation_code
 			@user.reload
 			
-			# email = UserMailer.send_welcome_email( @user, @current_site ).deliver
+			email = UserMailer.send_welcome_email( @user, @current_site ).deliver
 			
 			login( @user )
 
