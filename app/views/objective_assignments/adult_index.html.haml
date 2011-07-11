@@ -9,10 +9,10 @@
 			= @child.name.capitalize
 			here.
 		.new_thing.button_flat
-			= link_to "+ Assign New Objective", "#", :class => 'open_new_objective_form'
+			= link_to "+ Assign New Goal", "#", :class => 'open_new_objective_form'
 			
 	= form_for [ @child, ObjectiveAssignment.new ], :html => { :style => 'display:none;' } do |f|
-		%b Objective Name:
+		%b Goal:
 		%br
 		= f.text_field :objective_name, :class => 'title_field'
 		%br
@@ -20,7 +20,7 @@
 		%br
 		= f.text_field :description, :style => 'width:500px;'
 		%br
-		%b Points per Checkin:
+		%b Cherries Per Checkin:
 		%br
 		= f.text_field :point_value, :class => 'small'
 		cherries
@@ -43,24 +43,24 @@
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/custom.jpg', :width => 40
 			.float_left
-				%h3 Assigned Objectives
+				%h3 Assigned Goals
 			.clear
 			.float_left{ :style => 'width:50px;'}
 				&nbsp;
-			.float_left{ :style => 'width:300px;'}
+			.float_left{ :style => 'width:230px;'}
 				%b Name
 			.float_left{ :style => 'width:350px;'}
 				%b Description
 			.float_left{ :style => 'width:150px;'}
 				%b Cherries
 			.float_left{ :style => 'width:50px;'}
-				&nbsp;
+				%b Parental Confirmation?
 			.clear
 			- for assignment in @assignments
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_objective", assignment.objective.id, true, :objective => assignment.objective.id, :class => 'assign_objective', :child => @child.id, :assignment => assignment.id
 
-				.float_left{ :style => 'width:300px;'}
+				.float_left{ :style => 'width:230px;'}
 					= assignment.objective.name
 
 				.float_left{ :style => 'width:350px;'}
@@ -68,11 +68,11 @@
 
 				.float_left{ :style => 'width:150px;' }
 					= text_field_tag :objective_points, assignment.point_value, :id => "objective_points_#{assignment.objective.id}", :class => "objective_points", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
-				.clear
 
 				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "req_conf_objective", assignment.objective.id, false, :objective => assignment.objective.id, :class => 'req_conf_objective', :child => @child.id, :assignment => assignment.id
+					= check_box_tag "req_conf_assignment", assignment.id, assignment.req_confirm, :class => 'req_conf_assignment', :child => @child.id, :assignment => assignment.id
 
+				.clear
 
 		- unless @requested_assignments.empty?
 			.category{ :style => 'margin-top:20px;' }
@@ -107,7 +107,7 @@
 					.clear
 				
 	- unless @custom_objectives.empty?
-		%h3 Custom Objectives
+		%h3 Custom Goals
 		- for objective in @custom_objectives
 			.float_left{ :style => 'width:50px;'}
 				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
@@ -116,7 +116,7 @@
 			.clear
 	
 	- unless @academic_objectives.empty?
-		%h3 Academic Objectives
+		%h3 Academic Goals
 		- for objective in @academic_objectives
 			.float_left{ :style => 'width:50px;'}
 				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
@@ -125,7 +125,7 @@
 			.clear
 			
 	- unless @behavior_objectives.empty?
-		%h3 Behavior Objectives
+		%h3 Behavior Goals
 		- for objective in @behavior_objectives
 			.float_left{ :style => 'width:50px;'}
 				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
@@ -134,7 +134,7 @@
 			.clear
 			
 	- unless @health_objectives.empty?
-		%h3 Health Objectives
+		%h3 Health Goals
 		- for objective in @health_objectives
 			.float_left{ :style => 'width:50px;'}
 				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
@@ -143,7 +143,7 @@
 			.clear
 			
 	- unless @house_objectives.empty?
-		%h3 Household Objectives
+		%h3 Household Goals
 		- for objective in @house_objectives
 			.float_left{ :style => 'width:50px;'}
 				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
@@ -152,7 +152,7 @@
 			.clear
 			
 	- unless @hygiene_objectives.empty?
-		%h3 Hygiene Objectives
+		%h3 Hygiene Goals
 		- for objective in @hygiene_objectives
 			.float_left{ :style => 'width:50px;'}
 				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id

@@ -40,7 +40,7 @@ class Objectives < ActiveRecord::Migration
 			t.string		:period # ... per this unit time
 			t.datetime		:due_at # for one-time activities -- i.e. goals
 			t.boolean		:req_checkin, :default => true # true is self-reported by child. False is parent-reported
-			t.boolean		:req_confirm, :default => true # parent must confirm checkin to award points
+			t.boolean		:req_confirm, :default => false # child earns points automatically
 			t.integer		:point_value, :default => 100
 			t.string		:status, :default => 'active'
 			t.timestamps

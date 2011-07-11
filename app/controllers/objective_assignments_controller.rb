@@ -33,6 +33,18 @@ class ObjectiveAssignmentsController < ApplicationController
 		@assignment.update_attributes :status => 'inactive' if @assignment.requested?
 		redirect_to :back
 	end
+	
+	def require_confirmation
+		@assignment = ObjectiveAssignment.find( params[:assignment_id] )
+		@assignment.update_attributes :req_confirm => 1
+		redirect_to :back
+	end
+	
+	def remove_confirmation
+		@assignment = ObjectiveAssignment.find( params[:assignment_id] )
+		@assignment.update_attributes :req_confirm => 0
+		redirect_to :back
+	end
 
 	def create
 		unless @child.parents.include?( @current_user )

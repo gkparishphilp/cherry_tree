@@ -36,7 +36,16 @@
 class Child < User
 	
 	after_create	:setup_defaults
-	
+	validates	:name, :uniqueness => true, 
+						:length => {:minimum => 2, :maximum => 254},
+						:format => /\A[a-zA-Z0-9_]+\z/
+						
+	validates	:display_name, :presence => true
+	validates	:gender, :presence  => true
+	validates	:nick, :presence => true
+	validates	:birthday, :presence => true
+	validates	:password, :presence => true
+	 							
 	# for the child/create form -- may just switch to form_tag at some point....
 	attr_accessor :role, :nick, :welcome_message
 	

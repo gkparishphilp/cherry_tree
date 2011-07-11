@@ -10,7 +10,7 @@
 		- if @lesson.quizzes.first.present? #todo - not taken by child
 			This lesson has a quiz that is worth
 			= @lesson.quizzes.first.point_value
-			points.
+			cherries.
 			%br
 			Would you like to take it now?
 			= link_to "Yes", quiz_question_path( @lesson.quizzes.first, @lesson.quizzes.first.questions.first )
