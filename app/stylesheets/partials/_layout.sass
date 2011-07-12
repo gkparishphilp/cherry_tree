@@ -37,8 +37,10 @@ body
 		margin-right: 20px
 		.pic
 			+rounded(2px)
-			float: left
-			width: 36px
+			:float left
+			:width 36px
+			:height 36px
+			:overflow hidden
 			:margin 2px 5px 0px 5px
 			img
 				+rounded(3px)
@@ -136,6 +138,7 @@ body
 		img
 			:float left
 			:margin-right 4px
+			:max-height 24px
 		// a
 			// :line-height 1.4em
 	.selected
@@ -180,6 +183,7 @@ body
 	:width 80%
 	.comment
 		:margin-bottom 15px
+		:position relative
 	.pic
 		float: left
 		margin-right: 4px
@@ -210,10 +214,11 @@ body
 		:font-weight bold
 		:font-size 16px
 		:color #000
-		//:margin-bottom 15px
+		p
+			:margin-bottom 0
 	.divider
 		:width 99%
-		:margin 30px 0 20px
+		:margin 25px 0 20px
 		:border-top 1px solid #ddd
 	.new_comment 
 		input[type="text"]
@@ -224,13 +229,21 @@ body
 	.tip
 		:float left
 		:margin 15px 0 0 -21px
+	.actions
+		:width 97%
+		:font-size 13px
+		:line-height 18px
+		:padding-right 10px
+		:text-align right
+	.small_copy
+		:margin-bottom 14px
 
 .button_to
 	display: inline
 
 .bt_approve
 	+rounded(6px)
-	:padding 3px 10px 3px 24px
+	:padding 5px 10px 7px 24px
 	:margin-right 10px
 	:background url(/images/bt_check_white.png) no-repeat 5px 50% #199900
 	a
@@ -239,7 +252,7 @@ body
 			:text-decoration none
 .bt_ignore
 	+rounded(6px)
-	:padding 3px 10px 3px 24px
+	:padding 5px 10px 7px 24px
 	:background url(/images/bt_cross_white.png) no-repeat 5px 50% #cb070a
 	a
 		:color #fff

@@ -8,17 +8,17 @@
 	
 			= activity.verb.html_safe
 			
-	.small_copy{ :style => 'margin-top:-5px;' }
+	.small_copy
 		= time_ago_in_words( activity.created_at )
 		ago.
 		= link_to "Comment", "#", :class => "open_comment_form", :id => activity.id
-	%br.clear
-		- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present? && @current_user.children.include?( activity.user ) && activity.target.unapproved?
-			.actions
-				%span.bt_approve
-					= link_to 'Approve', checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
-				%span.bt_ignore
-					= link_to "Ignore", checkin_path( activity.target, :confirmed_by => -1, :confirmed_at => Time.now), :method => :put
+
+	- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present? && @current_user.children.include?( activity.user ) && activity.target.unapproved?
+		.actions
+			%span.bt_approve
+				= link_to 'Approve', checkin_path( activity.target, :confirmed_by => @current_user.id, :confirmed_at => Time.now), :method => :put
+			%span.bt_ignore
+				= link_to "Ignore", checkin_path( activity.target, :confirmed_by => -1, :confirmed_at => Time.now), :method => :put
 	
 	- unless activity.comments.empty?
 		= render activity.comments
