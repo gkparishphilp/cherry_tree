@@ -107,7 +107,7 @@
 			= supporter.nickname( @child )
 		- if @child.parents.include?( @current_user )
 			%p.center.clear{ :style => 'margin-top:15px;' }
-				= link_to "+ Invite a Supporter", '#', :class => 'open_modal button_flat', :id => 'supporter'
+				= link_to "+ Invite Supporters", child_supporters_path( @child ), :class => 'button_flat'
 			
 
 

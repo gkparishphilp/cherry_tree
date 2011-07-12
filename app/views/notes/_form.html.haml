@@ -6,10 +6,11 @@
 		= f.hidden_field :recipient_id, :value => @reply_to_note.sender.id
 	- else
 		= f.select :recipient_id, @recipient_list
-.inline_label
-	Subject:
-.inline_field
-	= f.text_field :subject, :class => 'regular'
+-#
+	.inline_label
+		Subject:
+	.inline_field
+		= f.text_field :subject, :class => 'regular'
 
 %br.clear
 .note_content

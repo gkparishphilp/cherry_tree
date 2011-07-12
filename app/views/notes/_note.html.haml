@@ -4,11 +4,12 @@
 			%b
 				From:
 			= note.sender.nickname( @current_user )
-		%br
-		%span
-			%b
-				Subject:
-			= note.subject
+		-#
+			%br
+			%span
+				%b
+					Subject:
+				= note.subject
 	.note_content
 		= snip( note.content, 150 )
 		- if note.content.length > 150
