@@ -20,6 +20,14 @@ class AwardsController < ApplicationController
 		
 	end
 	
+	def print
+		@award = Award.find params[:id]
+		@child = Child.find params[:child_id]
+		owning = @child.ownings.find_by_ownable_id_and_ownable_type( @award.id, 'Award' )
+		@cert_number = "000#{owning.id}"
+		render :show, :layout => 'certificate'
+	end
+	
 	def earned
 		@unlockables = @current_user.unlockables
 		@awards = @current_user.awards
@@ -28,6 +36,7 @@ class AwardsController < ApplicationController
 	
 	def show
 		@award = Award.find params[:id]
+
 	end
 	
 	def new

@@ -156,6 +156,82 @@ body
 			:padding 11px 10px 10px 40px
 		
 
+#child_login
+	width: 400px
+	+rounded(12px)
+	background-color: #fff
+	float: left
+	padding: 25px
+	border: 1px solid $big_blue
+	
+#adult_login
+	width: 300px
+	margin-top: 20px
+	+rounded(12px)
+	margin-left: 80px
+	background-color: #fff
+	float: left
+	padding: 10px
+	
+
+#award_certificate
+	position: relative
+	width: 840px
+	height: 500px
+	background: #fff url(../images/tree.png) no-repeat 0px -150px
+	margin: 0 auto
+	border: 12px solid $cherry_red
+	+rounded(40px)
+	#award_logo
+		margin-top: -30px
+		margin-left: 10px
+
+	#award_name
+		font-family: "Corben", arial, sans-serif
+		font-size: 32px
+		color: $cherry_red + 022
+		+text-shadow(6px, 3px, 3px, 0)
+		:behavior url(/javascripts/PIE.htc)
+		position: absolute
+		top: 20px
+		left: 340px
+		width: 480px
+		text-align: center
+	#child_name
+		position: absolute
+		top: 160px
+		left: 340px
+		font-size: 18px
+		width: 480px
+		text-align: center
+		font-family: "Corben", arial, sans-serif
+	#award_text
+		position: absolute
+		width: 300px
+		border: 1px solid #999
+		+rounded(8px)
+		padding: 20px
+		font-size: 16px
+		line-height: 1.4em
+		top: 200px
+		left: 420px
+	#award_date
+		position: absolute
+		left: 340px
+		bottom: 10px
+		width: 480px
+		border-bottom: 2px solid #333
+	#award_cert
+		position: absolute
+		left: 40px
+		bottom: 10px
+		font-size: 12px
+		border: 1px solid $leaf_green
+		background: #fff url() no-repeat
+		padding: 3px
+		+rounded
+
+
 .tab_bar:after
 	+clearfix
 	

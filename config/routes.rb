@@ -15,6 +15,7 @@ CherryTree::Application.routes.draw do
 		get 'unlock', :on => :member
 		get 'earned', :on => :collection
 		get 'set', :on => :collection
+		get 'print', :on => :member
 	end
 	
 	resources :blog do
