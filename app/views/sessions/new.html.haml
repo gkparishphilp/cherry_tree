@@ -3,34 +3,45 @@
 		%h1
 			Login to your account:
 		%div.clear
-		%div.clear
-		= form_tag :controller=>'sessions' do
-			%label
-				- if current_page?( login_children_path )
+		
+		#child_login
+			%h3 Children:
+			= form_tag :controller=>'sessions' do
+				%b
 					Name:
-				- else
-					Email:
-			= text_field_tag :credential, params[:credential], :class => :regular
-			%div.clear
-			%label
-				- if current_page?( login_children_path )
+				%br
+				= text_field_tag :credential, params[:credential], :class => :regular
+				%br
+				%b
 					PIN:
-				- else
+				%br
+				= password_field_tag :password, params[:password], :class => :regular
+
+				%br
+			
+				= submit_tag	"Login", :class => 'button blue'
+				|
+				= link_to "Forgot Password?", forgot_path
+			
+			
+		#adult_login
+			%h3 Adults:
+			= form_tag :controller=>'sessions' do
+				%b
+					Email:
+				%br
+				= text_field_tag :credential, params[:credential], :class => :regular
+				%br
+				%b
 					Password:
-			= password_field_tag :password, params[:password], :class => :regular
+				%br
+				= password_field_tag :password, params[:password], :class => :regular
+				%br
 			
-			%div.clear
-			%br
-			%label
-				&nbsp;
-			
-			= submit_tag	"Login", :class => 'button blue'
-			|
-			= link_to 'Cancel', root_path, :class => :cancel_button
-			|
-			= link_to 'Register', register_path
-			|
-			= link_to "Forgot Password?", forgot_path
+				= submit_tag	"Login", :class => 'button blue'
+				|
+				= link_to "Forgot Password?", forgot_path
+		
 			
 - else
 	%h2 

@@ -1,8 +1,38 @@
--# Award Detail?
-%h1= @award.name
-= avatar_tag( @award, :thumb )
-= @award.description
+- unless current_page?( print_award_path )
+	.float_right{ :style => 'margin-bottom:10px;' }
+		= link_to 'Print', print_award_path( @award, :child_id => 4 ), :class => 'button green', :target => '_new' 
+	%br.clear
+#award_certificate
+	#award_logo
+		= image_tag 'logo.png'
+	#award_name= @award.name
+	
+	#child_name
+		Awarded To:
+		= @current_user.display_name.capitalize
+	
+	#award_text
+		This Award Hereby Certifies that
+		= @current_user.display_name.capitalize
+		has earned
+		= @award.name
+		%hr
+		= @award.description
+	
+	#award_date
+		Hereby acknowledged this
+		%b= Time.now.day.ordinalize
+		day of
+		= "<b>#{Time.now.strftime("%B")}</b>, in the year".html_safe
+		%b= Time.now.year
+		%br
+		%br
+		%br
+		%br
+		By:
+		
+	#award_cert
+		CherryTree Certificate Number:
+		= @cert_number
 
-%br
-Cost:
-= @award.points
+

@@ -64,7 +64,7 @@
 				.clear
 	
 	- unless @custom_awards.empty?
-		.category{ :style => 'margin-top:20px;' }
+		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/custom.jpg', :width => 40
 			.float_left
@@ -74,12 +74,12 @@
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
 					
-				.float_left{ :style => 'width:500px;'}
+				.float_left{ :style => 'width:300px;'}
 					= award.name
 				.clear
 	
 	- unless @time_awards.empty?
-		.category{ :style => 'margin-top:20px;' }
+		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/time.jpg', :width => 25
 			.float_left
@@ -89,12 +89,12 @@
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
 					
-				.float_left{ :style => 'width:500px;'}
+				.float_left{ :style => 'width:300px;'}
 					= award.name
 				.clear
 
 	- unless @fun_awards.empty?
-		.category{ :style => 'margin-top:20px;' }
+		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/fun.jpg', :width => 25
 			.float_left
@@ -104,12 +104,12 @@
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
 					
-				.float_left{ :style => 'width:500px;'}
+				.float_left{ :style => 'width:300px;'}
 					= award.name
 				.clear
 			
 	- unless @stuff_awards.empty?
-		.category{ :style => 'margin-top:20px;' }
+		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/stuff.jpg', :width => 25
 			.float_left
@@ -119,12 +119,12 @@
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
 					
-				.float_left{ :style => 'width:500px;'}
+				.float_left{ :style => 'width:300px;'}
 					= award.name
 				.clear
 		
 	- unless @money_awards.empty?
-		.category{ :style => 'margin-top:20px;' }
+		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/money.jpg', :width => 25
 			.float_left
@@ -134,6 +134,7 @@
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
 					
-				.float_left{ :style => 'width:500px;'}
+				.float_left{ :style => 'width:300px;'}
 					= award.name
 				.clear
+		.clear

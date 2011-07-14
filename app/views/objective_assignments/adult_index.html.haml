@@ -116,50 +116,55 @@
 			.clear
 	
 	- unless @academic_objectives.empty?
-		%h3 Academic Goals
-		- for objective in @academic_objectives
-			.float_left{ :style => 'width:50px;'}
-				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-			.float_left{ :style => 'width:500px;' }
-				= objective.name
-			.clear
+		.category.float_left{ :style => 'width:400px;' }
+			%h3 Academic Goals
+			- for objective in @academic_objectives
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
+				.float_left{ :style => 'width:300px;' }
+					= objective.name
+				.clear
 			
 	- unless @behavior_objectives.empty?
-		%h3 Behavior Goals
-		- for objective in @behavior_objectives
-			.float_left{ :style => 'width:50px;'}
-				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-			.float_left{ :style => 'width:500px;' }
-				= objective.name
-			.clear
+		.category.float_left{ :style => 'width:400px;' }
+			%h3 Behavior Goals
+			- for objective in @behavior_objectives
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
+				.float_left{ :style => 'width:300px;' }
+					= objective.name
+				.clear
 			
 	- unless @health_objectives.empty?
-		%h3 Health Goals
-		- for objective in @health_objectives
-			.float_left{ :style => 'width:50px;'}
-				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-			.float_left{ :style => 'width:500px;' }
-				= objective.name
-			.clear
+		.category.float_left{ :style => 'width:400px;' }
+			%h3 Health Goals
+			- for objective in @health_objectives
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
+				.float_left{ :style => 'width:300px;' }
+					= objective.name
+				.clear
 			
 	- unless @house_objectives.empty?
 		%h3 Household Goals
-		- for objective in @house_objectives
-			.float_left{ :style => 'width:50px;'}
-				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-			.float_left{ :style => 'width:500px;' }
-				= objective.name
-			.clear
+		.category.float_left{ :style => 'width:400px;' }
+			- for objective in @house_objectives
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
+				.float_left{ :style => 'width:300px;' }
+					= objective.name
+				.clear
 			
 	- unless @hygiene_objectives.empty?
-		%h3 Hygiene Goals
-		- for objective in @hygiene_objectives
-			.float_left{ :style => 'width:50px;'}
-				= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-			.float_left{ :style => 'width:500px;' }
-				= objective.name
-			.clear
-		
+		.category.float_left{ :style => 'width:400px;' }
+			%h3 Hygiene Goals
+			- for objective in @hygiene_objectives
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
+				.float_left{ :style => 'width:300px;' }
+					= objective.name
+				.clear
+	.clear
 
 
 %br.clear

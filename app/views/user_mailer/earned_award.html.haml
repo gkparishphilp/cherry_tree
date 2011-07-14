@@ -8,6 +8,9 @@ has unlocked:
 = @award.name
 
 %p
+	= link_to 'Click Here to Print', print_award_path( @award, :child_id => @child.id )
+
+%p
 	Congratulations to 
 	= @child.name
 	from all of us at theCherryTree.com!

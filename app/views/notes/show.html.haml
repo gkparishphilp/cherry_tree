@@ -5,11 +5,12 @@
 				%b
 					From:
 				= @note.sender.nickname( @current_user )
-			%br
-			%span
-				%b
-					Subject:
-				= @note.subject
+			-#
+				%br
+				%span
+					%b
+						Subject:
+					= @note.subject
 		.note_content
 			= @note.content
 		.actions
