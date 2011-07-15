@@ -78,6 +78,8 @@ class UsersController < ApplicationController
 		@user.orig_ip = request.ip
 		
 		@user.status = 'pending'
+		
+		@user.display_name = params[:fname] + " " + params[:lname]
 	
 		if @user.save
 			
