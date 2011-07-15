@@ -28,6 +28,9 @@
 			:border-top-color #ddd
 		img
 			+rounded(10px)
+.top-header
+	h3
+		:float left
 .boxes
 	width: 33%
 	padding: 10px 15px 20px
@@ -77,6 +80,21 @@
 	padding: 10px 5px
 	font-size: 12px
 	:background url(/images/gradient_bg.jpg) repeat-x left bottom #fff
+	.item
+		:height 50px
+		:overflow hidden
+		:margin 7px 0
+		img
+			:height 100%
+	b
+		:display block
+		:white-space nowrap
+		:overflow hidden
+		:width 98%
+	.cost
+		:margin 10px 0 7px
+		:font-weight bold
+		:font-size 12px
 
 #awards
 	:background-color #fff
@@ -84,9 +102,13 @@
 	+rounded(6px)
 	:border 1px solid #ccc
 	:margin-top 20px
+	.item
+		:height 70px
+	.item_name
+		:min-height 30px
 	.treasure_item
-		:width 140px
-		:min-height 130px
+		:width 150px
+		:min-height 170px
 
 .objectives
 	// :border 1px solid #

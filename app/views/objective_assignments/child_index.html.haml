@@ -1,11 +1,10 @@
 -# Used to show the objective asignments to a child 
 .objective_dash.clearfix
-	.top-header
-		%span
-			%h3
-				Your Goals
-				.new_thing.button_flat
-					= link_to "Request a Goal", "#", :class => 'show_requested_goals'
+	.top-header.clearfix
+		%h3
+			Your Goals
+		.new_thing.button_flat
+			= link_to "Request a Goal", "#", :class => 'show_requested_goals'
 
 	#requested_goals{ :style => 'display:none'}
 		- unless @academic_objectives.empty?

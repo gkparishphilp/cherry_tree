@@ -4,9 +4,8 @@
 		- for assignment in @current_user.award_assignments.active
 			.treasure_item
 				%b= snip assignment.award.name, 20
-				%br
-				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
-				%br
+				.item
+					= link_to avatar_tag( assignment.award, :thumb ), unlock_award_path( assignment.award, :type => 'award' )
 				.cost
 					Cost:
 					= assignment.point_cost

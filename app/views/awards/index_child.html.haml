@@ -6,14 +6,15 @@
 
 		- for assignment in @award_assignments.active
 			.treasure_item
-				= link_to avatar_tag( assignment.award, :thumb, :width => 64 ), unlock_award_path( assignment.award, :type => 'award' )
-				%br
-				= assignment.award.name
+				.item
+					= link_to avatar_tag( assignment.award, :thumb ), unlock_award_path( assignment.award, :type => 'award' )
+				.item_name
+					= assignment.award.name
 				.cost
 					Cost:
 					= assignment.point_cost
 					pts.
-				%br
+					
 				-if @current_user.point_balance > assignment.point_cost
 					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
 				-else 

@@ -74,7 +74,7 @@
 				.float_left{ :style => 'width:109px;' }
 					= assignment.point_cost
 					Cherries
-				%br.clear
+		%br.clear				
 		- if @child.parents.include?( @current_user )
 			%p.center.clear{ :style => 'margin-top:15px;' }
 				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
@@ -93,7 +93,7 @@
 				.float_left{ :style => 'width:109px;' }
 					= assignment.point_value
 					Cherries
-				%br.clear
+		%br.clear
 		- if @child.parents.include?( @current_user )
 			%p.center.clear{ :style => 'margin-top:15px;' }
 				= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
