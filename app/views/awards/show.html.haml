@@ -9,11 +9,11 @@
 	
 	#child_name
 		Awarded To:
-		= @current_user.display_name.capitalize
+		= @child.display_name.capitalize
 	
 	#award_text
-		This Award Hereby Certifies that
-		= @current_user.display_name.capitalize
+		This award hereby certifies that
+		%h2= @child.display_name.capitalize
 		has earned
 		= @award.name
 		%hr

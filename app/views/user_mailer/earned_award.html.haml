@@ -8,7 +8,7 @@ has unlocked:
 = @award.name
 
 %p
-	= link_to 'Click Here to Print', print_award_path( @award, :child_id => @child.id )
+	= link_to 'Click Here to Display and Print the Award', print_award_url( @award, :child_id => @child.id )
 
 %p
 	Congratulations to 
