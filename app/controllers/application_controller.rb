@@ -58,9 +58,9 @@ protected
 	# populates the flash with message and error messages if any
 	def pop_flash( message, code = :success, *object )
 		if flash[code].blank?
-			flash[code] = "<b>#{message}</b>"
+			flash[code] = "<div>#{message}</div>"
 		else
-			flash[code] += "<b>#{message}</b>"
+			flash[code] += "<div>#{message}</div>"
 		end
 		
 		object.each do |obj|

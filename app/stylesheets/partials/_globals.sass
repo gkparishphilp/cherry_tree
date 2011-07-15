@@ -7,6 +7,8 @@ $page-width: 980px
 	:border 2px solid $color
 	:cursor pointer
 	:padding 9px 10px 10px 15px
+	width: 800px
+	margin: 0 auto
 
 =clearfix
 	:content "."
@@ -187,8 +189,6 @@ strong
 	
 // Flashes
 #flash
-	:width 96%
-	:margin 20px auto
 	.error
 		:background #ffd1d6 url(../images/close_error.png) 99% 15% no-repeat
 		color: #555
@@ -205,6 +205,7 @@ strong
 		color: #555
 		+flash( #ffd324 )
 		+rounded(12px)
+	
 			
 // Forms
 // .form_group
@@ -412,6 +413,24 @@ input.small
 .birthday_field
 	:width 100px
 	
-	
+
+#award_message
+	background: transparent url(../images/airplane.png) bottom left no-repeat
+	width: 800px
+	height: 200px
+	position: absolute
+	top: 200px
+	left: 2200px
+	z-index: 99
+	#text_container
+		font-weight: bold
+		color: $cherry_red
+		width: 350px
+		position: relative
+		top: 30px
+		left: 400px
+
+
+
 	
 	
