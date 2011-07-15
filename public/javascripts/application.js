@@ -18,6 +18,29 @@ function remove_fields( link ) {
 
 $(document).ready(function(){
 	
+	$('#award_message').animate({
+			left: "50px"
+		}, 3500, function(){
+			$(this).delay(5000);
+			$(this).animate({
+				left: "-850px"
+			}, 3500, function(){
+				$(this).toggle();
+			}
+		);
+		}
+	);
+	
+	$('#award_message').click( function(){
+		$(this).animate({
+				left: "-850px"
+			}, 3500, function(){
+				$(this).toggle();
+			}
+		);
+	});
+	
+	
 	$('#flash').click(function () {
 		$(this).fadeOut(2000);
 	});
