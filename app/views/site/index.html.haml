@@ -22,18 +22,14 @@
 			"Where Children Blossom"
 		= render 'shared/flash', :flash => flash 
 		
-		.float_left.rounded_outline{ :style => 'width:294px;' }
-			%h3 Parents:
+		.float_left.rounded_outline{ :style => 'width:600px;' }
 			%p
-				Use the power of positive reinforcement and family to connect with your children and improve behavior.
-			%li= link_to 'Learn More', '/about'
+				CherryTree helps cultivate good habits and behaviors in children. Set up goals and rewards for your child, invite family members for support, and watch as your child earns cherries on their way to unlocking rewards.  
+			%p
+				Get back to spending quality time with your children and let Cherrytree do the progress tracking.
+			= link_to 'Learn More', '/about', :class => 'button blue'
 			= link_to 'Register', register_path, :class => 'button green'
 			= link_to 'Login', login_path, :class => 'button green'
-		.float_left.rounded_outline{ :style => 'width:294px;' }
-			%h3 Children
-			%p
-				Earn points and prizes!
-			= link_to 'Login!', login_children_path, :class => 'button green'
 		%br.clear
 	
 		%p
