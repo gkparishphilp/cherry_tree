@@ -145,25 +145,16 @@
 					= objective.name
 				.clear
 			
-	- unless @house_objectives.empty?
-		%h3 Household Goals
+	- unless @social_objectives.empty?
+		%h3 Social Goals
 		.category.float_left{ :style => 'width:400px;' }
-			- for objective in @house_objectives
+			- for objective in @social_objectives
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
 				.float_left{ :style => 'width:300px;' }
 					= objective.name
 				.clear
-			
-	- unless @hygiene_objectives.empty?
-		.category.float_left{ :style => 'width:400px;' }
-			%h3 Hygiene Goals
-			- for objective in @hygiene_objectives
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-				.float_left{ :style => 'width:300px;' }
-					= objective.name
-				.clear
+
 	.clear
 
 

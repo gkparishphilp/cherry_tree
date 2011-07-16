@@ -147,7 +147,7 @@ module UserApp
 		self.ownings.create :ownable_id => reward.id, :ownable_type => reward.class.name
 		self.update_attributes :point_balance => self.point_balance - cost
 		UserMailer.earned_award( self , reward ).deliver
-		return true, "Unlocked!"
+		return true, "Congratulations!"
 	end
 	
 	def owns?( item )

@@ -51,7 +51,7 @@ class AwardsController < ApplicationController
 		@award = eval "#{params[:type].capitalize}.find( params[:id] )"
 		success, msg = @current_user.unlock( @award )
 		if success
-			pop_flash msg
+			pop_flash "Congratulations, ask your <br>parent to check their email <br>for your prize!", :award_message
 			@current_user.do_activity( "Unlocked the award: '#{@award.name}'!", @award )
 		else
 			pop_flash msg, :error

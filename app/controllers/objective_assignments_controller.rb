@@ -96,8 +96,7 @@ class ObjectiveAssignmentsController < ApplicationController
 			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
 			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
-			@house_objectives = Site.first.created_objectives.where( :category => 'houses' ) - @child.active_assigned_objectives
-			@hygiene_objectives = Site.first.created_objectives.where( :category => 'hygiene' ) - @child.active_assigned_objectives
+			@social_objectives = Site.first.created_objectives.where( :category => 'social' ) - @child.active_assigned_objectives
 
 			render :adult_index
 		end

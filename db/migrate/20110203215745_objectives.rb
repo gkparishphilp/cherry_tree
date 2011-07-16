@@ -34,7 +34,7 @@ class Objectives < ActiveRecord::Migration
 			t.references	:objective
 			t.references	:creator
 			t.references	:award_asignment # to support ability to tie goals to specific awards on successful completion
-			t.text			:description # to customize detialed notes for an assignment
+			t.text			:description # to customize detailed notes for an assignment
 			t.integer		:priority # placeholder to prioritize and/or sort objctives
 			t.integer		:times # number of required checkins....
 			t.string		:period # ... per this unit time
@@ -46,6 +46,10 @@ class Objectives < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		add_index :objectives, :category
+		add_index :objective_assignments, :req_confirm
+		add_index :objective_assignments, :status
+		add_index :objective_assignments, ["user_id","status"], :name => :fk_active_assignments
 
 	end
 		

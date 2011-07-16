@@ -22,16 +22,15 @@
 			"Where Children Blossom"
 		= render 'shared/flash', :flash => flash 
 		
-		.float_left.rounded_outline{ :style => 'width:600px;' }
-			%p
-				CherryTree helps cultivate good habits and behaviors in children. Set up goals and rewards for your child, invite family members for support, and watch as your child earns cherries on their way to unlocking rewards.  
-			%p
-				Get back to spending quality time with your children and let Cherrytree do the progress tracking.
-			= link_to 'Learn More', '/about', :class => 'button blue'
-			= link_to 'Register', register_path, :class => 'button green'
-			= link_to 'Login', login_path, :class => 'button green'
+		
+		%p
+			CherryTree helps cultivate good habits and behaviors in children. Set up goals and rewards for your child, invite family members in for support, and watch your child transform as they earns cherries to unlock rewards.  
+		%p
+			Get back to spending quality time with your children and let CherryTree do the progress tracking.
+		= link_to 'Register', register_path, :class => 'button green'
+		= link_to 'Login', login_path, :class => 'button blue'
 		%br.clear
-	
+		%br
 		%p
 			Enter your email address to sign up for our newsletter:
 			= render 'users/collect_email'

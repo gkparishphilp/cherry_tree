@@ -11,13 +11,14 @@
 		Awarded To:
 		= @child.display_name.capitalize
 	
-	#award_text
+	#award_text.center
 		This award hereby certifies that
-		%h2= @child.display_name.capitalize
-		has earned
-		= @award.name
-		%hr
-		= @award.description
+		%p
+			%h2= @child.display_name.capitalize
+		has earned the following: 
+		%p
+			%h3= @award.name
+
 	
 	#award_date
 		Hereby acknowledged this
@@ -25,7 +26,6 @@
 		day of
 		= "<b>#{Time.now.strftime("%B")}</b>, in the year".html_safe
 		%b= Time.now.year
-		%br
 		%br
 		%br
 		%br

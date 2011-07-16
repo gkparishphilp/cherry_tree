@@ -82,6 +82,8 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		add_index :awards_assignments, :status
+		add_index :award_assignments, ["user_id",":status"], :name => 'fk_active_awards'
 		
 		
 	end

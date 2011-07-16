@@ -7,7 +7,7 @@ obj = Objective.create :category => 'Academics', :name => 'Get a good grade on y
 obj = Objective.create :category => 'Academics', :name => 'Show up to class on time', :description => 'Show up to class on time', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Academics', :name => 'Do math without a calculator or computer', :description => 'Do math without a calculator or computer', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Academics', :name => 'Volunteer an answer in your class', :description => 'Volunteer an answer in your class', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Academics', :name => 'Learn a new vocabulary word and use it on your parents', :description => 'Learn a new vocabulary word and use it on your parents', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Academics', :name => 'Learn and use a new vocabulary word', :description => 'Learn a new vocabulary word and use it on your parents', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Academics', :name => 'Practice spelling a new word', :description => 'Practice spelling a new word', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Academics', :name => 'Read a new book', :description => 'Read a new book', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Academics', :name => 'Recite a poem to mom or dad', :description => 'Recite a poem to mom or dad', :creator => s, :point_value => 5
@@ -39,9 +39,8 @@ obj = Objective.create :category => 'Behavior', :name => 'Finish your chores', :
 obj = Objective.create :category => 'Behavior', :name => 'Calmly manage anger or frustration', :description => 'Calmly manage anger or frustration', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Behavior', :name => 'Politely ask for help', :description => 'Politely ask for help', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Behavior', :name => 'Take responsibility for your actions', :description => 'Take responsibility for your actions', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Behavior', :name => 'Stop interrupting others when they are speaking', :description => 'Stop interrupting others when they are speaking', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Behavior', :name => 'Raise your hand and wait to be called on before speaking', :description => 'Raise your hand and wait to be called on before speaking', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Behavior', :name => 'Show patience when you ask for something', :description => 'Show patience when you ask for something', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Raise your hand before speaking', :description => 'Raise your hand before speaking', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Behavior', :name => 'Show patience when asking for something', :description => 'Show patience when asking for something', :creator => s, :point_value => 5
 
 obj = Objective.create :category => 'Social', :name => 'Share a toy with someone else', :description => 'Share a toy with someone else', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Obey your teacher', :description => 'Share a toy with someone else', :creator => s, :point_value => 5
@@ -49,17 +48,17 @@ obj = Objective.create :category => 'Social', :name => 'Say hello to people who 
 obj = Objective.create :category => 'Social', :name => 'Wave at people who wave to you', :description => 'Wave at people who wave to you', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Say please and thank you', :description => 'Say please and thank you', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Respond timely when asked a question', :description => 'Respond timely when asked a question', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Social', :name => 'Make eye contact when speaking to others', :description => 'Make eye contact when speaking to others', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Social', :name => 'Make eye contact when speaking', :description => 'Make eye contact when speaking to others', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Speak respectfully to others', :description => 'Speak respectfully to others', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Listen to others without interrupting', :description => 'Listen to others without interrupting', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Social', :name => 'Send a thank you note to someone who was kind to you', :description => 'Send a thank you note to someone who was kind to you', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Social', :name => 'Send a thank you note', :description => 'Send a thank you note to someone who was kind to you', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Introduce yourself to someone new', :description => 'Introduce yourself to someone new', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Social', :name => 'Invite a person to play or join in your activity', :description => 'Invite a person to play or join in your activity', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Social', :name => 'Invite a person to play or join you', :description => 'Invite a person to play or join in your activity', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Perform an act of kindness', :description => 'Perform an act of kindness', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Congratulate someone for a positive act', :description => 'Congratulate someone for a positive act', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Give someone a compliment', :description => 'Give someone a compliment', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Keep your hands and feet to yourself', :description => 'Keep your hands and feet to yourself', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Social', :name => 'Ask for help when you are confused or frustrated', :description => 'Ask for help when you are confused or frustrated', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Social', :name => 'Ask for help when you are confused', :description => 'Ask for help when you are confused or frustrated', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Wait your turn patiently', :description => 'Wait your turn patiently', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Social', :name => 'Show good sportsmanship', :description => 'Show good sportsmanship', :creator => s, :point_value => 5
 
@@ -70,11 +69,11 @@ obj = Objective.create :category => 'Health', :name => 'Eat a healthy lunch', :d
 obj = Objective.create :category => 'Health', :name => 'Drink something other than soda', :description => 'Drink something other than soda ', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Take your vitamins', :description => "Take your vitamins", :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Drink at least 2 servings of milk', :description => 'Drink at least 2 servings of milk', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Health', :name => 'Eat at least 5 servings of fruits or vegetables', :description => 'Eat at least 5 servings of fruits or vegetables', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Eat 5 servings of fruits or vegetables', :description => 'Eat at least 5 servings of fruits or vegetables', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Do 10 or more push ups', :description => 'Do 10 or more push ups', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Do 10 or more sit-ups', :description => 'Do 10 or more sit-ups', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Ride you bike for at least 10 minutes', :description => 'Ride you bike for at least 10 minutes', :creator => s, :point_value => 5
-obj = Objective.create :category => 'Health', :name => 'Exercise or play actively for at least 30 minutes', :description => 'Exercise or play actively for at least 30 minutes', :creator => s, :point_value => 5
+obj = Objective.create :category => 'Health', :name => 'Exercise or play actively for 30 minutes', :description => 'Exercise or play actively for at least 30 minutes', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Go to sports practice', :description => 'Go to sports practice', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Brush your teeth twice daily', :description => 'Brush your teeth twice daily', :creator => s, :point_value => 5
 obj = Objective.create :category => 'Health', :name => 'Take a bath or shower daily', :description => 'Take a bath or shower daily', :creator => s, :point_value => 5
@@ -90,14 +89,14 @@ aw = Award.create :category => 'Time', :name => "One hour of Video Game Time", :
 aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'jpg', :path => '/images/awards/time.jpg', :remote => true
 aw = Award.create :category => 'Time', :name => "One hour of TV Time", :description => "Approved shows only", :point_cost => 500, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'jpg', :path => '/images/awards/time.jpg', :remote => true
-aw = Award.create :category => 'Time', :name => "One extra hour before Bed Time", :description => "Fridays and Weekends only", :point_cost => 500, :creator => s
+aw = Award.create :category => 'Time', :name => "One Extra Hour before Bed Time", :description => "Fridays and Weekends only", :point_cost => 500, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'jpg', :path => '/images/awards/time.jpg', :remote => true
 
 aw = Award.create :category => 'Money', :name => "One Dollar", :description => "Cold Hard Cash", :point_cost => 100, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'jpg', :path => '/images/awards/money.jpg', :remote => true
 aw = Award.create :category => 'Money', :name => "Five Dollars", :description => "Cold Hard Cash", :point_cost => 500, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'jpg', :path => '/images/awards/money.jpg', :remote => true
-aw = Award.create :category => 'Money', :name => "Ten Dollars", :description => "Cold Hard Cash", :point_cost => 10000, :creator => s
+aw = Award.create :category => 'Money', :name => "Ten Dollars", :description => "Cold Hard Cash", :point_cost => 1000, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'jpg', :path => '/images/awards/money.jpg', :remote => true
 aw = Award.create :category => 'Money', :name => "Gift Card", :description => "Somewhere you like", :point_cost => 1000, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'jpg', :path => '/images/awards/money.jpg', :remote => true
@@ -113,17 +112,17 @@ aw = Award.create :category => 'Stuff', :name => "New Book", :description => "Th
 aw.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'jpg', :path => '/images/awards/stuff.jpg', :remote => true
 
 
-aw = Award.create :category => 'Fun', :name => "Trip to Fun Place", :description => "The zoo, the beach, fishing, etc.", :point_cost => 5000, :creator => s
+aw = Award.create :category => 'Fun', :name => "Trip to Fun Place", :description => "The zoo, the beach, fishing, etc.", :point_cost => 2000, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'jpg', :path => '/images/awards/fun.jpg', :remote => true
-aw = Award.create :category => 'Fun', :name => "Trip to Theme Park", :description => "Whatever's close", :point_cost => 10000, :creator => s
+aw = Award.create :category => 'Fun', :name => "Trip to Theme Park", :description => "Whatever's close", :point_cost => 2000, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'jpg', :path => '/images/awards/fun.jpg', :remote => true
-aw = Award.create :category => 'Fun', :name => "Trip to a Restaurant", :description => "Your Favorite", :point_cost => 10000, :creator => s
+aw = Award.create :category => 'Fun', :name => "Trip to a Restaurant", :description => "Your Favorite", :point_cost => 2000, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'jpg', :path => '/images/awards/fun.jpg', :remote => true
-aw = Award.create :category => 'Fun', :name => "Trip to the Movies", :description => "PG or G", :point_cost => 5000, :creator => s
+aw = Award.create :category => 'Fun', :name => "Trip to the Movies", :description => "PG or G", :point_cost => 1000, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'jpg', :path => '/images/awards/fun.jpg', :remote => true
-aw = Award.create :category => 'Fun', :name => "Movie Rental", :description => "You pick", :point_cost => 1000, :creator => s
+aw = Award.create :category => 'Fun', :name => "Movie Rental", :description => "You pick", :point_cost => 100, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'jpg', :path => '/images/awards/fun.jpg', :remote => true
-aw = Award.create :category => 'Fun', :name => "Trip to a Special Event", :description => "Concert, show, etc.", :point_cost => 5000, :creator => s
+aw = Award.create :category => 'Fun', :name => "Trip to a Special Event", :description => "Concert, show, etc.", :point_cost => 2500, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'jpg', :path => '/images/awards/fun.jpg', :remote => true
 
 
