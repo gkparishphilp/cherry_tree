@@ -83,7 +83,7 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 		end
 		
 		add_index :award_assignments, :status
-		add_index :award_assignments, ["user_id",":status"], :name => 'fk_active_awards'
+		add_index :award_assignments, ["user_id","status"], :name => 'fk_active_awards'
 		
 		
 	end
