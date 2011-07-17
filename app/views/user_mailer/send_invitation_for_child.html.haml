@@ -1,14 +1,26 @@
 Hello 
 = @invitee.nickname( @child )
 ,
-%br
-%br
-You've been invited to be a part of 
-= @child.name 
-website.
+%p
+	You've been invited by
+	= @invitation.creator.display_name 
+	to support 
+	= @child.name 
+	at theCheryTree.com.
 
-= @invitation.message
+-unless @invitation.message.blank?
+	%p
+		Message from
+		= @invitation.creator.display_name
+		:
+		%br
+		= @invitation.message
+%p
+	To join, please 
+	= link_to 'click here', "http://thecherrytree.com/invitation/#{@invitation.code}"
 
-To login, 
-= link_to 'click here', "http://localhost:3000/invitation/#{@invitation.code}"
-
+%p
+	We appreciate your support,
+	%br
+	= @invitation.creator.display_name
+	and the CherryTree team

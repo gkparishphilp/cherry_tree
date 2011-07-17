@@ -9,7 +9,7 @@
 			= @child.name.capitalize
 			here.
 		.new_thing.button_flat
-			= link_to "+ Assign New Goal", "#", :class => 'open_new_objective_form'
+			= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
 			
 	= form_for [ @child, ObjectiveAssignment.new ], :html => { :style => 'display:none;' } do |f|
 		%b Goal:
