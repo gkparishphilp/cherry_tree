@@ -9,6 +9,8 @@ function add_fields( link, association, content ) {
   $( link ).after( content.replace( regexp, new_id ) );
 }
 
+var full_path = 'http://thecherrytree.com/';
+
 function remove_fields( link ) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();
@@ -70,10 +72,10 @@ $(document).ready(function(){
 	$('.assign_objective').click( function(){
 		$('#loading_div').show();
 		if( $(this).attr('checked') == true  ){
-			var url = '/activate/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
+			var url = full_path + '/activate/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
 		}
 		else{
-			var url = '/deactivate/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+			var url = full_path + '/deactivate/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
 		}
 		$.get( url );
 		location.reload(true);
