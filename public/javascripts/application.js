@@ -124,6 +124,7 @@ $(document).ready(function(){
 			var url = '/deactivate/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
 		}
 		$.get( url );
+		$.delay( 2000 );
 		location.reload(true);
 	});
 	
