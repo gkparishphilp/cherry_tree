@@ -65,12 +65,10 @@ class AwardAssignmentsController < ApplicationController
 		
 		@new_assignment = AwardAssignment.new
 		
-		@custom_awards = @current_user.created_awards - @child.active_assigned_awards
+		@active_assignments = @child.award_assignments.active
 		
-		@time_awards = Site.first.created_awards.where( :category => 'time' ) - @child.active_assigned_awards
-		@money_awards = Site.first.created_awards.where( :category => 'money' ) - @child.active_assigned_awards
-		@fun_awards = Site.first.created_awards.where( :category => 'fun' ) - @child.active_assigned_awards
-		@stuff_awards = Site.first.created_awards.where( :category => 'stuff' ) - @child.active_assigned_awards
+		@custom_awards = @current_user.created_awards - @child.active_assigned_awards
+
 		
 	end
 	

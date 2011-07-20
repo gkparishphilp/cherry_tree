@@ -4,11 +4,11 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 		create_table :awards, :force => true do |t|
 			# awards are customizeable incentives.  They may be amazon products, custom coupons, promises, etc.
 			t.references	:creator, :polymorphic => true # the creator is basically the parent who added the award
+			t.references	:award_category
 			t.string		:name
 			t.text			:description
 			t.string		:asin # for Amazon products
 			t.integer		:point_cost  # TODO - I'm going to re-add this here for now... to be overridden by cost in assignemnt
-			t.string		:category # material, time, experience
 			t.string		:status, :default => 'active'
 			t.timestamps
 		end
@@ -22,6 +22,10 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.boolean		:recurring, :default => true # an award is eligible for multiple unlocks.  False for one-time awards
 			t.string		:status
 			t.timestamps
+		end
+		
+		create_table :award_categories do |t|
+			t.string		:name
 		end
 		
 		create_table :fonts, :force => true do |t|
@@ -82,8 +86,9 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		add_index :award_assignments, :status
-		add_index :award_assignments, ["user_id","status"], :name => 'fk_active_awards'
+		add_index	:awards, :award_category_id
+		add_index	:award_assignments, :status
+		add_index	:award_assignments, ["user_id","status"], :name => 'fk_active_awards'
 		
 		
 	end

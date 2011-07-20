@@ -1,0 +1,29 @@
+#active_assignment_table{ :style => 'margin-top:20px;' }
+	.float_left{ :style => 'width:50px;' }
+		= image_tag 'awards/custom.jpg', :width => 40
+	.float_left
+		%h3 Assigned Awards
+	.clear
+	.float_left{ :style => 'width:50px;'}
+		&nbsp;
+	.float_left{ :style => 'width:300px;'}
+		%b Name
+	.float_left{ :style => 'width:350px;'}
+		%b Description
+	.float_left{ :style => 'width:150px;'}
+		%b Cost
+		(Cherries)
+	.clear
+	- for assignment in @active_assignemnts
+		.float_left{ :style => 'width:50px;'}
+			= check_box_tag "assign_award", assignment.award.id, true, :award => assignment.award.id, :class => 'assign_award', :child => @child.id, :assignment => assignment.id
+			
+		.float_left{ :style => 'width:300px;'}
+			= assignment.award.name
+			
+		.float_left{ :style => 'width:350px;'}
+			= text_area_tag :award_description, assignment.description, :id => "award_desc_#{assignment.award.id}", :class => "award_desc", :style => 'width:300px;', :child => @child.id, :assignment => assignment.id
+
+		.float_left{ :style => 'width:150px;' }
+			= text_field_tag :award_cost, assignment.point_cost, :id => "award_cost_#{assignment.award.id}", :class => "award_cost", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
+		.clear

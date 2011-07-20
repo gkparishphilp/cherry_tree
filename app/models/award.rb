@@ -3,23 +3,23 @@
 #
 # Table name: awards
 #
-#  id           :integer(4)      not null, primary key
-#  creator_id   :integer(4)
-#  creator_type :string(255)
-#  name         :string(255)
-#  description  :text
-#  asin         :string(255)
-#  point_cost   :integer(4)
-#  category     :string(255)
-#  status       :string(255)     default("active")
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id                :integer(4)      not null, primary key
+#  creator_id        :integer(4)
+#  creator_type      :string(255)
+#  award_category_id :integer(4)
+#  name              :string(255)
+#  description       :text
+#  asin              :string(255)
+#  point_cost        :integer(4)
+#  status            :string(255)     default("active")
+#  created_at        :datetime
+#  updated_at        :datetime
 #
 
 class Award < ActiveRecord::Base
 	
 	# after_create :set_avatar
-	
+	belongs_to	:award_category
 	belongs_to	:creator, :polymorphic => true
 	has_many	:ownings, :as => :ownable
 	

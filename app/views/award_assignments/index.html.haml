@@ -28,109 +28,21 @@
 		|
 		= link_to 'Cancel', "#", :class => 'close_new_award_form'
 
-	- if @child.award_assignments.active.empty?
+	- if @active_assignments.empty?
 		Setup some awards for
 		= @child.display_name
 		to work for!  You can add an award from the list below, or create your own using the button above.
 	- else
-		.category{ :style => 'margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/custom.jpg', :width => 40
-			.float_left
-				%h3 Assigned Awards
-			.clear
-			.float_left{ :style => 'width:50px;'}
-				&nbsp;
-			.float_left{ :style => 'width:300px;'}
-				%b Name
-			.float_left{ :style => 'width:350px;'}
-				%b Description
-			.float_left{ :style => 'width:150px;'}
-				%b Cost
-				(Cherries)
-			.clear
-			- for assignment in @child.award_assignments.active
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_award", assignment.award.id, true, :award => assignment.award.id, :class => 'assign_award', :child => @child.id, :assignment => assignment.id
-					
-				.float_left{ :style => 'width:300px;'}
-					= assignment.award.name
-					
-				.float_left{ :style => 'width:350px;'}
-					= text_area_tag :award_description, assignment.description, :id => "award_desc_#{assignment.award.id}", :class => "award_desc", :style => 'width:300px;', :child => @child.id, :assignment => assignment.id
-
-				.float_left{ :style => 'width:150px;' }
-					= text_field_tag :award_cost, assignment.point_cost, :id => "award_cost_#{assignment.award.id}", :class => "award_cost", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
-				.clear
-	
-	- unless @custom_awards.empty?
-		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/custom.jpg', :width => 40
-			.float_left
-				%h3 Custom Awards
-			.clear
-			- for award in @custom_awards
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
-					
-				.float_left{ :style => 'width:300px;'}
-					= award.name
-				.clear
-	
-	- unless @time_awards.empty?
-		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/time.jpg', :width => 25
-			.float_left
-				%h3 PlayTime Awards
-			.clear
-			- for award in @time_awards
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
-					
-				.float_left{ :style => 'width:300px;'}
-					= award.name
-				.clear
-
-	- unless @fun_awards.empty?
-		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/fun.jpg', :width => 25
-			.float_left
-				%h3 Fun Awards
-			.clear
-			- for award in @fun_awards
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
-					
-				.float_left{ :style => 'width:300px;'}
-					= award.name
-				.clear
-			
-	- unless @stuff_awards.empty?
-		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/stuff.jpg', :width => 25
-			.float_left
-				%h3 Material Awards
-			.clear
-			- for award in @stuff_awards
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
-					
-				.float_left{ :style => 'width:300px;'}
-					= award.name
-				.clear
+		= render 'active_assignment_table'
 		
-	- unless @money_awards.empty?
+	- for cat in AwardCategory.all
 		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/money.jpg', :width => 25
+				= avatar_tag( cat, :thumb, :width => 36 )
 			.float_left
-				%h3 Money Awards
+				%h3= "#{cat.name} Awards"
 			.clear
-			- for award in @money_awards
+			- for award in cat.awards - @child.active_assigned_awards
 				.float_left{ :style => 'width:50px;'}
 					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
 					

@@ -3,20 +3,21 @@
 #
 # Table name: objectives
 #
-#  id             :integer(4)      not null, primary key
-#  name           :string(255)
-#  creator_id     :integer(4)
-#  creator_type   :string(255)
-#  description    :text
-#  point_value    :integer(4)
-#  category       :string(255)
-#  objective_type :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id                    :integer(4)      not null, primary key
+#  name                  :string(255)
+#  objective_category_id :integer(4)
+#  creator_id            :integer(4)
+#  creator_type          :string(255)
+#  description           :text
+#  point_value           :integer(4)
+#  objective_type        :string(255)
+#  created_at            :datetime
+#  updated_at            :datetime
 #
 
 class Objective < ActiveRecord::Base
 	belongs_to	:creator, :polymorphic => true
+	belongs_to	:objective_category
 	has_many	:objective_assignments
 	has_many	:users, :through => :objective_assignments
 	

@@ -21,10 +21,10 @@ class Objectives < ActiveRecord::Migration
 		
 		create_table :objectives, :force => true do |t|
 			t.string		:name
+			t.references	:objective_category
 			t.references	:creator, :polymorphic => true
 			t.text			:description
 			t.integer		:point_value # default for app-objectives to be overridden by the assignment
-			t.string		:category # chores, school, health, etc.
 			t.string		:objective_type # one-time, recurring, milestone, daily, etc. to auto pre-set assignment values?????
 			t.timestamps
 		end
@@ -46,7 +46,11 @@ class Objectives < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		add_index :objectives, :category
+		create_table :objective_categories do |t|
+			t.string		:name
+		end
+		
+		add_index :objectives, :objective_category_id
 		add_index :objective_assignments, :req_confirm
 		add_index :objective_assignments, :status
 		add_index :objective_assignments, ["user_id","status"], :name => :fk_active_assignments
