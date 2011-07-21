@@ -1,4 +1,3 @@
-$('#active_assignment_table').html("<%= escape_javascript( render 'active_assignment_table' ) %>");
-$('#custom_awards').html("<%= escape_javascript( render 'custom_awards' ) %>");
-$('#category_awards').html("<%= escape_javascript( render 'category_awards' ) %>");
-$('#loading_div').hide();
+$('#active_assignment_table').append("<%= escape_javascript( render 'active_assignment', :assignment => @assignment ) %>");
+$('#award_assignment_<%= @assignment.id.to_s %>').effect( 'highlight', {}, 2000 );
+

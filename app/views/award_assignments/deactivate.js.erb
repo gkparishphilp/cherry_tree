@@ -1,2 +1,2 @@
-$('#active_assignment_table').html("<%= escape_javascript( render 'active_assignment_table' ) %>");
-$('#loading_div').hide();
+
+$('<%= @category_div %>').append( "<%= escape_javascript( render 'award_to_assign', :award => @award ) %>" );

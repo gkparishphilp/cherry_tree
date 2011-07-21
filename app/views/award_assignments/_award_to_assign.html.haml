@@ -1,0 +1,7 @@
+%div[award]
+	.float_left{ :style => 'width:50px;'}
+		= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+
+	.float_left{ :style => 'width:300px;'}
+		= award.name
+	.clear

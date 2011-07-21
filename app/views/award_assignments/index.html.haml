@@ -14,15 +14,51 @@
 		= render 'form', :f => f
 
 	- if @active_assignments.empty?
-		Setup some awards for
-		= @child.display_name
-		to work for!  You can add an award from the list below, or create your own using the button above.
+		#active_assignment_table{ :style => 'margin-top:20px;' }
+			#empty_message
+				Setup some awards for
+				= @child.display_name
+				to work for!  You can add an award from the list below, or create your own using the button above.
 	- else
-		= render 'active_assignment_table'
+		#active_assignment_table{ :style => 'margin-top:20px;' }
+			.float_left{ :style => 'width:50px;' }
+				= image_tag 'awards/custom.jpg', :width => 40
+			.float_left
+				%h3 Assigned Awards
+			.clear
+			.float_left{ :style => 'width:50px;'}
+				&nbsp;
+			.float_left{ :style => 'width:300px;'}
+				%b Name
+			.float_left{ :style => 'width:350px;'}
+				%b Description
+			.float_left{ :style => 'width:150px;'}
+				%b Cost
+				(Cherries)
+			.clear
+			- for assignment in @active_assignments
+				= render 'active_assignment', :assignment => assignment
 		
 	#custom_awards
-		= render 'custom_awards'
+		- unless @custom_awards.empty?
+			.category.float_left{ :style => 'width:400px;margin-top:20px;' }
+				.float_left{ :style => 'width:50px;' }
+					= image_tag( 'awards/custom.jpg', :width => 36 )
+				.float_left
+					%h3 Custom Awards
+				.clear
+				- for award in @custom_awards
+					= render 'award_to_assign', :award => award
 		
 	#category_awards
-		= render 'category_awards'
+		- for cat in AwardCategory.all
+			- next if cat.awards.empty?
+			.float_left[cat]{ :style => 'width:400px;margin-top:20px;' }
+				.float_left{ :style => 'width:50px;' }
+					= avatar_tag( cat, :thumb, :width => 36 )
+				.float_left
+					%h3= "#{cat.name} Awards"
+				.clear
+				- for award in cat.awards - @child.active_assigned_awards
+					= render 'award_to_assign', :award => award
 		.clear

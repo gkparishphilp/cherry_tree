@@ -11,5 +11,5 @@ class AwardCategory < ActiveRecord::Base
 
 	has_many	:awards
 	has_attached	:avatar
-	
+
 end

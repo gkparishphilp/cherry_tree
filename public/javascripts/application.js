@@ -114,16 +114,15 @@ $(document).ready(function(){
 	
 	
 	$('.assign_award').live( 'click', function(){
-		$('#loading_div').show();
-		if( $(this).attr('checked') == true  ){
-			$('#award_cost_' + $(this).attr('award') ).show( 300 );
-			var url = '/activate/award/' + $(this).attr('award') + '/for/' + $(this).attr('child');
-		}
-		// todo -- look for award_assignment; create if none exists; set status according to checked state
-		else{
-			$('#award_cost_' + $(this).attr('award') ).hide( 300 );
-			var url = '/deactivate/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
-		}
+		var url = '/activate/award/' + $(this).attr('award') + '/for/' + $(this).attr('child');
+		$(this).closest(".award").fadeOut( 'slow' ).remove();
+		$.get( url );
+	});
+	
+	
+	$('.unassign_award').live( 'click', function(){
+		var url = '/deactivate/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		$(this).closest(".award_assignment").fadeOut( 'slow' ).remove();
 		$.get( url );
 	});
 	
