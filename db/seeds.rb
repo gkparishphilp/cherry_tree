@@ -1,7 +1,6 @@
 
 s = Site.create :name => 'Cherry Tree'
 
-oc0 = ObjectiveCategory.create :name => 'Custom'
 oc1 = ObjectiveCategory.create :name => 'Academics'
 oc2 = ObjectiveCategory.create :name => 'Behavior'
 oc3 = ObjectiveCategory.create :name => 'Social'
@@ -87,9 +86,6 @@ obj = Objective.create :objective_category => oc4, :name => 'Wash your hands bef
 obj = Objective.create :objective_category => oc4, :name => 'Use deodorant', :description => 'Use deodorant', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc4, :name => 'Get at least 8 hours of sleep', :description => 'Get at least 8 hours of sleep', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc4, :name => 'Apply sunscreen before going outside', :description => 'Apply sunscreen before going outside', :creator => s, :point_value => 5
-
-ac0 = AwardCategory.create :name => 'Custom'
-ac0.attachments.create :attachment_type => 'avatar', :name => 'custom', :format => 'jpg', :path => '/images/awards/custom.jpg', :remote => true
 
 ac1 = AwardCategory.create :name => 'Time'
 ac1.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'jpg', :path => '/images/awards/time.jpg', :remote => true

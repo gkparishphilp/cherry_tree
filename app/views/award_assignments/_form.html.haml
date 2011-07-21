@@ -1,5 +1,16 @@
-= f.hidden_field :award_id, :value => award.id
-
+%b Award Name:
+%br
+= f.text_field :award_name, :class => 'title_field'
+%br
+%b Description:
+%br
+= f.text_field :description, :style => 'width:500px;'
+%br
+%b Cost:
+%br
 = f.text_field :point_cost, :class => 'small'
-
-= f.submit 'Update', :class =>'button_flat'
+cherries
+%br
+= f.submit 'Enter', :class => 'button_flat'
+|
+= link_to 'Cancel', "#", :class => 'close_new_award_form'

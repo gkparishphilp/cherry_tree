@@ -1,0 +1,16 @@
+- for cat in AwardCategory.all
+	- next if cat.awards.empty?
+	.category.float_left{ :style => 'width:400px;margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= avatar_tag( cat, :thumb, :width => 36 )
+		.float_left
+			%h3= "#{cat.name} Awards"
+		.clear
+		- for award in cat.awards - @child.active_assigned_awards
+			%div[award]
+				.float_left{ :style => 'width:50px;'}
+					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+			
+				.float_left{ :style => 'width:300px;'}
+					= award.name
+			.clear

@@ -109,10 +109,11 @@ $(document).ready(function(){
 	
 	$('.show_requested_goals').click( function() {
 		$('#requested_goals').toggle('slow');
-	});	
+	});
 	
 	
-	$('.assign_award').click( function(){
+	
+	$('.assign_award').live( 'click', function(){
 		$('#loading_div').show();
 		if( $(this).attr('checked') == true  ){
 			$('#award_cost_' + $(this).attr('award') ).show( 300 );
@@ -124,8 +125,6 @@ $(document).ready(function(){
 			var url = '/deactivate/award/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
 		}
 		$.get( url );
-		//$(this).delay( 2000 );
-		//location.reload(true);
 	});
 	
 	

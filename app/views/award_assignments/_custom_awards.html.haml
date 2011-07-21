@@ -1,0 +1,14 @@
+- unless @custom_awards.empty?
+	.category.float_left{ :style => 'width:400px;margin-top:20px;' }
+		.float_left{ :style => 'width:50px;' }
+			= image_tag( 'awards/custom.jpg', :width => 36 )
+		.float_left
+			%h3 Custom Awards
+		.clear
+		- for award in @custom_awards
+			.float_left{ :style => 'width:50px;'}
+				= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
+			
+			.float_left{ :style => 'width:300px;'}
+				= award.name
+			.clear

@@ -10,13 +10,17 @@ class AwardAssignmentsController < ApplicationController
 			# create assignment
 			@assignment = @current_user.created_award_assignments.create :award => @award, :user => @child, :status => 'active', :creator => @current_user, :point_cost => @award.point_cost, :description => @award.description
 		end
-		redirect_to child_award_assignments_path( @child )
+		
+		@active_assignments = @child.award_assignments.active
+		@custom_awards = @current_user.created_awards - @child.active_assigned_awards
+		
 	end
 	
 	def deactivate
 		@assignment = AwardAssignment.find( params[:assignment_id] )
 		@assignment.update_attributes :status => 'inactive'
-		redirect_to child_award_assignments_path( @child )
+		@active_assignments = @child.award_assignments.active
+		@custom_awards = @current_user.created_awards - @child.active_assigned_awards
 	end
 	
 	

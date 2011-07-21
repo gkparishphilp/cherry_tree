@@ -11,22 +11,7 @@
 			= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
 		
 	= form_for [ @child, AwardAssignment.new ], :html => { :style => 'display:none;' } do |f|
-		%b Award Name:
-		%br
-		= f.text_field :award_name, :class => 'title_field'
-		%br
-		%b Description:
-		%br
-		= f.text_field :description, :style => 'width:500px;'
-		%br
-		%b Cost:
-		%br
-		= f.text_field :point_cost, :class => 'small'
-		cherries
-		%br
-		= f.submit 'Enter', :class => 'button_flat'
-		|
-		= link_to 'Cancel', "#", :class => 'close_new_award_form'
+		= render 'form', :f => f
 
 	- if @active_assignments.empty?
 		Setup some awards for
@@ -35,18 +20,9 @@
 	- else
 		= render 'active_assignment_table'
 		
-	- for cat in AwardCategory.all
-		.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= avatar_tag( cat, :thumb, :width => 36 )
-			.float_left
-				%h3= "#{cat.name} Awards"
-			.clear
-			- for award in cat.awards - @child.active_assigned_awards
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_award", award.id, @child.active_assigned_awards.include?( award ), :award => award.id, :class => 'assign_award', :child => @child.id
-					
-				.float_left{ :style => 'width:300px;'}
-					= award.name
-				.clear
+	#custom_awards
+		= render 'custom_awards'
+		
+	#category_awards
+		= render 'category_awards'
 		.clear

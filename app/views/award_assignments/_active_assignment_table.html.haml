@@ -14,7 +14,7 @@
 		%b Cost
 		(Cherries)
 	.clear
-	- for assignment in @active_assignemnts
+	- for assignment in @active_assignments
 		.float_left{ :style => 'width:50px;'}
 			= check_box_tag "assign_award", assignment.award.id, true, :award => assignment.award.id, :class => 'assign_award', :child => @child.id, :assignment => assignment.id
 			
