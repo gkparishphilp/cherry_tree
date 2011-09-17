@@ -233,4 +233,6 @@ $(document).ready(function(){
 		}
 	});
 	
+	$(".child_profile #accordion").accordion({ autoHeight: false });
+	
 });

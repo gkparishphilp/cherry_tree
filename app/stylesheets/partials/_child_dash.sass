@@ -28,6 +28,42 @@
 			:border-top-color #ddd
 		img
 			+rounded(10px)
+#content
+	.goals
+		li
+			:list-style-type none
+			:margin 0
+			:padding 0
+			:font-size 13px
+			
+		&.ui-accordion
+			:margin-top 40px
+		
+		.ui-accordion-content
+			:padding 20px 35px
+			:margin-bottom 15px
+			:background #e6e6e6
+			:border 1px solid #fff
+		.ui-accordion-header
+			:padding 17px 4px 14px 80px
+			:margin-bottom 15px
+			:border 1px solid #fff
+			+rounded(6px)
+			:background #ebebeb
+			.ui-icon
+				:left 0
+				:top 0
+				:padding 19px 21px
+				:margin 0
+				:border-right 1px solid #fff
+				:background url(/images/header_arrows.png) no-repeat 50% 1px transparent
+			&.ui-state-active
+				:margin 0
+				.ui-icon
+					:background url(/images/header_arrows.png) no-repeat 46% -48px transparent
+
+		.ui-accordion-content
+
 .top-header
 	h3
 		:float left
