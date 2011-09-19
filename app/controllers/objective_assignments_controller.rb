@@ -93,10 +93,10 @@ class ObjectiveAssignmentsController < ApplicationController
 			@requested_assignments = @child.objective_assignments.requested
 			
 			@custom_objectives = @current_user.created_objectives - @child.active_assigned_objectives	
-			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
-			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
-			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
-			@social_objectives = Site.first.created_objectives.where( :category => 'social' ) - @child.active_assigned_objectives
+			@academic_objectives = Site.first.created_objectives.where( :objective_category_id => 1 ) - @child.active_assigned_objectives
+			@behavior_objectives = Site.first.created_objectives.where( :objective_category_id => 2 ) - @child.active_assigned_objectives
+			@health_objectives = Site.first.created_objectives.where( :objective_category_id => 4 ) - @child.active_assigned_objectives
+			@social_objectives = Site.first.created_objectives.where( :objective_category_id => 2) - @child.active_assigned_objectives
 
 			render :adult_index
 		end
