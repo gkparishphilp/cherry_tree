@@ -1,5 +1,4 @@
-
-.child_profile
+.child_profile.clearfix
 
 	= render 'children/sub_nav', :child => @child
 	
@@ -48,17 +47,22 @@
 					%h3 Custom Awards
 				.clear
 				- for award in @custom_awards
-					= render 'award_to_assign', :award => award
-		
-	#category_awards
+					= render 'award_to_assign', :award => award		
+	.clear	
+		&nbsp;
+	.new_thing.button_flat
+		= link_to "Save Changes", "form_submit/htt", :class => 'save_form'
+	#accordion.goals
 		- for cat in AwardCategory.all
 			- next if cat.awards.empty?
-			.float_left[cat]{ :style => 'width:400px;margin-top:20px;' }
-				.float_left{ :style => 'width:50px;' }
-					= avatar_tag( cat, :thumb, :width => 36 )
-				.float_left
-					%h3= "#{cat.name} Awards"
-				.clear
-				- for award in cat.awards - @child.active_assigned_awards
-					= render 'award_to_assign', :award => award
-		.clear
+			%h3.track= "#{cat.name} Awards"
+			%div				
+				%ul
+					- for award in cat.awards - @child.active_assigned_awards
+						%li
+							%label
+								= render 'award_to_assign', :award => award	
+
+	.new_thing.button_flat
+		= link_to "Save Changes", "", :class => 'save_form'
+		

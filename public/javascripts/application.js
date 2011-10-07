@@ -233,6 +233,13 @@ $(document).ready(function(){
 		}
 	});
 	
-	$(".child_profile #accordion").accordion({ autoHeight: false });
+	// Used to save accordians state.
+    var current = window.location.hash.replace("#", "");
+	$(".child_profile #accordion").accordion({ autoHeight: false, active: parseInt(current) });
+	var btn_submit = $('.save_form').attr("href");
+	$(".child_profile #accordion h3").click(function(event){
+		var index = $(".child_profile #accordion h3").index(this);
+		$('.save_form').attr("href",btn_submit+"#"+index);
+	});
 	
 });
