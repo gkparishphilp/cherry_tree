@@ -159,22 +159,22 @@ module UserApp
 		academics = 0
 		behavior = 0
 		health = 0
-		hygiene = 0
+		social = 0
 		
 		for earning in earned
-			case earning.earned_for.objective.category
+			case earning.earned_for.objective.objective_category.name
 			when 'Academics'
 				academics += earning.points
 			when 'Health'
 				health += earning.points
 			when 'Behavior'
 				behavior += earning.points
-			when 'Hygiene'
-				hygiene += earning.points
+			when 'Social'
+				social += earning.points
 			end 
 		end
 		
-		points = {'Academics' => academics, 'Health' => health, 'Behavior'=> behavior, 'Hygiene'=> hygiene}
+		points = {'Academics' => academics, 'Health' => health, 'Behavior'=> behavior, 'Social'=> social}
 		
 		return points
 		

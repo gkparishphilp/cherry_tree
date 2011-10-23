@@ -59,6 +59,19 @@
 			.clear
 			- for assignment in @active_assignments
 				= render 'active_assignment', :assignment => assignment
+			
+	#custom_objectives
+		- unless @custom_objectives.empty?
+			.category.float_left{ :style => 'width:400px;margin-top:20px;' }
+				.float_left{ :style => 'width:50px;' }
+					= image_tag( 'awards/custom.jpg', :width => 36 )
+				.float_left
+					%h3 Custom Awards
+				.clear
+				- for objective in @custom_objectives
+					= render 'objective_to_assign', :objective => objective		
+			
+
 				
 	.clear	
 		&nbsp;
