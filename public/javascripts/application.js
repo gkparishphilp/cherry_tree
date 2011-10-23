@@ -69,18 +69,6 @@ $(document).ready(function(){
 	});
 	
 	
-	$('.assign_objective').click( function(){
-		$('#loading_div').show();
-		if( $(this).attr('checked') == true  ){
-			var url = full_path + '/activate/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
-		}
-		else{
-			var url = full_path + '/deactivate/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
-		}
-		$.get( url );
-		location.reload(true);
-	});
-	
 	$('.req_conf_assignment').click( function(){
 		$('#loading_div').show();
 		if( $(this).attr('checked') == true  ){
@@ -109,6 +97,20 @@ $(document).ready(function(){
 	
 	$('.show_requested_goals').click( function() {
 		$('#requested_goals').toggle('slow');
+	});
+	
+	
+	$('.assign_objective').live( 'click', function(){
+		var url = '/activate/objective/' + $(this).attr('objective') + '/for/' + $(this).attr('child');
+		$(this).closest(".objective").fadeOut( 'slow' ).remove();
+		$.get( url );
+	});
+	
+	
+	$('.unassign_objective').live( 'click', function(){
+		var url = '/deactivate/objective/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		$(this).closest(".objective_assignment").fadeOut( 'slow' ).remove();
+		$.get( url );
 	});
 	
 	

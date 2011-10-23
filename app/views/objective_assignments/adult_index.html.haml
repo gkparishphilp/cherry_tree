@@ -29,17 +29,18 @@
 		|
 		= link_to 'Cancel', "#", :class => 'close_new_objective_form'
 		
-	- if @assignments.empty? && @requested_assignments.empty?
-		%p
-			Objectives are behaviors, thoughts, or habits that
-			= @child.name.capitalize
-			should be working on and reminded of daily.
-		%p
-			= @child.name.capitalize
-			does not have any objectives yet.
-			You can add an award from the list below, or create your own using the button above.
+	- if @active_assignments.empty? && @requested_assignments.empty?
+		#active_assignment_table{ :style => 'margin-top:20px;' }
+			#empty_message
+				Objectives are behaviors, thoughts, or habits that
+				= @child.name.capitalize
+				should be working on and reminded of daily.
+				%p
+				= @child.name.capitalize
+				does not have any objectives yet.
+				You can add an award from the list below, or create your own using the button above.
 	- else
-		%div{ :style => 'margin-top:20px;' }
+		#active_assignment_table{ :style => 'margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/custom.jpg', :width => 40
 			.float_left
@@ -56,110 +57,22 @@
 			.float_left{ :style => 'width:50px;'}
 				%b Parental Confirmation?
 			.clear
-			- for assignment in @assignments
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "assign_objective", assignment.objective.id, true, :objective => assignment.objective.id, :class => 'assign_objective', :child => @child.id, :assignment => assignment.id
-
-				.float_left{ :style => 'width:230px;'}
-					= assignment.objective.name
-
-				.float_left{ :style => 'width:350px;'}
-					= text_area_tag :objective_description, assignment.description, :id => "objective_desc_#{assignment.objective.id}", :class => "objective_desc", :style => 'width:300px;', :child => @child.id, :assignment => assignment.id
-
-				.float_left{ :style => 'width:150px;' }
-					= text_field_tag :objective_points, assignment.point_value, :id => "objective_points_#{assignment.objective.id}", :class => "objective_points", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
-
-				.float_left{ :style => 'width:50px;'}
-					= check_box_tag "req_conf_assignment", assignment.id, assignment.req_confirm, :class => 'req_conf_assignment', :child => @child.id, :assignment => assignment.id
-
-				.clear
-
-		- unless @requested_assignments.empty?
-			%div{ :style => 'margin-top:20px;' }
-				.float_left{ :style => 'width:50px;' }
-					= image_tag 'awards/custom.jpg', :width => 40
-				.float_left
-					%h3 Requested Objectives
-				.clear
-				.float_left{ :style => 'width:50px;'}
-					&nbsp;
-				.float_left{ :style => 'width:300px;'}
-					%b Name
-				.float_left{ :style => 'width:350px;'}
-					%b Description
-				.float_left{ :style => 'width:150px;'}
-					%b Point Value
-					(Cherries)
-				.clear
-			
-				- for assignment in @requested_assignments
-					.float_left{ :style => 'width:50px;'}
-						= check_box_tag "assign_objective", assignment.objective.id, @child.active_assigned_objectives.include?( assignment.objective ), :objective => assignment.objective.id, :class => 'assign_objective', :child => @child.id, :assignment => assignment.id
-
-					.float_left{ :style => 'width:300px;'}
-						= assignment.objective.name
-
-					.float_left{ :style => 'width:350px;'}
-						= text_area_tag :objective_description, assignment.description, :id => "objective_desc_#{assignment.objective.id}", :class => "objective_desc", :style => 'width:300px;', :child => @child.id, :assignment => assignment.id
-
-					.float_left{ :style => 'width:150px;' }
-						= text_field_tag :objective_points, assignment.point_value, :id => "objective_points_#{assignment.objective.id}", :class => "objective_points", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
+			- for assignment in @active_assignments
+				= render 'active_assignment', :assignment => assignment
+				
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
 		= link_to "Save Changes", "", :class => 'save_form'
 	#accordion.goals	
-		- unless @custom_objectives.empty?
-			%h3.track Custom Goals
+		- for cat in ObjectiveCategory.all
+			-next if cat.objectives.empty?
+			%h3.track= "#{cat.name} Goals"
 			%div
 				%ul
-					- for objective in @custom_objectives
+					-for objective in cat.objectives - @child.active_assigned_objectives
 						%li
 							%label
-								= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-								= objective.name
-	
-		- unless @academic_objectives.empty?
-			%h3.track Academic Goals
-			%div
-				%ul
-					- for objective in @academic_objectives
-						%li
-							%label
-								= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-								= objective.name
-			
-		- unless @behavior_objectives.empty?
-			%h3.track Behavior Goals
-			%div				
-				%ul
-					- for objective in @behavior_objectives
-						%li
-							%label
-								= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-								= objective.name
-			
-		- unless @health_objectives.empty?
-			%h3.track Health Goals
-			%div
-				%ul
-					- for objective in @health_objectives
-						%li
-							%label
-								= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-								= objective.name
-			
-		- unless @social_objectives.empty?
-			%h3.track Social Goals
-			%div
-				%ul
-					- for objective in @social_objectives
-						%li
-							%label
-								= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
-								= objective.name
-
+								= render 'objective_to_assign', :objective => objective
 	.new_thing.button_flat
-		= link_to "Save Changes", "", :class => 'save_form'
-.clear
-	%br
+		= link_to "Save Changes", :class => 'save_form'
