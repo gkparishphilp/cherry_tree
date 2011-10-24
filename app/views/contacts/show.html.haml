@@ -1,8 +1,7 @@
-- content_for :left_column do
-	%h1 Contact
+%h1 Contact
 
-	= render @contact
+= render @contact
 
-	= link_to 'Edit', edit_contact_path(@contact)
-	| 
-	= link_to 'Back', contacts_path
+= link_to 'Edit', edit_contact_path(@contact)
+| 
+= link_to 'Back', contacts_path

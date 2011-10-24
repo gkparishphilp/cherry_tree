@@ -1,9 +1,8 @@
-- content_for :left_column do
-	%h1 New <%= singular_name.capitalize %>
+%h1 New <%= singular_name.capitalize %>
 
-	= form_for @<%= singular_name %> , :html => { :mutipart => true } do |f|
-		= render 'form', :f => f
-		.actions
-			= f.submit 'Create', :class => 'button'
-			|
-			= link_to 'Cancel', :back
+= form_for @<%= singular_name %> , :html => { :mutipart => true } do |f|
+	= render 'form', :f => f
+	.actions
+		= f.submit 'Create', :class => 'button'
+		|
+		= link_to 'Cancel', :back

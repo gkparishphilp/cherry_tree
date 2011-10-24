@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
 		@topic.ip = request.ip
 		if ( @forum.topics << @topic )
 			flash[:notice] = "Topic added"
-			@current_user.did_post_in_the_forums @topic
+			#@current_user.did_post_in_the_forums @topic
 			redirect_to forum_topics_path( @topic.forum )
 		else
 			pop_flash = "Topic not saved", :error, @topic

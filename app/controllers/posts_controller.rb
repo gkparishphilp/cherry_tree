@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 		@post.ip = request.ip
 		if  @topic.posts << @post  
 			@forum.posts << @post
-			@current_user.did_post_in_the_forums @post
+			#@current_user.did_post_in_the_forums @post
 			pop_flash "Post added"
 			redirect_to forum_topic_path( @forum, @topic)
 		else

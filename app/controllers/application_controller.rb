@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
 
 protected
 
+
+	# sets page metadata like page title and description
+	def set_meta( title, *description )
+		@title = title
+		@description = description.first[0..200] unless description.first.blank?
+	end
+
 	def check_for_achievements
 		return false if @current_user.nil? || @current_user.anonymous? || !@current_user.child?
 		for achievement in Achievement.all
