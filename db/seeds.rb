@@ -293,5 +293,5 @@ sp = StaticPage.create :title => 'Help', :permalink => 'help',
 
 blog1 = ""
 File.open("#{Rails.root}/copy/welcome_blog.txt") {|f| blog1 = f.read} 
-article = Article.create :owner_id => u2.id, :owner_type => 'User', :title => 'Welcome!', :topic_list => 'Welcome', 
-						:comments_allowed => true, :status => 'publish', :publish_at => '2011-02-01 19:00:00', :content => blog1
+article = Article.create :owner_id => u2.id, :owner_type => 'User', :title => 'Welcome!', 
+						:comments_allowed => true, :status => 'publish', :publish_at => '2011-10-21 19:00:00', :content => blog1
