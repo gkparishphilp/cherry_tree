@@ -51,7 +51,7 @@
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Save Changes", "form_submit/htt", :class => 'save_form'
+		= link_to "Save Changes", :class => 'save_form'
 	#accordion.goals
 		- for cat in AwardCategory.all
 			- next if cat.awards.empty?
@@ -64,5 +64,5 @@
 								= render 'award_to_assign', :award => award	
 
 	.new_thing.button_flat
-		= link_to "Save Changes", "", :class => 'save_form'
+		= link_to "Save Changes",  :class => 'save_form'
 		

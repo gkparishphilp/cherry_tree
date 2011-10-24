@@ -6,7 +6,7 @@ oc2 = ObjectiveCategory.create :name => 'Behavior'
 oc3 = ObjectiveCategory.create :name => 'Social'
 oc4 = ObjectiveCategory.create :name => 'Health'
 
-obj = Objective.create :objective_category => oc1, :name => 'Start your home on time', :description => 'Start your home on time', :creator => s, :point_value => 5
+obj = Objective.create :objective_category => oc1, :name => 'Start your homework on time', :description => 'Start your homework on time', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc1, :name => 'Turn in your daily homework', :description => 'Turn in your daily homework', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc1, :name => 'Get a good grade on your school work', :description => 'Get a good grade on your school work', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc1, :name => 'Show up to class on time', :description => 'Show up to class on time', :creator => s, :point_value => 5
