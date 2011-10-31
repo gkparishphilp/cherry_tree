@@ -11,7 +11,7 @@ CherryTree::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
-  config.action_view.debug_rjs             = true
+  # config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
 
   # Set cache directory to public/cache
@@ -40,10 +40,10 @@ CherryTree::Application.configure do
 
 
 	config.after_initialize do
-		Amazon::Ecs.configure do |options| 
-			options[:aWS_access_key_id] = AMAZON_ID
-			options[:aWS_secret_key] = AMAZON_SECRET
-		end
+		#Amazon::Ecs.configure do |options| 
+		#	options[:aWS_access_key_id] = AMAZON_ID
+		#	options[:aWS_secret_key] = AMAZON_SECRET
+		#end
 	end
 end
 

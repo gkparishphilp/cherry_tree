@@ -1,2 +1,2 @@
-PUBLIC_ATTACHMENT_PATH = "#{RAILS_ROOT}/public/system/attachments"
-PRIVATE_ATTACHMENT_PATH = "#{RAILS_ROOT}/assets/attachments"
+PUBLIC_ATTACHMENT_PATH = "#{Rails.root}/public/system/attachments"
+PRIVATE_ATTACHMENT_PATH = "#{Rails.root}/assets/attachments"

@@ -73,11 +73,11 @@ class ObjectiveAssignmentsController < ApplicationController
 		if @current_user.is_child?
 			@assignments = @current_user.objective_assignments.active
 			@requested_assignments = @current_user.objective_assignments.requested
-			@academic_objectives = Site.first.created_objectives.where( :category => 'academics' ) - @child.active_assigned_objectives
-			@behavior_objectives = Site.first.created_objectives.where( :category => 'behavior' ) - @child.active_assigned_objectives
-			@health_objectives = Site.first.created_objectives.where( :category => 'health' ) - @child.active_assigned_objectives
-			@house_objectives = Site.first.created_objectives.where( :category => 'houses' ) - @child.active_assigned_objectives
-			@hygiene_objectives = Site.first.created_objectives.where( :category => 'hygiene' ) - @child.active_assigned_objectives
+			@academic_objectives = Site.first.created_objectives.where( :objective_category_id => 1 ) - @child.active_assigned_objectives
+			@behavior_objectives = Site.first.created_objectives.where( :objective_category_id => 2 ) - @child.active_assigned_objectives
+			@social_objectives = Site.first.created_objectives.where( :objective_category_id => 3 ) - @child.active_assigned_objectives
+			@health_objectives = Site.first.created_objectives.where( :objective_category_id => 4 ) - @child.active_assigned_objectives
+
 			
 			render :child_index
 		else
