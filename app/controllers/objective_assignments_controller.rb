@@ -10,13 +10,19 @@ class ObjectiveAssignmentsController < ApplicationController
 			# create assignment
 			@assignment = @current_user.created_objective_assignments.create :objective => @objective, :user => @child, :status => 'active', :creator => @current_user, :point_value => @objective.point_value, :description => @objective.description
 		end
-		redirect_to child_objective_assignments_path( @child )
 	end
 	
 	def deactivate
 		@assignment = ObjectiveAssignment.find( params[:assignment_id] )
+		@objective = @assignment.objective
 		@assignment.update_attributes :status => 'inactive'
-		redirect_to child_objective_assignments_path( @child )
+		if @objective.objective_category.present? 
+			@category_div = "#objective_category_#{@objective.objective_category.id}"
+		else
+			@category_div = "#custom_objectives"
+		end
+
+
 	end
 	
 	def requested
@@ -77,7 +83,6 @@ class ObjectiveAssignmentsController < ApplicationController
 			@behavior_objectives = Site.first.created_objectives.where( :objective_category_id => 2 ) - @child.active_assigned_objectives
 			@social_objectives = Site.first.created_objectives.where( :objective_category_id => 3 ) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :objective_category_id => 4 ) - @child.active_assigned_objectives
-
 			
 			render :child_index
 		else
@@ -86,7 +91,7 @@ class ObjectiveAssignmentsController < ApplicationController
 				redirect_to :back
 				return false
 			end	
-			@assignments = @child.objective_assignments.active
+			@active_assignments = @child.objective_assignments.active
 			@new_assignment = ObjectiveAssignment.new
 			@new_assignment.req_confirm = true
 		
@@ -95,8 +100,8 @@ class ObjectiveAssignmentsController < ApplicationController
 			@custom_objectives = @current_user.created_objectives - @child.active_assigned_objectives	
 			@academic_objectives = Site.first.created_objectives.where( :objective_category_id => 1 ) - @child.active_assigned_objectives
 			@behavior_objectives = Site.first.created_objectives.where( :objective_category_id => 2 ) - @child.active_assigned_objectives
+			@social_objectives = Site.first.created_objectives.where( :objective_category_id => 3) - @child.active_assigned_objectives
 			@health_objectives = Site.first.created_objectives.where( :objective_category_id => 4 ) - @child.active_assigned_objectives
-			@social_objectives = Site.first.created_objectives.where( :objective_category_id => 2) - @child.active_assigned_objectives
 
 			render :adult_index
 		end

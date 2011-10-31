@@ -22,7 +22,7 @@ $page-width: 980px
 	-khtml-border-radius: $radius
 	-webkit-border-radius: $radius
 	border-radius: $radius
-	:behavior url(/javascripts/PIE.htc)	
+//	:behavior url(/javascripts/PIE.htc)	
 
 =rounded-side($side, $radius: 4px)
 	-moz-border-radius-#{$side}left: $radius
@@ -31,17 +31,17 @@ $page-width: 980px
 	-moz-border-radius-#{$side}right: $radius
 	-webkit-border-#{$side}-right-radius: $radius
 	border-#{$side}-right-radius: $radius
-	:behavior url(/javascripts/PIE.htc)	
+//	:behavior url(/javascripts/PIE.htc)	
 
 =shadow($x: 1px, $y: 2px, $offset: 8px)
 	box-shadow: $x $y $offset #888888
 	-moz-box-shadow: $x $y $offset #888888
 	-webkit-box-shadow: $x $y $offset #888888
-	:behavior url(/javascripts/PIE.htc)
+//	:behavior url(/javascripts/PIE.htc)
 
 =alpha_bg()
 	:background transparent url(../images/bg_opaque.png)
-	:behavior url(/javascripts/PIE.htc)
+//	:behavior url(/javascripts/PIE.htc)
 	// background: rgba(255, 255, 255, $x)
 
 =ct_button()
@@ -55,7 +55,7 @@ $page-width: 980px
 	:display inline-block
 	+rounded(20px)
 	:cursor pointer
-	:behavior url(/javascripts/PIE.htc)
+//	:behavior url(/javascripts/PIE.htc)
 	
 =ct_button_small()
 	+shadow
@@ -68,7 +68,7 @@ $page-width: 980px
 	:display inline-block
 	+rounded(10px)
 	:cursor pointer
-	:behavior url(/javascripts/PIE.htc)
+//	:behavior url(/javascripts/PIE.htc)
 
 =ct_button_flat()
 	:color #ffffff
@@ -82,7 +82,7 @@ $page-width: 980px
 	:display inline-block
 	+rounded(7px)
 	:cursor pointer
-	:behavior url(/javascripts/PIE.htc)
+//	:behavior url(/javascripts/PIE.htc)
 	
 =ct_button_color($color)
 	:background-color $color
@@ -97,7 +97,7 @@ $page-width: 980px
 	font-family: "Corben", arial, sans-serif
 	color: $color
 	+text-shadow($shadow, 3px, 3px, 0)
-	:behavior url(/javascripts/PIE.htc)
+//	:behavior url(/javascripts/PIE.htc)
 
 =top_menu($side: right)
 	:padding 7px 0

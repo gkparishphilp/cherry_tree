@@ -1,12 +1,9 @@
-- content_for :left_column do
-	.author_bd
-		#inner-content-wrapper
-			%h2 
-				Post a Topic in 
-				= @forum.title
+.author_bd
+	#inner-content-wrapper
+		%h2 
+			Post a Topic in 
+			= @forum.title
 
-			= form_for ([ @forum, @topic ]), :html => { :multipart => true } do |f|
-				=render :partial => "form", :locals => { :f => f, :m => "Add" }
+		= form_for ([ @forum, @topic ]), :html => { :multipart => true } do |f|
+			=render :partial => "form", :locals => { :f => f, :m => "Add" }
 			
-- content_for :right_column do
-	&nbsp;

@@ -85,9 +85,9 @@ class ChildrenController < ApplicationController
 		@activities = @child.activities.order('created_at DESC')
 		
 		points = @child.point_earnings_since( Time.now.beginning_of_week )
-		@chart_data = [points["Academics"], points["Health"], points["Hygiene"], points["Behavior"]]
+		@chart_data = [points["Academics"], points["Health"], points["Social"], points["Behavior"]]
 		@max_points = @chart_data.max.to_i
-		@chart_axis_labels = 'Behavior|Hygiene|Health|Academics',"0| #{(@max_points.to_f / 2)}| #{@max_points}"
+		@chart_axis_labels = 'Behavior|Social|Health|Academics',"0| #{(@max_points.to_f / 2)}| #{@max_points}"
 		@chart_axis_with_labels ='y,x'
 	end
 

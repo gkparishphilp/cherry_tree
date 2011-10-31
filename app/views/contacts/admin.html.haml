@@ -1,23 +1,22 @@
-- content_for :left_column do
-	.new.button
-		= link_to image_tag( 'add.png', :width => 20 ), new_contact_path
-		= link_to 'New Contact', new_contact_path
-	
-	%h1 Contacts Admin 
-	%table.admin_table
-		%thead
-			%th{ :colspan => 2 }
-		%tbody
-			- for contact in @contacts
-				%tr{ :class => cycle(:odd, :even) }
-					%td
-						= link_to image_tag( 'view.png', :width => 20 ), contact
-						= link_to 'view', contact
-					%td
-						= link_to image_tag( 'edit.png', :width => 20 ), edit_contact_path( contact )
-						= link_to 'edit', edit_contact_path( contact )
-					%td
-						= link_to image_tag( 'trash.png', :width => 20 ), contact, :confirm => 'Are you sure?', :method => :delete
-						= link_to 'delete', contact, :confirm => 'Are you sure?', :method => :delete
+.new.button
+	= link_to image_tag( 'add.png', :width => 20 ), new_contact_path
+	= link_to 'New Contact', new_contact_path
+
+%h1 Contacts Admin 
+%table.admin_table
+	%thead
+		%th{ :colspan => 2 }
+	%tbody
+		- for contact in @contacts
+			%tr{ :class => cycle(:odd, :even) }
+				%td
+					= link_to image_tag( 'view.png', :width => 20 ), contact
+					= link_to 'view', contact
+				%td
+					= link_to image_tag( 'edit.png', :width => 20 ), edit_contact_path( contact )
+					= link_to 'edit', edit_contact_path( contact )
+				%td
+					= link_to image_tag( 'trash.png', :width => 20 ), contact, :confirm => 'Are you sure?', :method => :delete
+					= link_to 'delete', contact, :confirm => 'Are you sure?', :method => :delete
 
 

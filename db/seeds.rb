@@ -6,7 +6,7 @@ oc2 = ObjectiveCategory.create :name => 'Behavior'
 oc3 = ObjectiveCategory.create :name => 'Social'
 oc4 = ObjectiveCategory.create :name => 'Health'
 
-obj = Objective.create :objective_category => oc1, :name => 'Start your home on time', :description => 'Start your home on time', :creator => s, :point_value => 5
+obj = Objective.create :objective_category => oc1, :name => 'Start your homework on time', :description => 'Start your homework on time', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc1, :name => 'Turn in your daily homework', :description => 'Turn in your daily homework', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc1, :name => 'Get a good grade on your school work', :description => 'Get a good grade on your school work', :creator => s, :point_value => 5
 obj = Objective.create :objective_category => oc1, :name => 'Show up to class on time', :description => 'Show up to class on time', :creator => s, :point_value => 5
@@ -293,5 +293,5 @@ sp = StaticPage.create :title => 'Help', :permalink => 'help',
 
 blog1 = ""
 File.open("#{Rails.root}/copy/welcome_blog.txt") {|f| blog1 = f.read} 
-article = Article.create :owner_id => u2.id, :owner_type => 'User', :title => 'Welcome!', :topic_list => 'Welcome', 
-						:comments_allowed => true, :status => 'publish', :publish_at => '2011-02-01 19:00:00', :content => blog1
+article = Article.create :owner_id => u2.id, :owner_type => 'User', :title => 'Welcome!', 
+						:comments_allowed => true, :status => 'publish', :publish_at => '2011-10-21 19:00:00', :content => blog1
