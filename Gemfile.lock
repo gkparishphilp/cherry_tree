@@ -99,6 +99,7 @@ GEM
     sitemap_generator (2.1.6)
     subexec (0.1.0)
     thor (0.14.6)
+    tiny_mce (0.1.4)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
@@ -124,4 +125,5 @@ DEPENDENCIES
   rails (= 3.0.1)
   recaptcha
   sitemap_generator
+  tiny_mce
   will_paginate

@@ -21,7 +21,7 @@ gem 'acts-as-taggable-on'
 #gem 'amazon-ecs', :require=>'amazon/ecs'
 gem 'sitemap_generator'
 gem 'hpricot'
-gem 'tiny-mce'
+gem 'tiny_mce'
 gem 'googlecharts'
 
 gem 'recaptcha', :require => "recaptcha/rails"
