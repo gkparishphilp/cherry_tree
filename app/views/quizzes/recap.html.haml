@@ -3,7 +3,8 @@
 	= @quiz.name
 	Summary
 
-%h3
+.objective_dash.clearfix
+
 	You got
 	= @num_right
 	Right
@@ -14,6 +15,4 @@
 	= @points_earned.to_i
 	Points!
 	
-%h4
-	= link_to "Back", polymorphic_path( @current_user )
 

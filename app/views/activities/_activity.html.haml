@@ -7,6 +7,10 @@
 				= activity.user.display_name
 	
 			= activity.verb.html_safe
+			- if activity.target.respond_to?( :name )
+				= activity.target.name
+			- elsif activity.target.respond_to?( :title )
+				= activity.target.title
 			
 	.small_copy
 		= time_ago_in_words( activity.created_at )

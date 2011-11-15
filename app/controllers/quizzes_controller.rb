@@ -55,7 +55,7 @@ class QuizzesController < ApplicationController
 		@quizzing.update_attributes :score => @num_right
 		@points_earned = ( @num_right.to_f / @quiz.questions.count.to_f ) * @quiz.point_value.to_f
 		@current_user.earn_points_for( @quiz, @points_earned.to_i )
-		@current_user.do_activity( "Earned #{@points_earned.to_i} points taking ", @quiz )
+		@current_user.do_activity( "earned #{@points_earned.to_i} points taking ", @quiz )
 	end
 
 	def destroy

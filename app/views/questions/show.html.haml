@@ -1,24 +1,25 @@
 #child_main_screen
 	%h4= @quiz.name
-	%p
-		Question Number
-		= @question.sequence
+	.objective_dash.clearfix
+		%p
+			Question Number #
+			= @question.sequence
 	
-	%b
-		= @question.content.html_safe
+		%b
+			= @question.content.html_safe
 		
-	- if @question.answers.empty?
-		= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
-			= text_area_tag :response
-			%br
-			= submit_tag "Enter", :class => 'button_flat'
-	- else
-		= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
-			- for answer in @question.answers
-				.answer
-					= radio_button_tag :answer_id, answer.id
-					= answer.content
-			= submit_tag "Enter", :class => 'button blue'
+		- if @question.answers.empty?
+			= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
+				= text_area_tag :response
+				%br
+				= submit_tag "Enter", :class => 'button_flat'
+		- else
+			= form_tag answer_quiz_question_path( @quiz, @question ) do |f|
+				- for answer in @question.answers
+					.answer
+						= radio_button_tag :answer_id, answer.id
+						= answer.content
+				= submit_tag "Enter", :class => 'button blue'
 
 = render 'child/right_column'
 

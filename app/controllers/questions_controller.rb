@@ -11,9 +11,9 @@ class QuestionsController < ApplicationController
 		if @answer = Answer.find_by_id( params[:answer_id] )
 			@quizzing.answer( @question, @answer )
 			if @answer.correct?
-				pop_flash "Yay, You're right!"
+				pop_flash "Yay, You're right!", :success
 			else
-				pop_flash "Bummer, wrong answer", :error
+				pop_flash "Sorry, wrong answer", :error
 			end
 		else
 			@quizzing.answer( @question, params[:response] )

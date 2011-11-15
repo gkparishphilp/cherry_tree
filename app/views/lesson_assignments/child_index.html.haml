@@ -12,12 +12,13 @@
 		%th
 			%b Action
 		- for assignment in @assignments
-			%tr
-				%td
-					= assignment.lesson.name
-				%td
-					= assignment.point_value
-				%td
-					= link_to "Take It", ''
+			-unless assignment.lesson.quizzes.first.taken_by?( @current_user )
+				%tr
+					%td
+						= assignment.lesson.name
+					%td
+						= assignment.lesson.quizzes.first.point_value
+					%td
+						= link_to "Take It", lesson_screen_path( assignment.lesson, assignment.lesson.screens.first )
 %br.clear
 %br

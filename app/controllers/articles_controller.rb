@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 		@article = Article.new params[:article]
 		if @owner.articles << @article
 			pop_flash 'Article was successfully created.'
-			@owner.do_activity( "write", @article )
+			@owner.do_activity( "wrote", @article )
 			redirect_to admin_blog_index_path
 		else
 			pop_flash 'Oooops, Article not saved...', :error, @article

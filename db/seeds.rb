@@ -148,7 +148,7 @@ s2 = l.screens.create :sequence => 2, :content => "Remember, honesty is the best
 s3 = l.screens.create :sequence => 3, :content => "You have supporters.  You can send them notes!"
 
 q = l.quizzes.create :name => "A quiz for How to use Cherry Tree", :point_value => 100
-quest = q.questions.create :content => "If you didn't acheive one of your objectives, what should you do?"
+quest = q.questions.create :content => "If you didn't achieve one of your objectives, what should you do?"
 quest2 = q.questions.create :content => "How often should you log into Cherry Tree?"
 quest2.answers.create :content => 'When You feel like it'
 quest2.answers.create :content => 'Every Day', :correct => true
