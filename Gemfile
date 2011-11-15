@@ -2,19 +2,19 @@ source 'http://rubygems.org'
 
 gem 'mysql2'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.1.0'
 gem 'haml'
 gem 'compass'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'jquery-rails'
 gem 'mini_magick'
-gem 'twitter', '1.1.2'
 gem 'mini_fb'
 gem 'friendly_id'
 gem 'acts-as-taggable-on'
-gem 'amazon-ecs', :require=>'amazon/ecs'
+#gem 'amazon-ecs', :require=>'amazon/ecs'
 gem 'sitemap_generator'
-gem 'tiny_mce'
-gem 'googlecharts'
+gem 'hpricot'
+
+#gem 'googlecharts'
 
 gem 'recaptcha', :require => "recaptcha/rails"

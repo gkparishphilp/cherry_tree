@@ -176,18 +176,18 @@ quest1 = q3.questions.create :content => 'Go ahead and list 3 little things you 
 puts "Setup Default Anonymous User"
 
 anon = User.new :name => 'Anonymous'
-anon.save( false )
+anon.save( :validate => false )
 
 puts "Create GK's test data"
-u1 = User.new :name => 'Gk', :email => 'gk.parishphilp@gmail.com', :display_name => 'Gk'
-u1.password = 'gr0undsw3ll'
-u1.save( false )
+u1 = User.new :name => 'Gk', :email => 'gk@thecherrytree.com', :display_name => 'Gk'
+u1.password = '1234'
+u1.save( :validate => false )
 
 puts "Create Tay's test data"
 
-u2 = User.new :name => 'Tay', :email => 'tay.x.nguyen@gmail.com', :display_name => 'Tay'
-u2.password = 'gr0undsw3ll'
-u2.save( false )
+u2 = User.new :name => 'Tay', :email => 'tay@thecherrytree.com', :display_name => 'Tay'
+u2.password = '1234'
+u2.save( :validate => false )
 
 puts "Create admins"
 u1.make_admin( s )

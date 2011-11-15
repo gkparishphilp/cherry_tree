@@ -130,11 +130,11 @@ class User < ActiveRecord::Base
 	has_many	:objectives, :through => :objective_assignments
 	
 	def active_assigned_objectives
-		self.objectives.joins( :objective_assignments ).where( "objective_assignments.status = 'active'" )
+		self.objective_assignments.where( "objective_assignments.status = 'active'" ).collect{ |asgn| asgn.objective }
 	end
 
 	def requested_objectives
-		self.objectives.joins( :objective_assignments ).where( "objective_assignments.status = 'requested'")
+		self.objective_assignments.where( "objective_assignments.status = 'requested'" ).collect{ |asgn| asgn.objective }
 	end
 	
 	has_many	:checkins
@@ -155,7 +155,8 @@ class User < ActiveRecord::Base
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
 	
 	def active_assigned_awards
-		self.assigned_awards.joins( :award_assignments ).where( "award_assignments.status = 'active'" )
+		self.award_assignments.where( "status = 'active'" ).collect{ |assignment| assignment.award }
+		#self.assigned_awards.joins( :award_assignments ).where( "status = 'active'" )
 	end
 	
 
