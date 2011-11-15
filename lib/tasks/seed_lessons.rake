@@ -156,7 +156,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => 'No pizza is left'
 	quest5.answers.create :content => '3/12', :correct => true
 	
-	l = Lesson.create :name=> '2nd Grade Science: Types of Animals', :description => 'Mammals, Birds, and Fishes.'
+	l = Lesson.create :name=> '2nd Grade Science: Types of Animals Part 1', :description => 'Mammals, Birds, and Fishes.'
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about the first three types of animals in the animal kingdom!'
 	s2 = l.screens.create :sequence => 2, :content => 'The first type of animals are mammals. These animals include dogs, horses, even whales! All mammals have hair and must drink milk when they are a baby. Did you know that even humans are mammals?'
 	s3 = l.screens.create :sequence => 3, :content => 'The second type of animals are birds. All birds have feathers and are born in hard-shelled eggs. The feathers along with its very light weight allow birds to fly, steer, and land.'
@@ -172,7 +172,7 @@ task :seed_lessons => :environment do
 	quest3.answers.create :content => 'Fins'
 	quest3.answers.create :content => 'Feathers', :correct => true
 
-	l2 = Lesson.create :name => '2nd Grade Science: Types of Animals', :description => 'Reptiles, Amphibians, and Invertebrates.'
+	l2 = Lesson.create :name => '2nd Grade Science: Types of Animals Part 2', :description => 'Reptiles, Amphibians, and Invertebrates.'
 	s1 = l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson! Today we will be learning about the last three types of animals in the animal kingdom!'
 	s2 = l.screens.create :sequence => 2, :content => 'The first type of animals are reptiles. Reptiles have scaly skins and are cold-blooded. A lot of reptiles can swim or walk on land. Reptiles include alligators, snakes, and lizards.'
 	s3 = l2.screens.create :sequence => 3, :content => 'The second type of animals are amphibians (am-fi-bee-uns). Amphibians are born in water and are born with gills. But as they grow older, they grow lungs and can live on land. Amphibians include frogs, salamanders, and toads.'

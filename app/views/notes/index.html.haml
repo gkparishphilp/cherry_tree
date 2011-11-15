@@ -6,10 +6,10 @@
 			= link_to content_tag(:span, 'All Notes'), archive_notes_path
 	.note_main
 		- if @notes.empty?
-			.note_header
+			.note_header{:style => 'color:white'}
 				%span
 					No Unread Notes
-			.note_content
+			.note_content{:style => 'color:white'}
 				Send a note to get a note ;-)
 		= render @notes
 	%br.clear
