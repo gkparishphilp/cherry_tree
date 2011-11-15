@@ -34,7 +34,7 @@
 #
 
 class Child < User
-	validate :validate_child	
+	#validate :validate_child	
 	after_create	:setup_defaults
 
 

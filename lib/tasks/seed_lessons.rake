@@ -17,8 +17,8 @@ task :seed_lessons => :environment do
 	quest2.answers.create :content => '13'
 	quest3 = q.questions.create :content => '9+5=?'
 	quest3.answers.create :content => '12'
-	quest3.answers.create :content => '14'
-	quest3.answers.create :content => '15', :correct => true
+	quest3.answers.create :content => '14', :correct => true
+	quest3.answers.create :content => '15' 
 	quest4 = q.questions.create :content => '10+4=?'
 	quest4.answers.create :content => '14', :correct => true
 	quest4.answers.create :content => '16'
