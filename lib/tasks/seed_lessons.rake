@@ -137,7 +137,7 @@ task :seed_lessons => :environment do
 	l2.screens.create :sequence => 4, :content => 'Take the equation 2/5 + 1/5. By adding the numerators 2 and 1 together, we get 3. The denominator stays the same, so our final answer is 3/5, or three-fifths.'
 	l2.screens.create :sequence => 5, :content => 'Notice how if you try adding numbers with different denominators, for example 1/2 + 1/3, you cannot say it equals to 2/2, or 2/3, or 2/5. To add fractions with different denominators, we will have to use a different method which we will learn later.'
 	l2.screens.create :sequence => 6, :content => 'With subtraction, we do the exact same thing as before. So taking the numerator of a fraction, we subtract it with the numerator from another fraction. For example, 4/6 - 3/6 = 1/6.'
-	q = l2.quizzes.create :name => 'Fraction Addition and Subtraction Quiz', :point_value => 50
+	q2 = l2.quizzes.create :name => 'Fraction Addition and Subtraction Quiz', :point_value => 50
 	quest = q2.questions.create :content => '3/5+1/5=?'
 	quest.answers.create :content => '3/5'
 	quest.answers.create :content => '1/5'

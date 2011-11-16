@@ -17,7 +17,7 @@
 				cherries.
 				%br
 				Would you like to take it now?
-				= link_to "Yes", quiz_question_path( @lesson.quizzes.first, @lesson.quizzes.first.questions.first ),:class => 'button green'
+				= link_to "Yes", quiz_question_path( @lesson.quizzes.first, @lesson.quizzes.first.questions.first ), :class => 'button green'
 				= link_to "No", home_path, :class => 'button red'
 		- else
 			= link_to "Next >>", lesson_screen_path( @lesson, @screen.next_screen ), :class => 'button green'
