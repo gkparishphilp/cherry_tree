@@ -70,6 +70,7 @@ class UsersController < ApplicationController
 			# someone created an account with this email address before.... send to forgot pass?
 			pop_flash "This email address has already been registered.  Perhaps you've forgotten the password?", :notice
 			redirect_to forgot_path
+			return
 		else
 			# this is a brand-new user, whether we found an email or not
 			@user.attributes = params[:user]
