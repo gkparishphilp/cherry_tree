@@ -14,7 +14,6 @@ gem 'friendly_id'
 gem 'acts-as-taggable-on'
 gem 'amazon-ecs', :require=>'amazon/ecs'
 gem 'sitemap_generator'
-gem 'tiny_mce'
 gem 'googlecharts'
 gem 'aws-ses', '~> 0.4.1', :require => 'aws/ses'
 gem 'recaptcha', :require => "recaptcha/rails"
