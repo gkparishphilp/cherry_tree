@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
 	before_filter :get_owner, :except => [ :show, :index ]
-	uses_tiny_mce
 	# cache_sweeper :article_sweeper, :only => [:create, :update, :destroy]
 	
 	def show
