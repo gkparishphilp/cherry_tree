@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'mysql2'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 gem 'hpricot'
 gem 'kaminari'
 gem 'haml'
