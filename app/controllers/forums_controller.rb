@@ -7,7 +7,7 @@ class ForumsController < ApplicationController
 	end
 	
 	def index
-		@forums = Forum.all.paginate :page => params[:page], :order => 'id ASC', :per_page => 10
+		@forums = Forum.all
 	end
 
 	def show

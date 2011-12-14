@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 	layout			:set_layout
 
 	def index
-		@topics = @forum.topics.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
+		@topics = @forum.topics.order( 'created_at DESC' ).page( params[:page] )
 		@topic = Topic.new
 		set_meta @forum.title, @forum.description
 	end
@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
 	def show
 		@topic = Topic.find(params[:id])
 		@forum = @topic.forum
-		@posts = @topic.posts.paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
+		@posts = @topic.posts.order( 'created_at ASC' )page( params[:page] )
 		@post = Post.new
 		
 		#rs = @topic.raw_stats.create :name => 'view', :ip => request.ip

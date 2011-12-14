@@ -25,7 +25,7 @@
 			= render article
 	%br
 	%br
-	= will_paginate @articles
+	= paginate( @articles ).html_safe
 
 #blog_sidebar
 	= render :partial => 'sidebar'

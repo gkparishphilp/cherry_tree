@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 	
 	def new
 		@post = Post.new
-		@posts = @topic.posts.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
+		@posts = @topic.posts.order( 'created_at DESC' ).page( params[:page] )
 	end
 	
 	def edit

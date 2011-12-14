@@ -6,22 +6,22 @@ class BlogController < ApplicationController
 	# caches_page :show
 
 	def admin
-		@articles = Article.search( params[:q] ).order( sort_column + " " + sort_dir ).paginate( :per_page => 10, :page => params[:page] )
+		@articles = Article.search( params[:q] ).order( sort_column + " " + sort_dir ).page( params[:page] )
 	end
 	
 	
 	
 	def index
 		if @tag = params[:tag]
-            @articles = Article.tagged_with( @tag ).published.paginate :order => "publish_at desc", :page => params[:page], :per_page => 10
+            @articles = Article.tagged_with( @tag ).published.order( "publish_at desc" ).page( params[:page] )
 		elsif @topic = params[:topic]
-			@articles = Article.tagged_with( @topic ).published.paginate :order => "publish_at desc", :page => params[:page], :per_page => 10
+			@articles = Article.tagged_with( @topic ).published.order( "publish_at desc" ).page( params[:page] )
 		elsif ( @month = params[:month] ) && ( @year = params[:year] )
-			@articles = Article.month_year( params[:month], params[:year] ).published.paginate :page => params[:page], :per_page => 10
+			@articles = Article.month_year( params[:month], params[:year] ).published.order( "publish_at desc" ).page( params[:page] )
 		elsif @year = params[:year]
-			@articles = Article.year( params[:year] ).published.paginate :page => params[:page], :per_page => 10
+			@articles = Article.year( params[:year] ).published.order( "publish_at desc" ).page( params[:page] )
 		else
-			@articles = Article.published.order( 'publish_at desc' ).paginate :page => params[:page], :per_page => 10
+			@articles = Article.published.order( "publish_at desc" ).page( params[:page] )
 		end
 	end
 

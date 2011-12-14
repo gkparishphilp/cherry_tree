@@ -1,9 +1,4 @@
-= render :partial => 'forum_nav'
-- if @topics.total_pages > 1
-	.pagination
-		.page_info
-			= page_entries_info @topics
-		= will_paginate @topics
+= paginate( @topics ).html_safe
 
 %table.forum_list
 	%thead
@@ -35,12 +30,8 @@
 						by
 						= link_to topic.posts.last.user.name, topic.posts.last.user
 					- else
-						&#45;&#45;&#45;
-- if @topics.total_pages > 1
-	.pagination
-		.page_info
-			= page_entries_info @topics
-		= will_paginate @topics
+						&#45;&#45;&#45
+= paginate( @topics ).html_safe
 				
 
 

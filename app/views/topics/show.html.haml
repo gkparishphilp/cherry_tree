@@ -1,10 +1,6 @@
 = render :partial => 'forum_nav'
 
-- if @posts.total_pages > 1
-	.digg_pagination
-		.page_info
-			= page_entries_info @posts
-		= will_paginate @posts
+= paginate( @posts ).html_safe
 
 #topic
 	= render @topic
@@ -15,11 +11,7 @@
 
 %br
 
-- if @posts.total_pages > 1
-	.digg_pagination
-		.page_info
-			= page_entries_info @posts
-		= will_paginate @posts
+= paginate( @posts ).html_safe
 
 - unless @current_user.anonymous?
 	#quick_post
