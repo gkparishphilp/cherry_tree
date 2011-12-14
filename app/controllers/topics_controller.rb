@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
 	def show
 		@topic = Topic.find(params[:id])
 		@forum = @topic.forum
-		@posts = @topic.posts.order( 'created_at ASC' )page( params[:page] )
+		@posts = @topic.posts.order( 'created_at ASC' ).page( params[:page] )
 		@post = Post.new
 		
 		#rs = @topic.raw_stats.create :name => 'view', :ip => request.ip
