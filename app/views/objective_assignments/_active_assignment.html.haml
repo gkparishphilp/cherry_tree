@@ -11,6 +11,6 @@
 	.float_left{ :style => 'width:150px;' }
 		= text_field_tag :objective_points, assignment.point_value, :id => "objective_points_#{assignment.objective.id}", :class => "objective_points", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
 
-	.float_left{ :style => 'width:50px;'}
+	-#.float_left{ :style => 'width:50px;'}
 		= check_box_tag "req_conf_assignment", assignment.id, assignment.req_confirm, :class => 'req_conf_assignment', :child => @child.id, :assignment => assignment.id
 	.clear

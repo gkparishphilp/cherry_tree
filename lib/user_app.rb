@@ -162,7 +162,7 @@ module UserApp
 		social = 0
 		
 		for earning in earned
-			case earning.earned_for.objective.objective_category.name
+			case earning.earned_for.objective.objective_category.try(:name)
 			when 'Academics'
 				academics += earning.points
 			when 'Health'

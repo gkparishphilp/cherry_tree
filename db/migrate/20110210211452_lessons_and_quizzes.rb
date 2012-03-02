@@ -28,7 +28,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.references	:lesson
 			t.references	:creator
 			t.integer		:point_value, :default => 1
-			t.string		:status
+			t.string		:status, :default => 'active'
 			t.timestamps
 		end
 		

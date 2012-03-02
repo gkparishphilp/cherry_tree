@@ -7,7 +7,8 @@
 	.nav
 		-unless @current_user.child?
 			= link_to "Our Blog", blog_index_path, :class=> 'button_small blue'
-			= link_to "Forums", forums_path, :class=> 'button_small blue'
+			= link_to "Resources", '/resources', :class=> 'button_small blue'
+			=# link_to "Forums", forums_path, :class=> 'button_small blue'
 	.user_capsule
 		- if @current_user.anonymous?
 			.loggedout

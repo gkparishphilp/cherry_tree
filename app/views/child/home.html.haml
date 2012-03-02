@@ -1,9 +1,9 @@
 #child_main_screen
 	
 	.boxes
-		= render @relevant_assignment 
+		= render @assignments #render @relevant_assignment 
 	
-	- unless @current_user.activities.empty?
+	-# unless @current_user.activities.empty?
 		#home_activity.boxes
 			%h3
 				News

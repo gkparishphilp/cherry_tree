@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
 	has_many	:achievements, :through => :achievement_earnings
 	
 	has_many	:lesson_assignments
-	has_many	:lessons, :through => :lesson_assignments
+	has_many	:lessons, :through => :lesson_assignments, :conditions => "status = 'active'"
 	has_many	:lesson_viewings
 
 	has_many	:ownings

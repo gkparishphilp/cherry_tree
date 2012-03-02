@@ -16,6 +16,12 @@ class LessonAssignmentsController < ApplicationController
 		
 	end
 	
+	def update
+		@assignment = LessonAssignment.find( params[:id] )
+		@assignment.update_attributes :status => params[:status]
+		redirect_to :back
+	end
+	
 	def index
 		if @current_user.is_child?
 			@assignments = @current_user.lesson_assignments
