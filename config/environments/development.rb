@@ -43,10 +43,11 @@ CherryTree::Application.configure do
 
 
 	config.after_initialize do
-		#Amazon::Ecs.configure do |options| 
-		#	options[:aWS_access_key_id] = AMAZON_ID
-		#	options[:aWS_secret_key] = AMAZON_SECRET
-		#end
+		Amazon::Ecs.configure do |options| 
+			options[:associate_tag] = 'thecherrytree-20'
+			options[:AWS_access_key_id] = AMAZON_ID
+			options[:AWS_secret_key] = AMAZON_SECRET
+		end
 	end
 end
 

@@ -2,7 +2,11 @@
 	.float_right{ :style => 'margin-bottom:10px;' }
 		= link_to 'Print', print_award_path( @award, :child_id => 4 ), :class => 'button green', :target => '_new' 
 	%br.clear
+
+<a href="javascript:window.print()">PRINT BUTTON</a>
+
 #award_certificate
+
 	#award_logo
 		= image_tag 'logo.png'
 	#award_name= @award.name
@@ -34,5 +38,6 @@
 	#award_cert
 		CherryTree Certificate Number:
 		= @cert_number
+		
 
 

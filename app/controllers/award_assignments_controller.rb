@@ -2,6 +2,12 @@ class AwardAssignmentsController < ApplicationController
 	before_filter :get_child
 	
 	
+	def amzn
+		@term = params[:term]
+		@index = params[:index]
+		@response = Amazon::Ecs.item_search( @term,  :response_group => "Medium", :search_index => @index )
+	end
+
 	def activate
 		@award = Award.find( params[:award_id] )
 		if @assignment = @award.assignment_for( @child )

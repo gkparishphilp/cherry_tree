@@ -36,7 +36,9 @@ CherryTree::Application.routes.draw do
 		resources :approvals
 
 		resources :objective_assignments
-		resources :award_assignments
+		resources :award_assignments do
+			post 'amzn', :on => :collection
+		end
 		resources :lesson_assignments
 		
 		resources :journal_entries do

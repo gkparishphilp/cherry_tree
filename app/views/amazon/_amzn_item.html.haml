@@ -1,11 +1,11 @@
 .amzn_item
 	.amzn_thumb
-		= image_tag( item.get( 'mediumimage/url' ), :width => 64 ) if item.get( 'mediumimage/url' ).present?
+		= image_tag( item.get_hash( 'MediumImage' )['URL'], :width => 64 ) if item.get_hash( 'MediumImage' ).present?
 	.amzn_data
 		.amzn_title
-			= link_to item.get("title"), item.get('url')
+			= link_to item.get("ItemAttributes/Title"), item.get('DetailPageURL')
 			(
-			= item.get('formattedprice')
+			= item.get('OfferSummary/LowestNewPrice/FormattedPrice')
 			)
 		.amzn_desc
-			= item.get('editorialreview/content').html_safe if item.get('editorialreview/content').present?
+			= item.get('EditorialReviews/EditorialReview/Content').html_safe if item.get('EditorialReviews/EditorialReview').present?

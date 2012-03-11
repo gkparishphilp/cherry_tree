@@ -52,10 +52,10 @@ class Award < ActiveRecord::Base
 			return "didn't find product for asin #{asin}"
 		end
 		
-		award = Award.new( :name => result.get('title'), :description => result.get('editorialreview/content'), :asin =>award[:asin] )
-		award.point_cost = result.get('formattedprice').gsub( /\D/, "" ).to_i.roundup
+		award = Award.new( :name => result.get('ItemAttributes/Title'), :description => result.get('EditorialReviews/EditorialReview/Content'), :asin =>award[:asin] )
+		award.point_cost = result.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub( /\D/, "" ).to_i.roundup
 		if award.save
-			avatar = Attachment.create_from_resource( result.get('mediumimage/url'), 'avatar', :owner => award, :remote => 'true' )
+			avatar = Attachment.create_from_resource( result.get_hash( 'MediumImage' )['URL'], 'avatar', :owner => award, :remote => 'true' )
 			return award
 		else
 			return "couldn't save award"

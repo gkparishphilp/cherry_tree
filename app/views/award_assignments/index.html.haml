@@ -8,7 +8,8 @@
 			Awards
 		.new_thing.button_flat
 			= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
-		
+		.new_thing.button_flat
+			= link_to '+ Create Amazon Award', "#", :class => 'open_modal', :id => 'amzn'
 	= form_for [ @child, AwardAssignment.new ], :html => { :style => 'display:none;' } do |f|
 		= render 'form', :f => f
 
@@ -62,4 +63,9 @@
 						%li
 							%label
 								= render 'award_to_assign', :award => award	
+								
+	#new_amzn.modal{ :title => "New Amazon Reward for #{@child.display_name}" }
+		= form_tag amzn_child_award_assignments_path( @child ) do |f|
+			= render 'amzn_form', :f => f
+
 		

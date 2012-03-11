@@ -1,7 +1,14 @@
 #child_main_screen
-	
 	.boxes
-		= render @assignments #render @relevant_assignment 
+		-if @assignments.present?
+			%h3
+				Did you?
+			= render @assignments #render @relevant_assignment 
+		-else
+			%h3
+				Great Job!  
+			%h4
+				You've met all your goals for today! Come back tomorrow to earn more cherries.
 	
 	-# unless @current_user.activities.empty?
 		#home_activity.boxes

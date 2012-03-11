@@ -1,12 +1,8 @@
 %h1
-	= possessize @current_user.name
-	Children
-= render 'users/nav'
-
+	Amazon Search Results
 %br
 .child_profile
 
-	= render 'children/child_sub_nav', :child => @child
 	%h3
 		= @response.items.count
 		results in
@@ -18,7 +14,8 @@
 		= render 'amazon/amzn_item', :item => item
 		= form_for [ @child, AwardAssignment.new ] do |f|
 			= f.hidden_field :index, :value => @index
-			= f.hidden_field :term, :value => item.get("title")
-			= f.hidden_field :asin, :value => item.get('asin')
-			= f.hidden_field :point_cost, :value => item.get('formattedprice').gsub(/\D/, "").to_i if item.get('formattedprice').present?
-			= f.submit "Add Award"
+			= f.hidden_field :term, :value => item.get("ItemAttributes/Title")
+			= f.hidden_field :asin, :value => item.get('ASIN')
+			= f.hidden_field :point_cost, :value => item.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub(/\D/, "").to_i if item.get('OfferSummary/LowestNewPrice/FormattedPrice').present?
+			= f.submit "Add Award", :class => 'button_flat'
+		%hr

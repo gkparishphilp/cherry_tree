@@ -40,7 +40,8 @@ class ObjectiveAssignment < ActiveRecord::Base
 	scope :available, where( "status <> 'deleted'" ) 
 	scope :active, where( "status = 'active'" )
 	scope :requested, where( "status = 'requested'")
-	
+	scope :checked_in, joins("join checkins on checkins.objective_assignment_id = objective_assignments.id").where("checkins.created_at > ?",1.day.ago)
+
 	def active?
 		self.status == 'active'
 	end
@@ -52,7 +53,7 @@ class ObjectiveAssignment < ActiveRecord::Base
 	def checkin_in_last?( period = 1.day.ago ) 
 		return  self.checkins.dated_between( period, Time.now ).present?
 	end
-	
+
 	def earned_for_period
 		start_time = self.get_period_start_time
 		if self.point_earnings.dated_between( start_time, Time.now ).count > 0
