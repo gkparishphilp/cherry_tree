@@ -17,9 +17,10 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		end
 		
 		create_table :lessons do |t|
-			t.string	:name
-			t.text		:description
-			t.string	:lesson_type
+			t.string		:name
+			t.referecens	:lesson_category
+			t.text			:description
+			t.string		:lesson_type
 			t.timestamps
 		end
 		
@@ -30,6 +31,10 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.integer		:point_value, :default => 1
 			t.string		:status, :default => 'active'
 			t.timestamps
+		end
+		
+		create_table :lesson_categories do |t|
+			t.string	:name
 		end
 		
 		create_table :screens do |t|
