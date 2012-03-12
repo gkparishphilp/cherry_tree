@@ -1,17 +1,3 @@
-# == Schema Information
-# Schema version: 20110420185439
-#
-# Table name: relationships
-#
-#  id              :integer(4)      not null, primary key
-#  user_id         :integer(4)
-#  related_user_id :integer(4)
-#  nickname        :string(255)
-#  role            :string(255)
-#  status          :string(255)     default("active")
-#  created_at      :datetime
-#  updated_at      :datetime
-#
 
 class Relationship < ActiveRecord::Base
 	

@@ -3,7 +3,3 @@
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
-
-Mime::Type.register "audio/ogg", :oga
-
-MIME::Types.add(MIME::Type.from_array("audio/ogg", %(oga)))

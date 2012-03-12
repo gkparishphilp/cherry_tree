@@ -1,7 +1,0 @@
-<% if @available %>
-	$('#name_availability').css( 'color', '#090' );
-<% else %>
-	$('#name_availability').css( 'color', '#900' );
-<% end %>
-	
-$('#name_availability').html( "<%= escape_javascript( @result ) %>" );

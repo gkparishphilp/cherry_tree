@@ -1,96 +1,15 @@
-# == Schema Information
-# Schema version: 20110420185439
-#
-# Table name: users
-#
-#  id                        :integer(4)      not null, primary key
-#  type                      :string(255)
-#  site_id                   :integer(4)
-#  registered_by_id          :integer(4)
-#  email                     :string(255)
-#  name                      :string(255)
-#  display_name              :string(255)
-#  score                     :integer(4)      default(0)
-#  birthday                  :datetime
-#  gender                    :string(255)
-#  points_earned             :integer(4)      default(100)
-#  point_balance             :integer(4)      default(100)
-#  level                     :integer(4)      default(0)
-#  website_name              :string(255)
-#  website_url               :string(255)
-#  bio                       :text
-#  hashed_password           :string(255)
-#  salt                      :string(255)
-#  remember_token            :string(255)
-#  remember_token_expires_at :datetime
-#  activation_code           :string(255)
-#  activated_at              :datetime
-#  status                    :string(255)     default("first")
-#  cached_slug               :string(255)
-#  orig_ip                   :string(255)
-#  last_ip                   :string(255)
-#  created_at                :datetime
-#  updated_at                :datetime
-#
-
-
-require 'digest/sha1'
 
 class User < ActiveRecord::Base
 	
 	# App -Specific Modules
-	include UserAchievements
+	#include UserAchievements
 	
-	include UserApp  # misc stuff not broken into module yet
-	
-	# Constants    --------------------------------------
+	#include UserApp  # misc stuff not broken into module yet
 
-	# Filters		--------------------------------------
-
-		# Order of filter invocation:
-		# before_validation
-		# before_validation_on_update or before_validation_on_create
-		# validate
-		# validate_on_update or validate_on_create
-		# after_validation
-		# after_validation_on_update or after_validation_on_create
-		# before_save
-		# before_update or before_create
-		# after_update or after_create
-		# after_save
-
-	before_validation		:set_name
-	after_create			:set_avatar
   
-	# Validations	--------------------------------------
-	validates	:email, :uniqueness => true, 
-						:length => {:minimum => 3, :maximum => 254},
-						:email => true,
-						:unless => :is_child?
-						
-	validates	:password, :confirmation => true, :length => { :minimum => 4, :maximum => 254 }, :if => :has_password?
 
-	validates	:name, :uniqueness => true, 
-						:length => {:minimum => 2, :maximum => 254},
-						:format => /\A[a-zA-Z0-9_]+\z/,
-						:if => :has_name?
-	
 	
 	# Relations   	--------------------------------------
-	has_many	:openids
-	has_many	:roles
-	has_many	:admin_sites, :through => :roles, :source => :site, :conditions => "role = 'admin'"
-	has_many	:contributor_sites, :through => :roles, :source => :site, :conditions => "role = 'contributor'"
-	has_many	:posts
-	has_many	:comments
-	has_many	:contacts
-	has_many	:twitter_accounts, 	:as => :owner
-	has_many	:facebook_accounts,	:as => :owner
-	
-	has_many	:articles, :as => :owner
-	
-	has_many	:activities
-
 
 	# Testing robust relationships
 	has_many	:relationships
@@ -143,16 +62,14 @@ class User < ActiveRecord::Base
 	has_many	:created_objective_assignments, :class_name => 'ObjectiveAssignment', :foreign_key => :creator_id
 	has_many	:created_objectives, :class_name => 'Objective', :foreign_key => :creator_id
 
-	has_many	:wishlists
-	has_many	:wishlist_items, :through => :wishlists
 
 	has_many	:point_earnings
 	has_many	:point_spendings
 
 	has_many	:award_assignments
-
 	# Awards that are available to the child
 	has_many	:assigned_awards, :through => :award_assignments, :source => :award
+	
 	
 	def active_assigned_awards
 		self.award_assignments.where( "status = 'active'" ).collect{ |assignment| assignment.award }
@@ -204,117 +121,12 @@ class User < ActiveRecord::Base
 	has_many	:invitations
 	has_many	:sent_invitations, :class_name => 'Invitation', :foreign_key => :creator_id
 	
-	# Plugins	--------------------------------------
-	has_friendly_id   :name, :use_slug => :true
 
-	has_attached :avatar, :formats => ['jpg', 'gif', 'png'], :process => { :resize => {
-				:profile  => "120",
-				:thumb => "64",
-				:tiny => "20"
-				}}
-	
-	acts_as_taggable_on	:favorite_books
-	acts_as_taggable_on	:favorite_movies_tv
-	acts_as_taggable_on	:favorite_toys
-	acts_as_taggable_on	:favorite_music
-	
-	acts_as_follower
-
-	# Class methods 	------------------------------------
-
-	def self.authenticate( id, password )
-		# going to tweak this to return the user(or false) along with a status msg
-		# so, new use will be user, msg = User.authenticate( email, password )
-		# also going to add the ability to login by username in addition to email
-		user = User.find_by_email( id ) || User.find_by_name( id )
-		
-		if user.nil?
-			return user, "Invalid user/password combination"
-		elsif !user.registered?
-			return false, "User not registered"
-		else
-			expected_password = encrypted_password( password, user.salt )
-			if user.hashed_password != expected_password
-				user = nil
-				return user, "Invalid user/password combination"
-			end
-		end
-		
-		return user, "#{user.email} successfully logged in"
-		
-  	end
-
-	def self.anonymous
-		User.first
-	end
-
-
-	# Attribute accessors		------------------------------------
-	attr_accessor	:password_confirmation
 
 	# Instance Methods	------------------------------------
 	# For sessions / Validations, etc..
 		
-	def anonymous?
-		self.id == 1
-	end
-	
-	def create_activation_code
-		self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-		self.save
-	end
-	
-	def create_remember_token
-		self.remember_token = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-		self.remember_token_expires_at = 1.day.from_now
-		self.save
-	end
-	
-	def has_email?
-		!self.email.blank?
-	end
-	
-	def has_name?
-		self.name.present?
-	end
-	
-	def has_password?
-		self.password.present?
-	end
-	
-	def has_default?( name )
-		if name == self.email.gsub( /\W/, "_" ) 
-			return true
-		else
-			return false
-		end
-	end
-	
-		#ruby attribute names can't end with question marks, only method names, so I'll
-		#write my own attr_writer and a custom attr_reader that ends with a ?
-	def human=(val)
-		@human=val
-	end
-  
-	def human?
-		@human
-	end
-	
-	def logged_in?
-		!self.anonymous?
-	end
-	
-		#'password' is a virtual attribute i.e. not in the db
-	def password
-		@password
-	end
 
-	def password=(pwd)
-		@password = pwd
-		return if pwd.blank?
-		create_new_salt
-		self.hashed_password = User.encrypted_password(self.password, self.salt)
-	end
 	
 	def pronoun_gender_possessive
 		return 'their' if self.gender.blank?
@@ -331,114 +143,187 @@ class User < ActiveRecord::Base
 		self.gender == 'male' ? 'him' : 'her'
 	end
 	
-	def registered?
-		self.hashed_password.present?
+	
+	def best_item
+		self.objective_assignments.active.first
 	end
 	
-	def validated?
-		!self.email.blank? && !self.activated_at.nil?
-	end
+	def most_relevant
+		
+		#gather up active assignments with no checkins for today
+		obj_assignments = self.objective_assignments.active.delete_if{ |assignment| 
+			assignment.checkin_in_last?( Time.now.beginning_of_day ) 
+		}
+		
+		#gather up uncompleted lesson assignments
+		lesson_assignments = self.lesson_assignments.delete_if{ |assignment|
+			assignment.completed_by?( self ) || assignment.offered_today_to?( self )
+		}
 	
-	# For permissions / Roles
-	
-	def admin?( site )
-		site.admins.include? self
-	end
-	
-	def contributor?( site )
-		contribs = site.contributors + site.admins
-		contribs.include? self
-	end
-	
-	def make_admin( site )
-		r = Role.create :user_id => self.id, :site_id => site.id, :role => 'admin'
-	end
-	
-	def make_contributor( site )
-		r = Role.create :user_id => self.id, :site_id => site.id, :role => 'contributor'
-	end
-	
-	def make_site_role( site, role )
-		r = Role.create :user_id => self.id, :site_id => site.id, :role => role
-	end
-	
-	# Stuff for Social Media ---------------------------------------------
-		# Facebook -------------------------------------------------
-	def facebook_user?
-		!self.facebook_accounts.empty?
-	end
-	
-	def social_accounts
-		self.twitter_accounts + self.facebook_accounts
-	end
-	
-		# Twitter --------------------------------------------------
-	def twitter_user?
-		!self.twitter_accounts.empty?
-	end
-	
-	
-	
-	def do_activity( verb, target=nil )
-		return self.activities.create :verb => verb, :target => target unless duplicate_activity?( verb, target, 5.minutes.ago )
-	end
-	
-	def duplicate_activity?( verb, target, since )
-		if target.present?
-			count = Activity.active.recent( since ).where( "activities.user_id = ? AND activities.target_id = ? AND activities.target_type = ? AND verb = ? ", 
-				self.id, target.id, target.class.name, verb ).count
+		#This message is actually the partial name in views/users which shows the all done screen
+		closing_message = 'done'
+		
+		# Send back number of assignments for counter
+		num_assignments = 0
+		num_assignments += obj_assignments.count if obj_assignments.present?
+		num_assignments += lesson_assignments.count if lesson_assignments.present?
+		
+		#Keep falling down the tree until a most relevant item is found or return the closing message
+		if obj_assignments.present?
+			parent = obj_assignments.first.objective
+			return obj_assignments.first, parent, num_assignments
+		elsif lesson_assignments.present?
+			parent = lesson_assignments.first.lesson
+			return lesson_assignments.first, parent, num_assignments
 		else
-			count = Activity.active.recent( since ).where( "activities.user_id = ? AND verb = ? ", self.id, verb ).count
+			return closing_message, nil, num_assignments
 		end
-		return 0 < count
+
 	end
 	
+	def is_child?
+		return self.type == 'Child'
+	end
+	
+	alias :child? :is_child?
+	
+	def relation_to( user )
+		self.relationships.find_by_related_user_id( user.id ).role
+	end
 
-	protected
+	def unrelate_to( user )
+		relation = self.relationships.find_by_related_user_id( user.id )
+		symmetric_relation = user.relationships.find_by_related_user_id( self.id )
+		relation.update_attributes :status => 'inactive' if relation
+		symmetric_relation.update_attributes :status => 'inactive' if symmetric_relation
+	end
 
-	def set_avatar
-		if self.has_email? && self.avatar.nil?
-			photo_url = "http://gravatar.com/avatar/" + Digest::MD5.hexdigest( self.email ) + "?d=identicon"
-			pic = Attachment.create( :path => photo_url, :attachment_type => 'avatar', :owner => self, :remote => true, :format => 'jpg' )
+	def rerelate_to( user )
+		relation = self.relationships.find_by_related_user_id( user.id )
+		symmetric_relation = user.relationships.find_by_related_user_id( self.id )
+		relation.update_attributes :status => 'active'
+		symmetric_relation.update_attributes :status => 'active' 
+	end
+	
+	def related_to?( user )
+		if relation = self.relationships.find_by_related_user_id( user.id )
+			relation.status == 'active' ? (return true) : (return false)
+		else
+			return false
+		end
+	end
+
+	def nickname( user=nil )
+		# nickname is defined in the relationship between users -- what one user calls another
+		# if called without a user for the relationship, just returns the display_name
+		if user.present?
+			relationship = self.relationships.find_by_related_user_id( user.id )
+			return relationship.nickname if relationship
+		end
+			
+		self.display_name
+	end
+	
+	def relate_to( user, args={} )
+		relationship = self.relationships.find_or_initialize_by_related_user_id( user.id )
+		if args[:as].present? 
+			role = args[:as]
+		elsif relationship.role.present?
+			role = relationship.role
+		else
+			role = 'relative'
+		end
+		if args[:nickname].present?
+			nickname = args[:nickname]
+		elsif relationship.nickname.present?
+			nickname = relationship.nickname
+		else
+			nickname = self.display_name
+		end
+		relationship.attributes = { :role => role, :nickname => nickname }
+		relationship.save
+		return relationship, relationship.symmetric_relationship
+	end
+	
+	def write_note( args={} )
+		if note = self.sent_notes.create( :subject => args[:subject], :content => args[:content] )
+			note.deliver_to( args[:to] )
 		end
 	end
 	
-	def setup_default_photo_album
-		self.photo_albums.create :title => 'Default'
+
+	def get_unchecked_assignments
+		assignments = self.objective_assignments.unchecked_for_today + self.objective_assignments.never_checked
+	end
+
+	
+	def earn_points_for( obj, points=nil )
+		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaction 
+		# and add points to the user's point_balance and point_total
+		points = obj.point_value if points.nil?
+		self.point_earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => points
+		self.update_attributes :points_earned => ( self.points_earned + points ), :point_balance => ( self.point_balance + points )
 	end
 	
-	def strip_website_url
-		website_url.gsub!('http://', '') unless website_url.nil?
-	end
 	
-	def set_name
-		unless( self.name.present? || self.is_child? )
-			if self.display_name.present?
-				self.name = self.display_name.gsub( /\W+/, "_" )
-			else
-				self.name = self.email.gsub( /\W+/, "_" ) 
-			end
+	
+	def can_unlock?( reward )
+		if reward.is_a?( Award )
+			assignment = reward.award_assignments.find_by_user_id( self.id )
+			return false if assignment.nil?
+			cost = assignment.point_cost
+		else
+			cost = reward.point_cost
 		end
-		self.display_name = self.name unless self.display_name.present?
+		return self.point_balance >= cost # && self.level >= reward.level
 	end
 	
+	def unlock( reward )
+		if reward.is_a?( Award )
+			assignment = reward.award_assignments.find_by_user_id( self.id )
+			return false, "You can't unlock this yet" if assignment.nil?
+			cost = assignment.point_cost
+		else
+			cost = reward.point_cost
+		end
+		return false, "You can't unlock this yet" unless self.can_unlock?( reward )
+		self.ownings.create :ownable_id => reward.id, :ownable_type => reward.class.name
+		self.update_attributes :point_balance => self.point_balance - cost
+		UserMailer.earned_award( self , reward ).deliver
+		return true, "Congratulations!"
+	end
 	
-	private
+	def owns?( item )
+		self.ownings.find_by_ownable_id_and_ownable_type( item.id, item.class.name )
+	end
+	
+	def point_earnings_since(time)
+		earned = self.point_earnings.for_assignments.dated_between(time.getutc,Time.now.getutc)
+		academics = 0
+		behavior = 0
+		health = 0
+		social = 0
+		
+		for earning in earned
+			case earning.earned_for.objective.objective_category.try(:name)
+			when 'Academics'
+				academics += earning.points
+			when 'Health'
+				health += earning.points
+			when 'Behavior'
+				behavior += earning.points
+			when 'Social'
+				social += earning.points
+			end 
+		end
+		
+		points = {'Academics' => academics, 'Health' => health, 'Behavior'=> behavior, 'Social'=> social}
+		
+		return points
+		
+	end
+	
 
-	def password_non_blank
-		errors.add(:password, "Missing Password") if hashed_password.blank?
-	end
-
-	def create_new_salt
-		self.salt = self.object_id.to_s + rand.to_s
-	end
-
-	def self.encrypted_password(pw, salt)
-		string_to_hash = pw + "439fgfg334gergersd9fhq34ufq" + salt
-		Digest::SHA1.hexdigest(string_to_hash)
-	end
-	
-	
 	
 
 end

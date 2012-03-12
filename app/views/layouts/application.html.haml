@@ -2,6 +2,17 @@
 %html
 	%head
 		= render 'layouts/meta', :css => 'app'
+		
+		= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js', 'jquery.cookie', 'rails', 'application'
+		
+		= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/cupertino/jquery-ui.css'
+		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Corben:bold&subset=latin'
+		= stylesheet_link_tag 'app', :media => 'screen, projection, print'
+
+		/[if IE]
+			= stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+
+		
 
 	%body
 		-#

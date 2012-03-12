@@ -2,9 +2,29 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# If you have a Gemfile, require the gems listed there, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+# Hack to allow this app to monkey-patch Engine App classes
+require 'active_support/dependencies'
+module ActiveSupport::Dependencies
+	alias_method :require_or_load_without_multiple, :require_or_load
+	def require_or_load( file_name, const_path=nil )
+		if file_name.starts_with?( Rails.root.to_s + '/app' )
+			relative_name = file_name.gsub( Rails.root.to_s, '' )
+			@engine_paths ||= CherryTree::Application.railties.engines.collect{ |engine| engine.config.root.to_s }
+			@engine_paths.each do |path|
+				engine_file = File.join( path, relative_name )
+				require_or_load_without_multiple( engine_file, const_path ) if File.file?( engine_file )
+			end
+		end
+		require_or_load_without_multiple( file_name, const_path )
+	end
+end
+
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 
 module CherryTree
   class Application < Rails::Application
@@ -21,7 +41,7 @@ module CherryTree
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
+	config.active_record.observers = :user_content_observer, :media_observer, :user_observer, :site_membership_observer, :filter_observer
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Pacific Time (US & Canada)'
@@ -30,27 +50,16 @@ module CherryTree
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # JavaScript files you want as :defaults (application.js is always included).
-    # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-	# Rails 3 doesn’t autoload modules/code in lib by default now. 
-	config.autoload_paths += %W(#{config.root}/lib)
+    # Enable the asset pipeline
+    config.assets.enabled = true
 
-	# Directory for cache sweepers
-	config.autoload_paths += %W( #{Rails.root.to_s}/app/sweepers )
-	
-	config.generators do |g|
-		g.helper false
-		g.stylesheets false
-		g.template_engine :haml
-		g.test_framework false
-	 end
-	
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
   end
 end

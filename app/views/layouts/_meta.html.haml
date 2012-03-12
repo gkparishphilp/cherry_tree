@@ -1,17 +1,19 @@
-%link( rel="shortcut icon" href="/favicon.ico" )
+-# 
+	This file declares title, description, and other meta tags
 
-= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/cupertino/jquery-ui.css'
-= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Corben:bold&subset=latin'
-= stylesheet_link_tag css, :media => 'screen, projection, print'
-
-/[if IE]
-	= stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-
-= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js', 'jquery.cookie', 'rails', 'application'
+- if @current_site.favicon.present?
+	%link{ :rel => "shortcut icon", :href => @current_site.favicon.location }
+- else
+	%link{ :rel => "shortcut icon", :href => "images/favicon.ico" }
 
 = csrf_meta_tag
 
-= get_description
+%meta{ :name => 'description', :content => @page_description }
+- if @page_keywords.present?
+	%meta{ :name => 'keywords', :content => @page_keywords }
+
+- for tag in @current_site.site_metatags
+	%meta{ :name => tag.name, :content => tag.content }
 
 %title
-	= get_title
+	= @page_title
