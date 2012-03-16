@@ -16,7 +16,7 @@
 					%p
 					= raw(Gchart.bar(:data => [[@current_user.point_balance],[assignment.point_cost]], :stacked => true, :bar_colors =>'00FF00,FF0000', :orientation => 'horizontal', :size => '100x20', :custom=>'chxt=y,x&chxs=0,,0,0,_,676767|1,,0,0,_,676767&chf=bg,s,67676700&chf=bg,s,67676700', :format=>'image_tag' ))
 				- else
-					= link_to "Print It", print_award_url( assignment.award, :child_id => @current_user.id, :host => 'thecherrytree.com' )
+					= link_to "Unlock It!", unlock_award_path( assignment.award, :type => 'award' )
 				
 		.clear
 		.treasure_box.clearfix

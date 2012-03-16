@@ -53,10 +53,12 @@ class AwardsController < ApplicationController
 		if success
 			pop_flash "Congratulations, ask your <br>parent to check their email <br>for your prize!", :award_message
 			@current_user.do_activity( "Unlocked the award: '#{@award.name}'!", @award )
+			redirect_to print_award_url( @award, :child_id => @current_user.id, :host => request.host )
 		else
 			pop_flash msg, :error
+			redirect_to :back
+			
 		end
-		redirect_to :back
 	end
 
 	def create
