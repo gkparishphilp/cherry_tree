@@ -108,33 +108,39 @@ e.child_profile
 
 .treasure_item
 	text-align: center
-	width: 40.5%
-	height: 153px
+	width: 140px
+	height: 220px
 	:margin 5px 15px 10px 0
-	+rounded(5px)
+	+rounded(10px)
 	float: left
 	border: 1px solid #ddd
-	padding: 10px 5px
+	padding: 0
 	font-size: 12px
 	:background url(/images/gradient_bg.jpg) repeat-x left bottom #fff
 	.item
-		:height 50px
+		:height 125px
 		:overflow hidden
-		:margin 7px 0
+		:margin 0px 0
 		img
 			:height 100%
 	b
 		:display block
+		:font-weight bold
+		:padding 0 5px
 		:white-space nowrap
 		:overflow hidden
-		:width 98%
+		:height 30px
+		:line-height 30px
 	.cost
-		:margin 10px 0 7px
+		:margin 5px 0
 		:font-weight bold
 		:font-size 12px
 	.button_small
 		:position relative
-		:top 10px
+		:top 0
+	.chart
+		:margin-top 5px
+
 
 #awards
 	:background-color #fff
@@ -143,7 +149,6 @@ e.child_profile
 	:border 1px solid #ccc
 	:margin-top 20px
 	.item
-		:height 70px
 	.item_name
 		:min-height 30px
 	.treasure_item

@@ -1,0 +1,22 @@
+- for assignment in @current_user.award_assignments.active
+            .treasure_box.clearfix
+                = link_to image_tag( 'treasure_chest.png' ), awards_path
+                .col
+                    = link_to 'Go to Treasure Chest', awards_path
+            .treasure_item
+                %b= snip assignment.award.name, 20
+                .item
+                    = link_to avatar_tag( assignment.award, :thumb ), asdsa_path( assignment.award, :type => 'award' )
+                .cost
+                    Cost:
+                    = assignment.point_cost
+                    cherries
+                - if assignment.point_cost > @current_user.point_balance
+                    = assignment.point_cost - @current_user.point_balance
+                    cherries to Go!
+                    %p
+                    = raw(Gchart.bar(:data => [[@current_user.point_balance],[assignment.point_cost]], :stacked => true, :bar_colors =>'00FF00,FF0000', :orientation => 'horizontal', :size => '100x20', :custom=>'chxt=y,x&chxs=0,,0,0,_,676767|1,,0,0,_,676767&chf=bg,s,67676700&chf=bg,s,67676700', :format=>'image_tag' ))
+                - else
+                    = link_to "Unlock It!", asda_path( assignment.award, :type => 'award'), :class => 'button_small red'
+                
+        .clear
