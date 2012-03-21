@@ -1,11 +1,11 @@
-.amzn_item
-	.amzn_thumb
-		= image_tag( item.get_hash( 'MediumImage' )['URL'], :width => 64 ) if item.get_hash( 'MediumImage' ).present?
-	.amzn_data
-		.amzn_title
-			= link_to item.get("ItemAttributes/Title"), item.get('DetailPageURL')
-			(
-			= item.get('OfferSummary/LowestNewPrice/FormattedPrice')
-			)
+.amzn_item.clearfix
+	.amzn_title
+		= link_to item.get("ItemAttributes/Title"), item.get('DetailPageURL')
+		(
+		= item.get('ItemAttributes/ListPrice/FormattedPrice')
+		)
+	.amzn_thumb.float_left
+		= image_tag( item.get_hash( 'LargeImage' )['URL'], :width => 96 ) if item.get_hash( 'LargeImage' ).present?
+	.amzn_data.float_left
 		.amzn_desc
 			= item.get('EditorialReviews/EditorialReview/Content').html_safe if item.get('EditorialReviews/EditorialReview').present?
