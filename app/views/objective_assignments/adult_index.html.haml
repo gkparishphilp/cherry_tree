@@ -5,9 +5,7 @@
 	
 	.top-header.clearfix
 		%span.title
-			Create objectives for 
-			= @child.name.capitalize
-			here.
+
 		.new_thing.button_flat
 			= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
 			
@@ -76,7 +74,7 @@
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Save Changes", "", :class => 'save_form'
+		= link_to "Save Changes", child_path( @child ), :class => 'save_form'
 	#accordion.goals	
 		- for cat in ObjectiveCategory.all
 			-next if cat.objectives.empty?

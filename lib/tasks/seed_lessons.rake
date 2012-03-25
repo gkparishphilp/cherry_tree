@@ -6,7 +6,7 @@ task :seed_lessons => :environment do
 	s4 = l.screens.create :sequence => 4, :content => "Adding big numbers is easy as well. For example, think of a big number, say, 9. Now let's think of another big number such as 7. All you have to do is count the next 7 numbers after 9 to find out what 9 + 7 is. Give it a try and then move on to the next page." 
 	s5 = l.screens.create :sequence => 5, :content => 'If you counted 16, you are correct! The more you practice adding numbers, the less you will have to use your fingers to count! There are many shortcuts to adding bigger number which you will learn as you get older.'
 
-	q = l.quizzes.create :name => 'Addition Quiz', :point_value => 50
+	q = l.quizzes.create :name => 'Addition Quiz', :point_value => 2
 	quest = q.questions.create :content => '2+4=?'
 	quest.answers.create :content => '4'
 	quest.answers.create :content => '5'
@@ -33,7 +33,7 @@ task :seed_lessons => :environment do
 	l2.screens.create :sequence => 6, :content => "If you counted 9, you are correct! So you would start at 14 and then count 13, 12, 11, 10, and then 9. 13 - 5 = 9."
 	l2.screens.create :sequence => 7, :content => "Remember, the more you practice subtracting numbers, the faster you will be at it!"
 
-	q2 = l2.quizzes.create :name => 'Subtraction Quiz', :point_value => 50
+	q2 = l2.quizzes.create :name => 'Subtraction Quiz', :point_value => 2
 	quest = q2.questions.create :content => '3-1=?'
 	quest.answers.create :content => '1'
 	quest.answers.create :content => '2', :correct => true
@@ -60,7 +60,7 @@ task :seed_lessons => :environment do
 	s2 = l.screens.create :sequence => 2, :content => 'The first sense we will be learning about is sight. Sight helps us see each other, see colors, and see people moving. We use our eyes to see things.'
 	s3 = l.screens.create :sequence => 3, :content => "Sight is very important and can get worse if you don't take care of your eyes. You might have to wear glasses if your eyes get bad."
 	s4 = l.screens.create :sequence => 4, :content => 'Hearing allows us to hear sounds. We use our ears to hear people, animals, and objects. These sounds can help us to identify things.'
-	q = l.quizzes.create :name => 'Sight and Hearing Quiz', :point_value => 40
+	q = l.quizzes.create :name => 'Sight and Hearing Quiz', :point_value => 2
 	quest = q.questions.create :content => 'Sight allows us to see things.'
 	quest.answers.create :content => 'True', :correct => true
 	quest.answers.create :content => 'False'
@@ -79,7 +79,7 @@ task :seed_lessons => :environment do
 	s2 = l2.screens.create :sequence => 2, :content => 'The sense of touch allows us to learn about the world by feeling it. We mostly use our hands but we can use any part of our body to feel things.'
 	s3 = l2.screens.create :sequence => 3, :content => 'The sense of smell allows us to identify or enjoy things by their scent. We use our nose to smell things. Smells can also warn us about dangerous things.'
 	s4 = l2.screens.create :sequence => 4, :content => 'Taste helps us to select and enjoy food and drinks! We have many different sensors in our tongue that help us taste salty, sweet, bitter, and sour things.'
-	q2 = l2.quizzes.create :name => 'Touch, Smell, and Taste Quiz', :point_value => 50
+	q2 = l2.quizzes.create :name => 'Touch, Smell, and Taste Quiz', :point_value => 2
 	quest = q2.questions.create :content => 'We can only use our hands to touch and feel things.'
 	quest.answers.create :content => 'True'
 	quest.answers.create :content => 'False', :correct => true
@@ -100,7 +100,7 @@ task :seed_lessons => :environment do
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about the United States of America and some of the facts about our country!'
 	s2 = l.screens.create :sequence => 2, :content => 'The country we live in called the United States of America. This country was founded in 1776. There are 50 states in America and over 300 million people. The official language in the country is English.'
 	s3 = l.screens.create :sequence => 3, :content => "The capital of our country is Washington D.C.. That's where the president and his family lives!"
-	q = l.quizzes.create :name => 'U.S. History Quiz', :point_value => 30
+	q = l.quizzes.create :name => 'U.S. History Quiz', :point_value => 2
 	quest = q.questions.create :content => 'When was America founded?'
 	quest.answers.create :content => '1776', :correct => true
 	quest.answers.create :content => '1814'
@@ -116,7 +116,7 @@ task :seed_lessons => :environment do
 	s3 = l.screens.create :sequence => 3, :content => "Let's pretend we have an apple pie and we split it into 4 equal slices. We give 3 slices to Bob and 1 slice to Billy. We would write that Bob has 3/4 (3 fourths) of the pie while Billy only has 1/4 (one quarter) of the pie."
 	s4 = l.screens.create :sequence => 4, :content => "So not let's pretend we're cutting a big watermelon into 20 slices and everybody gets 2 slices. We would say everybody gets 2/20 of the watermelon."
 	s5 = l.screens.create :sequence => 5, :content => "There are different ways to say different fractions. For example 1/2 can be called 'one-half', 'half', or even just 'one out of two'. For larger and more complex fractions like 7/8, we could say 'seven-eighths or seven out of eight'."
-	q = l.quizzes.create :name => 'Fractions Quiz', :point_value => 50
+	q = l.quizzes.create :name => 'Fractions Quiz', :point_value => 2
 	quest = q.questions.create :content => 'How would you say 1/4?'
 	quest.answers.create :content => 'one-half'
 	quest.answers.create :content => 'one-fourths', :correct => true
@@ -137,7 +137,7 @@ task :seed_lessons => :environment do
 	l2.screens.create :sequence => 4, :content => 'Take the equation 2/5 + 1/5. By adding the numerators 2 and 1 together, we get 3. The denominator stays the same, so our final answer is 3/5, or three-fifths.'
 	l2.screens.create :sequence => 5, :content => 'Notice how if you try adding numbers with different denominators, for example 1/2 + 1/3, you cannot say it equals to 2/2, or 2/3, or 2/5. To add fractions with different denominators, we will have to use a different method which we will learn later.'
 	l2.screens.create :sequence => 6, :content => 'With subtraction, we do the exact same thing as before. So taking the numerator of a fraction, we subtract it with the numerator from another fraction. For example, 4/6 - 3/6 = 1/6.'
-	q2 = l2.quizzes.create :name => 'Fraction Addition and Subtraction Quiz', :point_value => 50
+	q2 = l2.quizzes.create :name => 'Fraction Addition and Subtraction Quiz', :point_value => 2
 	quest = q2.questions.create :content => '3/5+1/5=?'
 	quest.answers.create :content => '3/5'
 	quest.answers.create :content => '1/5'
@@ -161,7 +161,7 @@ task :seed_lessons => :environment do
 	s2 = l.screens.create :sequence => 2, :content => 'The first type of animals are mammals. These animals include dogs, horses, even whales! All mammals have hair and must drink milk when they are a baby. Did you know that even humans are mammals?'
 	s3 = l.screens.create :sequence => 3, :content => 'The second type of animals are birds. All birds have feathers and are born in hard-shelled eggs. The feathers along with its very light weight allow birds to fly, steer, and land.'
 	s3 = l.screens.create :sequence => 4, :content => 'The third type of animals are fishes. Fishes are vertebrates (ver-tuh-brates) which mean that they have a backbone. Fishes live in water and have gills, scales, and fins. The gills are what fishes use to breathe underwater.'
-	q = l.quizzes.create :name => 'Mammals, Birds, and Fishes Quiz', :point_value => 30
+	q = l.quizzes.create :name => 'Mammals, Birds, and Fishes Quiz', :point_value => 2
 	quest = q.questions.create :content => 'Name at least three different types of mammals.'
 	quest2 = q.questions.create :content => 'What do fishes use to breathe underwater?'
 	quest2.answers.create :content => 'Nose'
@@ -177,7 +177,7 @@ task :seed_lessons => :environment do
 	s2 = l.screens.create :sequence => 2, :content => 'The first type of animals are reptiles. Reptiles have scaly skins and are cold-blooded. A lot of reptiles can swim or walk on land. Reptiles include alligators, snakes, and lizards.'
 	s3 = l2.screens.create :sequence => 3, :content => 'The second type of animals are amphibians (am-fi-bee-uns). Amphibians are born in water and are born with gills. But as they grow older, they grow lungs and can live on land. Amphibians include frogs, salamanders, and toads.'
 	s4 = l2.screens.create :sequence => 3, :content => "The last type of animals are invertebrates. You remember that vertebrates are animals with backbones. Invertebrates are basically animals without backbones. Over 95% of all animals are invertebrates. A lot of bugs such as fruit flies and spiders are called invertebrates."
-	q2 = l2.quizzes.create :name => 'Reptiles, Amphibians, and Invertebrates Quiz', :point_value => 30
+	q2 = l2.quizzes.create :name => 'Reptiles, Amphibians, and Invertebrates Quiz', :point_value => 2
 	quest = q2.questions.create :content => 'Reptiles are warm-blooded.'
 	quest.answers.create :content => 'True'
 	quest.answers.create :content => 'False', :correct => true
@@ -194,7 +194,7 @@ task :seed_lessons => :environment do
 	s3 = l.screens.create :sequence => 3, :content => 'There are all sorts of jobs available for different types of people. If you really like plants, you can be a botanist and study plants for a living! If you like to save lives and fight fires you can be a firefighter.'
 	s4 = l.screens.create :sequence => 4, :content => "In order to do a lot of these jobs, people need to go to school and get a degree. Some jobs require more school than others. For example, doctors will have to go to many more years of school than a police officer because there's so many things doctors need to know!"
 	s5 = l.screens.create :sequence => 5, :content => "It's never too early to start thinking about what you want to do. If you're interested in a particular job, go ahead and ask you mom and dad or teacher about it!"
-	q = l.quizzes.create :name => 'Jobs Quiz', :point_value => 30
+	q = l.quizzes.create :name => 'Jobs Quiz', :point_value => 2
 	quest = q.questions.create :content => 'If you really like working with kids, which one of these jobs would you be?'
 	quest.answers.create :content => 'Teacher', :correct => true
 	quest.answers.create :content => 'Police Officer'
@@ -211,7 +211,7 @@ task :seed_lessons => :environment do
 	s4 = l.screens.create :sequence => 4, :content => 'There are a couple of cool tricks you can do with multiplication. Some of the cool tricks to remember are multiplication equations that have the number 0, 1, or 10.'
 	s5 = l.screens.create :sequence => 5, :content => 'Any number multiplied by 0 is 0. 5 x 0 is the same thing as saying you have no fives, which is zero. Any number multiplied by 1 is just the same number. 5x1=5, 8x1=8, 215x1=215. To multiply a number by 10, just add an extra 0 digit on the right side. Try to find out what 7x10 is without having to do any addition.'
 	s6 = l.screens.create :sequence => 6, :content => 'If you calculated 70, you are correct! Multiplication will be hard in the beginning and there are different methods to learn and practice. One way is to simply rewrite the problem as an addition equation. You can rewrite 4x3 as 4+4+4 or 3+3+3+3. Another way is to memorize the multiplication table and then keep on practicing and practicing.'
-	q = l.quizzes.create :name => 'Multiplication Quiz', :point_value => 50
+	q = l.quizzes.create :name => 'Multiplication Quiz', :point_value => 2
 	quest = q.questions.create :content => '3x2=?'
 	quest.answers.create :content => '6', :correct => true
 	quest.answers.create :content => '5'
@@ -238,7 +238,7 @@ task :seed_lessons => :environment do
 	s3 = l2.screens.create :sequence => 3, :content => 'If you answered 2, you are correct! Also note that division problems can be rewritten as a multiplication problem is written in the reversed order. For example, take 8/4=2. If we take the 2 and multiplied it by the 4, we get 2x4=8. However, division problems themselves cannot be written in reverse order! 4/2 is not the same as 2/4!'
 	s4 = l2.screens.create :sequence => 4, :content => 'Similar to multiplication, there are also a couple of cool tricks for division as well! Any number divided by 1 is just he number itself while any number divided by the same number is 1. 7/1=7 is just saying that if you divide 7 into one piece, you still have 7. 7/7=1 is saying that if you divide 7 into 7 equal pieces, you get 1.'
 	s5 = l2.screens.create :sequence => 5, :content => "Note however, that you cannot divide numbers by 0. if you tried to divide a number by 0 on a calculator, it will say 'error' or 'undefined'!"
-	q2 = l2.quizzes.create :name => 'Division Quiz', :point_value => 50
+	q2 = l2.quizzes.create :name => 'Division Quiz', :point_value => 2
 	quest = q2.questions.create :content => '9/3=?'
 	quest.answers.create :content => '2'
 	quest.answers.create :content => '3', :correct => true
@@ -263,7 +263,7 @@ task :seed_lessons => :environment do
 	s2 = l.screens.create :sequence => 2, :content => "First, let's first talk about what the water cycle is. The earth only has limited amounts of water. That water keeps going around and around in a cycle called 'The Water Cycle'. This cycle has four stages and today we will be learning about he first two."
 	s3 = l.screens.create :sequence => 3, :content => 'The first step of the water cycle is evaporation. Evaporation is when the sun heats up water in lakes, oceans, and rivers and turns that water into steam or wapor. The steam or vapor leaves the big pool of water and goes into the air.'
 	s4 = l.screens.create :sequence => 4, :content => 'The next step of the water cycle is condensation. When the water vapor in the air gets cold, it turns back into liquid. The liquid in the sky eventually start forming cloud. When you pour a glass of cold water in a hot day and leave it outside, you will see water outside the glass, even though there is no leak in the glass! This is called condensation.'
-	q = l.quizzes.create :name => 'Evaporation and Condensation Quiz', :point_value => 40
+	q = l.quizzes.create :name => 'Evaporation and Condensation Quiz', :point_value => 2
 	quest = q.questions.create :content => 'Evaporation takes place only when the water is exposed to heat or sunlight.'
 	quest.answers.create :content => 'True', :correct => true
 	quest.answers.create :content => 'False'
@@ -281,7 +281,7 @@ task :seed_lessons => :environment do
 	s2 = l2.screens.create :sequence => 2, :content => 'Precipitation occurs after condensation. When so much water has condensed that the air cannot hold it anymore, it starts to rain. Water falls back to the earth either by rain, snow, sleet, or hail. This process is called precipitation.'
 	s3 = l2.screens.create :sequence => 3, :content => "Collection occurs when the water that falls back to earth gets 'collected'. The water can end back up in another big body or water or it can be absorbed by plants. The water even soak into the earth and become part of 'ground water'."
 	s4 = l2.screens.create :sequence => 4, :content => 'Of course, after all this, the process starts all over again!'
-	q2 = l2.quizzes.create :name => 'Precipitation and Collection Quiz', :point_value => 40
+	q2 = l2.quizzes.create :name => 'Precipitation and Collection Quiz', :point_value => 2
 	quest = q2.questions.create :content => 'The only way precipitation occurs is through rain.'
 	quest.answers.create :content => 'True'
 	quest.answers.create :content => 'False', :correct => true
@@ -299,7 +299,7 @@ task :seed_lessons => :environment do
 	s2 = l.screens.create :sequence => 2, :content => 'George Washington. George Washington was a famous general in the American army back in the Revolutionary War in 1776. After leading the Continental Army to victory against the British, he was elected as the first president of the United States.'
 	s3 = l.screens.create :sequence => 3, :content => 'Benjamin Franklin. Benjamin Franklin was a famous scientist, author, and politician who was famous for promoting independence from the British. Benjamin Franklin conducted many science experiements involving electricity. Benjamin Franklin never became a president.'
 	s4 = l.screens.create :sequence => 4, :content => 'Alexander Hamilton. Alexander Hamilton was a politician and lawyer who was best known for drafting the Constitution of the United States of America, a document that established the rights of citizens and the government. Alexander Hamilton was killed in a duel against a rival politician.'
-	q = l.quizzes.create :name => 'Founding Fathers Quiz', :point_value => 30
+	q = l.quizzes.create :name => 'Founding Fathers Quiz', :point_value => 2
 	quest = q.questions.create :content => 'Who was the first president of the United States of America?'
 	quest2 = q.questions.create :content => 'Which founding father was known for his interest in science?'
 	quest2.answers.create :content => 'George Washington'
@@ -317,7 +317,7 @@ task :seed_lessons => :environment do
 	s6 = l.screens.create :sequence => 6, :content => 'If you answered 72, go ahead and give yourself a pat on the back because that was a tough equation. For division is when it gets much trickier. say you want to divide 36 by 2. You would write out 36/2. This time however, you need to solve the problem from left to right and then carry over the remainder to the right. We start with 3/2 which is 1 with a remainder of 1. Now we attach the remaining 6 to the right of that 1 and then we solve 16/2.'
 	s7 = l.screens.create :sequence => 7, :content => 'If you answered 18, you are correct! Once again with these kind of harder arithmetic problems, the only way you will get better is if you keep on practicing.'
 
-	q = l.quizzes.create :name => 'Advanced Arithmetic Quiz', :point_value => 50
+	q = l.quizzes.create :name => 'Advanced Arithmetic Quiz', :point_value => 2
 	quest = q.questions.create :content => 'What is the difference between 25 and 6?'
 	quest.answers.create :content => '13'
 	quest.answers.create :content => '19', :correct => true
@@ -371,7 +371,7 @@ task :seed_lessons => :environment do
 	s3 = l.screens.create :sequence => 3, :content => "Stem: The stem is like the plumbing system of the plant. A lot of the plant's nutrients and water travels from the root through the stem. Food stored in the form of glucose also travels through the stems from the leaves. Like the roots, the stem also supports the plant and prevents it from falling over."
 	s4 = l.screens.create :sequence => 4, :content => "Leaves: A lot of the plant's food is made from the leaves. Leaves help capture sunlight in a process called photosynthesis, which we will learn in the next lesson."
 	s5 = l.screens.create :sequence => 5, :content => 'Flower: The flower is in charge of a lot of the reproductive part of the plant. Flowers have pollen as well as tiny eggs called ovules which helps in the creation of a fruit.'
-	q = l.quizzes.create :name => 'Plant Parts Quiz', :point_value => 50
+	q = l.quizzes.create :name => 'Plant Parts Quiz', :point_value => 2
 	quest = q.questions.create :content => 'Name three things that the root of a plant does.'
 	quest2 = q.questions.create :content => 'Both the stem and the roots help the support the plant.'
 	quest2.answers.create :content => 'True', :correct => true
@@ -394,7 +394,7 @@ task :seed_lessons => :environment do
 	l2.screens.create :sequence => 3, :content => 'Step 1: The sunlight is combined with water, carbon dioxide, and nutrients from the soil. Carbon dioxide is the gas that humans breathe out after inhaling oxygen.'
 	l2.screens.create :sequence => 4, :content => 'Step 2: The chlorophyll processes the ingredients and create sugar (plant food) as well as oxygen (gas that humans breathe in in order to live).'
 	l2.screens.create :sequence => 5, :content => 'We can see that plants and animals/humans need each other in order to survive since humans need oxygen to breathe and plants need carbon dioxide to make food.'
-	q2 = l2.quizzes.create :name => 'Photosynthesis Quiz', :point_value => 40
+	q2 = l2.quizzes.create :name => 'Photosynthesis Quiz', :point_value => 2
 	quest = q2.questions.create :content => 'Which part of the plant is the chlorophyll located in?'
 	quest.answers.create :content => 'Stem'
 	quest.answers.create :content => 'Flower'
@@ -413,7 +413,7 @@ task :seed_lessons => :environment do
 	s3 = l.screens.create :sequence => 3, :content => 'Executive Branch. Headed by the President. The President is responsible for carrying out federal laws and directing foreign policy. The powers of the President include heading the Armed Forces, dealing with other countries, and vetoing laws.'
 	s4 = l.screens.create :sequence => 4, :content => "Judicial Branch. Headed by the Supreme Court. The Judicial Branch is responsible for interpreting the Constitution, reviewing laws, and deciding on cases that involve states' rights. Members of the Judicial Branch are hand picked by the President."
 	s5 = l.screens.create :sequence => 5, :content => 'Each of these branches make sure the other branch does not have too much power in a system called checks and balances.'
-	q = l.quizzes.create :name => '3 Branches of the Government Quiz', :point_value => 40
+	q = l.quizzes.create :name => '3 Branches of the Government Quiz', :point_value => 2
 	quest = q.questions.create :content => 'Which branch is headed by the President of the United States?'
 	quest.answers.create :content => 'All of them'
 	quest.answers.create :content => 'The Executive Branch', :correct => true
@@ -432,7 +432,7 @@ task :seed_lessons => :environment do
 	s1 = l.screens.create :sequence => 1, :content => 'Welcome to the first lesson. Today we will be learning how to multiply and divide fractions.'
 	s2 = l.screens.create :sequence => 2, :content => "Fraction multiplication is quite simple, even easier than fraction addition. All you have to do is multiply the numerators of the two fractions and the denominators of the two fractions. Let's take 5/7 and 1/2. To multiply these two fractions, we take 5x1=5 and 7x2=14. We then combine the answers and we get 5/14."
 
-	q = l.quizzes.create :name => 'Fraction Multiplication Quiz', :point_value => 50
+	q = l.quizzes.create :name => 'Fraction Multiplication Quiz', :point_value => 2
 	quest = q.questions.create :content => '3/4 x 1/2=?'
 	quest.answers.create :content => '2'
 	quest.answers.create :content => '3/8', :correct => true
@@ -459,7 +459,7 @@ task :seed_lessons => :environment do
 	l2.screens.create :sequence => 2, :content => "Before we learn how to divide fractions, we need to first know what a reciprocal is. The reciprocal of a fraction is the fraction you would multiply the original fraction with to get 1. It's also basically just the numerator and the denominator switched around! Let's take the fraction 3/4. The reciprocal is simply 4/3. If you multiply those two fractions together, you get 12/12, or 1."
 	l2.screens.create :sequence => 3, :content => "To divide a two fractions, all you simply have to do is to take the first fraction and multiply it with the reciprocal of the second fraction. Let's try 3/5 / 2/3. All you simply have to do is flip the second fraction to 3/2. Then you multiply 3/2 and with the first fraction 3/5. Go ahead and give it a try."
 	l2.screens.create :sequence => 4, :content => 'If you got 9/10, you are correct! Once again, there are a couple of tricks when it comes to dividing fractions. As usual, dividing by 0 is impossible. For equations that tell you to divide by 10, simply add an extra 0 in the units side of the denominator.'
-	q2 = l2.quizzes.create :name => 'Fraction Division Quiz', :point_value => 50
+	q2 = l2.quizzes.create :name => 'Fraction Division Quiz', :point_value => 2
 	quest = q2.questions.create :content => '3/8 / 1/2=?'
 	quest.answers.create :content => '3/4', :correct => true
 	quest.answers.create :content => '4'
@@ -487,7 +487,7 @@ task :seed_lessons => :environment do
 	s3 = l.screens.create :sequence => 3, :content => "Step 1: Observation. This step is where you ask yourself a question based on something you observe. Ask questions that have 'how, where, why, who, what, which, and when' in them. Hopefully this is a question about something that you can measure."
 	s4 = l.screens.create :sequence => 4, :content => "Step 2: Hypothesis. Once you have a question, it is important to come up with a hypothesis. The hypothesis is an educated guess about how things will work. The format of a hypothesis usually goes like this: 'IF______(I do this), then_______(this) will happen.' Your hypothesis does not have to be correct, it's just so you can make some kind of judgement before you start experimenting."
 
-	q = l.quizzes.create :name => 'Scientific Theory: Observation and Hypothesis Quiz', :point_value => 40
+	q = l.quizzes.create :name => 'Scientific Theory: Observation and Hypothesis Quiz', :point_value => 2
 	quest = q.questions.create :content => 'The first step of the scientific theory is to create a hypothesis.'
 	quest.answers.create :content => 'True'
 	quest.answers.create :content => 'False', :correct => true
@@ -504,7 +504,7 @@ task :seed_lessons => :environment do
 	l2.screens.create :sequence => 2, :content => 'Step 3: Experiment. This is the fun part. This is where you will conduct experiments that will test and see whether your hypothesis is correct or not. Your experiments need to be a fair test meaning that you change only one factor at a time while you keep everything else the same.'
 	l2.screens.create :sequence => 3, :content => 'It is also important to keep repeating experiments several times to ensure accuracy. Always make sure you record the results of every experiment.'
 	l2.screens.create :sequence => 4, :content => 'Step 4: Analysis. Once you have finished experimenting, you need to take the data you recorded to make an analysis. You will use this information you obtained to determine whether your hypothesis is true or not. After determining whether your hypothesis is true or not, you need to communicate your results in a final report.'
-	q2 = l2.quizzes.create :name => 'Scientific Method: Experiment and Analysis Quiz', :point_value => 40
+	q2 = l2.quizzes.create :name => 'Scientific Method: Experiment and Analysis Quiz', :point_value => 2
 	quest = q2.questions.create :content => 'It is not necessary to experiment in order to reach the last step of the scientific method.'
 	quest.answers.create :content => 'True'
 	quest.answers.create :content => 'False', :correct => true
@@ -519,7 +519,7 @@ task :seed_lessons => :environment do
 	s2 = l.screens.create :sequence => 2, :content => "The Bill of Rights is a document that lists some of the rights reserved to individuals and the state. The Bill of Rights was written by states who were afraid that the Federal Government would be too big and have too much power. The Bill of Rights would guarantee certain 'unalienable' rights to the people."
 	s3 = l.screens.create :sequence => 3, :content => 'The Bill of Rights was approved in 1791 and in the beginning started off with 10 amendments. All of the amendments afterwards are important as well but are not called the Bill of Rights. The first three amendments include the freedom of speech, freedom of having guns, and freedom to not let soldiers into your house.'
 	s4 = l.screens.create :sequence => 4, :content => 'Throughout the years, Congress added more amendments that included freedom from slavery, allowing the government to collect income tax, and so on. Amendments can be repealed but the process of deleting an amendment is very long and hard.'
-	q = l.quizzes.create :name => 'The Bill of Rights Quiz', :point_value => 40
+	q = l.quizzes.create :name => 'The Bill of Rights Quiz', :point_value => 2
 	quest = q.questions.create :content => 'How many amendments are in the Bill of Rights?'
 	quest.answers.create :content => '5'
 	quest.answers.create :content => '8'

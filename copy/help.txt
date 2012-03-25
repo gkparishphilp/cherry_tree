@@ -16,7 +16,7 @@ Cherry Tree helps kids.......
 </div>
 
 <div id='lessons'>
-<h3>Lessons and Activities</h3>
+<h3>Activities</h3>
 <p>
 </p>
 </div>

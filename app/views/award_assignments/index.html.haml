@@ -4,8 +4,6 @@
 	
 	.top-header.clearfix
 		%span.title
-			= possessize @child.display_name
-			Awards
 		.new_thing.button_flat
 			= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
 		.new_thing.button_flat
@@ -52,7 +50,7 @@
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Save Changes", :class => 'save_form'
+		= link_to "Save Changes", child_path( @child ), :class => 'save_form'
 	#accordion.goals
 		- for cat in AwardCategory.all
 			- next if cat.awards.empty?

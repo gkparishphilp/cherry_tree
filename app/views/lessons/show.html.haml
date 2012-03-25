@@ -1,0 +1,29 @@
+.child_profile
+
+	= render 'children/sub_nav', :child => @child
+	
+	%h3
+		Lesson: 
+		= @lesson.name
+	
+	.top-header.clearfix
+		%span.title
+
+	- for screen in @screens
+		%p
+			= screen.content	
+			
+	- for quiz in @lesson.quizzes
+		%h3
+			Quiz:
+			= quiz.name
+
+		-for question in quiz.questions
+			%p
+				= question.content
+				
+				
+%br.clear
+.new_thing.button_flat
+	= link_to "Back", :back
+%br

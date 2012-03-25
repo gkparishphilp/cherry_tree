@@ -4,12 +4,42 @@
 	
 	#child_main_screen
 	
-		- if @child.active_assigned_awards.empty? && @child.objective_assignments.empty?
+		- if @child.objective_assignments.empty? 
 			%h3 
-				Congratulations! Let's get started...
-			First, let's create some awards for
+				Let's get started...
+			Let's enter some goals for
 			= @child.display_name
-			to work towards....  Awards can be Toys, prizes, special treats, or anything you want.
+			Goals can be doing the chores, behavior goals, or milestones for 
+			= @child.display_name
+			to work towards.
+			= @child.display_name
+			will earn cherries as 
+			= @child.pronoun_gender_subject
+			checks in on 
+			= @child.pronoun_gender_possessive
+			progress.  
+			%p.center{ :style => 'margin-top: 20px;' }
+				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat'
+
+		- elsif @child.lesson_assignments.empty?
+			%h3
+				Hmm..., 
+				= @child.display_name
+				doesn't have any activities assigned. 
+			Let's assign some activities.  They'll help 
+			= @child.display_name
+			learn proper behaviors or skills.
+			%p.center{ :style => 'margin-top: 20px;' }
+				= link_to "+ Add Awards", child_lesson_assignments_path( @child ), :class => 'button_flat'			
+			
+		- elsif @child.active_assigned_awards.empty?
+			%h3 
+				Hmm..., 
+				= @child.display_name
+				doesn't seem to have an awards.
+			Let's create some awards for
+			= @child.display_name
+			to work towards....  Awards can be toys, prizes, special treats, or anything you want.
 			= @child.display_name
 			Will be able to spend 
 			= @child.pronoun_gender_possessive
@@ -18,25 +48,6 @@
 			earns them to unlock these awards.
 			%p.center{ :style => 'margin-top: 20px;' }
 				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
-			
-		- elsif @child.active_assigned_awards.present? && @child.objective_assignments.empty?
-			%h3 
-				Great!
-			Now, let's enter some objectives for
-			= @child.display_name
-			Objectives can be chores, behavior goals, or milestones for 
-			= @child.display_name
-			to work towards.
-			= @child.display_name
-			will earn cherries as 
-			= @child.pronoun_gender_subject
-			checks in on 
-			= @child.pronoun_gender_possessive
-			progress and you will be able to confirm that
-			= @child.pronoun_gender_subject
-			has actually accomplished the objectives.
-			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
 		
 		- else
 	
@@ -59,6 +70,25 @@
 			=@child.name.capitalize
 			hasn't earned any cherries yet this week.
 
+	#home_prizes.boxes
+		%h3.center Goals:
+		- if @child.objective_assignments.empty? && @child.parents.include?( @current_user )
+			%p
+				= @child.name.capitalize
+				has no objectives, create one now!
+
+		- else
+			- for assignment in @child.objective_assignments
+				.float_left{ :style => 'width:190px;' }
+					%b= assignment.objective.name
+				.float_left{ :style => 'width:109px;' }
+					= assignment.point_value
+					Cherries
+		%br.clear
+		- if @child.parents.include?( @current_user )
+			%p.center.clear{ :style => 'margin-top:15px;' }
+				= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
+
 
 	#home_prizes.boxes
 		%h3.center Awards:
@@ -79,25 +109,6 @@
 			%p.center.clear{ :style => 'margin-top:15px;' }
 				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat'
 					
-	#home_prizes.boxes
-		%h3.center Objectives:
-		- if @child.objective_assignments.empty? && @child.parents.include?( @current_user )
-			%p
-				= @child.name.capitalize
-				has no objectives, create one now!
-		
-		- else
-			- for assignment in @child.objective_assignments
-				.float_left{ :style => 'width:190px;' }
-					%b= assignment.objective.name
-				.float_left{ :style => 'width:109px;' }
-					= assignment.point_value
-					Cherries
-		%br.clear
-		- if @child.parents.include?( @current_user )
-			%p.center.clear{ :style => 'margin-top:15px;' }
-				= link_to "+ Add Objectives", child_objective_assignments_path( @child ), :class => 'button_flat'
-			
 	-#home_prizes.boxes
 		%h3.center Supporters:
 		- for supporter in @child.relatives

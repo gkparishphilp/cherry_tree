@@ -40,6 +40,7 @@ CherryTree::Application.routes.draw do
 			post 'amzn', :on => :collection
 		end
 		resources :lesson_assignments
+		resources :lessons
 		
 		resources :journal_entries do
 			resources :comments

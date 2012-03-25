@@ -4,18 +4,19 @@
 	
 	.top-header.clearfix
 		%span.title
-			Assign lessons and activities here.
 	
 		-#.new_thing.button_flat
 			= link_to 'Buy Lessons!', ""
 
-	%table( width = 600 )
+	%table( width = 900 )
 		%th
 			%b Name
 		%th
 			%b Status
 		%th
 			%b Activate
+		%th
+			&nbsp;
 		- for lesson in @lessons
 			%tr
 				%td= lesson.name
@@ -33,6 +34,10 @@
 						= link_to 'Unassign', child_lesson_assignment_path( @child, lesson, :status => 'inactive' ), :method => :put
 					- else
 						= link_to 'Assign', child_lesson_assignments_path( @child, :lesson_id => lesson.id ), :method => :post
+					|
+					= link_to 'View', child_lesson_path( @child, :id => lesson.id )
 
 %br.clear
+.new_thing.button_flat
+	= link_to "Save Changes", child_path( @child )
 %br
