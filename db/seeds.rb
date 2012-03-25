@@ -142,7 +142,12 @@ aw = Award.create :award_category => ac4, :name => "Trip to a Special Event", :d
 aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-event.png', :remote => true
 
 
-l = Lesson.create :name => 'How to use Cherry Tree', :description => "How Cherry Tree works and how to get the most out of it."
+lc1 = LessonCategory.create :name => 'Academics'
+lc2 = LessonCategory.create :name => 'Behavior'
+lc3 = LessonCategory.create :name => 'Social'
+lc4 = LessonCategory.create :name => 'Health'
+
+l = Lesson.create :name => 'How to use Cherry Tree', :description => "How Cherry Tree works and how to get the most out of it.", :lesson_category => lc2
 s1 = l.screens.create :sequence => 1, :content => "To get the most out of Cherry Tree, try to log in every day."
 s2 = l.screens.create :sequence => 2, :content => "Remember, honesty is the best policy.  If you did not accomplish your objectives, just say so, and work harder the next time."
 s3 = l.screens.create :sequence => 3, :content => "You have supporters.  You can send them notes!"
@@ -155,7 +160,7 @@ quest2.answers.create :content => 'Every Day', :correct => true
 quest2.answers.create :content => 'Once a week'
 quest3 = q.questions.create :content => 'What are your goals for the next month?'
 
-l2 = Lesson.create :name => "You are who you hang out with", :description => "A lesson about friends and how they affect the way others see you"
+l2 = Lesson.create :name => "You are who you hang out with", :description => "A lesson about friends and how they affect the way others see you", :lesson_category => lc3
 l2.screens.create :sequence => 1, :content => "When you hang out by yourself, people focus on you.  People might concentrate on how you look, what you do, what you say, and what your personality is like."
 l2.screens.create :sequence => 2, :content => "When you hang out with a group of kids, people focus on the group rather than on the specific people in it.  They consider how the group looks, what the people in the group do, and what they say.  Sometimes people behave differentyl in a group than they would by themselves."
 q2 = l2.quizzes.create :name => "A quiz for 'You Are Who You Hang Out With'", :point_value => 10
@@ -163,7 +168,7 @@ quest1 = q2.questions.create :content => 'What type of impression do people get 
 quest2 = q2.questions.create :content => 'Impressions can be good, bad, or so-so.  How do impressions about your group rub off on you when you are not in the group?'
 quest3 = q2.questions.create :content => 'If you want to make a better impression than your group made on someone specific, what are some things you can think about and do around that person?'
 
-l3 = Lesson.create :name => 'Taking Time to Give Yourself a Compliment'
+l3 = Lesson.create :name => 'Taking Time to Give Yourself a Compliment', :lesson_category => lc3
 l3.screens.create :sequence => 1, :content => 'We all keep working on getting better at things.  This means we have to catch ourselves when we are not doing something well, tell ourselves to do better, and then work at rtying to improve it!'
 l3.screens.create :sequence => 2, :content => 'As simple as this sounds, it takes a lot of work! It also makes us focus on what is already hard for us, which is usually not fun to do.'
 l3.screens.create :sequence => 3, :content => 'So, we also need to remember that there is plenty that we already do well, and we have to tell ourselves that each and every day!'

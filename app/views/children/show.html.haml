@@ -30,7 +30,7 @@
 			= @child.display_name
 			learn proper behaviors or skills.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Awards", child_lesson_assignments_path( @child ), :class => 'button_flat'			
+				= link_to "+ Add Activities", child_lesson_assignments_path( @child ), :class => 'button_flat'			
 			
 		- elsif @child.active_assigned_awards.empty?
 			%h3 

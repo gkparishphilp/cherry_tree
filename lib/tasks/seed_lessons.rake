@@ -1,5 +1,11 @@
 task :seed_lessons => :environment do
-	l = Lesson.create :name => '1st Grade Math: Addition', :description => 'How to add numbers.'
+	
+	lc1 = LessonCategory.find_by_name 'Academics'
+	lc2 = LessonCategory.find_by_name 'Behavior'
+	lc3 = LessonCategory.find_by_name 'Social'
+	lc4 = LessonCategory.find_by_name 'Health'
+	
+	l = Lesson.create :name => '1st Grade Math: Addition', :description => 'How to add numbers.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello, and welcome to the first lesson! Today we are going to learn about addition.' 
 	s2 = l.screens.create :sequence => 2, :content => 'Hold up 3 fingers from your left hand. Now hold up 4 fingers from your right hand. Now count how many fingers you are holding up. Once you are finished counting, go on to the next page.'
 	s3 = l.screens.create :sequence => 3, :content => "If you counted 7, you are correct! Now to put that in number form, simply write 3 + 4 = 7. You would say 'three plus four equals seven'. The answer for an addition problem is called a sum. It's that easy!"
@@ -24,7 +30,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => '16'
 	quest4.answers.create :content => '17'
 
-	l2 = Lesson.create :name => '1st Grade Math: Subtraction', :description => 'How to subtract numbers.'
+	l2 = Lesson.create :name => '1st Grade Math: Subtraction', :description => 'How to subtract numbers.', :lesson_category => lc1
 	l2.screens.create :sequence => 1, :content  => 'Hello, and welcome to the second lesson. Today we will be learning about subtraction.'
 	l2.screens.create :sequence => 2, :content => 'Try holding up four fingers. Go ahead and count to make sure that you are holding up 4 fingers and then go on to the next page.'
 	l2.screens.create :sequence => 3, :content => 'Now we are going to subtract 3 fingers from your original 4 fingers. So go ahead and put down three of the four fingers you were holding up.'
@@ -55,7 +61,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => '17'
 	quest5.answers.create :content => '20', :correct => true
 
-	l = Lesson.create :name => '1st Grade Science: The Five Human Senses Part 1', :description => 'Sight and Hearing.'
+	l = Lesson.create :name => '1st Grade Science: The Five Human Senses Part 1', :description => 'Sight and Hearing.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about the first two human senses!'
 	s2 = l.screens.create :sequence => 2, :content => 'The first sense we will be learning about is sight. Sight helps us see each other, see colors, and see people moving. We use our eyes to see things.'
 	s3 = l.screens.create :sequence => 3, :content => "Sight is very important and can get worse if you don't take care of your eyes. You might have to wear glasses if your eyes get bad."
@@ -74,7 +80,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => 'True', :correct => true
 	quest4.answers.create :content => 'False'
 
-	l2 = Lesson.create :name => '1st Grade Science: The Five Human Senses Part 2', :description => 'Touch, Smell, and Taste.'
+	l2 = Lesson.create :name => '1st Grade Science: The Five Human Senses Part 2', :description => 'Touch, Smell, and Taste.', :lesson_category => lc1
 	s1 = l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson! Today we will be learning about the last three human senses.'
 	s2 = l2.screens.create :sequence => 2, :content => 'The sense of touch allows us to learn about the world by feeling it. We mostly use our hands but we can use any part of our body to feel things.'
 	s3 = l2.screens.create :sequence => 3, :content => 'The sense of smell allows us to identify or enjoy things by their scent. We use our nose to smell things. Smells can also warn us about dangerous things.'
@@ -96,7 +102,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => 'Smell', :correct => true
 	quest5.answers.create :content => 'Taste'
 
-	l = Lesson.create :name => '1st Grade History: The United States of America'
+	l = Lesson.create :name => '1st Grade History: The United States of America', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about the United States of America and some of the facts about our country!'
 	s2 = l.screens.create :sequence => 2, :content => 'The country we live in called the United States of America. This country was founded in 1776. There are 50 states in America and over 300 million people. The official language in the country is English.'
 	s3 = l.screens.create :sequence => 3, :content => "The capital of our country is Washington D.C.. That's where the president and his family lives!"
@@ -110,7 +116,7 @@ task :seed_lessons => :environment do
 	quest2.answers.create :content => 'False'
 	quest3 = q.questions.create :content => 'Name three states in the United States of America.'
 	
-	l = Lesson.create :name => '2nd Grade Math: Fractions', :description => 'Introduction to Fractions'
+	l = Lesson.create :name => '2nd Grade Math: Fractions', :description => 'Introduction to Fractions', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about fractions.'
 	s2 = l.screens.create :sequence => 2, :content => 'A fraction means a part of a whole. A fraction can look like this 3/4 where the top number is called the numerator and the bottom number is called the denominator. The denominator tells us how many parts the whole is split into and the numerator tells us how many parts you have.'
 	s3 = l.screens.create :sequence => 3, :content => "Let's pretend we have an apple pie and we split it into 4 equal slices. We give 3 slices to Bob and 1 slice to Billy. We would write that Bob has 3/4 (3 fourths) of the pie while Billy only has 1/4 (one quarter) of the pie."
@@ -130,7 +136,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => 'No'
 	quest5 = q.questions.create :content => "How would you write 'nine out of eleven'?"
 
-	l2 = Lesson.create :name => '2nd Grade Math: Adding and Subtracting Fractions', :description => 'How to add and subtract fractions'
+	l2 = Lesson.create :name => '2nd Grade Math: Adding and Subtracting Fractions', :description => 'How to add and subtract fractions', :lesson_category => lc1
 	l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson. Today you will be using what you learned from lesson 1 and applying it to addition and subtraction.'
 	l2.screens.create :sequence => 2, :content => 'To add two fractions together, simply take the numerator from the first fraction and add it with the numerator of the second fraction. It is important to know that the denominator must be the same number for the addition to work. The denominator stays the same.'
 	l2.screens.create :sequence =>3, :content => "Once again John splits a pie into 5 equal pieces and gives you 2 slices. All of a sudden, John decides to give you an extra slice, so now you have 3 slices. Let's put that in number form."
@@ -156,7 +162,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => 'No pizza is left'
 	quest5.answers.create :content => '3/12', :correct => true
 	
-	l = Lesson.create :name=> '2nd Grade Science: Types of Animals Part 1', :description => 'Mammals, Birds, and Fishes.'
+	l = Lesson.create :name=> '2nd Grade Science: Types of Animals Part 1', :description => 'Mammals, Birds, and Fishes.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about the first three types of animals in the animal kingdom!'
 	s2 = l.screens.create :sequence => 2, :content => 'The first type of animals are mammals. These animals include dogs, horses, even whales! All mammals have hair and must drink milk when they are a baby. Did you know that even humans are mammals?'
 	s3 = l.screens.create :sequence => 3, :content => 'The second type of animals are birds. All birds have feathers and are born in hard-shelled eggs. The feathers along with its very light weight allow birds to fly, steer, and land.'
@@ -172,7 +178,7 @@ task :seed_lessons => :environment do
 	quest3.answers.create :content => 'Fins'
 	quest3.answers.create :content => 'Feathers', :correct => true
 
-	l2 = Lesson.create :name => '2nd Grade Science: Types of Animals Part 2', :description => 'Reptiles, Amphibians, and Invertebrates.'
+	l2 = Lesson.create :name => '2nd Grade Science: Types of Animals Part 2', :description => 'Reptiles, Amphibians, and Invertebrates.', :lesson_category => lc1
 	s1 = l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson! Today we will be learning about the last three types of animals in the animal kingdom!'
 	s2 = l.screens.create :sequence => 2, :content => 'The first type of animals are reptiles. Reptiles have scaly skins and are cold-blooded. A lot of reptiles can swim or walk on land. Reptiles include alligators, snakes, and lizards.'
 	s3 = l2.screens.create :sequence => 3, :content => 'The second type of animals are amphibians (am-fi-bee-uns). Amphibians are born in water and are born with gills. But as they grow older, they grow lungs and can live on land. Amphibians include frogs, salamanders, and toads.'
@@ -188,7 +194,7 @@ task :seed_lessons => :environment do
 	quest3.answers.create :content => 'True'
 	quest3.answers.create :content => 'False', :correct => true
 
-	l = Lesson.create :name => '2nd Grade History: Jobs', :description => 'Learn about different types of jobs.'
+	l = Lesson.create :name => '2nd Grade History: Jobs', :description => 'Learn about different types of jobs.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about different types of jobs in the world.'
 	s2 = l.screens.create :sequence => 2, :content => 'In order to earn money, people have to work. People work by taking on jobs and careers.'
 	s3 = l.screens.create :sequence => 3, :content => 'There are all sorts of jobs available for different types of people. If you really like plants, you can be a botanist and study plants for a living! If you like to save lives and fight fires you can be a firefighter.'
@@ -204,7 +210,7 @@ task :seed_lessons => :environment do
 	quest2.answers.create :content => 'False'
 	quest3 = q.questions.create :content => 'Name at least careers of jobs you would like to do in the future.'
 	
-	l = Lesson.create :name => '3rd Grade Math: Multiplication', :description => 'How to multiply numbers.'
+	l = Lesson.create :name => '3rd Grade Math: Multiplication', :description => 'How to multiply numbers.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about multiplication.'
 	s2 = l.screens.create :sequence => 2, :content => "Multiplication is basically repeated addition. It's kind of like adding the same number over and over again. To multiply the numbers 2 and 3, we would write 2x3. Think of that equation as the same thing as 2+2+2 or 3+3. So 2x3 is pretty much saying that you need to add three twos or two threes. Try solving 4x2 and then move to the next page."
 	s3 = l.screens.create :sequence => 3, :content => "If you calculated 8, you are correct! Multiplication can be written in any order as well. 3x2 is the same thing as 2x3 and 5x4 is the same thing as 4x5. For 3x2, we would say 'three times two' and 4x5 is the same as saying 'four times five'.' The answer for a multiplication problem is called the product." 
@@ -232,7 +238,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => '20'
 	quest5.answers.create :content => '100', :correct => true
 
-	l2 = Lesson.create :name => '3rd Grade Math: Division', :description => 'How to divide numbers.'
+	l2 = Lesson.create :name => '3rd Grade Math: Division', :description => 'How to divide numbers.', :lesson_category => lc1
 	s1 = l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson. Today we will be learning about division.'
 	s2 = l2.screens.create :sequence => 2, :content => 'Division is the process of dividing something into smaller parts. If I had 10 cupcakes and I divide it amongst 5 people, that means every everybody gets 2 cupcakes. In number form, division is written like 10 / 5 = 2. The solution of a division problem is called the quotient. Try solving 6/3.'
 	s3 = l2.screens.create :sequence => 3, :content => 'If you answered 2, you are correct! Also note that division problems can be rewritten as a multiplication problem is written in the reversed order. For example, take 8/4=2. If we take the 2 and multiplied it by the 4, we get 2x4=8. However, division problems themselves cannot be written in reverse order! 4/2 is not the same as 2/4!'
@@ -258,7 +264,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => 'Yes'
 	quest5.answers.create :content => 'No', :correct => true
 
-	l = Lesson.create :name => '3rd Grade Science: The Water Cycle Part 1', :description => 'Evaporation and Condensation.'
+	l = Lesson.create :name => '3rd Grade Science: The Water Cycle Part 1', :description => 'Evaporation and Condensation.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about the first two stages of the water cycle: evaporation and condensation.'
 	s2 = l.screens.create :sequence => 2, :content => "First, let's first talk about what the water cycle is. The earth only has limited amounts of water. That water keeps going around and around in a cycle called 'The Water Cycle'. This cycle has four stages and today we will be learning about he first two."
 	s3 = l.screens.create :sequence => 3, :content => 'The first step of the water cycle is evaporation. Evaporation is when the sun heats up water in lakes, oceans, and rivers and turns that water into steam or wapor. The steam or vapor leaves the big pool of water and goes into the air.'
@@ -276,7 +282,7 @@ task :seed_lessons => :environment do
 	quest3.answers.create :content => 'False', :correct => true
 	quest4 = q.questions.create :content => 'What happens when you leave a class of cold water outside on a hot day? (Try it!)'
 
-	l2 = Lesson.create :name => '3rd Grade Science: The Water Cycle Part 2', :description => 'Precipitation and Collection.'
+	l2 = Lesson.create :name => '3rd Grade Science: The Water Cycle Part 2', :description => 'Precipitation and Collection.', :lesson_category => lc1
 	s1 = l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson! Today we will be learning about the last two stages of the water cycle: precipitation and collection.'
 	s2 = l2.screens.create :sequence => 2, :content => 'Precipitation occurs after condensation. When so much water has condensed that the air cannot hold it anymore, it starts to rain. Water falls back to the earth either by rain, snow, sleet, or hail. This process is called precipitation.'
 	s3 = l2.screens.create :sequence => 3, :content => "Collection occurs when the water that falls back to earth gets 'collected'. The water can end back up in another big body or water or it can be absorbed by plants. The water even soak into the earth and become part of 'ground water'."
@@ -294,7 +300,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => 'Precipitation'
 	quest4.answers.create :content => 'Evaporation', :correct => true
 
-	l = Lesson.create :name => '3rd Grade History: Founding Fathers', :description => 'Learn about some of the people that helped build this country!'
+	l = Lesson.create :name => '3rd Grade History: Founding Fathers', :description => 'Learn about some of the people that helped build this country!', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about some of the important people that establish the United States of America.'
 	s2 = l.screens.create :sequence => 2, :content => 'George Washington. George Washington was a famous general in the American army back in the Revolutionary War in 1776. After leading the Continental Army to victory against the British, he was elected as the first president of the United States.'
 	s3 = l.screens.create :sequence => 3, :content => 'Benjamin Franklin. Benjamin Franklin was a famous scientist, author, and politician who was famous for promoting independence from the British. Benjamin Franklin conducted many science experiements involving electricity. Benjamin Franklin never became a president.'
@@ -308,7 +314,7 @@ task :seed_lessons => :environment do
 	quest3 = q.questions.create :content => 'What was the name of the document that Alexander Hamilton help draft?'
 
 	
-	l = Lesson.create :name => '4th Grade Math: Advanced Arithmetic', :description => 'Revision of Addition, Subtraction, Multiplication, and Division.'
+	l = Lesson.create :name => '4th Grade Math: Advanced Arithmetic', :description => 'Revision of Addition, Subtraction, Multiplication, and Division.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be going over harder and more complex arithmetic equations.'
 	s2 = l.screens.create :sequence => 2, :content => "Unfortunately, we only have 10 fingers and a lot of times we have to add bigger numbers. Let's try to add 11 and 12 together. To do so, you would want to add the two right digits together and then add the two left digits together. If you did it correctly, you should get 23."
 	s3 = l.screens.create :sequence => 3, :content => 'Now suppose that if you add the two numbers on the right, it becomes bigger than 10. Try to solve 18+13. To solve this problem, you would have to tackle problem from the right side first and then move to the left. 8+3 is 11, so we keep the 1 on the right digit and then carry over the 1 on the left digit to the left hand side of the problem. Try to do this and then hit next.'
@@ -336,7 +342,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => '5-5, 5/5, 5+5, 5x5', :correct => true
 	quest5 = q.questions.create :content => 'Find 4 equations that will produce the solution 4 using only the numbers 1, 2, and 4.'
 
-	l2 = Lesson.create :name => '4th Grade Math: Mixed and Improper Fractions', :description => 'Adding and subtracting different types of fractions.'
+	l2 = Lesson.create :name => '4th Grade Math: Mixed and Improper Fractions', :description => 'Adding and subtracting different types of fractions.', :lesson_category => lc1
 	s1 = l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson. Today we will be going over some of the more complex operations of fractions.'
 	s2 = l2.screens.create :sequence => 2, :content => "We've worked with some of the more basic fractions in the past. Fractions such as 1/3, 3/4, 7/8 and so on. These were called proper fractions. Today we will be learning about improper fractions and mixed fractions."
 	s3 = l2.screens.create :sequence => 3, :content => 'Improper Fractions are fractions where the numerator is bigger or equal to the denominator. Fractions such as 7/2 or 5/5 are examples of improper fractions. A fraction of 7/5 implies that you have a whole and two extra pieces.'
@@ -365,7 +371,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => '1/2'
 	quest5.answers.create :content => '2/3'
 
-	l = Lesson.create :name => '4th Grade Science: Parts of a Plant'
+	l = Lesson.create :name => '4th Grade Science: Parts of a Plant', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson! Today we will be learning about different parts of a plant.'
 	s2 = l.screens.create :sequence => 2, :content => 'Root: The root is the lowest part of the plant usually inside the mud. The roots are like straws that help the plant absorb water and minerals from the soil. The roots also make sure the plant does not fall over and can store extra food for the plant.'
 	s3 = l.screens.create :sequence => 3, :content => "Stem: The stem is like the plumbing system of the plant. A lot of the plant's nutrients and water travels from the root through the stem. Food stored in the form of glucose also travels through the stems from the leaves. Like the roots, the stem also supports the plant and prevents it from falling over."
@@ -388,7 +394,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => 'Photosynthesis'
 	quest5.answers.create :content => 'Ovules'
 
-	l2 = Lesson.create :name => '4th Grade Science: Photosynthesis'
+	l2 = Lesson.create :name => '4th Grade Science: Photosynthesis', :lesson_category => lc1
 	l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson. Today we will be learning about photosynthesis.'
 	l2.screens.create :sequence => 2, :content => 'What is photosynthesis: Photosynthesis is the process plants use to make their own food. Plant leaves have something called chlorophyll (clor-ro-fill) which helps absorbs sunlight.'
 	l2.screens.create :sequence => 3, :content => 'Step 1: The sunlight is combined with water, carbon dioxide, and nutrients from the soil. Carbon dioxide is the gas that humans breathe out after inhaling oxygen.'
@@ -407,7 +413,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => 'True', :correct => true
 	quest4.answers.create :content => 'False'
 
-	l = Lesson.create :name => '4th Grade History: The Three Branches of Government', :description => 'Legislative, Executive, and Judicial.'
+	l = Lesson.create :name => '4th Grade History: The Three Branches of Government', :description => 'Legislative, Executive, and Judicial.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about he three branches of government in the United States of America.'
 	s2 = l.screens.create :sequence => 2, :content => 'Legislative Branch. Headed by Congress which includes both the House of Representatives and the Senate. The Legislative Branch is responsible for making laws. Some of these laws include spending bills, impeaching officials, and approving treaties.'
 	s3 = l.screens.create :sequence => 3, :content => 'Executive Branch. Headed by the President. The President is responsible for carrying out federal laws and directing foreign policy. The powers of the President include heading the Armed Forces, dealing with other countries, and vetoing laws.'
@@ -428,7 +434,7 @@ task :seed_lessons => :environment do
 	quest4.answers.create :content => 'False'
 
 	
-	l=Lesson.create :name => '5th Grade Math: Fraction Multiplication', :description => 'Learn how to multiply fractions.'
+	l=Lesson.create :name => '5th Grade Math: Fraction Multiplication', :description => 'Learn how to multiply fractions.', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Welcome to the first lesson. Today we will be learning how to multiply and divide fractions.'
 	s2 = l.screens.create :sequence => 2, :content => "Fraction multiplication is quite simple, even easier than fraction addition. All you have to do is multiply the numerators of the two fractions and the denominators of the two fractions. Let's take 5/7 and 1/2. To multiply these two fractions, we take 5x1=5 and 7x2=14. We then combine the answers and we get 5/14."
 
@@ -454,7 +460,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => '8/9'
 	quest5.answers.create :content => '1 1/14'
 
-	l2 = Lesson.create :name => '5th Grade Math: Fraction Division', :description => 'Learning how to divide fractions.'
+	l2 = Lesson.create :name => '5th Grade Math: Fraction Division', :description => 'Learning how to divide fractions.', :lesson_category => lc1
 	l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson. Today we will be learning how to divide fractions.'
 	l2.screens.create :sequence => 2, :content => "Before we learn how to divide fractions, we need to first know what a reciprocal is. The reciprocal of a fraction is the fraction you would multiply the original fraction with to get 1. It's also basically just the numerator and the denominator switched around! Let's take the fraction 3/4. The reciprocal is simply 4/3. If you multiply those two fractions together, you get 12/12, or 1."
 	l2.screens.create :sequence => 3, :content => "To divide a two fractions, all you simply have to do is to take the first fraction and multiply it with the reciprocal of the second fraction. Let's try 3/5 / 2/3. All you simply have to do is flip the second fraction to 3/2. Then you multiply 3/2 and with the first fraction 3/5. Go ahead and give it a try."
@@ -481,7 +487,7 @@ task :seed_lessons => :environment do
 	quest5.answers.create :content => 'Three-tenths of the pie.', :correct => true
 	quest5.answers.create :content => 'One-sixth of the pie.'
 	
-	l = Lesson.create :name => '5th Grade Science: The Scientific Method Part 1', :description => 'Observation and Hypothesis?'
+	l = Lesson.create :name => '5th Grade Science: The Scientific Method Part 1', :description => 'Observation and Hypothesis?', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about the scientific method.'
 	s2 = l.screens.create :sequence => 2, :content => 'What is the scientific method? The scientific method is a way to ask and answer scientific questions by making observations and doing experiments. Today we will be covering the first two steps of the scientific method.'
 	s3 = l.screens.create :sequence => 3, :content => "Step 1: Observation. This step is where you ask yourself a question based on something you observe. Ask questions that have 'how, where, why, who, what, which, and when' in them. Hopefully this is a question about something that you can measure."
@@ -499,7 +505,7 @@ task :seed_lessons => :environment do
 	quest3.answers.create :content => 'False'
 	quest4 = q.questions.create :content => 'Try to come up with your own hypothesis!'
 
-	l2 = Lesson.create :name => '5th Grade Science: The Scientific Method Part 2', :description => 'Experiment and Analysis.'
+	l2 = Lesson.create :name => '5th Grade Science: The Scientific Method Part 2', :description => 'Experiment and Analysis.', :lesson_category => lc1
 	l2.screens.create :sequence => 1, :content => 'Hello and welcome to the second lesson. Today we will be learning about he last two step of the scientific method.'
 	l2.screens.create :sequence => 2, :content => 'Step 3: Experiment. This is the fun part. This is where you will conduct experiments that will test and see whether your hypothesis is correct or not. Your experiments need to be a fair test meaning that you change only one factor at a time while you keep everything else the same.'
 	l2.screens.create :sequence => 3, :content => 'It is also important to keep repeating experiments several times to ensure accuracy. Always make sure you record the results of every experiment.'
@@ -514,7 +520,7 @@ task :seed_lessons => :environment do
 	quest3 = q2.questions.create :content => 'After you have obtained your data and determined wherther your hypothesis is true or false, what should you do?'
 	quest4 = q2.questions.create :content => 'Take the hypothesis you came up with in Lesson #1 and see if you can create an experiment to test it. If you can, go ahead and do the experiment!'
 	
-	l = Lesson.create :name => '5th Grade History: The Bill of Rights'
+	l = Lesson.create :name => '5th Grade History: The Bill of Rights', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => 'Hello and welcome to the first lesson. Today we will be learning about the Bill of Rights.'
 	s2 = l.screens.create :sequence => 2, :content => "The Bill of Rights is a document that lists some of the rights reserved to individuals and the state. The Bill of Rights was written by states who were afraid that the Federal Government would be too big and have too much power. The Bill of Rights would guarantee certain 'unalienable' rights to the people."
 	s3 = l.screens.create :sequence => 3, :content => 'The Bill of Rights was approved in 1791 and in the beginning started off with 10 amendments. All of the amendments afterwards are important as well but are not called the Bill of Rights. The first three amendments include the freedom of speech, freedom of having guns, and freedom to not let soldiers into your house.'

@@ -16,6 +16,8 @@ class Lesson < ActiveRecord::Base
 	has_many	:lesson_assignments
 	has_many	:lesson_viewings
 	has_many	:quizzes
+	belongs_to	:lesson_category
+	
 	acts_as_taggable_on	:keywords
 	
 	
