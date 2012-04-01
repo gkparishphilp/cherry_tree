@@ -81,6 +81,8 @@
 				= f.submit 'Enter', :class => 'button_flat'
 				|
 				= link_to 'Cancel', "#", :class => 'close_new_objective_form'
+		= link_to "Save Changes", child_path( @child ), :class => 'save_form'
+	#accordion.goals	
 		- for cat in ObjectiveCategory.all
 			-next if cat.objectives.empty?
 			%h3.track= "#{cat.name} Goals"

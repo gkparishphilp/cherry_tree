@@ -46,8 +46,8 @@ class Child < User
 	
 	def setup_defaults
 		# Only doing this as a shitty hack because kids need default
-		self.journals.create :name => 'Default'
-		self.lessons << Lesson.first
+		#self.journals.create :name => 'Default'
+		#self.lessons << Lesson.first
 	end
 	
 	def validate_child

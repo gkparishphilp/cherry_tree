@@ -50,7 +50,7 @@
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Save Changes", :class => 'save_form'
+		= link_to "Save Changes", child_path( @child ), :class => 'save_form'
 	.clear
 		&nbsp;
 	#search_amazon{ :title => "New Amazon Reward for #{@child.display_name}" }

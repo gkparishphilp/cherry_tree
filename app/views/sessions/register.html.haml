@@ -29,6 +29,12 @@
 			%br
 			%br
 			%div.clear
+			%label 
+
+			= check_box_tag :subscribe_to_newsletter, 1, true
+			&nbsp;
+			Subscribe to the CherryTree newsletter
+			%div.clear	
 			%label
 				&nbsp;
 			= f.submit 'Register', :class => "button blue"

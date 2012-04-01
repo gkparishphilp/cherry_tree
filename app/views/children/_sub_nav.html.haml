@@ -3,15 +3,15 @@
 		%ul.navbar
 			%li= link_to "Goals", child_objective_assignments_path( child )
 			
-			%li= link_to "Awards", child_award_assignments_path( child )
-
-			-# todo -- if unapproved checkins
-				%li= link_to "Approvals", child_approvals_path( child )
+			%li= link_to "Activities", child_lesson_assignments_path( child )
 			
-			%li= link_to "Lessons and Activities", child_lesson_assignments_path( child )
+			%li= link_to "Awards", child_award_assignments_path( child )
 			
 			%li= link_to "Supporters", child_supporters_path( child )
 
 			%li= link_to "Profile", profile_child_path( child )
+			
+			-# todo -- if unapproved checkins
+				%li= link_to "Approvals", child_approvals_path( child )
 
 			

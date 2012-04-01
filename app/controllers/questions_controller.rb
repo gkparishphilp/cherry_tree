@@ -10,21 +10,22 @@ class QuestionsController < ApplicationController
 		@question = Question.find( params[:id] )
 		if @answer = Answer.find_by_id( params[:answer_id] )
 			@quizzing.answer( @question, @answer )
-			if @answer.correct?
-				pop_flash "Yay, You're right!", :success
+			if @answer.correct? && @quiz.last_question
+				pop_flash "Yay, you're done!", :success
+				redirect_to recap_quiz_path( @quiz )
+			elsif @answer.correct?
+				pop_flash "Yay, you're right!", :success
+				redirect_to quiz_question_path( @quiz, @question.next_question )
 			else
-				pop_flash "Sorry, wrong answer", :error
+				pop_flash "Sorry, wrong answer.  Try again!", :error
+				redirect_to quiz_question_path(@quiz, @question)
 			end
 		else
 			@quizzing.answer( @question, params[:response] )
+			redirect_to quiz_question_path( @quiz, @question.next_question )
+			
 		end
 		
-		if @question == @quiz.last_question
-			pop_flash "Yay, You're Done!", :notice
-			redirect_to recap_quiz_path( @quiz )
-		else
-			redirect_to quiz_question_path( @quiz, @question.next_question )
-		end
 	end
 	
 	def index

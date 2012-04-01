@@ -18,6 +18,29 @@
 				= render @current_user.activities.order("created_at desc")
 	%br
 	%br
+	
+	.boxes
+		- unless @lesson_assignments.empty?
+			%h3 Activities
+
+			%table( width = 500 )
+				%th
+					%b Name
+				%th
+					%b Cherries
+				%th
+					%b Action
+				- for lesson_assignment in @lesson_assignments
+					%tr
+						%td
+							= lesson_assignment.lesson.name
+						%td
+							= lesson_assignment.lesson.quizzes.first.point_value
+						%td
+							- if lesson_assignment.lesson.quizzes.first.taken_by?( @current_user )
+								Completed
+							- else
+								= link_to "Take It", lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.screens.first )
 	%br
 	%br
 

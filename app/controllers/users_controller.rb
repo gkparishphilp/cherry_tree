@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 	before_filter   :require_admin,   :only => [ :admin, :destroy ]
-	before_filter	:require_login, :only => [ :home, :edit, :update ]
-
+	before_filter	:require_login, :only => [ :home, :edit, :update ]	
 	
 	def home
 		if @current_user.is_child?
+			@child = Child.find @current_user.id
 			@screen_item = @current_user.best_item
 			@activities = Activity.feed( @current_user )
 			@relevant_assignment, @relevant_assignment_parent, @num_assignments = @current_user.most_relevant
+			@lesson_assignments= @child.lesson_assignments
 			
 			@assignments = @current_user.objective_assignments.active - @current_user.objective_assignments.checked_in
 			
@@ -80,9 +81,9 @@ class UsersController < ApplicationController
 		
 		@user.orig_ip = request.ip
 		
-		@user.status = 'pending'
-		
 		@user.display_name = params[:fname] + " " + params[:lname]
+	
+		@user.newsletter_opt_in = true if params[:subscribe_to_newsletter]
 	
 		if @user.save
 			
@@ -116,7 +117,7 @@ class UsersController < ApplicationController
 	def collect_email
 		@user = User.find_or_initialize_by_email params[:user][:email]
 		@user.orig_ip = request.ip
-		@user.status = 'email_collect'
+		@user.newsletter_opt_in = true
 		if @user.save
 			pop_flash "Thank You for Signing Up!"
 		else
