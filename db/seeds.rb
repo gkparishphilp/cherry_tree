@@ -194,9 +194,16 @@ u2 = User.new :name => 'Tay', :email => 'tay@thecherrytree.com', :display_name =
 u2.password = '1234'
 u2.save( :validate => false )
 
+puts "Create Anthony's test data"
+
+u3 = User.new :name => 'Anthony', :email => 'anthonysessa@gmail.com', :display_name => 'Anthony'
+u3.password = '123123'
+u3.save( :validate => false )
+
 puts "Create admins"
 u1.make_admin( s )
 u2.make_admin( s )
+u3.make_admin( s )
 
 puts "Create forums"
 f = Forum.create :title => 'General', :description => 'Anything and Everything'

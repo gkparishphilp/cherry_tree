@@ -1,5 +1,8 @@
-Search Amazon:
-= text_field_tag :term
-For:
-= select_tag :index, options_for_select( ['Apparel', 'Books', 'DVD', 'Electronics', 'Toys', 'HealthPersonalCare', 'Kitchen', 'Music', 'DigitalMusic', 'SportingGoods', 'Video', 'VideoGames' ] )
-= submit_tag "Search", :class => 'button_flat'
+#search_amazon{ :title => "New Amazon Reward for #{@child.display_name}" }
+    %h3!= "New <span class=\"amazon_logo\"></span>Reward for #{@child.display_name}"
+    = form_tag amzn_child_award_assignments_path( @child ) do |f|
+        Search Amazon:
+        = text_field_tag :term
+        For:
+        = select_tag :index, options_for_select( ['Apparel', 'Books', 'DVD', 'Electronics', 'Toys', 'HealthPersonalCare', 'Kitchen', 'Music', 'DigitalMusic', 'SportingGoods', 'Video', 'VideoGames' ] )
+        = submit_tag "Search", :class => 'button_flat'

@@ -1,55 +1,48 @@
-#child_main_screen
-	.boxes
-		-if @active_assignments.present?
-			%h3
-				Did you?
-			= render @active_assignments #render @relevant_assignment 
-		-else
-			%h3
-				Great Job!  
-			%h4
-				You've met all your goals for today! Come back tomorrow to earn more cherries.
-	
-	-if @checked_in_assignments.present?
-		.boxes
-			%h3 
-				Checked In
-			-for checkin in @checked_in_assignments
-				= render 'objective_assignments/objective_assignment_checked_in', :objective_assignment => checkin
+#child_main_screen.clearfix
+	.float_left
+		.boxes#check_in
+			-if @active_assignments.present?
+				%h3
+					Did you?
+				= render @active_assignments #render @relevant_assignment 
+			-else
+				%h3
+					Great Job!  
+				%h4
+					You've met all your goals for today! Come back tomorrow to earn more cherries.
+		
+		-if @checked_in_assignments.present?
+			.boxes#checked_in
+				%h3 
+					Checked In
+				-for checkin in @checked_in_assignments
+					= render 'objective_assignments/objective_assignment_checked_in', :objective_assignment => checkin
 
+   
 	-# unless @current_user.activities.empty?
 		#home_activity.boxes
 			%h3
 				News
 			.activity
-				= render @current_user.activities.order("created_at desc")
-	%br
-	%br
-	
-	.boxes
+				= render @current_user.activities.order("created_at desc")	
+	.boxes#activities
 		- unless @lesson_assignments.empty?
 			%h3 Activities
-
-			%table( width = 500 )
-				%th
-					%b Name
-				%th
-					%b Cherries
-				%th
-					%b Action
-				- for lesson_assignment in @lesson_assignments
-					%tr
-						%td
-							= lesson_assignment.lesson.name
-						%td
-							= lesson_assignment.lesson.quizzes.first.point_value
-						%td
-							- if lesson_assignment.lesson.quizzes.first.taken_by?( @current_user )
-								Completed
-							- else
-								= link_to "Take It", lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.screens.first )
-	%br
-	%br
+			.header.clearfix
+				.heading.name Name
+				.heading.cherries Cherries
+				.heading.action Action
+			- for lesson_assignment in @lesson_assignments
+				.activity.clearfix
+					.name
+						= lesson_assignment.lesson.name
+					.cherries
+						= lesson_assignment.lesson.quizzes.first.point_value
+					.action
+						- if lesson_assignment.lesson.quizzes.first.taken_by?( @current_user )
+							Completed
+						- else
+							= link_to "Take It", lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.screens.first ), :class => 'button_small blue'
 
 = render 'child/right_column'
 
