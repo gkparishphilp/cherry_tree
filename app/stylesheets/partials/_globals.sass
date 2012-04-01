@@ -33,10 +33,10 @@ $page-width: 980px
 	border-#{$side}-right-radius: $radius
 //	:behavior url(/javascripts/PIE.htc)	
 
-=shadow($x: 1px, $y: 2px, $offset: 8px)
-	box-shadow: $x $y $offset #888888
-	-moz-box-shadow: $x $y $offset #888888
-	-webkit-box-shadow: $x $y $offset #888888
+=shadow($x: 1px, $y: 2px, $offset: 8px, $color: #888888)
+	box-shadow: $x $y $offset $color
+	-moz-box-shadow: $x $y $offset $color
+	-webkit-box-shadow: $x $y $offset $color
 //	:behavior url(/javascripts/PIE.htc)
 
 =alpha_bg()
@@ -49,9 +49,10 @@ $page-width: 980px
 	:color #ffffff
 	:font-family "Corben", arial, sans-serif
 	:font-weight bold
-	:padding 4px 15px 2px
+	:padding 0 15px
 	:font-size 16px
-	:line-height 25px
+	:height 40px
+	:line-height 40px
 	:display inline-block
 	+rounded(20px)
 	:cursor pointer
@@ -222,13 +223,26 @@ strong
 	+rounded(7px)
 	:padding 6px 10px
 	:font-size 16px
+	&:focus
+		outline: 0
+		border: 1px solid #0092B7
+
+=login_forms
+	:font-size 25px
+	:display block
+	:width 95%
+	&[type="submit"]
+		:display inline-block
+		font-size: 16px
+		:width inherit
+		height: 50px
+
 
 .form_group
 	:width auto
 	:padding 0
 	label
 		:width 200px
-		:float left
 		:text-align right
 		:font-weight normal
 		:font-size 13px
@@ -274,6 +288,16 @@ textarea.collect
 	
 .tiny_copy
 	:font-size 70%
+
+.form_group.login,
+form#new_user
+	input
+		+login_forms
+
+form#new_user
+	width: 50%
+	margin: 0 auto
+
 
 textarea
 	+forms
@@ -416,21 +440,25 @@ input.small
 	
 
 #award_message
-	background: transparent url(../images/airplane.png) bottom left no-repeat
-	width: 800px
-	height: 200px
-	position: absolute
-	top: 200px
-	left: 2200px
+	display: block
+	background: transparent url(../images/airplane-small.png) top left no-repeat
+	margin: 0
+	position: relative
+	top: 75px
+	left: 200%
 	z-index: 99
+	padding-left: 125px
+	float: left
 	#text_container
+		display: block !important
+		background: url(../images/airplane-small-slider.png) top right no-repeat
 		font-weight: bold
-		color: $cherry_red
-		width: 350px
+		color: #A9071E
 		position: relative
-		top: 30px
-		left: 400px
-
+		padding-right: 15px
+		line-height: 55px
+		overflow: hidden
+		top: -1px
 
 
 	

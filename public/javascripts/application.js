@@ -21,11 +21,11 @@ function remove_fields( link ) {
 $(document).ready(function(){
 	
 	$('#award_message').animate({
-			left: "50px"
-		}, 3500, function(){
+			left: "0%"
+		}, 3500, 'swing', function(){
 			$(this).delay(5000);
 			$(this).animate({
-				left: "-850px"
+				left: "-100%"
 			}, 3500, function(){
 				$(this).toggle();
 			}

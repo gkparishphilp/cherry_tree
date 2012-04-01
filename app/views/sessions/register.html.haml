@@ -5,27 +5,27 @@
 		.fields.register
 
 			= f.label "Email"
-			= f.text_field :email, :class => :regular
+			= f.text_field :email, :class => :regular, :placeholder => 'Email'
 			%div.clear
 			
 			= f.label :name, "First Name"
-			= text_field_tag :fname, '', :class => :regular, :size => '30'
+			= text_field_tag :fname, '', :class => :regular, :size => '30', :placeholder => 'First Name'
 			
 			%div.clear
 			
 			= f.label :name, "Last Name"
-			= text_field_tag :lname, '', :class => :regular, :size => '30'
+			= text_field_tag :lname, '', :class => :regular, :size => '30', :placeholder => 'Last Name'
 
 			%div.clear
 
 			= f.label :password, "Password"
-			= f.password_field :password, :class => :regular
+			= f.password_field :password, :class => :regular, :placeholder => 'Password'
 			
 			%div.clear
 			
 
 			= f.label :password_confirmation, "Confirm Password"
-			= f.password_field :password_confirmation, :class => :regular
+			= f.password_field :password_confirmation, :class => :regular, :placeholder => 'Confirm Password'
 			%br
 			%br
 			%div.clear

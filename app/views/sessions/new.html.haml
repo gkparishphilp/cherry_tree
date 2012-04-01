@@ -7,15 +7,13 @@
 		#child_login
 			%h3 Children:
 			= form_tag :controller=>'sessions' do
-				%b
+				%label
 					Name:
+				= text_field_tag :credential, params[:credential], :class => :regular, :placeholder => 'Name'
 				%br
-				= text_field_tag :credential, params[:credential], :class => :regular
-				%br
-				%b
+				%label
 					PIN:
-				%br
-				= password_field_tag :password, params[:password], :class => :regular
+				= password_field_tag :password, params[:password], :class => :regular, :placeholder => 'PIN'
 
 				%br
 			
@@ -27,15 +25,13 @@
 		#adult_login
 			%h3 Adults:
 			= form_tag :controller=>'sessions' do
-				%b
+				%label
 					Email:
+				= text_field_tag :credential, params[:credential], :class => :regular, :placeholder => 'Email'
 				%br
-				= text_field_tag :credential, params[:credential], :class => :regular
-				%br
-				%b
+				%label
 					Password:
-				%br
-				= password_field_tag :password, params[:password], :class => :regular
+				= password_field_tag :password, params[:password], :class => :regular, :placeholder => 'Password'
 				%br
 			
 				= submit_tag	"Login", :class => 'button blue'

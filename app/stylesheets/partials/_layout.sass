@@ -13,6 +13,7 @@ body
 #container
 	:width $page-width
 	:margin auto
+	position: relative
 
 #hd
 	:width $page-width
@@ -25,6 +26,9 @@ body
 		:float left
 		// :width 700px
 		:margin-top 20px
+		position: absolute
+		top: 0px
+		left: 130px
 
 	.user_capsule
 		background-color: #fff
@@ -52,8 +56,11 @@ body
 		.loggedout
 			:padding-left 10px
 #logo
-	:width 150px
-	:float left
+	width: 150px
+	float: left
+	position: absolute
+	left: 0px
+	top: 7px
 
 #bd
 	:position relative
@@ -164,18 +171,22 @@ body
 	+rounded(12px)
 	background-color: #fff
 	float: left
-	padding: 25px
 	border: 1px solid $big_blue
+	h3
+		padding: 25px 25px 0 25px
+	form
+		padding: 0 25px 25px 25px
 	
 #adult_login
-	width: 300px
-	margin-top: 20px
+	width: 400px
 	+rounded(12px)
 	margin-left: 80px
 	background-color: #fff
 	float: left
-	padding: 10px
-	
+	h3
+		padding: 25px 25px 0 25px
+	form
+		padding: 0 25px 25px 25px
 
 #award_certificate
 	position: relative
