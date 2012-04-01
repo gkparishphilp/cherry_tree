@@ -19,19 +19,34 @@ function remove_fields( link ) {
 
 
 $(document).ready(function(){
-	$('#award_message').animate({
-			left: "0%"
-		}, 3500, 'swing', function(){
-			$(this).delay(5000);
-			$(this).animate({
-				left: "-100%"
-			}, 3500, function(){
-				$(this).toggle();
-			}
-		);
-		}
-	);
-	
+	// $('#award_message').animate({
+	// 		left: "0%"
+	// 	}, 3500, 'swing', function(){
+	// 		$(this).delay(5000);
+	// 		$(this).animate({
+	// 			left: "-100%"
+	// 		}, 3500, function(){
+	// 			$(this).toggle();
+	// 		}
+	// 	);
+	// 	}
+	// );
+
+	// THIS IS FOR THE PLANE SLIDING ACRESS THE SCREEN
+	// Feedback message 
+	// $('#feedback_message').animate({
+	// 		left: "0%"
+	// 	}, 3500, 'swing', function(){
+	// 		$(this).delay(5000);
+	// 		$(this).animate({
+	// 			left: "-100%"
+	// 		}, 3500, function(){
+	// 			$(this).toggle();
+	// 		}
+	// 	);
+	// 	}
+	// );
+
 	// console.log($('#wrapper').height($(window).height()));
 
 
@@ -177,6 +192,7 @@ $(document).ready(function(){
 		
 	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
 	
+	$('.modal').dialog({autoOpen: true, modal: true, width: 500});
 	$('.open_modal').click( function(){
 		$( "#new_" + $(this).attr('id') ).dialog('open');
 		return false;
