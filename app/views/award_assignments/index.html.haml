@@ -6,12 +6,10 @@
 		%span.title
 			= possessize @child.display_name
 			Awards
-		.new_thing.button_flat
-			= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
-		.new_thing.button_flat
-			= link_to '+ Create Amazon Award', "#", :class => 'open_modal', :id => 'amzn'
-	= form_for [ @child, AwardAssignment.new ], :html => { :style => 'display:none;' } do |f|
-		= render 'form', :f => f
+		/ .new_thing.button_flat
+		/ 	= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
+		/ .new_thing.button_flat
+		/ 	= link_to '+ Create Amazon Award', "#", :class => 'open_modal', :id => 'amzn'
 
 	- if @active_assignments.empty?
 		#active_assignment_table{ :style => 'margin-top:20px;' }
@@ -53,7 +51,17 @@
 		&nbsp;
 	.new_thing.button_flat
 		= link_to "Save Changes", :class => 'save_form'
+	.clear
+		&nbsp;
+	#search_amazon{ :title => "New Amazon Reward for #{@child.display_name}" }
+		%h3!= "New <span class=\"amazon_logo\"></span>Reward for #{@child.display_name}"
+		= form_tag amzn_child_award_assignments_path( @child ) do |f|
+			= render 'amzn_form', :f => f
 	#accordion.goals
+		%h3.track= "Custom Awards"
+		%div
+			= form_for [ @child, AwardAssignment.new ], :html => {} do |f|
+				= render 'form', :f => f
 		- for cat in AwardCategory.all
 			- next if cat.awards.empty?
 			%h3.track= "#{cat.name} Awards"
@@ -64,8 +72,7 @@
 							%label
 								= render 'award_to_assign', :award => award	
 								
-	#new_amzn.modal{ :title => "New Amazon Reward for #{@child.display_name}" }
-		= form_tag amzn_child_award_assignments_path( @child ) do |f|
-			= render 'amzn_form', :f => f
-
+	/ #new_amzn.modal{ :title => "New Amazon Reward for #{@child.display_name}" }
+	/ 	= form_tag amzn_child_award_assignments_path( @child ) do |f|
+	/ 		= render 'amzn_form', :f => f
 		

@@ -59,6 +59,11 @@
 			:margin 0
 			:color #fff
 			+rounded-side(top,6px)
+	#search_amazon
+		:border 1px solid #DDD
+		:background #ffffff
+		+rounded(6px)
+		:padding 20px
 #new_child
 	input[type="text"]
 		:width 400px
@@ -71,7 +76,18 @@
 	:padding 8px 15px
 	a
 		:color #fff
-
+.amazon_logo
+	background: url(../images/amazon.png) no-repeat center center
+	display: inline-block
+	position: relative
+	top: 14px
+	width: 120px
+	height: 30px
+#search_amazon
+	h3
+		margin-bottom: 15px
+	input#term
+		width: 415px
 .activity
 	input[type="submit"]
 		+ct_button_flat

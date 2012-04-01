@@ -51,8 +51,8 @@ $page-width: 980px
 	:font-weight bold
 	:padding 0 15px
 	:font-size 16px
-	:height 40px
-	:line-height 40px
+	:height 30px
+	:line-height 32px
 	:display inline-block
 	+rounded(20px)
 	:cursor pointer
@@ -63,9 +63,10 @@ $page-width: 980px
 	:color #ffffff
 	:font-family "Corben", arial, sans-serif
 	:font-weight bold
-	:padding 4px 8px 2px
+	:padding 0 8px
 	:font-size 10px
-	:line-height 12px
+	:height 25px
+	:line-height 25px
 	:display inline-block
 	+rounded(10px)
 	:cursor pointer
@@ -75,14 +76,20 @@ $page-width: 980px
 	:color #ffffff
 	:background-color #60a4c2
 	:font-weight bold
-	:border none
+	:border 1px solid #4f89a3
 	:padding 4px 15px 3px
 	:min-width 80px
 	:font-size 14px !important
 	:line-height 20px
 	:display inline-block
-	+rounded(7px)
+	+rounded(3px)
 	:cursor pointer
+	&:hover
+		:background-color #5999b6
+		+shadow(0, 0, 5px, rgba(0,0,0,.3))
+	&:active
+		position: relative
+		top: 1px
 //	:behavior url(/javascripts/PIE.htc)
 	
 =ct_button_color($color)

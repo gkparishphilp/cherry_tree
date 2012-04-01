@@ -19,7 +19,6 @@ function remove_fields( link ) {
 
 
 $(document).ready(function(){
-	
 	$('#award_message').animate({
 			left: "0%"
 		}, 3500, 'swing', function(){
@@ -33,6 +32,9 @@ $(document).ready(function(){
 		}
 	);
 	
+	// console.log($('#wrapper').height($(window).height()));
+
+
 	$('#award_message').click( function(){
 		$(this).animate({
 				left: "-850px"
@@ -237,7 +239,7 @@ $(document).ready(function(){
 	
 	// Used to save accordians state.
     var current = window.location.hash.replace("#", "");
-	$(".child_profile #accordion").accordion({ autoHeight: false, active: parseInt(current) });
+	$(".child_profile #accordion").accordion({ autoHeight: false, active: parseInt(current), easing: 'swing' });
 	var btn_submit = $('.save_form').attr("href");
 	$(".child_profile #accordion h3").click(function(event){
 		var index = $(".child_profile #accordion h3").index(this);

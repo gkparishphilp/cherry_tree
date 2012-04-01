@@ -2,32 +2,6 @@
 
 .child_profile.clearfix
 	= render "children/sub_nav", :child => @child
-	
-	.top-header.clearfix
-		%span.title
-			Create objectives for 
-			= @child.name.capitalize
-			here.
-		.new_thing.button_flat
-			= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
-			
-	= form_for [ @child, ObjectiveAssignment.new ], :html => { :style => 'display:none;' } do |f|
-		%b Goal:
-		%br
-		= f.text_field :objective_name, :class => 'title_field'
-		%br
-		%b Description:
-		%br
-		= f.text_field :description, :style => 'width:500px;'
-		%br
-		%b Cherries Per Checkin:
-		%br
-		= f.text_field :point_value, :class => 'small'
-		cherries
-		%br
-		= f.submit 'Enter', :class => 'button_flat'
-		|
-		= link_to 'Cancel', "#", :class => 'close_new_objective_form'
 		
 	- if @active_assignments.empty? && @requested_assignments.empty?
 		#active_assignment_table{ :style => 'margin-top:20px;' }
@@ -49,13 +23,13 @@
 			.float_left{ :style => 'width:50px;'}
 				&nbsp;
 			.float_left{ :style => 'width:230px;'}
-				%b Name
+				%label Name
 			.float_left{ :style => 'width:350px;'}
-				%b Description
+				%label Description
 			.float_left{ :style => 'width:150px;'}
-				%b Cherries
+				%label Cherries
 			-#.float_left{ :style => 'width:50px;'}
-				%b Parental Confirmation?
+				%label Parental Confirmation?
 			.clear
 			- for assignment in @active_assignments
 				= render 'active_assignment', :assignment => assignment
@@ -77,7 +51,36 @@
 		&nbsp;
 	.new_thing.button_flat
 		= link_to "Save Changes", "", :class => 'save_form'
-	#accordion.goals	
+	.clear	
+		&nbsp;
+	/ .top-header.clearfix
+	/ 	%span.title
+	/ 		Create objectives for 
+	/ 		= @child.name.capitalize
+	/ 		here.
+	/ 	.new_thing.button_flat
+	/ 		= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
+
+	#accordion.goals
+		%h3.track= "Custom Goals"
+		%div
+			= form_for [ @child, ObjectiveAssignment.new ] do |f|
+				%label Goal:
+				%br
+				= f.text_field :objective_name, :class => 'title_field'
+				%br
+				%label Description:
+				%br
+				= f.text_field :description, :style => 'width:500px;'
+				%br
+				%label Cherries Per Checkin:
+				%br
+				= f.text_field :point_value, :class => 'small'
+				cherries
+				%br
+				= f.submit 'Enter', :class => 'button_flat'
+				|
+				= link_to 'Cancel', "#", :class => 'close_new_objective_form'
 		- for cat in ObjectiveCategory.all
 			-next if cat.objectives.empty?
 			%h3.track= "#{cat.name} Goals"
