@@ -1,3 +1,23 @@
 -# Used to show Children Dashboard to Parent
-.child_profile
-	= render @activities if @activities.present?
+.child_profile.clearfix
+	/ = render @activities if @activities.present?
+	#main-col
+		.message
+			%p Dear Parents
+			%p.indent 
+				Thank you for joining CherryTree! We are very excited to... Quisque dapibus enim at sem lobortis imperdiet. Etiam at sapien eget nunc placerat pharetra sit amet sed felis. Pellentesque mi metus, consectetur et suscipit in, luctus quis sapien. Quisque fringilla laoreet egestas. Cras urna ligula, ultricies vitae adipiscing a, iaculis at nibh. Aenean nec euismod sapien. Nam iaculis accumsan dolor sit amet euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed hendrerit tincidunt urna in auctor. Aliquam volutpat facilisis lorem, in sodales purus sagittis ac.
+			%p
+				In hac habitasse platea dictumst. Quisque ultricies malesuada augue, nec euismod augue congue at. Pellentesque tincidunt faucibus sapien ac posuere. Donec pulvinar libero vel metus ultrices gravida. Aliquam lectus eros, mattis eu dapibus at, feugiat ut massa. Proin mollis, est ac tincidunt tincidunt, lectus mauris condimentum enim, vitae rhoncus dui tortor nec urna. Ut quis justo risus. Donec vitae velit sodales purus aliquam volutpat. Nunc non tortor sed sem vehicula rutrum. Maecenas id dui vel massa congue dapibus a et eros. Duis augue lectus, tincidunt eu volutpat a, convallis eget dolor. Mauris nec risus vel eros cursus porttitor sit amet in magna. Proin luctus, dolor accumsan sagittis placerat, lacus lorem accumsan massa, ut viverra ipsum erat at lorem.
+	#market.boxes
+		%p
+			Check out the cherryTree Market for toys, books and other materials to help your whole child grow.
+		= link_to "Enter Market", "/market", :class => 'button_flat big'
+		= link_to image_tag( 'market-small.png'), "/market", :class => 'market'
+	#resources.boxes
+		%p
+			Visit our Parent Resources section for great parenting advice and information.
+		= link_to "Go", "/resources", :class => 'button_flat'
+	#faq.boxes
+		%p
+			Need some help with setting up goals and awards? Check out these.
+		= link_to "FAQ", "/faq", :class => 'button_flat'

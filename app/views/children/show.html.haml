@@ -2,7 +2,7 @@
 .child_profile.clearfix
 	= render 'children/sub_nav', :child => @child
 	
-	#child_main_screen
+	#child_main_screen.parent
 	
 		- if @child.objective_assignments.empty? 
 			%h3 

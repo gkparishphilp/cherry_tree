@@ -70,45 +70,7 @@
 .top-header
 	h3
 		:float left
-.boxes
-	width: 33%
-	padding: 10px 15px 20px
-	margin-top: 15px
-	float: right
-	+rounded(10px)
-	:border 1px solid #ddd
-	:background-color #fff
-	&#activities
-		float: right
-		width: 44%
-		.name
-			float: left
-			width: 235px
-		.cherries
-			float: left
-			text-align: center
-			width: 75px
-		.action
-			text-align: center
-			float: left
-			width: 75px
-		.heading
-			&.name
-				text-align: left
-				width: 245px
-			&.action
-				width: 80px
-		.activity
-			padding: 10px 10px
-			background: #d6e9f2
-			margin: 10px 0
-			:width 96%
-			/* line-height: 35px */
-			+rounded(6px)
-			.cherries
-				line-height: 35px
-			a
-				height: 21px
+
 
 .banner_name
 	:float left
@@ -121,7 +83,10 @@
 	:float right
 	
 #child_main_screen
-	:width 100%
+	&.children
+		:width 100%
+	&.parent
+		:width 50%
 	min-height: 800px
 	float: left
 	.activity

@@ -78,8 +78,7 @@ $page-width: 980px
 	:font-weight bold
 	:border 1px solid #4f89a3
 	:padding 4px 15px 3px
-	:min-width 80px
-	:font-size 14px !important
+	:font-size 14px
 	:line-height 20px
 	:display inline-block
 	+rounded(3px)
@@ -90,6 +89,11 @@ $page-width: 980px
 	&:active
 		position: relative
 		top: 1px
+	&.big
+		font-size: 24px
+		height: 35px
+		line-height: 35px
+		padding: 0 5px
 //	:behavior url(/javascripts/PIE.htc)
 	
 =ct_button_color($color)
