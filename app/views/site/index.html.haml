@@ -20,7 +20,6 @@
 	#welcome_box
 		%h1
 			"Where Children Blossom"
-		= render 'shared/flash', :flash => flash 
 		
 		
 		%p
@@ -33,6 +32,7 @@
 		%br
 		%p
 			Enter your email address to sign up for our newsletter:
+			= render 'shared/flash', :flash => flash 
 			= render 'users/collect_email'
 		%p.disclaimer
 			Your personal information is safe with us.  We promise not to sell, market, or otherwise distribute your information.  

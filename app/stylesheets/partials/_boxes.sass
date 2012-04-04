@@ -1,0 +1,99 @@
+// General Box Style
+.boxes
+  padding: 10px 15px
+  margin-top: 20px
+  +rounded(10px)
+  :border 1px solid #ddd
+  :background-color #fff
+
+// Child Dash
+.boxes
+  &#activities
+    float: right
+    width: 46%
+    .name
+      float: left
+      width: 235px
+    .cherries
+      float: left
+      text-align: center
+      width: 90px
+    .action
+      text-align: center
+      float: left
+      width: 75px
+    .heading
+      &.name
+        text-align: left
+        width: 245px
+      &.action
+        width: 80px
+    .activity
+      padding: 10px 10px
+      background: #d6e9f2
+      margin: 10px 0
+      :width 96%
+      /* line-height: 35px */
+      +rounded(6px)
+      .cherries
+        line-height: 35px
+      a
+        height: 21px
+  &#check_in,
+  &#checked_in
+    .objectives
+      margin: 10px 0
+      padding: 10px
+      +rounded(6px)
+      background-color: #D6E9F2
+      .actions
+        height: 40px
+      p
+        font-size: 18px
+        width: 360px
+  &#checked_in
+    h3
+      color: #555
+    .objectives 
+      background-color: #ddd
+  &#home_prizes
+    clear: both
+    margin-top: 20px
+    .item
+    .item_name
+      :min-height 30px
+    .treasure_item
+      :width 150px
+      :min-height 170px
+
+
+// Parent Child Subdash
+.child_profile.parent
+  .boxes
+    float: right
+    width: 35%
+//// Boxes
+.boxes
+  &#goals,
+  &#awards
+    .objective
+      padding: 10px 20px
+      font-size: 15px
+      width: 250px
+      border-bottom: 1px solid #dddddd
+      .name
+        float: left
+        width: 200px
+      .cherries
+        color: $cherry_red 
+        font-size: 15px
+        float: right
+        line-height: 23px
+        font-style: italic
+        font-weight: bold
+        .cherry
+          width: 18px
+  .add_objectives,
+  .add_awards
+    margin: 20px 0 10px
+  &#awards

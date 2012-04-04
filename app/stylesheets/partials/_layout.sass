@@ -75,6 +75,7 @@ body
 #main-nav
 	+rounded
 	:padding 0 5px
+	:border 1px solid #4f89a3
 	:margin -3px 0
 	:position relative
 	:z-index 2
@@ -82,7 +83,7 @@ body
 	li
 		list-style: none
 		display: inline
-		margin: 5px 10px
+		margin: 5px 15px
 		&.more
 			:padding-left 15px
 			:margin-left 5px
@@ -94,6 +95,13 @@ body
 		:color #edf5f8
 		:font-weight bold
 		:font-size 14px
+		:padding 0 10px
+		:height 25px
+		:line-height 25px
+		margin: 5px 0
+		&:hover
+			+rounded(5px)
+			background-color: #4c849d
 	ul
 		:float left
 	ul li
@@ -101,8 +109,7 @@ body
 		:color #fff
 		:float left
 		:position relative
-		:margin 0
-		:padding 10px 10px 9px
+		:margin 0 5px
 		:cursor pointer
 	ul ul
 		:background-color #fff
@@ -371,42 +378,3 @@ body
 	p
 		line-height: 24px
 
-.boxes
-	width: 33%
-	padding: 10px 15px 20px
-	margin-top: 15px
-	float: right
-	+rounded(10px)
-	:border 1px solid #ddd
-	:background-color #fff
-	&#activities
-		float: right
-		width: 44%
-		.name
-			float: left
-			width: 235px
-		.cherries
-			float: left
-			text-align: center
-			width: 75px
-		.action
-			text-align: center
-			float: left
-			width: 75px
-		.heading
-			&.name
-				text-align: left
-				width: 245px
-			&.action
-				width: 80px
-		.activity
-			padding: 10px 10px
-			background: #d6e9f2
-			margin: 10px 0
-			:width 96%
-			/* line-height: 35px */
-			+rounded(6px)
-			.cherries
-				line-height: 35px
-			a
-				height: 21px
