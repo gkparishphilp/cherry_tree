@@ -1,5 +1,5 @@
 -# Used to show Children Dashboard to Parent
-.child_profile.clearfix
+.child_profile.clearfix.parent_home
 	/ = render @activities if @activities.present?
 	#main-col
 		.message
@@ -16,8 +16,8 @@
 	#resources.boxes
 		%p
 			Visit our Parent Resources section for great parenting advice and information.
-		= link_to "Go", "/resources", :class => 'button_flat'
+		= link_to "Go", "/resources", :class => 'button_flat big'
 	#faq.boxes
 		%p
 			Need some help with setting up goals and awards? Check out these.
-		= link_to "FAQ", "/faq", :class => 'button_flat'
+		= link_to "FAQ", "/faq", :class => 'button_flat big'
