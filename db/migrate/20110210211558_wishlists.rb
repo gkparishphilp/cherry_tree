@@ -1,7 +1,7 @@
 class Wishlists < ActiveRecord::Migration
 	def self.up
 	
-		create_table :wishlists, :force => true, do |t|
+		create_table :wishlists, :force => true do |t|
 			t.references	:user
 			t.string		:name
 			t.text			:description
