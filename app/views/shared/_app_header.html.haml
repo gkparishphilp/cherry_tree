@@ -7,7 +7,7 @@
 	.nav
 		-unless @current_user.child?
 			= link_to "Parent Resources", '/resources', :class=> 'button_small blue'
-			= link_to "Shop", '/market', :class=> 'button_small blue'
+			= link_to "Shop", '/store', :class=> 'button_small blue'
 			=# link_to "Forums", forums_path, :class=> 'button_small blue'
 	.user_capsule
 		- if @current_user.anonymous?

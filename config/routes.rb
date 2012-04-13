@@ -70,6 +70,8 @@ CherryTree::Application.routes.draw do
 
 	resources :merches
 	
+	resources :store
+	
 	resources :notes do
 		get 'archive', :on => :collection
 		get 'customize', :on => :member
