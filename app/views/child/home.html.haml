@@ -18,7 +18,7 @@
 				-for checkin in @checked_in_assignments
 					= render 'objective_assignments/objective_assignment_checked_in', :objective_assignment => checkin
 
-   
+  
 	-# unless @current_user.activities.empty?
 		#home_activity.boxes
 			%h3
@@ -43,9 +43,35 @@
 							Completed
 						- else
 							= link_to "Take It", lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.screens.first ), :class => 'button_small blue'
+		- else
+		%h3	No Assignments Today!
+
+	.boxes#activities
+		.test-modals
+			%h3 Award Modal Testing
+			= link_to '+ Show Blue Award', "#", :class => 'open_modal', :id => 'award_blue'
+			%br
+			= link_to '+ Show Red Award', "#", :class => 'open_modal', :id => 'award_red'
+			%br
+			= link_to '+ Show Yellow Award', "#", :class => 'open_modal', :id => 'award_yellow'
+			%br
+			= link_to '+ Show Green Award', "#", :class => 'open_modal', :id => 'award_green'
+			%br
+
+	#new_award_blue.award_modal{ :title => "Great Job #{@child.display_name}!" }
+		.bird
+		.bubble
+	#new_award_red.award_modal{ :title => "Great Job #{@child.display_name}!" }
+		.bird
+		.bubble
+	#new_award_yellow.award_modal{ :title => "Great Job #{@child.display_name}!" }
+		.bird
+		.bubble
+	#new_award_green.award_modal{ :title => "Great Job #{@child.display_name}!" }
+		.bird
+		.bubble
+	
+
 
 = render 'child/right_column'
-
-
-
 

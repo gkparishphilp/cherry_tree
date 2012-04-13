@@ -19,21 +19,21 @@ function remove_fields( link ) {
 
 
 $(document).ready(function(){
-	// $('#award_message').animate({
-	// 		left: "0%"
-	// 	}, 3500, 'swing', function(){
-	// 		$(this).delay(5000);
-	// 		$(this).animate({
-	// 			left: "-100%"
-	// 		}, 3500, function(){
-	// 			$(this).toggle();
-	// 		}
-	// 	);
-	// 	}
-	// );
+	$('#award_message').animate({
+			left: "0%"
+		}, 3500, 'swing', function(){
+			$(this).delay(5000);
+			$(this).animate({
+				left: "-100%"
+			}, 3500, function(){
+				$(this).toggle();
+			}
+		);
+		}
+	);
 
 	// THIS IS FOR THE PLANE SLIDING ACRESS THE SCREEN
-	// Feedback message 
+	// Feedback message (need a different selector than #award_message)
 	// $('#feedback_message').animate({
 	// 		left: "0%"
 	// 	}, 3500, 'swing', function(){
@@ -47,17 +47,18 @@ $(document).ready(function(){
 	// 	}
 	// );
 
+	// $('#feedback_message').click( function(){
+	// 	$(this).animate({
+	// 			left: "-100%"
+	// 		}, 3500, function(){
+	// 			$(this).toggle();
+	// 		}
+	// 	);
+	// });
+
 	// console.log($('#wrapper').height($(window).height()));
 
 
-	$('#award_message').click( function(){
-		$(this).animate({
-				left: "-850px"
-			}, 3500, function(){
-				$(this).toggle();
-			}
-		);
-	});
 	
 	
 	$('#flash').click(function () {
@@ -190,7 +191,7 @@ $(document).ready(function(){
 		$('#new_objective_assignment').hide(300);
 	});
 		
-	$('.modal').dialog({ autoOpen: false, modal: true, width: 500 });
+	$('.award_modal').dialog({ autoOpen: false, modal: true, width: 500, dialogClass: 'award_message' });
 	
 	$('.modal').dialog({autoOpen: true, modal: true, width: 500});
 	$('.open_modal').click( function(){
