@@ -10,7 +10,6 @@
 					Great Job!  
 				%h4
 					You've met all your goals for today! Come back tomorrow to earn more cherries.
-		
 		-if @checked_in_assignments.present?
 			.boxes#checked_in
 				%h3 
@@ -46,32 +45,11 @@
 		- else
 		%h3	No Assignments Today!
 
-	.boxes#activities
-		.test-modals
-			%h3 Award Modal Testing
-			= link_to '+ Show Blue Award', "#", :class => 'open_modal', :id => 'award_blue'
-			%br
-			= link_to '+ Show Red Award', "#", :class => 'open_modal', :id => 'award_red'
-			%br
-			= link_to '+ Show Yellow Award', "#", :class => 'open_modal', :id => 'award_yellow'
-			%br
-			= link_to '+ Show Green Award', "#", :class => 'open_modal', :id => 'award_green'
-			%br
-
-	#new_award_blue.award_modal{ :title => "Great Job #{@child.display_name}!" }
-		.bird
-		.bubble
-	#new_award_red.award_modal{ :title => "Great Job #{@child.display_name}!" }
-		.bird
-		.bubble
-	#new_award_yellow.award_modal{ :title => "Great Job #{@child.display_name}!" }
-		.bird
-		.bubble
-	#new_award_green.award_modal{ :title => "Great Job #{@child.display_name}!" }
-		.bird
-		.bubble
-	
-
+	-if session[:just_checked_in]
+		#new_award.award_modal{ :id => (rand(4)+1), :title => "Great Job #{@child.display_name}!" }
+			.bird
+			.bubble
+		- session[:just_checked_in] = false
 
 = render 'child/right_column'
 

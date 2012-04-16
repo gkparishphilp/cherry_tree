@@ -191,7 +191,7 @@ $(document).ready(function(){
 		$('#new_objective_assignment').hide(300);
 	});
 		
-	$('.award_modal').dialog({ autoOpen: false, modal: true, width: 500, dialogClass: 'award_message' });
+	$('.award_modal').dialog({ autoOpen: true, modal: true, width: 500, dialogClass: 'award_message' });
 	
 	$('.modal').dialog({autoOpen: true, modal: true, width: 500});
 	$('.open_modal').click( function(){
