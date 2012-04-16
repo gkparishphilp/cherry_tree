@@ -66,6 +66,8 @@ CherryTree::Application.routes.draw do
 	
 	resources :games
 	
+	resources :guides
+	
 	resources :invitations
 
 	resources :merches

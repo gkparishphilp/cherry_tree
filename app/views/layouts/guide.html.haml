@@ -1,0 +1,17 @@
+!!!strict
+%html
+	%head
+	= render 'layouts/meta', :css => 'app'
+
+	%body
+	#wrapper.store
+	#container
+		= render 'shared/award_messages', :award_message => flash[:award_message] if flash[:award_message]
+		= render 'shared/app_header'
+		#bd
+			= render 'shared/flash', :flash => flash
+			#content
+				= yield
+				%br.clear
+		= render 'shared/footer'
+		= render 'shared/analytics'

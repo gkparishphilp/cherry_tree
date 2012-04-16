@@ -2,10 +2,10 @@
 	.float_left{ :style => 'width:50px;'}
 		= check_box_tag "unassign_award", assignment.award.id, true, :award => assignment.award.id, :class => 'unassign_award', :child => @child.id, :assignment => assignment.id
 
-	.float_left{ :style => 'width:300px;'}
+	.float_left{ :style => 'width:400px;'}
 		= assignment.award.name
 
-	.float_left{ :style => 'width:350px;'}
+	-#.float_left{ :style => 'width:350px;'}
 		= text_area_tag :award_description, assignment.description, :id => "award_desc_#{assignment.award.id}", :class => "award_desc", :style => 'width:300px;', :child => @child.id, :assignment => assignment.id
 
 	.float_left{ :style => 'width:150px;' }

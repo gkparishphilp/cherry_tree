@@ -53,7 +53,8 @@ class Award < ActiveRecord::Base
 		end
 		
 		award = Award.new( :name => result.get('ItemAttributes/Title'), :description => result.get('EditorialReviews/EditorialReview/Content'), :asin =>award[:asin] )
-		award.point_cost = result.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub( /\D/, "" ).to_i.roundup
+		#award.point_cost = result.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub( /\D/, "" ).to_i.roundup
+		award.point_cost = 50
 		if award.save
 			avatar = Attachment.create_from_resource( result.get_hash( 'MediumImage' )['URL'], 'avatar', :owner => award, :remote => 'true' )
 			return award
