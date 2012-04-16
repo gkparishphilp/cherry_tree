@@ -1,10 +1,50 @@
 
 s = Site.create :name => 'Cherry Tree'
 
+lc1 = LessonCategory.create :name => 'Academics & School Readiness'
+lc2 = LessonCategory.create :name => 'Child Behavior & Independence Skills'
+lc3 = LessonCategory.create :name => 'Social Skills & Emotional Well-Being'
+lc4 = LessonCategory.create :name => 'Health & Fitness'
+
 oc1 = ObjectiveCategory.create :name => 'Academics & School Readiness'
 oc2 = ObjectiveCategory.create :name => 'Child Behavior & Independence Skills'
 oc3 = ObjectiveCategory.create :name => 'Social Skills & Emotional Well-Being'
 oc4 = ObjectiveCategory.create :name => 'Health & Fitness'
+
+osc1 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Listening'
+osc2 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Obeying'
+osc3 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Patience'
+osc4 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Self-Advocating'
+osc5 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Flexibility'
+osc6 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Independence'
+osc7 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Home/Chores'
+
+osc8  = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Friendship'
+osc9  = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Playtime'
+osc10 = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Bullying'
+osc11 = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Communication'
+osc12 = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Being Kind'
+osc13 = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Body Awareness'
+osc14 = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Cope with Feelings'
+osc15 = ObjectiveSubcategory.create :objective_category => oc3, :name => 'Self-Esteem/Self-Confidence'
+
+osc16 = ObjectiveSubcategory.create :objective_category => oc4, :name => 'Motor Development'
+osc17 = ObjectiveSubcategory.create :objective_category => oc4, :name => 'Nutrition/Diet'
+osc18 = ObjectiveSubcategory.create :objective_category => oc4, :name => 'Mental'
+osc19 = ObjectiveSubcategory.create :objective_category => oc4, :name => 'Physical/Exercise'
+osc20 = ObjectiveSubcategory.create :objective_category => oc4, :name => 'Hygiene'
+osc21 = ObjectiveSubcategory.create :objective_category => oc4, :name => 'Safety'
+
+osc22 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Reading/Language Arts'
+osc23 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Writing'
+osc24 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Math'
+osc25 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Art/Music'
+osc26 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Schoolword'
+osc27 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Learn New Skill'
+
+obj = Objective.create :objective_category => oc2, :objective_subcategory => osc1, :name => 'Show good listening skills by making good eye contact and do not interrupt', :creator => s, :point_value => 1
+obj = Objective.create :objective_category => oc2, :objective_subcategory => osc1, :name => 'Repeat back the instructions given to you', :creator => s, :point_value => 1
+
 
 puts "Setup Default Anonymous User"
 
@@ -39,7 +79,35 @@ f = Forum.create :title  => 'Socialization', :description => 'Autism, Aspergers,
 f = Forum.create :title  => 'Attention', :description => 'ADD, Focus, Time Management'
 
 
-# some unlockables
+puts "Create static pages"
+
+# Static Pages
+about = ""
+File.open("#{Rails.root}/copy/about.txt") {|f| about = f.read}	
+sp = StaticPage.create :title => 'About Us', :permalink => 'about', 
+					:description => 'About Us', :content => about
+
+terms = ""
+File.open("#{Rails.root}/copy/terms.txt") {|f| terms = f.read}	
+sp = StaticPage.create :title => 'Terms of Use', :permalink => 'terms', 
+					:description => 'Terms of Use', :content => terms
+
+privacy = ""
+File.open("#{Rails.root}/copy/privacy.txt") {|f| privacy = f.read}	
+sp = StaticPage.create :title => 'Privacy Policy', :permalink => 'privacy', 
+					:description => 'Privacy', :content => privacy
+					
+help = ""
+File.open("#{Rails.root}/copy/help.txt") {|f| help = f.read}	
+sp = StaticPage.create :title => 'Help', :permalink => 'help', 
+					:description => 'Help', :content => help
+
+blog1 = ""
+File.open("#{Rails.root}/copy/welcome_blog.txt") {|f| blog1 = f.read} 
+article = Article.create :owner_id => u2.id, :owner_type => 'User', :title => 'Welcome!', 
+						:comments_allowed => true, :status => 'publish', :publish_at => '2011-10-21 19:00:00', :content => blog1
+
+=begin
 
 #ul = Unlockable.create :name => 'Pet Snarp', :description => "This lovable pet will stick with you no matter what", :point_cost => 25
 #ul.attachments.create :attachment_type => 'avatar', :name => 'reddog', :format => 'gif', :path => '/images/unlockables/reddog.gif', :remote => true
@@ -108,30 +176,4 @@ b3.attachments.create :attachment_type => 'image', :name => 'notebook', :format 
 #a = Achievement.create :name => 'Biographer', :requirements => "bio.present?"
 #a = Achievement.create :name => 'First Checkin!', :requirements => "checkins.count > 0"
 
-puts "Create static pages"
-
-# Static Pages
-about = ""
-File.open("#{Rails.root}/copy/about.txt") {|f| about = f.read}	
-sp = StaticPage.create :title => 'About Us', :permalink => 'about', 
-					:description => 'About Us', :content => about
-
-terms = ""
-File.open("#{Rails.root}/copy/terms.txt") {|f| terms = f.read}	
-sp = StaticPage.create :title => 'Terms of Use', :permalink => 'terms', 
-					:description => 'Terms of Use', :content => terms
-
-privacy = ""
-File.open("#{Rails.root}/copy/privacy.txt") {|f| privacy = f.read}	
-sp = StaticPage.create :title => 'Privacy Policy', :permalink => 'privacy', 
-					:description => 'Privacy', :content => privacy
-					
-help = ""
-File.open("#{Rails.root}/copy/help.txt") {|f| help = f.read}	
-sp = StaticPage.create :title => 'Help', :permalink => 'help', 
-					:description => 'Help', :content => help
-
-blog1 = ""
-File.open("#{Rails.root}/copy/welcome_blog.txt") {|f| blog1 = f.read} 
-article = Article.create :owner_id => u2.id, :owner_type => 'User', :title => 'Welcome!', 
-						:comments_allowed => true, :status => 'publish', :publish_at => '2011-10-21 19:00:00', :content => blog1
+=end 

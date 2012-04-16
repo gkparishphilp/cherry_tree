@@ -18,6 +18,7 @@
 class Objective < ActiveRecord::Base
 	belongs_to	:creator, :polymorphic => true
 	belongs_to	:objective_category
+	belongs_to	:objective_subcategory
 	has_many	:objective_assignments
 	has_many	:users, :through => :objective_assignments
 	

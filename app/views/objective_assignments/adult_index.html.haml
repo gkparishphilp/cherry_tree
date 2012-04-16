@@ -67,10 +67,15 @@
 			%h3.track= "#{cat.name} Goals"
 			%div
 				%ul
-					-for objective in cat.objectives - @child.active_assigned_objectives
-						%li
-							%label
-								= render 'objective_to_assign', :objective => objective
+					- for subcat in cat.objective_subcategories
+						%h4
+							=subcat.name
+						-for objective in cat.objectives - @child.active_assigned_objectives
+							-if objective.objective_subcategory == subcat
+								%li
+									%label
+										= render 'objective_to_assign', :objective => objective
+						%br
 		%h3.track= "Custom Goals"
 		%div
 			= form_for [ @child, ObjectiveAssignment.new ] do |f|

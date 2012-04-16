@@ -22,6 +22,7 @@ class Objectives < ActiveRecord::Migration
 		create_table :objectives, :force => true do |t|
 			t.string		:name
 			t.references	:objective_category
+			t.references	:objective_subcategory
 			t.references	:creator, :polymorphic => true
 			t.text			:description
 			t.integer		:point_value # default for app-objectives to be overridden by the assignment
@@ -49,6 +50,11 @@ class Objectives < ActiveRecord::Migration
 		create_table :objective_categories do |t|
 			t.string		:name
 		end
+		
+		create_table :objective_subcategories do |t|
+			t.references		:objective_category
+			t.string		:name
+		end	
 		
 		add_index :objectives, :objective_category_id
 		add_index :objective_assignments, :req_confirm
