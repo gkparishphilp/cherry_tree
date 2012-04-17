@@ -1,9 +1,9 @@
 task :cherry_tree_lessons => :environment do
 	
-	lc1 = LessonCategory.find_by_name 'Academics'
-	lc2 = LessonCategory.find_by_name 'Behavior'
-	lc3 = LessonCategory.find_by_name 'Social'
-	lc4 = LessonCategory.find_by_name 'Health'
+	lc1 = LessonCategory.find_by_name 'Academics & School Readiness'
+	lc2 = LessonCategory.find_by_name 'Child Behavior & Independence Skills'
+	lc3 = LessonCategory.find_by_name 'Social Skills & Emotional Well-Being'
+	lc4 = LessonCategory.find_by_name 'Health & Fitness'
 
 	#Roman Numeral Lesson
 	l = Lesson.create :name => 'Roman Numerals', :description => 'Learn all about Roman Numerals', :lesson_category => lc1
