@@ -11,16 +11,16 @@
 
 	- for screen in @screens
 		%p
-			= screen.content	
+			= screen.content.html_safe	
 			
 	- for quiz in @lesson.quizzes
 		%h3
 			Quiz:
-			= quiz.name
+			= quiz.name.html_safe
 
 		-for question in quiz.questions
 			%p
-				= question.content
+				= question.content.html_safe
 				
 				
 %br.clear

@@ -6,8 +6,8 @@
 			= link_to image_tag( "logo.png", :alt=> "The Cherry Tree", :class => 'logo' ), home_path 
 	.nav
 		-unless @current_user.child?
-			= link_to "Parent Resources", '/resources', :class=> 'button_small blue'
-			= link_to "Shop", '/market', :class=> 'button_small blue'
+			= link_to "Resources", '/resources', :class=> 'button red'
+			= link_to "Store", '/store', :class=> 'button red'
 			=# link_to "Forums", forums_path, :class=> 'button_small blue'
 	.user_capsule
 		- if @current_user.anonymous?

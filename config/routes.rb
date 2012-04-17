@@ -66,9 +66,13 @@ CherryTree::Application.routes.draw do
 	
 	resources :games
 	
+	resources :guides
+	
 	resources :invitations
 
 	resources :merches
+	
+	resources :store
 	
 	resources :notes do
 		get 'archive', :on => :collection

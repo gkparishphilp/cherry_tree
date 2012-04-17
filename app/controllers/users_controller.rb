@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 			@relevant_assignment, @relevant_assignment_parent, @num_assignments = @current_user.most_relevant
 			@lesson_assignments= @child.lesson_assignments
 			
-			@active_assignments = @current_user.objective_assignments.active - @current_user.objective_assignments.checked_in
+			@active_assignments = @current_user.objective_assignments.active - @current_user.objective_assignments.map{ |assignment| assignment if assignment.checkin_in_last?(Time.now.beginning_of_day)}
 			@checked_in_assignments = @current_user.objective_assignments.checked_in
 			if @relevant_assignment_parent.is_a?( Lesson )
 				@viewing = LessonViewing.find_or_initialize_by_user_id_and_lesson_id( @current_user.id, @relevant_assignment_parent.id )
@@ -152,8 +152,8 @@ class UsersController < ApplicationController
 				user.reload
 
 				email = UserMailer.forgot_password( user, @current_site ).deliver
-				pop_flash = "Email sent to #{user.email}.Please follow the enclosed instructions to recover your password.", :notice
-				redirect_to root_path
+				pop_flash = "Email sent to #{user.email}.Please follow the enclosed instructions to recover your password.", :error
+				redirect_to new_session_path
 			else
 				params[:email] = nil
 				pop_flash "No user with that email.", :error

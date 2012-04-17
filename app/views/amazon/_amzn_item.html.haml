@@ -1,9 +1,10 @@
 .amzn_item.clearfix
 	.amzn_title
-		= link_to item.get("ItemAttributes/Title"), item.get('DetailPageURL')
-		(
-		= item.get('ItemAttributes/ListPrice/FormattedPrice')
-		)
+		= item.get("ItemAttributes/Title")
+		- unless item.get('ItemAttributes/ListPrice/FormattedPrice').blank?
+			(
+			= item.get('ItemAttributes/ListPrice/FormattedPrice')
+			)
 	.amzn_thumb.float_left
 		= image_tag( item.get_hash( 'LargeImage' )['URL'], :width => 96 ) if item.get_hash( 'LargeImage' ).present?
 	.amzn_data.float_left

@@ -26,9 +26,9 @@
 			.clear
 			.float_left{ :style => 'width:50px;'}
 				&nbsp;
-			.float_left{ :style => 'width:300px;'}
+			.float_left{ :style => 'width:400px;'}
 				%b Name
-			.float_left{ :style => 'width:350px;'}
+			-#.float_left{ :style => 'width:350px;'}
 				%b Description
 			.float_left{ :style => 'width:150px;'}
 				%b Cost
@@ -55,10 +55,6 @@
 		&nbsp;
 	= render 'amzn_form'
 	#accordion.goals
-		%h3.track= "Custom Awards"
-		%div
-			= form_for [ @child, AwardAssignment.new ], :html => {} do |f|
-				= render 'form', :f => f
 		- for cat in AwardCategory.all
 			- next if cat.awards.empty?
 			%h3.track= "#{cat.name} Awards"
@@ -68,6 +64,11 @@
 						%li
 							%label
 								= render 'award_to_assign', :award => award	
+		%h3.track= "Custom Awards"
+		%div
+			= form_for [ @child, AwardAssignment.new ], :html => {} do |f|
+				= render 'form', :f => f
+
 								
 	/ #new_amzn.modal{ :title => "New Amazon Reward for #{@child.display_name}" }
 	/ 	= form_tag amzn_child_award_assignments_path( @child ) do |f|

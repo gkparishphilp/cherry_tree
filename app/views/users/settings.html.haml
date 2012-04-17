@@ -6,18 +6,19 @@
 		= file_field_tag :attached_avatar_file
 		= submit_tag "Update Picture", :class => 'button_flat'
 %br
-.divider
-%br
-.column2
-	%h3 Change Your Email
-	Current email:  
-	= @current_user.email
-.column1
-	New email: 
-	= form_for @current_user do |f|
-		= f.text_field :email
-		= f.submit "Enter", :class => 'button_flat'
-%br
+-unless @current_user.child?
+	.divider
+	%br
+	.column2
+		%h3 Change Your Email
+		Current email:  
+		= @current_user.email
+	.column1
+		New email: 
+		= form_for @current_user do |f|
+			= f.text_field :email
+			= f.submit "Enter", :class => 'button_flat'
+	%br
 .divider
 %br
 .column2
@@ -31,17 +32,19 @@
 		= f.submit "Enter", :class => 'button_flat'
 
 %br
-.divider
-%br
-.column2
-	%h3 Update Password
-.column1
-	= form_tag reset_path do
-		%label New Password:
-		= password_field_tag :password, params[:password], :size=>30, :class=>"password"
-		%br
-		%label Confirm Password:
-		= password_field_tag :password_confirmation, params[:password_confirmation], :size=>30, :class=>"password"
-		= hidden_field_tag :token, @current_user.remember_token
-		= submit_tag "Change Password", :class => 'button_flat'
-.clear
+-unless @current_user.child?
+
+	.divider
+	%br
+	.column2
+		%h3 Update Password
+	.column1
+		= form_tag reset_path do
+			%label New Password:
+			= password_field_tag :password, params[:password], :size=>30, :class=>"password"
+			%br
+			%label Confirm Password:
+			= password_field_tag :password_confirmation, params[:password_confirmation], :size=>30, :class=>"password"
+			= hidden_field_tag :token, @current_user.remember_token
+			= submit_tag "Change Password", :class => 'button_flat'
+	.clear

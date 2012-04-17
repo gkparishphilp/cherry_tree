@@ -10,7 +10,6 @@
 					Great Job!  
 				%h4
 					You've met all your goals for today! Come back tomorrow to earn more cherries.
-		
 		-if @checked_in_assignments.present?
 			.boxes#checked_in
 				%h3 
@@ -18,7 +17,7 @@
 				-for checkin in @checked_in_assignments
 					= render 'objective_assignments/objective_assignment_checked_in', :objective_assignment => checkin
 
-   
+  
 	-# unless @current_user.activities.empty?
 		#home_activity.boxes
 			%h3
@@ -43,9 +42,14 @@
 							Completed
 						- else
 							= link_to "Take It", lesson_screen_path( lesson_assignment.lesson, lesson_assignment.lesson.screens.first ), :class => 'button_small blue'
+		- else
+		%h3	No Assignments Today!
+
+	-if session[:just_checked_in]
+		#new_award.award_modal{ :id => (rand(4)+1), :title => "Great Job #{@child.display_name}!" }
+			.bird
+			.bubble
+		- session[:just_checked_in] = false
 
 = render 'child/right_column'
-
-
-
 

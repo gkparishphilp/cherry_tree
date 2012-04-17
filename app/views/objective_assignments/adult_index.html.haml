@@ -22,9 +22,9 @@
 			.clear
 			.float_left{ :style => 'width:50px;'}
 				&nbsp;
-			.float_left{ :style => 'width:230px;'}
+			.float_left{ :style => 'width:400px;'}
 				%label Name
-			.float_left{ :style => 'width:350px;'}
+			-#.float_left{ :style => 'width:350px;'}
 				%label Description
 			.float_left{ :style => 'width:150px;'}
 				%label Cherries
@@ -61,7 +61,21 @@
 	/ 	.new_thing.button_flat
 	/ 		= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
 
-	#accordion.goals
+	#accordion.goals	
+		- for cat in ObjectiveCategory.all
+			-next if cat.objectives.empty?
+			%h3.track= "#{cat.name} Goals"
+			%div
+				%ul
+					- for subcat in cat.objective_subcategories
+						%h4
+							=subcat.name
+						-for objective in cat.objectives - @child.active_assigned_objectives
+							-if objective.objective_subcategory == subcat
+								%li
+									%label
+										= render 'objective_to_assign', :objective => objective
+						%br
 		%h3.track= "Custom Goals"
 		%div
 			= form_for [ @child, ObjectiveAssignment.new ] do |f|
@@ -79,16 +93,3 @@
 				cherries
 				%br
 				= f.submit 'Enter', :class => 'button_flat'
-				|
-				= link_to 'Cancel', "#", :class => 'close_new_objective_form'
-		= link_to "Save Changes", child_path( @child ), :class => 'save_form'
-	#accordion.goals	
-		- for cat in ObjectiveCategory.all
-			-next if cat.objectives.empty?
-			%h3.track= "#{cat.name} Goals"
-			%div
-				%ul
-					-for objective in cat.objectives - @child.active_assigned_objectives
-						%li
-							%label
-								= render 'objective_to_assign', :objective => objective
