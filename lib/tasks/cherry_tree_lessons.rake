@@ -8,7 +8,8 @@ task :cherry_tree_lessons => :environment do
 	#Roman Numeral Lesson
 	l = Lesson.create :name => 'Roman Numerals', :description => 'Learn all about Roman Numerals', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Roman Numerals</h1><p>Roman numerals are letters of the alphabet that represent numbers.</p><ul><li>I = 1</li><li>V = 5</li><li>X = 10</li><li>L = 50</li><li>C = 100</li><li>D = 500</li><li>M = 1000</li></ul><img src='/images/rn1.png' alt='The Roman Coliseum.'/>"  
-	s2 = l.screens.create :sequence => 2, :content => "<h1>The History of Roman Numerals</h1><p>The Roman numerals system dates back over 2,000 years to ancient Rome. Today we usually use Arabic numbers, but you can still see Roman numerals in tables of contents, on some clocks and watches, or as a suffix on a person's name.</p><p>Ex:</p><ul><li>John Smith</li><li>III</li></ul><img src='/images/rn2.png' alt='An old fashioned clock face.'/>"  
+	s2 = l.screens.create :sequence => 2, :content => "<h1>The History of Roman Numerals</h1><p>The Roman numerals system dates back over 2,000 years to ancient Rome. Today we usually use Arabic numbers, but you can still see Roman numerals in tables of contents, on some clocks and watches, or as a suffix on a person's name. 
+	</p><p>John Smith <em>III</em></p><img src='/images/rn2.png' alt='An old fashioned clock face.'/>"  
 	s3 = l.screens.create :sequence => 3, :content => "<h1>Roman Numerals Rule I</h1><p>I. Repeating a letter repeats its value. A letter can only be repeated up to three times in a row.   
 	</p><p>For example:</p><ul><li>III = 3</li><li>XX = 20</li><li>CCC = 300</li></ul>"
 	s4 = l.screens.create :sequence => 4, :content => "<h1>Roman Numerals Rule II</h1><p>II. When a letter of lesser value follows one of greater value, add them together.   
@@ -74,7 +75,7 @@ task :cherry_tree_lessons => :environment do
 	l = Lesson.create :name => 'Impressionism', :description => 'Learn all about Impressionist Art', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Before Impressionism</h1><p>For a long time, people judged paintings by how realistic they looked. Artists used dark colors and blended the paint so that their brush strokes would not show. Most paintings were portraits or paintings with historical or religious themes.</p><img src='/images/imp1.png' alt='The famous painting, Mona Lisa.'/>"
 	s2 = l.screens.create :sequence => 2, :content => "<h1>The Impressionist Movement</h1><p>In the late 1800s, a group of artists in Paris started painting in a new way. They did not worry as much about making their paintings look realistic. They let their brush strokes show and sometimes even left clumps of color on the canvas. They painted every day scenes with bright colors and reflections of light.</p><img src='/images/imp2.png' alt='An example of an Impressionist Painting, with bright colors and reflections of light.'/>"
-	s3 = l.screens.create :sequence => 3, :content => "<h1>Claude Monet</h1><p>Claude Monet is one of the most famous Impressionists. Monet loved to paint <em>en plein air</em> meaning outside in the open air. Impressionism got its name from Monets painting called <em>Impression, Sunrise</em>.</p><img src='/images/imp3.png' alt='<em>Impression, Sunrise</em> by Claude Monet.'/>"
+	s3 = l.screens.create :sequence => 3, :content => "<h1>Claude Monet</h1><p>Claude Monet is one of the most famous Impressionists. Monet loved to paint 'en plein air' meaning outside 'in the open air.' Impressionism got its name from Monet's painting called <em>Impression, Sunrise</em>.</p><img src='/images/imp3.png' alt='<em>Impression, Sunrise</em> by Claude Monet.'/>"
 	s4 = l.screens.create :sequence => 4, :content => "<h1>Edgar Degas</h1><p>Edgar Degas is most well known for his paintings of horses and dancers. Many of these paintings look like snapshots from action scenes.</p><img src='/images/imp4.png' alt='A painting by Edgar Degas.'/>"
 	s5 = l.screens.create :sequence => 5, :content => "<h1>Mary Cassatt</h1><p>Mary Cassatt was an American painter. She lived much of her life in Paris and displayed her paintings with the other Impressionists. Cassatt liked to paint her relatives and mothers with children.</p><img src='/images/imp5.png' alt='A painting by Mary Cassatt.'/>"
 
@@ -105,7 +106,7 @@ task :cherry_tree_lessons => :environment do
 	quest5.answers.create :content => "<img src='/images/impq52.png' alt='Choice B'/>"
 	quest5.answers.create :content => "<img src='/images/impq53.png' alt='Choice C'/>"
 	quest5.answers.create :content => "<img src='/images/impq54.png' alt='Choice D'/>"
-	quest6 = q.questions.create :content => 'Which painting was most likely painted <em>en plein air</em>?'
+	quest6 = q.questions.create :content => 'Which painting was most likely painted "en plein air"?'
 	quest6.answers.create :content => "<img src='/images/impq61.png' alt='Choice A'/>", :correct => true
 	quest6.answers.create :content => "<img src='/images/impq62.png' alt='Choice B'/>"
 	quest6.answers.create :content => "<img src='/images/impq63.png' alt='Choice C'/>"
@@ -168,13 +169,13 @@ task :cherry_tree_lessons => :environment do
 	quest6.answers.create :content => "Try to get them to hang up as soon as possible"
 	quest6.answers.create :content => "Explain that you are at dinner and will call them back as soon as possible.", :correct => true
 	quest7 = q.questions.create :content => '<img src="/images/comm7.png" alt="Ants cutting in line..."/><p>Someone cuts in front of you in a line. You:</p>'
-	quest7.answers.create :content => 'Assume they did not realize you were in line, and gently explain to them that you were waiting before them.', :correct => true
+	quest7.answers.create :content => "Assume they didn't realize you were in line, and gently explain to them that you were waiting before them.", :correct => true
 	quest7.answers.create :content => "Tell them you don't appreciate their behavior and that they need to return to their proper place."
 	quest7.answers.create :content => "Say nothing."
 	quest7.answers.create :content => "Say nothing, but glare at them and <em>accidentally</em> push them a little."
 	quest8 = q.questions.create :content => '<img src="/images/comm8.png" alt="Cartoon yelling..."/><p>If you get into an argument, you should:</p>'
 	quest8.answers.create :content => 'Push the other person until they agree with you'
-	quest8.answers.create :content => "Try to understand the other persons point of view and try to find a way to get you both what you want.", :correct => true
+	quest8.answers.create :content => "Try to understand the other person's point of view and try to find a way to get you both what you want.", :correct => true
 	quest8.answers.create :content => "Just end the argument quickly, even if it means telling the other person they are right."
 	quest8.answers.create :content => "Be as loud as possible and make sure the other person agrees with you."
 	quest9 = q.questions.create :content => '<img src="/images/comm9.png" alt="teasing"/><p>If someone is making fun of you, you should:</p>'
@@ -267,7 +268,7 @@ task :cherry_tree_lessons => :environment do
 	quest3.answers.create :content => "Be mad at him and ignore him."
 	quest3.answers.create :content => "Throw a fit."
 	quest3.answers.create :content => "Complain to the teacher that you should have been chosen."
-	quest4 = q.questions.create :content => '<img src="/images/fr4.png" alt="Show and tell"/><p>You tell your friend that you are going to bring a Barbie doll to show & tell. Next thing you know she brings the same Barbie doll to show & tell. What should you do?<p>'
+	quest4 = q.questions.create :content => '<img src="/images/fr4.png" alt="Show and tell"/><p>You tell your friend that you are going to bring a Barbie doll to show &amp; tell. Next thing you know she brings the same Barbie doll to show & tell. What should you do?<p>'
 	quest4.answers.create :content => "Yell at her for copying you and tell her to find a new friend."
 	quest4.answers.create :content => "Tell your friend you are disappointed, but let her go first."
 	quest4.answers.create :content => "Tell your friend you are disappointed, and ask to go first.", :correct => true
@@ -303,12 +304,65 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "Tell her you don't celebrate birthdays."
 	quest10.answers.create :content => "Tell her the truth, and promise to make it up to her.", :correct => true
 
+
+	# Displaying Self Control Lesson
+	l = Lesson.create :name => 'Displaying Self Control', :description => "Learn how to control yourself when things don't go as planned.", :lesson_category => lc3
+	s1 = l.screens.create :sequence => 1, :content => "<h1>Displaying Self Control</h1><p>Sometimes things happen that make us upset and angry. When that happens, we have to choose how we deal with our problems. Self-control is the ability to remain rational and in-control even when the situation becomes very stressful and problematic. Self-control can vary between two opposite points: impulsiveness (total lack of self-control) and rationality (calmness and absence of emotions). The following quiz will present various scenarios and options of how to react and display self-control.</p>"  
+
+
+	# Displaying Self Control Quiz
+	q = l.quizzes.create :name => 'Displaying Self Control Quiz', :point_value => 10
+	quest = q.questions.create :content => "<img src='/images/sc1.png' alt='Bag over head'/><p>You do something embarrassing in front of your class, how do you behave afterwards?<p>"
+	quest.answers.create :content => "Try to avoid everyone."
+	quest.answers.create :content => "Make up an excuse for what you did."
+	quest.answers.create :content => "Laugh with them about it.", :correct => true
+	quest.answers.create :content => "Get upset and cry."
+	quest2 = q.questions.create :content => "<img src='/images/sc2.png' alt='Distracted'/><p>You get distracted and drop your books on the ground, what's your first reaction?<p>"
+	quest2.answers.create :content => "You get angry."
+	quest2.answers.create :content => "You pick your books up and move on.", :correct => true
+	quest2.answers.create :content => "You walk away and leave the books."
+	quest2.answers.create :content => "You begin to tear up."
+	quest3 = q.questions.create :content => '<img src="/images/sc3.png" alt="Spilled drink"/><p>Your brother runs into you and spills your drink on your shirt, what do you do?<p>'
+	quest3.answers.create :content => "Yell at him."
+	quest3.answers.create :content => "Push him."
+	quest3.answers.create :content => "Pour the rest of your drink on him."
+	quest3.answers.create :content => "Accept his apology (or ask him to apologize if he didn't) and go clean yourself up.", :correct => true
+	quest4 = q.questions.create :content => "<img src='/images/sc4.png' alt='Soccer game'/><p>You're playing Soccer and someone accidentally trips you, what do you do?<p>"
+	quest4.answers.create :content => "Jump up and push them."
+	quest4.answers.create :content => "Get up and let the referee take care of it.", :correct => true
+	quest4.answers.create :content => "Complain at the top of your lungs."
+	quest4.answers.create :content => "Walk off the field."
+	quest5 = q.questions.create :content => '<img src="/images/sc5.png" alt="Disagreement"/><p>When you disagree with someone, you should:<p>'
+	quest5.answers.create :content => "Raise your voice."
+	quest5.answers.create :content => "Get angry and shout."
+	quest5.answers.create :content => "Get physical."
+	quest5.answers.create :content => "Remain calm and respectful.", :correct => true
+	quest6 = q.questions.create :content => '<img src="/images/sc6.png" alt="Broken toy"/><p>You come home and find your toy is broken, what should you do?<p>'
+	quest6.answers.create :content => "Accuse the first person you see."
+	quest6.answers.create :content => "Get frustrated and yell at someone."
+	quest6.answers.create :content => "Try and fix the toy or ask a Parent for help", :correct => true
+	quest6.answers.create :content => "Throw the toy away."
+	quest7 = q.questions.create :content => '<img src="/images/sc7.png" alt="Teasing"/><p>If someone is making fun of you, you should:<p>'
+	quest7.answers.create :content => "Tell them you don't appreciate the jokes and ask them to stop.", :correct => true
+	quest7.answers.create :content => "Start a fight"
+	quest7.answers.create :content => "Make fun of them back"
+	quest7.answers.create :content => "Throw something at them"
+	quest8 = q.questions.create :content => '<img src="/images/sc8.png" alt="Ants cut in line"/><p>Someone cuts in front of you in a line. You:<p>'
+	quest8.answers.create :content => "Assume they didn't realize you were in line, and gently explain to them that you were waiting before them.", :correct => true
+	quest8.answers.create :content => "Say something mean to them."
+	quest8.answers.create :content => "Yell at them to get to the back of the line."
+	quest8.answers.create :content => "Take them by the arm and walk them to the back of the line"
+	quest9 = q.questions.create :content => '<img src="/images/sc9.png" alt="Friend falls over"/><p>Your friend falls and is badly hurt. What should you do?<p>'
+	quest9.answers.create :content => "Panic and leave."
+	quest9.answers.create :content => "Immediately get help.", :correct => true
+	quest9.answers.create :content => "Take your time to evaluate the situation."
+	quest9.answers.create :content => "Tell him how irresponsible he was."
+	quest10 = q.questions.create :content => '<img src="/images/sc10.png" alt="Mom running around"/><p>Your mom is making you late to practice. You should:<p>'
+	quest10.answers.create :content => "Ask her if you can help her with something so that you can get to practice on time.", :correct => true
+	quest10.answers.create :content => "Throw your things on the floor and refuse to go."
+	quest10.answers.create :content => "Yell at her for being late all the time."
+	quest10.answers.create :content => "Tell her that you really don't appreciate being late, and that you think her behavior is very rude."
 end
-
-
-
-
-
 
 
 
