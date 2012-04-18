@@ -10,20 +10,24 @@ class QuestionsController < ApplicationController
 		@question = Question.find( params[:id] )
 		if @answer = Answer.find_by_id( params[:answer_id] )
 			@quizzing.answer( @question, @answer )
-			if @answer.correct? && @quiz.last_question
-				pop_flash "Yay, you're done!", :success
-				redirect_to recap_quiz_path( @quiz )
-			elsif @answer.correct?
+			if @answer.correct? && (@question != @quiz.last_question)
 				pop_flash "Yay, you're right!", :success
 				redirect_to quiz_question_path( @quiz, @question.next_question )
+			elsif @answer.correct && (@question == @quiz.last_question)
+				pop_flash "Yay, you're done!", :success
+				redirect_to recap_quiz_path( @quiz )
 			else
 				pop_flash "Sorry, wrong answer.  Try again!", :error
 				redirect_to quiz_question_path(@quiz, @question)
 			end
 		else
 			@quizzing.answer( @question, params[:response] )
-			redirect_to quiz_question_path( @quiz, @question.next_question )
-			
+			if @question == @quiz.last_question
+				pop_flash "Yay, you're done!", :success
+				redirect_to recap_quiz_path( @quiz )
+			else
+				redirect_to quiz_question_path( @quiz, @question.next_question )
+			end
 		end
 		
 	end

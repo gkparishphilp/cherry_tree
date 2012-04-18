@@ -169,6 +169,61 @@ obj = Objective.create :objective_category => oc1, :objective_subcategory => osc
 obj = Objective.create :objective_category => oc1, :objective_subcategory => osc27, :name => "Learn a new fact", :creator => s, :point_value => 1
 
 
+#Awards
+ac1 = AwardCategory.create :name => 'Time'
+ac1.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'png', :path => '/images/awards/time.png', :remote => true
+
+ac2 = AwardCategory.create :name => 'Money'
+ac2.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money.png', :remote => true
+
+ac3 = AwardCategory.create :name => 'Stuff'
+ac3.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'png', :path => '/images/awards/stuff.png', :remote => true
+
+ac4 = AwardCategory.create :name => 'Fun'
+ac4.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun.png', :remote => true
+
+aw = Award.create :award_category => ac1, :name => "One hour of Free Time", :description => "Use it wisely!", :point_cost => 10, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'png', :path => '/images/awards/time-hour.png', :remote => true
+aw = Award.create :award_category => ac1, :name => "One hour of Video Game Time", :description => "Have Fun!", :point_cost => 10, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'png', :path => '/images/awards/time-video-game.png', :remote => true
+aw = Award.create :award_category => ac1, :name => "One hour of TV Time", :description => "Approved shows only", :point_cost => 10, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'png', :path => '/images/awards/time-tv.png', :remote => true
+aw = Award.create :award_category => ac1, :name => "One Extra Hour before Bed Time", :description => "Use only on Fridays and weekends", :point_cost => 10, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'time', :format => 'png', :path => '/images/awards/time-bed.png', :remote => true
+
+aw = Award.create :award_category => ac2, :name => "One Dollar", :description => "More stuffing for your piggy bank", :point_cost => 10, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money-one.png', :remote => true
+aw = Award.create :award_category => ac2, :name => "Five Dollars", :description => "More stuffing for your piggy bank", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money-five.png', :remote => true
+aw = Award.create :award_category => ac2, :name => "Ten Dollars", :description => "More stuffing for your piggy bank", :point_cost => 100, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money-ten.png', :remote => true
+aw = Award.create :award_category => ac2, :name => "Gift Card", :description => "For your favorite store", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money.png', :remote => true
+
+
+aw = Award.create :award_category => ac3, :name => "New Toy", :description => "Something that you've wanted", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'png', :path => '/images/awards/stuff-toy.png', :remote => true
+aw = Award.create :award_category => ac3, :name => "New Video Game", :description => "Something that you've wanted", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'png', :path => '/images/awards/stuff-video-game.png', :remote => true
+aw = Award.create :award_category => ac3, :name => "New Clothes", :description => "Something that you've wanted", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'png', :path => '/images/awards/stuff-clothes.png', :remote => true
+aw = Award.create :award_category => ac3, :name => "New Book", :description => "Something that you've wanted", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'png', :path => '/images/awards/stuff-new-book.png', :remote => true
+
+
+aw = Award.create :award_category => ac4, :name => "Trip to Fun Place", :description => "The zoo, the beach, fishing, etc.", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-place.png', :remote => true
+aw = Award.create :award_category => ac4, :name => "Trip to Theme Park", :description => "Lots of fun!", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-theme-park.png', :remote => true
+aw = Award.create :award_category => ac4, :name => "Trip to a Restaurant", :description => "Let's go out to your favorite restaurant.", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-restaurant.png', :remote => true
+aw = Award.create :award_category => ac4, :name => "Trip to the Movies", :description => "Pick a good one!", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-movies.png', :remote => true
+aw = Award.create :award_category => ac4, :name => "Movie Rental", :description => "Pick a good one!", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-rental.png', :remote => true
+aw = Award.create :award_category => ac4, :name => "Trip to a Special Event", :description => "Concert, show, etc.", :point_cost => 50, :creator => s
+aw.attachments.create :attachment_type => 'avatar', :name => 'fun', :format => 'png', :path => '/images/awards/fun-event.png', :remote => true
+
 
 puts "Setup Default Anonymous User"
 

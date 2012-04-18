@@ -5,10 +5,9 @@
 
 .objective_dash.clearfix
 
-	Congratulations!  You've taken the quiz.
-	%br
-	You earned
+	Congratulations!  You've taken the quiz and earned
 	= @points_earned.to_i
 	cherries!
-	
-
+	%br
+	%br
+	=link_to 'Return', home_path,  :class => 'button green'
