@@ -8,14 +8,10 @@ task :cherry_tree_lessons => :environment do
 	#Roman Numeral Lesson
 	l = Lesson.create :name => 'Roman Numerals', :description => 'Learn all about Roman Numerals', :lesson_category => lc1
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Roman Numerals</h1><p>Roman numerals are letters of the alphabet that represent numbers.</p><ul><li>I = 1</li><li>V = 5</li><li>X = 10</li><li>L = 50</li><li>C = 100</li><li>D = 500</li><li>M = 1000</li></ul><img src='/images/rn1.png' alt='The Roman Coliseum.'/>"  
-	s2 = l.screens.create :sequence => 2, :content => "<h1>The History of Roman Numerals</h1><p>The Roman numerals system dates back over 2,000 years to ancient Rome. Today we usually use Arabic numbers, but you can still see Roman numerals in tables of contents, on some clocks and watches, or as a suffix on a person's name. 
-	</p><p>John Smith <em>III</em></p><img src='/images/rn2.png' alt='An old fashioned clock face.'/>"  
-	s3 = l.screens.create :sequence => 3, :content => "<h1>Roman Numerals Rule I</h1><p>I. Repeating a letter repeats its value. A letter can only be repeated up to three times in a row.   
-	</p><p>For example:</p><ul><li>III = 3</li><li>XX = 20</li><li>CCC = 300</li></ul>"
-	s4 = l.screens.create :sequence => 4, :content => "<h1>Roman Numerals Rule II</h1><p>II. When a letter of lesser value follows one of greater value, add them together.   
-	</p><p>For example:</p><ul><li>XI = 10 + 1 = 11</li><li>LVI = 50 + 5 + 1 = 56</li><li>DCCL = 500 + 100 + 100 + 50 = 750 </li></ul>"
-	s5 = l.screens.create :sequence => 5, :content => "<h1>Roman Numerals Rule III</h1><p>III. When a letter of lesser value comes before a letter of greater value, subtract the lesser value from the greater value.  Only use I, X or C in this way.   
-	</p><p>For example:</p><ul><li>IX = 10 - 1 = 9</li><li>XIX = 10 + (10 - 1) = 10 + 9 = 19</li><li>XCV = 100 - 10 + 5 = 95</li></ul>"
+	s2 = l.screens.create :sequence => 2, :content => "<h1>The History of Roman Numerals</h1><p>The Roman numerals system dates back over 2,000 years to ancient Rome. Today we usually use Arabic numbers, but you can still see Roman numerals in tables of contents, on some clocks and watches, or as a suffix on a person's name.</p><p>John Smith <em>III</em></p><img src='/images/rn2.png' alt='An old fashioned clock face.'/>"  
+	s3 = l.screens.create :sequence => 3, :content => "<h1>Roman Numerals Rule I</h1><p>I. Repeating a letter repeats its value. A letter can only be repeated up to three times in a row.</p><p>For example:</p><ul><li>III = 3</li><li>XX = 20</li><li>CCC = 300</li></ul>"
+	s4 = l.screens.create :sequence => 4, :content => "<h1>Roman Numerals Rule II</h1><p>II. When a letter of lesser value follows one of greater value, add them together.</p><p>For example:</p><ul><li>XI = 10 + 1 = 11</li><li>LVI = 50 + 5 + 1 = 56</li><li>DCCL = 500 + 100 + 100 + 50 = 750 </li></ul>"
+	s5 = l.screens.create :sequence => 5, :content => "<h1>Roman Numerals Rule III</h1><p>III. When a letter of lesser value comes before a letter of greater value, subtract the lesser value from the greater value.  Only use I, X or C in this way.</p><p>For example:</p><ul><li>IX = 10 - 1 = 9</li><li>XIX = 10 + (10 - 1) = 10 + 9 = 19</li><li>XCV = 100 - 10 + 5 = 95</li></ul>"
 
 	#Roman Numeral Quiz
 	q = l.quizzes.create :name => 'Roman Numeral Quiz', :point_value => 10
@@ -390,8 +386,6 @@ task :cherry_tree_lessons => :environment do
 	s9 = l.screens.create :sequence => 9, :content => "<h1>Heel to Toe Walk</h1><p>Walk across the room in a straight line.  When you take a step with one foot, put your heel right in front of your toes on the other foot.</p><img src='/images/ms8.png' alt='Heel to Heel Walk'/>"  
 	s10 = l.screens.create :sequence => 10, :content => "<h1>Pencil Roll</h1><p>Lie down on the floor with your arms by your side.  Roll in one direction, then roll in the other direction.</p><img src='/images/ms9.png' alt='Pencil Walk'/>"  
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Book Jump</h1><p>Place a book on the ground.  Practice jumping over the book without touching it.  Do this 5 times.  </p><img src='/images/ms10.png' alt='Book jump'/>"  
-
-
 
 end
 
