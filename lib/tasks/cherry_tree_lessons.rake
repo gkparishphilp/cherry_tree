@@ -362,6 +362,37 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "Throw your things on the floor and refuse to go."
 	quest10.answers.create :content => "Yell at her for being late all the time."
 	quest10.answers.create :content => "Tell her that you really don't appreciate being late, and that you think her behavior is very rude."
+
+	# Exercise Challenge
+	l = Lesson.create :name => 'Exercise Challenge', :description => "Learn some exercises!", :lesson_category => lc4
+	s1 = l.screens.create :sequence => 1, :content => "<h1>Exercise Challenege</h1><p>Physical activity is good for you!  It can help you have stronger muscles and bones and a healthier heart.  Exercise can also help you have more energy, more confidence, a better memory, and just feel all around good.  Try these 10 exercises!</p>"  
+	s2 = l.screens.create :sequence => 2, :content => "<h1>Groovy Warm Up</h1><p>Dance to your favorite song.  If you can't play it right now, sing it while you dance.</p>"  
+	s3= l.screens.create :sequence => 3, :content => "<h1>Upper Body Stretch</h1><p>Stretch your right arm across your body and count to 20.</p><p>Stretch your left arm across your body and count to 20.</p>"  
+	s4 = l.screens.create :sequence => 4, :content => "<h1>Lower Body Stretch</h1><p>Sit on the ground with your legs in a straddle.  Reach for your right foot and count to 20.</p><p>Reach for your left foot and count to 20.</p><p>Reach for the middle and count to 20.</p>"  
+	s5 = l.screens.create :sequence => 5, :content => "<h1>Butterfly Yoga Pose</h1><p>Sit on the floor with your knees bent and the bottoms of your feet together.  Grab your feet, push your knees to the ground and sit up nice and straight.  Breathe in and out slowly while you feel the stretch in your legs and back.</p>"  
+	s6 = l.screens.create :sequence => 6, :content => "<h1>Bow Yoga Pose</h1><p>Lie on your tummy.  Bend your knees and grab your ankles behind you.  Take a deep breath in while you lift your head and chest and legs off of the floor.  Feel the stretch in your back and tummy.  When you are ready, breathe out and lie back down slowly.</p>"  
+	s7 = l.screens.create :sequence => 7, :content => "<h1>Heart Workout</h1><p>Pick an activity that will get your heart rate going, and do it for at least 5 minutes.  You could  jog, skip, jump rope, do jumping jacks, dance around, or ride your bike or scooter.</p>"  
+	s8 = l.screens.create :sequence => 8, :content => "<h1>Squat Jumps</h1><p>Start in a squat with your hands on the ground.  From the squat position, jump as high as you can with your hands over your head.  Do this 10 times.</p>"  
+	s9 = l.screens.create :sequence => 9, :content => "<h1>Push Ups</h1><p>Start in a push up position, facing down with your hands and toes on the ground, and your back nice and straight.  Complete 10 push ups.</p>"  
+	s10 = l.screens.create :sequence => 10, :content => "<h1>Stomach Curls</h1><p>Sit with your knees bent and your toes tucked under a couch or chair.  Lie down and cross your arms across your chest.  Do 25 sit-sups.</p>"  
+	s11 = l.screens.create :sequence => 11, :content => "<h1>Cool Down and Rehydrate</h1><p>Repeat your favorite stretching exercises.  Drink a glass of water.  You did it!</p>"  
+
+	#Motor Skills Challenge
+	l = Lesson.create :name => 'Motor Skills Challenge', :description => "Learn some good motor skills!", :lesson_category => lc4
+	s1 = l.screens.create :sequence => 1, :content => "<h1>Motor Skills Challenge</h1><p>Motor skills are the strength, flexibility and balancing skills that help your body move and do fun things.  Try these 10 exercises!</p>"  
+	s2 = l.screens.create :sequence => 2, :content => "<h1>Stand Tall</h1><p>Reach your hands as high as you can and stand on your tippy toes while you count to 10.</p><img src='/images/ms1.png' alt='Stand tall!'/>"  
+	s3= l.screens.create :sequence => 3, :content => "<h1>Toe Touch</h1><p>Stand with your legs straight and reach for your toes while you count to 10.</p><img src='/images/ms2.png' alt='Toe touch'/>"  
+	s4 = l.screens.create :sequence => 4, :content => "<h1>Bunny Jumps</h1><p>Jump up and down 10 times.</p><p>Reach for the middle and count to 20.</p><img src='/images/ms3.png' alt='Bunny Jumps'/>"  
+	s5 = l.screens.create :sequence => 5, :content => "<h1>Straddle Sits</h1><p>Sit on the ground with your legs apart in a straddle.  Reach forward and count to 10.</p><img src='/images/ms4.png' alt='Straddle Sit'/>"  
+	s6 = l.screens.create :sequence => 6, :content => "<h1>Make a Table</h1><p>Sit on the floor with your knees tucked in front of you and hands behind you.  Push your tummy up to make a table.</p><img src='/images/ms5.png' alt='Make a table'/>"  
+	s7 = l.screens.create :sequence => 7, :content => "<h1>Palm Push</h1><p>Stand with the palms of your hands together.  Push your palms together as hard as you can while you count to 10.</p><img src='/images/ms6.png' alt='Palm Push'/>"  
+	s8 = l.screens.create :sequence => 8, :content => "<h1>Lazy 8's</h1><p>A Lazy 8 is the number 8 on its side.  Use your right hand to draw 5 Lazy 8's in the air in front of you.  Then use your left hand to draw 5 Lazy 8's in the air in front of you.</p><img src='/images/ms7.png' alt='Lazy 8s'/>"  
+	s9 = l.screens.create :sequence => 9, :content => "<h1>Heel to Toe Walk</h1><p>Walk across the room in a straight line.  When you take a step with one foot, put your heel right in front of your toes on the other foot.</p><img src='/images/ms8.png' alt='Heel to Heel Walk'/>"  
+	s10 = l.screens.create :sequence => 10, :content => "<h1>Pencil Roll</h1><p>Lie down on the floor with your arms by your side.  Roll in one direction, then roll in the other direction.</p><img src='/images/ms9.png' alt='Pencil Walk'/>"  
+	s11 = l.screens.create :sequence => 11, :content => "<h1>Book Jump</h1><p>Place a book on the ground.  Practice jumping over the book without touching it.  Do this 5 times.  </p><img src='/images/ms10.png' alt='Book jump'/>"  
+
+
+
 end
 
 
