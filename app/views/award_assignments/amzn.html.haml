@@ -16,6 +16,6 @@
 			= f.hidden_field :index, :value => @index
 			= f.hidden_field :term, :value => item.get("ItemAttributes/Title")
 			= f.hidden_field :asin, :value => item.get('ASIN')
-			= f.hidden_field :point_cost, :value => item.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub(/\D/, "").to_i if item.get('OfferSummary/LowestNewPrice/FormattedPrice').present?
+			= f.hidden_field :point_cost, :value => 50
 			= f.submit "Add Award", :class => 'button_flat'
 		%hr

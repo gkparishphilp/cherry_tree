@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		user, msg = User.authenticate( params[:credential], params[:password] )
 
 		if user
-			pop_flash "Hi #{user.display_name}.capitalize, thanks for logging in!", :award_message if user.child?
+			pop_flash "Hi #{user.display_name.capitalize}, thanks for logging in!", :award_message if user.child?
 			login( user )
 			redirect_to home_path
 		elsif user == false

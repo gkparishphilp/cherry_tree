@@ -1,3 +1,4 @@
+-# This is used to show the lesson, with answers, to the parent.
 .child_profile
 
 	= render 'children/sub_nav', :child => @child
@@ -20,7 +21,14 @@
 
 		-for question in quiz.questions
 			%p
-				= question.content.html_safe
+				%h5= question.content.html_safe
+				-for answer in question.answers
+					= answer.content.html_safe
+					- if answer.correct?
+						=image_tag("check.png", :height => 15)
+					%br
+			%hr  
+			
 				
 				
 %br.clear
