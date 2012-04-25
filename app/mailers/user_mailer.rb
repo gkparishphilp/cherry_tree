@@ -34,4 +34,5 @@ class UserMailer < ActionMailer::Base
 		@user = user
 		@contact = contact
 		mail :to => 'tay.x.nguyen@gmail.com', :from => "noreply@thecherrytree.com", :subject => "New contact"
+	end
 end
