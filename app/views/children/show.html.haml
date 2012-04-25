@@ -55,9 +55,9 @@
 			.timeline
 
 			- if @activities.empty?
-				= @child.name.capitalize
+				= @child.display_name
 				hasn't performed any activities yet.  Encourage 
-				= @child.name.capitalize
+				= @child.display_name
 				to login!
 			- else
 				= render @activities
@@ -65,10 +65,10 @@
 	#earnings.boxes
 		%h3.center Earned this Week
 		- if @max_points > 0
-			= raw Gchart.bar(:data => @chart_data, :format =>'image_tag', :axis_with_labels => @chart_axis_with_labels, :axis_labels => @chart_axis_labels, :orientation => 'horizontal', :size => '300x150', :bar_colors => '00FF00')
+			= raw Gchart.bar(:data => @chart_data, :format =>'image_tag', :axis_with_labels => @chart_axis_with_labels, :axis_labels => @chart_axis_labels, :orientation => 'horizontal', :size => '300x150', :bar_colors => 'B91926')
 		- else
 			%p
-				=@child.name.capitalize
+				=@child.display_name
 				hasn't earned any cherries yet this week.
 
 	#goals.boxes

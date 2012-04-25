@@ -29,4 +29,9 @@ class UserMailer < ActionMailer::Base
 			mail :to => @parent.email, :from =>"noreply@thecherrytree.com", :subject =>" #{@child.name} has earned an award!"
 		end
 	end
+	
+	def send_contact( user, contact )
+		@user = user
+		@contact = contact
+		mail :to => 'tay.x.nguyen@gmail.com', :from => "noreply@thecherrytree.com", :subject => "New contact"
 end
