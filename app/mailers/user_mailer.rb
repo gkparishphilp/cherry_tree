@@ -31,8 +31,8 @@ class UserMailer < ActionMailer::Base
 	end
 	
 	def send_contact( user, contact )
-		@user = user
 		@contact = contact
+		@user = User.find_by_id( @contact.user_id)
 		mail :to => 'tay.x.nguyen@gmail.com', :from => "noreply@thecherrytree.com", :subject => "New contact"
 	end
 end
