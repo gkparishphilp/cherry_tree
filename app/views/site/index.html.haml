@@ -17,10 +17,11 @@
 
 
 #content
+	= render 'shared/flash', :flash => flash 
 	#welcome_box
+	
 		%h1
 			"Where Children Blossom"
-		
 		
 		%p
 			CherryTree helps cultivate good habits and behaviors in children. Set up goals and rewards for your child, invite family members in for support, and watch your child transform as they earns cherries to unlock rewards.  
@@ -32,7 +33,6 @@
 		%br.clear
 		%p.center
 			Enter your email address to sign up for our newsletter:
-			= render 'shared/flash', :flash => flash 
 			= render 'users/collect_email'
 		%p.disclaimer
 			Your personal information is safe with us.  We promise not to sell, market, or otherwise distribute your information.  

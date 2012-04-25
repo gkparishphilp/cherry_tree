@@ -163,13 +163,13 @@ module UserApp
 		
 		for earning in earned
 			case earning.earned_for.objective.objective_category.try(:name)
-			when 'Academics'
+			when 'Academics & School Readiness'
 				academics += earning.points
-			when 'Health'
+			when 'Health & Fitness'
 				health += earning.points
-			when 'Behavior'
+			when 'Child Behavior & Independence Skills'
 				behavior += earning.points
-			when 'Social'
+			when 'Social Skills & Emotional Well-Being'
 				social += earning.points
 			end 
 		end
