@@ -4,7 +4,7 @@
 	- if @checkins.empty?			
 		.top-header.clearfix
 			%span.title
-				= @child.name.capitalize
+				= @child.display_name
 				hasn't checked in on any goals yet.
 	- else
 		.top-header.clearfix

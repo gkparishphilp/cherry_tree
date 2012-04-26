@@ -5,7 +5,7 @@
 	.top-header.clearfix
 		%span.title
 			= possessize @child.display_name
-			Awards
+			Rewards
 		/ .new_thing.button_flat
 		/ 	= link_to '+ Create Custom Award', "#", :class => 'open_new_award_form'
 		/ .new_thing.button_flat
@@ -14,15 +14,15 @@
 	- if @active_assignments.empty?
 		#active_assignment_table{ :style => 'margin-top:20px;' }
 			#empty_message
-				Setup some awards for
+				Setup some rewards for
 				= @child.display_name
-				to work for!  You can add an award from the list below, or create your own using the button above.
+				to work for!  You can add a reward from the list below, or create your own using the button above.
 	- else
 		#active_assignment_table{ :style => 'margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
 				= image_tag 'awards/custom.jpg', :width => 40
 			.float_left
-				%h3 Assigned Awards
+				%h3 Assigned Rewards
 			.clear
 			.float_left{ :style => 'width:50px;'}
 				&nbsp;
@@ -43,7 +43,7 @@
 				.float_left{ :style => 'width:50px;' }
 					= image_tag( 'awards/custom.jpg', :width => 36 )
 				.float_left
-					%h3 Custom Awards
+					%h3 Custom Rewards
 				.clear
 				- for award in @custom_awards
 					= render 'award_to_assign', :award => award		
@@ -57,14 +57,14 @@
 	#accordion.goals
 		- for cat in AwardCategory.all
 			- next if cat.awards.empty?
-			%h3.track= "#{cat.name} Awards"
+			%h3.track= "#{cat.name} Rewards"
 			%div				
 				%ul
 					- for award in cat.awards - @child.active_assigned_awards
 						%li
 							%label
 								= render 'award_to_assign', :award => award	
-		%h3.track= "Custom Awards"
+		%h3.track= "Custom Rewards"
 		%div
 			= form_for [ @child, AwardAssignment.new ], :html => {} do |f|
 				= render 'form', :f => f

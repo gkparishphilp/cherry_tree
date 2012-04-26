@@ -36,18 +36,18 @@
 			%h3 
 				Hmm..., 
 				= @child.display_name
-				doesn't seem to have an awards.
-			Let's create some awards for
+				doesn't seem to have an rewards.
+			Let's create some rewards for
 			= @child.display_name
-			to work towards....  Awards can be toys, prizes, special treats, or anything you want.
+			to work towards....  Rewards can be toys, prizes, special treats, or anything you want.
 			= @child.display_name
 			Will be able to spend 
 			= @child.pronoun_gender_possessive
 			cherries as
 			= @child.pronoun_gender_subject
-			earns them to unlock these awards.
+			earns them to unlock these rewards.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat big'
+				= link_to "+ Add Rewards", child_award_assignments_path( @child ), :class => 'button_flat big'
 		
 		- else
 	
@@ -75,7 +75,7 @@
 		%h3.center Goals
 		- if @child.objective_assignments.empty? && @child.parents.include?( @current_user )
 			%p
-				= @child.name.capitalize
+				= @child.display_name
 				has no objectives, create one now!
 
 		- else
@@ -94,7 +94,7 @@
 		%h3 Activities
 		-if @child.lesson_assignments.empty?
 			%p
-				= @child.name.capitalize
+				= @child.display_name
 				has no activities, add some now!
 		-else
 			- for lesson_assignment in @child.lesson_assignments
@@ -114,11 +114,11 @@
 	
 
 	#awards.boxes
-		%h3.center Awards
+		%h3.center Rewards
 		- if @child.active_assigned_awards.empty? && @child.parents.include?( @current_user )
 			%p
-				= @child.name.capitalize
-				has no awards, add some now!
+				= @child.display_name
+				has no rewards, add some now!
 			
 		- for assignment in @child.award_assignments.active
 			.objective.clearfix
@@ -129,7 +129,7 @@
 					= image_tag "cherry.png", :class => 'cherry'
 		- if @child.parents.include?( @current_user )
 			%p.add_awards.center
-				= link_to "+ Add Awards", child_award_assignments_path( @child ), :class => 'button_flat big'
+				= link_to "+ Add Rewards", child_award_assignments_path( @child ), :class => 'button_flat big'
 					
 	-#home_prizes.boxes
 		%h3.center Supporters:

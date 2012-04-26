@@ -59,7 +59,7 @@ class Award < ActiveRecord::Base
 			avatar = Attachment.create_from_resource( result.get_hash( 'MediumImage' )['URL'], 'avatar', :owner => award, :remote => 'true' )
 			return award
 		else
-			return "couldn't save award"
+			return "couldn't save reward"
 		end
 	end
 	

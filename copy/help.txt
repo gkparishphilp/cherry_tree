@@ -23,10 +23,10 @@ Cherry Tree helps kids.......
 
 
 <div id='awards'>
-<h3>Awards and Incentives</h3>
+<h3>Rewards and Incentives</h3>
 <p>
-Awards are incentives that can be offered to children to work towards.
-Children can redeem points earned for these awards.  The awards can be redeemable for almost anything you want.  Examples would be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
+Rewards are incentives that can be offered to children to work towards.
+Children can redeem points earned for these rewards.  The rewards can be redeemable for almost anything you want.  Examples would be 'One Hour of Free Time', 'A Trip to the Movies', or 'An Ice Cream Cone'.
 </p>
 </div>
 

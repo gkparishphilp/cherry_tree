@@ -13,23 +13,23 @@
 				%li.selected
 					%a{ :href => child_path( child ) }
 						= avatar_tag( child, :thumb, :width => 25 )
-						= child.name
+						= child.display_name
 			- else
 				%li
 					%a{ :href => child_path( child ) }
 						= avatar_tag( child, :thumb, :width => 25 )
-						= child.name
+						= child.display_name
 		- for child in @current_user.supported_children
 			- if @child.present? && child == @child
 				%li.selected
 					%a{ :href => child_path( child ) }
 						= avatar_tag( child, :thumb, :width => 25 )
-						= child.name
+						= child.display_name
 			- else
 				%li
 					%a{ :href => child_path( child ) }
 						= avatar_tag( child, :thumb, :width => 25 )
-						= child.name
+						= child.display_name
 		- if current_page?( new_child_path )
 			%li.selected.add
 				// = image_tag 'add.png', :width => 20

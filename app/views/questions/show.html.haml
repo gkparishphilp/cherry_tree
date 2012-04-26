@@ -1,6 +1,6 @@
 #child_main_screen
-	%h4= @quiz.name
-	.objective_dash.clearfix
+	%h= @quiz.name
+	.objective_dash.clearfix		
 		%p
 			Question Number #
 			= @question.sequence
@@ -19,7 +19,7 @@
 					.answer
 						= radio_button_tag :answer_id, answer.id
 						= answer.content
+				%br
 				= submit_tag "Enter", :class => 'button blue'
-
-= render 'child/right_column'
+				
 

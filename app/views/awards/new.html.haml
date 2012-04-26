@@ -1,11 +1,11 @@
 %h1
 	= possessize @current_user.name
-	Awards
+	Rewards
 = render 'users/nav'
 
-%h2 New Award
+%h2 New Reward
 
-%h4 Your Awards:
+%h4 Your Rewards:
 - for award in @current_user.created_awards.amazon
 	%li= award.name
 	

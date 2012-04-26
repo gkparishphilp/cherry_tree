@@ -6,13 +6,13 @@
 	- if @active_assignments.empty? && @requested_assignments.empty?
 		#active_assignment_table{ :style => 'margin-top:20px;' }
 			#empty_message
-				Objectives are behaviors, thoughts, or habits that
-				= @child.name.capitalize
+				Goals are behaviors, thoughts, or habits that
+				= @child.display_name
 				should be working on and reminded of daily.
 				%p
-				= @child.name.capitalize
-				does not have any objectives yet.
-				You can add an award from the list below, or create your own using the button above.
+				= @child.display_name
+				does not have any goals yet.
+				You can add a goal from the list below, or create your own using the button above.
 	- else
 		#active_assignment_table{ :style => 'margin-top:20px;' }
 			.float_left{ :style => 'width:50px;' }
@@ -40,7 +40,7 @@
 				.float_left{ :style => 'width:50px;' }
 					= image_tag( 'awards/custom.jpg', :width => 36 )
 				.float_left
-					%h3 Custom Awards
+					%h3 Custom Goals
 				.clear
 				- for objective in @custom_objectives
 					= render 'objective_to_assign', :objective => objective		
@@ -56,7 +56,7 @@
 	/ .top-header.clearfix
 	/ 	%span.title
 	/ 		Create objectives for 
-	/ 		= @child.name.capitalize
+	/ 		= @child.display_name
 	/ 		here.
 	/ 	.new_thing.button_flat
 	/ 		= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
