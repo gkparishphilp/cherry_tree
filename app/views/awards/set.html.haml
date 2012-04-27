@@ -1,14 +1,14 @@
-%h1 Add Awards
+%h1 Add Rewards
 = render 'users/nav'
 %br
-%h3 Add an award from Amazon
+%h3 Add an reward from Amazon
 =render 'awards/amazon_form'
 
 #wishitems
 	-for child in @current_user.children
 		%h3 
-			Add an award from  
-			= possessize child.name 
+			Add an reward from  
+			= possessize child.display_name
 			Wishlist items
 	
 		.form_group

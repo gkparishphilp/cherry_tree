@@ -39,7 +39,7 @@ osc22 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Readin
 osc23 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Writing'
 osc24 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Math'
 osc25 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Art/Music'
-osc26 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Schoolword'
+osc26 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Schoolwork'
 osc27 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Learn New Skill'
 
 #Child Behavior & Independence Skills

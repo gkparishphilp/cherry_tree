@@ -5,7 +5,7 @@
 	.top-header.clearfix
 		%span.title
 			Invite others to support and encourage
-			= @child.name.capitalize
+			= @child.display_name
 		
 		.new_thing.button_flat
 			= link_to '+ Invite a Supporter', "#", :class => 'open_modal', :id => 'invite'

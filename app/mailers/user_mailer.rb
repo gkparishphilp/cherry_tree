@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
 		@invitation = invitation
 		@invitee = invitation.user
 		@child = invitation.child
-		mail :to => invitation.user.email, :from => "noreply@thecherrytree.com", :subject => "#{@child.name} has invited you to their Cherry Tree website."
+		mail :to => invitation.user.email, :from => "noreply@thecherrytree.com", :subject => "#{@child.display_name} has invited you to their Cherry Tree website."
 	end
 	
 	# #{@invitee.name} <#{@invitee.email}>
@@ -26,7 +26,13 @@ class UserMailer < ActionMailer::Base
 		@award = award
 		parents = @child.parents
 		for @parent in parents
-			mail :to => @parent.email, :from =>"noreply@thecherrytree.com", :subject =>" #{@child.name} has earned an award!"
+			mail :to => @parent.email, :from =>"noreply@thecherrytree.com", :subject =>" #{@child.display_name} has earned a reward!"
 		end
+	end
+	
+	def send_contact( user, contact )
+		@contact = contact
+		@user = User.find_by_id( @contact.user_id)
+		mail :to => 'tay.x.nguyen@gmail.com', :from => "noreply@thecherrytree.com", :subject => "New contact"
 	end
 end
