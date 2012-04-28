@@ -37,6 +37,13 @@
 				= submit_tag	"Login", :class => 'button blue'
 				|
 				= link_to "Forgot Password?", forgot_path
+		%div.clear
+		%br
+		
+		#register
+			%h2 New to CherryTree? 
+			#register_button
+				= link_to "Register", register_path, :class => 'button blue'
 		
 			
 - else
