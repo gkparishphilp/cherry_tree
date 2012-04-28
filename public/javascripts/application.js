@@ -203,7 +203,7 @@ $(document).ready(function(){
 	$('.jbutton').button();
 	
 	$('.datepicker').datepicker({
-		dateFormat: 'yy-mm-dd'
+		dateFormat: 'mm/dd/yy'
 	});
 	
 	$('.tabs').tabs();
@@ -211,7 +211,7 @@ $(document).ready(function(){
 	$('.birthday_field').datepicker({
 			changeMonth: true,
 			changeYear: true,
-			dateFormat: 'yy-mm-dd',
+			dateFormat: 'mm/dd/yy',
 			defaultDate: '-10y'
 		});
 		

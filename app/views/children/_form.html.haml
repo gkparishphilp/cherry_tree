@@ -12,13 +12,13 @@
 		
 	%label
 		%span.gender
-		name is
+		first name is
 	= f.text_field :display_name
 
 	%div.clear	
 
 	%label.pic
-		Upload a Picture for
+		Upload a picture for
 		%span.name
 	= file_field_tag :attached_avatar_file, :class => 'button_flat'
 
@@ -35,18 +35,18 @@
 	%label
 		I am
 		%span.name_owner
-	= f.select :role, [ ['Father', 'father'], ['Mother', 'mother'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
+	= f.select :role, [ ['Mother', 'mother'], ['Father', 'father'], ['Guardian', 'guardian'], ['Professional', 'pro'] ]
 	
 	%div.clear
 
 	%label.nickname
 		%span.name
-		calls me (eg. 'mama' or 'paps'):
+		(For example: Mommy, Dad, Gram)
 	= f.text_field :nick
 	%div.divider
 	
 	%label.login
-		Please Provide a unique login name for
+		Please provide a unique login name for
 		%span.name
 	= f.text_field :name
 	%span#name_availability
@@ -55,7 +55,7 @@
 	%div.clear
 	
 	%label.password
-		Please Provide a PIN Code or Password for 
+		Please provide a PIN code or password for 
 		%span.name
 	= f.text_field :password
 

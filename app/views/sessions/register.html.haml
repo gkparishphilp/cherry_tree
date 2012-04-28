@@ -1,6 +1,8 @@
 .form_group.register-form
 	%h1
-		New to CherryTree?  Register here!
+		Register here
+	%p
+		Set up your account below, then follow a few simple steps to get your children going on the CherryTree.
 	= form_for @user do |f|
 		.fields.register
 
@@ -27,14 +29,15 @@
 			= f.label :password_confirmation, "Confirm Password"
 			= f.password_field :password_confirmation, :class => :regular, :placeholder => 'Confirm Password'
 			%br
-			%br
 			%div.clear
-			%label 
 
-			= check_box_tag :subscribe_to_newsletter, 1, true
-			&nbsp;
-			Subscribe to the CherryTree newsletter
+			%label
+				= check_box_tag :subscribe_to_newsletter, 1, true
+				Send me CherryTree news, updates, and offers.	
+				
+			
 			%div.clear	
+
 			%label
 				&nbsp;
 			= f.submit 'Register', :class => "button blue"
