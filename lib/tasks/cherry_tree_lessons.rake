@@ -359,6 +359,65 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "Yell at her for being late all the time."
 	quest10.answers.create :content => "Tell her that you really don't appreciate being late, and that you think her behavior is very rude."
 
+	# Patience Lesson
+	l = Lesson.create :name => 'Patience', :description => "Learn how to be patient", :lesson_category => lc2
+	s1 = l.screens.create :sequence => 1, :content => "<h1>Patience</h1><p>Patience is showing a positive reaction even in a difficult circumstance. To be patient, you must first think before you act. This give you time to settle things out in an orderly manner.</p><p>There are many benefits to being patient.  It will make you into a friendly and successful person, allow you to avoid feelings of frustration, and help you cope when things don't go as you plan.</p><p>Patience also helps manage anger. When you are patient, you will be able to control your feeling of disappointment, embarrassment and hatred. You will be able to turn those situations into positive ones.</p>"  
+
+
+	# Patience Lesson
+	q = l.quizzes.create :name => 'Patience', :point_value => 10
+	quest = q.questions.create :content => "<img src='/images/p1.png' alt='Spilled glass'/><p>While having a meal, your brother or sister accidentally spills something over you. Which of these should you NOT do?<p>"
+	quest.answers.create :content => "Tell him not to worry about it, as you know it was an accident."
+	quest.answers.create :content => "Yell at them and call them a name.", :correct => true
+	quest.answers.create :content => "Count to ten before saying anything."
+	quest.answers.create :content => "Get up calmly from your chair and then go and clean your clothes in the rest room."
+	quest2 = q.questions.create :content => "<img src='/images/p2.png' alt='Talks too much'/><p>Your teacher asks you to do a project with another student that you think talks too much. Which of these should you NOT do?<p>"
+	quest2.answers.create :content => "Treat them well at all times."
+	quest2.answers.create :content => "Tell them to be quiet and give you some peace and quiet.", :correct => true
+	quest2.answers.create :content => "Try to ignore their constant talking."
+	quest2.answers.create :content => "Give them some busy work to do, so that you can get on with yours in peace."
+	quest3 = q.questions.create :content => "<img src='/images/p3.png' alt='Remote'/><p>Your grandpa can't figure out how to use the remote to turn the TV on. You should...<p>"
+	quest3.answers.create :content => "Take the remote and turn it on yourself, as you haven't got time for any questions."
+	quest3.answers.create :content => "Explain how to use the remote once, but if they don't get it tell them to just ask someone when they need help."
+	quest3.answers.create :content => "Explain how to use the remote, and keep going over it until they understand.", :correct => true
+	quest3.answers.create :content => "Tell them the remote is broken (even though it's not)."
+	quest4 = q.questions.create :content => "<img src='/images/p4.png' alt='Karate'/><p>You have karate practice, but when it is time to go your mom isn't ready. You should...<p>"
+	quest4.answers.create :content => "Ask your mom why she didn't get ready earlier, like you did."
+	quest4.answers.create :content => "Wait a little longer for her, and then try to hurry her up."
+	quest4.answers.create :content => "Scream at her, and then say that you are not going if she is late one more minute."
+	quest4.answers.create :content => "Wait patiently until she is ready.", :correct => true
+	quest5 = q.questions.create :content => "<img src='/images/p5.png' alt='TV'/><p>Your favorite TV show freezes right in the middle of watching it. Which of these should you NOT do?<p>"
+	quest5.answers.create :content => "Switch the TV off and hope that it will be ok when you switch it back on."
+	quest5.answers.create :content => "Feel cross about it, but decide that getting annoyed will only make the situation worse."
+	quest5.answers.create :content => "Scream at it and shake it.", :correct => true
+	quest5.answers.create :content => "Take a couple of minutes to decide what the best thing to do is."
+	quest6 = q.questions.create :content => "<img src='/images/p6.png' alt='Bored'/><p>You finished your work and your desk is clear, but someone in your group has not and your teacher won't dismiss your group for recess until everyone is done.<p>"
+	quest6.answers.create :content => "You get angry, and tell that person to hurry up"
+	quest6.answers.create :content => "You wait as long as it takes for that person to be done, or offer to help them.", :correct => true
+	quest6.answers.create :content => "You finish their work for them and clear their desk."
+	quest6.answers.create :content => "You tell the teacher that its not fair you have to wait for others."
+	quest7 = q.questions.create :content => "<img src='/images/p7.png' alt='Waiting In line'/><p>You've been waiting for a while to play with a toy, but the person playing with it is not giving you a turn. What should you do?<p>"
+	quest7.answers.create :content => "Go and ask the teacher to give you the toy."
+	quest7.answers.create :content => "Ask them how much longer they will be, and make a decision if you want to wait or go play with something else and come back.", :correct => true
+	quest7.answers.create :content => "Get frustrated and walk away."
+	quest7.answers.create :content => "Look at your watch and just hope that you won't have to wait too much longer."
+	quest8 = q.questions.create :content => "<img src='/images/p8.png' alt='Talking on the phone'/><p>You want to tell your mother something but she is on the phone. You should?<p>"
+	quest8.answers.create :content => "Tug and pull at her shirt to get her attention."
+	quest8.answers.create :content => "Yell so she can hear you over her conversation "
+	quest8.answers.create :content => "Stay calm and wait for her to finish so that you can tell her.", :correct => true
+	quest8.answers.create :content => "Decide you are not going to tell her because she isn't listening to you."
+	quest9 = q.questions.create :content => "<img src='/images/p9.png' alt='Baby sucking on toy'/><p>If you find your baby brother sucking on your toy, you should<p>"
+	quest9.answers.create :content => "Yell at him to stop."
+	quest9.answers.create :content => "Tear the toy out of his hands."
+	quest9.answers.create :content => "Calmly take the toy out of his mouth.", :correct => true
+	quest9.answers.create :content => "Do nothing and wait until he puts the toy down."
+	quest10 = q.questions.create :content => "<img src='/images/p10.png' alt='Playing goalie'/><p>You really want to play goalie in your soccer game and the coach told you that you would get the chance at your next game. But when your next game came up, he didn't put you at goalie.  You should:<p>"
+	quest10.answers.create :content => "Say nothing and hope he remembers next week."
+	quest10.answers.create :content => "Throw a fit and refuse to play."
+	quest10.answers.create :content => "Play the position coach gave you but remind him that you would like to play goalie.", :correct => true
+	quest10.answers.create :content => "Assume coach just doesn't think you would be good at goalie."
+
+
 	# Exercise Challenge
 	l = Lesson.create :name => 'Exercise Challenge', :description => "Learn some exercises!", :lesson_category => lc4
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Exercise Challenege</h1><p>Physical activity is good for you!  It can help you have stronger muscles and bones and a healthier heart.  Exercise can also help you have more energy, more confidence, a better memory, and just feel all around good.  Try these 10 exercises!</p>"  
