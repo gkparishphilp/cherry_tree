@@ -1,0 +1,13 @@
+.child_profile.clearfix.parent_home
+	#main-col
+		%h2 Resources
+		#accordion.goals
+			- for cat in ObjectiveCategory.all
+				- next if cat.resources.empty?
+				%h3.track= "#{cat.name}"
+				%div				
+					%ul
+						- for resource in cat.resources 
+							%li
+								%label
+									= link_to resource.title, resource_path( resource )

@@ -121,6 +121,8 @@ CherryTree::Application.routes.draw do
 		get 'update_width', :on => :member
 	end
 	
+	resources :resources
+	
 	resources  :users do
 		post 'collect_email', :on => :collection
 		get 'resend', :on => :member

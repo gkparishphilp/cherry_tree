@@ -12,5 +12,6 @@ class ObjectiveCategory < ActiveRecord::Base
 	has_many	:objectives
 	has_many	:objective_subcategories
 	has_attached	:avatar
+	has_many 	:resources
 
 end
