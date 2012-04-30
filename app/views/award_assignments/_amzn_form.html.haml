@@ -3,6 +3,6 @@
     = form_tag amzn_child_award_assignments_path( @child ) do |f|
         Search Amazon:
         = text_field_tag :term
-        For:
+        In:
         = select_tag :index, options_for_select( ['Apparel', 'Books', 'DVD', 'Electronics', 'Toys', 'HealthPersonalCare', 'Kitchen', 'Music', 'DigitalMusic', 'SportingGoods', 'Video', 'VideoGames' ], 'Toys' )
         = submit_tag "Search", :class => 'button_flat'

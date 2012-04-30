@@ -18,7 +18,6 @@ class MessagesController < ApplicationController
 	end
 	
 	def create
-		dfs
 		@message = Message.new params[:message]
 		@message.sender = @current_user
 		@message.recipient = User.find_by_id( params[:message][:recipient_id] )

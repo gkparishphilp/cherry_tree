@@ -16,8 +16,9 @@
 				|
 				= link_to "Register", register_path
 		- else
-			.pic
-				= avatar_tag( @current_user, :thumb, :width => 36 )
+			- unless avatar_tag( @current_user ).match(/gravatar.com/) #Only allow uploaded pics, no generic gravatar icons
+				.pic
+					= avatar_tag( @current_user, :thumb, :width => 36 )
 			.user
 				Logged in as:
 				= link_to @current_user.display_name, home_path
@@ -26,8 +27,7 @@
 				)
 				%br
 				%span
-					= link_to "Help", '/help'
-					|
+					=# link_to "Help", '/help'
 					= link_to "Settings", settings_users_path
 					|
 					= link_to "Note Box", notes_path

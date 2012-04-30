@@ -52,7 +52,7 @@ class Award < ActiveRecord::Base
 			return "didn't find product for asin #{asin}"
 		end
 		
-		award = Award.new( :name => result.get('ItemAttributes/Title'), :description => result.get('EditorialReviews/EditorialReview/Content'), :asin =>award[:asin] )
+		award = Award.new( :name => result.get('ItemAttributes/Title'), :description => result.get('EditorialReviews/EditorialReview/Content'), :asin =>award[:asin], :url => result.get('DetailPageURL') )
 		#award.point_cost = result.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub( /\D/, "" ).to_i.roundup
 		award.point_cost = 50
 		if award.save

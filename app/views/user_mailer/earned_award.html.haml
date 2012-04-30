@@ -5,7 +5,10 @@ Hello
 %br
 = @child.display_name
 has unlocked: 
-= @award.name
+- if @award.url.present?
+	=link_to @award.name, @award.url
+- else	
+	= @award.name
 
 %p
 	= link_to 'Click Here to Display and Print the Award', print_award_url( @award, :child_id => @child.id, :host => 'thecherrytree.com' )

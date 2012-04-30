@@ -115,15 +115,14 @@ module UserApp
 
 	
 	def earn_points_for( obj, points=nil )
-		# take an event object (message, check-in, activity, gam, quiz, etc.), create an earning transaction 
+		# take an event object (message, check-in, activity, game, quiz, etc.), create an earning transaction 
 		# and add points to the user's point_balance and point_total
 		points = obj.point_value if points.nil?
 		self.point_earnings.create :earned_for_id => obj.id, :earned_for_type => obj.class.name, :points => points
 		self.update_attributes :points_earned => ( self.points_earned + points ), :point_balance => ( self.point_balance + points )
 	end
 	
-	
-	
+		
 	def can_unlock?( reward )
 		if reward.is_a?( Award )
 			assignment = reward.award_assignments.find_by_user_id( self.id )

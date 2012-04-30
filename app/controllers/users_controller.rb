@@ -229,7 +229,7 @@ class UsersController < ApplicationController
 		
 		redirect_to pending_sessions_path( :user_id => @user.id )
 	end
-	
+		
 end
 
 

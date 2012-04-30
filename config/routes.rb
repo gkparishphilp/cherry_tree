@@ -32,8 +32,10 @@ CherryTree::Application.routes.draw do
 		get 'login', :on => :collection
 		get 'home', :on => :collection
 		get 'profile', :on => :member
-		
+		post 'give_cherries', :on => :member
+				
 		resources :approvals
+
 
 		resources :objective_assignments
 		resources :award_assignments do

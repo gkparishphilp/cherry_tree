@@ -7,6 +7,7 @@ class AddResources < ActiveRecord::Migration
 			t.references	:objective_category
 		end
 	
+		add_column :awards, :url, :string
 	end
 
 	def down

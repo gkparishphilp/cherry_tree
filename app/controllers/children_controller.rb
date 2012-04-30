@@ -63,7 +63,7 @@ class ChildrenController < ApplicationController
 			pop_flash "Child Registered."
 			redirect_to @child
 		else
-			pop_flash "Ooops, Child not added", :error, @child
+			pop_flash "Ooops, child not added", :error, @child
 			redirect_to :back
 		end
 		
@@ -91,5 +91,16 @@ class ChildrenController < ApplicationController
 		@chart_axis_with_labels ='y,x'
 	end
 
-	
+	def give_cherries
+		points = params[:points].to_i
+		obj = Objective.find_by_name "Good Deed"
+		child = Child.find params[:id]
+		if child.earn_points_for( obj, points)
+			pop_flash "Cherries given to #{child.display_name}!"
+		else
+			pop_flash "Sorry, couldn't give cherries"
+		end
+		redirect_to :back
+	end
+
 end

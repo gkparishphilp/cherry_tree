@@ -42,6 +42,9 @@ osc25 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Art/Mu
 osc26 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Schoolwork'
 osc27 = ObjectiveSubcategory.create :objective_category => oc1, :name => 'Learn New Skill'
 
+# Good deed objective used for granting random points by parent
+obj = Objective.create :name => "Good Deed", :creator => s
+
 #Child Behavior & Independence Skills
 obj = Objective.create :objective_category => oc2, :objective_subcategory => osc1, :name => 'Show good listening skills by making good eye contact and do not interrupt', :creator => s, :point_value => 1
 obj = Objective.create :objective_category => oc2, :objective_subcategory => osc1, :name => 'Repeat back the instructions given to you', :creator => s, :point_value => 1

@@ -17,5 +17,6 @@
 			= f.hidden_field :term, :value => item.get("ItemAttributes/Title")
 			= f.hidden_field :asin, :value => item.get('ASIN')
 			= f.hidden_field :point_cost, :value => 50
+			= f.hidden_field :description, :value => item.get('EditorialReviews/EditorialReview/Content')
 			= f.submit "Add Award", :class => 'button_flat'
 		%hr
