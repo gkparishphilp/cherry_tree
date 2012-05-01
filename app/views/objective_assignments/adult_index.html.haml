@@ -3,31 +3,49 @@
 .child_profile.clearfix
 	= render "children/sub_nav", :child => @child
 		
+	
+	#active_assignment_table_header{ :style => 'margin-top:20px;' }
+		%h1 Goals
+	#active_assignment_table_body
+		%p 
+		Assign goals that 
+		= @child.display_name
+		should be working on daily. You can choose from the goals below, which were created by The CherryTree's child development professionals, or you can create custom goals based on 
+		%span<= @child.display_name
+		%span>'s specific goals.
+		%p
+		We recommend focusing on 5-10 goals at a time. When 
+		= @child.display_name
+		masters a particular goal, you can remove it from 
+		- if @child.gender == 'male'
+			his
+		- else
+			her
+		list and focus on something new.
 	- if @active_assignments.empty? && @requested_assignments.empty?
-		#active_assignment_table{ :style => 'margin-top:20px;' }
-			#empty_message
-				Goals are behaviors, thoughts, or habits that
-				= @child.display_name
-				should be working on and reminded of daily.
-				%p
-				= @child.display_name
-				does not have any goals yet.
-				You can add a goal from the list below, or create your own using the button above.
+		%p
+		= @child.display_name
+		does not have any goals yet.
+		You can add a goal from the list below, or create your own using the button above.
 	- else
-		#active_assignment_table{ :style => 'margin-top:20px;' }
-			.float_left{ :style => 'width:50px;' }
-				= image_tag 'awards/custom.jpg', :width => 40
+		#active_assignment_table_header{ :style => 'margin-top:20px;' }
+			/ .float_left{ :style => 'width:50px;' }
+			/ 	= image_tag 'awards/custom.jpg', :width => 40
 			.float_left
-				%h3 Assigned Goals
+				%h3 
+					%span<= @child.display_name
+					%span>'s Goals
 			.clear
+		#active_assignment_table_body
+			%br
 			.float_left{ :style => 'width:50px;'}
 				&nbsp;
 			.float_left{ :style => 'width:400px;'}
-				%label Name
+				%h4 Assigned Goals
 			-#.float_left{ :style => 'width:350px;'}
 				%label Description
 			.float_left{ :style => 'width:150px;'}
-				%label Cherries
+				%h4 Cherries
 			-#.float_left{ :style => 'width:50px;'}
 				%label Parental Confirmation?
 			.clear
@@ -50,7 +68,7 @@
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Save Changes", "", :class => 'save_form'
+		= link_to "Continue", "", :class => 'save_form'
 	.clear	
 		&nbsp;
 	/ .top-header.clearfix
