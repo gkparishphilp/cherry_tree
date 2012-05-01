@@ -83,6 +83,8 @@ CherryTree::Application.routes.draw do
 	
 	resources :objectives 
 	
+	resources :products
+	
 	resources :quizzes do
 		get 'admin', :on => :collection
 		get 'inspect', :on => :member
