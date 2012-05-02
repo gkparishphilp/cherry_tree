@@ -5,53 +5,47 @@
 	#child_main_screen.parent
 	
 		- if @child.objective_assignments.empty? 
-			%h3{ :style => 'margin-top: 20px;' } 
+			%h3 
 				Let's get started...
-			%p{ :style => 'font-size: 18px;'}	
-				Let's enter some goals for
-				= @child.display_name
-				Goals can be doing the chores, behavior goals, or milestones for 
-				= @child.display_name
-				to work towards.
-				= @child.display_name
-				will earn cherries as 
-				= @child.pronoun_gender_subject
-				checks in on 
-				= @child.pronoun_gender_possessive
-				progress.  
+			Let's enter some goals for
+			= @child.display_name
+			Goals can be doing the chores, behavior goals, or milestones for 
+			= @child.display_name
+			to work towards.
+			= @child.display_name
+			will earn cherries as 
+			= @child.pronoun_gender_subject
+			checks in on 
+			= @child.pronoun_gender_possessive
+			progress.  
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat big'
+				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat'
 
 		- elsif @child.lesson_assignments.empty?
-			%h3{ :style => 'margin-top: 20px;' }
-				Assign activities for 
+			%h3
+				Hmm..., 
 				= @child.display_name
-				to complete.
-			%br
-			%p{ :style => 'font-size: 18px;'}	
-				The CherryTree's team of child development professionals came up with lessons and quizzes in each of our developmental categories. When
-				= @child.display_name
-				logs in, 
-				= @child.pronoun_gender_subject
-				will be able to earn additional cherries by completing the activities that you assign. 
+				doesn't have any activities assigned. 
+			Let's assign some activities.  They'll help 
+			= @child.display_name
+			learn proper behaviors or skills.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Activities", child_lesson_assignments_path( @child ), :class => 'button_flat big'			
+				= link_to "+ Add Activities", child_lesson_assignments_path( @child ), :class => 'button_flat'			
 			
 		- elsif @child.active_assigned_awards.empty?
-			%h3{ :style => 'margin-top: 20px;' }
+			%h3 
 				Hmm..., 
 				= @child.display_name
 				doesn't seem to have an rewards.
-			%p{ :style => 'font-size: 18px;'}		
-				Let's create some rewards for
-				= @child.display_name
-				to work towards....  Rewards can be toys, prizes, special treats, or anything you want.
-				= @child.display_name
-				Will be able to spend 
-				= @child.pronoun_gender_possessive
-				cherries as
-				= @child.pronoun_gender_subject
-				earns them to unlock these rewards.
+			Let's create some rewards for
+			= @child.display_name
+			to work towards....  Rewards can be toys, prizes, special treats, or anything you want.
+			= @child.display_name
+			Will be able to spend 
+			= @child.pronoun_gender_possessive
+			cherries as
+			= @child.pronoun_gender_subject
+			earns them to unlock these rewards.
 			%p.center{ :style => 'margin-top: 20px;' }
 				= link_to "+ Add Rewards", child_award_assignments_path( @child ), :class => 'button_flat big'
 		
