@@ -2,6 +2,6 @@
 	.float_left{ :style => 'width:50px;'}
 		= check_box_tag "assign_objective", objective.id, @child.active_assigned_objectives.include?( objective ), :objective => objective.id, :class => 'assign_objective', :child => @child.id
 
-	.float_left{ :style => 'width:500px;'}
+	.float_left{ :style => 'width:400px;'}
 		= objective.name
 	.clear

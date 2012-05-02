@@ -4,23 +4,19 @@
 	= render "children/sub_nav", :child => @child
 		
 	
-	#active_assignment_table_header{ :style => 'margin-top:20px;' }
-		%h1 Goals
-	#active_assignment_table_body
-		%p 
+	%h1{ :style => 'margin-top:30px;' }
+		Goals
+	%p 
 		Assign goals that 
 		= @child.display_name
 		should be working on daily. You can choose from the goals below, which were created by The CherryTree's child development professionals, or you can create custom goals based on 
 		%span<= @child.display_name
 		%span>'s specific goals.
-		%p
+	%p{ :style => 'padding-bottom:20px;' }
 		We recommend focusing on 5-10 goals at a time. When 
 		= @child.display_name
 		masters a particular goal, you can remove it from 
-		- if @child.gender == 'male'
-			his
-		- else
-			her
+		= @child.pronoun_gender_possessive
 		list and focus on something new.
 	- if @active_assignments.empty? && @requested_assignments.empty?
 		%p
@@ -29,8 +25,6 @@
 		You can add a goal from the list below, or create your own using the button above.
 	- else
 		#active_assignment_table_header{ :style => 'margin-top:20px;' }
-			/ .float_left{ :style => 'width:50px;' }
-			/ 	= image_tag 'awards/custom.jpg', :width => 40
 			.float_left
 				%h3 
 					%span<= @child.display_name
@@ -42,23 +36,20 @@
 				&nbsp;
 			.float_left{ :style => 'width:400px;'}
 				%h4 Assigned Goals
-			-#.float_left{ :style => 'width:350px;'}
-				%label Description
 			.float_left{ :style => 'width:150px;'}
 				%h4 Cherries
-			-#.float_left{ :style => 'width:50px;'}
-				%label Parental Confirmation?
 			.clear
 			- for assignment in @active_assignments
 				= render 'active_assignment', :assignment => assignment
-			
-	#custom_objectives
-		- unless @custom_objectives.empty?
-			.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-				.float_left{ :style => 'width:50px;' }
-					= image_tag( 'awards/custom.jpg', :width => 36 )
-				.float_left
-					%h3 Custom Goals
+			.clear
+			%br
+			- unless @custom_objectives.empty?
+				.float_left{ :style => 'width:50px;'}
+					&nbsp;
+				.float_left{ :style => 'width:400px;'}
+					%h4 Custom Goals
+				.float_left{ :style => 'width:150px;'}
+					%h4 Cherries
 				.clear
 				- for objective in @custom_objectives
 					= render 'objective_to_assign', :objective => objective		

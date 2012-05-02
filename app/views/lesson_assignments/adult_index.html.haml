@@ -2,12 +2,46 @@
 
 	= render 'children/sub_nav', :child => @child
 	%br.clear
+
+	%h1{ :style => 'margin-top:30px;' }
+		Activities
+	%p 
+		Our team of child development professionals came up with instructional lessons and quizzes in each of the developmental categories below.
+	%p{ :style => 'padding-bottom:20px;' } 
+		When 
+		= @child.display_name
+		logs in,
+		= @child.pronoun_gender_subject
+		will be able to earn cherries by completing the activities you assign. 
+		- if @child.lessons.empty? 
+			%p
+			= @child.display_name
+			does not have any activities yet.
+			You can add an activity from the list below.
+		- else
+			#active_assignment_table_header{ :style => 'margin-top:20px;' }
+				.float_left
+					%h3 
+						%span<= @child.display_name
+						%span>'s Assignments
+				.clear
+			#active_assignment_table_body
+				%br
+				.float_left{ :style => 'width:50px;'}
+					&nbsp;
+				.float_left{ :style => 'width:400px;'}
+					%h4 Assigned Activities
+				.float_left{ :style => 'width:150px;'}
+					%h4 Cherries
+				.clear
+				- for assignment in @active_assignments
+					= render 'active_assignment', :assignment => assignment
+					
 	.new_thing.button_flat
 		= link_to "Save Changes", child_path( @child )
-	%br
+
 	.top-header.clearfix
 		%span.title
-	
 		-#.new_thing.button_flat
 			= link_to 'Buy Lessons!', ""
 
