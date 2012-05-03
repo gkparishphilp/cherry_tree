@@ -7,6 +7,7 @@ class AddProducts < ActiveRecord::Migration
 			t.string		:amazon_name
 			t.text			:amazon_description
 			t.string		:amazon_url
+			t.string		:amazon_image_url
 			t.string		:appropriate_ages
 		end
 		

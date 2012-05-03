@@ -9,8 +9,11 @@ task :cherry_tree_products => :environment do
 		if item=response.items.first
 			p.amazon_name = item.get("ItemAttributes/Title")
 			p.amazon_url = item.get("DetailPageURL")
+			p.amazon_image_url = item.get("LargeImage/URL")
 			if item.get('ItemAttributes/ListPrice/FormattedPrice').present?
 				p.price = item.get('ItemAttributes/ListPrice/FormattedPrice').gsub("$","")
+			elsif item.get('OfferSummary/LowestNewPrice/FormattedPrice').present?
+				p.price = item.get('OfferSummary/LowestNewPrice/FormattedPrice').gsub("$","")
 			end
 			apro_age = row[7].split(/,/)
 			apro_age_array = Array.new
