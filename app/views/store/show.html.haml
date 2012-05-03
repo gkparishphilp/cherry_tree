@@ -11,7 +11,7 @@
 			.store_title
 				= product.name
 				(
-				= product.price
+				= number_to_currency product.price
 				)
 			.store_thumb.float_left
 				= image_tag( product.amazon_image_url, :width => 200 )
@@ -19,6 +19,6 @@
 				.store_desc
 					= product.amazon_description.html_safe unless product.amazon_description.blank?
 			.store_actions.float_left
-				= link_to 'Buy', '/TODO-buy', :class => 'button_flat open_modal'
-				= link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat add_award'
+				= link_to 'Buy', product.amazon_url, :target => "_blank", :class => 'button_flat'
+				=# link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat'
 		%hr

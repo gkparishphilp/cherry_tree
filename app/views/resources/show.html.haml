@@ -1,2 +1,5 @@
-#main-col
+.child_profile
 	= @resource.content.html_safe
+	%br
+	%br
+		=link_to 'Back', resources_path, :class => 'button blue'

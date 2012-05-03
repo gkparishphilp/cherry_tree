@@ -29,6 +29,7 @@ task :cherry_tree_products => :environment do
 			sc2 = StoreCategory.find_by_name 'Child Behavior & Independence Skills'
 			sc3 = StoreCategory.find_by_name 'Social Skills & Emotional Well-Being'
 			sc4 = StoreCategory.find_by_name 'Health & Fitness'
+			sc5 = StoreCategory.find_by_name 'Fun'
 		
 			for cat in categories
 				case cat
@@ -40,6 +41,8 @@ task :cherry_tree_products => :environment do
 					ProductCategory.create :product_id => p.id, :store_category_id => sc4.id
 				when 'A'
 					ProductCategory.create :product_id => p.id, :store_category_id => sc1.id
+				when 'F'
+					ProductCategory.create :product_id => p.id, :store_category_id => sc5.id
 				end
 			end
 		end
