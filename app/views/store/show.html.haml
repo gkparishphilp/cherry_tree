@@ -1,67 +1,24 @@
 .child_profile
-  %h1
-    Category Title Here
-  %br
-  %h3.store-tagline
-    Cherry Tree has hand picked these products to help your child...
+	%h1
+		=@category.name
+	%br
+	%h3.store-tagline
+		Cherry Tree has hand picked these products to help your child...
 
-  // ITERATE through results = below is template for those results
-  .store_item.clearfix
-    .store_title
-      = 'Product Title'
-      (
-      = '$49.99'
-      )
-    .store_thumb.float_left
-      = image_tag( 'http://placehold.it/200x200', :width => 200 )
-    .store_data.float_left
-      .store_desc
-        = 'Integer nec elementum dui. Proin dictum, massa at consequat volutpat, mauris dolor dignissim nisl, eget molestie justo tellus eu turpis. Vestibulum ante nisi, vehicula aliquet adipiscing at, sagittis tempor justo. Nulla ut ipsum vitae est semper laoreet a vitae magna. Nunc varius luctus turpis quis sodales. Etiam urna massa, vestibulum vitae hendrerit et, tincidunt et libero. Praesent et est tortor. Morbi nec orci non leo pulvinar viverra non vel dolor. Sed feugiat eleifend libero, id vehicula orci dictum eu. Praesent quis arcu lacus. Proin sodales consectetur purus. Aenean nec lorem enim, congue rutrum lacus. Vivamus ut malesuada urna.'
-    .store_actions.float_left
-      = link_to 'Buy', '/TODO-buy', :class => 'button_flat open_modal'
-      = link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat add_award'
-  %hr
-  .store_item.clearfix
-    .store_title
-      = 'Amazon Product Title'
-      (
-      = '$49.99'
-      )
-    .store_thumb.float_left
-      = image_tag( 'http://placehold.it/200x200', :width => 200 )
-    .store_data.float_left
-      .store_desc
-        = 'Integer nec elementum dui. Proin dictum, massa at consequat volutpat, mauris dolor dignissim nisl, eget molestie justo tellus eu turpis. Vestibulum ante nisi, vehicula aliquet adipiscing at, sagittis tempor justo. Nulla ut ipsum vitae est semper laoreet a vitae magna. Nunc varius luctus turpis quis sodales. Etiam urna massa, vestibulum vitae hendrerit et, tincidunt et libero. Praesent et est tortor. Morbi nec orci non leo pulvinar viverra non vel dolor. Sed feugiat eleifend libero, id vehicula orci dictum eu. Praesent quis arcu lacus. Proin sodales consectetur purus. Aenean nec lorem enim, congue rutrum lacus. Vivamus ut malesuada urna.'
-    .store_actions.float_left
-      = link_to 'Buy', 'http://www.amazon.com', :class => 'button_flat', :target => '_blank'
-      = link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat add_award'
-  %hr
-  .store_item.clearfix
-    .store_title
-      = 'A little bit longer of a Product Title'
-      (
-      = '$49.99'
-      )
-    .store_thumb.float_left
-      = image_tag( 'http://placehold.it/200x200', :width => 200 )
-    .store_data.float_left
-      .store_desc
-        = 'Integer nec elementum dui. Proin dictum, massa at consequat volutpat, mauris dolor dignissim nisl, eget molestie justo tellus eu turpis. Vestibulum ante nisi, vehicula aliquet adipiscing at, sagittis tempor justo. Nulla ut ipsum vitae est semper laoreet a vitae magna. Nunc varius luctus turpis quis sodales. Etiam urna massa, vestibulum vitae hendrerit et, tincidunt et libero. Praesent et est tortor. Morbi nec orci non leo pulvinar viverra non vel dolor. Sed feugiat eleifend libero, id vehicula orci dictum eu. Praesent quis arcu lacus. Proin sodales consectetur purus. Aenean nec lorem enim, congue rutrum lacus. Vivamus ut malesuada urna.'
-    .store_actions.float_left
-      = link_to 'Buy', '/TODO-buy', :class => 'button_flat open_modal', :id => 'test'
-      = link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat add_award'
-  %hr
-  .store_item.clearfix
-    .store_title
-      = 'Product Title'
-      (
-      = '$49.99'
-      )
-    .store_thumb.float_left
-      = image_tag( 'http://placehold.it/200x200', :width => 200 )
-    .store_data.float_left
-      .store_desc
-        = 'Integer nec elementum dui. Proin dictum, massa at consequat volutpat, mauris dolor dignissim nisl, eget molestie justo tellus eu turpis. Vestibulum ante nisi, vehicula aliquet adipiscing at, sagittis tempor justo. Nulla ut ipsum vitae est semper laoreet a vitae magna. Nunc varius luctus turpis quis sodales. Etiam urna massa, vestibulum vitae hendrerit et, tincidunt et libero. Praesent et est tortor. Morbi nec orci non leo pulvinar viverra non vel dolor. Sed feugiat eleifend libero, id vehicula orci dictum eu. Praesent quis arcu lacus. Proin sodales consectetur purus. Aenean nec lorem enim, congue rutrum lacus. Vivamus ut malesuada urna.'
-    .store_actions.float_left
-      = link_to 'Buy', '/TODO-buy', :class => 'button_flat'
-      = link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat add_award'
+	- for product in @products
+		-# ITERATE through results = below is template for those results
+		.store_item.clearfix
+			.store_title
+				= product.name
+				(
+				= product.price
+				)
+			.store_thumb.float_left
+				= image_tag( 'http://placehold.it/200x200', :width => 200 )
+			.store_data.float_left
+				.store_desc
+					= product.amazon_description.html_safe unless product.amazon_description.blank?
+			.store_actions.float_left
+				= link_to 'Buy', '/TODO-buy', :class => 'button_flat open_modal'
+				= link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat add_award'
+		%hr
