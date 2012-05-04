@@ -19,18 +19,19 @@
 			= @child.pronoun_gender_possessive
 			progress.  
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat'
+				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat big'
 
 		- elsif @child.lesson_assignments.empty?
-			%h3
-				Hmm..., 
+			%h3{ :style => 'margin-top: 20px;' }
+				Assign activities for 
 				= @child.display_name
-				doesn't have any activities assigned. 
-			Let's assign some activities.  They'll help 
-			= @child.display_name
-			learn proper behaviors or skills.
+				to complete. 
+			%p{ :style => 'margin-top: 20px;' }	
+				The CherryTree's team of child development professionals came up with lessons and quizzes in each of our developmental categories. When  
+				= @child.display_name
+				logs in, she will be able to earn additional cherries by completing the activites that you assign.
 			%p.center{ :style => 'margin-top: 20px;' }
-				= link_to "+ Add Activities", child_lesson_assignments_path( @child ), :class => 'button_flat'			
+				= link_to "+ Add Activities", child_lesson_assignments_path( @child ), :class => 'button_flat big'			
 			
 		- elsif @child.active_assigned_awards.empty?
 			%h3 
