@@ -3,7 +3,7 @@ class AddResources < ActiveRecord::Migration
 	def up
 		create_table :resources do |t|
 			t.string		:title
-			t.string		:content
+			t.text			:content
 			t.references	:objective_category
 		end
 	

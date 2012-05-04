@@ -1,15 +1,21 @@
 
 s = Site.create :name => 'Cherry Tree'
 
-lc1 = LessonCategory.create :name => 'Academics & School Readiness'
-lc2 = LessonCategory.create :name => 'Child Behavior & Independence Skills'
-lc3 = LessonCategory.create :name => 'Social Skills & Emotional Well-Being'
-lc4 = LessonCategory.create :name => 'Health & Fitness'
+lc1 = LessonCategory.create :name => 'Academics & School Readiness', :short_name => 'academics'
+lc2 = LessonCategory.create :name => 'Child Behavior & Independence Skills', :short_name => 'behavior'
+lc3 = LessonCategory.create :name => 'Social Skills & Emotional Well-Being', :short_name => 'social'
+lc4 = LessonCategory.create :name => 'Health & Fitness', :short_name => 'health'
 
-oc1 = ObjectiveCategory.create :name => 'Academics & School Readiness'
-oc2 = ObjectiveCategory.create :name => 'Child Behavior & Independence Skills'
-oc3 = ObjectiveCategory.create :name => 'Social Skills & Emotional Well-Being'
-oc4 = ObjectiveCategory.create :name => 'Health & Fitness'
+oc1 = ObjectiveCategory.create :name => 'Academics & School Readiness', :short_name => 'academics'
+oc2 = ObjectiveCategory.create :name => 'Child Behavior & Independence Skills', :short_name => 'behavior'
+oc3 = ObjectiveCategory.create :name => 'Social Skills & Emotional Well-Being', :short_name => 'social'
+oc4 = ObjectiveCategory.create :name => 'Health & Fitness', :short_name => 'health'
+
+sc1 = StoreCategory.create :name => 'Academics & School Readiness', :short_name => 'academics'
+sc2 = StoreCategory.create :name => 'Child Behavior & Independence Skills', :short_name => 'behavior'
+sc3 = StoreCategory.create :name => 'Social Skills & Emotional Well-Being', :short_name => 'social'
+sc4 = StoreCategory.create :name => 'Health & Fitness', :short_name => 'health'
+sc5 = StoreCategory.create :name => 'Fun', :short_name => 'fun'
 
 osc1 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Listening'
 osc2 = ObjectiveSubcategory.create :objective_category => oc2, :name => 'Obeying'
