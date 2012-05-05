@@ -65,7 +65,7 @@
 
 	- if @child.parents.include?( @current_user )
 		#cherry.boxes
-			%h3.center Give Cherries
+			%h3.center Give Bonus Cherries
 			= form_tag  give_cherries_child_path do
 				= text_field_tag :points
 				= submit_tag "Give", :class => 'button_flat'

@@ -12,7 +12,7 @@
 			= link_to 'Buy Lessons!', ""
 
 
-		- for category in LessonCategory.all
+		- for category in LessonCategory.order("sequence")
 			%h3
 				= category.name
 			%br

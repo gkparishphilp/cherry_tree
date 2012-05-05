@@ -93,12 +93,16 @@ class ChildrenController < ApplicationController
 
 	def give_cherries
 		points = params[:points].to_i
-		obj = Objective.find_by_name "Good Deed"
-		child = Child.find params[:id]
-		if child.earn_points_for( obj, points)
-			pop_flash "Cherries given to #{child.display_name}!"
+		if points > 0
+			obj = Objective.find_by_name "Good Deed"
+			child = Child.find params[:id]
+			if child.earn_points_for( obj, points)
+				pop_flash "Cherries given to #{child.display_name}!"
+			else
+				pop_flash "Sorry, couldn't give cherries"
+			end
 		else
-			pop_flash "Sorry, couldn't give cherries"
+			pop_flash "Please enter a valid number of cherries.", :error
 		end
 		redirect_to :back
 	end
