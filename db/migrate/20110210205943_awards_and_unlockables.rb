@@ -10,6 +10,7 @@ class AwardsAndUnlockables < ActiveRecord::Migration
 			t.string		:asin # for Amazon products
 			t.integer		:point_cost  # TODO - I'm going to re-add this here for now... to be overridden by cost in assignemnt
 			t.string		:status, :default => 'active'
+			t.string		:url
 			t.timestamps
 		end
 		

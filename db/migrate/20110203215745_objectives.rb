@@ -49,6 +49,8 @@ class Objectives < ActiveRecord::Migration
 		
 		create_table :objective_categories do |t|
 			t.string		:name
+			t.string		:short_name
+			t.integer		:sequence
 		end
 		
 		create_table :objective_subcategories do |t|

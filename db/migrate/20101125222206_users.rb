@@ -82,8 +82,7 @@ class Users < ActiveRecord::Migration
 			t.datetime		:activated_at
 			t.string		:status, :default => 'first'
 			t.string		:cached_slug
-			
-		
+			t.boolean		:newsletter_opt_in, :default => false
 			t.string		:orig_ip
 			t.string		:last_ip
 

@@ -20,7 +20,14 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.string	:name
 			t.text		:description
 			t.string	:lesson_type
+			t.integer	:lesson_category_id
 			t.timestamps
+		end
+		
+		create_table :lesson_categories do |t|
+			t.string		:name
+			t.integer		:sequence
+			t.string		:short_name
 		end
 		
 		create_table :lesson_assignments do |t|
@@ -84,6 +91,12 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.timestamps
 		end
 		
+		create_table :resources do |t|
+			t.string		:title
+			t.text			:content
+			t.references	:objective_category
+		end
+		
 		add_index :answers, :question_id
 		
 		add_index :answerings, [ :quizzing_id, :question_id, :answer_id ]
@@ -99,7 +112,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 		add_index :quizzes, [ :lesson_id, :creator_id ]
 		
 		add_index :quizzings, [ :quiz_id, :user_id, :question_id ]
-		
+
 	end
 
 	def self.down
