@@ -3,11 +3,9 @@
 .child_profile.clearfix
 	= render "children/sub_nav", :child => @child
 		
-	
-	#active_assignment_table_header{ :style => 'margin-top:20px;' }
-		%h1 Goals
-	#active_assignment_table_body
-		%p 
+	%h1{ :style => 'margin-top:20px;' } 
+		Goals
+	%p 
 		Assign goals that 
 		= @child.display_name
 		should be working on daily. You can choose from the goals below, which were created by The CherryTree's child development professionals, or you can create custom goals based on 
@@ -51,19 +49,9 @@
 			.clear
 			- for assignment in @active_assignments
 				= render 'active_assignment', :assignment => assignment
-			
-	#custom_objectives
-		- unless @custom_objectives.empty?
-			.category.float_left{ :style => 'width:400px;margin-top:20px;' }
-				.float_left{ :style => 'width:50px;' }
-					= image_tag( 'awards/custom.jpg', :width => 36 )
-				.float_left
-					%h3 Custom Goals
-				.clear
+			- unless @custom_objectives.empty?
 				- for objective in @custom_objectives
-					= render 'objective_to_assign', :objective => objective		
-			
-
+					= render 'objective_to_assign', :objective => objective
 				
 	.clear	
 		&nbsp;
