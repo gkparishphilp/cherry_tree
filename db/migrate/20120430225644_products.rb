@@ -1,4 +1,4 @@
-class AddProducts < ActiveRecord::Migration
+class Products < ActiveRecord::Migration
   def up
 		create_table :products do |t|
 			t.string		:name
@@ -14,6 +14,7 @@ class AddProducts < ActiveRecord::Migration
 		create_table :store_categories do |t|
 			t.string		:name
 			t.string		:short_name
+			t.integer		:sequence
 		end
 
 		create_table :product_categories do |t|
@@ -21,16 +22,12 @@ class AddProducts < ActiveRecord::Migration
 			t.references	:store_category
 		end
 		
-		add_column :objective_categories, :short_name, :string
-		add_column :lesson_categories, :short_name, :string
   end
 
   def down
 		drop_table :products
 		drop_table :store_categories
 		drop_table :product_categories
-		remove_column :objective_categories, :short_name
-		remove_column :lesson_categories, :short_name
   end
 
 end

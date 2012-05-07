@@ -68,7 +68,7 @@
 	/ 		= link_to "+ Create Custom Goal", "#", :class => 'open_new_objective_form'
 
 	#accordion.goals	
-		- for cat in ObjectiveCategory.all
+		- for cat in ObjectiveCategory.order("sequence")
 			-next if cat.objectives.empty?
 			%h3.track= "#{cat.name} Goals"
 			%div
