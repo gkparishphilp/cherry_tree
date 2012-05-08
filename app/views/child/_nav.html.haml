@@ -3,11 +3,7 @@
 .banner_points
 	= @current_user.point_balance
 	= image_tag "cherry.png", :class => 'cherry'
-	%span{ :style => 'font-size:10px;' }
-		(
-		= @current_user.points_earned
-		Total Cherries Earned
-		)
+
 .clear
 #main-nav
 	%ul.navbar
