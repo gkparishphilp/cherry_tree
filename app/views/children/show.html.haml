@@ -77,7 +77,8 @@
 		- else
 			%p
 				=@child.display_name
-				hasn't earned any cherries yet this week.		
+				hasn't earned any cherries yet this week.	
+	/ NOTE: height of goals.boxes is 688px when limited to 10 goals	
 	#goals.boxes
 		%h3.center Goals
 		- if @child.objective_assignments.empty? && @child.parents.include?( @current_user )
@@ -100,7 +101,8 @@
 			%p.add_objectives.center
 				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat big'
 
-	#activities.boxes
+	/ NOTE: height of activities is 346px when limited to 5 goals
+	#goals.boxes
 		%h3.center Activities
 		-if @child.lesson_assignments.empty?
 			%p
@@ -108,14 +110,17 @@
 				has no activities, add some now!
 		-else
 			- for lesson_assignment in @child.lesson_assignments
-				.objective.clearfix
-					.name
-						%b= lesson_assignment.lesson.name
-					- if lesson_assignment.lesson.quizzes.present?
-						.cherries
-							=lesson_assignment.lesson.quizzes.first.point_value
-							= image_tag "cherry.png", :class => 'cherry'
-							
+				- if lesson_assignment == @child.lesson_assignments[5]
+					- break
+				- else 
+					.objective.clearfix
+						.name
+							%b= lesson_assignment.lesson.name
+						- if lesson_assignment.lesson.quizzes.present?
+							.cherries
+								=lesson_assignment.lesson.quizzes.first.point_value
+								= image_tag "cherry.png", :class => 'cherry'
+								
 			
 
 		- if @child.parents.include?( @current_user )
