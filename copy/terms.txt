@@ -1,136 +1,831 @@
-<h3>Your Acceptance</h3>
-<p>
-These Terms of Service comprise a legal agreement between You and CherryTree, LLC (“CherryTree”) and governs your use of theCherryTree.com (the “Website”).  By using and/or visiting  this website you signify your agreement to:
-</p>
-<ul>
-	<li>(1)	these terms and conditions (the “Terms of Service”),</li> 
-	<li>(2)	the CherryTree Privacy Policy, found at http://thecherrytree.com/privacy</li>
-</ul>
+<html>
 
-<p>
-If you do not agree to any of these terms and conditions, please do not use the Website.
-</p>
+<head>
+<meta name=Title content="">
+<meta name=Keywords content="">
+<meta http-equiv=Content-Type content="text/html; charset=macintosh">
+<style>
 
-<p>
-CherryTree may, at its sole discretion modify or revise these Terms of Service and policies at any time and you agree to be bound by such modifications and revisions. You should periodically review the agreement to be aware of such modifications and revision.  Nothing in this Agreement shall be deemed to confer any third party rights or benefits. 
-</p>
+</style>
 
-<p>
-These terms of service apply to all users of the Website, including users who are also publishers of content, information, and other materials or services on the Website. 
-</p>
+</head>
 
-<p>
-The Website may contain links to third party websites that are not owned or controlled by CherryTree.  CherryTree has no control over and assumes no responsibility for the content, privacy policies or practices of any third party websites.  CherryTree will not and cannot censor or edit the content of any third-party site.  By using the Website, you expressly relieve CherryTree from any and all liability arising from your use of that third-party website.
-</p>
+<body lang=EN-US link=blue vlink=purple>
 
-<p>
-CherryTree reserves the right to refuse service, terminate accounts, remove or edit content, or cancel orders in their sole discretion.  
-</p>
+<div>
 
-<h3>CherryTree Accounts</h3>
+<p align=center style='text-align:center'><span
+style='font-size:24.0pt'>The CherryTree</span></p>
 
-<p>
-In order to access some of the features of the Website, you will be required to create an account.  When creating the account, you must provide accurate and complete information.  You are solely responsible for the activity that occurs on your account and must keep your account password secure.  You must notify CherryTree immediately of any breach of security or unauthorized use of your account.   Although CherryTree will not be liable for your losses caused by any unauthorized use of your account, you may be liable for the losses of CherryTree or others due to such unauthorized use. 
-</p>
 
-<h3>General Use of the Website</h3>
+<p align=center style='text-align:center'><span
+style='font-size:24.0pt'>Terms &amp; Conditions</span></p>
 
-<p>
-If you are under 18, you may use CherryTree only with the involvement of a parent or guardian.
-</p>
+<p>&nbsp;</p>
 
-<p>
-You agree not to modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer, or sell any information software, products, services or benefits obtained from the Website, except as expressly provided herein.  If you download or purchase content from the Website, you hold a non-exclusive, non-transferable, and non-distributable right of use.
-</p>
+<p>&nbsp;</p>
 
-<p>
-You may not use a name in connection with your Website account that is confusing or misleading to participants, or otherwise impersonate or deceive participants with respect to your identity.
-</p>
+<p><b>PLEASE READ THESE TERMS &amp; CONDITIONS
+(&quot;TERMS&quot;) BEFORE USING THIS SITE. THEY ARE THE RULES AND REQUIREMENTS
+THAT APPLY TO THE SITE. DO NOT PURCHASE A SUBCRIPTION, REGISTER, AND/OR USE
+THIS SITE IF YOU ARE NOT IN AGREEMENT WITH THESE TERMS.</b></p>
 
-<p>
-You are solely responsible for content published or posted through your Website account.  You affirm, represent, and/or warrant that you own or have the necessary licenses, rights, consents, and permissions to use and authorize CherryTree to use all patent, trademark, trade secret, copyright or other proprietary rights in and to any and all submissions to enable inclusion and use of the submission in the manner contemplated by the Website and these Terms of Service.
-</p>
+<p >&nbsp;</p>
 
-<p>
-CherryTree reserves the right in its sole discretion to refuse or remove any content, information or materials without prior notice and at its sole discretion.   
-</p>
+<p >Welcome to TheCherryTree.com (&quot;Site&quot;), which is
+owned and operated by CherryTree, LLC.&nbsp; Our Terms apply to this Site, and
+to any downloadable applications made available through the Site or that
+interact with the Site and post these Terms. Both these Terms and separate
+terms of service or sale documents may apply to your use of the Site or to a
+service or product offered via the Site (&quot;Additional Terms&quot;). To the
+extent there is a conflict between these Terms and any Additional Terms, the
+Additional Terms will control unless the Additional Terms expressly state
+otherwise. In these Terms, &quot;you&quot; refers to you individually and you
+on behalf of any child authorized by you to use and access the Site, and
+&quot;Adult&quot; is a person of legal age who can enter into a contract in the
+state in which they reside.</p>
 
-<p>
-You may not restrict or inhibit any other user from using the Website.
-</p>
+<p>&nbsp;</p>
 
-<p>
-You may not interfere with or disrupt the Website, servers, or any network connected to the Website.
-</p>
+<p align=center style='text-align:center'><b><u>Summary of Key
+Points</u></b></p>
 
-<p>
-You may not use the Website or products and services provided through or in connection to the Website to:
-</p>
+<p >&nbsp;</p>
 
-<ul>
-	<li>rent, lease, license, grant a security interest in, or otherwise transfer or sublicense your rights to any third party.</li>
-	<li>defame, libel, slander, impersonate, abuse, harass, threaten, invade the privacy of or otherwise violate or infringe the legal rights (including the rights of privacy and publicity) of any other person.</li>
-	<li>conduct, promote, or forward illegal contests, pyramid schemes, chain letters, unsolicited  or unauthorized advertising, promotional materials, unsolicited emails (including “spamming”) or multilevel or illegal marketing campaigns.</li>
-	<li>harvest or otherwise collect information about third parties, including email addresses, without the express consent of such third parties.</li>
-	<li>violate any application government laws or regulations.</li>
-</ul>
+<p>You should read all of these Terms and also our Privacy
+Policy, but here are some key points we want to draw to your attention:</p>
 
-<p>
-You may link to the Website using the provided linking code in the Website.
-</p>
+<p>&nbsp;</p>
 
-<p>
-In order to purchase content from the Website, you must provide a billing address within the United States.
-</p>
+<p style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>By purchasing an account and/or using the Site, you accept these
+Terms.</p>
 
-<h3>Refund Policy</h3>
-<p>
-CherryTree does not provide refunds for purchases made on the Website. 
-</p>
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The Site is not a substitute for professional advice, diagnosis
+or treatment. See <u><span style='color:blue'>Section 1</span></u>.</p>
 
-<h3>Privacy Policy</h3>
-<p>
-You agree to the provisions of the Privacy Policy, located at http://thecherrytree.com/privacy. 
-</p>
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The Site currently offers free accounts and will in the near
+future also offer paid Accounts. See <u><span style='color:blue'>Section 2</span></u>.</p>
 
-<h3>Warranty Disclaimer</h3>
-<p>
-THE SITE, INCLUDING WITHOUT LIMITATION ALL INFORMATION, CONTENT AND SERVICES MADE AVAILABLE ON IT, IS PROVIDED 'AS IS' AND WITH NO WARRANTY OF ANY KIND. CHERRYTREE EXPRESSLY DISCLAIMS TO THE FULLEST EXTENT PERMITTED BY LAW ALL EXPRESS, IMPLIED, AND STATUTORY WARRANTIES IN CONNECTION WITH THE SITE AND YOUR USE THEREOF, INCLUDING WITHOUT LIMITATION THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT OF PROPRIETARY RIGHTS. YOU UNDERSTAND AND AGREE THAT YOU DOWNLOAD OR OTHERWISE VIEW OR OBTAIN CONTENT, SOFTWARE AND/OR OTHER MATERIAL THROUGH THE SITE AT YOUR OWN DISCRETION AND RISK AND THAT YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGES TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT RESULTS FROM THE VIEWING OR DOWNLOAD OF SUCH CONTENT, SOFTWARE OR OTHER MATERIAL.
-</p>
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>YOU AGREE TO ARBITRATE DISPUTES RATHER THAN GOING TO COURT. See <u><span
+style='color:blue'>Section 7(B).</span></u></p>
 
-<p>
-THIS SITE IS CONTROLLED AND OPERATED BY CHERRYTREE FROM ITS FACILITIES IN THE UNITED STATES. CHERRYTREE MAKES NO WARRANTY OR REPRESENTATION THAT THE SITE IS APPROPRIATE OR AVAILABLE FOR USE IN OTHER LOCATIONS. THOSE WHO ACCESS OR USE THE SITE FROM OTHER JURISDICTIONS DO SO AT THEIR OWN VOLITION AND ARE RESPONSIBLE FOR COMPLIANCE WITH LOCAL LAW.
-</p>
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Your use of the Site is AS IS, without warranty, express or
+implied, and will result in no liability to us. <u><span style='color:blue'>See
+Section 8</span></u>.</p>
 
-<h3>Limitation of Liability</h3> 
-<p>
-UNDER NO CIRCUMSTANCES WILL CHERRYTREE, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, EXEMPLARY OR PUNITIVE DAMAGES ARISING OUT OF OR IN CONNECTION WITH THE USE OR MISUSE OF THE SITE OR ITS SERVICES.
-</p>
-<p>
-YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT CHERRYTREE SHALL NOT BE LIABLE FOR ANY THIRD PARTY CONTENT YOU ACCESS, DOWNLOAD AND/OR PURCHASE THROUGH THE SITE OR FOR THE DEFAMATORY, OFFENSIVE OR ILLEGAL ACTIVITIES OF ANY USER OR THIRD PARTY AND THAT THE RISK OF HARM FROM ANY OF THE FOREGOING LIES ENTIRELY WITH YOU.
-</p>
-<p>
-IF YOU ARE DISSATISFIED WITH ANY PORTION OF THE SITE OR WITH ANY OF THE TERMS CONTAINED IN THIS AGREEMENT, YOUR SOLE AND EXCLUSIVE REMEDY IS TO DISCONTINUE USING THE SITE. UNDER NO CIRCUMSTANCES SHALL CHERRYTREE BE LIABLE TO YOU FOR ANY AMOUNT.
-</p>
-<p>
-THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.
+<p >&nbsp;</p>
 
-<h3>Indemnification</h3>
-<p>
-You agree to defend, hold harmless and indemnify CherryTree, its officers, directors, employees or agents, from and against any third party claim arising from or in any way related to your use or misuse of the site, including any liability or expense arising from all claims, losses, damages (actual and consequential), suits, judgments, litigation costs and attorneys' fees, of every kind and nature. In such a case, CherryTree will provide you with written notice of such claim, suit or action.
-</p>
+<p  align=center style='text-align:center'><b><u>Table of
+Contents</u></b></p>
 
-<h3>Governing Law; Venue</h3>
-<p>
-This agreement shall be construed as if jointly drafted by the parties. This agreement shall be governed by and construed and enforced in accordance with the laws of the State of California (United States of America) without regard to its rules on conflict of laws or any other rules that would result in the application of a different body of law. Any legal proceedings arising out of or relating to this agreement or its alleged breach shall be brought in the Federal District Court for the Southern District of California or, in the event that such court lacks jurisdiction, in the California state courts in San Diego County, California, to the exclusion of any other forum. The parties hereby submit to the exclusive personal jurisdiction of these courts and hereby waive any forum non conveniens, venue or other challenge to the appropriateness of such courts. The parties specifically exclude from application to the Agreement the United Nations Convention on Contracts for the International Sale of Goods and the Uniform Computer Information Transactions Act. The parties also unconditionally waive their respective rights to a jury trial for any claim or cause of action arising out of or relating to, directly or indirectly, this agreement or the subject matter thereof.
-</p>
+<p >&nbsp;</p>
 
-<h3>Ability to Accept Terms of Service</h3>
-<p>
-You affirm that you are more than 18 years of age, or an emancipated minor or possess legal parental or guardian consent, and are fully able and competent to enter into the terms, conditions, obligation, affirmations, representations, and warranties set forth in these Terms of Service.  You agree to abide by and comply with these Terms of Service.  You affirm that you are over the age of 13. 
-</p>
+<p  style='text-indent:-.25in'><span>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Site
+Does Not Provide Professional or Medical Advice</p>
 
-<h3>Miscellaneous</h3>
-<p>
-If any provision of this agreement is held to be invalid or unenforceable, including without limitation the warranty disclaimers and liability limitations set forth above, such provision shall be deemed superseded by a valid enforceable provision that most closely matches the intent of the original provision and the remaining provisions shall be enforced. CherryTree’s failure to act with respect to a breach by you or others does not waive CherryTree’s right to act with respect to subsequent or similar breaches. The failure of CherryTree to exercise or enforce any right or provision of these terms and conditions shall not constitute a waiver of such right or provision. The section headings and subheadings contained in this agreement are included for convenience only, and shall not limit or otherwise affect the terms of this agreement. Those rights and obligations which by their very nature are intended to survive termination or expiration of this agreement shall survive, including without limitation your obligation to indemnify CherryTree, CherryTree’s disclaimer of all warranties, and the limitation of liability herein. This agreement, together with the privacy policy and any other agreements between you and CherryTree concerning the site or its services, constitutes the entire agreement between CherryTree and you with respect to the site.
-</p>
+<p  style='text-indent:-.25in'><span>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Accounts,
+Passwords and Payments</p>
+
+<p  style='text-indent:-.25in'><span>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Site
+Ownership and License</p>
+
+<p  style='text-indent:-.25in'><span>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Content
+You Submit</p>
+
+<p  style='text-indent:-.25in'><span>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Site
+and Content Use Restrictions</p>
+
+<p  style='text-indent:-.25in'><span>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Linking
+to and from our Site</p>
+
+<p  style='text-indent:-.25in'><span>7.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Governing
+Law, Arbitration, Injunctive Relief and No Class Actions</p>
+
+<p  style='text-indent:-.25in'><span>8.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Disclaimer
+of Representations and Warranties</p>
+
+<p  style='text-indent:-.25in'><span>9.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Limitations
+of Liability</p>
+
+<p  style='text-indent:-.25in'><span>10.<span
+style='font:7.0pt "Times New Roman"'> </span></span>Indemnity</p>
+
+<p  style='text-indent:-.25in'><span>11.<span
+style='font:7.0pt "Times New Roman"'> </span></span>Infringement Policy and
+Reporting Procedure</p>
+
+<p  style='text-indent:-.25in'><span>12.<span
+style='font:7.0pt "Times New Roman"'> </span></span>Wireless and Downloads</p>
+
+<p  style='text-indent:-.25in'><span>13.<span
+style='font:7.0pt "Times New Roman"'> </span></span>General Provisions</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The
+Site Does Not Provide Professional or Medical Advice</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >The Contents (as defined in <u><span style='color:blue'>Section
+2</span></u>) of the Site are for informational purposes only. The Content is
+not intended to be a substitute for professional or medical advice, diagnosis,
+or treatment. Always seek the advice of an expert or physician or other
+qualified health provider with any questions you may have regarding your
+childÕs condition or behavior. Never disregard expert or professional advice or
+delay in seeking it because of something you have read on the Site.</p>
+
+<p >&nbsp;</p>
+
+<p >Notwithstanding the Contents, the Site does not recommend or
+endorse any specific tests, physicians, products, procedures, opinions, or
+other information that may be mentioned on the Site. Reliance on any
+information provided by the Site or its employees, others appearing on the
+Site, or other visitors to the Site is solely at your own risk.</p>
+
+<p ><b><u><span style='text-decoration:none'>&nbsp;</span></u></b></p>
+
+<p ><b><u>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Accounts,
+Passwords and Payments.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Account
+Types</u></b>. The Site currently offers free accounts and will in the near
+future offer paid accounts (collectively, &quot;Accounts&quot;).&nbsp; Each
+Account includes the Parent, their child(ren) and other extended family or
+professional members and friends designated by the Parent. Each of these
+members has their own login, and certain aspects of their activity is
+separately tracked and saved. Only the Parent can determine whether, and with
+whom, their child(ren) can communicate on the Site, as well as who, if anyone,
+within their Account can view their child(ren)Õs progress on the Site. Only the
+Parent may add their child to an Account.</p>
+
+<p >&nbsp;</p>
+
+<p >B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Passwords
+and Account Access</u></b>. You are responsible for maintaining the
+confidentiality of your password and Account information. You agree that: (a)
+you will provide accurate registration information about yourself and any
+individual you authorize to access your Account and keep your Account
+information up-to-date; and (b) each Account administrator is solely
+responsible for all activities that occur under his/her Account. You agree to
+notify us immediately of any unauthorized Account use. We are in no way
+responsible for any loss that you may incur as a result of any unauthorized use
+of your Account and password. You will not sell, transfer, or assign your
+Account or any Account rights.</p>
+
+<p >&nbsp;</p>
+
+<p >C.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Account
+Fees</u>. For certain types of Accounts, we may charge a fee, such as a
+membership fee or subscription fee. We may change any fee or charge at any time
+in our discretion. All fees and charges are payable in accordance with payment
+terms in effect at the time the fee or the charge becomes payable. We may offer
+promotional trial subscriptions to access the Site for free or at special
+discounted prices. If you sign up for a trial use, your rights to use the Site
+are limited by the terms of such trial and will terminate or renew on the terms
+of your trial arrangement and/or any applicable Additional Terms. Please note
+that we do not provide price protection or refunds in the event of a price drop
+or promotional offering.</p>
+
+<p >&nbsp;</p>
+
+<p  style='text-indent:.5in'>(i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Authorization
+to Charge for Services</u></b>. You must either use a credit card or other
+payment mechanism accepted by us on the Site (e.g., Paypal) to activate and
+maintain a paid Account. You authorize us to charge you through the payment
+mechanism that you use when registering for an Account. You will also be
+responsible for charges for any products or services that you order that are
+offered for sale through the Site. If we do not receive payment from your credit
+card issuer, or other payment mechanism that you use, you agree to pay all
+amounts due hereunder upon our demand and will be solely responsible for any
+dispute with your payment provider. Should the credit card or other payment
+mechanism provided initially be declined for insufficient funds or for any
+other reason, we reserve the right to charge the credit card or other payment
+mechanism in installments, at the non-promotional/non-discounted rate in effect
+at that time, for the duration of the Account subscription you have selected.
+You will be solely responsible for all overdraft fees and/or penalties that may
+be assessed by your payment provider.</p>
+
+<p >&nbsp;</p>
+
+<p  style='text-indent:.5in'>(ii) <b><u>Subscription Renewal</u></b>.
+For paid Accounts we will renew your Account automatically unless you cancel your
+Account through the Settings area in the Parents Section prior to its renewal
+date. We will charge your credit card (or the other method of payment initially
+used by you) each year, month or other applicable period (depending on the term
+that you selected) for the then-current applicable price.</p>
+
+<p >&nbsp;</p>
+
+<p  style='text-indent:.5in'>(iii) <b><u>Subscription
+Cancellation</u></b>. To avoid future billing you may cancel your Account to
+TheCherryTree.com prior to its renewal date through the Settings area in the
+Parents Section. You will continue to have access to your Account for the
+period of time that has already been prepaid, calculated based on the
+non-promotional/non-discounted rate in effect at the time of cancellation. An
+email confirming your cancellation will be sent to your email address. There will
+be no additional billing or charges from the date of cancellation. Please note,
+we do not provide full or partial refunds for prepaid sums. Feel free to
+continue to use the Site throughout the remainder of the subscription period
+for which you have already paid.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Site
+Ownership and License.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Ownership</u></b>.
+As between us and you, the Site (including past, present and future versions)
+is owned and controlled by us and its Content is protected by U.S. and
+international copyright, trademark, patent, or other intellectual property
+rights and laws to the fullest extent possible. &quot;Content&quot; means the
+content of the Site including, without limitation, (i) materials and other
+items relating to us and our products and services, including, without limitation,
+all activities, characters, photographs, audio clips, sounds, pictures, videos,
+animation; (ii) trademarks, logos, trade names, service marks, and trade
+identities of various parties, including ours (collectively,
+&quot;Trademarks&quot;); and (iii) other forms of intellectual property.</p>
+
+<p >&nbsp;</p>
+
+<p >B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Limited
+License</u></b>. Subject to your strict compliance with these Terms and the
+Additional Terms, we grant you a limited, non-exclusive, revocable,
+non-assignable and non-transferable license (&quot;License&quot;) to download
+(temporary storage only), display, view, use, play, and/or print one (1) copy
+(excluding certain printable activities made available on the Site, which
+indicate that they may be printed multiple times) of the Content on a personal
+computer, mobile phone or other wireless device, or other Internet enabled
+device (each, an &quot;Internet Device&quot;) for your personal, non-commercial
+use only (e.g., teachers may use Content from the Site for educating their
+students and other users' use is limited to personal use). The License does not
+give you any ownership of, or any other intellectual property interest in, any
+Content or the Site, and you cannot otherwise use the Content or the Site
+without our express prior written permission. All rights not expressly granted
+to you are reserved by us and/or our licensors and other third parties. Any
+unauthorized use of any Content or the Site for any purpose is prohibited.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Content
+You Submit.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >We may allow you to post content (&quot;User-Generated
+Content&quot;) on the Site. Except as otherwise described in the Site's posted
+Privacy Policy, or any Additional Terms, you agree that your User-Generated
+Content will be treated as non-confidential and non-proprietary and will not be
+returned. You grant to us, the non-exclusive, worldwide, irrevocable,
+perpetual, and cost-free right to use, copy, distribute, sell, display,
+transmit, publish, make derivative works of, and otherwise exploit in any
+manner whatsoever, your User-Generated Content, for any purpose whatsoever in
+all formats, on or through any medium now known or hereafter developed, and
+with any technology or devices now known or hereafter devised, and to
+advertise, market, and promote the same. You also hereby grant to us, and agree
+to grant to us, the unconditional, perpetual, irrevocable right to use and exploit
+your name, persona and likeness in connection with any User-Generated Content.
+Except as prohibited by law, you hereby waive any moral rights (including
+attribution and integrity) that you may have in any User-Generated Content. You
+understand that you will not receive any payment or consideration for any of
+the rights granted in this Section 4.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Site
+Use Restrictions.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >You agree that you will not: (i) engage in any activities
+that seek to attempt to or do harm to us, the Site or any others or are unlawful,
+offensive, obscene, lewd, violent, harassing, illegal, or that violate any
+right of any third party or are otherwise objectionable to us; (ii) reverse
+engineer, disassemble, or modify any Site source or object code or any software
+or other products, services, or processes accessible through the Site; (iii)
+engage in any activity that interferes with a user's access to the Site or the
+proper operation of the Site, or otherwise causes harm to the Site, us, or
+others; (iv) use any meta tags or other &quot;hidden text&quot; utilizing any
+of our Trademarks; (v) interfere with or circumvent any security feature of the
+Site or any feature that restricts or enforces limitations on the use of or
+access to the Site or its Content; (vi) act in a manner that we, in our sole
+discretion, deem inappropriate for the venue; (vii) use the Site for commercial
+or political purposes; or (viii) otherwise violate these Terms, or any
+Additional Terms.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linking
+to and from Our Site.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Linking
+to Our Site</u></b>. When linking to our Site, you must adhere to the following
+requirements: (i) the link to this Site must not damage, disparage, present
+false information about or tarnish the goodwill associated with any of our
+Trademarks, products, services and/or intellectual property; (ii) the link to
+this Site must not create the false appearance that your web site and/or
+organization is sponsored by, endorsed by, affiliated with, or associated with
+us; (iii) you may not &quot;frame&quot; this Site, create a browser environment
+around any of the Content; and (iv) you may not link to this Site from a web
+site that is unlawful, abusive, indecent or obscene, that promotes violence or
+illegal acts, that contains expressions of racism, that is libelous,
+defamatory, scandalous, or inflammatory or is otherwise deemed inappropriate,
+as determined by us in our sole discretion. We reserve the right to prohibit
+linking to the Site for any reason, in our sole and absolute discretion, even
+if the linking complies with the requirements described above.</p>
+
+<p >&nbsp;</p>
+
+<p >B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Links
+to Other Sites and Third Parties</u></b>. Areas of the Site open to children
+signed in to their Account do not have links to third party web sites. In the
+separately password-protected parents and teachers sections of the Site and
+sections of the Site open to the general public we may include links to other
+websites that relate to the Site experience (&quot;Linked Sites&quot;). Any
+activities you engage in or access in connection with a Linked Site are subject
+to the privacy and other policies of the Linked Sites and we disclaim all
+liability in connection therewith. Any interactions, transactions, and other
+dealings that you have with any third parties found on or through the Site
+(including via Linked Sites) are solely between you and the third party
+(including issues related to payments, delivery of goods and warranties) and we
+disclaim all liability in connection therewith.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Governing
+Law, Arbitration, Injunctive Relief and No Class Actions.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Governing
+Law/Jurisdiction</u></b>. THESE TERMS, AND ANY ADDITIONAL TERMS, WILL BE
+GOVERNED BY AND CONSTRUED IN ACCORDANCE WITH THE LAWS OF THE STATE OF
+CALIFORNIA, WITHOUT REGARD TO ITS CONFLICTS OF LAWS PRINCIPLES.</p>
+
+<p >&nbsp;</p>
+
+<p >B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Arbitration</u></b>.
+If any controversy, allegation, or claim arises out of or relates to the Site
+or these Terms (collectively, &quot;Dispute&quot;), the Dispute will be
+resolved solely by binding arbitration in accordance with the then current
+Commercial Arbitration Rules of the American Arbitration Association
+(&quot;AAA&quot;). The arbitration will be heard and determined by a single
+neutral arbitrator who is a retired judge or a lawyer, who will administer the
+proceedings in accordance with the AAA's Supplementary Procedures for Consumer
+Related Disputes. The arbitrator will apply applicable law and the provisions
+of these Terms, and any Additional Terms, will determine any Dispute according
+to the applicable law and facts based upon the record and no other basis, and
+will issue a reasoned award. If a party properly submits the Dispute to the AAA
+for arbitration and the AAA is unwilling or unable to set a hearing date within
+sixty (60) days of the filing of a &quot;demand for arbitration,&quot; then
+either party can elect to have the arbitration administered by the Judicial
+Arbitration and Mediation Services Inc. (&quot;JAMS&quot;) and determined by a
+single neutral arbitrator who is a lawyer or a retired judge, using JAMS'
+Streamlined Arbitration Rules and Procedures, or by any other arbitration administration
+service to which you and we consent. You can obtain AAA and JAMS procedures,
+rules, and fee information as follows:</p>
+
+<p >&nbsp;</p>
+
+<p  align=center style='text-align:center'>AAA: 800.778.7879</p>
+
+<p  align=center style='text-align:center'><a
+href="http://www.adr.org">http://www.adr.org</a></p>
+
+<p >&nbsp;</p>
+
+<p  align=center style='text-align:center'>JAMS: 949.224.1810</p>
+
+<p  align=center style='text-align:center'><a
+href="http://www.jamsadr.com">http://www.jamsadr.com</a></p>
+
+<p  align=center style='text-align:center'>&nbsp;</p>
+
+<p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Nature,
+Limitations, and Location of Alternative Dispute Resolution</u></b>. In
+arbitration, as with a court, the arbitrator will resolve the submitted Dispute
+and can issue an award consistent with this Section 7. However, WITH
+ARBITRATION THERE IS NO JUDGE OR JURY, THE ARBITRATION PROCEEDINGS AND
+ARBITRATION IS SUBJECT TO CERTAIN CONFIDENTIALITY RULES, AND JUDICIAL REVIEW OF
+THE ARBITRATION OUTCOME IS LIMITED. All parties to the arbitration will have
+the right, at their own expense, to be represented by an attorney or other
+advocate of their choosing. If an in-person arbitration hearing is required,
+then it will be conducted in the &quot;metropolitan statistical area&quot; (as
+defined by the U.S. Census Bureau) where you are a resident at the time the Dispute
+is submitted to arbitration. You and we will pay the administrative and
+arbitrator's fees and other costs in accordance with the applicable arbitration
+rules; but if applicable arbitration rules or laws require us to pay a greater
+portion or all of such fees and costs in order for this Section 7 to be
+enforceable, then we will have the right to elect to pay the fees and costs and
+proceed to arbitration. Discovery will be permitted pursuant to the applicable
+arbitration rules. The arbitrator's decision must consist of a written
+statement stating the disposition of each claim of the Dispute, and must
+provide a statement of the essential findings and conclusions on which the
+decision and any award (if any) is based. Judgment on the arbitration decision and
+award (if any) may be entered into any court that has jurisdiction over the
+parties.</p>
+
+<p >&nbsp;</p>
+
+<p  style='text-indent:.5in'>(ii) <b><u>Small Claims Matters Are
+Excluded</u></b>. Either of us may bring a qualifying claim of Disputes in
+small claims court.</p>
+
+<p >&nbsp;</p>
+
+<p >C.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Injunctive
+Relief</u></b>. The foregoing provisions of this Section 7 will not apply to
+any legal action taken by us to seek an injunction or other equitable relief in
+connection with any loss, cost, or damage (or any potential loss, cost, or
+damage) relating to the Site, any Content, and/or our intellectual property
+rights (including any we may claim that may be in dispute), operations, and/or
+products or services.</p>
+
+<p >&nbsp;</p>
+
+<p >D.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>No
+Class Actions</u></b>. Disputes will be arbitrated only on an individual basis
+and will not be consolidated with any other arbitrations or other proceedings
+that involve any claim or controversy of any other party.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Disclaimer
+of Representations and Warranties.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p ><b>YOUR ACCESS TO AND USE OF THE SITE IS AT YOUR SOLE RISK.</b></p>
+
+<p >&nbsp;</p>
+
+<p >THE SITE IS PROVIDED ON AN &quot;AS IS&quot;, &quot;AS
+AVAILABLE&quot;, AND &quot;WITH ALL FAULTS&quot; BASIS. Therefore, to the
+fullest extent permissible by law, we and our parent, affiliates, subsidiaries,
+and each of their respective employees, officers, directors, members, managers,
+shareholders, agents, vendors, licensors, licensees, contractors, customers, successors,
+and assigns (collectively, &quot;Company Parties&quot;), hereby disclaim and
+make no representations, warranties, endorsements, or promises, express or
+implied, as to:</p>
+
+<p >&nbsp;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>the Site (including the Content and the User-Generated Content);</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>the functions, features, or any other elements on, or made
+accessible through, the Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>any of the goals or activities, including their effectiveness;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>whether your child will learn anything from using the Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>whether your childÕs behavior will be affected from using the
+Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>any products, services, or instructions offered or referenced at
+or linked through the Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>whether the Site (and its Content), or the servers that make the
+Site available, are free from any harmful components (including viruses, trojan
+horses, and other technologies that could adversely impact your Internet
+Device);</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>whether the information (including any instructions) on the Site
+is accurate, complete, correct, adequate, useful, timely, or reliable;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>whether any defects to the Site will be repaired; and</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>whether your use of the Site is lawful in any particular
+jurisdiction.</p>
+
+<p >&nbsp;</p>
+
+<p >EXCEPTING ONLY AS MAY BE SPECIFICALLY SET FORTH IN ANY
+ADDITIONAL TERMS, THE COMPANY PARTIES HEREBY FURTHER DISCLAIM ALL WARRANTIES,
+EXPRESS OR IMPLIED, INCLUDING THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, NON-INFRINGEMENT OR MISAPPROPRIATION OF INTELLECTUAL
+PROPERTY RIGHTS OF THIRD PARTIES, TITLE, CUSTOM, TRADE, QUIET ENJOYMENT, SYSTEM
+INTEGRATION, AND FREEDOM FROM ERRORS, COMPUTER VIRUS OR OTHER HARMFUL ELEMENTS.</p>
+
+<p >&nbsp;</p>
+
+<p >Some jurisdictions limit or do not allow the disclaimer of
+implied or other warranties so the above disclaimers may not apply to the
+extent such jurisdictions' laws are applicable.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>9.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Limitations
+of Liability.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >UNDER NO CIRCUMSTANCES WILL ANY COMPANY PARTIES BE
+RESPONSIBLE OR LIABLE FOR ANY LOSS OR DAMAGES OF ANY KIND, including personal
+injury or death or for any direct, indirect, economic, exemplary, special,
+punitive, incidental, or consequential losses or damages that are directly or
+indirectly related to:</p>
+
+<p >&nbsp;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>the Site (including the Content and the User-Generated Content);</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>your use of or inability to use the Site, or the performance of
+the Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>the failure of a child user to learn or otherwise benefit
+educationally from their use of the Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>any action taken in connection with an investigation by Company
+Parties or law enforcement authorities regarding your access to or use of the
+Site;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>any action taken in connection with copyright or other
+intellectual property owners or other rights owners;</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>any errors or omissions in the Site's technical operation; or</p>
+
+<p  style='text-indent:-.25in'><span style='font-family:
+Symbol'>á<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>any damage to any user's computer, hardware, software, modem, or
+other equipment or technology, including damage from any security breach or
+from any virus, bugs, tampering, fraud, error, omission, interruption, defect,
+delay in operation or transmission, computer line, or network failure or any
+other technical or other malfunction, including losses or damages in form of
+lost profits, loss of goodwill, loss of data, work stoppage, accuracy of
+results, or equipment failure or malfunction.</p>
+
+<p >&nbsp;</p>
+
+<p >The foregoing limitations of liability will apply even if
+any of the events or circumstances were foreseeable and even if Company Parties
+were advised of or should have known of the possibility of such losses or
+damages, regardless of whether you bring an action of contract, negligence,
+strict liability, or tort (including whether caused, in whole or in part, by
+negligence, acts of god, telecommunications failure, or destruction of the
+Site).</p>
+
+<p >&nbsp;</p>
+
+<p >Some jurisdictions do not allow the exclusion or limitation
+of incidental or consequential damages of the sort that are described above, so
+the above limitation or exclusion may not apply to you.</p>
+
+<p >&nbsp;</p>
+
+<p >EXCEPT AS MAY BE PROVIDED IN ANY ADDITIONAL TERMS, TO THE
+FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL COMPANY PARTIES'
+TOTAL LIABILITY TO YOU IN CONNECTION WITH YOUR ACCESS TO AND USE OF THE SITE
+AND YOUR RIGHTS UNDER THESE TERMS EXCEED AN AGGREGATE OF $10.00 FOR ALL
+POSSIBLE DAMAGES, LOSSES, AND CAUSES OF ACTION.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>10.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indemnity.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >You agree to indemnify, defend and hold harmless the Company
+Parties from and against all losses, expenses, damages and costs, including
+reasonable attorneys' fees, resulting from: (a) your breach or alleged breach
+of these Terms (b) your use of the Site or activities in connection with the
+Site; (c) your User-Generated Content; (d) your violation of any law, rule or
+regulation; or (e) your violation of any third party rights. The Company Parties
+reserve the right to assume, at its sole expense, the exclusive defense and
+control of any matter subject to indemnification by you, in which event you
+will fully cooperate with the Company Parties in asserting any available
+defenses. You will not in any event settle any claim without our prior written
+consent. If any child you authorize to use or access the Site disaffirms any or
+all of these Terms, you agree to defend, indemnify and hold us harmless for any
+damages we suffer by the child's disaffirmance.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>11.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infringement Policy
+and Reporting Procedure.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >In accordance with the Digital Millennium Copyright Act of
+1998 (the &quot;DMCA&quot;), our designated agent to receive notices of
+copyright infringement may be reached by e-mail at Legal@TheCherryTree.com. If
+you believe that your material has been posted on, or distributed via, the Site
+in a way that constitutes copyright infringement, please provide the following
+information as required by the DMCA: (i) a physical or electronic signature of
+a person authorized to act on behalf of the owner of an exclusive right that is
+allegedly infringed (the &quot;complaining party&quot;); (ii) identification of
+the copyright work(s) claimed to have been infringed; (iii) identification of
+the material that is claimed to be infringing or to be the subject of
+infringing activity and information reasonably sufficient to permit us to
+locate the material; (iv) information reasonably sufficient to permit us to
+contact the complaining party; (v) a statement that the complaining party (name,
+address, telephone number and e-mail address) has a good-faith belief that use
+of the material in the manner complained of is not authorized by the copyright
+owner, its agent, or the law; and (vi) a statement that the information in the
+notification is accurate, and under penalty of perjury, that the complaining
+party is authorized to act on behalf of the owner of an exclusive right that is
+allegedly infringed. The DMCA provides that a person who knowingly materially
+misrepresents that material or an activity is infringing may be subject to
+liability. We may send the information in the notice from the complaining party
+to the person who provided the allegedly infringing material.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>12.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wireless and
+Downloads.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Wireless
+Features</u></b>. The Site may offer certain features and services that are
+available to you via your wireless Internet Device (collectively,
+&quot;Wireless Features&quot;). Your carrier may charge standard messaging,
+data, and other fees, which may appear on your wireless bill or be deducted
+from your pre-paid balance. Your carrier may prohibit or restrict certain
+Wireless Features and certain Wireless Features may be incompatible with your
+carrier or wireless Internet Device. You agree that as to the Wireless Features
+for which you are registered, we may send communications to your wireless
+Internet Device regarding us or other parties. If you have registered via the
+Site for Wireless Features, then you agree to notify us of any changes to your
+wireless number (including phone number) and update your Account on the Site to
+reflect the changes.</p>
+
+<p >&nbsp;</p>
+
+<p >B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Software
+and Other Items Available for Download</u></b>. Any items that we make
+available for download or use from the Site and/or our servers (the
+&quot;Downloadable Items&quot;) will only be made available in areas intended to
+be accessible by Adults. Downloadable Items are the copyrighted work of us or
+our licensors or suppliers. Your use of the Downloadable Items may be governed
+by Additional Terms, which may be included with the Downloadable Items. Please
+carefully read any Additional Terms to determine the full extent of conditions
+governing the use of such Downloadable Items. WITHOUT LIMITING THE FOREGOING,
+COPYING OR REPRODUCTION OF THE DOWNLOADABLE ITEMS TO ANY OTHER SERVER OR
+LOCATION FOR FURTHER REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PROHIBITED,
+UNLESS SUCH REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PERMITTED BY THE
+LICENSE AGREEMENT APPLICABLE TO SUCH DOWNLOADABLE ITEMS. Note that if you
+install certain applications that may be available via the Site, you consent to
+the download of software to your computer and accept these Terms and any
+Additional Terms related to such application.</p>
+
+<p >&nbsp;</p>
+
+<p ><b><u>13.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; General Provisions.</u></b></p>
+
+<p >&nbsp;</p>
+
+<p >A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Termination
+and Suspension</u></b>. We reserve the right to discontinue the Site or suspend
+or terminate your access to it, including any Accounts or User-Generated
+Content submitted by you, at any time, without notice, for any reason and
+without any obligation to you or any third party. If any information that you
+provide, or if we have reasonable grounds to suspect that any information that
+you provide, is false, inaccurate, or violates these Terms, then we may suspend
+or terminate your Account or deny you access to all or part of the Site. Any
+suspension or termination will not affect your obligations to us, including any
+payment obligations to us. Upon suspension or termination of your access to the
+Site, or upon notice from us, your License to use the Site will terminate
+immediately.</p>
+
+<p >&nbsp;</p>
+
+<p >B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Investigations;
+Cooperation with Law Enforcement</u></b>. We reserve the right to: (i)
+investigate any suspected breaches of security, information technology or other
+systems or networks, (ii) investigate any suspected breaches of these Terms,
+(iii) involve and cooperate with law enforcement authorities in investigating
+any matters, and (iv) prosecute violators of these Terms.</p>
+
+<p >&nbsp;</p>
+
+<p >C.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Communications</u></b>.
+When you communicate with us electronically, such as via a Site communication
+tool, you consent to receive communications from us electronically. Please note
+that we will do our best to respond to your inquiry but it may take us some
+time. You agree that all agreements, notices, disclosures, and other
+communications that we provide to you electronically satisfy any legal
+requirement that such communications be in writing.</p>
+
+<p >&nbsp;</p>
+
+<p >D.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Operation
+of Site; International Issues</u></b>. We control and operate the Site from our
+headquarters in San Diego, California, U.S.A., and we make no representation
+that the Site is appropriate or available for use outside of the United States.
+If you use the Site from other locations, you are doing so on your own
+initiative and are responsible for compliance with applicable local laws
+regarding your online conduct and acceptable content, if and to the extent
+local laws apply. You and we disclaim any application of the Convention on Contracts
+for the International Sale of Goods.</p>
+
+<p >&nbsp;</p>
+
+<p >E.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Severability;
+Interpretation</u></b>. If any provision of these Terms, or any Additional
+Terms, is for any reason deemed unenforceable by a court or arbitrator, you
+agree that every attempt will be made to give effect to the parties' intentions
+as reflected in that provision, and the remaining provisions contained in this
+Agreement will continue in full force and effect. You agree that these Terms,
+and Additional Terms, will not be construed against us because we drafted them.</p>
+
+<p >&nbsp;</p>
+
+<p >F.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Assignment</u></b>.
+We may assign our rights and obligations under these Terms, or any Additional
+Terms, in whole or in part, to any party at any time without any notice. These
+Terms, and any Additional Terms, may not be assigned by you, and you may not
+delegate your duties under them.</p>
+
+<p >&nbsp;</p>
+
+<p >G.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>No
+Waiver</u></b>. No waiver by us of any of these Terms will be of any force or
+effect unless made in writing and signed by a duly authorized officer of Age of
+Learning, Inc.</p>
+
+<p >&nbsp;</p>
+
+<p >H.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Updates
+to Terms</u></b>. We reserve the right to modify these Terms, or any Additional
+Terms, at any time without prior notice (&quot;Updated Terms&quot;). You agree
+that we may notify you of the Updated Terms by posting them on the Site, and
+that your use of the Site after we post the Updated Terms constitutes your
+agreement to the Updated Terms.</p>
+
+<p >&nbsp;</p>
+
+<p >I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><u>Contact
+Us</u></b>. If you have any questions or concerns with respect to these Terms
+or the Site, you may contact us by e-mail at: Support@TheCherryTree.com.</p>
+
+<p >&nbsp;</p>
+
+<p >TM &amp;© 2012 CherryTree, LLC. All Rights Reserved.</p>
+
+<p >&nbsp;</p>
+
+<p >&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>
