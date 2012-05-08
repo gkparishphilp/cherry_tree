@@ -1,19 +1,31 @@
-Hello 
-=@parent.display_name
-,
-%br
-%br
-= @child.display_name
-has unlocked: 
-- if @award.url.present?
-	=link_to @award.name, @award.url
-- else	
-	= @award.name
-
+%p 
+	= "#{@parent.display_name},"
 %p
-	= link_to 'Click Here to Display and Print the Award', print_award_url( @award, :child_id => @child.id, :host => 'thecherrytree.com' )
-
+	= @child.display_name
+	has used 
+	= @award.point_cost
+	cherries to unlock 
+	- if @award.url.present?
+		=link_to @award.name, @award.url
+	- else	
+		= @award.name
+	.
+%p
+	= link_to 'Click here', print_award_url( @award, :child_id => @child.id, :host => 'thecherrytree.com' )
+	to display and print her award certificate.
 %p
 	Congratulations to 
 	= @child.display_name
 	from all of us at theCherryTree.com!
+
+%p
+	Visit
+	=link_to 'theCherryTree.com', 'http://thecherrytree.com'
+	to update goals, assign new activities, or create more rewards to incentivize
+	= "#{@child.display_name}."
+	
+%p 
+	Yours Truly,
+%p
+	The CherryTree Team
+	

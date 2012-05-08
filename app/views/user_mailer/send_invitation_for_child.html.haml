@@ -1,26 +1,27 @@
-Hello 
-= @invitee.nickname( @child )
-,
+%p 
+	Hello 
+	= "#{@invitee.nickname( @child )},"
 %p
-	You've been invited by
-	= @invitation.creator.display_name 
-	to support 
-	= @child.display_name 
-	at theCheryTree.com.
+	=@child.display_name
+	is working hard to earn cherries on the CherryTree.  You have been invited to support 
+	- if @child.gender == 'female'
+		her 
+	- else
+		his
+	progress.
 
--unless @invitation.message.blank?
-	%p
-		Message from
-		= @invitation.creator.display_name
-		\:
+	-unless @invitation.message.blank?
+	
+		Here is the message from
+		= "#{@invitation.creator.display_name}."
+
 		%br
 		= @invitation.message
-%p
-	To join, please 
-	= link_to 'click here', "http://thecherrytree.com/invitation/#{@invitation.code}"
+%p 
+	= link_to 'Click here', "http://thecherrytree.com/invitation/#{@invitation.code}"
+	to suppport
+	="#{@child.display_name}."
 
-%p
-	We appreciate your support,
-	%br
-	= @invitation.creator.display_name
-	and the CherryTree team
+%p.small
+	The Cherry Tree was created by child development experts and moms to address the developmental needs of the "whole child" through an engaging digital platform that today's kids can relate to.  
+	= link_to "Learn More.", "http://thecherrytree.com/about"

@@ -1,13 +1,16 @@
 
 %h1
 	= @quiz.name
-	Summary
-
 .objective_dash.clearfix
 
-	Congratulations!  You've taken the quiz and earned
+	%h1 
+		Congratulations!  
+	You have completed this activity and earned 
 	= @points_earned.to_i
 	cherries!
 	%br
+	#new_award.award_modal{ :id => (rand(4)+1), :title => "You did it!" }
+		.bird
+		.bubble
 	%br
-	=link_to 'Return', home_path,  :class => 'button green'
+	=link_to 'Continue', home_path,  :class => 'button green'

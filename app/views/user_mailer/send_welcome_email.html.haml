@@ -1,9 +1,15 @@
-
-%p Hello and welcome to CherryTree!
-%p We hope that CherryTree becomes an invaluable tool for helping you and your child achieve your goals.  If you have any questions please feel free to contact us at http://thecherrytree.com/contacts/new.  
-
-%p Best regards,
 %p 
-	The 
-	= @current_site.name 
-	Team
+	="Dear #{@user.display_name},"
+%p 
+	Welcome to CherryTree!
+%p 
+	We hope that CherryTree becomes an invaluable tool for setting meaningful goals for your child and providing consistent, positive encouragement as your child works toward those goals.
+%p
+	If you have any questions or suggestions, please feel free to 
+	=link_to 'contact us.', new_contact_path
+	We would love to hear from you!
+
+%p 
+	Warmly,
+%p 
+	The CherryTree Team
