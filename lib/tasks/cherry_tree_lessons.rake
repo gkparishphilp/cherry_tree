@@ -504,7 +504,7 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => 'GRAPE'
 	quest10.answers.create :content => 'YELLOW'
 	quest10.answers.create :content => 'JUICE'
-	quest10.answers.create :content => "IT'S A TRICK QUESTION - NO WORDS RYHYME WITH ORANGE!", :correct => true
+	quest10.answers.create :content => "It's a trick question! Nothing rhymes with orange!", :correct => true
 
 end
 
