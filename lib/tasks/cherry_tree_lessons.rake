@@ -446,6 +446,66 @@ task :cherry_tree_lessons => :environment do
 	s10 = l.screens.create :sequence => 10, :content => "<h1>Pencil Roll</h1><p>Lie down on the floor with your arms by your side.  Roll in one direction, then roll in the other direction.</p><img src='/images/ms9.png' alt='Pencil Walk'/>"  
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Book Jump</h1><p>Place a book on the ground.  Practice jumping over the book without touching it.  Do this 5 times.  </p><img src='/images/ms10.png' alt='Book jump'/>"  
 
+	#Rhyming Lesson
+	l = Lesson.create :name => 'Rhyming', :description => 'Learn all about rhymes.', :lesson_category => lc1
+	s1 = l.screens.create :sequence => 1, :content => "<h1>Rhyming</h1><p>Words with endings that sound the same rhyme!</p><ul><li><u>BAT</u> rhymes with <u>CAT</u></li><li><u>FAN</u> rhymes with <u>MAN</u></li><li><u>NEST</u> rhymes with <u>BEST</u></li></ul>"  
+	s2 = l.screens.create :sequence => 2, :content => '<h1>Rhymes in Poems</h1><p>Lots of poems use rhymes.</p><p>Joyce Kilmer wrote a famous poem called <em>Trees</em> that starts out "I think that I shall never <u>SEE</u>, a poem lovely as a <u>TREE</u>."'  
+	s3 = l.screens.create :sequence => 3, :content => '<h1>Rhymes in Songs</h1><p>Lots of songs use rhymes too.</p><p>"Twinkle, twinkle little <u>STAR</u>,  How I wonder what you <u>ARE</u>."</p><p>Keep singing, and notice all the rhyming words!</p>'  
+	s4 = l.screens.create :sequence => 4, :content => '<h1>Nursery Rhymes</h1><p>You can find lots of rhyming words in nursery rhymes that you know.  For example:</p><p>"Jack and <u>JILL</u> went up the <u>HILL</u>."</p><p>"Little Miss <u>MUFFET</u> sat on a <u>TUFFET</u>."</p><p>"Old King <u>COLE</u> was a merry old <u>SOLE</u>."</p>'  
+
+	#Rhyming Quiz
+	q = l.quizzes.create :name => 'Rhyming Quiz', :point_value => 10
+	quest = q.questions.create :content => 'Which of these words best rhymes with <u>POT</u>:'
+	quest.answers.create :content => 'PIN'
+	quest.answers.create :content => 'PAN'
+	quest.answers.create :content => 'DOT', :correct => true
+	quest.answers.create :content => 'DOG'
+	quest2 = q.questions.create :content => 'Which of these words best rhymes with <u>DOG</u>:'
+	quest2.answers.create :content => 'DIG'
+	quest2.answers.create :content => 'FROG', :correct => true
+	quest2.answers.create :content => 'BONE'
+	quest2.answers.create :content => 'CAT'
+	quest3 = q.questions.create :content => 'Which of these words best rhymes with <u>WATER</u>:'
+	quest3.answers.create :content => 'DRINK'
+	quest3.answers.create :content => 'HOTTER', :correct => true
+	quest3.answers.create :content => 'BATTER'
+	quest3.answers.create :content => 'FLOWER'
+	quest4 = q.questions.create :content => 'Which of these words does not rhyme with the others in the list:'
+	quest4.answers.create :content => 'FAN'
+	quest4.answers.create :content => 'RAN'
+	quest4.answers.create :content => 'RUN', :correct => true
+	quest4.answers.create :content => 'CAN'
+	quest5 = q.questions.create :content => 'Which of these words does not rhyme with the others in the list:'
+	quest5.answers.create :content => 'TALL'
+	quest5.answers.create :content => 'FALL'
+	quest5.answers.create :content => 'FELL', :correct => true
+	quest5.answers.create :content => 'MALL'
+	quest6 = q.questions.create :content => 'Which of these words does not rhyme with the others in the list:'
+	quest6.answers.create :content => 'SEND', :correct => true
+	quest6.answers.create :content => 'MEN'
+	quest6.answers.create :content => 'AGAIN'
+	quest6.answers.create :content => 'WREN'
+	quest7 = q.questions.create :content => 'Which pair of words rhymes:'
+	quest7.answers.create :content => 'FISH and DISH', :correct => true
+	quest7.answers.create :content => 'OVER and UNDER'
+	quest7.answers.create :content => 'BALL and BELL'
+	quest7.answers.create :content => 'ATE and EAT'
+	quest8 = q.questions.create :content => 'Which pair of words rhymes:'
+	quest8.answers.create :content => 'TALL and SHORT'
+	quest8.answers.create :content => 'SMALL and SMELL'
+	quest8.answers.create :content => 'CLEAN and GREEN', :correct => true
+	quest8.answers.create :content => 'SMILE and WHALE'
+	quest9 = q.questions.create :content => 'Which pair of words rhymes:'
+	quest9.answers.create :content => 'SKY and CLOUDS'
+	quest9.answers.create :content => 'PLANE and RAIN', :correct => true
+	quest9.answers.create :content => 'BLUE and BERRY'
+	quest9.answers.create :content => 'TOO and TEA'
+	quest10 = q.questions.create :content => 'Which word best rhymes with <u>ORANGE:</u>'
+	quest10.answers.create :content => 'GRAPE'
+	quest10.answers.create :content => 'YELLOW'
+	quest10.answers.create :content => 'JUICE'
+	quest10.answers.create :content => "IT'S A TRICK QUESTION - NO WORDS RYHYME WITH ORANGE!", :correct => true
+
 end
 
 
