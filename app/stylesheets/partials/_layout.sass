@@ -217,13 +217,20 @@ body
 	position: relative
 	width: 840px
 	height: 500px
-	background: #fff url(../images/tree.png) no-repeat 0px -150px
+	background: #fff // url(../images/tree.png) no-repeat 0px -150px
 	margin: 0 auto
 	border: 12px solid $cherry_red
 	+rounded(40px)
+	#award-tree
+		position: absolute
+		top: 0px
+		left: 0px
+		z-index: 1
 	#award_logo
+		position: relative
 		margin-top: -30px
 		margin-left: 10px
+		z-index: 2
 
 	#award_name
 		font-family: "Corben", arial, sans-serif
@@ -268,6 +275,7 @@ body
 		background: #fff url() no-repeat
 		padding: 3px
 		+rounded
+		z-index: 3
 
 
 .tab_bar:after
