@@ -3,31 +3,32 @@
 
 	= render 'children/sub_nav', :child => @child
 	
-	%h3
+	%h2
 		Lesson: 
 		= @lesson.name
 	
 	.top-header.clearfix
 		%span.title
-
-	- for screen in @screens
-		%p
-			= screen.content.html_safe	
-			
-	- for quiz in @lesson.quizzes
-		%h3
-			Quiz:
-			= quiz.name.html_safe
-
-		-for question in quiz.questions
+	.reduce_h1	
+		- for screen in @screens
 			%p
-				%h5= question.content.html_safe
-				-for answer in question.answers
-					= answer.content.html_safe
-					- if answer.correct?
-						=image_tag("check.png", :height => 15)
-					%br
-			%hr  
+				= screen.content.html_safe	
+				
+		- for quiz in @lesson.quizzes
+			%br
+			%h2
+				Quiz:
+				= quiz.name.html_safe
+
+			-for question in quiz.questions
+				%p
+					%h5= question.content.html_safe
+					-for answer in question.answers
+						= answer.content.html_safe
+						- if answer.correct?
+							=image_tag("check.png", :height => 15)
+						%br
+				%hr  
 			
 				
 				

@@ -34,19 +34,19 @@
 				= link_to "+ Add Activities", child_lesson_assignments_path( @child ), :class => 'button_flat big'			
 			
 		- elsif @child.active_assigned_awards.empty?
+			%br
 			%h3 
-				Hmm...
+				Select rewards for 
 				= @child.display_name
-				doesn't seem to have any rewards.
-			Let's create some rewards for
-			= @child.display_name
-			to work towards....  Rewards can be toys, prizes, special treats, or anything you want.
-			= @child.display_name
-			Will be able to spend 
-			= @child.pronoun_gender_possessive
-			cherries as
-			= @child.pronoun_gender_subject
-			earns them to unlock these rewards.
+				to work toward. 
+			%br
+			You can search for rewards through Amazon, choose from the CherryTree list, or create custom rewards. 
+			%br
+			%br
+			Also check out 
+			= link_to "the CherryTree Store", store_index_path
+			for great reward ideas. All products in our store have been hand-picked by the CherryTree team.
+			%br
 			%p.center{ :style => 'margin-top: 20px;' }
 				= link_to "+ Add Rewards", child_award_assignments_path( @child ), :class => 'button_flat big'
 		

@@ -2,6 +2,32 @@
 
 	= render 'children/sub_nav', :child => @child
 	%br.clear
+
+	- if @assignments.empty?
+		%p
+		= @child.display_name
+		does not have any activities yet.
+		You can add an activity from the list below.
+	- else
+		#active_assignment_table_header{ :style => 'margin-top:20px;' }
+			.float_left
+				%h3 
+					%span<= @child.display_name
+					%span>'s Assigned Activities
+			.clear
+		#active_assignment_table_body
+			%br
+			.float_left{ :style => 'width:50px;'}
+				&nbsp;
+			.float_left{ :style => 'width:400px;'}
+				%h4 Assigned Activites
+			.float_left{ :style => 'width:150px;'}
+				%h4 Cherries
+			.clear
+			- for assignment in @assignments
+				= render 'lesson_assignment_table', :assignment => assignment
+
+	%br.clear
 	.new_thing.button_flat
 		= link_to "Save Changes", child_path( @child )
 	%br
@@ -10,8 +36,6 @@
 	
 		-#.new_thing.button_flat
 			= link_to 'Buy Lessons!', ""
-
-
 		- for category in LessonCategory.order("sequence")
 			%h3
 				= category.name
