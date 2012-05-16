@@ -88,6 +88,7 @@ class LessonsAndQuizzes < ActiveRecord::Migration
 			t.references	:user
 			t.references	:question # Last question for resume?
 			t.integer		:score # can derive this from answerings?
+			t.string		:status # complete
 			t.timestamps
 		end
 		

@@ -27,6 +27,10 @@ class Question < ActiveRecord::Base
 		self.quiz.questions.find_by_sequence( self.sequence + 1 )
 	end
 	
+	def answered_by( user )
+		self.answerings.joins(:quizzings).where("quizzings.user_id = ?", user.id)
+	end
+	
 	private 
 	
 	def set_sequence
@@ -38,4 +42,5 @@ class Question < ActiveRecord::Base
 		end
 		self.save
 	end
+
 end

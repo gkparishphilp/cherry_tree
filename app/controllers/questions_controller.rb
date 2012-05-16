@@ -12,8 +12,10 @@ class QuestionsController < ApplicationController
 			@quizzing.answer( @question, @answer )
 			if @answer.correct? && (@question != @quiz.last_question)
 				pop_flash "Yay, you're right!", :success
+				@quizzing.update_attributes :question_id => @question.next_question.id
 				redirect_to quiz_question_path( @quiz, @question.next_question )
 			elsif @answer.correct && (@question == @quiz.last_question)
+				@quizzing.update_attributes :status => 'complete'
 				pop_flash "Yay, you're done!", :success
 				redirect_to recap_quiz_path( @quiz )
 			else

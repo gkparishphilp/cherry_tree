@@ -30,7 +30,10 @@
 							= format_date_only lesson.lesson_viewings.find_by_user_id( @child.id ).created_at
 						- else
 							Not Viewed
-						- if @child.lessons.include? ( lesson )
+							
+						- if @child.lessons.include?( lesson ) && lesson.lesson_assignments.find_by_user_id( @child.id ).completed_by?( @child )
+							= link_to 'Reassign', child_lesson_assignment_path( @child, lesson, :status => 'active' ), :method => :put
+						- elsif @child.lessons.include?( lesson )
 							= link_to 'Unassign', child_lesson_assignment_path( @child, lesson, :status => 'inactive' ), :method => :put
 						- else
 							= link_to 'Assign', child_lesson_assignments_path( @child, :lesson_id => lesson.id ), :method => :post

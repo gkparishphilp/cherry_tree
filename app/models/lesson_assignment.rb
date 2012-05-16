@@ -18,8 +18,13 @@ class LessonAssignment < ActiveRecord::Base
 	belongs_to	:lesson
 	
 	def completed_by?( user )
-		return false unless self.lesson.lesson_viewings.find_by_user_id( user ).present?
-		self.lesson.lesson_viewings.find_by_user_id( user ).screen_id == self.lesson.screens.count
+		#Completed by means that the quizzing for the lesson has a 'complete' status
+		quizzing = self.lesson.quizzes.last.quizzings.last
+		if quizzing.present? && quizzing.status == 'complete'
+			return true
+		else
+			return false
+		end
 	end
 	
 	def offered_today_to?( user )
