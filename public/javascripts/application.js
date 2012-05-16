@@ -130,6 +130,19 @@ $(document).ready(function(){
 		$(this).closest(".objective_assignment").fadeOut( 'slow' ).remove();
 		$.get( url );
 	});
+
+	$('.assign_lesson').live( 'click', function(){
+		var url = '/activate/lesson/' + $(this).attr('lesson') + '/for/' + $(this).attr('child');
+		$(this).closest(".lesson").fadeOut( 'slow' ).remove();
+		$.get( url );
+	});
+	
+	
+	$('.unassign_lesson').live( 'click', function(){
+		var url = '/deactivate/lesson/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		$(this).closest(".lesson_assignment").fadeOut( 'slow' ).remove();
+		$.get( url );
+	});
 	
 	
 	
