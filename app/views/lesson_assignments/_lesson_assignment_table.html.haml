@@ -1,0 +1,10 @@
+%div[assignment]
+	.float_left{ :style => 'width:50px;'}
+		&nbsp;
+
+	.float_left{ :style => 'width:400px;'}
+		= assignment.lesson.name
+
+	.float_left{ :style => 'width:150px;' } 
+		= text_field_tag :objective_points, assignment.point_value, :id => "lesson_assignment_#{assignment.id}", :class => "lesson_points", :style => 'width:100px;', :child => @child.id, :assignment => assignment.id
+	.clear

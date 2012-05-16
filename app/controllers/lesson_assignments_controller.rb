@@ -35,7 +35,8 @@ class LessonAssignmentsController < ApplicationController
 			@lessons = Lesson.all
 			@quizzes = Quiz.standalone
 			
-			@new_assignment = @child.lesson_assignments.new
+			#@new_assignment = @child.lesson_assignments.new [TODO: Think this is unnecesary, delete on cleanup]
+			@assignments = @child.lesson_assignments
 			
 			render :adult_index
 			
