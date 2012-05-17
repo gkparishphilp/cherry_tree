@@ -21,7 +21,7 @@
 			%p.center{ :style => 'margin-top: 20px;' }
 				= link_to "+ Add Goals", child_objective_assignments_path( @child ), :class => 'button_flat big'
 
-		- elsif @child.lesson_assignments.empty?
+		- elsif @child.lesson_assignments.active.empty?
 			%h3{ :style => 'margin-top: 20px;' }
 				Assign activities for 
 				= @child.display_name
@@ -104,12 +104,12 @@
 	/ NOTE: height of activities is 346px when limited to 5 goals
 	#goals.boxes
 		%h3.center Activities
-		-if @child.lesson_assignments.empty?
+		-if @child.lesson_assignments.active.empty?
 			%p
 				= @child.display_name
 				has no activities, add some now!
 		-else
-			- for lesson_assignment in @child.lesson_assignments
+			- for lesson_assignment in @child.lesson_assignments.active
 				- if lesson_assignment == @child.lesson_assignments[5]
 					- break
 				- else 

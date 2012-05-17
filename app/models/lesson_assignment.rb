@@ -16,6 +16,7 @@
 class LessonAssignment < ActiveRecord::Base
 	belongs_to	:user
 	belongs_to	:lesson
+	scope :active, where( "status = 'active'" )
 	
 	def completed_by?( user )
 		#Completed by means that the quizzing for the lesson has a 'complete' status

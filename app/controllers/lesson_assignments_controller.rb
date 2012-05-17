@@ -17,7 +17,7 @@ class LessonAssignmentsController < ApplicationController
 	end
 	
 	def update
-		@assignment = LessonAssignment.find( params[:id] )
+		@assignment = LessonAssignment.find( params[:lesson_id] )
 		@assignment.update_attributes :status => params[:status]
 		redirect_to :back
 	end

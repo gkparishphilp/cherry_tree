@@ -3,7 +3,7 @@
 	= render 'children/sub_nav', :child => @child
 	%br.clear
 
-	- if @assignments.empty?
+	- if @assignments.active.empty?
 		%p
 		= @child.display_name
 		does not have any activities yet.
@@ -24,7 +24,7 @@
 			.float_left{ :style => 'width:150px;'}
 				%h4 Cherries
 			.clear
-			- for assignment in @assignments
+			- for assignment in @assignments.active
 				= render 'lesson_assignment_table', :assignment => assignment
 
 	%br.clear
@@ -36,16 +36,15 @@
 	
 		-#.new_thing.button_flat
 			= link_to 'Buy Lessons!', ""
+	#accordion.goals	
 		- for category in LessonCategory.order("sequence")
-			%h3
-				= category.name
-			%br
-			%br.clear
-			
-			- for lesson in @lessons
-				-if lesson.lesson_category == category
-					%p
-						= lesson.name
+			-next if category.lessons.empty?
+			%h3.track= "#{category.name}"
+			%div
+				%ul
+					- for lesson in category.lessons
+						%h4
+							=lesson.name
 						- if lesson.lesson_assignments.find_by_user_id( @child.id ) && lesson.lesson_assignments.find_by_user_id( @child.id ).completed_by?( @child )
 							Completed on:
 							= format_date_only lesson.lesson_viewings.find_by_user_id( @child.id ).updated_at
@@ -61,8 +60,8 @@
 							= link_to 'Unassign', child_lesson_assignment_path( @child, lesson, :status => 'inactive' ), :method => :put
 						- else
 							= link_to 'Assign', child_lesson_assignments_path( @child, :lesson_id => lesson.id ), :method => :post
-						|
-						= link_to 'View', child_lesson_path( @child, :id => lesson.id )
+							|
+							= link_to 'View', child_lesson_path( @child, :id => lesson.id )
 
 %br.clear
 .new_thing.button_flat

@@ -1,6 +1,6 @@
 %div[assignment]
 	.float_left{ :style => 'width:50px;'}
-		&nbsp;
+		= check_box_tag 'unassign_lesson', assignment.lesson.id, true, :lesson => assignment.lesson.id, :class => 'unassign_lesson', :child => @child.id, :assignment => assignment.id, :status => 'inactive'
 
 	.float_left{ :style => 'width:400px;'}
 		= assignment.lesson.name

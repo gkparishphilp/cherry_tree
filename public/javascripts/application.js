@@ -139,7 +139,7 @@ $(document).ready(function(){
 	
 	
 	$('.unassign_lesson').live( 'click', function(){
-		var url = '/deactivate/lesson/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child');
+		var url = '/update/lesson/assignment/' + $(this).attr('assignment') + '/for/' + $(this).attr('child') + "?status=inactive";
 		$(this).closest(".lesson_assignment").fadeOut( 'slow' ).remove();
 		$.get( url );
 	});

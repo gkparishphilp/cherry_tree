@@ -31,7 +31,7 @@
 				.heading.name Name
 				.heading.cherries Cherries
 				.heading.action Action
-			- for lesson_assignment in @lesson_assignments
+			- for lesson_assignment in @lesson_assignments.active
 				.activity.clearfix
 					.name
 						= lesson_assignment.lesson.name

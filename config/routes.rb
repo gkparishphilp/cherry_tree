@@ -152,6 +152,10 @@ CherryTree::Application.routes.draw do
 	match 'deactivate/objective/assignment/:assignment_id/for/:child_id', :to => 'objective_assignments#deactivate'
 	match 'update/objective/assignment/:assignment_id/for/:child_id', :to => 'objective_assignments#update'
 
+	# for lesson_assignments ajax
+	match 'update/lesson/assignment/:lesson_id/for/:child_id', :to => 'lesson_assignments#update'
+
+
 	match 'requested/objective/:objective_id/for/:child_id', :to => 'objective_assignments#requested'
 	match 'unrequested/objective/assignment/:assignment_id/for/:child_id', :to => 'objective_assignments#unrequested'
 	
