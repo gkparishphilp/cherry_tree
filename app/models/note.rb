@@ -27,7 +27,7 @@ class Note < ActiveRecord::Base
 	has_many	:page_elements, :as => :page
 	
 
-	validates_presence_of :content, :message => "You should have something to say ;-)"
+	validates_presence_of :content, :message => "Type a message before clicking 'Send'!"
 	
 	attr_accessor	:recipient_id # so we can set the recipient int he form without form_tag
 	
