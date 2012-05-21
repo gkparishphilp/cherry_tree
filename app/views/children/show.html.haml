@@ -57,9 +57,12 @@
 
 			- if @activities.empty?
 				= @child.display_name
-				hasn't performed any activities yet.  Encourage 
+				hasn't performed any goals or activities yet.  
+				%br
+				%br
+				Encourage 
 				= @child.display_name
-				to login!
+				to login and start earning cherries!
 			- else
 				= render @activities
 
