@@ -20,43 +20,38 @@
 		- else
 			her
 		list and focus on something new.
-	- if @active_assignments.empty? && @requested_assignments.empty?
-		%p
-		= @child.display_name
-		does not have any goals yet.
-		You can add a goal from the list below, or create your own using the button above.
-	- else
-		#active_assignment_table_header{ :style => 'margin-top:20px;' }
-			/ .float_left{ :style => 'width:50px;' }
-			/ 	= image_tag 'awards/custom.jpg', :width => 40
-			.float_left
-				%h3 
-					%span<= @child.display_name
-					%span>'s Goals
-			.clear
-		#active_assignment_table_body
-			%br
-			.float_left{ :style => 'width:50px;'}
-				&nbsp;
-			.float_left{ :style => 'width:400px;'}
-				%h4 Assigned Goals
-			-#.float_left{ :style => 'width:350px;'}
-				%label Description
-			.float_left{ :style => 'width:150px;'}
-				%h4 Cherries
-			-#.float_left{ :style => 'width:50px;'}
-				%label Parental Confirmation?
-			.clear
-			- for assignment in @active_assignments
-				= render 'active_assignment', :assignment => assignment
-			- unless @custom_objectives.empty?
-				- for objective in @custom_objectives
-					= render 'objective_to_assign', :objective => objective
+
+	#active_assignment_table_header{ :style => 'margin-top:20px;' }
+		/ .float_left{ :style => 'width:50px;' }
+		/ 	= image_tag 'awards/custom.jpg', :width => 40
+		.float_left
+			%h3 
+				%span<= @child.display_name
+				%span>'s Goals
+		.clear
+	#active_assignment_table_body
+		%br
+		.float_left{ :style => 'width:50px;'}
+			&nbsp;
+		.float_left{ :style => 'width:400px;'}
+			%h4 Assigned Goals
+		-#.float_left{ :style => 'width:350px;'}
+			%label Description
+		.float_left{ :style => 'width:150px;'}
+			%h4 Cherries
+		-#.float_left{ :style => 'width:50px;'}
+			%label Parental Confirmation?
+		.clear
+		- for assignment in @active_assignments
+			= render 'active_assignment', :assignment => assignment
+		- unless @custom_objectives.empty?
+			- for objective in @custom_objectives
+				= render 'objective_to_assign', :objective => objective
 				
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Continue", "", :class => 'save_form'
+		= link_to "Save", "", :class => 'save_form'
 	.clear	
 		&nbsp;
 	/ .top-header.clearfix
