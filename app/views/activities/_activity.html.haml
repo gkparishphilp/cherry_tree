@@ -16,7 +16,9 @@
 		= time_ago_in_words( activity.created_at )
 		ago.
 		= link_to "Comment", "#", :class => "open_comment_form", :id => activity.id
-
+		%br
+		= render 'shared/sharing_widgets'
+		
 	- if activity.target.present? && activity.target.is_a?( Checkin ) && activity.target.objective_assignment.present? && @current_user.children.include?( activity.user ) && activity.target.unapproved?
 		.actions
 			%span.bt_approve
