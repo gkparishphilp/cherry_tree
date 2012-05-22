@@ -13,7 +13,7 @@
 			You can use the Amazon search bar below, choose from the list, or create custom rewards.
 		%p 
 			You can also check out 
-			= link_to "the Cherry Tree Store", store_index_path
+			= link_to "the CherryTree Store", store_index_path
 			for great ideas. All of the products in the store have been hand-picked by the CherryTree team.
 			
 		/ .new_thing.button_flat
@@ -21,48 +21,41 @@
 		/ .new_thing.button_flat
 		/ 	= link_to '+ Create Amazon Award', "#", :class => 'open_modal', :id => 'amzn'
 
-	- if @active_assignments.empty?
-		#active_assignment_table{ :style => 'margin-top:20px;' }
-			#empty_message
-				It looks like 
-				= @child.display_name
-				doesn't have any rewards yet!
-	- else
-		#active_assignment_table_header{ :style => 'margin-top:20px;' }
-			.float_left
-				%h3 
-					%span<= @child.display_name
-					%span>'s Assigned Rewards
-			.clear
-		#active_assignment_table_body
-			%br
-			.float_left{ :style => 'width:50px;'}
-				&nbsp;
-			.float_left{ :style => 'width:400px;'}
-				%h4 Name
-			.float_left{ :style => 'width:150px;'}
-				%h4 Cherries
-			.clear
-			- for assignment in @active_assignments
-				= render 'active_assignment', :assignment => assignment
-		/ #active_assignment_table{ :style => 'margin-top:20px;' }
-		/ 	.float_left{ :style => 'width:50px;' }
-		/ 		= image_tag 'awards/custom.jpg', :width => 40
-		/ 	.float_left
-		/ 		%h3 Assigned Rewards
-		/ 	.clear
-		/ 	.float_left{ :style => 'width:50px;'}
-		/ 		&nbsp;
-		/ 	.float_left{ :style => 'width:400px;'}
-		/ 		%b Name
-		/ 	-#.float_left{ :style => 'width:350px;'}
-		/ 		%b Description
-		/ 	.float_left{ :style => 'width:150px;'}
-		/ 		%b Cost
-		/ 		(Cherries)
-		/ 	.clear
-		/ 	- for assignment in @active_assignments
-		/ 		= render 'active_assignment', :assignment => assignment
+	#active_assignment_table_header{ :style => 'margin-top:20px;' }
+		.float_left
+			%h3 
+				%span<= @child.display_name
+				%span>'s Assigned Rewards
+		.clear
+	#active_assignment_table_body
+		%br
+		.float_left{ :style => 'width:50px;'}
+			&nbsp;
+		.float_left{ :style => 'width:400px;'}
+			%h4 Name
+		.float_left{ :style => 'width:150px;'}
+			%h4 Cherries
+		.clear
+		- for assignment in @active_assignments
+			= render 'active_assignment', :assignment => assignment
+	/ #active_assignment_table{ :style => 'margin-top:20px;' }
+	/ 	.float_left{ :style => 'width:50px;' }
+	/ 		= image_tag 'awards/custom.jpg', :width => 40
+	/ 	.float_left
+	/ 		%h3 Assigned Rewards
+	/ 	.clear
+	/ 	.float_left{ :style => 'width:50px;'}
+	/ 		&nbsp;
+	/ 	.float_left{ :style => 'width:400px;'}
+	/ 		%b Name
+	/ 	-#.float_left{ :style => 'width:350px;'}
+	/ 		%b Description
+	/ 	.float_left{ :style => 'width:150px;'}
+	/ 		%b Cost
+	/ 		(Cherries)
+	/ 	.clear
+	/ 	- for assignment in @active_assignments
+	/ 		= render 'active_assignment', :assignment => assignment
 		
 	#custom_awards
 		- unless @custom_awards.empty?
@@ -77,7 +70,7 @@
 	.clear	
 		&nbsp;
 	.new_thing.button_flat
-		= link_to "Save Changes", child_path( @child ), :class => 'save_form'
+		= link_to "Save", child_path( @child ), :class => 'save_form'
 	.clear
 		&nbsp;
 	= render 'amzn_form'

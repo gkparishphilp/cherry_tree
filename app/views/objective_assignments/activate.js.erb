@@ -1,3 +1,3 @@
-$('#active_assignment_table').append("<%= escape_javascript( render 'active_assignment', :assignment => @assignment ) %>");
+$('#active_assignment_table_body').append("<%= escape_javascript( render 'active_assignment', :assignment => @assignment ) %>");
 $('#objective_assignment_<%= @assignment.id.to_s %>').effect( 'highlight', {}, 2000 );
 
