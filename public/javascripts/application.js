@@ -286,5 +286,34 @@ $(document).ready(function(){
 		var index = $(".child_profile #accordion h3").index(this);
 		$('.save_form').attr("href",btn_submit+"#"+index);
 	});
+
+	// http://stackoverflow.com/a/5398348/361689
+	$('#slideshow').cycle({
+       fx: 'fade',
+       speed: 1000,
+       timeout: 8000,
+       pause: 1,
+       cleartype: true,
+       cleartypeNoBg: true,
+       pager: '#slideshow-nav',
+       pagerAnchorBuilder: function(idx, slide) {
+           return '#slideshow-nav li:eq(' + (idx) + ')';
+       },
+       updateActivePagerLink: function(pager, currSlideIndex) {
+   		    $(pager).find('li a').removeClass('active') 
+   		        .filter('li a:eq('+currSlideIndex+')').addClass('active'); 
+       }
+   });
+		// $.fn.cycle.updateActivePagerLink = function(pager, currSlideIndex) {
+		// 		console.log(pager);
+		//     $(pager).find('li').removeClass('activeLI') 
+		//         .filter('li:eq('+currSlideIndex+')').addClass('activeLI'); 
+		// }; 
+
+   $('#slideshow-nav li').click(function() { 
+       $('#slideshow').cycle('pause'); 
+   });
+
+
 	
 });

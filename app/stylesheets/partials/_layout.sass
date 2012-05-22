@@ -280,7 +280,7 @@ body
 
 .tab_bar:after
 	+clearfix
-	
+
 #content
 	+alpha_bg
 	+rounded(20px)
@@ -297,7 +297,110 @@ body
 	h3
 		+ct_title(#0092b7)
 //	:behavior url(/javascripts/PIE.htc)
+#home
+	#content
+		border: 5px solid #ec1739
+		padding: 15px
+		width: 825px
+		margin-top: 100px
+		margin-left: 160px
+		position: relative
+		h1
+			color: #c82e2e
+			font-size: 23px
+		aside
+			float: right
+			width: 225px
+			p
+				color: #339933
+				font-size: 12px
+				font-family: 'Times New Roman'
+				text-align: center
+				font-weight: bold
+			.sign-up
+				background: url(/images/sign-up.png) no-repeat
+				display: block
+				position: relative
+				left: 40px
+				width: 146px
+				height: 43px
+			div
+				font-size: 16px
+				color: #339933
+				text-align: center
+				font-family: 'Times New Roman'
+				font-weight: bold
+		#slideshow
+			float: left
+			width: 580px
+			height: 475px
+			box-shadow: 5px 5px 15px 0 #cccccc
+		#slideshow-nav
+			position: absolute
+			z-index: 99
+			left: 15px
+			bottom: 15px
+			li
+				float: left
+				list-style: none
+				margin: 0
+				border-left: 1px solid #268e1d
+				&:first-child
+					border-left: 0
+				a
+					display: block
+					background: #69d152
+					font-size: 14px
+					font-family: 'Corben'
+					color: #ffffff
+					text-shadow: rgba(0,0,0,.5) 3px 3px 0
+					height: 42px
+					line-height: 42px
+					text-align: center
+					&:hover,
+					&.active
+						background: #93d6df
+						text-decoration: none
+					&.behavioral
+						width: 121px
+					&.social
+						width: 190px
+					&.academic
+						width: 102px
+					&.health
+						width: 164px
+		#bird-yellow
+			position: absolute
+			background: url(/images/bird-yellow.png)
+			top: -85px
+			right: -20px
+			width: 103px
+			height: 93px
+		#bird-blue-message
+			position: absolute
+			background: url(/images/bird-blue-message.png)
+			bottom: 65px
+			left: -20px
+			width: 388px
+			height: 155px
+			z-index: 100
+			.parents,
+			.kids
+				strong
+					font-family: 'Corben'
+				top: 30px
+				color: #c82e2e
+				width: 300px
+				position: relative
+				left: 80px
+				font-size: 14px
+				line-height: 17px
+			.kids
+				top: 24px
 
+	#logo
+		position: relative
+		left: -50px
 .activity
 	:margin-bottom 15px
 	:width 80%

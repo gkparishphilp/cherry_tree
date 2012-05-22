@@ -4,6 +4,7 @@
 		= render 'layouts/meta', :css => 'home'
 		= stylesheet_link_tag 'jplayer_skin/jplayer.blue.monday.css'
 		= javascript_include_tag 'jquery.jplayer.min'
+		= javascript_include_tag 'jquery.cycle.all'
 		
 		:javascript
 			$(document).ready(function(){
@@ -24,7 +25,7 @@
 				});
 			});
 
-	%body
+	%body#home
 		#wrapper
 			#container
 				= render 'shared/home_header'

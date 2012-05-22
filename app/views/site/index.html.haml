@@ -18,25 +18,43 @@
 
 #content
 	= render 'shared/flash', :flash => flash 
-	#welcome_box
-	
-		%h1
-			"Where Children Blossom"
-		
-		%p
-			CherryTree helps cultivate good habits and behaviors in children. Set up goals and rewards for your child, invite family members in for support, and watch your child transform as they earns cherries to unlock rewards.  
-		%p
-			Get back to spending quality time with your children and let CherryTree do the progress tracking.
-		%p.calls-to-action.center
-			= link_to 'Register', register_path, :class => 'button green'
-			= link_to 'Login', login_path, :class => 'button blue'
-		%br.clear
-		%p.center
-			Enter your email address to sign up for our newsletter:
-			= render 'users/collect_email'
-		%p.disclaimer
-			Your personal information is safe with us.  We promise not to sell, market, or otherwise distribute your information.  
-			Your email will only be used by us to invite you to The Cherry Tree's exclusive beta-test.
+	#welcome_box.clearfix
+		%h1 A “Whole Child” Approach to Child Development
+		#slideshow
+			= image_tag 'slideshow-behavioral.jpg', :id => '#behavioral'
+			= image_tag 'slideshow-social.jpg', :id => '#social'
+			= image_tag 'slideshow-academic.jpg', :id => '#academic'
+			= image_tag 'slideshow-health.jpg', :id => '#health'
+		#slideshow-nav
+			%ul
+				%li
+					= link_to 'Behavioral', '#', :class => 'behavioral'
+				%li
+					= link_to 'Social & Emotional', '#', :class => 'social'
+				%li
+					= link_to 'Academic', '#', :class => 'academic'
+				%li
+					= link_to 'Health & Fitness', '#', :class => 'health'
+		%aside
+			%p The CherryTree system was created by child development experts and moms like you to address the developmental needs of the “whole child” through an engaging digital platform that today's kids can relate to.
+			%p The CherryTree helps you set goals and activities for your child across various child development categories, including Behavioral,Social/Emotional, Academic and Health/Fitness.  Your child will earn points (cherries) for achieving those goals and performing those activities.  Then your child can use those cherries to unlock rewards.
+			%p With the CherryTree, you can be confident that you are providing the right type of consistent, positive encouragement that your child needs.  
+			%p The CherryTree is also packed with expert resources and product recommendations - more tools to help you raise a well-rounded and healthy child.
+			%div It's free to try, so
+			= link_to '', '/register', :class => 'sign-up'
+			%div and watch your child blossom.
+		#bird-yellow
+		#bird-blue-message
+			%p.parents
+				%strong Parents
+				Set goals for your child, assign fun 
+				and educational activities, and offer rewards
+			%p.kids
+				%strong Kids
+				Earn cherries for meeting your goals,
+				then use those cherries to unlock rewards!
+
+				
 
 
 
