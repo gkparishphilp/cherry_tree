@@ -21,6 +21,7 @@
           
         = render 'shared/flash', :flash => flash
         #content
+          = image_tag('ct_approved_stamp.png', :id => 'approved_stamp')
           = yield
           %br.clear
       = render 'shared/footer'
