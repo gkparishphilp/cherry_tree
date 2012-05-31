@@ -20,9 +20,12 @@ class LessonAssignment < ActiveRecord::Base
 	
 	def completed_by?( user )
 		#Completed by means that the quizzing for the lesson has a 'complete' status
-		quizzing = self.lesson.quizzes.last.quizzings.last
-		if quizzing.present? && quizzing.status == 'complete'
-			return true
+		if self.lesson.quizzes.present? && quizzing = self.lesson.quizzes.last.quizzings.last #Some lessons don't have quizzes
+			if quizzing.present? && quizzing.status == 'complete'
+				return true
+			else
+				return false
+			end
 		else
 			return false
 		end
