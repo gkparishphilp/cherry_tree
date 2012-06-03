@@ -36,8 +36,10 @@ CherryTree::Application.routes.draw do
 				
 		resources :approvals
 
-
-		resources :objective_assignments
+		resources :objective_assignments do
+			get 'pokki', :on => :collection
+		end
+		
 		resources :award_assignments do
 			post 'amzn', :on => :collection
 		end
@@ -82,7 +84,7 @@ CherryTree::Application.routes.draw do
 	end
 	
 	resources :objectives 
-	
+		
 	resources :products
 	
 	resources :quizzes do
