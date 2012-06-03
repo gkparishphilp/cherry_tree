@@ -187,7 +187,7 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "Tell her that you really don't appreciate being late, and that you think her behavior is very rude."
 
 	#Emotions Lesson
-	l = Lesson.create :name => 'Emotions', :description => "Learn how to recognize emotions in other people's faces.", :lesson_category => lc3,, :lesson_type => 'Grade K-2'
+	l = Lesson.create :name => 'Emotions', :description => "Learn how to recognize emotions in other people's faces.", :lesson_category => lc3, :lesson_type => 'Grade K-2'
 	s1 = l.screens.create :sequence => 1, :content => "<p>They say that it takes 43 muscles to frown and only 17 muscles to smile. Someone's facial expressions can tell us a lot about how they are feeling. This quiz will teach you to recognize certain emotions from a person's facial expressions.</p>"  
 
 	#Emotions Quiz
