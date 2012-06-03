@@ -6,7 +6,7 @@ task :cherry_tree_lessons => :environment do
 	lc4 = LessonCategory.find_by_name 'Health & Fitness'
 
 	#Roman Numeral Lesson
-	l = Lesson.create :name => 'Roman Numerals', :description => 'Learn all about Roman Numerals', :lesson_category => lc1
+	l = Lesson.create :name => 'Roman Numerals', :description => 'Learn all about Roman Numerals', :lesson_category => lc1, :lesson_type => 'Grade 3-5'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Roman Numerals</h1><p>Roman numerals are letters of the alphabet that represent numbers.</p><ul><li>I = 1</li><li>V = 5</li><li>X = 10</li><li>L = 50</li><li>C = 100</li><li>D = 500</li><li>M = 1000</li></ul><img src='/images/rn1.png' alt='The Roman Coliseum.'/>"  
 	s2 = l.screens.create :sequence => 2, :content => "<h1>The History of Roman Numerals</h1><p>The Roman numerals system dates back over 2,000 years to ancient Rome. Today we usually use Arabic numbers, but you can still see Roman numerals in tables of contents, on some clocks and watches, or as a suffix on a person's name.</p><p>John Smith III</p><img src='/images/rn2.png' alt='An old fashioned clock face.'/>"  
 	s3 = l.screens.create :sequence => 3, :content => "<h1>Roman Numerals Rule I</h1><p>I. Repeating a letter repeats its value. A letter can only be repeated up to three times in a row.</p><p>For example:</p><ul><li>III = 3</li><li>XX = 20</li><li>CCC = 300</li></ul>"
@@ -68,7 +68,8 @@ task :cherry_tree_lessons => :environment do
 
 
 	#Impressionism Lesson
-	l = Lesson.create :name => 'Impressionism', :description => 'Learn all about Impressionist Art', :lesson_category => lc1
+	l = Lesson.create :name => 'Impressionism', :description => 'Learn all about Impressionist Art', :lesson_category => lc1, :lesson_type => 'Grade 3-5'
+
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Before Impressionism</h1><p>For a long time, people judged paintings by how realistic they looked. Artists used dark colors and blended the paint so that their brush strokes would not show. Most paintings were portraits or paintings with historical or religious themes.</p><img src='/images/imp1.png' alt='The famous painting, Mona Lisa.'/>"
 	s2 = l.screens.create :sequence => 2, :content => "<h1>The Impressionist Movement</h1><p>In the late 1800s, a group of artists in Paris started painting in a new way. They did not worry as much about making their paintings look realistic. They let their brush strokes show and sometimes even left clumps of color on the canvas. They painted every day scenes with bright colors and reflections of light.</p><img src='/images/imp2.png' alt='An example of an Impressionist Painting, with bright colors and reflections of light.'/>"
 	s3 = l.screens.create :sequence => 3, :content => "<h1>Claude Monet</h1><p>Claude Monet is one of the most famous Impressionists. Monet loved to paint 'en plein air' meaning outside 'in the open air.' Impressionism got its name from Monet's painting called <em>Impression, Sunrise</em>.</p><img src='/images/imp3.png' alt='<em>Impression, Sunrise</em> by Claude Monet.'/>"
@@ -129,7 +130,7 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "<img src='/images/impq104.png' alt='Choice D'/>", :correct => true
 
 	#Communication Lesson
-	l = Lesson.create :name => 'Communication', :description => 'Learn all about the power of good communication.', :lesson_category => lc3
+	l = Lesson.create :name => 'Communication', :description => 'Learn all about the power of good communication.', :lesson_category => lc3, :lesson_type => 'Grade 3-5'
 	s1 = l.screens.create :sequence => 1, :content => "<p>Communication is a way to let others know what you want and need, and to understand what they want and need. It is important to learn to properly communicate with your friends and family. Take this quiz to learn how you should communicate with others in different scenarios.</p>"  
 
 	#Communication Quiz
@@ -186,7 +187,7 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "Tell her that you really don't appreciate being late, and that you think her behavior is very rude."
 
 	#Emotions Lesson
-	l = Lesson.create :name => 'Emotions', :description => "Learn how to recognize emotions in other people's faces.", :lesson_category => lc3
+	l = Lesson.create :name => 'Emotions', :description => "Learn how to recognize emotions in other people's faces.", :lesson_category => lc3,, :lesson_type => 'Grade K-2'
 	s1 = l.screens.create :sequence => 1, :content => "<p>They say that it takes 43 muscles to frown and only 17 muscles to smile. Someone's facial expressions can tell us a lot about how they are feeling. This quiz will teach you to recognize certain emotions from a person's facial expressions.</p>"  
 
 	#Emotions Quiz
@@ -244,7 +245,7 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => 'Excitment'
 
 	#Being a Good Friend Lesson
-	l = Lesson.create :name => 'Being a Good Friend', :description => "Learn how to be a good friend.", :lesson_category => lc3
+	l = Lesson.create :name => 'Being a Good Friend', :description => "Learn how to be a good friend.", :lesson_category => lc3, :lesson_type => 'Grade K-2'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Being a Good Friend</h1><p>Being a good friend means you are helpful and kind to the people that you care about- no matter what! A good friend likes you because of who you are inside and not for what you look like on the outside. You can be a good friend by being helpful to your friends each and every day.</p>"  
 
 	#Friendship Quiz
@@ -302,7 +303,7 @@ task :cherry_tree_lessons => :environment do
 
 
 	# Displaying Self Control Lesson
-	l = Lesson.create :name => 'Displaying Self Control', :description => "Learn how to control yourself when things don't go as planned.", :lesson_category => lc3
+	l = Lesson.create :name => 'Displaying Self Control', :description => "Learn how to control yourself when things don't go as planned.", :lesson_category => lc3, :lesson_type => 'Grade 3-5'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Displaying Self Control</h1><p>Sometimes things happen that make us upset and angry. When that happens, we have to choose how we deal with our problems. Self-control is the ability to remain rational and in-control even when the situation becomes very stressful and problematic. Self-control can vary between two opposite points: impulsiveness (total lack of self-control) and rationality (calmness and absence of emotions). The following quiz will present various scenarios and options of how to react and display self-control.</p>"  
 
 
@@ -360,7 +361,7 @@ task :cherry_tree_lessons => :environment do
 	quest10.answers.create :content => "Tell her that you really don't appreciate being late, and that you think her behavior is very rude."
 
 	# Patience Lesson
-	l = Lesson.create :name => 'Patience', :description => "Learn how to be patient", :lesson_category => lc2
+	l = Lesson.create :name => 'Patience', :description => "Learn how to be patient", :lesson_category => lc2, :lesson_type => 'Grade 3-5'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Patience</h1><p>Patience is showing a positive reaction even in a difficult circumstance. To be patient, you must first think before you act. This give you time to settle things out in an orderly manner.</p><p>There are many benefits to being patient.  It will make you into a friendly and successful person, allow you to avoid feelings of frustration, and help you cope when things don't go as you plan.</p><p>Patience also helps manage anger. When you are patient, you will be able to control your feeling of disappointment, embarrassment and hatred. You will be able to turn those situations into positive ones.</p>"  
 
 
@@ -419,7 +420,7 @@ task :cherry_tree_lessons => :environment do
 
 
 	# Exercise Challenge
-	l = Lesson.create :name => 'Exercise Challenge', :description => "Learn some exercises!", :lesson_category => lc4
+	l = Lesson.create :name => 'Exercise Challenge', :description => "Learn some exercises!", :lesson_category => lc4, :lesson_type => 'Grade 3-5'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Exercise Challenege</h1><p>Physical activity is good for you!  It can help you have stronger muscles and bones and a healthier heart.  Exercise can also help you have more energy, more confidence, a better memory, and just feel all around good.  Try these 10 exercises!</p>"  
 	s2 = l.screens.create :sequence => 2, :content => "<h1>Groovy Warm Up</h1><p>Dance to your favorite song.  If you can't play it right now, sing it while you dance.</p><img src='/images/ec1.png' alt='Dance'/>"  
 	s3= l.screens.create :sequence => 3, :content => "<h1>Upper Body Stretch</h1><p>Stretch your right arm across your body and count to 20.</p><p>Stretch your left arm across your body and count to 20.</p><img src='/images/ec2.png' alt='Stretch arms'/>"  
@@ -433,7 +434,7 @@ task :cherry_tree_lessons => :environment do
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Cool Down and Rehydrate</h1><p>Repeat your favorite stretching exercises.  Drink a glass of water.  You did it!</p><img src='/images/ec10.png' alt='Done!'/>"  
 
 	#Motor Skills Challenge
-	l = Lesson.create :name => 'Motor Skills Challenge', :description => "Learn some good motor skills!", :lesson_category => lc4
+	l = Lesson.create :name => 'Motor Skills Challenge', :description => "Learn some good motor skills!", :lesson_category => lc4, :lesson_type => 'Grade K-2'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Motor Skills Challenge</h1><p>Motor skills are the strength, flexibility and balancing skills that help your body move and do fun things.  Try these 10 exercises!</p>"  
 	s2 = l.screens.create :sequence => 2, :content => "<h1>Stand Tall</h1><p>Reach your hands as high as you can and stand on your tippy toes while you count to 10.</p><img src='/images/ms1.png' alt='Stand tall!'/>"  
 	s3= l.screens.create :sequence => 3, :content => "<h1>Toe Touch</h1><p>Stand with your legs straight and reach for your toes while you count to 10.</p><img src='/images/ms2.png' alt='Toe touch'/>"  
@@ -447,7 +448,7 @@ task :cherry_tree_lessons => :environment do
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Book Jump</h1><p>Place a book on the ground.  Practice jumping over the book without touching it.  Do this 5 times.  </p><img src='/images/ms10.png' alt='Book jump'/>"  
 
 	#Rhyming Lesson
-	l = Lesson.create :name => 'Rhyming', :description => 'Learn all about rhymes.', :lesson_category => lc1
+	l = Lesson.create :name => 'Rhyming', :description => 'Learn all about rhymes.', :lesson_category => lc1, :lesson_type => 'Grade K-2'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Rhyming</h1><p>Words with endings that sound the same rhyme!</p><ul><li><u>BAT</u> rhymes with <u>CAT</u></li><li><u>FAN</u> rhymes with <u>MAN</u></li><li><u>NEST</u> rhymes with <u>BEST</u></li></ul>"  
 	s2 = l.screens.create :sequence => 2, :content => '<h1>Rhymes in Poems</h1><p>Lots of poems use rhymes.</p><p>Joyce Kilmer wrote a famous poem called <em>Trees</em> that starts out "I think that I shall never <u>SEE</u>, a poem lovely as a <u>TREE</u>."'  
 	s3 = l.screens.create :sequence => 3, :content => '<h1>Rhymes in Songs</h1><p>Lots of songs use rhymes too.</p><p>"Twinkle, twinkle little <u>STAR</u>,  How I wonder what you <u>ARE</u>."</p><p>Keep singing, and notice all the rhyming words!</p>'  

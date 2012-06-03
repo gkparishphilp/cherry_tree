@@ -1,6 +1,7 @@
 .form_group.add_child
 	%label
 		This child is a
+	%br
 	%div.roundy
 		= f.radio_button :gender, 'male'
 		boy
@@ -20,8 +21,7 @@
 	%label.pic
 		Upload a picture for
 		%span.name
-	= file_field_tag :attached_avatar_file, :class => 'button_flat'
-
+	= file_field_tag :attached_avatar_file
 	%div.clear
 	
 	%label.birthday

@@ -1,6 +1,6 @@
 .child_profile
 	%h1
-		=@category.name
+		=@category.name if @category.present?
 	%br
 	%h3.store-tagline
 		Cherry Tree has hand picked these products to help your child...
@@ -22,3 +22,4 @@
 				= link_to 'Buy', product.amazon_url, :target => "_blank", :class => 'button_flat'
 				=# link_to '+ Add As Reward'.html_safe, '/TODO-buy', :class => 'button_flat'
 		%hr
+	= link_to 'Back to Store', store_index_path, :class => 'button_flat'

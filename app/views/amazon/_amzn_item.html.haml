@@ -9,4 +9,4 @@
 		= image_tag( item.get_hash( 'LargeImage' )['URL'], :width => 96 ) if item.get_hash( 'LargeImage' ).present?
 	.amzn_data.float_left
 		.amzn_desc
-			= item.get('EditorialReviews/EditorialReview/Content').html_safe if item.get('EditorialReviews/EditorialReview').present?
+			= truncate( item.get('EditorialReviews/EditorialReview/Content').html_safe, :length => 600, :separator => ' ' ) if item.get('EditorialReviews/EditorialReview').present?

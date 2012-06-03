@@ -10,7 +10,10 @@
 				%span
 					No unread notes
 			.note_content{:style => 'color:white'}
-				Send a note, and ask your parent to write you back!
+				-if @current_user.child?
+					Send a note, and ask your parent to write you back!
+				-else
+					Send a note, and ask your child to write you back!
 		= render @notes
 	%br.clear
 

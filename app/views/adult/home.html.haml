@@ -11,13 +11,14 @@
 	#market.boxes
 		%p
 			Check out the cherryTree Market for toys, books and other materials to help your whole child grow.
-		= link_to "Enter Market", "/store", :class => 'button_flat big'
+		= link_to "Enter Store", "/store", :class => 'button_flat big'
 		= link_to image_tag( 'market-small.png'), "/store", :class => 'market'
 	#resources.boxes
 		%p
 			Visit our Parent Resources section for great parenting advice and information.
 		= link_to "Go", resources_path, :class => 'button_flat big'
-	#faq.boxes
+	-#
+		faq.boxes
 		%p
 			Need some help with setting up goals and rewards? Check out these.
 		= link_to "FAQ", "/faq", :class => 'button_flat big'

@@ -5,7 +5,11 @@ class StoreController < ApplicationController
 
   def show
 	@category = StoreCategory.find_by_short_name params[:id]
-	@products = @category.products
+	if @category.present?
+		@products = @category.products
+	else
+		@products = Product.all
+	end
     render :layout => 'application'
   end
 

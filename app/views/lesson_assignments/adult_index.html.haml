@@ -45,7 +45,7 @@
 					- for lesson in category.lessons
 						%li
 							%h4
-								=lesson.name
+								="#{lesson.name} (#{lesson.lesson_type})"
 							- if lesson.lesson_assignments.find_by_user_id( @child.id ) && lesson.lesson_assignments.find_by_user_id( @child.id ).completed_by?( @child )
 								Completed on:
 								= format_date_only lesson.lesson_viewings.find_by_user_id( @child.id ).updated_at
