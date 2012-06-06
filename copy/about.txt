@@ -25,9 +25,6 @@ YOUR CHILD:
 <br>
 <br>
 <div>
-It's free to try, so
-</div>
-                <a href="/register" class="sign-up"></a>
-<div>and watch your child blossom.
-</div>
+It's free to try, so <a href="/register">Register</a> and watch your child blossom.
+
 
