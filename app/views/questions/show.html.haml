@@ -18,7 +18,7 @@
 				- for answer in @question.answers
 					.answer
 						= radio_button_tag :answer_id, answer.id
-						= answer.content
+						= answer.content.html_safe
 				%br
 				= submit_tag "Enter", :class => 'button blue'
 				

@@ -50,7 +50,7 @@
 			%h3	No Assignments Today!
 
 	-if session[:just_checked_in]
-		#new_award.award_modal{ :id => (rand(4)+1), :title => "Great Job #{@child.display_name}!" }
+		#new_award.award_modal{ :id => (rand(4)+1) }
 			.bird
 			.bubble
 		- session[:just_checked_in] = false

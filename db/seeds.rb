@@ -206,9 +206,6 @@ aw = Award.create :award_category => ac2, :name => "Five Dollars", :description 
 aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money-five.png', :remote => true
 aw = Award.create :award_category => ac2, :name => "Ten Dollars", :description => "More stuffing for your piggy bank", :point_cost => 100, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money-ten.png', :remote => true
-aw = Award.create :award_category => ac2, :name => "Gift Card", :description => "For your favorite store", :point_cost => 50, :creator => s
-aw.attachments.create :attachment_type => 'avatar', :name => 'money', :format => 'png', :path => '/images/awards/money.png', :remote => true
-
 
 aw = Award.create :award_category => ac3, :name => "New Toy", :description => "Something that you've wanted", :point_cost => 50, :creator => s
 aw.attachments.create :attachment_type => 'avatar', :name => 'stuff', :format => 'png', :path => '/images/awards/stuff-toy.png', :remote => true
