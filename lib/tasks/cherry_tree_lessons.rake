@@ -434,9 +434,9 @@ task :cherry_tree_lessons => :environment do
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Cool Down and Rehydrate</h1><p>Repeat your favorite stretching exercises.  Drink a glass of water.  You did it!</p><img src='/images/ec10.png' width=150 alt='Done!'/>"  
 
 	q = l.quizzes.create :name => 'Exercise Challenge', :point_value => 10
-	quest = q.questions.create :content => 'Did you do some of the exercises?'
+	quest = q.questions.create :content => 'Did you enjoy the exercises?'
 	quest.answers.create :content => 'Yes', :correct => true
-	quest.answers.create :content => 'No'
+	quest.answers.create :content => 'No', :correct => true
 
 	#Motor Skills Challenge
 	l = Lesson.create :name => 'Motor Skills Challenge', :description => "Learn some good motor skills!", :lesson_category => lc4, :lesson_type => 'Grade K-2'
@@ -455,7 +455,7 @@ task :cherry_tree_lessons => :environment do
 	q = l.quizzes.create :name => 'Motor Skills Challenge', :point_value => 10
 	quest = q.questions.create :content => 'Did you complete all the motor skills activities?'
 	quest.answers.create :content => 'Yes', :correct => true
-	quest.answers.create :content => 'No'
+	quest.answers.create :content => 'No', :correct => true
 
 	#Rhyming Lesson
 	l = Lesson.create :name => 'Rhyming', :description => 'Learn all about rhymes.', :lesson_category => lc1, :lesson_type => 'Grade K-2'

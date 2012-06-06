@@ -44,7 +44,7 @@ class Quiz < ActiveRecord::Base
 	
 	def taken_by?( user )
 		quiz = Quizzing.find_by_user_id_and_quiz_id(user.id, self.id)
-		if quiz.present? and quiz.score.present?
+		if quiz.present? && quiz.status = 'complete'
 			return true
 		else
 			return false
