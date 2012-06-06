@@ -433,6 +433,11 @@ task :cherry_tree_lessons => :environment do
 	s10 = l.screens.create :sequence => 10, :content => "<h1>Stomach Curls</h1><p>Sit with your knees bent and your toes tucked under a couch or chair.  Lie down and cross your arms across your chest.  Do 25 sit-sups.</p><img src='/images/ec9.png' width=150 alt='Situps'/>"  
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Cool Down and Rehydrate</h1><p>Repeat your favorite stretching exercises.  Drink a glass of water.  You did it!</p><img src='/images/ec10.png' width=150 alt='Done!'/>"  
 
+	q = l.quizzes.create :name => 'Exercise Challenge', :point_value => 10
+	quest = q.questions.create :content => 'Did you do some of the exercises?'
+	quest.answers.create :content => 'Yes', :correct => true
+	quest.answers.create :content => 'No'
+
 	#Motor Skills Challenge
 	l = Lesson.create :name => 'Motor Skills Challenge', :description => "Learn some good motor skills!", :lesson_category => lc4, :lesson_type => 'Grade K-2'
 	s1 = l.screens.create :sequence => 1, :content => "<h1>Motor Skills Challenge</h1><p>Motor skills are the strength, flexibility and balancing skills that help your body move and do fun things.  Try these 10 exercises!</p>"  
@@ -446,6 +451,11 @@ task :cherry_tree_lessons => :environment do
 	s9 = l.screens.create :sequence => 9, :content => "<h1>Heel to Toe Walk</h1><p>Walk across the room in a straight line.  When you take a step with one foot, put your heel right in front of your toes on the other foot.</p><img src='/images/ms8.png' width=150 alt='Heel to Heel Walk'/>"  
 	s10 = l.screens.create :sequence => 10, :content => "<h1>Pencil Roll</h1><p>Lie down on the floor with your arms by your side.  Roll in one direction, then roll in the other direction.</p><img src='/images/ms9.png' width=150 alt='Pencil Walk'/>"  
 	s11 = l.screens.create :sequence => 11, :content => "<h1>Book Jump</h1><p>Place a book on the ground.  Practice jumping over the book without touching it.  Do this 5 times.  </p><img src='/images/ms10.png' width=150 alt='Book jump'/>"  
+
+	q = l.quizzes.create :name => 'Motor Skills Challenge', :point_value => 10
+	quest = q.questions.create :content => 'Did you complete all the motor skills activities?'
+	quest.answers.create :content => 'Yes', :correct => true
+	quest.answers.create :content => 'No'
 
 	#Rhyming Lesson
 	l = Lesson.create :name => 'Rhyming', :description => 'Learn all about rhymes.', :lesson_category => lc1, :lesson_type => 'Grade K-2'
