@@ -12,7 +12,9 @@
 	\.
 %p
 	= link_to 'Click here', print_award_url( @award, :child_id => @child.id, :host => 'thecherrytree.com' )
-	to display and print her award certificate.
+	to display and print
+	= @child.pronoun_gender_possessive
+	award certificate.
 %p
 	Congratulations to 
 	= @child.display_name

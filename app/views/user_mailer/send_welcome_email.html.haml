@@ -1,12 +1,12 @@
 %p 
-	="Dear #{@user.display_name},"
+	="Dear #{@user.first_name},"
 %p 
 	Welcome to the CherryTree!
 %p 
 	We hope that CherryTree becomes an invaluable tool for setting meaningful goals for your child and providing consistent, positive encouragement as your child works toward those goals.
 %p
 	If you have any questions or suggestions, please feel free to 
-	=link_to 'contact us.', new_contact_path
+	= link_to 'contact us.', new_contact_path
 	We would love to hear from you!
 
 %p 
