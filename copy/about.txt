@@ -1,52 +1,33 @@
-<h3> What is the Cherry Tree?</h3>
-<p>
-We’ve all heard of the morality tale of a young George Washington admitting to chopping down the cherry tree to his angry father.  In the words of George Washington,
-</p>
+<h3> Here's how the CherryTree works:</h3>
 
-<p>
-“I can’t tell a lie, father, you know I cannot tell a lie! I did cut it with my little hatchet.”  
-</p>
-
-<p>
-George’s father replies in kind,
-</p>
-
-<p>
-“My son, that you should not be afraid to tell the truth is more to me than a thousand trees!”
-</p>
-
-<p>
-As parents, we all want the traits portrayed by young George Washington for our children, and the grace and dignity of George’s father for ourselves.  But teaching our children those good behaviors can be a challenge.  That’s where we can use tools like TheCherryTree.com for help.  
-</p>
-
-<p>
-Universally, we know that children respond to rewards and recognition.  Cherry Tree was created with this behavior in mind to help us teach ours kids good habits and behaviors.  TheCherryTree.com creates a simple, yet powerful incentive mechanism and combines it with game-like play and continual encouragement from parents and other invited family members to help children form good habits and behaviors.  
-</p>
-
+YOU:
+<br>  
 <ul>
-    <li>The parent sets up a program that instills the desired habits or behaviors into their children and assign a certain number of points for each time the habit is performed.  For example, earn 5 points a day for flossing.  
+    <li>Choose goals for your child to focus on daily. Use suggested goals from our child development professionals, or create your own.
 
-    <li>The parent and the child pick an appropriate reward for completion of that habit.  For example, earn 300 points and get a new bike.  That point total would be equal to approximately flossing every night for two months.    
+    <li>Assign fun activities for your child to do on the CherryTree.
 
-
-    <li>Child regularly checks in via a website on the habit, earning points for each successful check in.  Every day, the child marks if he flossed the night before.  If a child forgets to check-in often enough, the parent gets a reminder.        
+    <li>Select rewards for your child to work towards. Use our direct link to Amazon to make shopping easy.   
 </ul>
 
-<p>
-Once the child has earned enough points, he can collect the reward.  Along the way, the child will earn badges, rewards, and other incentives to encourage him to follow the program.  
-</p>
-
-<h3>Why is Cherry Tree Different</h3>
-
-<p>
-While the steps seem straightforward, we all know that changing a child’s habit is much harder than that.  That’s where Cherry Tree differs from other online ‘sticker chart’ type applications.  Cherry Tree creates the following dynamics and support systems to help a child succeed in forming positive behaviors.
-</p>
-  
+<br>
+<br>
+YOUR CHILD:
+<br>
 <ul>
-    <li>Cherry Tree allows other invited family members (grandparents, aunts, uncles, cousins, etc.) or professionals to see how the child is doing and offer messages of support and encouragement.  Positive reinforcement from other important figures in the child’s life will help the child progress.  While this online interaction should never replace talking with the child, it does provide another way to connect to the child.
+    <li>Logs in each day to report progress on goals and earn cherries.
 
-    <li>Cherry Tree shifts the responsibility to the child for checking in.  This gives them responsibility and accountability to the reaching the goal and tracking it.  Parents can monitor and verify.  
+    <li>Completes assigned activities to earn more cherries.
 
-    <li>Parents and children are continually engaged through real time status updates and messages.  This keeps progress towards the goal in plain sight and continually relevant.  
+    <li>When enough cherries have been earned, unlock rewards!
 </ul>
+
+<br>
+<br>
+<div>
+It's free to try, so
+</div>
+                <a href="/register" class="sign-up"></a>
+<div>and watch your child blossom.
+</div>
 
