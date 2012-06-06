@@ -37,9 +37,10 @@
 					= link_to 'Health & Fitness', '#', :class => 'health'
 		%aside
 			/ %p Welcome to the CherryTree!
-			%p <b>The CherryTree</b> was created by child development professionals and parents like you.
-			%p <b>Parents</b>, you set goals and assign activities for your child in each of the CherryTree's child development categories. 
-			%p <b>CherryTree Kids</b>, login each day to report your progress and earn cherries to unlock rewards!
+			%p.greeting
+				<b>The CherryTree</b> was created by child development professionals and parents like you.
+			%p.greeting <b>Parents</b>, you set goals and assign activities for your child in each of the CherryTree's child development categories. 
+			%p.greeting <b>CherryTree Kids</b>, login each day to report your progress and earn cherries to unlock rewards!
 			%div It's free to try, so
 			= link_to '', '/register', :class => 'sign-up'
 			%div and watch your child blossom.
