@@ -81,9 +81,7 @@ class UsersController < ApplicationController
 		
 		@user.orig_ip = request.ip
 		
-		@user.display_name = params[:fname] + " " + params[:lname]
-		@user.first_name = params[:fname]
-	
+		@user.display_name = params[:fname] + " " + params[:lname]	
 		@user.newsletter_opt_in = true if params[:subscribe_to_newsletter]
 	
 		if @user.save
