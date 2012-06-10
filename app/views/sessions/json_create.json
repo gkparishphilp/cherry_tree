@@ -1,0 +1,5 @@
+{
+	"user_id": "<%= @user.user_id.to_json %>",
+	"display_name": "<%= @user.display_name.to_json %>",
+	"point_balance": "<%= @user.point_balance.to_json %>"	
+}

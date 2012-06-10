@@ -23,16 +23,13 @@ class SessionsController < ApplicationController
 	
 	
 	def json_create
-		user, msg = User.authenticate( params[:credential], params[:password])
+		@user, msg = User.authenticate( params[:credential], params[:password])
 		
-		if user
-			user_id = user.id 
-		else
-			user_id = '0'
-		end
-		
-		respond_to do |format|
-			format.html {render :json}
+		if @user		
+			respond_to do |format|
+				format.html {render :json => @user}
+			end
+			cookies[:user_id] = @user.id
 	  	end
 		
 	end
