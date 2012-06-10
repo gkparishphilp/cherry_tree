@@ -1,1 +1,4 @@
-object @user
+node(:response)
+{
+@status
+}

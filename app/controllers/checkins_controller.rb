@@ -69,12 +69,11 @@ class CheckinsController < ApplicationController
 			else
 				@checkin.user.do_activity( " said: '#{@checkin.content}' ", @checkin )
 			end
-			session[:just_checked_in] = true
 			@checkin.user.save
-
+			@status = 'Success'
 		else
         	pop_flash "Checkin could not be created.", :error, @checkin
-
+			@status = 'Failed'
 		end
 		
 		respond_to do |format|
