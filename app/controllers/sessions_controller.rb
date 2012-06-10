@@ -31,6 +31,11 @@ class SessionsController < ApplicationController
 			user_id = '0'
 		end
 		
+		respond_to do |format|
+			format.html
+	    	format.json
+	  	end
+		
 	end
 	
 	def register
