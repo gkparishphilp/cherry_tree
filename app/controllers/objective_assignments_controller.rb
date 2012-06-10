@@ -141,7 +141,7 @@ class ObjectiveAssignmentsController < ApplicationController
 	end
 	
 	def pokki
-		@active_assignments = @current_user.objective_assignments.active - @current_user.objective_assignments.map{ |assignment| assignment if assignment.checkin_in_last?(Time.now.beginning_of_day)}
+		@active_assignments = @child.objective_assignments.active - @child.objective_assignments.map{ |assignment| assignment if assignment.checkin_in_last?(Time.now.beginning_of_day)}
 		respond_to do |format|
 	    	format.json
 	  	end
