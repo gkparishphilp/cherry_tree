@@ -53,7 +53,7 @@ class CheckinsController < ApplicationController
 	
 	def pokki_create
 		#@user = User.find_by_name params[:name]
-		@user = User.find( session[:user_id])
+		@user =  session[:user_id] && User.find( session[:user_id] ) 
 		@checkin = @user.checkins.new( params[:checkin])
 		if @checkin.save
 			if @checkin.objective_assignment.present?
