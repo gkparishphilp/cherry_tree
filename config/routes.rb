@@ -117,6 +117,7 @@ CherryTree::Application.routes.draw do
 			post 'go_site_twitter'
 			get 'ret_twitter'
 			get 'ret_site_twitter'
+			post 'json_create'
 		end
 	end
 	

@@ -21,6 +21,22 @@ class SessionsController < ApplicationController
 		end
 	end
 	
+	
+	def json_create
+		user, msg = User.authenticate( params[:credential], params[:password])
+		
+		if user
+			user_id = user.id 
+		else
+			user_id = '0'
+		end
+		
+		respond_to do |format|
+	    	format.json
+	  	end
+		
+	end
+	
 	def register
 		@user = User.new
 		@user.email = params[:email]
