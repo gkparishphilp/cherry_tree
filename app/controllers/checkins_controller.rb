@@ -51,5 +51,32 @@ class CheckinsController < ApplicationController
 		redirect_to :back
 	end
 	
+	def pokki_create
+		@user = User.find_by_name params[:name]
+		@checkin = @user.checkins.new( params[:checkin])
+		if @checkin.save
+			if @checkin.objective_assignment.present?
+				if @checkin.done?
+					activity = @checkin.user.do_activity( "did '#{@checkin.objective_assignment.objective.name}' ", @checkin )
+				else
+					activity = @checkin.user.do_activity( "did not '#{@checkin.objective_assignment.objective.name}' ", @checkin )
+				end
+				# -- auto-add content as comment
+				if @checkin.content.present?
+					activity.comments.create :user => @current_user, :content => @checkin.content
+					@checkin.update_attributes :content => ""
+				end
+			else
+				@checkin.user.do_activity( " said: '#{@checkin.content}' ", @checkin )
+			end
+			session[:just_checked_in] = true
+			@checkin.user.save
+
+		else
+        	pop_flash "Checkin could not be created.", :error, @checkin
+
+		end
+	end
+	
 	
 end

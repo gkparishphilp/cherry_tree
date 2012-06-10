@@ -146,8 +146,7 @@ class ObjectiveAssignmentsController < ApplicationController
 	    	format.json
 	  end
 	end
-	
-	
+		
 	private
 	
 	def get_child

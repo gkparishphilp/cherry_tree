@@ -22,7 +22,9 @@ CherryTree::Application.routes.draw do
 		get	:admin, :on => :collection
 	end
 	
-	resources :checkins 
+	resources :checkins do
+		post 'pokki_create', :on => :collection
+	end
 	
 	resources :lessons do
 		resources :screens
