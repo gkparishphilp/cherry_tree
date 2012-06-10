@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
 		end
 		
 		respond_to do |format|
-			format.html {render :json => user}
+			format.html {render :json}
 	  	end
 		
 	end
