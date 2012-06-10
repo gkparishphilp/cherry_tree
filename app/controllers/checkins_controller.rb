@@ -52,7 +52,8 @@ class CheckinsController < ApplicationController
 	end
 	
 	def pokki_create
-		@user = User.find_by_name params[:name]
+		#@user = User.find_by_name params[:name]
+		@user = User.find( session[:user_id]
 		@checkin = @user.checkins.new( params[:checkin])
 		if @checkin.save
 			if @checkin.objective_assignment.present?
@@ -76,6 +77,11 @@ class CheckinsController < ApplicationController
         	pop_flash "Checkin could not be created.", :error, @checkin
 
 		end
+		
+		respond_to do |format|
+	    	format.json
+		end
+		
 	end
 	
 	
