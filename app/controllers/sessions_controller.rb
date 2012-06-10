@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 		
 		if @user		
 			respond_to do |format|
-				format.html {render :json }
+				format.html {render :json => @user}
 			end
 			cookies[:user_id] = @user.id
 	  	end
