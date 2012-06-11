@@ -77,7 +77,7 @@ class CheckinsController < ApplicationController
 		end
 		
 		respond_to do |format|
-	    	format.json
+	    	format.html {render :json => @status}
 		end
 		
 	end
