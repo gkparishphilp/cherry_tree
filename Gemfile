@@ -19,3 +19,4 @@ gem 'aws-ses', '~> 0.4.1', :require => 'aws/ses'
 gem 'recaptcha', :require => "recaptcha/rails"
 gem 'rabl'
 gem 'json'
+#gem 'oauth2_provider'

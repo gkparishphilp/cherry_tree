@@ -29,6 +29,7 @@
 					= yield
 					%br.clear
 			= render 'shared/footer'
+			= render 'shared/feedback' unless @current_user.child?
 			= render 'shared/analytics'
 			:javascript
 				// This should hide the loading_div when the page is ready
