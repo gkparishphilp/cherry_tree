@@ -44,9 +44,6 @@
 		.clear
 		- for assignment in @active_assignments
 			= render 'active_assignment', :assignment => assignment
-		- unless @custom_objectives.empty?
-			- for objective in @custom_objectives
-				= render 'objective_to_assign', :objective => objective
 				
 	.clear	
 		&nbsp;
@@ -77,7 +74,16 @@
 									%label
 										= render 'objective_to_assign', :objective => objective
 						%br
-		%h3.track= "Custom Goals"
+		- unless @custom_objectives.empty?
+			%h3.track= "Custom Goals"
+			%div
+				%ul
+					- for objective in @custom_objectives
+						%li
+							%label
+								= render 'objective_to_assign', :objective => objective
+
+		%h3.track= "New Custom Goal"
 		%div
 			= form_for [ @child, ObjectiveAssignment.new ] do |f|
 				%label Goal:
