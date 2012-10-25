@@ -1,10 +1,10 @@
 .objectives.clearfix
 	%p.float_left
+		%span{:style => 'color:red; font-weight:bold; font-style:italic; font-size:.75em;'}
+			= objective_assignment.point_value
+		= image_tag "cherry.png", :width => 22
 		= objective_assignment.objective.name
-		(
-		= objective_assignment.point_value
-		cherries )
-		? 
+
 		-#(
 			= @num_assignments
 			remaining )

@@ -18,12 +18,6 @@
 					= render 'objective_assignments/objective_assignment_checked_in', :objective_assignment => checkin
 
   
-	-# unless @current_user.activities.empty?
-		#home_activity.boxes
-			%h3
-				News
-			.activity
-				= render @current_user.activities.order("created_at desc")	
 	.boxes#activities
 		- unless @lesson_assignments.empty?
 			%h3 Activities
@@ -48,6 +42,15 @@
 								
 		- else
 			%h3	No Assignments Today!
+
+	- unless @current_user.activities.empty?
+
+		.boxes#activities
+			%h3
+				News
+			.activity
+				= render @current_user.activities.order("created_at desc")	
+
 
 	-if session[:just_checked_in]
 		#new_award.award_modal{ :id => (rand(4)+1) }

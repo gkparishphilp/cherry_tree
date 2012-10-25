@@ -27,7 +27,7 @@
 	- unless activity.comments.empty?
 		= render activity.comments
 	
-	#comment_form[activity]{ :style => 'display:none;' }
+	#comment_form[activity]{ :style => 'display:visible;' }
 		= form_for [ activity, Comment.new ] do |f|
 			= f.text_field :content
 			= f.submit( 'Comment' )
