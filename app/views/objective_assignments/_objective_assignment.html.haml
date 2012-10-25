@@ -1,7 +1,10 @@
 .objectives.clearfix
 	%p.float_left
+		%span{:style => 'color:red; font-weight:bold; font-style:italic; font-size:.75em;'}
+			= objective_assignment.point_value
+		= image_tag "cherry.png", :width => 22
 		= objective_assignment.objective.name
-		? 
+
 		-#(
 			= @num_assignments
 			remaining )
@@ -9,7 +12,8 @@
 		= f.hidden_field :objective_assignment_id, :value => objective_assignment.id
 		= f.hidden_field :user_id, :value => @current_user.id
 		= f.hidden_field :done, :value => true
-		=# f.text_field :content
 		.actions
 			= image_submit_tag( "green_check.png", :width => 40 )
 			=# link_to image_tag( 'red_x.png', :width => 40 ), checkins_path( :checkin => { :objective_assignment_id => objective_assignment.id, :user_id => @current_user.id } ), :method => :post
+		= f.text_field :content
+
