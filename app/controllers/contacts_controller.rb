@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
 		
 		if user.contacts << @contact
 			pop_flash "Thank you for your message"
-			UserMailer.send_contact( @user, @contact ).deliver
+			#UserMailer.send_contact( @user, @contact ).deliver
 		else
 			pop_flash "There was a problem with your message", :error, @contact
 			redirect_to :back
